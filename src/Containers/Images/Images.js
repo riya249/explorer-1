@@ -14,6 +14,9 @@ const path = {
     eventFour: require("../../assets/Images/eventFour.jpg"),
     imgProfile: require("../../assets/Images/imgProfile.jpg"),
     fileUpload: require("../../assets/Images/fileUpload.png"),
+    id: require("../../assets/Images/id.jpeg"),
+    id2: require("../../assets/Images/id2.jpeg"),
+    id3: require("../../assets/Images/id3.jpeg"),
 };
 export default {
     path

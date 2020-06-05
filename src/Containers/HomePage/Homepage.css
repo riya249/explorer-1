@@ -135,3 +135,18 @@
   font-size: 18px;
   color: #002e91 !important;
 }
+
+@media (max-width: 768px) {
+  
+    .catg-main{
+        display: block;
+    
+    }
+    .container{
+        margin-top: 20px;
+    }
+    .bookingOffer-img {
+        width: 100%;
+        height: 160px;
+    }   
+}

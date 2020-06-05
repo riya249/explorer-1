@@ -66,7 +66,7 @@ class UpcomingEvent extends Component {
           </div>
           <div className='section-two-category'>
             <div className='row'>
-              <Col>
+              <Col md={4}>
                 <div className='category-three-box'>
                   <img className='box-Img-three' src={Images.path.eventEight} />
                   <div className='rentCategory-text'>
@@ -77,7 +77,7 @@ class UpcomingEvent extends Component {
                                     </div>
                 </div>
                 </div></Col>
-              <Col><div className='category-three-box'>
+              <Col md={4}><div className='category-three-box'>
               <div className="small-ev-box">
                                     <p className="ev-month">MAY</p>
                                     <p className="ev-date">27</p>
@@ -91,7 +91,7 @@ class UpcomingEvent extends Component {
                                     </div>
                 </div>
               </div></Col>
-              <Col><div className='category-three-box'>
+              <Col md={4}><div className='category-three-box'>
               <div className="small-ev-box">
                                     <p className="ev-month">MAY</p>
                                     <p className="ev-date">27</p>

@@ -37,6 +37,12 @@
     margin-left: 25px;
     height: 40px
 }
+
+.upload-picture{
+    width: 60%;
+    margin-top: 10px;
+    margin-left: 10px;
+}
 .upload-img-container{
     display: flex;
 }

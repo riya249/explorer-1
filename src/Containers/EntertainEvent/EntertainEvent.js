@@ -24,7 +24,7 @@ class EntertainEvent extends Component {
                         <p class="subtitle-en">ALL THE FUN STARTS HERE !</p>
                         <h3 class="font-weight-bold-en">Entertainment Guides</h3>
                         <div className="row">
-                            <Col>
+                            <Col md={4}>
                                 <div class="grid">
                                     <figure class="effect-lily">
                                         <img className='box-Img-three' src={Images.path.eventFive} />
@@ -38,7 +38,7 @@ class EntertainEvent extends Component {
                                     </figure>
                                 </div>
                             </Col>
-                            <Col>
+                            <Col md={4}>
 
                                 <div class="grid">
                                     <figure class="effect-lily">
@@ -53,7 +53,7 @@ class EntertainEvent extends Component {
                                     </figure>
                                 </div>
                             </Col>
-                            <Col>
+                            <Col md={4}>
                                 <div class="grid">
                                     <figure class="effect-lily">
                                         <img className='box-Img-three' src={Images.path.eventOne} />
@@ -70,7 +70,7 @@ class EntertainEvent extends Component {
                         </div>
                         <div className="second-column">
                             <div className="row">
-                                <Col>
+                                <Col md={4}>
 
                                     <div class="grid">
                                         <figure class="effect-lily">
@@ -85,7 +85,7 @@ class EntertainEvent extends Component {
                                         </figure>
                                     </div>
                                 </Col>
-                                <Col>
+                                <Col md={4}>
 
                                     <div class="grid">
                                         <figure class="effect-lily">
@@ -100,7 +100,7 @@ class EntertainEvent extends Component {
                                         </figure>
                                     </div>
                                 </Col>
-                                <Col>
+                                <Col md={4}>
 
                                     <div class="grid">
                                         <figure class="effect-lily">

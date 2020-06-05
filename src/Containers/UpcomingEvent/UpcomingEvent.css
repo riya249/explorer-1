@@ -107,3 +107,13 @@
 .top-categ-head{
     color: #FF5D22;
 }
+
+
+@media (max-width: 768px) {
+  
+  .box-Img-one {
+      width: 371px;
+      border-radius: 20px;
+      height: 320px;
+  }
+}

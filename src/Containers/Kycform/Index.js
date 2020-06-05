@@ -25,37 +25,37 @@ class Kycform extends Component {
               <input className='fieldone-txt' type="text" id="fname" name="fname" placeholder="Name" />
             </Col>
             <Col sm={5}>
-              <input className='fieldone-txt' type="text" id="fname" name="fname" placeholder="Name" />
+              <input className='fieldone-txt' type="text" id="fname" name="fname" placeholder="Date of Birth" />
             </Col>
           </Row>
 
           <Row>
             <Col sm={7}>
-              <input className='fieldone-txt' type="text" id="fname" name="fname" placeholder="Name" />
+              <input className='fieldone-txt' type="text" id="fname" name="fname" placeholder="Nationality" />
             </Col>
             <Col sm={5}>
-              <input className='fieldone-txt' type="text" id="fname" name="fname" placeholder="Name" />
+              <input className='fieldone-txt' type="text" id="fname" name="fname" placeholder="Place of Birth" />
               
             </Col>
           </Row>
 
           <Row>
             <Col sm={5}>
-              <input className='fieldone-txt' type="text" id="fname" name="fname" placeholder="Name" />
+              <input className='fieldone-txt' type="text" id="fname" name="fname" placeholder="Contact Numbers" />
             </Col>
             <Col sm={7}>
-              <input className='fieldone-txt' type="text" id="fname" name="fname" placeholder="Name" />
+              <input className='fieldone-txt' type="text" id="fname" name="fname" placeholder="Email Id" />
             </Col>
           </Row>
           <div>
-            <textarea className='qs-field' type="text" id="text" name="text" placeholder="Your Question or Message" />
+            <textarea className='qs-field' type="text" id="text" name="text" placeholder="Address" />
           </div>
           <Row>
             <Col sm={4}>
-              <input className='fieldone-txt' type="text" id="fname" name="fname" placeholder="Name" />
+              <input className='fieldone-txt' type="text" id="fname" name="fname" placeholder="ID Type" />
             </Col>
             <Col sm={8}>
-              <input className='fieldone-txt' type="text" id="fname" name="fname" placeholder="Name" />
+              <input className='fieldone-txt' type="text" id="fname" name="fname" placeholder="Address Proof" />
             </Col>
           </Row>
 
@@ -72,6 +72,12 @@ class Kycform extends Component {
                 <div className='img-upload'>
                   <img src={Images.path.fileUpload} className='upload-pic' />
                 </div>
+                </div>
+                <div>
+                <img src={Images.path.id} className='upload-picture' />
+                </div>
+                <div>
+                <img src={Images.path.id2} className='upload-picture' />
                 </div>
           </div>
           <p className="color-note">35 ES is required to become a verified seller</p>
