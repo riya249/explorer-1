@@ -1,0 +1,30 @@
+.wrapper-container{
+    width: 85%;
+    margin: 0 auto;
+}
+.notif-txt{
+    font-size: 18px;
+}
+.alerts-detail{
+    margin-top: 5%;
+    width: 100%;
+    border: 1px solid #efefef;
+    background-color: #efefef;
+    padding: 10px;
+    margin-bottom: 5%;
+}
+
+.dark-notif-txt{
+    font-weight: bold;
+    font-size: 18px;
+    margin: 10px;
+    width: 150px;
+}
+.display-txt-flex{
+    display: flex;
+    border-bottom: 1.5px solid #a7a7a7;
+    margin: 10px;
+}
+.para-notif{
+    margin: 10px;
+}

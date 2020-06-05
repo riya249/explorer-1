@@ -1,0 +1,52 @@
+.form-submit-btn{
+    border: 0;
+    width: 100px;
+    height: 30px;
+    color: #ffffff;
+    background-color: #002e91;
+    margin-top: 30px;
+}
+.fieldone-txt{
+    width: 100%;
+    height: 40px;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+.qs-field{
+    width: 100%;
+    height: 80px;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+.field-note-txt{
+    font-size: 14px;
+    color: 	#727272;
+    margin-bottom: 0px;
+}
+
+.img-upload{
+    border: 1px solid #a7a7a7;
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+   }
+
+   .upload-pic{
+    width: 40px;
+    margin-top: 25px;
+    margin-left: 25px;
+    height: 40px
+}
+.upload-img-container{
+    display: flex;
+}
+.color-note{
+    color: #002e91;
+    font-weight: 600;
+    font-size: 18px;  
+}
+.grey-note{
+    font-size: 18px;
+    font-weight: 600;
+    color: #727272;
+}
