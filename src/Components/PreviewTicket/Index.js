@@ -69,9 +69,10 @@ class PreviewTicket extends Component {
                                 </select>
                             </div>
                             <div>
-                                <div>
-                                    <h1>{this.state.count}</h1>
+                                <div className="scroll-count">
+                                   
                                     <button className="inc" onClick={(e) => this.increment(e)}>+</button>
+                                    <div>{this.state.count}</div>
                                     <button className="dec" onClick={(e) => this.decrement(e)}>-</button>
                                 </div>
                             </div>
