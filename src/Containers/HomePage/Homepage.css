@@ -124,6 +124,7 @@
 .org-head-txt{
     color: #16151a;
     font-size: 18px;
+    font-weight: bold;
 }
 .user-img-pf{
     width: 40px;
@@ -149,4 +150,35 @@
         width: 100%;
         height: 160px;
     }   
+    .ticket-wrap-para {
+        font-size: 18px;
+        left:0;
+        background-color: #ffff;
+        z-index: 9;
+        padding: 22px;
+        top:0;
+    }
+    .sub-tick-txt{
+        margin-top: 56%;
+    }
+    .pb-3-txt {
+        margin: 5px;
+        font-size: 10px;
+        color: #002e91 !important;
+    }
+    .rentDaap-Img {
+        width: 20% !important;
+        height: 110px;
+    }
+    .discover-txt {
+        font-size: 36px;
+    }
+    .music-txt {
+        font-size: 35px;
+        text-align: center;
+    }
+    .music-color {
+        color: #0ee0c2;
+        font-size: 30px;
+    }
 }
