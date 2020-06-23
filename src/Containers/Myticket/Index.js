@@ -8,21 +8,20 @@ import {
     Route,
     Link,
 } from 'react-router-dom'
-import TicketList from '../../Components/TicketList/Index';
-import UsedTicket from '../../Components/UsedTicket/Index'
+
 
 const routes = [
     {
         path: '/mytickets',
         exact: true,
         sidebar: () => <div>
-          <TicketList/>
+        gfgdfgdfgdf
         </div>,
-        main: () => <h2></h2>
+        main: () => <h2>dfgdfgdfgdfgdfgdfg</h2>
     },
     {
         path: '/usedticket',
-        sidebar: () => <div> <UsedTicket/></div>,
+        sidebar: () => <div>fgdgdfgdfgdfgdfgfg</div>,
         main: () => <h2></h2>
     },
 ]

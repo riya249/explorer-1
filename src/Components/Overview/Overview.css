@@ -1,0 +1,37 @@
+.comm-profile-Img{
+    width: 80px;
+    height: 80px;
+}
+
+textarea{
+    width: 100%;
+    height: 120px;
+}
+
+.submit-btn-comm{
+    width: 80px;
+    height: 30px;
+    background-color: #747FEB;
+    border: 0;
+    color: #ffffff;
+    margin-top: 20px;
+}
+
+.btn-flex-right{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.comm-user-Img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    margin-right: 20px;
+}
+.flex-user-comm{
+    display: flex;
+    margin-top: 10px;
+}
+.user-para{
+    color: #1d212475;
+}

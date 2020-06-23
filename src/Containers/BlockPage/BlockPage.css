@@ -1,0 +1,19 @@
+.wrapper-container{
+    width: 85%;
+    margin: 0 auto;
+}
+.notif-txt{
+    font-size: 22px;
+    margin-top: 20px;
+}
+.BlockPage-detail{
+    margin-top: 3%;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 5%;
+}
+
+
+@media (max-width: 768px) {
+   
+}

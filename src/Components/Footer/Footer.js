@@ -20,32 +20,20 @@ class Footer extends Component {
             <div className='Footer-container'>
                 <Container>
                     <Row>
-                        <Col sm={3}>
-                            <img className='rentDaap-Img' src={Images.path.booklogo} alt='rent' />
-                        </Col>
                         <Col sm={4}>
-                            <div className='rentDaap-help'>
-                                <ul>
-                                    <h5 className='footer-link'>HELPFUL LINKS</h5>
-                                    <li><a href="/pdf/ListingPolicyRentingDAp.pdf" target='_blank' >My Account</a></li>
-                                    <li><a href="">Ticket Your Event</a></li>
-                                    <li><a href="">Get In Touch</a></li>
-                                    <li><a href="">Whitepaper</a></li>
-                                </ul>
-                                <ul>
-                                    <h5 className='other-footer-txt'>EXPLORE</h5>
-                                    <li><a href="">Concerts</a></li>
-                                    <li><a href="/pdf/Renting Dapp Terms & Service.pdf">Conferences</a></li>
-                                    <li><a href='/pdf/Renting Dapp Privacy.pdf'
-                                        target='_blank' >Family</a></li>
-                                    <li><a href="">Musical</a></li>
-                                    <li><a href="">Music Festival</a></li>
-                                </ul>
-                            </div>
+                        <div className="flex-footer-logo">
+                            <img className='eslogo11-Img' src={Images.path.esgreylogo} alt='rent' />
+                            <div className="footer-txt-white">Powered by Era Swap</div>
+                           </div>
+                           <p className="sub-footer-white" >Era Swap is a Block Explorer and Analytics Platform for</p>
+                           <p className="sub-footer-white">Era Swap a decentralized smart contracts platform.</p>
                         </Col>
-                        <Col sm={5}>
+                        <Col sm={2}>
+                       
+                        </Col>
+                        <Col sm={6}>
                             <div className='subscribe-container'>
-                                <div className='subscribe-detail'>NEWS LETTER</div>
+                                <div className='subscribe-detail'>Subscribe to get the latest insights</div>
                                 <div className="flex-box-subs">
                                     <form>
                                         <input
@@ -54,11 +42,13 @@ class Footer extends Component {
                                             onChange={this.handleInputChange}
                                         />
                                     </form>
-
-                                    <button className='subscribe-rent-btn'>
-                                        Subscribe
-                                    </button>
                                 </div>
+                                <div>
+                                <img className='social-Img' src={Images.path.insta} alt='rent' />
+                                <img className='social-Img' src={Images.path.linkedin} alt='rent' />
+                                <img className='social-Img' src={Images.path.twitter} alt='rent' />
+                                <img className='social-Img' src={Images.path.facebook} alt='rent' />
+                                    </div>
                             </div>
                         </Col>
                     </Row>
