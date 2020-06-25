@@ -38,15 +38,181 @@ class Homepage extends Component {
 
     render() {
 
-        
+
 
         return (
             <div>
                 <div className='booking-hero-bgd'>
-                   <Navbar/>
+                    <Navbar />
+                    <h2 className="es-main-head">Era Swap Blockchain Explorer</h2>
                 </div>
-                <div className="bookindapp-Container">
-                    
+                <div className="esexplorer-Container">
+
+                    <div className="home-search-container">
+
+                        <Container>
+                            <form >
+                                <input type="text" placeholder="block, hash, transaction etc.." name="search" className="search-field" />
+                                <button className="search-btn"> <img className='search-Img' src={Images.path.search} /></button>
+                            </form>
+                        </Container>
+                    </div>
+                </div>
+                <div className="es-explorer-wrapper">
+                    <Container>
+                        <div className="second-section-es">
+                            <Row>
+                                <Col sm={4}>
+                                    <div className="flex-eraswap">
+                                        <img src={Images.path.escolor} className='escolor-pic1' />
+                                        <div>
+                                            <p className="era-head">ERA SWAP PRICE</p>
+                                            <p>$229.86 <span>@ 0.02469 BTC</span>  <span> (+0.61%)</span></p>
+                                        </div>
+                                    </div>
+                                    <div >
+                                        <p className="era-head">ERA SWAP PRICE</p>
+                                        <p>$229.86</p>
+                                    </div>
+                                </Col>
+                                <Col sm={4}>
+                                    <div className="flex-transc">
+                                        <div>
+                                            <p className="era-head">TRANSACTIONS </p>
+                                            <p className="era-value">738.81 M <span className="era-span">(12.1 TPS)</span></p>
+                                        </div>
+                                        <div>
+                                            <p className="era-head">SAFE GAS PRICE</p>
+                                            <p className="era-value">27 Gwel <span className="era-span">($0.13)</span></p>
+                                        </div>
+                                    </div>
+                                    <div className="flex-transc border-value">
+                                        <div>
+                                            <p className="era-head">DIFFICULTY</p>
+                                            <p className="era-value">2,359.39 TH</p>
+                                        </div>
+                                        <div >
+                                            <p className="era-head">HASH RATE</p>
+                                            <p className="era-value">190,198.77 GH/s</p>
+                                        </div>
+                                    </div>
+                                </Col>
+                                <Col sm={4}>
+                                    <div>
+                                        <p className="era-head">ERA SWAP TRANSACTION HISTORY IN 14 DAYS</p>
+                                    </div>
+                                </Col>
+                            </Row>
+                        </div>
+                    </Container>
+
+                    <Container>
+                        <Row>
+                            <Col sm={4}>
+                                <div className="border-era">Latest Bunch </div>
+                                <table className="era-transaction">
+                                    <tr>
+                                        <td className="frst-era">
+                                            10301065
+                                            <div className="sub-frst">45 secs ago</div>
+                                        </td>
+                                        <td>Miner <span className="frst-era">zhizhu.top</span> <div className="sub-frst">45 secs ago</div> </td>
+                                        <td><div className="era-no">2.48 ES </div> </td>
+                                    </tr>
+                                    <tr>
+                                        <td className="frst-era">
+                                            10301065
+                                            <div className="sub-frst">45 secs ago</div>
+                                        </td>
+                                        <td>Miner <span className="frst-era">zhizhu.top</span> <div className="sub-frst">45 secs ago</div> </td>
+                                        <td><div className="era-no">2.4854 ES </div> </td>
+                                    </tr>
+                                    <tr>
+                                        <td className="frst-era">
+                                            10301065
+                                            <div className="sub-frst">45 secs ago</div>
+                                        </td>
+                                        <td>Miner <span className="frst-era">zhizhu.top</span> <div className="sub-frst">45 secs ago</div> </td>
+                                        <td><div className="era-no">2.48 ES </div> </td>
+                                    </tr>
+                                </table>
+                                <div className="border-era-two">
+                                    <button className="era-view-btn">View all Bunch</button>
+                                </div>
+                            </Col>
+
+                            <Col sm={4}>
+                                <div className="border-era">Latest Blocks</div>
+                                <table className="era-transaction">
+                                    <tr>
+                                        <td className="frst-era">
+                                            10301065
+                                            <div className="sub-frst">45 secs ago</div>
+                                        </td>
+                                        <td>Miner <span className="frst-era">zhizhu.top</span> <div className="sub-frst">45 secs ago</div> </td>
+                                        <td><div className="era-no">2.48 ES </div> </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td className="frst-era">
+                                            10301065
+                                            <div className="sub-frst">45 secs ago</div>
+                                        </td>
+                                        <td>Miner <span className="frst-era">zhizhu.top</span> <div className="sub-frst">45 secs ago</div> </td>
+                                        <td><div className="era-no">2.48 ES </div> </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td className="frst-era">
+                                            10301065
+                                            <div className="sub-frst">45 secs ago</div>
+                                        </td>
+                                        <td>Miner <span className="frst-era">zhizhu.top</span> <div className="sub-frst">45 secs ago</div> </td>
+                                        <td><div className="era-no">2.48 ES </div> </td>
+                                    </tr>
+                                </table>
+                                <div className="border-era-two">
+                                    <button className="era-view-btn">View all Bunch</button>
+                                </div>
+                            </Col>
+
+                            <Col sm={4}>
+                                <div className="border-era">Latest Transactions</div>
+                                <table className="era-transaction">
+                                    <tr>
+                                        <td className="frst-era">
+                                            10301065
+                                            <div className="sub-frst">45 secs ago</div>
+                                        </td>
+                                        <td>Miner <span className="frst-era">zhizhu.top</span> <div className="sub-frst">45 secs ago</div> </td>
+                                        <td><div className="era-no">2.48 ES </div> </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td className="frst-era">
+                                            10301065
+                                            <div className="sub-frst">45 secs ago</div>
+                                        </td>
+                                        <td>Miner <span className="frst-era">zhizhu.top</span> <div className="sub-frst">45 secs ago</div> </td>
+                                        <td><div className="era-no">2.48 ES </div> </td>
+                                    </tr>
+                                    <tr>
+                                        <td className="frst-era">
+                                            10301065
+                                            <div className="sub-frst">45 secs ago</div>
+                                        </td>
+                                        <td>Miner <span className="frst-era">zhizhu.top</span> <div className="sub-frst">45 secs ago</div> </td>
+                                        <td><div className="era-no">2.48 ES </div> </td>
+                                    </tr>
+
+
+                                </table>
+                                <div className="border-era-two">
+                                    <button className="era-view-btn">View all Bunch</button>
+                                </div>
+                            </Col>
+                        </Row>
+                    </Container>
                 </div>
             </div>
 

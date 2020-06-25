@@ -11,9 +11,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Homepage from './Containers/HomePage/Index';
 import Footer from './Components/Footer/Footer';
 import BlockPage from './Containers/BlockPage/Index';
-import Myaccount from './Containers/Myaccount/Index';
-import Myticket from './Containers/Myticket/Index';
-
+import Transaction from './Containers/Transaction/Index';
 function App() {
   return (
     <div className="App">
@@ -21,8 +19,7 @@ function App() {
         <Switch>
            <Route exact path="/" component={Homepage} />
            <Route exact path="/BlockPage" component={BlockPage} />
-           <Route exact path="/Myaccount" component={Myaccount} />
-           <Route exact path="/Myticket" component={Myticket} />
+           <Route exact path="/Transaction" component={Transaction} />
          </Switch>
      </Router>
      <Footer/>

@@ -38,7 +38,7 @@ class Navbar extends Component {
          BLOCKCHAIN
          <span class="sr-only">(current)</span></a>
         <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
-          <a class="dropdown-item" href="/Myaccount">My account</a>
+          <a class="dropdown-item" href="/Transaction">My account</a>
           <a class="dropdown-item" href="/">Log out</a>
         </div>
       </li>
@@ -49,7 +49,7 @@ class Navbar extends Component {
          TOKENS
          <span class="sr-only">(current)</span></a>
         <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
-          <a class="dropdown-item" href="/Myaccount">My account</a>
+          <a class="dropdown-item" href="">My account</a>
           <a class="dropdown-item" href="/">Log out</a>
         </div>
       </li>

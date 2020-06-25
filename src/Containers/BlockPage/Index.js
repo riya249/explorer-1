@@ -8,21 +8,21 @@ import {
     Link,
 } from 'react-router-dom'
 import { Col, Button, Container, Row } from 'react-bootstrap';
+import Comments from '../../Components/Comments/Index';
 import Overview from '../../Components/Overview/Index';
-
 
 const routes = [
     {
         path: '/',
         exact: true,
         sidebar: () => <div>
-            <Overview/>
+            <Overview />
         </div>,
         main: () => <h2></h2>
     },
     {
         path: '/Comments',
-        sidebar: () => <div> fdgdfgdfgdfg</div>,
+        sidebar: () => <div> <Comments /></div>,
         main: () => <h2></h2>
     },
 ]
@@ -46,20 +46,22 @@ class BlockPage extends Component {
                     </div>
                     <div className="BlockPage-detail">
                         <Container>
-                        <Router>
-                            <div className="two-border-container">
-                            <Link to="/"><p className="bloc-txt-opt">Overview</p></Link>
-                            <Link to="/Comments"><p className="block-txt-opt">Comments</p></Link>
-                            </div>
-                        {routes.map((route) => (
-                            <Route
-                                key={route.path}
-                                path={route.path}
-                                exact={route.exact}
-                                component={route.sidebar}
-                            />
-                        ))}
-                         </Router>
+                            <Router>
+                                <div className="two-border-container">
+                                    <div className="block-main">
+                                        <Link to="/"><p className="block-txt-opt">Overview</p></Link>
+                                        <Link to="/Comments"><p className="block-txt-opt">Comments</p></Link>
+                                    </div>
+                                    {routes.map((route) => (
+                                        <Route
+                                            key={route.path}
+                                            path={route.path}
+                                            exact={route.exact}
+                                            component={route.sidebar}
+                                        />
+                                    ))}
+                                </div>
+                            </Router>
                         </Container>
                     </div>
                 </div>

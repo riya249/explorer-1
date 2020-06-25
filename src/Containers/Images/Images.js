@@ -7,19 +7,10 @@ const path = {
     linkedin: require("../../assets/Images/linkedin.png"),
     twitter: require("../../assets/Images/twitter.png"),
     imgProfile: require("../../assets/Images/imgProfile.jpg"),
+    search: require("../../assets/Images/search.png"),
+    escolor: require("../../assets/Images/escolor.png"),
     //remove latter
-    bookingOffer: require("../../assets/Images/bookingOffer.jpg"),
-    booklogo: require("../../assets/Images/booklogo.png"),
-    eventEight: require("../../assets/Images/eventEight.jpg"),
-    eventTen: require("../../assets/Images/eventTen.jpg"),
-    crtone: require("../../assets/Images/crtone.jpg"),
-    crttwo: require("../../assets/Images/crttwo.jpg"),
-    eventFive: require("../../assets/Images/eventFive.jpg"),
-    party: require("../../assets/Images/party.jpg"),
-    eventOne: require("../../assets/Images/eventOne.jpg"),
-    eventNine: require("../../assets/Images/eventNine.jpg"),
-    eventFour: require("../../assets/Images/eventFour.jpg"),
-    fileUpload: require("../../assets/Images/fileUpload.png"),
+    
     
 };
 export default {

@@ -1,19 +1,36 @@
-.wrapper-container{
+.wrapper-container {
     width: 85%;
     margin: 0 auto;
 }
-.notif-txt{
+
+.notif-txt {
     font-size: 22px;
     margin-top: 20px;
 }
-.BlockPage-detail{
+
+.BlockPage-detail {
     margin-top: 3%;
     width: 100%;
     padding: 10px;
     margin-bottom: 5%;
 }
 
+.block-main {
+    display: flex;
+    
+}
 
+.block-txt-opt {
+    color: #000000 !important;
+    text-decoration: none;
+    padding: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  
+}
+
+.two-border-container{
+    border: 1px solid #ddd;
+}
 @media (max-width: 768px) {
-   
 }
