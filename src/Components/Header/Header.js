@@ -44,10 +44,7 @@ class Header extends Component {
                   aria-haspopup="true" aria-expanded="false">
                   TOKENS
          <span class="sr-only">(current)</span></a>
-                <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
-                  <a class="dropdown-item" href="/Myaccount">My account</a>
-                  <a class="dropdown-item" href="/">Log out</a>
-                </div>
+                
               </li>
               <li class="nav-item active">
                 <a class="nav-link top-color" href="/Explore">

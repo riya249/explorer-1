@@ -24,6 +24,7 @@ class TimeallyExplorer extends Component {
                     <p className="explr-txt">Era Swap is a Block Explorer and Analytics Platform for</p>
                     <p className="explr-txt">Era Swap, a decentralized smart contracts platform</p>
                     <Row>
+                        <a className="time-dwnld">Download This Data</a>
                         <table className="es-transaction">
                             <tr>
                                 <th>Address</th>
