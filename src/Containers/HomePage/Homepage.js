@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Homepage.css'
-import Images from '../../Containers/Images/Images';
+import Images from '../Images/Images';
 import Navbar from '../../Components/Navbar/Navbar';
 import { Col, Button, Container, Row } from 'react-bootstrap';
 import {
@@ -172,7 +172,8 @@ class Homepage extends Component {
                                     </tr>
                                 </table>
                                 <div className="border-era-two">
-                                    <button className="era-view-btn">View all Bunch</button>
+                                <button className="era-view-btn"><a href="/BlockPage" className="era-link">View all Blocks</a></button>
+                
                                 </div>
                             </Col>
 
@@ -208,7 +209,7 @@ class Homepage extends Component {
 
                                 </table>
                                 <div className="border-era-two">
-                                    <button className="era-view-btn">View all Bunch</button>
+                                    <button className="era-view-btn"><a href="/Transaction" className="era-link">View all Transactions</a></button>
                                 </div>
                             </Col>
                         </Row>

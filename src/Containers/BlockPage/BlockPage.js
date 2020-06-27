@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import './BlockPage.css'
 import Images from '../Images/Images';
-import Header from '../../Components/Header/Index';
+import Header from '../../Components/Header/Header';
 import {
     BrowserRouter as Router,
     Route,
     Link,
 } from 'react-router-dom'
 import { Col, Button, Container, Row } from 'react-bootstrap';
-import Comments from '../../Components/Comments/Index';
-import Overview from '../../Components/Overview/Index';
+import Comments from '../../Components/Comments/Comments';
+import Overview from '../../Components/Overview/Overview';
 
 const routes = [
     {

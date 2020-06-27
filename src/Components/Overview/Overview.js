@@ -18,7 +18,7 @@ class Overview extends Component {
     render() {
         return (
             <div>
-                <Container>
+            
                     <table className="block-overview">
                         <tr>
                             <td>Block Height: </td>
@@ -32,12 +32,12 @@ class Overview extends Component {
                         </tr>
                         <tr>
                             <td>Transactions:</td>
-                            <td>111 transactions and 51 contract internal transactions in this block</td>
+                            <td><span className="tr-color-txt">111 transactions </span> and 51 contract internal transactions in this block</td>
                            
                         </tr>
                         <tr>
                             <td>Mined By:</td>
-                            <td> 0x442d36c557d86b2251fdf6b9cf9d2810 (Ethermine) in 14 secs</td>
+                            <td><span className="tr-color-txt"> 0x442d36c557d86b2251fdf6b9cf9d2810 </span> (Ethermine) in 14 secs</td>
                             
                         </tr>
                         <tr>
@@ -82,7 +82,9 @@ class Overview extends Component {
 
                         <tr>
                         <td>Parent Hash:</td>
-                        <td>0x442d36c557d86b2251fdf6b9cf9d2810a24422ab5b544c05125adc05351dc868</td>
+                        <td><span className="tr-color-txt">
+                            0x442d36c557d86b2251fdf6b9cf9d2810a24422ab5b544c05125adc05351dc868
+                            </span></td>
                         </tr>
 
                         <tr>
@@ -96,7 +98,6 @@ class Overview extends Component {
                         </tr>
                     </table>
 
-                </Container>
             </div>
         );
 

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './CreateEvent.css';
-import Images from '../../Containers/Images/Images';
+import Images from '../Images/Images';
 import { Col, Button, Container, Row } from 'react-bootstrap';
-import Header from '../../Components/Header/Index';
+import Header from '../../Components/Header/Header';
 
 
 

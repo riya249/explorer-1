@@ -32,15 +32,11 @@ class Navbar extends Component {
         </a>
       </li>
 
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-         BLOCKCHAIN
-         <span class="sr-only">(current)</span></a>
-        <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
-          <a class="dropdown-item" href="/Transaction">My account</a>
-          <a class="dropdown-item" href="/">Log out</a>
-        </div>
+      <li class="nav-item active">
+        <a class="nav-link" href="/BlockPage">
+         DASHBOARD
+          <span class="sr-only">(current)</span>
+        </a>
       </li>
      
       <li class="nav-item dropdown">
@@ -54,13 +50,13 @@ class Navbar extends Component {
         </div>
       </li>
        <li class="nav-item active">
-        <a class="nav-link" href="/alerts">
+        <a class="nav-link" href="/Explore">
          TIMEALLY EXPLORER
           <span class="sr-only">(current)</span>
         </a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="/BlockPage">
+        <a class="nav-link connect-style" href="/BlockPage">
         CONNECT TO WALLET
           <span class="sr-only">(current)</span>
         </a>

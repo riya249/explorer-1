@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import './BlockTable.css'
 import { Link } from 'react-router-dom';
-import Images from '../../Containers/Images/Images';
+import Images from '../Images/Images';
 import { Col, Button, Container, Row } from 'react-bootstrap';
-import Header from '../../Components/Header/Index';
+import Header from '../../Components/Header/Header';
 
 
 class BlockTable extends Component {

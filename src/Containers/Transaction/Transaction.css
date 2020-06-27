@@ -26,6 +26,7 @@ td th {
         font-family: "Segoe UI";
         border-collapse: collapse;
         width: 100%;
+        margin-top: 35px;
       }
 
       .trans-head{
@@ -33,5 +34,10 @@ td th {
           font-size: 24px;
           text-align: center;
           margin-bottom: 10px;
-          margin-top: 10px;
+          margin-top: 30px;
+      }
+
+      .tr-color-txt{
+        color: #747FEB;
+        font-size: 14px;
       }

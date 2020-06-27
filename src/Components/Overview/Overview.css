@@ -17,3 +17,8 @@ td{
     table{
         width: 100%;
     }
+
+    .tr-color-txt{
+      color: #747FEB;
+      font-size: 14px;
+    }

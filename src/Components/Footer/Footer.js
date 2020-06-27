@@ -44,10 +44,10 @@ class Footer extends Component {
                                     </form>
                                 </div>
                                 <div>
-                                <img className='social-Img' src={Images.path.insta} alt='rent' />
-                                <img className='social-Img' src={Images.path.linkedin} alt='rent' />
-                                <img className='social-Img' src={Images.path.twitter} alt='rent' />
-                                <img className='social-Img' src={Images.path.facebook} alt='rent' />
+                               <a href="https://www.instagram.com/eraswap/?hl=en"> <img className='social-Img' src={Images.path.insta} alt='rent' /></a>
+                               <a href="https://www.linkedin.com/company/eraswap/" >    <img className='social-Img' src={Images.path.linkedin} alt='rent' /> </a>
+                               <a href="https://mobile.twitter.com/EraSwapTech">  <img className='social-Img' src={Images.path.twitter} alt='rent' /> </a>
+                               <a href="https://www.facebook.com/eraswap">  <img className='social-Img' src={Images.path.facebook} alt='rent' /> </a>
                                     </div>
                             </div>
                         </Col>

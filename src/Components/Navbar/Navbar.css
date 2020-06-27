@@ -1,5 +1,5 @@
 .eslogo-Img{
-    width: 140px;
+    width: 111px;
     height: 90px;
 }
 .navbar-expand-lg .navbar-nav .nav-link {
@@ -8,4 +8,11 @@
 }
 .navbar-dark .navbar-nav .nav-link{
     color: #ffffff;
+}
+
+.nav-link.connect-style{
+background-color: #ffffff;
+color: #002e91!important;
+padding: 8px;
+border-radius: 28px;
 }
