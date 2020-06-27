@@ -33,7 +33,7 @@ class Navbar extends Component {
       </li>
 
       <li class="nav-item active">
-        <a class="nav-link" href="/BlockPage">
+        <a class="nav-link" href="/dashboard">
          DASHBOARD
           <span class="sr-only">(current)</span>
         </a>
