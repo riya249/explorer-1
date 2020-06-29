@@ -49,12 +49,22 @@ ul li {
 .platfrm-logo{
     width:60px;
     height: 40px;
+    margin-right: 10px;
 }
 
 .platfrm-logo2{
     width:40px;
     height: 40px;
     margin-right: 10px;
+}
+.platfrm-logo4{
+    width:40px;
+    height: 40px;
+}
+
+.platfrm-logo-5{
+    width:40px;
+    height: 40px;
 }
 
 .section4-border{
@@ -159,4 +169,56 @@ ul li {
 
 .dayswapper-box{
     margin-right: 10px;
+}
+
+.swwall-flex-border{
+    display: flex;
+    justify-content: space-evenly;
+    border-bottom: 1px solid rgb(175, 80, 39);
+    margin-bottom: 25px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.swapper-center{
+    text-align: center;
+}
+
+.sect4-value-swal{
+    color: #747FEB;
+    margin-bottom: 0px;
+    font-weight: 500;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.swwall-border-flex{
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 20px;
+}
+
+.bet-flex-border{
+    display: flex;
+    justify-content: space-evenly;
+    border-bottom: 1px solid #28a745  ;
+    margin-bottom: 25px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+
+.buz-flex-border{
+    display: flex;
+    justify-content: space-evenly;
+    border-bottom: 1px solid #ff8207  ;
+    margin-bottom: 25px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.compute-flex-border{
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid rgb(175, 80, 39);
 }

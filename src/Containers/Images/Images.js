@@ -22,6 +22,10 @@ const path = {
   renting: require("../../assets/Images/renting.png"),
   blocklogy: require("../../assets/Images/blocklogy.png"),
   timeally: require("../../assets/Images/timeally.png"),
+  poolingdapplogo: require("../../assets/Images/poolingdapplogo.png"),
+  curedapplogo: require("../../assets/Images/curedapplogo.png"),
+  certidapplogo: require("../../assets/Images/certidapplogo.png"),
+  booklogo: require("../../assets/Images/booklogo.png"),
 };
 
 export default {

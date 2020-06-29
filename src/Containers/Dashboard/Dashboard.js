@@ -280,11 +280,11 @@ class Dashboard extends Component {
                                 </div>
                             </div>
                         </Col>
-                      
+
                         <Col sm={3}>
-                        <div className="section4-border">
+                            <div className="section4-border">
                                 <div className="flex-sect4-box">
-                                <img className='platfrm-logo' src={Images.path.dayswapper} alt='logo' />
+                                    <img className='platfrm-logo' src={Images.path.dayswapper} alt='logo' />
                                     <p className="platfrm-txt">DAYSWAPPERS</p>
                                 </div>
                                 <div className="ds-flex tm-border">
@@ -322,7 +322,7 @@ class Dashboard extends Component {
                                 </div>
 
                                 <div className="ds-flex tm-border">
-                                <div>
+                                    <div>
                                         <p className="sect4-context">Orange Belt </p>
                                         <p className="sect4-value">10 Users</p>
                                     </div>
@@ -357,10 +357,445 @@ class Dashboard extends Component {
 
                         <Col sm={3}>
                             <div className="section4-border">
-                                <img className='platfrm-logo' src={Images.path.swaal} alt='logo' />
-                                <p className="platfrm-txt"> SWAPPERS WALL
-                             </p>
+                                <div className="flex-sect4-box">
+                                    <img className='platfrm-logo4' src={Images.path.swaal} alt='logo' />
+                                    <p className="platfrm-txt"> SWAPPERS WALL </p>
+                                </div>
+                                <div className="swwall-flex-border">
+                                    <div>
+                                        <p className="sect4-context">Power Tokens this month</p>
+                                        <p className="sect4-value-swal">6830183.67 ES</p>
+
+                                    </div>
+                                    <div>
+                                        <p className="sect4-context">Communities</p>
+                                        <p className="sect4-value-swal">38 communities</p>
+                                    </div>
+                                    <div>
+                                        <p className="sect4-context">Group</p>
+                                        <p className="sect4-value-swal">15 groups</p>
+                                    </div>
+                                </div>
+                                <div className="swwall-flex-border">
+                                    <div>
+                                        <p className="sect4-context">Pages</p>
+                                        <p className="sect4-value-swal">34 pages</p>
+
+                                    </div>
+                                    <div>
+                                        <p className="sect4-context">Swappers</p>
+                                        <p className="sect4-value-swal">2998 swappers</p>
+                                    </div>
+                                    <div>
+                                        <p className="sect4-context">Active Users</p>
+                                        <p className="sect4-value-swal">644 active users</p>
+                                    </div>
+                                </div>
+                                <div className="swapper-center">
+                                    <div>
+                                        <p className="sect4-context">Media Uploads</p>
+                                        <p className="sect4-value">2365 media uploads</p>
+
+                                    </div>
+                                </div>
                             </div>
+                        </Col>
+                    </Row>
+
+                    {/* Second row platforms */}
+                    <Row>
+                        <Col sm={3}>
+                            <div className="section4-border">
+                                <div className="flex-sect4-box">
+                                    <img className='platfrm-logo' src={Images.path.blocklogy} alt='logo' />
+                                    <p className="platfrm-txt">ERASWAP ACADEMY </p>
+                                </div>
+                                <div className="swwall-flex-border">
+                                    <div>
+                                        <p className="sect4-context">User Counts</p>
+                                        <p className="sect4-value-swal">6830183.67 ES</p>
+
+                                    </div>
+                                    <div>
+                                        <p className="sect4-context">Group</p>
+                                        <p className="sect4-value-swal">15 groups</p>
+                                    </div>
+                                </div>
+                                <div className="swwall-border-flex">
+                                    <div>
+                                        <p className="sect4-context">Total ES Deposited</p>
+                                        <p className="sect4-value">96353517.34 ES</p>
+                                    </div>
+                                    <div>
+                                        <p className="sect4-context">Users Studying Count</p>
+                                        <p className="sect4-value">35 Users</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </Col>
+                        <Col sm={3}>
+                            <div className="section4-border">
+                                <div className="flex-sect4-box">
+                                    <img className='platfrm-logo4' src={Images.path.buzcafe} alt='logo' />
+                                    <p className="platfrm-txt">BUZCAFE</p>
+                                </div>
+                                <div className="buz-flex-border">
+                                    <div>
+                                        <p className="sect4-context">Total Users</p>
+                                        <p className="sect4-value-swal">644 Users</p>
+
+                                    </div>
+                                    <div>
+                                        <p className="sect4-context">Total Shops</p>
+                                        <p className="sect4-value-swal">88 Shops</p>
+                                    </div>
+                                    <div>
+                                        <p className="sect4-context">Total Deposits</p>
+                                        <p className="sect4-value-swal">0 Deposits</p>
+                                    </div>
+                                </div>
+                                <div className="swwall-border-flex">
+                                    <div>
+                                        <p className="sect4-context">Total Withdrawal</p>
+                                        <p className="sect4-value">0 Withdrawal</p>
+                                    </div>
+                                    <div>
+                                        <p className="sect4-context">Total Internal Transactions</p>
+                                        <p className="sect4-value">9 Transactions</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </Col>
+                        <Col sm={3}>
+                            <div className="section4-border">
+                                <div className="flex-sect4-box">
+                                    <img className='platfrm-logo4' src={Images.path.betdeex} alt='logo' />
+                                    <p className="platfrm-txt">BETDEEX </p>
+                                </div>
+                                <div className="bet-flex-border">
+                                    <div>
+                                        <p className="sect4-context">Total Number of Events</p>
+                                        <p className="sect4-value-swal">10 events</p>
+
+                                    </div>
+                                    <div>
+                                        <p className="sect4-context">Total Number of Predictors</p>
+                                        <p className="sect4-value-swal">15 predictors</p>
+                                    </div>
+                                </div>
+                                <div className="swwall-border-flex">
+                                    <div>
+                                        <p className="sect4-context">Total ES volume predicted </p>
+                                        <p className="sect4-context">on BetDeEx</p>
+                                        <p className="sect4-value">80525.0 ES</p>
+                                    </div>
+                                    <div>
+                                        <p className="sect4-context">Highest Prediction </p>
+                                        <p className="sect4-context">on BetDeEx</p>
+                                        <p className="sect4-value">25000.0 ES </p>
+                                    </div>
+                                    <div>
+                                        <p className="sect4-context">Average Prediction </p>
+                                        <p className="sect4-context">on BetDeEx</p>
+                                        <p className="sect4-value">2300.71 ES</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </Col>
+                        <Col sm={3}>
+                            <div className="section4-border">
+                                <div className="flex-sect4-box">
+                                    <img className='platfrm-logo-5' src={Images.path.computeex} alt='logo' />
+                                    <p className="platfrm-txt">(YET TO GO LIVE) </p>
+                                </div>
+                                <div className="compute-flex-border">
+                                    <div>
+                                        <p className="sect4-context">Total Number of Events</p>
+                                        <p className="sect4-value-swal">10 events</p>
+
+                                    </div>
+                                </div>
+                                <div className="swapper-center">
+                                    <div>
+                                        <p className="sect4-context">Total Volume</p>
+                                        <p className="sect4-value">0 ES</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </Col>
+                    </Row>
+
+                    {/* Third row platforms */}
+                    <Row>
+                        <Col sm={6}>
+                        </Col>
+                        <Col sm={3}>
+                        </Col>
+                        <Col sm={3}>
+                        </Col>
+                    </Row>
+
+                    {/* Fourth row platforms */}
+                    <Row>
+                        <Col sm={3}>
+                        <div className="section4-border">
+                                <div className="flex-sect4-box">
+                                    <img className='platfrm-logo' src={Images.path.blocklogy} alt='logo' />
+                                    <p className="platfrm-txt">CHARITYDAPP </p>
+                                </div>
+                                <div className="swwall-flex-border">
+                                    <div>
+                                        <p className="sect4-context">Number of Users</p>
+                                        <p className="sect4-value-swal">647 Users</p>
+
+                                    </div>
+                                    <div>
+                                        <p className="sect4-context">Number of organisations </p>
+                                        <p className="sect4-value-swal">120 applied</p>
+                                    </div>
+                                </div>
+                                <div className="swwall-border-flex">
+                                    <div>
+                                        <p className="sect4-context">Total Charity</p>
+                                        <p className="sect4-value">120</p>
+                                    </div>
+                                    <div>
+                                        <p className="sect4-context">Org rewarded</p>
+                                        <p className="sect4-value">123</p>
+                                    </div>
+                                    <div>
+                                        <p className="sect4-context">TFC Generated</p>
+                                        <p className="sect4-value">123 </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </Col>
+                        <Col sm={3}>
+                        <div className="section4-border">
+                                <div className="flex-sect4-box">
+                                    <img className='platfrm-logo' src={Images.path.blocklogy} alt='logo' />
+                                    <p className="platfrm-txt">KYCDAPP </p>
+                                </div>
+                                <div className="swwall-flex-border">
+                                    <div>
+                                        <p className="sect4-context">Number of Level 1 KYC</p>
+                                        <p className="sect4-value-swal">647 Users</p>
+
+                                    </div>
+                                    <div>
+                                        <p className="sect4-context">Number of Level 2 KYC</p>
+                                        <p className="sect4-value-swal">647 Users</p>
+                                    </div>
+                                </div>
+                                <div className="swwall-border-flex">
+                                    <div>
+                                        <p className="sect4-context">Number of Level 2 KYC</p>
+                                        <p className="sect4-value">647 Users</p>
+                                    </div>
+                                    <div>
+                                        <p className="sect4-context">Platform KYC</p>
+                                        <p className="sect4-value">647 Users</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </Col>
+                        <Col sm={3}>
+                        <div className="section4-border">
+                                <div className="flex-sect4-box">
+                                    <img className='platfrm-logo' src={Images.path.Coupondapp} alt='logo' />
+                                </div>
+                                <div className="swwall-flex-border">
+                                    <div>
+                                        <p className="sect4-context">Claimed ES</p>
+                                        <p className="sect4-value-swal">1111 ES</p>
+
+                                    </div>
+                                    <div>
+                                        <p className="sect4-context">Withdrawn ES</p>
+                                        <p className="sect4-value-swal">153 ES</p>
+                                    </div>
+                                </div>
+                                <div className="swwall-border-flex">
+                                    <div>
+                                        <p className="sect4-context">Number of Users</p>
+                                        <p className="sect4-value">647 Users</p>
+                                    </div>
+                                    <div>
+                                        <p className="sect4-context">TFC Generated</p>
+                                        <p className="sect4-value">123 </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </Col>
+                        <Col sm={3}>
+                        <div className="section4-border">
+                                <div className="flex-sect4-box">
+                                    <img className='platfrm-logo-5' src={Images.path.computeex} alt='logo' />
+                                    
+                                </div>
+                                <div className="compute-flex-border">
+                                    <div>
+                                        <p className="sect4-context">Total number of Transactions</p>
+                                        <p className="sect4-value-swal">10 events</p>
+
+                                    </div>
+                                </div>
+                                <div className="swapper-center">
+                                    <div>
+                                        <p className="sect4-context">Total Volume</p>
+                                        <p className="sect4-value">0 ES</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </Col>
+                    </Row>
+
+                      {/* fifth row platforms */}
+                      <Row>
+                      <Col sm={3}>
+                        <div className="section4-border">
+                                <div className="flex-sect4-box">
+                                    <img className='platfrm-logo2' src={Images.path.renting} alt='logo' />
+                                    <p className="platfrm-txt">RENTINGDAPP</p>
+                                </div>
+                                <div className="swwall-flex-border">
+                                    <div>
+                                        <p className="sect4-context">Number of Users</p>
+                                        <p className="sect4-value-swal">647 Users</p>
+
+                                    </div>
+                                    <div>
+                                        <p className="sect4-context">Number of Lenders </p>
+                                        <p className="sect4-value-swal">120</p>
+                                    </div>
+                                </div>
+                                <div className="swwall-border-flex">
+                                    <div>
+                                        <p className="sect4-context">Transactions</p>
+                                        <p className="sect4-value">120</p>
+                                    </div>
+                                    <div>
+                                        <p className="sect4-context">Objects Rented</p>
+                                        <p className="sect4-value">123</p>
+                                    </div>
+                                    <div>
+                                        <p className="sect4-context">TFC Generated</p>
+                                        <p className="sect4-value">123 </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </Col>
+                        <Col sm={3}>
+                        <div className="section4-border">
+                                <div className="flex-sect4-box">
+                                    <img className='platfrm-logo2' src={Images.path.booklogo} alt='logo' />
+                                    <p className="platfrm-txt">BOOKINGDAPP </p>
+                                </div>
+                                <div className="swwall-flex-border">
+                                    <div>
+                                        <p className="sect4-context">Number of Events</p>
+                                        <p className="sect4-value-swal">6 events</p>
+
+                                    </div>
+                                    <div>
+                                        <p className="sect4-context">Number of Tickets</p>
+                                        <p className="sect4-value-swal">120</p>
+                                    </div>
+                                    <div>
+                                        <p className="sect4-context">TFC Generated</p>
+                                        <p className="sect4-value-swal">120</p>
+                                    </div>
+                                </div>
+                                <div className="swwall-border-flex">
+                                    <div>
+                                        <p className="sect4-context">Number Of Organizers</p>
+                                        <p className="sect4-value">123 </p>
+                                    </div>
+                                    <div>
+                                        <p className="sect4-context">Number of Users</p>
+                                        <p className="sect4-value">123</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </Col>
+                        <Col sm={3}>
+                        <div className="section4-border">
+                                <div className="flex-sect4-box">
+                                    <img className='platfrm-logo' src={Images.path.poolingdapplogo} alt='logo' />
+                                </div>
+                                <div className="swwall-flex-border">
+                                    <div>
+                                        <p className="sect4-context">Transactions</p>
+                                        <p className="sect4-value-swal">1111 ES</p>
+
+                                    </div>
+                                    <div>
+                                        <p className="sect4-context">Number of Tickets</p>
+                                        <p className="sect4-value-swal">153 ES</p>
+                                    </div>
+                                    <div>
+                                        <p className="sect4-context">Vehicle Owners</p>
+                                        <p className="sect4-value">647 Users</p>
+                                    </div>
+                                </div>
+                                <div className="swwall-border-flex">
+                                    <div>
+                                        <p className="sect4-context">Number Of Rides</p>
+                                        <p className="sect4-value">120 </p>
+                                    </div>
+                                    <div>
+                                        <p className="sect4-context">TFC Generated</p>
+                                        <p className="sect4-value">123 </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </Col>
+                        <Col sm={3}>
+                        <div className="section4-border">
+                                <div className="flex-sect4-box">
+                                    <img className='platfrm-logo4' src={Images.path.curedapplogo} alt='logo' />
+                                   
+                                </div>
+                                <div className="bet-flex-border">
+                                    <div>
+                                        <p className="sect4-context">Equipments</p>
+                                        <p className="sect4-value-swal">10 </p>
+
+                                    </div>
+                                    <div>
+                                        <p className="sect4-context">Number of Doctors</p>
+                                        <p className="sect4-value-swal">15</p>
+                                    </div>
+
+                                    <div>
+                                        <p className="sect4-context">Cases Solved</p>
+                                        <p className="sect4-value-swal">15 </p>
+                                    </div>
+                                </div>
+                                <div className="swwall-border-flex">
+                                    <div>
+                                        <p className="sect4-context">Number Of Users</p>
+                                       
+                                        <p className="sect4-value">123 </p>
+                                    </div>
+                                    <div>
+                                        <p className="sect4-context">Number of Cetificates</p>
+                                       
+                                        <p className="sect4-value">123  </p>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                        </Col>
+                    </Row>
+
+                      {/* sixth row platforms */}
+                      <Row>
+                        <Col sm={6}>
+                        </Col>
+                        <Col sm={3}>
+                        </Col>
+                        <Col sm={3}>
                         </Col>
                     </Row>
                 </div>
