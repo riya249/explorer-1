@@ -14,13 +14,16 @@ const path = {
   buzcafe: require("../../assets/Images/buzcafe.png"),
   betdeex: require("../../assets/Images/betdeex.png"),
   timeswapper: require("../../assets/Images/timeswapper.png"),
-  userdashboardcomputeex: require("../../assets/Images/userdashboardcomputeex.png"),
-  userdashboarddateswappr: require("../../assets/Images/userdashboarddateswappr.png"),
-  userdashboarddayswapper: require("../../assets/Images/userdashboarddayswapper.png"),
-  userdashboardvof: require("../../assets/Images/userdashboardvof.png"),
-  timeswapper: require("../../assets/Images/timeswapper.png"),
-    
+  computeex: require("../../assets/Images/userdashboardcomputeex.png"),
+  dateswappr: require("../../assets/Images/userdashboarddateswappr.png"),
+  dayswapper: require("../../assets/Images/userdashboarddayswapper.png"),
+  vof: require("../../assets/Images/userdashboardvof.png"),
+  Coupondapp: require("../../assets/Images/Coupondapp.png"),
+  renting: require("../../assets/Images/renting.png"),
+  blocklogy: require("../../assets/Images/blocklogy.png"),
+  timeally: require("../../assets/Images/timeally.png"),
 };
+
 export default {
     path
 }  

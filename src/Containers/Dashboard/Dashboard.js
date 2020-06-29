@@ -17,11 +17,11 @@ class Dashboard extends Component {
 
     render() {
         return (
-            <div>
+            <div className="bgd-dash-color">
                 <Header />
 
                 <h5>Dashboard</h5>
-                <div  className='row'>
+                <div className='row'>
                     <Col sm={2}>
                         <h5>Era Swap (ES)</h5>
                         <h5>0.0468 USDT</h5>
@@ -64,157 +64,306 @@ class Dashboard extends Component {
                             </ul>
                         </div>
                     </Col>
-               </div>
+                </div>
                 <div className="bgd-dash-color">
                     <div className="dash-section-2">
                         <Row>
-                     
-                                <div className="section-border">
-                                    <p className="sect-txt-bold">Bitcoin (BTC)</p>
-                                    <p className="value-dash-txt">$9029.61</p>
-                                </div>
-                          
 
-                           
-                                <div className="section-border">
-                                    <p  className="sect-txt-bold">Ethereum (ETH)</p>
-                                    <p className="value-dash-txt">$171.9</p>
-                                </div>
-                              
+                            <div className="section-border">
+                                <p className="sect-txt-bold">Bitcoin (BTC)</p>
+                                <p className="value-dash-txt">$9029.61</p>
+                            </div>
 
-                            
-                                <div className="section-border">
-                                    <p  className="sect-txt-bold">CIRCULATING OUTSIDE TA</p>
-                                    <p className="value-dash-txt">1002658636.87 ES</p>
-                                </div>  
 
-                                     <div className="section-border">
-                                    <p  className="sect-txt-bold">ES FROM NRT THIS MONTH</p>
-                                    <p className="value-dash-txt">68301836.73 ES</p>
-                                </div>
-                               
-                              
-                                <div className="section-border">
-                                    <p  className="sect-txt-bold">NUMBER OF DAYSWAPPERS</p>
-                                    <p className="value-dash-txt">68301836.73 ES</p>
-                              </div>
-                              
-                                <div className="section-border">
-                                    <p  className="sect-txt-bold">NUMBER OF DAYSWAPPERS</p>
-                                    <p className="value-dash-txt">68301836.73 ES</p>
-                               
-                                </div>
+
+                            <div className="section-border">
+                                <p className="sect-txt-bold">Ethereum (ETH)</p>
+                                <p className="value-dash-txt">$171.9</p>
+                            </div>
+
+
+
+                            <div className="section-border">
+                                <p className="sect-txt-bold">CIRCULATING OUTSIDE TA</p>
+                                <p className="value-dash-txt">1002658636.87 ES</p>
+                            </div>
+
+                            <div className="section-border">
+                                <p className="sect-txt-bold">ES FROM NRT THIS MONTH</p>
+                                <p className="value-dash-txt">68301836.73 ES</p>
+                            </div>
+
+
+                            <div className="section-border">
+                                <p className="sect-txt-bold">NUMBER OF DAYSWAPPERS</p>
+                                <p className="value-dash-txt">68301836.73 ES</p>
+                            </div>
+
+                            <div className="section-border">
+                                <p className="sect-txt-bold">NUMBER OF DAYSWAPPERS</p>
+                                <p className="value-dash-txt">68301836.73 ES</p>
+
+                            </div>
                         </Row>
-                      <div className="wrapper-sub-section">
-                        <Row>
-                       
+                        <div className="wrapper-sub-section">
+                            <Row>
+
                                 <div className="section-border">
-                                    <p  className="sect-txt-bold">ECOSYSTEM TRANSACTIONS</p>
+                                    <p className="sect-txt-bold">ECOSYSTEM TRANSACTIONS</p>
                                     <p className="value-dash-txt">68301836.73 ES</p>
                                 </div>
-                               
 
-                           
+
+
                                 <div className="section-border">
-                                    <p  className="sect-txt-bold">UNUSED POWER TOKENS</p>
+                                    <p className="sect-txt-bold">UNUSED POWER TOKENS</p>
                                     <p className="value-dash-txt">68301836.73 ES</p>
                                 </div>
-                              
 
-                           
+
+
                                 <div className="section-border">
-                                    <p  className="sect-txt-bold">LUCK POOL IN NRT</p>
+                                    <p className="sect-txt-bold">LUCK POOL IN NRT</p>
                                     <p className="value-dash-txt">68301836.73 ES</p>
                                 </div>
-                                
 
-                        
+
+
                                 <div className="section-border">
-                                    <p  className="sect-txt-bold">BURN POOL (IN NEXT NRT)</p>
+                                    <p className="sect-txt-bold">BURN POOL (IN NEXT NRT)</p>
                                     <p className="value-dash-txt">68301836.73 ES</p>
                                 </div>
-                              
 
-                         
+
+
                                 <div className="section-border">
-                                    <p  className="sect-txt-bold">TOTAL ES BURNED</p>
+                                    <p className="sect-txt-bold">TOTAL ES BURNED</p>
                                     <p className="value-dash-txt">51519927.21 ES</p>
                                 </div>
-                               
-                        </Row>
 
-                        <Row>
-                            
+                            </Row>
+
+                            <Row>
+
                                 <div className="section-border">
-                                    <p  className="sect-txt-bold">MARKET CAP</p>
+                                    <p className="sect-txt-bold">MARKET CAP</p>
                                     <p className="value-dash-txt">$57233043</p>
                                 </div>
-                            
 
-                            
+
+
                                 <div className="section-border">
-                                    <p  className="sect-txt-bold">24HR VOL (PROBIT GLOBAL)</p>
+                                    <p className="sect-txt-bold">24HR VOL (PROBIT GLOBAL)</p>
                                     <p className="value-dash-txt">208628.88 USDT</p>
                                 </div>
-                          
-                            
+
+
                                 <div className="section-border">
-                                    <p  className="sect-txt-bold">CROWDFUND PRICE</p>
+                                    <p className="sect-txt-bold">CROWDFUND PRICE</p>
                                     <p className="value-dash-txt">$0.0078</p>
                                 </div>
-                           
 
-                            
+
+
                                 <div className="section-border">
-                                    <p  className="sect-txt-bold">ALL TIME HIGH</p>
+                                    <p className="sect-txt-bold">ALL TIME HIGH</p>
                                     <p className="value-dash-txt">1.42 USDT</p>
                                 </div>
-                          
 
-                            
+
+
                                 <div className="section-border">
-                                    <p  className="sect-txt-bold">ALL TIME LOW</p>
+                                    <p className="sect-txt-bold">ALL TIME LOW</p>
                                     <p className="value-dash-txt">0.005 USDT</p>
                                 </div>
-                         
-                        </Row>
-                       </div>
+
+                            </Row>
+                        </div>
                     </div>
                 </div>
 
                 <div className="dash-section-3">
-                    </div>
+                </div>
 
-                    <div className="dash-section-4">
-                        <Row>
-                            <Col sm={3}>
-                            <div className="section-border">
-                                <p className="platfrm-txt"> TIMEALLY STAKERS</p>
+                <div className="dash-section-4">
+                    <Row>
+                        <Col sm={3}>
+                            <div className="section4-border">
+                                <div className="flex-sect4-box">
+                                    <img className='platfrm-logo' src={Images.path.timeally} alt='logo' />
+                                    <p className="platfrm-txt"> TIMEALLY STAKERS</p>
                                 </div>
-                            </Col>
+                                <Row>
+                                    <Col sm={5}></Col>
+                                    <Col sm={7}>
+                                        <div className="flex-sect4-box">
+                                            <div className="timeally-mark"></div><p className="sect4-context">Volume of 1 year stakings
+                                              96353517.34 ES</p>
+                                        </div>
+                                        <div className="flex-sect4-box">
+                                            <div className="timeally-mark2"></div><p className="sect4-context">Volume of 1 year stakings
+                                              96353517.34 ES</p>
+                                        </div>
+                                    </Col>
+                                </Row>
+                                <div className="timelly-flex tm-border">
+                                    <p className="sect4-context">Total Volume of Stakings</p>
+                                    <p className="sect4-value-bold">1002658636.87 ES</p>
+                                </div>
+                                <div className="timelly-border-flex">
+                                    <p className="sect4-context">Total Volume of Stakings</p>
+                                    <p className="sect4-value-bold">1002658636.87 ES</p>
+                                </div>
+                            </div>
+                        </Col>
 
-                            <Col sm={3}>
-                            <div className="section-border">
-                            <p className="platfrm-txt"> TIMESWAPPERS
-</p>
+                        <Col sm={3}>
+                            <div className="section4-border">
+                                <div className="flex-sect4-box">
+                                    <img className='platfrm-logo2' src={Images.path.timeswapper} alt='logo' />
+                                    <p className="platfrm-txt">TIMESWAPPERS</p>
                                 </div>
-                            </Col>
+                                <div className="ts-flex tm-border">
+                                    <div>
+                                        <p className="sect4-context">Total Number of Users</p>
+                                        <p className="sect4-value">644 User</p>
 
-                            <Col sm={3}>
-                            <div className="section-border">
-                            <p className="platfrm-txt"> TIMESWAPPERS
-</p>
+                                    </div>
+                                    <div>
+                                        <p className="sect4-context">Total Number of Freelancers/Services</p>
+                                        <p className="sect4-value">71 Users</p>
+                                    </div>
                                 </div>
-                            </Col>
+                                <div className="ts-flex tm-border">
+                                    <div>
+                                        <p className="sect4-context">TFC generated</p>
+                                        <p className="sect4-value">10.33 ES</p>
+                                    </div>
+                                    <div>
+                                        <p className="sect4-context">Total Verified</p>
+                                        <p className="sect4-value">5 Users</p>
+                                    </div>
+                                    <div>
+                                        <p className="sect4-context">Total Certified</p>
+                                        <p className="sect4-value">2 Users</p>
+                                    </div>
+                                    <div>
+                                        <p className="sect4-context">Total Deposit Done</p>
+                                        <p className="sect4-value">11 ES</p>
+                                    </div>
+                                </div>
 
-                            <Col sm={3}>
-                            <div className="section-border">
-                            <p className="platfrm-txt"> TIMESWAPPERS
-</p>
+                                <div className="ts-flex tm-border">
+                                    <div>
+                                        <p className="sect4-context">Number of Views on </p>
+                                        <p className="sect4-context">Freelancer Portfolio pages</p>
+                                        <p className="sect4-value">136 views</p>
+
+                                    </div>
+                                    <div>
+                                        <p className="sect4-context">Total Withdraw done</p>
+                                        <p className="sect4-value">0 ES</p>
+                                    </div>
                                 </div>
-                            </Col>
-                            </Row>
-                    </div>
+
+
+                                <div className="timelly-border-flex">
+                                    <div>
+                                        <p className="sect4-context">Total Jobs Posted</p>
+                                        <p className="sect4-value">6 jobs</p>
+
+                                    </div>
+                                    <div>
+                                        <p className="sect4-context">Total Jobs Done</p>
+                                        <p className="sect4-value">0 jobs</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </Col>
+                      
+                        <Col sm={3}>
+                        <div className="section4-border">
+                                <div className="flex-sect4-box">
+                                <img className='platfrm-logo' src={Images.path.dayswapper} alt='logo' />
+                                    <p className="platfrm-txt">DAYSWAPPERS</p>
+                                </div>
+                                <div className="ds-flex tm-border">
+                                    <div>
+                                        <p className="sect4-context">Total DaySwappers</p>
+                                        <p className="sect4-value">644 User</p>
+
+                                    </div>
+                                    <div>
+                                        <p className="sect4-context">Total Liquid Reward</p>
+                                        <p className="sect4-value">5843.69 ES</p>
+                                    </div>
+                                    <div>
+                                        <p className="sect4-context">Total TimeAlly Rewards</p>
+                                        <p className="sect4-value">7486.48 ES</p>
+                                    </div>
+                                </div>
+                                <div className="ds-flex tm-border">
+                                    <div>
+                                        <p className="sect4-context">Active Users </p>
+                                        <p className="sect4-value">10 Users</p>
+                                    </div>
+                                    <div>
+                                        <p className="sect4-context">KYC users</p>
+                                        <p className="sect4-value">5 Users</p>
+                                    </div>
+                                    <div>
+                                        <p className="sect4-context">White Belt</p>
+                                        <p className="sect4-value">2 Users</p>
+                                    </div>
+                                    <div>
+                                        <p className="sect4-context">Yellow Belt </p>
+                                        <p className="sect4-value">11 ES</p>
+                                    </div>
+                                </div>
+
+                                <div className="ds-flex tm-border">
+                                <div>
+                                        <p className="sect4-context">Orange Belt </p>
+                                        <p className="sect4-value">10 Users</p>
+                                    </div>
+                                    <div>
+                                        <p className="sect4-context">Green Belt</p>
+                                        <p className="sect4-value">5 Users</p>
+                                    </div>
+                                    <div>
+                                        <p className="sect4-context">Blue Belt</p>
+                                        <p className="sect4-value">2 Users</p>
+                                    </div>
+                                    <div>
+                                        <p className="sect4-context">Brown Belt</p>
+                                        <p className="sect4-value">11 ES</p>
+                                    </div>
+                                </div>
+
+
+                                <div className="dayswappr-border-flex">
+                                    <div className="dayswapper-box">
+                                        <p className="sect4-context">Red Belt</p>
+                                        <p className="sect4-value">6 jobs</p>
+
+                                    </div>
+                                    <div>
+                                        <p className="sect4-context">Black Belt</p>
+                                        <p className="sect4-value">0 jobs</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </Col>
+
+                        <Col sm={3}>
+                            <div className="section4-border">
+                                <img className='platfrm-logo' src={Images.path.swaal} alt='logo' />
+                                <p className="platfrm-txt"> SWAPPERS WALL
+                             </p>
+                            </div>
+                        </Col>
+                    </Row>
+                </div>
             </div>
         );
 

@@ -45,3 +45,118 @@ ul li {
     width: 90%;
     margin: 0 auto;
 }
+
+.platfrm-logo{
+    width:60px;
+    height: 40px;
+}
+
+.platfrm-logo2{
+    width:40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.section4-border{
+    width: 1px solid #ffffff;
+    background-color: #ffffff;
+    margin: -4px;
+}
+
+.platfrm-txt{
+    color: #747FEB;
+    font-weight: 500;
+    font-size: 14px;
+    margin-bottom: 0;
+    margin-top: 9px;
+}
+
+.flex-sect4-box{
+    display: flex;
+    margin: 5px;
+}
+
+.sect4-context{
+    color: #747FEB;
+    margin-bottom: 0px;
+    font-size: 11px;
+    margin-left: -4px;
+}
+
+.timeally-mark{
+    border: 1px solid #747FEB;
+    background-color: #747FEB;
+    width: 20px;
+    height: 15px;
+    margin-right: 8px;
+}
+
+
+.sect4-value-bold{
+    color: #6d7cb5;
+    font-weight: bold;
+    font-size: 13px;
+    margin-bottom: 0px;
+}
+
+
+.timeally-mark2{
+    border: 1px solid #959595;
+    background-color: #959595;
+    width: 20px;
+    height: 15px;
+    margin-right: 8px;
+}
+
+.timelly-flex.tm-border{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgb(175, 80, 39) ;
+    margin: 4px 10px 10px 9px;
+}
+
+.timelly-border-flex{
+    display: flex;
+    justify-content: space-between;
+    margin: 4px 10px 10px 9px;
+}
+
+.ts-flex.tm-border{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ff8207  ;
+    margin: 4px 10px 10px 9px;
+}
+
+.ds-flex.tm-border{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #28a745  ;
+    margin: 4px 10px 10px 9px;
+}
+
+.dash-section-4{
+    width: 95%;
+    margin: 0 auto;
+}
+
+.sect4-value{
+    color: #747FEB;
+    margin-bottom: 0px;
+    font-weight: 500;
+    font-size: 12px;
+}
+
+.dayswappr-border-flex{
+    display: flex;
+    margin: 4px 10px 10px 9px;
+}
+
+.sect4-context-ds{
+    font-size: 11px; 
+    color: #747FEB;
+}
+
+.dayswapper-box{
+    margin-right: 10px;
+}

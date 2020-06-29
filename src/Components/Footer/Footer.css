@@ -13,15 +13,16 @@
        font-size: 18px;
        font-weight: 500;
    }
+   
    .footer-link:hover{
        color: #002e91!important;
        cursor: pointer;
    }
+
    .Footer-container{
     padding-top: 5%;
     padding-bottom: 5%;
     background-color:  #747FEB;
-    margin-top: 50px;
    }
 
    .eslogo11-Img{
