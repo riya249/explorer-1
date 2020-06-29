@@ -19,8 +19,8 @@ class Dashboard extends Component {
         return (
             <div className="bgd-dash-color">
                 <Header />
-
-                <h5>Dashboard</h5>
+               <div className="dashboard-main-bgd">
+                <h5 className="dash-main-head">Dashboard</h5>
                 <div className='row'>
                     <Col sm={2}>
                         <h5>Era Swap (ES)</h5>
@@ -64,6 +64,7 @@ class Dashboard extends Component {
                             </ul>
                         </div>
                     </Col>
+                </div>
                 </div>
                 <div className="bgd-dash-color">
                     <div className="dash-section-2">
@@ -791,11 +792,87 @@ class Dashboard extends Component {
 
                       {/* sixth row platforms */}
                       <Row>
+                        
+                        <Col sm={3}>
+                        <div className="section4-border">
+                                <div className="flex-sect4-box">
+                                    <img className='platfrm-logo2' src={Images.path.booklogo} alt='logo' />
+                                    <p className="platfrm-txt">FAITH MINUS</p>
+                                </div>
+                                <div className="swwall-flex-border">
+                                    <div>
+                                        <p className="sect4-context">Cases Solved</p>
+                                        <p className="sect4-value-swal">6 events</p>
+
+                                    </div>
+                                    <div>
+                                        <p className="sect4-context">Cases Pending</p>
+                                        <p className="sect4-value-swal">120</p>
+                                    </div>
+                                    <div>
+                                        <p className="sect4-context">Number of Curators</p>
+                                        <p className="sect4-value-swal">120</p>
+                                    </div>
+                                </div>
+                                <div className="swwall-flex-border">
+                                    <div>
+                                        <p className="sect4-context">Transactions</p>
+                                        <p className="sect4-value-swal">120</p>
+
+                                    </div>
+                                    <div>
+                                        <p className="sect4-context">Organizations rewarded</p>
+                                        <p className="sect4-value-swal">120</p>
+                                    </div>
+                                </div>
+                                <div className="swwall-border-flex">
+                                    <div>
+                                        <p className="sect4-context">TFC Generated</p>
+                                        <p className="sect4-value">123 </p>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                        </Col>
+                        <Col sm={3}>
+                        <div className="section4-border">
+                                <div className="flex-sect4-box">
+                                    <img className='platfrm-logo2' src={Images.path.dateswappr} alt='logo' />
+                                    <p className="platfrm-txt">DATE SWAPPERS</p>
+                                </div>
+                                <div className="swwall-flex-border">
+                                    <div>
+                                        <p className="sect4-context">Number of Meet Ups</p>
+                                        <p className="sect4-value-swal">647 meetups</p>
+
+                                    </div>
+                                    <div>
+                                        <p className="sect4-context">Number of Users</p>
+                                        <p className="sect4-value-swal">120</p>
+                                    </div>
+                                    
+                                </div>
+                                <div className="swwall-flex-border">
+                                    <div>
+                                        <p className="sect4-context">Transactions</p>
+                                        <p className="sect4-value-swal">120</p>
+
+                                    </div>
+                                    <div>
+                                        <p className="sect4-context">Number of Trips</p>
+                                        <p className="sect4-value-swal">120</p>
+                                    </div>
+                                </div>
+                                <div className="swwall-border-flex">
+                                    <div>
+                                        <p className="sect4-context">ES Withdrawn</p>
+                                        <p className="sect4-value">123 </p>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                        </Col>
                         <Col sm={6}>
-                        </Col>
-                        <Col sm={3}>
-                        </Col>
-                        <Col sm={3}>
                         </Col>
                     </Row>
                 </div>

@@ -34,6 +34,21 @@ ul li {
     margin-bottom: 0;
 }
 
+.dashboard-main-bgd{
+background-color: #747FEB;
+padding: 20px;
+}
+
+.dash-main-head{
+color: #ffffff;
+font-size: 24px;
+}
+
+
+.sub-dashboard{
+ background-color: #ffffff;
+}
+
 .value-dash-txt{
     color: #747FEB;
     font-weight: 500;
