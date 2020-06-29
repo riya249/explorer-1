@@ -19,52 +19,63 @@ class Dashboard extends Component {
         return (
             <div className="bgd-dash-color">
                 <Header />
-               <div className="dashboard-main-bgd">
-                <h5 className="dash-main-head">Dashboard</h5>
-                <div className='row'>
-                    <Col sm={2}>
-                        <h5>Era Swap (ES)</h5>
-                        <h5>0.0468 USDT</h5>
-                        <h5>0.00000523 BTC</h5>
-                    </Col>
-                    <Col sm={2}>
-                        <div className="es-box-ds">
-                            <p className="supply-txt">ES CURRENT SUPPLY</p>
-                            <p className="supply-txt">1222928288.80 ES</p>
-                        </div>
-                    </Col>
-                    <Col sm={2}>
-                        <div className="es-box-ds">
-                            <p className="supply-txt">TOTAL ES USERS</p>
-                            <p className="supply-txt">10005 Users</p>
-                        </div>
-                    </Col>
-                    <Col sm={2}>
-                        <div className="es-box-ds">
-                            <p className="supply-txt">TOTAL ES USERS</p>
-                            <p className="supply-txt">10005 Users</p>
-                        </div>
-                    </Col>
-                    <Col sm={2}>
-                        <h5>Next NRT Count</h5>
-                        <div className="count-box">
-                            <ul className="flex-count-box">
-                                <li className="count-txt">
-                                    29 :
+                <div className="dashboard-main-bgd">
+                    <h5 className="dash-main-head">Dashboard</h5>
+                    <div className='row'>
+                        <Col sm={10}>
+                            <div className="sub-dashboard">
+                                <Col sm={2}>
+                                    
+                                    <h5 className="sub-dash-head">Era Swap (ES)</h5>
+                                    <h5 className="sub-dash-head">0.0468 USDT</h5>
+                                    <h5 className="sub-dash-head">0.00000523 BTC</h5>
+                                </Col>
+                                <Col sm={3}>
+                                <div className="sub-supply-box">
+                                    <div className="es-box-ds">
+                                        <p className="supply-txt">ES CURRENT SUPPLY</p>
+                                        <p className="supply-txt">1222928288.80 ES</p>
+                                    </div>
+                                    </div>
+                                </Col>
+                                <Col sm={3}>
+                                <div className="sub-supply-box">
+                                    <div className="es-box-ds">
+                                        <p className="supply-txt">TOTAL ES USERS</p>
+                                        <p className="supply-txt">10005 Users</p>
+                                    </div>
+                                    </div>
+                                </Col>
+                                <Col sm={3}>
+                                <div className="sub-supply-box">
+                                    <div className="es-box-ds">
+                                        <p className="supply-txt">TOTAL ES USERS</p>
+                                        <p className="supply-txt">10005 Users</p>
+                                    </div>
+                                    </div>
+                                </Col>
+                            </div>
+                        </Col>
+                        <Col sm={2}>
+                            <h5 className="nrt-head">Next NRT Count</h5>
+                            <div className="count-box">
+                                <ul className="flex-count-box">
+                                    <li className="count-txt">
+                                        29 :
                                 </li>
-                                <li className="count-txt">
-                                    11 :
+                                    <li className="count-txt">
+                                        11 :
                                 </li>
-                                <li className="count-txt">
-                                    44 :
+                                    <li className="count-txt">
+                                        44 :
                                 </li>
-                                <li className="count-txt">
-                                    69
+                                    <li className="count-txt">
+                                        69
                                 </li>
-                            </ul>
-                        </div>
-                    </Col>
-                </div>
+                                </ul>
+                            </div>
+                        </Col>
+                    </div>
                 </div>
                 <div className="bgd-dash-color">
                     <div className="dash-section-2">
@@ -539,7 +550,7 @@ class Dashboard extends Component {
                     {/* Fourth row platforms */}
                     <Row>
                         <Col sm={3}>
-                        <div className="section4-border">
+                            <div className="section4-border">
                                 <div className="flex-sect4-box">
                                     <img className='platfrm-logo' src={Images.path.blocklogy} alt='logo' />
                                     <p className="platfrm-txt">CHARITYDAPP </p>
@@ -572,7 +583,7 @@ class Dashboard extends Component {
                             </div>
                         </Col>
                         <Col sm={3}>
-                        <div className="section4-border">
+                            <div className="section4-border">
                                 <div className="flex-sect4-box">
                                     <img className='platfrm-logo' src={Images.path.blocklogy} alt='logo' />
                                     <p className="platfrm-txt">KYCDAPP </p>
@@ -601,7 +612,7 @@ class Dashboard extends Component {
                             </div>
                         </Col>
                         <Col sm={3}>
-                        <div className="section4-border">
+                            <div className="section4-border">
                                 <div className="flex-sect4-box">
                                     <img className='platfrm-logo' src={Images.path.Coupondapp} alt='logo' />
                                 </div>
@@ -629,10 +640,10 @@ class Dashboard extends Component {
                             </div>
                         </Col>
                         <Col sm={3}>
-                        <div className="section4-border">
+                            <div className="section4-border">
                                 <div className="flex-sect4-box">
                                     <img className='platfrm-logo-5' src={Images.path.computeex} alt='logo' />
-                                    
+
                                 </div>
                                 <div className="compute-flex-border">
                                     <div>
@@ -651,10 +662,10 @@ class Dashboard extends Component {
                         </Col>
                     </Row>
 
-                      {/* fifth row platforms */}
-                      <Row>
-                      <Col sm={3}>
-                        <div className="section4-border">
+                    {/* fifth row platforms */}
+                    <Row>
+                        <Col sm={3}>
+                            <div className="section4-border">
                                 <div className="flex-sect4-box">
                                     <img className='platfrm-logo2' src={Images.path.renting} alt='logo' />
                                     <p className="platfrm-txt">RENTINGDAPP</p>
@@ -687,7 +698,7 @@ class Dashboard extends Component {
                             </div>
                         </Col>
                         <Col sm={3}>
-                        <div className="section4-border">
+                            <div className="section4-border">
                                 <div className="flex-sect4-box">
                                     <img className='platfrm-logo2' src={Images.path.booklogo} alt='logo' />
                                     <p className="platfrm-txt">BOOKINGDAPP </p>
@@ -720,7 +731,7 @@ class Dashboard extends Component {
                             </div>
                         </Col>
                         <Col sm={3}>
-                        <div className="section4-border">
+                            <div className="section4-border">
                                 <div className="flex-sect4-box">
                                     <img className='platfrm-logo' src={Images.path.poolingdapplogo} alt='logo' />
                                 </div>
@@ -752,10 +763,10 @@ class Dashboard extends Component {
                             </div>
                         </Col>
                         <Col sm={3}>
-                        <div className="section4-border">
+                            <div className="section4-border">
                                 <div className="flex-sect4-box">
                                     <img className='platfrm-logo4' src={Images.path.curedapplogo} alt='logo' />
-                                   
+
                                 </div>
                                 <div className="bet-flex-border">
                                     <div>
@@ -776,25 +787,25 @@ class Dashboard extends Component {
                                 <div className="swwall-border-flex">
                                     <div>
                                         <p className="sect4-context">Number Of Users</p>
-                                       
+
                                         <p className="sect4-value">123 </p>
                                     </div>
                                     <div>
                                         <p className="sect4-context">Number of Cetificates</p>
-                                       
+
                                         <p className="sect4-value">123  </p>
                                     </div>
-                                   
+
                                 </div>
                             </div>
                         </Col>
                     </Row>
 
-                      {/* sixth row platforms */}
-                      <Row>
-                        
+                    {/* sixth row platforms */}
+                    <Row>
+
                         <Col sm={3}>
-                        <div className="section4-border">
+                            <div className="section4-border">
                                 <div className="flex-sect4-box">
                                     <img className='platfrm-logo2' src={Images.path.booklogo} alt='logo' />
                                     <p className="platfrm-txt">FAITH MINUS</p>
@@ -830,12 +841,12 @@ class Dashboard extends Component {
                                         <p className="sect4-context">TFC Generated</p>
                                         <p className="sect4-value">123 </p>
                                     </div>
-                                   
+
                                 </div>
                             </div>
                         </Col>
                         <Col sm={3}>
-                        <div className="section4-border">
+                            <div className="section4-border">
                                 <div className="flex-sect4-box">
                                     <img className='platfrm-logo2' src={Images.path.dateswappr} alt='logo' />
                                     <p className="platfrm-txt">DATE SWAPPERS</p>
@@ -850,7 +861,7 @@ class Dashboard extends Component {
                                         <p className="sect4-context">Number of Users</p>
                                         <p className="sect4-value-swal">120</p>
                                     </div>
-                                    
+
                                 </div>
                                 <div className="swwall-flex-border">
                                     <div>
@@ -868,7 +879,7 @@ class Dashboard extends Component {
                                         <p className="sect4-context">ES Withdrawn</p>
                                         <p className="sect4-value">123 </p>
                                     </div>
-                                   
+
                                 </div>
                             </div>
                         </Col>

@@ -24,6 +24,7 @@ ul li {
     background-color: #ffffff;
     padding: 10px;
     margin: 10px;
+    box-shadow: -3px 3px #a7a7a74d;
 }
 
 .sect-txt-bold{
@@ -37,6 +38,7 @@ ul li {
 .dashboard-main-bgd{
 background-color: #747FEB;
 padding: 20px;
+padding-bottom: 68px;
 }
 
 .dash-main-head{
@@ -44,9 +46,34 @@ color: #ffffff;
 font-size: 24px;
 }
 
+.sub-dash-head{
+    color: #747FEB;
+}
 
+.sub-supply-box{
+    background-color: #5c65b7;
+    border-radius: 10px;
+    padding: 7px 0 7px 0;
+    box-shadow: 0 8px 13px -9px #5c65b7;
+}
 .sub-dashboard{
- background-color: #ffffff;
+    background-color: #ffffff;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 8px 13px -9px black
+}
+.nrt-head{
+    color: #ffffff;
+text-align: center;
+}
+
+.supply-txt{
+    text-align: center;
+    color: #ffffff;
+    font-weight: bold;
+    
 }
 
 .value-dash-txt{
