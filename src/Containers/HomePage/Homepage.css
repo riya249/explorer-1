@@ -15,12 +15,11 @@
 }
 
 .esexplorer-Container{
-    width: 80%;
+    width: 78%;
     margin: 0 auto; 
 }
 
 .es-explorer-wrapper{
-    width: 75%;
     margin: 0 auto; 
 }
 
@@ -48,22 +47,27 @@
     background-color: #747FEB;
     width: 35px;
     height: 35px;
-    position: relative;
-    left: -48px;
+    position: absolute;
+    right: 48px;
+    top: 39px;
 }
 .search-Img{
     width: 20px;
     height: 20px;
 }
 .search-field{
-    width: 95%;
+    width: 100%;
     height: 50px;
+    border: 1px solid #a59f9f6b;
+    padding: 10px;
 }
 .es-main-head{
-    color: #ffffff;
+    color: #ececec;
     text-align: center;
     position: relative;
-    top: 25%;
+    top: 45%;
+    font-weight: 800;
+    text-transform: uppercase;
 }
 
 .home-search-container{
@@ -85,9 +89,22 @@
 }
 
 .era-head{
-    font-size: 14px;
-    color: #888e91;
+    font-size: 11px;
+    color: #5c6bad;
     margin-bottom: 0;
+    font-weight: 700;
+}
+.text-black{
+    font-size: 12px;
+    color: #000;
+}
+.text-green{
+    font-size: 10px;
+    color: #00ab56;
+}
+.text-gray{
+    font-size: 12px;
+    color: #a7a7a7;
 }
 
 .flex-eraswap{
@@ -122,6 +139,7 @@
     padding-top: 5px;
     padding-bottom: 5px;
     height: 50px;
+    font-size: 12px;
 }
 
 .era-view-btn{
@@ -135,11 +153,12 @@ width: 100%;
 .era-no{
     color: #000000;
     background-color: #9b908a40;
-    font-weight: 500;
-    font-size: 13px;
+    font-weight: 600;
+    font-size: 11px;
     padding: 3px;
-    padding-left: 10px;
+    padding-left: 8px;
     border-radius: 10px;
+    text-align: center;
 }
 
 .frst-era{
@@ -187,7 +206,19 @@ padding-top: 10px;
     text-decoration: none;
 }
 
-@media (max-width: 768px) {
-  
-    
+.border-right{
+    border-right: 1px solid #eee;
 }
+.second-section-es p {
+    margin-bottom: 0rem;
+}
+
+@media (max-width: 992px) {
+    .flex-transc{
+        padding-top: 15px;
+     }
+     .flex-transc .era-value{
+     margin-bottom: 15px;
+    }
+}
+

@@ -62,42 +62,44 @@ class Homepage extends Component {
                     <Container>
                         <div className="second-section-es">
                             <Row>
-                                <Col sm={4}>
+                                <Col lg={4} className="border-right">
                                     <div className="flex-eraswap">
                                         <img src={Images.path.escolor} className='escolor-pic1' />
                                         <div>
                                             <p className="era-head">ERA SWAP PRICE</p>
-                                            <p>$229.86 <span>@ 0.02469 BTC</span>  <span> (+0.61%)</span></p>
+                                            <p className="text-black">$229.86 <span className="text-gray">@ 0.02469 BTC</span>  <span className="text-green"> (+0.61%)</span></p>
                                         </div>
                                     </div>
-                                    <div >
-                                        <p className="era-head">ERA SWAP PRICE</p>
-                                        <p>$229.86</p>
+                                    <div className="mt10">
+                                       <div className="pdl70">
+                                           <p className="era-head">ERA SWAP PRICE</p>
+                                           <p className="text-black">$229.86</p>
+                                       </div>
                                     </div>
                                 </Col>
-                                <Col sm={4}>
-                                    <div className="flex-transc">
-                                        <div>
+                                <Col lg={4} className="border-right">
+                                    <div className="flex-transc row">
+                                        <div  className="col-lg-6">
                                             <p className="era-head">TRANSACTIONS </p>
-                                            <p className="era-value">738.81 M <span className="era-span">(12.1 TPS)</span></p>
+                                            <p className="era-value text-black">738.81 M <span className="era-span text-gray">(12.1 TPS)</span></p>
                                         </div>
-                                        <div>
+                                        <div  className="col-lg-6">
                                             <p className="era-head">SAFE GAS PRICE</p>
-                                            <p className="era-value">27 Gwel <span className="era-span">($0.13)</span></p>
+                                            <p className="era-value text-black">27 Gwel <span className="era-span text-gray">($0.13)</span></p>
                                         </div>
                                     </div>
-                                    <div className="flex-transc border-value">
-                                        <div>
+                                    <div className="flex-transc border-value row">
+                                        <div  className="col-lg-6">
                                             <p className="era-head">DIFFICULTY</p>
-                                            <p className="era-value">2,359.39 TH</p>
+                                            <p className="era-value text-black">2,359.39 TH</p>
                                         </div>
-                                        <div >
+                                        <div  className="col-lg-6">
                                             <p className="era-head">HASH RATE</p>
-                                            <p className="era-value">190,198.77 GH/s</p>
+                                            <p className="era-value text-black">190,198.77 GH/s</p>
                                         </div>
                                     </div>
                                 </Col>
-                                <Col sm={4}>
+                                <Col lg={4}>
                                     <div>
                                         <p className="era-head">ERA SWAP TRANSACTION HISTORY IN 14 DAYS</p>
                                     </div>
@@ -108,7 +110,7 @@ class Homepage extends Component {
 
                     <Container>
                         <Row>
-                            <Col sm={4}>
+                            <Col lg={4}>
                                 <div className="border-era">Latest Bunch </div>
                                 <table className="era-transaction">
                                     <tr>
@@ -141,7 +143,7 @@ class Homepage extends Component {
                                 </div>
                             </Col>
 
-                            <Col sm={4}>
+                            <Col lg={4}>
                                 <div className="border-era">Latest Blocks</div>
                                 <table className="era-transaction">
                                     <tr>
@@ -177,7 +179,7 @@ class Homepage extends Component {
                                 </div>
                             </Col>
 
-                            <Col sm={4}>
+                            <Col lg={4}>
                                 <div className="border-era">Latest Transactions</div>
                                 <table className="era-transaction">
                                     <tr>
