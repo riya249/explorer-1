@@ -1,0 +1,266 @@
+.eslogods-Img {
+    width: 25%;
+    height: 66px;
+}
+
+ul li {
+    list-style: none;
+}
+
+.flex-count-box {
+    display: flex;
+}
+
+.count-box {
+    border: 1px solid #000000;
+}
+
+.bgd-dash-color{
+    background-color: #f7fbff;
+}
+
+.section-border{
+    width: 1px solid #ffffff;
+    background-color: #ffffff;
+    padding: 10px;
+    margin: 10px;
+    box-shadow: -3px 3px #a7a7a74d;
+}
+
+.sect-txt-bold{
+    color: #747FEB;
+    font-weight: bold;
+    font-size: 17px;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.dashboard-main-bgd{
+background-color: #747FEB;
+padding: 20px;
+padding-bottom: 68px;
+}
+
+.dash-main-head{
+color: #ffffff;
+font-size: 24px;
+}
+
+.sub-dash-head{
+    color: #747FEB;
+}
+
+.sub-supply-box{
+    background-color: #5c65b7;
+    border-radius: 10px;
+    padding: 7px 0 7px 0;
+    box-shadow: 0 8px 13px -9px #5c65b7;
+}
+.sub-dashboard{
+    background-color: #ffffff;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 8px 13px -9px black
+}
+.nrt-head{
+    color: #ffffff;
+text-align: center;
+}
+
+.supply-txt{
+    text-align: center;
+    color: #ffffff;
+    font-weight: bold;
+    
+}
+
+.value-dash-txt{
+    color: #747FEB;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.wrapper-sub-section{
+    width: 90%;
+    margin: 0 auto;
+}
+
+.platfrm-logo{
+    width:60px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.platfrm-logo2{
+    width:40px;
+    height: 40px;
+    margin-right: 10px;
+}
+.platfrm-logo4{
+    width:40px;
+    height: 40px;
+}
+
+.platfrm-logo-5{
+    width:40px;
+    height: 40px;
+}
+
+.section4-border{
+    width: 1px solid #ffffff;
+    background-color: #ffffff;
+    margin: -4px;
+}
+
+.platfrm-txt{
+    color: #747FEB;
+    font-weight: 500;
+    font-size: 14px;
+    margin-bottom: 0;
+    margin-top: 9px;
+}
+
+.flex-sect4-box{
+    display: flex;
+    margin: 5px;
+}
+
+.sect4-context{
+    color: #747FEB;
+    margin-bottom: 0px;
+    font-size: 11px;
+    margin-left: -4px;
+}
+
+.timeally-mark{
+    border: 1px solid #747FEB;
+    background-color: #747FEB;
+    width: 20px;
+    height: 15px;
+    margin-right: 8px;
+}
+
+
+.sect4-value-bold{
+    color: #6d7cb5;
+    font-weight: bold;
+    font-size: 13px;
+    margin-bottom: 0px;
+}
+
+
+.timeally-mark2{
+    border: 1px solid #959595;
+    background-color: #959595;
+    width: 20px;
+    height: 15px;
+    margin-right: 8px;
+}
+
+.timelly-flex.tm-border{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgb(175, 80, 39) ;
+    margin: 4px 10px 10px 9px;
+}
+
+.timelly-border-flex{
+    display: flex;
+    justify-content: space-between;
+    margin: 4px 10px 10px 9px;
+}
+
+.ts-flex.tm-border{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ff8207  ;
+    margin: 4px 10px 10px 9px;
+}
+
+.ds-flex.tm-border{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #28a745  ;
+    margin: 4px 10px 10px 9px;
+}
+
+.dash-section-4{
+    width: 95%;
+    margin: 0 auto;
+}
+
+.sect4-value{
+    color: #747FEB;
+    margin-bottom: 0px;
+    font-weight: 500;
+    font-size: 12px;
+}
+
+.dayswappr-border-flex{
+    display: flex;
+    margin: 4px 10px 10px 9px;
+}
+
+.sect4-context-ds{
+    font-size: 11px; 
+    color: #747FEB;
+}
+
+.dayswapper-box{
+    margin-right: 10px;
+}
+
+.swwall-flex-border{
+    display: flex;
+    justify-content: space-evenly;
+    border-bottom: 1px solid rgb(175, 80, 39);
+    margin-bottom: 25px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.swapper-center{
+    text-align: center;
+}
+
+.sect4-value-swal{
+    color: #747FEB;
+    margin-bottom: 0px;
+    font-weight: 500;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.swwall-border-flex{
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 20px;
+}
+
+.bet-flex-border{
+    display: flex;
+    justify-content: space-evenly;
+    border-bottom: 1px solid #28a745  ;
+    margin-bottom: 25px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+
+.buz-flex-border{
+    display: flex;
+    justify-content: space-evenly;
+    border-bottom: 1px solid #ff8207  ;
+    margin-bottom: 25px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.compute-flex-border{
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid rgb(175, 80, 39);
+}

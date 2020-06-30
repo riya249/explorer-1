@@ -33,7 +33,7 @@ class Header extends Component {
               </li>
 
               <li class="nav-item active">
-                <a class="nav-link top-color" href="/BlockPage">
+                <a class="nav-link top-color" href="/dashboard">
                   DASHBOARD
                     <span class="sr-only">(current)</span>
                 </a>
