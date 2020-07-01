@@ -22,10 +22,10 @@ class Footer extends Component {
                     <Row>
                         <Col sm={4}>
                         <div className="flex-footer-logo">
-                            <img className='eslogo11-Img' src={Images.path.esgreylogo} alt='rent' />
+                            <img className='eslogo11-Img' src={Images.path.esgreylogo} alt='logo' />
                             <div className="footer-txt-white">Powered by Era Swap</div>
                            </div>
-                           <p className="sub-footer-white" >Era Swap is a Block Explorer and Analytics Platform for</p>
+                           <p className="sub-footer-white mt10" >Era Swap is a Block Explorer and Analytics Platform for</p>
                            <p className="sub-footer-white">Era Swap a decentralized smart contracts platform.</p>
                         </Col>
                         <Col sm={2}>

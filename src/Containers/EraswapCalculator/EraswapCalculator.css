@@ -1,0 +1,62 @@
+.explr-txt{
+    font-size: 14px;
+    color:#212529a3;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.trans-head{
+    font-size: 22px;
+    color:#212529a3;
+    text-align: center;
+}
+.time-dwnld{
+    color: #747FEB;
+    font-size: 14px;
+    text-align: end;
+}
+
+
+.eslogo{
+    width: 31px;
+    height: auto;
+    position: absolute;
+    top: 35px;
+    right: 10px;
+}
+.user {
+    position: absolute;
+    top: 40px;
+    right: 12px;
+    color: #717bbb;
+    font-size: 21px;
+}
+.eraswapcal-tab .card {
+    border: 1px solid #747feb;
+    min-height: 270px
+}
+.eraswapcal-tab .es-transaction {
+     margin-top: 0px;
+}
+.eraswapcal-tab .border-era {
+    border: none;
+    border-bottom: 0;
+    padding: 8px;
+    font-weight: 500;
+    color: #747feb;
+    font-size: 13px;
+}
+.eraswapcal-tab .es-transaction td, .eraswapcal-tab .es-transaction th {
+    border: none; 
+}
+.eraswapcal-tab.es-transaction td {
+    border-bottom: 1px solid #747feb42;
+}
+.eraswapcal-tab.es-transaction th{
+    background: #f7fbff;
+    color: #6984aa;
+    background-color: #f8fafd;
+    border-color: #e7eaf3;
+    border-bottom: 2px solid #e7eaf3;
+    border-top: 1px solid #e7eaf3;
+}

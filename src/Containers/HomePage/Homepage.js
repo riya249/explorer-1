@@ -139,7 +139,7 @@ class Homepage extends Component {
                                     </tr>
                                 </table>
                                 <div className="border-era-two">
-                                    <button className="era-view-btn">View all Bunch</button>
+                                    <button className="era-view-btn"><a href="/Bunch" className="era-link">View all Bunch</a></button>
                                 </div>
                             </Col>
 
@@ -174,8 +174,7 @@ class Homepage extends Component {
                                     </tr>
                                 </table>
                                 <div className="border-era-two">
-                                <button className="era-view-btn"><a href="/BlockPage" className="era-link">View all Blocks</a></button>
-                
+                                     <button className="era-view-btn"><a href="/Blocks" className="era-link">View all Blocks</a></button>
                                 </div>
                             </Col>
 

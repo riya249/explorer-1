@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Images from '../Images/Images';
 import { Col, Button, Container, Row } from 'react-bootstrap';
 import Header from '../../Components/Header/Header';
+import Navbar from '../../Components/Navbar/Navbar';
 
 
 class TimeallyExplorer extends Component {
@@ -18,14 +19,20 @@ class TimeallyExplorer extends Component {
     render() {
         return (
             <div>
-                <Header />
-                <Container>
-                    <p className="trans-head">TimeAlly Explorer</p>
+                 <div className='booking-hero-bgd booking-hero-bgd-inner'>
+                    <Navbar />
+                    <h2 className="es-main-head es-main-head-inner">TimeAlly Explorer</h2>
                     <p className="explr-txt">Era Swap is a Block Explorer and Analytics Platform for</p>
                     <p className="explr-txt">Era Swap, a decentralized smart contracts platform</p>
-                    <Row>
-                        <a className="time-dwnld">Download This Data</a>
-                        <table className="es-transaction">
+                </div>
+                <Container>
+                    {/* <p className="trans-head">TimeAlly Explorer</p> */}
+                    
+                    <Row className="mt40">
+                         <div className="col-md-12 pull-right">
+                             <a className="time-dwnld pull-right down-data">Download This Data</a>
+                         </div>
+                        <table className="es-transaction striped bordered hover">
                             <tr>
                                 <th>Address</th>
                                 <th>Plan</th>
