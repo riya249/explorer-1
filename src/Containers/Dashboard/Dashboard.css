@@ -28,17 +28,17 @@ ul li {
 }
 
 .sect-txt-bold{
-    color: #747FEB;
+    color: #061148;
     font-weight: bold;
-    font-size: 17px;
-    text-align: center;
+    font-size: 12px;
     margin-bottom: 0;
+    text-transform: initial;
 }
 
 .dashboard-main-bgd{
-background-color: #747FEB;
+background-color: #061148;
 padding: 20px;
-padding-bottom: 68px;
+/* padding-bottom: 68px; */
 }
 
 .dash-main-head{
@@ -79,8 +79,8 @@ text-align: center;
 .value-dash-txt{
     color: #747FEB;
     font-weight: 500;
-    text-align: center;
     margin-bottom: 0;
+    font-size: 13px;
 }
 
 .wrapper-sub-section{
@@ -89,30 +89,42 @@ text-align: center;
 }
 
 .platfrm-logo{
-    width:60px;
+    /* width:60px; */
     height: 40px;
-    margin-right: 10px;
+    margin-right: 15px;
 }
 
 .platfrm-logo2{
-    width:40px;
+    /* width:40px; */
     height: 40px;
-    margin-right: 10px;
+    margin-right: 15px;
 }
 .platfrm-logo4{
-    width:40px;
+    /* width:40px; */
     height: 40px;
+    margin-right: 15px;
 }
-
+.platfrm-logo6 {
+    /* width: 60px; */
+    height: 25px;
+    margin-right: 15px;
+    position: relative;
+    top: 6px;
+}
 .platfrm-logo-5{
-    width:40px;
-    height: 40px;
+    height: 12px;
+    margin-right: 15px;
+    position: relative;
+    top: 13px;
 }
 
 .section4-border{
-    width: 1px solid #ffffff;
     background-color: #ffffff;
-    margin: -4px;
+    margin: 0;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+    padding: 10px;
+    min-height: 310px;
+    margin-bottom: 25px;
 }
 
 .platfrm-txt{
@@ -126,13 +138,15 @@ text-align: center;
 .flex-sect4-box{
     display: flex;
     margin: 5px;
+    margin-bottom: 15px;
 }
 
 .sect4-context{
-    color: #747FEB;
+    color: #020202;
     margin-bottom: 0px;
     font-size: 11px;
-    margin-left: -4px;
+    margin-left: 0;
+    font-weight: bold;
 }
 
 .timeally-mark{
@@ -193,10 +207,10 @@ text-align: center;
 }
 
 .sect4-value{
-    color: #747FEB;
-    margin-bottom: 0px;
+    color: #747feb;
     font-weight: 500;
     font-size: 12px;
+    margin-bottom: 10px;
 }
 
 .dayswappr-border-flex{
@@ -263,4 +277,38 @@ text-align: center;
     display: flex;
     justify-content: center;
     border-bottom: 1px solid rgb(175, 80, 39);
+}
+
+.dash-section-2{
+    margin: 20px 30px;
+}
+.dash-section-2 .card {
+    margin-bottom: 15px;
+    text-align: center;
+}
+.dash-section-2 .card-body {
+    padding: 0.60rem 5px;
+}
+.card{
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+.justify-content-lg-around{
+    justify-content: space-around !important;
+}
+.d-flex {
+    display: flex !important;
+}
+/* .height-80 {
+    height: 80px;
+} */
+.wd-120 {
+    width: 120%;
+}
+@media (max-width: 992px) {
+    .wd-120 {
+        width: 100%;
+    }  
+    .wrapper-sub-section {
+        width: 100%!important;
+    }
 }

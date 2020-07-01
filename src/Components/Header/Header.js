@@ -2,71 +2,71 @@ import React, { Component } from 'react';
 import './Header.scss'
 import { Link } from 'react-router-dom';
 import Images from '../../Containers/Images/Images';
-
-
-
 class Header extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-
-    };
-  }
-
-
-  render() {
-    return (
-      <div className="header-bgd-color">
-        <nav class="mb-1 navbar navbar-expand-lg navbar-dark info-color">
-          <a class="navbar-brand" href="/"> <img className='eslogo-Img' src={Images.path.eslogo} /></a><a className="nav-head-color"  href="/">ES Explorer</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4"
-            aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item active">
-                <a class="nav-link top-color " href="/">
-                  HOME
-          <span class="sr-only">(current)</span>
-                </a>
-              </li>
-
-              <li class="nav-item active">
-                <a class="nav-link top-color" href="/dashboard">
-                  DASHBOARD
-                    <span class="sr-only">(current)</span>
-                </a>
-              </li>
-
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle top-color" id="navbarDropdownMenuLink-4" data-toggle="dropdown"
-                  aria-haspopup="true" aria-expanded="false">
-                  TOKENS
-         <span class="sr-only">(current)</span></a>
-                
-              </li>
-              <li class="nav-item active">
-                <a class="nav-link top-color" href="/Explore">
-                  TIMEALLY EXPLORER
-          <span class="sr-only">(current)</span>
-                </a>
-              </li>
-              <li class="nav-item active">
-                <a class="nav-link top-color" href="/BlockPage">
-                  CONNECT TO WALLET
-                 <span class="sr-only">(current)</span>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </div>
-
-    );
-
-  }
+constructor(props) {
+super(props);
+this.state = {
+color: 'white'
+};
 }
-
-
+componentDidMount(){
+console.log('asdfasdfasdfsd')
+window.addEventListener('scroll', this.listenScrollEvent)
+}
+listenScrollEvent = e => {
+console.log('sdafsadf')
+if (window.scrollY > 40) {
+this.setState({color: 'black'})
+} else {
+this.setState({color: 'white'})
+}
+}
+render() {
+return (
+<div className="header-bgd-color">
+   <nav className="mb-1 navbar navbar-expand-lg navbar-dark info-color" style={{color: this.state.color}}>
+      <a className="navbar-brand" href="/"> <img className='eslogo-Img' src={Images.path.eslogo} /></a><a className="nav-head-color"  href="/">ES Explorer</a>
+      <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4"
+         aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
+      <span className="navbar-toggler-icon"><i class="fa fa-bars" aria-hidden="true"></i></span>
+      </button>
+      <div className="collapse navbar-collapse" id="navbarSupportedContent-4">
+         <ul className="navbar-nav ml-auto">
+            <li className="nav-item active">
+               <a className="nav-link top-color " href="/">
+               HOME
+               <span className="sr-only">(current)</span>
+               </a>
+            </li>
+            <li class="nav-item active">
+               <a class="nav-link top-color" href="/dashboard">
+               DASHBOARD
+               <span className="sr-only">(current)</span>
+               </a>
+            </li>
+            <li className="nav-item dropdown">
+               <a className="nav-link dropdown-toggle top-color" id="navbarDropdownMenuLink-4" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">
+               TOKENS
+               <span className="sr-only">(current)</span></a>
+            </li>
+            <li className="nav-item active">
+               <a className="nav-link top-color" href="/Explore">
+               TIMEALLY EXPLORER
+               <span className="sr-only">(current)</span>
+               </a>
+            </li>
+            <li className="nav-item active">
+               <a className="nav-link top-color" href="/BlockPage">
+               CONNECT TO WALLETxxxxxx
+               <span className="sr-only">(current)</span>
+               </a>
+            </li>
+         </ul>
+      </div>
+   </nav>
+</div>
+);
+}
+}
 export default Header;

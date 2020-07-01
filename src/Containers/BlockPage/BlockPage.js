@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './BlockPage.css'
 import Images from '../Images/Images';
 import Header from '../../Components/Header/Header';
+import Navbar from '../../Components/Navbar/Navbar';
 import {
     BrowserRouter as Router,
     Route,
@@ -39,11 +40,14 @@ class BlockPage extends Component {
     render() {
         return (
             <div>
-                <Header />
+                <div className='booking-hero-bgd booking-hero-bgd-inner'>
+                    <Navbar />
+                    <h2 className="es-main-head es-main-head-inner">Blocks #102587</h2>
+                </div>
                 <div className="wrapper-container">
-                    <div className="notif-txt">
+                    {/* <div className="notif-txt">
                         Blocks #102587
-                    </div>
+                    </div> */}
                     <div className="BlockPage-detail">
                         <Container>
                             <Router>

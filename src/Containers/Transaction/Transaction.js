@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Images from '../Images/Images';
 import { Col, Button, Container, Row } from 'react-bootstrap';
 import Header from '../../Components/Header/Header';
-
+import Navbar from '../../Components/Navbar/Navbar';
 
 class Transaction extends Component {
     constructor(props) {
@@ -18,9 +18,12 @@ class Transaction extends Component {
     render() {
         return (
             <div>
-                <Header />
+               <div className='booking-hero-bgd booking-hero-bgd-inner'>
+                    <Navbar />
+                    <h2 className="es-main-head es-main-head-inner">Transactions</h2>
+                 </div>
                 <Container>
-                    <p className="trans-head">Transactions</p>
+                   
                     <table className="es-transaction">
                         <tr>
                             <th>Txn Hash </th>
