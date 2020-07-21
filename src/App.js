@@ -23,11 +23,11 @@ function App() {
     <Router>
         <Switch>
            <Route exact path="/" component={Homepage} />
-           <Route exact path="/Bunch" component={Bunch} />
-           <Route exact path="/Blocks" component={Blocks} />
-           <Route exact path="/BlockPage" component={BlockPage} />
-           <Route exact path="/Transaction" component={Transaction} />
-           <Route exact path="/Explore" component={TimeallyExplorer} />
+           <Route exact path="/bunch" component={Bunch} />
+           <Route exact path="/blocks" component={Blocks} />
+           <Route exact path="/block/:blockNumber" component={BlockPage} />
+           <Route exact path="/tx" component={Transaction} />
+           <Route exact path="/explore" component={TimeallyExplorer} />
            <Route exact path="/dashboard" component={Dashboard} />
            <Route exact path="/calculator" component={EraswapCalculator} />
          </Switch>

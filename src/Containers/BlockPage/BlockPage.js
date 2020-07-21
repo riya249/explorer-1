@@ -7,6 +7,7 @@ import {
     BrowserRouter as Router,
     Route,
     Link,
+    useLocation,
 } from 'react-router-dom'
 import { Col, Button, Container, Row } from 'react-bootstrap';
 import Comments from '../../Components/Comments/Comments';
@@ -34,6 +35,11 @@ class BlockPage extends Component {
         this.state = {
 
         };
+    }
+
+    componentDidMount(){
+      const { match: { params } } = this.props;
+      console.log('params',params)
     }
 
 
