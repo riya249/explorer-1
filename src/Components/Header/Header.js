@@ -10,11 +10,9 @@ color: 'white'
 };
 }
 componentDidMount(){
-console.log('asdfasdfasdfsd')
 window.addEventListener('scroll', this.listenScrollEvent)
 }
 listenScrollEvent = e => {
-console.log('sdafsadf')
 if (window.scrollY > 40) {
 this.setState({color: 'black'})
 } else {

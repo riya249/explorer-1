@@ -1,55 +1,35 @@
 import React from 'react';
 
-export default class CustomPagination extends React.Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      ...props 
-    };
-  }
-  componentDidMount(){
-    // this.setState({
-    //   state: this.props
-    // });
-  }
-
-  componentDidUpdate(props){
-    console.log('props 1',props)
-    if(this.props.currentPage !== props.currentPage)
-      this.setState({
-        state: props
-      });
-  }
-
-  render(){
-    console.log('this.state.currentPage',this.state.currentPage)
-    console.log('this.state.nextPage',this.state.nextPage)
-    console.log('this.state.prevPage',this.state.prevPage)
+export default function CustomPagination(props)  {
+  
     return <div>
       <button 
         type="button" 
-        onClick={this.props.handleClick.bind(this,1)} 
+        onClick={props.handleClick.bind(this,1)} 
+        disabled={props.prevPage < 0}
         >
           First
         </button>
       <button 
         type="button" 
-        onClick={this.props.handleClick.bind(this,this.state.prevPage)} 
+        onClick={props.handleClick.bind(this,props.prevPage)} 
+        disabled={props.prevPage < 0}
         >
           Previous
         </button>
       <button 
         type="button" 
-        onClick={this.props.handleClick.bind(this,this.state.nextPage)} 
+        onClick={props.handleClick.bind(this,props.nextPage)} 
+        disabled={props.currentPage === props.totalPages}
         >
           Next
         </button>
       <button 
         type="button" 
-        onClick={this.props.handleClick.bind(this,this.state.totalPages)} 
+        onClick={props.handleClick.bind(this,props.totalPages)} 
+        disabled={props.currentPage === props.totalPages}
         >
           Last
         </button>
-    </div>
-  }
+    </div>;
 }

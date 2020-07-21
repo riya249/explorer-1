@@ -16,15 +16,21 @@ class Blocks extends Component {
         this.state = {
           blocks: {
             data: [],
-            currentPage: 1,
+            currentPage: 0,
             totalPages: 0,
             isLoading: false
           }
         };
+
+        this.fetchBlocks = this.fetchBlocks.bind(this);
     }
 
     componentDidMount(){
       this.fetchBlocks(0);
+    }
+
+    componentDidUpdate(){
+
     }
 
     async fetchBlocks(i,e){
@@ -37,7 +43,7 @@ class Blocks extends Component {
         this.setState({
           blocks: {
             data: res.data,
-            currentPage: res.currentPage,
+            currentPage: Number(res.currentPage),
             totalPages: res.totalPages,
             isLoading: false
           }

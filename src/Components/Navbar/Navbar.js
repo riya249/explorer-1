@@ -10,7 +10,6 @@ color: 'transparent'
 };
 }
 componentDidMount(){
-console.log('asdfasdfasdfsd')
 window.addEventListener('scroll', this.listenScrollEvent)
 }
 listenScrollEvent = e => {
@@ -59,12 +58,6 @@ return (
                   <a class="dropdown-item" href="/calculator">ES Calculator</a>
              
                </div>
-            </li>
-            <li class="nav-item">
-               <a class="nav-link connect-style" href="https://eraswap.life/">
-               CONNECT TO WALLET
-               <span class="sr-only">(current)</span>
-               </a>
             </li>
          </ul>
       </div>
