@@ -44,6 +44,7 @@ class Homepage extends Component {
       }
     };
 
+    this.fetchTransactions = this.fetchTransactions.bind(this);
   }
 
   componentDidMount() {
@@ -51,7 +52,7 @@ class Homepage extends Component {
     this.fetchTransactions();
   }
 
-  async fetchBlocks() {
+  fetchBlocks = async () => {
     try {
       console.log('await Apis.fetchBlocks(0,3)', await Apis.fetchBlocks(0, 3))
       const res = await Apis.fetchBlocks(0, 3);
@@ -63,7 +64,7 @@ class Homepage extends Component {
       });
     } catch (e) {
       console.log(e);
-      this.snackbarRef.current.openSnackBar(e.message);
+      // this.snackbarRef.current.openSnackBar(e.message);
       this.setState({
         blocks: {
           data: [],
@@ -73,7 +74,7 @@ class Homepage extends Component {
     }
   }
 
-  async fetchTransactions() {
+  fetchTransactions = async() => {
     try {
       console.log('await Apis.fetchTransactions(0,3)', await Apis.fetchTransactions(0, 3));
       const res = await Apis.fetchTransactions(0, 3);
@@ -85,7 +86,7 @@ class Homepage extends Component {
       });
     } catch (e) {
       console.log(e);
-      this.snackbarRef.current.openSnackBar(e.message);
+      this.openSnackBar(e.message);
       this.setState({
         transactions: {
           data: [],
@@ -93,6 +94,10 @@ class Homepage extends Component {
         }
       });
     }
+  }
+
+  openSnackBar(message){
+    this.snackbarRef.current.openSnackBar(message);
   }
 
   render() {
@@ -239,7 +244,7 @@ class Homepage extends Component {
                       this.state.transactions.data.map((transaction, i) => {
                         return <tr key={i + 1}>
                           <td className="frst-era">
-                            <AddressLink value={transaction.block.block_number} type="block" />
+                            <AddressLink value={transaction.txn_hash} type="tx" shrink={true}/>
                             <div className="sub-frst">
                               {moment(moment(transaction.createdOn).toDate()).fromNow()}
                             </div>

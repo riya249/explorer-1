@@ -3,11 +3,9 @@ import './Blocks.css'
 import { Link } from 'react-router-dom';
 import Images from '../Images/Images';
 import { Col, Button, Container, Row } from 'react-bootstrap';
-import Header from '../../Components/Header/Header';
 import Navbar from '../../Components/Navbar/Navbar';
 import Apis from '../../lib/apis';
 import AddressLink from '../../Components/AddressLink/AddressLink';
-import * as moment from 'moment';
 import CustomPagination from '../../Components/CustomPagination/CustomPagination';
 import { Snackbar } from '../../Components/Snackbar/Snackbar';
 import { toLocaleTimestamp } from '../../lib/parsers';
@@ -33,10 +31,8 @@ class Blocks extends Component {
       this.fetchBlocks(0);
     }
 
-    async fetchBlocks(pageNo,length = 10,e){
+    async fetchBlocks(start,length = 10){
       try {
-        let start = 0;
-        if(pageNo) start = pageNo * length;
         const res = await Apis.fetchBlocks(start,length);
         if(res)
           this.setState({

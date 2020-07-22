@@ -1,59 +1,58 @@
 import React, { Component } from 'react';
-import './Transaction.css'
-import { Link } from 'react-router-dom';
+import './transaction.css';
 import Images from '../Images/Images';
-import { Col, Button, Container, Row } from 'react-bootstrap';
 import Header from '../../Components/Header/Header';
 import Navbar from '../../Components/Navbar/Navbar';
+import { Col, Button, Container, Row, Tabs, Tab } from 'react-bootstrap';
 import Apis from '../../lib/apis';
-import AddressLink from '../../Components/AddressLink/AddressLink';
-import * as moment from 'moment';
-import CustomPagination from '../../Components/CustomPagination/CustomPagination';
-import { Snackbar } from '../../Components/Snackbar/Snackbar';
-import { ethers } from 'ethers';
 import { toLocaleTimestamp } from '../../lib/parsers';
+import { Snackbar } from '../../Components/Snackbar/Snackbar';
+import AddressLink from '../../Components/AddressLink/AddressLink';
+
 
 class Transaction extends Component {
   snackbarRef = React.createRef();
 
   constructor(props) {
     super(props);
+
+    const { match: { params } } = this.props;
+    
     this.state = {
-      transactions: {
-        data: [],
-        currentPage: 1,
-        totalPages: 0,
-        isLoading: true,
+      hash: params.hash,
+      transaction: {
+        data: {},
+        isLoading: true
       }
     };
 
-    this.fetchTransactions = this.fetchTransactions.bind(this);
+    this.openSnackBar = this.openSnackBar.bind(this);
   }
 
-  componentDidMount(){
-    this.fetchTransactions();
+  componentDidMount() {
+    console.log('now')
+    this.fetchTransaction();
   }
 
-  async fetchTransactions(pageNo,length = 10,e){
+  async fetchTransaction() {
     try {
-      let start = 0;
-      if(pageNo) start = pageNo * length;
-      const res = await Apis.fetchTransactions(start,length);
-      this.setState({
-        transactions: {
-          data: res.data,
-          currentPage: Number(res.currentPage),
-          totalPages: res.totalPages,
-          isLoading: false
-        }
-      });
+      console.log('this.state.hash',this.state.hash)
+      const res = await Apis.fetchTransaction(this.state.hash);
+      console.log('res',res)
+      if (res.status)
+        this.setState({
+          transaction: {
+            data: res.data,
+            isLoading: false
+          }
+        });
+      else this.openSnackBar(res.error.message);
     } catch (e) {
       console.log(e);
       this.openSnackBar(e.message);
       this.setState({
-        blocks: {
-          ...this.state.blocks,
-          data: [],
+        transaction: {
+          data: {},
           isLoading: false
         }
       });
@@ -70,65 +69,138 @@ class Transaction extends Component {
       <div>
         <div className='booking-hero-bgd booking-hero-bgd-inner'>
           <Navbar />
-          <h2 className="es-main-head es-main-head-inner">Transactions</h2>
+          <h2 className="es-main-head es-main-head-inner">Blocks #{this.state.hash}</h2>
         </div>
-        <Container>
+        <div className="wrapper-container">
+          <div className="BlockPage-detail">
+            <Container>
+              <Tabs defaultActiveKey="overview" id="uncontrolled-tab-example">
+                <Tab eventKey="overview" title="Overview">
+                  <div>
 
-          <table className="es-transaction">
-            <thead>
-              <tr>
-                <th>Txn Hash </th>
-                <th>Block</th>
-                <th>Age</th>
-                <th>From</th>
-                <th>To</th>
-                <th>Value</th>
-                <th>(Txn Fee)</th>
-              </tr>
-            </thead>
-            <tbody>
-              {this.state.transactions.isLoading ?
-                <tr><td colSpan="7">Loading...</td></tr>
-                :
-                this.state.transactions.data?.length ? 
-                this.state.transactions.data?.map((transaction,i) => {
-                  return <tr key={i+1}>
-                    <td className="tr-color-txt"><AddressLink value={transaction.txn_hash} type="tx" shrink={true}/></td>
-                    <td className="tr-color-txt"><AddressLink value={transaction.block.block_number} type="block"/></td>
-                    <td>{toLocaleTimestamp(transaction.createdOn).fromNow()}</td>
-                    <td>
-                      {transaction.fromAddress.label && <Link to={'/'+ transaction.fromAddress.address}>{transaction.fromAddress.label}</Link>}
-                      <span className="tr-color-txt">
-                        <AddressLink value={transaction.fromAddress.address} type="address" shrink={transaction.fromAddress.label.length} />
-                      </span></td>
-                    <td>
-                      {transaction.fromAddress.label && <Link to={'/'+ transaction.fromAddress.address}>{transaction.fromAddress.label}</Link>}
-                      <span className="tr-color-txt">
-                        <AddressLink value={transaction.toAddress.address} type="address" shrink={transaction.fromAddress.label.length} />
-                      </span></td>
-                    <td>{ethers.utils.formatEther(transaction.value)} ES </td>
-                    <td>0.000546</td>
-                  </tr>  
-                })
-                :
-                <tr><td colSpan="7">No Transactions</td></tr>
-              }
-            </tbody>
-          </table>
-            <CustomPagination 
-              handleClick={this.fetchTransactions} 
-              currentPage={this.state.transactions.currentPage}
-              prevPage={this.state.transactions.currentPage - 1}
-              nextPage={this.state.transactions.currentPage + 1}
-              totalPages={this.state.transactions.totalPages}
-            />
-          <Snackbar ref={this.snackbarRef} />
-        </Container>
+                    <table className="block-overview">
+                      {Object.keys(this.state.transaction.data).length
+                        ?
+                        <thead>
+                          <tr>
+                            <td>Transaction Hash: </td>
+                            <td>{this.state.hash}</td>
+
+                          </tr>
+                          <tr>
+                            <td>Status: </td>
+                            <td>{this.state.transaction.data.status_enum}</td>
+
+                          </tr>
+                          <tr>
+                            <td>Block: </td>
+                            <td>{this.state.transaction.data.block?.block_number}</td>
+
+                          </tr>
+                          <tr>
+                            <td>Timestamp:</td>
+                            <td>{toLocaleTimestamp(this.state.transaction.data.createdOn).fromNow()} ({toLocaleTimestamp(this.state.transaction.data.createdOn).format('MMMM-DD-YYYY hh:mm:ss A')})</td>
+                          </tr>
+                          <tr>
+                            <td>From: </td>
+                            <td>{this.state.transaction.data.fromAddress.address}</td>
+
+                          </tr>
+                          <tr>
+                            <td>To: </td>
+                            <td>{this.state.transaction.data.toAddress.address}</td>
+                          </tr>
+                          <tr>
+                            <td>Tokens Transferred:</td>
+                            <td><span className="tr-color-txt">{this.state.transaction.data.raw_transactions_count} transactions </span> and 51 contract internal transactions in this transaction</td>
+
+                          </tr>
+                          <tr>
+                            <td>Value:</td>
+                            <td><span className="tr-color-txt"> <AddressLink value={this.state.transaction.data.miner?.address || ''} type="address" /> </span> {this.state.transaction.data.miner?.label && `(${this.state.transaction.data.miner?.label})`} in 14 secs</td>
+
+                          </tr>
+                          <tr>
+                            <td>Transaction Fee:</td>
+                            <td>2.36648154845164884845 ES (2+0.3565451645884654)</td>
+
+                          </tr>
+                          <tr>
+                            <td>Gas Limit:</td>
+                            <td>{this.state.transaction.data.gas_used}</td>
+                          </tr>
+
+                          <tr>
+                            <td>Gas Used by Transaction: </td>
+                            <td>{this.state.transaction.data.gas_limit}</td>
+                          </tr>
+
+                          <tr>
+                            <td>Gas Price:</td>
+                            <td>{this.state.transaction.data.size} bytes</td>
+                          </tr>
+
+                          <tr>
+                            <td>Nonce:</td>
+                            <td>{this.state.transaction.data.nonce} (99.91%)</td>
+                          </tr>
+
+                          <tr>
+                            <td>Input Data:</td>
+                            <td>{this.state.transaction.data.data}</td>
+                          </tr>
+
+                        </thead>
+                        :
+                        <tr>
+                          <td colSpan="2">No Block</td>
+                        </tr>
+                      }
+                    </table>
+
+                  </div>
+                </Tab>
+                {/* <Tab eventKey="comments" title`="Comments">
+                  <Row>
+                    <Col sm={2}>
+                      <img className='comm-profile-Img' src={Images.path.imgProfile} alt='profile' />
+                    </Col>
+                    <Col sm={10}>
+                      <textarea className='comm-field' type="text" id="text" name="text" placeholder="Comments" />
+                      <div className="btn-flex-right">
+                        <button className="submit-btn-comm">Submit</button>
+                      </div>
+                    </Col>
+                  </Row>
+                  <div className="public-container">
+                    <div className="flex-user-comm">
+                      <img className='comm-user-Img' src={Images.path.imgProfile} alt='profile' />
+                      <div>
+                        <h6>Ravindra Jadeja</h6>
+                        <p className="user-para">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout</p>
+                      </div>
+                    </div>
+
+                    <div className="flex-user-comm">
+                      <img className='comm-user-Img' src={Images.path.imgProfile} alt='profile' />
+                      <div>
+                        <h6>Ravindra Jadeja</h6>
+                        <p className="user-para">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout</p>
+                      </div>
+                    </div>
+                  </div>
+                </Tab> */}
+              </Tabs>
+              <Snackbar ref={this.snackbarRef} />
+            </Container>
+          </div>
+        </div>
       </div>
+
     );
 
   }
 }
 
 
-export default Transaction;
+export default Transaction; 

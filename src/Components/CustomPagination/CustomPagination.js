@@ -6,6 +6,12 @@ export default function CustomPagination(props)  {
       props.handleClick(0,e.target.value,this);
     }
 
+    function handleClick(pageNo,length = 10,e){
+      let start = 0;
+      if(pageNo) start = pageNo * length;
+      props.handleClick(start,length);
+    }
+
     return <div>
       <div>
         <span>Show Result</span>
@@ -19,14 +25,14 @@ export default function CustomPagination(props)  {
       <div>
         <button 
           type="button" 
-          onClick={props.handleClick.bind(this,0,undefined)} 
+          onClick={handleClick.bind(this,0,undefined)} 
           disabled={props.prevPage < 0}
           >
             First
           </button>
         <button 
           type="button" 
-          onClick={props.handleClick.bind(this,props.prevPage,undefined)} 
+          onClick={handleClick.bind(this,props.prevPage,undefined)} 
           disabled={props.prevPage < 0}
           >
             Previous
@@ -36,14 +42,14 @@ export default function CustomPagination(props)  {
           </span>
         <button 
           type="button" 
-          onClick={props.handleClick.bind(this,props.nextPage,undefined)} 
+          onClick={handleClick.bind(this,props.nextPage,undefined)} 
           disabled={props.currentPage === props.totalPages}
           >
             Next
           </button>
         <button 
           type="button" 
-          onClick={props.handleClick.bind(this,props.totalPages,undefined)} 
+          onClick={handleClick.bind(this,props.totalPages,undefined)} 
           disabled={props.currentPage === props.totalPages}
           >
             Last

@@ -69,9 +69,6 @@ class BlockPage extends Component {
           <h2 className="es-main-head es-main-head-inner">Blocks #{this.state.blockNumber}</h2>
         </div>
         <div className="wrapper-container">
-          {/* <div className="notif-txt">
-                        Blocks #102587
-                    </div> */}
           <div className="BlockPage-detail">
             <Container>
               <Tabs defaultActiveKey="overview" id="uncontrolled-tab-example">
