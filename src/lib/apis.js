@@ -6,5 +6,7 @@ const ajax = async url => {
 
 export default class Apis {
   static fetchBlocks = (start = 0,length = 10) => ajax(`${baseUrl}/block/?start=${start}&length=${length}`);
+  static fetchBlock = (blockNumber) => ajax(`${baseUrl}/block/${blockNumber}`);
   static fetchTransactions = (start = 0,length = 10) => ajax(`${baseUrl}/transaction/?start=${start}&length=${length}`);
+  static fetchTransaction = (transactionNumber) => ajax(`${baseUrl}/transaction/${transactionNumber}`);
 }

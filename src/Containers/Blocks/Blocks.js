@@ -9,8 +9,12 @@ import Apis from '../../lib/apis';
 import AddressLink from '../../Components/AddressLink/AddressLink';
 import * as moment from 'moment';
 import CustomPagination from '../../Components/CustomPagination/CustomPagination';
+import { Snackbar } from '../../Components/Snackbar/Snackbar';
+import { toLocaleTimestamp } from '../../lib/parsers';
 
 class Blocks extends Component {
+  snackbarRef = React.createRef();
+
     constructor(props) {
         super(props);
         this.state = {
@@ -29,28 +33,23 @@ class Blocks extends Component {
       this.fetchBlocks(0);
     }
 
-    componentDidUpdate(){
-
-    }
-
-    async fetchBlocks(i,e){
+    async fetchBlocks(pageNo,length = 10,e){
       try {
-        console.log('calling page number',i);
-        let pageNo = 0;
-        if(i) pageNo = i * 10;
-        const res = await Apis.fetchBlocks(pageNo);
-        console.log('res',res,i)
-        this.setState({
-          blocks: {
-            data: res.data,
-            currentPage: Number(res.currentPage),
-            totalPages: res.totalPages,
-            isLoading: false
-          }
-        });
+        let start = 0;
+        if(pageNo) start = pageNo * length;
+        const res = await Apis.fetchBlocks(start,length);
+        if(res)
+          this.setState({
+            blocks: {
+              data: res.data,
+              currentPage: Number(res.currentPage),
+              totalPages: res.totalPages,
+              isLoading: false
+            }
+          });
       } catch (e) {
         console.log(e);
-        this.snackbarRef.current.openSnackBar(e.message);
+        // this.openSnackBar(e.message);
         this.setState({
           blocks: {
             data: [],
@@ -58,6 +57,10 @@ class Blocks extends Component {
           }
         });
       }
+    }
+
+    openSnackBar(message){
+      this.snackbarRef.current.openSnackBar(message);
     }
 
 
@@ -94,7 +97,7 @@ class Blocks extends Component {
                               <td className="tr-color-txt">
                                 <AddressLink value={block.block_number} type="block"/>
                               </td>
-                              <td>{moment(moment(block.createdOn).toDate()).fromNow()}</td>
+                              <td>{toLocaleTimestamp(block.createdOn).fromNow()}</td>
                               <td className="tr-color-txt">
                                 <Link to={{
                                     pathname:'block'+'/'+block.block_number,
@@ -122,6 +125,7 @@ class Blocks extends Component {
                         nextPage={this.state.blocks.currentPage + 1}
                         totalPages={this.state.blocks.totalPages}
                       />
+                      <Snackbar ref={this.snackbarRef} />
                 </Container>
             </div>
         );

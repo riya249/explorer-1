@@ -7,6 +7,7 @@ import Navbar from '../../Components/Navbar/Navbar';
 import Apis from '../../lib/apis';
 import { Snackbar } from '../../Components/Snackbar/Snackbar';
 import AddressLink from '../../Components/AddressLink/AddressLink';
+import { Link } from 'react-router-dom';
 
 
 // const routes = [
@@ -75,9 +76,10 @@ class Homepage extends Component {
   async fetchTransactions() {
     try {
       console.log('await Apis.fetchTransactions(0,3)', await Apis.fetchTransactions(0, 3));
+      const res = await Apis.fetchTransactions(0, 3);
       this.setState({
         transactions: {
-          data: await Apis.fetchTransactions(0, 3),
+          data: res.data, 
           isLoading: false
         }
       });
@@ -193,7 +195,7 @@ class Homepage extends Component {
                   </tr>
                 </table>
                 <div className="border-era-two">
-                  <button className="era-view-btn"><a href="/bunch" className="era-link">View all Bunch</a></button>
+                  <button className="era-view-btn"><Link to="/bunch" className="era-link">View all Bunch</Link></button>
                 </div>
               </Col>
 
@@ -223,7 +225,7 @@ class Homepage extends Component {
                   }
                 </table>
                 <div className="border-era-two">
-                  <button className="era-view-btn"><a href="/blocks" className="era-link">View all Blocks</a></button>
+                  <button className="era-view-btn"><Link to="/blocks" className="era-link">View all Blocks</Link></button>
                 </div>
               </Col>
 
@@ -255,7 +257,7 @@ class Homepage extends Component {
 
                 </table>
                 <div className="border-era-two">
-                  <button className="era-view-btn"><a href="/transaction" className="era-link">View all Transactions</a></button>
+                  <button className="era-view-btn"><Link to="/txs" className="era-link">View all Transactions</Link></button>
                 </div>
               </Col>
             </Row>

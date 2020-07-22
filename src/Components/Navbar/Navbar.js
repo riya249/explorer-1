@@ -22,40 +22,40 @@ this.setState({color: 'transparent'})
 render() {
 return (
 <div className="header-bgd-color">
-   <nav class="mb-1 navbar navbar-expand-lg text-white fixed-top" style={{backgroundColor: this.state.color}}>
-      <a class="navbar-brand" href="#"> <img className='eslogo-Img'  src={Images.path.esgreylogo} /></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4"
+   <nav className="mb-1 navbar navbar-expand-lg text-white fixed-top" style={{backgroundColor: this.state.color}}>
+      <Link className="navbar-brand" to="/"> <img className='eslogo-Img' alt="Logo"  src={Images.path.esgreylogo} /></Link>
+      <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4"
          aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"><i class="fa fa-bars" aria-hidden="true"></i></span>
+      <span className="navbar-toggler-icon"><i className="fa fa-bars" aria-hidden="true"></i></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
-         <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-               <a class="nav-link" href="#">
+      <div className="collapse navbar-collapse" id="navbarSupportedContent-4">
+         <ul className="navbar-nav ml-auto">
+            <li className="nav-item active">
+               <Link className="nav-link" to="/">
                HOME
-               <span class="sr-only">(current)</span>
-               </a>
+               <span className="sr-only">(current)</span>
+               </Link>
             </li>
-            <li class="nav-item active">
-               <a class="nav-link" href="/dashboard">
+            <li className="nav-item active">
+               <Link className="nav-link" to="/dashboard">
                DASHBOARD
-               <span class="sr-only">(current)</span>
-               </a>
+               <span className="sr-only">(current)</span>
+               </Link>
             </li>
             
-            <li class="nav-item ">
-               <a class="nav-link" href="/Explore">
+            <li className="nav-item ">
+               <Link className="nav-link" to="/Explore">
                TIMEALLY EXPLORER
-               <span class="sr-only">(current)</span>
-               </a>
+               <span className="sr-only">(current)</span>
+               </Link>
             </li>
-            <li class="nav-item dropdown">
-               <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown"
+            <li className="nav-item dropdown">
+               <Link className="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown"
                   aria-haspopup="true" aria-expanded="false">
                MORE
-               <span class="sr-only">(current)</span></a>
-               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="/calculator">ES Calculator</a>
+               <span className="sr-only">(current)</span></Link>
+               <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <Link className="dropdown-item" to="/calculator">ES Calculator</Link>
              
                </div>
             </li>

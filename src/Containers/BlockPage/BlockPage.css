@@ -34,3 +34,67 @@
 }
 @media (max-width: 768px) {
 }
+/* comments-css**/
+.comm-profile-Img{
+  width: 80px;
+  height: 80px;
+}
+
+textarea{
+  width: 100%;
+  height: 120px;
+}
+
+.submit-btn-comm{
+  width: 80px;
+  height: 30px;
+  background-color: #747FEB;
+  border: 0;
+  color: #ffffff;
+  margin-top: 20px;
+}
+
+.btn-flex-right{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.comm-user-Img{
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  margin-right: 20px;
+}
+.flex-user-comm{
+  display: flex;
+  margin-top: 10px;
+}
+.user-para{
+  color: #1d212475;
+}
+
+/*overview-css*/
+.block-overview tr{
+  border: 1px solid #ddd;
+  padding: 15px;
+}
+
+td{
+padding: 30px;
+padding-top: 5px;
+padding-bottom: 5px;
+}
+
+.block-overview tr:hover {
+    background-color: #ddd;
+    cursor: pointer;
+  }
+
+  table{
+      width: 100%;
+  }
+
+  .tr-color-txt{
+    color: #747FEB;
+    font-size: 14px;
+  }

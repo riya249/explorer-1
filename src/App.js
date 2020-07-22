@@ -26,7 +26,7 @@ function App() {
            <Route exact path="/bunch" component={Bunch} />
            <Route exact path="/blocks" component={Blocks} />
            <Route exact path="/block/:blockNumber" component={BlockPage} />
-           <Route exact path="/tx" component={Transaction} />
+           <Route exact path="/txs" component={Transaction} />
            <Route exact path="/explore" component={TimeallyExplorer} />
            <Route exact path="/dashboard" component={Dashboard} />
            <Route exact path="/calculator" component={EraswapCalculator} />
