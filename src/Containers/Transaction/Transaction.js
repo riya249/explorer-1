@@ -160,7 +160,7 @@ class Transaction extends Component {
 
                   </div>
                 </Tab>
-                {/* <Tab eventKey="comments" title`="Comments">
+                {/* <Tab eventKey="comments" title="Comments">
                   <Row>
                     <Col sm={2}>
                       <img className='comm-profile-Img' src={Images.path.imgProfile} alt='profile' />
