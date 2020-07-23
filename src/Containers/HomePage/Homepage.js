@@ -7,29 +7,11 @@ import Navbar from '../../Components/Navbar/Navbar';
 import Apis from '../../lib/apis';
 import { Snackbar } from '../../Components/Snackbar/Snackbar';
 import AddressLink from '../../Components/AddressLink/AddressLink';
-import { Link } from 'react-router-dom';
-
-
-// const routes = [
-//   {
-//     path: '/',
-//     exact: true,
-//     sidebar: () => <div className="ticket-wrap-para">List your event on BookingDapp by simply, clicking on Create an Event button, and mention all the required information of your event like – the Title, Description, Venue, Date, and Seat Map of your event..</div>,
-//   },
-//   {
-//     path: '/section2',
-//     sidebar: () => <div className="ticket-wrap-para">Once your event is successfully listed, add the number of tickets you are adding for sale, once your event tickets are listed, will connect you with your participants directly, in a P2P mode.</div>,
-
-//   },
-//   {
-//     path: '/section3',
-//     sidebar: () => <div className="ticket-wrap-para">Now, that all the process is completed, you can receive the value you deserve by selling your tickets directly, to the purchaser in the Peer-to-Peer mode, without paying huge cuts or multi-layer middlemen charges</div>,
-
-//   },
-// ]
+import { Link, withRouter, Redirect } from 'react-router-dom';
 
 class Homepage extends Component {
   snackbarRef = React.createRef();
+  search = '';
 
   constructor(props) {
     super(props);
@@ -54,7 +36,6 @@ class Homepage extends Component {
 
   fetchBlocks = async () => {
     try {
-      console.log('await Apis.fetchBlocks(0,3)', await Apis.fetchBlocks(0, 3))
       const res = await Apis.fetchBlocks(0, 3);
       this.setState({
         blocks: {
@@ -64,7 +45,7 @@ class Homepage extends Component {
       });
     } catch (e) {
       console.log(e);
-      // this.snackbarRef.current.openSnackBar(e.message);
+      this.snackbarRef.current.openSnackBar(e.message);
       this.setState({
         blocks: {
           data: [],
@@ -76,7 +57,6 @@ class Homepage extends Component {
 
   fetchTransactions = async() => {
     try {
-      console.log('await Apis.fetchTransactions(0,3)', await Apis.fetchTransactions(0, 3));
       const res = await Apis.fetchTransactions(0, 3);
       this.setState({
         transactions: {
@@ -100,6 +80,25 @@ class Homepage extends Component {
     this.snackbarRef.current.openSnackBar(message);
   }
 
+  handleChange = (e) => {
+    switch (e.target.name) {
+      case 'search':
+        this.search = e.target.value;
+        break;
+      default:
+        break;
+    }
+  }
+
+  handleClick = () => {
+    if(this.search.length === 42)
+      this.props.history.push('/address/'+this.search);
+    else if(this.search.length === 66)
+      this.props.history.push('/tx/'+this.search);
+    else
+      this.props.history.push('/block/'+this.search);
+  }
+
   render() {
     return (
       <div>
@@ -113,8 +112,8 @@ class Homepage extends Component {
 
             <Container>
               <form >
-                <input type="text" placeholder="block, hash, transaction etc.." name="search" className="search-field" />
-                <button className="search-btn"> <img className='search-Img' src={Images.path.search} /></button>
+                <input type="text" placeholder="Block, hash, transaction etc.." name="search" className="search-field" onChange={this.handleChange}/>
+                <button className="search-btn"> <img className='search-Img' src={Images.path.search} onClick={this.handleClick}/></button>
               </form>
             </Container>
           </div>
@@ -146,17 +145,17 @@ class Homepage extends Component {
                     </div>
                     <div className="col-lg-6">
                       <p className="era-head">SAFE GAS PRICE</p>
-                      <p className="era-value text-black">27 Gwel <span className="era-span text-gray">($0.13)</span></p>
+                      <p className="era-value text-black">0 Gwel <span className="era-span text-gray">($0.0)</span></p>
                     </div>
                   </div>
                   <div className="flex-transc border-value row">
                     <div className="col-lg-6">
                       <p className="era-head">DIFFICULTY</p>
-                      <p className="era-value text-black">2,359.39 TH</p>
+                      <p className="era-value text-black">0 TH</p>
                     </div>
                     <div className="col-lg-6">
                       <p className="era-head">HASH RATE</p>
-                      <p className="era-value text-black">190,198.77 GH/s</p>
+                      <p className="era-value text-black">0 GH/s</p>
                     </div>
                   </div>
                 </Col>
@@ -277,4 +276,4 @@ class Homepage extends Component {
 }
 
 
-export default Homepage;
+export default withRouter(Homepage);
