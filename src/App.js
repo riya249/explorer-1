@@ -10,7 +10,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 //Pages
 import Homepage from './Containers/HomePage/Homepage';
 import Footer from './Components/Footer/Footer';
-import Bunch from './Containers/Bunch/Bunch';
+import Bunches from './Containers/Bunches/Bunches';
 import Blocks from './Containers/Blocks/Blocks';
 import BlockPage from './Containers/BlockPage/BlockPage';
 import Transactions from './Containers/Transactions/Transactions';
@@ -18,6 +18,7 @@ import TimeallyExplorer from './Containers/TimeallyExplorer/TimeallyExplorer';
 import Dashboard from './Containers/Dashboard/Dashboard';
 import EraswapCalculator from './Containers/EraswapCalculator/EraswapCalculator';
 import Transaction from './Containers/Transaction/Transaction';
+import Bunch from './Containers/Bunch/Bunch';
 
 function App() {
   return (
@@ -25,7 +26,8 @@ function App() {
     <Router>
         <Switch>
            <Route exact path="/" component={Homepage} />
-           <Route exact path="/bunch" component={Bunch} />
+           <Route exact path="/bunches" component={Bunches} />
+           <Route exact path="/bunch/:bunchIndex" component={Bunch} />
            <Route exact path="/blocks" component={Blocks} />
            <Route exact path="/block/:blockNumber" component={BlockPage} />
            <Route exact path="/txs" component={Transactions} />

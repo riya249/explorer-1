@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 /***
  * props: {
- *  type: tx, address, block
+ *  type: tx, address, block, bunch
  *  value :
  * }
  */

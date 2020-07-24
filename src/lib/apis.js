@@ -9,6 +9,8 @@ export default class Apis {
   static fetchBlock = (blockNumber) => ajax(`${baseUrl}/block/${blockNumber}`);
   static fetchTransactions = (start = 0,length = 10) => ajax(`${baseUrl}/transaction/?start=${start}&length=${length}`);
   static fetchTransaction = (hash) => ajax(`${baseUrl}/transaction/${hash}`);
+  static fetchBunches = (start = 0,length = 10) => ajax(`${baseUrl}/bunch/?start=${start}&length=${length}`);
+  static fetchBunch = (hash) => ajax(`${baseUrl}/bunch/${hash}`);
 
   /********* dashboard apis *********/
   //third party

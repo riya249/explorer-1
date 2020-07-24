@@ -69,7 +69,7 @@ class Transaction extends Component {
       <div>
         <div className='booking-hero-bgd booking-hero-bgd-inner'>
           <Navbar />
-          <h2 className="es-main-head es-main-head-inner">Blocks #{this.state.hash}</h2>
+          <h2 className="es-main-head es-main-head-inner">Transaction #{this.state.hash}</h2>
         </div>
         <div className="wrapper-container">
           <div className="BlockPage-detail">

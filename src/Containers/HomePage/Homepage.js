@@ -8,6 +8,7 @@ import Apis from '../../lib/apis';
 import { Snackbar } from '../../Components/Snackbar/Snackbar';
 import AddressLink from '../../Components/AddressLink/AddressLink';
 import { Link, withRouter, Redirect } from 'react-router-dom';
+import { toLocaleTimestamp } from '../../lib/parsers';
 
 class Homepage extends Component {
   snackbarRef = React.createRef();
@@ -23,7 +24,11 @@ class Homepage extends Component {
       transactions: {
         data: [],
         isLoading: true
-      }
+      },
+      bunches: {
+        data: [],
+        isLoading: true
+      },
     };
 
     this.fetchTransactions = this.fetchTransactions.bind(this);
@@ -32,6 +37,7 @@ class Homepage extends Component {
   componentDidMount() {
     this.fetchBlocks();
     this.fetchTransactions();
+    this.fetchBunches();
   }
 
   fetchBlocks = async () => {
@@ -69,6 +75,27 @@ class Homepage extends Component {
       this.openSnackBar(e.message);
       this.setState({
         transactions: {
+          data: [],
+          isLoading: false
+        }
+      });
+    }
+  }
+
+  fetchBunches = async() => {
+    try {
+      const res = await Apis.fetchBunches(0, 3);
+      this.setState({
+        bunches: {
+          data: res.data, 
+          isLoading: false
+        }
+      });
+    } catch (e) {
+      console.log(e);
+      this.openSnackBar(e.message);
+      this.setState({
+        bunches: {
           data: [],
           isLoading: false
         }
@@ -173,33 +200,33 @@ class Homepage extends Component {
               <Col lg={4}>
                 <div className="border-era">Latest Bunch </div>
                 <table className="era-transaction">
+                  {this.state.bunches.isLoading ? 
                   <tr>
-                    <td className="frst-era">
-                      10301065
-                                            <div className="sub-frst">45 secs ago</div>
-                    </td>
-                    <td>Miner <span className="frst-era">zhizhu.top</span> <div className="sub-frst">45 secs ago</div> </td>
-                    <td><div className="era-no">2.48 ES </div> </td>
+                    <td colSpan="4">Loading...</td>
                   </tr>
-                  <tr>
-                    <td className="frst-era">
-                      10301065
-                                            <div className="sub-frst">45 secs ago</div>
-                    </td>
-                    <td>Miner <span className="frst-era">zhizhu.top</span> <div className="sub-frst">45 secs ago</div> </td>
-                    <td><div className="era-no">2.4854 ES </div> </td>
-                  </tr>
-                  <tr>
-                    <td className="frst-era">
-                      10301065
-                                            <div className="sub-frst">45 secs ago</div>
-                    </td>
-                    <td>Miner <span className="frst-era">zhizhu.top</span> <div className="sub-frst">45 secs ago</div> </td>
-                    <td><div className="era-no">2.48 ES </div> </td>
-                  </tr>
+                :
+                this.state.bunches.data?.length ?
+
+                this.state.bunches.data.map((bunch,i) => 
+                <tr>
+                  <td className="frst-era">
+                    {bunch.bunchIndex}
+                  <div className="sub-frst">{toLocaleTimestamp(bunch.createdOn).fromNow()}</div>
+                  </td>
+                  <td>Informer <span className="frst-era"><AddressLink value={bunch.informer} type="address" shrink={true} /></span> 
+                  {/* <div className="sub-frst">45 secs ago</div>  */}
+                  </td>
+                  <td><div className="era-no">{bunch.bunchDepth} </div> </td>
+                </tr>
+                )
+                :
+                <tr>
+                  <td colSpan="4">No Bunches</td>
+                </tr>
+                }
                 </table>
                 <div className="border-era-two">
-                  <button className="era-view-btn"><Link to="/bunch" className="era-link">View all Bunch</Link></button>
+                  <button className="era-view-btn"><Link to="/bunches" className="era-link">View all Bunch</Link></button>
                 </div>
               </Col>
 

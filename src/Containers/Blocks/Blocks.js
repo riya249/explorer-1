@@ -93,7 +93,7 @@ class Blocks extends Component {
                               <td className="tr-color-txt">
                                 <AddressLink value={block.block_number} type="block"/>
                               </td>
-                              <td>{toLocaleTimestamp(block.createdOn).fromNow()}</td>
+                              <td>{toLocaleTimestamp(block.timestamp).fromNow()}</td>
                               <td className="tr-color-txt">
                                 <Link to={{
                                     pathname:'block'+'/'+block.block_number,
