@@ -210,7 +210,7 @@ class Homepage extends Component {
                 this.state.bunches.data.map((bunch,i) => 
                 <tr>
                   <td className="frst-era">
-                    {bunch.bunchIndex}
+                    <AddressLink value={bunch.bunchIndex} type="bunch"/> 
                   <div className="sub-frst">{toLocaleTimestamp(bunch.createdOn).fromNow()}</div>
                   </td>
                   <td>Informer <span className="frst-era"><AddressLink value={bunch.informer} type="address" shrink={true} /></span> 

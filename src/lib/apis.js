@@ -5,10 +5,12 @@ const ajax = async url => {
 }
 
 export default class Apis {
+  static fetchAddress = (address) => ajax(`${baseUrl}/address/${address}`);
   static fetchBlocks = (start = 0,length = 10) => ajax(`${baseUrl}/block/?start=${start}&length=${length}`);
   static fetchBlock = (blockNumber) => ajax(`${baseUrl}/block/${blockNumber}`);
   static fetchTransactions = (start = 0,length = 10) => ajax(`${baseUrl}/transaction/?start=${start}&length=${length}`);
   static fetchTransaction = (hash) => ajax(`${baseUrl}/transaction/${hash}`);
+  static fetchTransactionsByAddress = (address,limit = 25) => ajax(`${baseUrl}/transaction/address/${address}?limit=${limit}`);
   static fetchBunches = (start = 0,length = 10) => ajax(`${baseUrl}/bunch/?start=${start}&length=${length}`);
   static fetchBunch = (hash) => ajax(`${baseUrl}/bunch/${hash}`);
 

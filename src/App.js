@@ -19,6 +19,7 @@ import Dashboard from './Containers/Dashboard/Dashboard';
 import EraswapCalculator from './Containers/EraswapCalculator/EraswapCalculator';
 import Transaction from './Containers/Transaction/Transaction';
 import Bunch from './Containers/Bunch/Bunch';
+import Address from './Containers/Address/Address';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
     <Router>
         <Switch>
            <Route exact path="/" component={Homepage} />
+           <Route exact path="/address/:address" component={Address} />
            <Route exact path="/bunches" component={Bunches} />
            <Route exact path="/bunch/:bunchIndex" component={Bunch} />
            <Route exact path="/blocks" component={Blocks} />
