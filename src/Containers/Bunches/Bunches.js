@@ -54,40 +54,42 @@ class Bunch extends Component {
 
     render() {
         return (
+         
             <div className="blocks-table">
                <div className='booking-hero-bgd booking-hero-bgd-inner'>
                     <Navbar />
                     <h2 className="es-main-head es-main-head-inner">Bunch</h2>
                  </div>
                 <Container>
-                   
-                    <table className="es-transaction ">
-                      <thead>
-                        <tr>
-                            <th>Bunch Index</th>
-                            <th>Number of Blocks</th>
-                            <th>Number of Transactions</th>
-                            <th>Timestamp</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {this.state.bunches.isLoading ? 
-                        <tr><td colSpan="4">Loading...</td></tr>  
-                        :
-                        this.state.bunches.data.length ?
-                        this.state.bunches.data.map((bunch,i) => <tr>
-                        <td className="tr-color-txt" key={i+1}>
-                            <AddressLink value={bunch.bunchIndex} type="bunch" />
-                            </td>
-                          <td className="tr-color-txt">{bunch.blocksCount}</td>
-                          <td>{bunch.transactionsCount}</td>
-                          <td>{toLocaleTimestamp(bunch.timestamp).format('hh:mm:ss A DD/MM/YYYY')}</td>
-                      </tr>  
-                      )
-                        : <tr><td colSpan="4">No Bunches</td></tr>  
-                      }
-                      </tbody>
-                    </table>
+                    <div className="table-responsive">
+                      <table className="es-transaction table">
+                        <thead>
+                          <tr>
+                              <th>Bunch Index</th>
+                              <th>Number of Blocks</th>
+                              <th>Number of Transactions</th>
+                              <th>Timestamp</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          {this.state.bunches.isLoading ? 
+                          <tr><td colSpan="4">Loading...</td></tr>  
+                          :
+                          this.state.bunches.data.length ?
+                          this.state.bunches.data.map((bunch,i) => <tr>
+                          <td className="tr-color-txt" key={i+1}>
+                              <AddressLink value={bunch.bunchIndex} type="bunch" />
+                              </td>
+                            <td className="tr-color-txt">{bunch.blocksCount}</td>
+                            <td>{bunch.transactionsCount}</td>
+                            <td>{toLocaleTimestamp(bunch.timestamp).format('hh:mm:ss A DD/MM/YYYY')}</td>
+                        </tr>  
+                        )
+                          : <tr><td colSpan="4">No Bunches</td></tr>  
+                        }
+                        </tbody>
+                      </table>
+                    </div>
                     <CustomPagination 
                         handleClick={this.fetchBunches} 
                         currentPage={this.state.bunches.currentPage}
@@ -98,6 +100,7 @@ class Bunch extends Component {
                       <Snackbar ref={this.snackbarRef} />
                 </Container>
             </div>
+
         );
 
     }

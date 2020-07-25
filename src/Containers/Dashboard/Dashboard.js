@@ -1250,7 +1250,7 @@ class Dashboard extends Component {
 
   render() {
     return (
-      <div className="bgd-dash-color">
+      <div className="bgd-dash-color dashboard-box">
         <div className='booking-hero-bgd booking-hero-bgd-inner'>
           <Navbar />
           <h2 className="es-main-head es-main-head-inner">Dashboard</h2>
@@ -1457,7 +1457,42 @@ class Dashboard extends Component {
           </div>
         </div>
 
-        <div className="dash-section-3">
+        <div className="dash-section-4">
+          <Row>
+            <Col lg={6}>
+                  <div className="section4-border tfc-box">
+                    <div className="flex-sect4-box">
+                     <p className="platfrm-txt">All Platform TFC Generated of this month</p>
+                    </div>
+                  </div>
+            </Col>
+            <Col lg={6}>
+                <Row>
+                    <Col lg={6} >
+                        <div className="section4-border charity-box">
+                          <div className="flex-sect4-box">
+                           <p className="platfrm-txt">Charity Pool</p>
+                          </div>
+                        </div>
+                    </Col>
+                    <Col lg={6}>
+                          <div className="section4-border roi-box">
+                            <div className="flex-sect4-box">
+                             <p className="platfrm-txt">ROI</p>
+                            </div>
+                          </div>
+                    </Col>
+                    <Col lg={12}>
+                          <div className="section4-border nrt-box">
+                            <div className="flex-sect4-box">
+                             <p className="platfrm-txt">Last Month Work Pool NRT Utilisation</p>
+                            </div>
+                          </div>
+                    </Col>
+                </Row>
+            </Col>
+          </Row>
+
         </div>
         <div className="dash-section-4">
           <Row>

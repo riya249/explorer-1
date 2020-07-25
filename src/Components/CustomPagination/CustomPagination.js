@@ -12,9 +12,9 @@ export default function CustomPagination(props)  {
       props.handleClick(start,length);
     }
 
-    return <div>
-      <div>
-        <span>Show Result</span>
+    return <div className="cus-pagination row">
+      <div className="col-md-6 mt20">
+        <span className="mr10">Show Result</span>
         <select onChange={handleOnChange}>
           <option value="10">10</option>
           <option value="25">25</option>
@@ -22,33 +22,33 @@ export default function CustomPagination(props)  {
           <option value="100">100</option>
         </select>
       </div>
-      <div>
+      <div className="col-md-6  text-right">
         <button 
-          type="button" 
+          type="button" className="btn mr10 mt10"
           onClick={handleClick.bind(this,0,undefined)} 
           disabled={props.prevPage < 0}
           >
             First
           </button>
         <button 
-          type="button" 
+          type="button" className="btn mr10 mt10"
           onClick={handleClick.bind(this,props.prevPage,undefined)} 
           disabled={props.prevPage < 0}
           >
             Previous
           </button>
-          <span>
+          <span className="mr10 mt10 page-count">
             Page {props.currentPage +1 } of {props.totalPages +1}
           </span>
         <button 
-          type="button" 
+          type="button" className="btn mr10 mt10"
           onClick={handleClick.bind(this,props.nextPage,undefined)} 
           disabled={props.currentPage === props.totalPages}
           >
             Next
           </button>
         <button 
-          type="button" 
+          type="button" className="btn  mt10"
           onClick={handleClick.bind(this,props.totalPages,undefined)} 
           disabled={props.currentPage === props.totalPages}
           >
