@@ -108,3 +108,23 @@ label {
   font-weight: 600;
   font-size: .875rem;
 }
+
+
+.cus-pagination  {
+  font-weight: 600 !important;
+}
+.cus-pagination .page-count{
+  position: relative;
+  top: 8px !important;
+}
+.table thead th, .es-transaction thead th{
+    border-bottom: 1px solid #747feb!important;
+    background: #c9cdf3;
+}
+
+.dashboard-box .tfc-box{
+    min-height: 446px;
+}
+.dashboard-box .charity-box, .dashboard-box .roi-box, .dashboard-box .nrt-box{
+    min-height: 210px;
+}
