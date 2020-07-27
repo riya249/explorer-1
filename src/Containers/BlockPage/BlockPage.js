@@ -8,6 +8,8 @@ import Apis from '../../lib/apis';
 import { toLocaleTimestamp } from '../../lib/parsers';
 import { Snackbar } from '../../Components/Snackbar/Snackbar';
 import AddressLink from '../../Components/AddressLink/AddressLink';
+import { Link } from 'react-router-dom';
+import { ethers } from 'ethers';
 
 
 class BlockPage extends Component {
@@ -56,9 +58,10 @@ class BlockPage extends Component {
     }
   }
 
-  openSnackBar(message){
+  openSnackBar(message) {
     this.snackbarRef.current.openSnackBar(message);
   }
+
 
 
   render() {
@@ -86,36 +89,32 @@ class BlockPage extends Component {
                           </tr>
                           <tr>
                             <td>Timestamp:</td>
-                            <td>{toLocaleTimestamp(this.state.block.data.createdOn).fromNow()} ({toLocaleTimestamp(this.state.block.data.createdOn).format('MMMM-DD-YYYY hh:mm:ss A')})</td>
+                            <td>{toLocaleTimestamp(new Date(this.state.block.data.timestamp).getTime() * 1000).fromNow()} ({toLocaleTimestamp(this.state.block.data.createdOn).format('MMMM-DD-YYYY hh:mm:ss A')})</td>
                           </tr>
                           <tr>
                             <td>Transactions:</td>
-                            <td><span className="tr-color-txt">{this.state.block.data.raw_transactions_count} transactions </span> and 51 contract internal transactions in this block</td>
+                            <td>
+                              <Link to="/txs"><span className="tr-color-txt"> {this.state.block.data.raw_transactions_count} transactions </span></Link> and {this.state.block.data.internal_transactions_count} contract internal transactions in this block</td>
 
                           </tr>
                           <tr>
                             <td>Mined By:</td>
-                            <td><span className="tr-color-txt"> <AddressLink value={this.state.block.data.miner?.address || ''} type="address" /> </span> {this.state.block.data.miner?.label && `(${this.state.block.data.miner?.label})`} in 14 secs</td>
+                            <td><span className="tr-color-txt"> <AddressLink value={this.state.block.data.miner?.address || ''} type="address" /> </span> {this.state.block.data.miner?.label && `(${this.state.block.data.miner?.label})`}</td>
 
                           </tr>
                           <tr>
                             <td>Block Reward:</td>
-                            <td>2.36648154845164884845 ES (2+0.3565451645884654)</td>
+                            <td><i>pending for NRT release...</i></td>
 
                           </tr>
                           <tr>
-                            <td>Uncles Reward:</td>
-                            <td>0</td>
-
-                          </tr>
-                          <tr>
-                            <td>Difficulty</td>
-                            <td>2,332,829,297,798</td>
+                            <td>Transaction Fee</td>
+                            <td>{ethers.utils.formatEther(this.state.block.data.total_txn_fee)} ES</td>
                           </tr>
 
                           <tr>
-                            <td>Total Difficulty: </td>
-                            <td>15,928,285,456,798,756</td>
+                            <td>Average Gas Price: </td>
+                            <td>{ethers.utils.formatEther(this.state.block.data.average_gas_price)} ES</td>
                           </tr>
 
                           <tr>
@@ -125,17 +124,17 @@ class BlockPage extends Component {
 
                           <tr>
                             <td>Gas Used:</td>
-                            <td>12,018,436 (99.91%)</td>
+                            <td>{this.state.block.data.total_gas_used} ({((this.state.block.data.total_gas_used / this.state.block.data.total_gas_limit) * 100).toFixed(2)}%)</td>
                           </tr>
 
                           <tr>
                             <td>Gas Limit:</td>
-                            <td>{this.state.block.data.total_gas_used}</td>
+                            <td>{this.state.block.data.total_gas_limit}</td>
                           </tr>
 
                           <tr>
                             <td>Extra Data:</td>
-                            <td>PPYE-ethermine-eu1-7 (Hex:{this.state.block.data.extra_data})</td>
+                            <td>{this.state.block.data.extra_data}</td>
                           </tr>
 
                           <tr>
@@ -143,16 +142,6 @@ class BlockPage extends Component {
                             <td><span className="tr-color-txt">
                               <AddressLink value={this.state.block.data.parent_hash} type="tx" />
                             </span></td>
-                          </tr>
-
-                          <tr>
-                            <td>Sha3Uncles:</td>
-                            <td>{this.state.block.data.sha3_uncles}</td>
-                          </tr>
-
-                          <tr>
-                            <td>Nonce:</td>
-                            <td>{this.state.block.data.nonce}</td>
                           </tr>
                         </thead>
                         :

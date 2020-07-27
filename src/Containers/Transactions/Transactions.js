@@ -37,6 +37,7 @@ class Transaction extends Component {
   async fetchTransactions(start,length = 10){
     try {
       const res = await Apis.fetchTransactions(start,length);
+      console.log('res',res);
       this.setState({
         transactions: {
           data: res.data,
@@ -93,7 +94,7 @@ class Transaction extends Component {
                   return <tr key={i+1}>
                     <td className="tr-color-txt"><AddressLink value={transaction.txn_hash} type="tx" shrink={true}/></td>
                     <td className="tr-color-txt"><AddressLink value={transaction.block.block_number} type="block"/></td>
-                    <td>{toLocaleTimestamp(transaction.createdOn).fromNow()}</td>
+                    <td>{moment(moment(transaction.createdOn).toDate()).fromNow()}</td>
                     <td>
                       {transaction.fromAddress.label && <Link to={'/'+ transaction.fromAddress.address}>{transaction.fromAddress.label}</Link>}
                       <span className="tr-color-txt">

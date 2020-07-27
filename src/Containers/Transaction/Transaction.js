@@ -59,8 +59,8 @@ class Transaction extends Component {
     }
   }
 
-  openSnackBar(message){
-    this.snackbarRef.current.openSnackBar(message);
+  openSnackBar =(message) => {
+    // this.snackbarRef.current.openSnackBar(message);
   }
 
 
@@ -99,7 +99,7 @@ class Transaction extends Component {
                           </tr>
                           <tr>
                             <td>Timestamp:</td>
-                            <td>{toLocaleTimestamp(this.state.transaction.data.createdOn).fromNow()} ({toLocaleTimestamp(this.state.transaction.data.createdOn).format('MMMM-DD-YYYY hh:mm:ss A')})</td>
+                            <td>{toLocaleTimestamp(this.state.transaction?.block?.timestamp).fromNow()} ({toLocaleTimestamp(this.state.transaction?.block?.timestamp).format('MMMM-DD-YYYY hh:mm:ss A')})</td>
                           </tr>
                           <tr>
                             <td>From: </td>
@@ -153,7 +153,7 @@ class Transaction extends Component {
                         </thead>
                         :
                         <tr>
-                          <td colSpan="2">No Block</td>
+                          <td colSpan="2">No Transaction</td>
                         </tr>
                       }
                     </table>

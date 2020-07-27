@@ -9,6 +9,7 @@ import { Snackbar } from '../../Components/Snackbar/Snackbar';
 import AddressLink from '../../Components/AddressLink/AddressLink';
 import { Link, withRouter, Redirect } from 'react-router-dom';
 import { toLocaleTimestamp } from '../../lib/parsers';
+import { ethers } from 'ethers';
 
 class Homepage extends Component {
   snackbarRef = React.createRef();
@@ -17,6 +18,8 @@ class Homepage extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      esPriceUSDT: 0,
+      esPriceBTC: 0,
       blocks: {
         data: [],
         isLoading: true
@@ -38,6 +41,7 @@ class Homepage extends Component {
     this.fetchBlocks();
     this.fetchTransactions();
     this.fetchBunches();
+    this.fetchESPrice();
   }
 
   fetchBlocks = async () => {
@@ -51,7 +55,7 @@ class Homepage extends Component {
       });
     } catch (e) {
       console.log(e);
-      this.snackbarRef.current.openSnackBar(e.message);
+      // this.openSnackBar(e.message);
       this.setState({
         blocks: {
           data: [],
@@ -61,9 +65,14 @@ class Homepage extends Component {
     }
   }
 
+  openSnackBar = message =>{
+    // this.snackbarRef.current.openSnackBar(message);
+  } 
+
   fetchTransactions = async() => {
     try {
       const res = await Apis.fetchTransactions(0, 3);
+      console.log('res',res)
       this.setState({
         transactions: {
           data: res.data, 
@@ -72,7 +81,7 @@ class Homepage extends Component {
       });
     } catch (e) {
       console.log(e);
-      this.openSnackBar(e.message);
+      // this.openSnackBar(e.message);
       this.setState({
         transactions: {
           data: [],
@@ -85,6 +94,7 @@ class Homepage extends Component {
   fetchBunches = async() => {
     try {
       const res = await Apis.fetchBunches(0, 3);
+      console.log('bunches res',res)
       this.setState({
         bunches: {
           data: res.data, 
@@ -93,7 +103,7 @@ class Homepage extends Component {
       });
     } catch (e) {
       console.log(e);
-      this.openSnackBar(e.message);
+      // this.openSnackBar(e.message);
       this.setState({
         bunches: {
           data: [],
@@ -103,9 +113,21 @@ class Homepage extends Component {
     }
   }
 
-  openSnackBar(message){
-    this.snackbarRef.current.openSnackBar(message);
+  async fetchESPrice(){
+    try{
+      const res = await Apis.getESPrice();
+      console.log('fetchESPrice res',res)
+      if(res?.data?.probitResponse?.data?.length){
+        this.setState({
+          esPriceUSDT: res.data.probitResponse.data[0].last,
+          esPriceBTC: res.data.probitResponse.data[1].last,
+        })
+      }
+    }catch(e){
+      console.log(e)
+    }
   }
+
 
   handleChange = (e) => {
     switch (e.target.name) {
@@ -116,7 +138,7 @@ class Homepage extends Component {
         break;
     }
   }
-
+ 
   handleClick = () => {
     if(this.search.length === 42)
       this.props.history.push('/address/'+this.search);
@@ -124,6 +146,12 @@ class Homepage extends Component {
       this.props.history.push('/tx/'+this.search);
     else
       this.props.history.push('/block/'+this.search);
+  }
+
+  calculatePriceDiff(){
+    if(this.state.esPriceUSDT && this.state.esPriceBTC){
+
+    }
   }
 
   render() {
@@ -154,12 +182,12 @@ class Homepage extends Component {
                     <img src={Images.path.escolor} className='escolor-pic1' />
                     <div>
                       <p className="era-head">ERA SWAP PRICE</p>
-                      <p className="text-black">$229.86 <span className="text-gray">@ 0.02469 BTC</span>  <span className="text-green"> (+0.61%)</span></p>
+                      <p className="text-black">{this.state.esPriceUSDT ? `$ ${this.state.esPriceUSDT}` : 'Loading...' } <span className="text-gray">@ {this.state.esPriceBTC ? `${this.state.esPriceBTC} BTC` : 'Loading...' }</span>  <span className="text-green"> (+0.61%)</span></p>
                     </div>
                   </div>
                   <div className="mt10">
                     <div className="pdl70">
-                      <p className="era-head">ERA SWAP PRICE</p>
+                      <p className="era-head">MARKET VOLUME</p>
                       <p className="text-black">$229.86</p>
                     </div>
                   </div>
@@ -213,7 +241,7 @@ class Homepage extends Component {
                     <AddressLink value={bunch.bunchIndex} type="bunch"/> 
                   <div className="sub-frst">{toLocaleTimestamp(bunch.createdOn).fromNow()}</div>
                   </td>
-                  <td>Informer <span className="frst-era"><AddressLink value={bunch.informer} type="address" shrink={true} /></span> 
+                  <td>Informer <span className="frst-era"><AddressLink value={bunch?.informer.address} type="address" shrink={true} /></span> 
                   {/* <div className="sub-frst">45 secs ago</div>  */}
                   </td>
                   <td><div className="era-no">{bunch.bunchDepth} </div> </td>
@@ -247,8 +275,9 @@ class Homepage extends Component {
                           </td>
                           <td>Miner <span className="frst-era">
                             <AddressLink value={block?.miner?.address} type="address" shrink={true}/>
-                          </span> <div className="sub-frst">45 secs ago</div> </td>
-                          <td><div className="era-no">{block.raw_transactions_count}</div> </td>
+                          </span>
+                           </td>
+                          <td><div className="era-no">{block.provisional_reward ? block.provisional_reward : <i>pending...</i>}</div> </td>
                         </tr>;
                       })
                       :
@@ -275,11 +304,13 @@ class Homepage extends Component {
                               {moment(moment(transaction.createdOn).toDate()).fromNow()}
                             </div>
                           </td>
-                          <td>Miner <span className="frst-era">
-                             <AddressLink value={transaction.block.miner.address} type="address" shrink={true}/>
+                          <td>
+                            <span className="">
+                             From: <AddressLink value={transaction?.fromAddress?.address} type="address" shrink={true}/><br></br>
+                             To: <AddressLink value={transaction?.toAddress?.address} type="address" shrink={true}/>
                             </span>
-                             <div className="sub-frst">45 secs ago</div> </td>
-                          <td><div className="era-no">{transaction.id}</div> </td>
+                             </td>
+                          <td><div className="era-no">{ethers.utils.formatEther(transaction.value)} ES</div> </td>
                         </tr>;
                       })
                       :

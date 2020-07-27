@@ -18,7 +18,7 @@ export default class AddressLink extends React.Component {
 
   shrinkValue(value){
     // return value.substr(0,5) + '...' + value.substr(value.length - 5,value.length);
-    return value.substr(0,14) + '...';
+    return value && value.length && (value.substr(0,14) + '...');
   }
 
   render(){

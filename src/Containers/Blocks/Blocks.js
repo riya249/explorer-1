@@ -9,6 +9,7 @@ import AddressLink from '../../Components/AddressLink/AddressLink';
 import CustomPagination from '../../Components/CustomPagination/CustomPagination';
 import { Snackbar } from '../../Components/Snackbar/Snackbar';
 import { toLocaleTimestamp } from '../../lib/parsers';
+import { ethers } from 'ethers';
 
 class Blocks extends Component {
   snackbarRef = React.createRef();
@@ -34,6 +35,7 @@ class Blocks extends Component {
     async fetchBlocks(start,length = 10){
       try {
         const res = await Apis.fetchBlocks(start,length);
+        console.log('res',res);
         if(res)
           this.setState({
             blocks: {
@@ -74,7 +76,6 @@ class Blocks extends Component {
                             <th>Block</th>
                             <th>Age</th>
                             <th>Txn</th>
-                            <th>Uncles</th>
                             <th>Miner</th>
                             <th>Gas Used</th>
                             <th>Gas Limit</th>
@@ -87,25 +88,24 @@ class Blocks extends Component {
                             <td colspan="9">Loading</td>
                           </tr>
                           :
-                          this.state.blocks.data.length ?
-                          this.state.blocks.data.map((block,i) => {
+                          this.state.blocks?.data?.length ?
+                          this.state.blocks?.data?.map((block,i) => {
                             return <tr key={i+1}>
                               <td className="tr-color-txt">
                                 <AddressLink value={block.block_number} type="block"/>
                               </td>
-                              <td>{toLocaleTimestamp(block.timestamp).fromNow()}</td>
+                              <td>{toLocaleTimestamp(new Date(block.timestamp).getTime() * 1000).fromNow()}</td>
                               <td className="tr-color-txt">
                                 <Link to={{
                                     pathname:'block'+'/'+block.block_number,
                                     state: { value: block.block_number}
                                   }}>{block.raw_transactions_count}</Link>
                               </td>
-                              <td>0</td>
                               <td className="tr-color-txt"><AddressLink value={block.miner.address} type="address"/></td>
                               <td className="underline">{block.total_gas_used} <span className="tr-color-txt">(97.71%)</span></td>
-                              <td>{block.total_gas_limit} </td>
-                              <td>24.83 Gwei</td>
-                              <td>2.28994 ES</td>
+                              <td>{block.total_gas_limit} ES</td>
+                              <td>{ethers.utils.formatEther(block.average_gas_price)} ES</td>
+                              <td>{block.provisional_reward !== null ? block.provisional_reward + 'ES' : <i>pending...</i>}</td>
                           </tr>
                           })
                           :
