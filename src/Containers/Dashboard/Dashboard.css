@@ -66,7 +66,8 @@ font-size: 24px;
 }
 .nrt-head{
     color: #ffffff;
-text-align: center;
+    text-align: center;
+    font-size: 24px;
 }
 
 .supply-txt{
@@ -78,9 +79,10 @@ text-align: center;
 
 .value-dash-txt{
     color: #747FEB;
-    font-weight: 500;
+    font-weight: 600;
     margin-bottom: 0;
-    font-size: 13px;
+    font-size: 15px;
+        margin-top: 6px;
 }
 
 .wrapper-sub-section{
@@ -311,4 +313,22 @@ text-align: center;
     .wrapper-sub-section {
         width: 100%!important;
     }
+}
+.flex-count-box li.count-txt{
+    vertical-align: middle;
+    background-color: #ffffff;
+    border-radius: 5px;
+    margin-right: 10px;
+    font-size: 44px;
+    width: 71px;
+    height: 80px;
+    font-weight: 700;
+    text-align: center;
+    padding-top: 7px;
+}
+.flex-count-box li.count-txt p{
+    color: #fff;
+    font-size: 13px;
+    position: relative;
+    top: 15px;
 }

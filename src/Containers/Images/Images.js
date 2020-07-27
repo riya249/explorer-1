@@ -30,6 +30,8 @@ const path = {
   booklogo: require("../../assets/Images/booklogo.png"),
   charitylogo: require("../../assets/Images/charitydapp.png"),
   kycdapplogo: require("../../assets/Images/kycdapp.png"),
+  networklogo: require("../../assets/Images/network.png"),
+  guarantor: require("../../assets/Images/guarantor.png"),
 
   usecasetime: require("../../assets/Images/usecases/timeswappers.png"),
   usecaseswapperswall: require("../../assets/Images/usecases/swapperswall.png"),

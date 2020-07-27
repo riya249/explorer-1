@@ -94,7 +94,7 @@ class BlockPage extends Component {
 
                           </tr>
                           <tr>
-                            <td data-toggle="tooltip" data-placement="top" title="The Address of the Validator who sealed this Block">Mined By:</td>
+                            <td data-toggle="tooltip" data-placement="top" title="The Address of the Validator who sealed this Block">Sealed By:</td>
                             <td><span className="tr-color-txt"> <AddressLink value={this.state.block.data.miner?.address || ''} type="address" /> </span> {this.state.block.data.miner?.label && `(${this.state.block.data.miner?.label})`} in 14 secs</td>
 
                           </tr>

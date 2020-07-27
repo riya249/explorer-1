@@ -75,7 +75,7 @@ class Blocks extends Component {
                             <th data-toggle="tooltip" data-placement="top" title="Age is the Age of this Block when it was mined">Age</th>
                             <th data-toggle="tooltip" data-placement="top" title="">Transaction</th>
                             <th data-toggle="tooltip" data-placement="top" title="">Uncles</th>
-                            <th data-toggle="tooltip" data-placement="top" title="The validator who authors a Block on Era Swap Network">Miner</th>
+                            <th data-toggle="tooltip" data-placement="top" title="The validator who authors a Block on Era Swap Network">Sealer</th>
                             <th data-toggle="tooltip" data-placement="top" title="Gas used is the amount of Computation Power utilized in the Block">Gas Used</th>
                             <th data-toggle="tooltip" data-placement="top" title="Gas Limit is the maximum amount of computation that can happen in this Block">Gas Limit</th>
                             <th data-toggle="tooltip" data-placement="top" title="The average gas price is typically on the order of about 20 ESMETER (or 0.00000002 ES), but can increase during times of high network traffic as there are more transactions competing to be included in the next block">Average Gas Price</th>

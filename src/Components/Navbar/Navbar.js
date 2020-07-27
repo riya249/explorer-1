@@ -54,7 +54,7 @@ return (
                   aria-haspopup="true" aria-expanded="false">
                MORE
                <span className="sr-only">(current)</span></Link>
-               <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+               <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                   <Link className="dropdown-item" to="/calculator">ES Calculator</Link>
                   <Link className="dropdown-item" to="/Nrtmanager">NRT Manager</Link>
                    <Link className="dropdown-item" to="/Validatorstakings">Validator Stakings</Link>

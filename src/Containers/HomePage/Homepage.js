@@ -197,109 +197,41 @@ class Homepage extends Component {
           </Container>
 
 
-          <Container>
-            <Row className="mt40">
-                <Col lg={12}>
-                   <div className="second-section-es">
-                        <div className="col-lg-12 text-center">
-                              <h5 class="purple-text">ES METER (EM)  & ES NANOMETER (nEM)</h5>
-                        </div>
-                        <div className="table-responsive mt20">
-                          <table className="table table-bordered white-table">
-                              <tr>
-                                  <th data-toggle="tooltip" data-placement="top" title="">ES Unit</th>
-                                  <th data-toggle="tooltip" data-placement="top" title="">Symbol</th>
-                                  <th data-toggle="tooltip" data-placement="top" title="">Era Swap (ES) </th>
-                                  <th data-toggle="tooltip" data-placement="top" title="">ES Meter (EM)</th>
-                                  <th data-toggle="tooltip" data-placement="top" title="">ES Nano Meter (nEM)</th>
-                                </tr>
-
-                                <tr>
-                                   <td>1 ES </td>
-                                   <td>(ES) </td>
-                                   <td>1</td> 
-                                   <td>10<sup>9</sup></td>
-                                   <td>10<sup>18</sup></td>
-                                </tr>
-                                <tr>
-                                   <td>1 ES TonMeter  </td>
-                                   <td>(tEM)</td>
-                                   <td>10<sup>-3</sup></td> 
-                                   <td>10<sup>6</sup></td>
-                                   <td>10<sup>15</sup></td>
-                                </tr>
-                                <tr>
-                                   <td>1 ES KiloMeter</td>
-                                   <td>(kEM)</td>
-                                   <td>10<sup>-6</sup></td> 
-                                   <td>10<sup>3</sup></td>
-                                   <td>10<sup>12</sup></td>
-                                </tr>
-                                <tr>
-                                   <td>1 ES Meter </td>
-                                   <td>(EM) </td>
-                                   <td>10<sup>-9</sup></td>  
-                                   <td>1</td>
-                                   <td>10<sup>9</sup></td>
-                                </tr>
-                                <tr>
-                                   <td>1 ES MilliMeter </td>
-                                   <td>(mEM) </td>
-                                    <td>10<sup>-12</sup></td> 
-                                   <td>10<sup>-3</sup></td>
-                                   <td>10<sup>6</sup></td>
-                                </tr>
-                                <tr>
-                                   <td>1 ES MicroMeter</td>
-                                   <td>(µEM)</td>
-                                   <td>10<sup>-15</sup></td> 
-                                   <td>10<sup>-6</sup></td>
-                                   <td>10<sup>3</sup></td>
-                                </tr>
-                                 <tr>
-                                    <td>1 ES NanoMeter </td>
-                                    <td>(nEM) </td>
-                                    <td>10<sup>-18</sup></td> 
-                                    <td>10<sup>-9</sup></td>
-                                    <td>1</td>
-                                </tr>
-                          </table>
-                         </div>
-                   </div>
-                </Col>
-              </Row>
-          </Container>
+          
 
           <Container>
             <Row className="mt40">
               <Col lg={4}>
                 <div className="border-era" ><span data-toggle="tooltip" data-placement="top" title="Bunch is the collection of Blocks which is posted on Ethereum">Latest Bunch </span></div>
-                <table className="era-transaction">
-                  {this.state.bunches.isLoading ? 
-                  <tr>
-                    <td colSpan="4">Loading...</td>
-                  </tr>
-                :
-                this.state.bunches.data?.length ?
+                <div className="table-scroll" >
+                      <table className="era-transaction">
+                        {this.state.bunches.isLoading ? 
+                        <tr>
+                          <td colSpan="4">Loading...</td>
+                        </tr>
+                      :
+                      this.state.bunches.data?.length ?
 
-                this.state.bunches.data.map((bunch,i) => 
-                <tr>
-                  <td className="frst-era">
-                    <AddressLink value={bunch.bunchIndex} type="bunch"/> 
-                  <div className="sub-frst">{toLocaleTimestamp(bunch.createdOn).fromNow()}</div>
-                  </td>
-                  <td data-toggle="tooltip" data-placement="top" title="Informer pays the gas fee to post the Bunch Roots to Ethereum">Informer <span className="frst-era"><AddressLink value={bunch.informer} type="address" shrink={true} /></span> 
-                  {/* <div className="sub-frst">45 secs ago</div>  */}
-                  </td>
-                  <td><div className="era-no">{bunch.bunchDepth} </div> </td>
-                </tr>
-                )
-                :
-                <tr>
-                  <td colSpan="4">No Bunches</td>
-                </tr>
-                }
-                </table>
+                      this.state.bunches.data.map((bunch,i) => 
+                      <tr>
+                        <td className="frst-era">
+                          <AddressLink value={bunch.bunchIndex} type="bunch"/> 
+                        <div className="sub-frst">{toLocaleTimestamp(bunch.createdOn).fromNow()}</div>
+                        </td>
+                        <td data-toggle="tooltip" data-placement="top" title="Informer pays the gas fee to post the Bunch Roots to Ethereum">Informer <span className="frst-era"><AddressLink value={bunch.informer} type="address" shrink={true} /></span> 
+                        {/* <div className="sub-frst">45 secs ago</div>  */}
+                        </td>
+                        <td><div className="era-no">{bunch.bunchDepth} </div> </td>
+                      </tr>
+                      )
+                      :
+                      <tr>
+                        <td colSpan="4">No Bunches</td>
+                      </tr>
+                      }
+                      </table>
+                </div>
+
                 <div className="border-era-two">
                   <button className="era-view-btn"><Link to="/bunches" className="era-link">View all Bunch</Link></button>
                 </div>
@@ -307,29 +239,31 @@ class Homepage extends Component {
 
               <Col lg={4}>
                 <div className="border-era" ><span data-toggle="tooltip" data-placement="top" title="Block is the periodic collection of Transactions happening on Era Swap Network">Latest Blocks </span></div>
-                <table className="era-transaction">
-                  {this.state.blocks?.isLoading ?
-                    'Loading...'
-                    :
-                    this.state.blocks?.data?.length ?
-                      this.state.blocks.data.map((block, i) => {
-                        return <tr key={i + 1}>
-                          <td className="frst-era">
-                            <AddressLink value={block.block_number} type="block" />
-                            <div className="sub-frst">
-                              {moment(moment(block.createdOn).toDate()).fromNow()}
-                            </div>
-                          </td>
-                          <td data-toggle="tooltip" data-placement="top" title="The validator who authors a Block on Era Swap Network">Miner <span className="frst-era">
-                            <AddressLink value={block?.miner?.address} type="address" shrink={true}/>
-                          </span> <div className="sub-frst">45 secs ago</div> </td>
-                          <td><div className="era-no">{block.raw_transactions_count}</div> </td>
-                        </tr>;
-                      })
+                <div className="table-scroll" >
+                  <table className="era-transaction">
+                    {this.state.blocks?.isLoading ?
+                      'Loading...'
                       :
-                      'No Blocks'
-                  }
-                </table>
+                      this.state.blocks?.data?.length ?
+                        this.state.blocks.data.map((block, i) => {
+                          return <tr key={i + 1}>
+                            <td className="frst-era">
+                              <AddressLink value={block.block_number} type="block" />
+                              <div className="sub-frst">
+                                {moment(moment(block.createdOn).toDate()).fromNow()}
+                              </div>
+                            </td>
+                            <td data-toggle="tooltip" data-placement="top" title="The validator who authors a Block on Era Swap Network">Sealer <span className="frst-era">
+                              <AddressLink value={block?.miner?.address} type="address" shrink={true}/>
+                            </span> <div className="sub-frst">45 secs ago</div> </td>
+                            <td><div className="era-no">{block.raw_transactions_count}</div> </td>
+                          </tr>;
+                        })
+                        :
+                        'No Blocks'
+                    }
+                  </table>
+                </div>
                 <div className="border-era-two">
                   <button className="era-view-btn"><Link to="/blocks" className="era-link">View all Blocks</Link></button>
                 </div>
@@ -337,31 +271,33 @@ class Homepage extends Component {
 
               <Col lg={4}>
                 <div className="border-era"><span data-toggle="tooltip" data-placement="top" title="Latest Transactions are the Transactions happening in recent Blocks in chronological orders">Latest Transactions</span></div>
-                <table className="era-transaction">
-                  {this.state.transactions?.isLoading ?
-                    'Loading...'
-                    :
-                    this.state.transactions?.data?.length ?
-                      this.state.transactions.data.map((transaction, i) => {
-                        return <tr key={i + 1}>
-                          <td className="frst-era">
-                            <AddressLink value={transaction.txn_hash} type="tx" shrink={true}/>
-                            <div className="sub-frst">
-                              {moment(moment(transaction.createdOn).toDate()).fromNow()}
-                            </div>
-                          </td>
-                          <td data-toggle="tooltip" data-placement="top" title="The validator who authors a Block on Era Swap Network">Miner <span className="frst-era">
-                             <AddressLink value={transaction.block.miner.address} type="address" shrink={true}/>
-                            </span>
-                             <div className="sub-frst">45 secs ago</div> </td>
-                          <td><div className="era-no">{transaction.id}</div> </td>
-                        </tr>;
-                      })
-                      :
-                      'No Transactions'
-                  }
+                <div className="table-scroll" >
+                    <table className="era-transaction">
+                      {this.state.transactions?.isLoading ?
+                        'Loading...'
+                        :
+                        this.state.transactions?.data?.length ?
+                          this.state.transactions.data.map((transaction, i) => {
+                            return <tr key={i + 1}>
+                              <td className="frst-era">
+                                <AddressLink value={transaction.txn_hash} type="tx" shrink={true}/>
+                                <div className="sub-frst">
+                                  {moment(moment(transaction.createdOn).toDate()).fromNow()}
+                                </div>
+                              </td>
+                              <td data-toggle="tooltip" data-placement="top" title="The validator who authors a Block on Era Swap Network">Sealer <span className="frst-era">
+                                 <AddressLink value={transaction.block.miner.address} type="address" shrink={true}/>
+                                </span>
+                                 <div className="sub-frst">45 secs ago</div> </td>
+                              <td><div className="era-no">{transaction.id}</div> </td>
+                            </tr>;
+                          })
+                          :
+                          'No Transactions'
+                      }
 
-                </table>
+                    </table>
+                </div>
                 <div className="border-era-two">
                   <button className="era-view-btn"><Link to="/txs" className="era-link">View all Transactions</Link></button>
                 </div>
@@ -474,7 +410,7 @@ class Homepage extends Component {
               </Row>
           </Container>
 
-            <Container>
+          <Container>
             <Row>
                 <Col lg={12}>
                     <div className="second-section-es mt40 purpalebg ">
@@ -616,6 +552,79 @@ class Homepage extends Component {
                                    <td>14,114,331 <i class="fa fa-chevron-down" aria-hidden="true"></i></td>
                                 </tr>
                                
+                          </table>
+                         </div>
+                   </div>
+                </Col>
+              </Row>
+          </Container>
+
+          <Container>
+            <Row className="mt40">
+                <Col lg={12}>
+                   <div className="second-section-es">
+                        <div className="col-lg-12 text-center">
+                              <h5 class="purple-text">ES METER (EM)  & ES NANOMETER (nEM)</h5>
+                        </div>
+                        <div className="table-responsive mt20">
+                          <table className="table table-bordered white-table">
+                              <tr>
+                                  <th data-toggle="tooltip" data-placement="top" title="">ES Unit</th>
+                                  <th data-toggle="tooltip" data-placement="top" title="">Symbol</th>
+                                  <th data-toggle="tooltip" data-placement="top" title="">Era Swap (ES) </th>
+                                  <th data-toggle="tooltip" data-placement="top" title="">ES Meter (EM)</th>
+                                  <th data-toggle="tooltip" data-placement="top" title="">ES Nano Meter (nEM)</th>
+                                </tr>
+
+                                <tr>
+                                   <td>1 ES </td>
+                                   <td>(ES) </td>
+                                   <td>1</td> 
+                                   <td>10<sup>9</sup></td>
+                                   <td>10<sup>18</sup></td>
+                                </tr>
+                                <tr>
+                                   <td>1 ES TonMeter  </td>
+                                   <td>(tEM)</td>
+                                   <td>10<sup>-3</sup></td> 
+                                   <td>10<sup>6</sup></td>
+                                   <td>10<sup>15</sup></td>
+                                </tr>
+                                <tr>
+                                   <td>1 ES KiloMeter</td>
+                                   <td>(kEM)</td>
+                                   <td>10<sup>-6</sup></td> 
+                                   <td>10<sup>3</sup></td>
+                                   <td>10<sup>12</sup></td>
+                                </tr>
+                                <tr>
+                                   <td>1 ES Meter </td>
+                                   <td>(EM) </td>
+                                   <td>10<sup>-9</sup></td>  
+                                   <td>1</td>
+                                   <td>10<sup>9</sup></td>
+                                </tr>
+                                <tr>
+                                   <td>1 ES MilliMeter </td>
+                                   <td>(mEM) </td>
+                                    <td>10<sup>-12</sup></td> 
+                                   <td>10<sup>-3</sup></td>
+                                   <td>10<sup>6</sup></td>
+                                </tr>
+                                <tr>
+                                   <td>1 ES MicroMeter</td>
+                                   <td>(µEM)</td>
+                                   <td>10<sup>-15</sup></td> 
+                                   <td>10<sup>-6</sup></td>
+                                   <td>10<sup>3</sup></td>
+                                </tr>
+                                 <tr>
+                                    <td>1 ES NanoMeter </td>
+                                    <td>(nEM) </td>
+                                    <td>10<sup>-18</sup></td> 
+                                    <td>10<sup>-9</sup></td>
+                                    <td>1</td>
+                                </tr>
                           </table>
                          </div>
                    </div>

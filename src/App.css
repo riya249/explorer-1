@@ -261,3 +261,37 @@ label {
 .staking-bg .blue-text{
     color: #12cdf6;
 }
+.table-scroll{
+  height:250px;
+  position: relative;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  border: 1px solid #888e91 !important;
+}
+.table-scroll .era-transaction tr {
+    border-bottom: 1px solid #888e91 !important;
+    border: none;
+}
+.table thead th, .es-transaction thead th {
+    border-bottom: 1px solid #747feb!important;
+    background: #c9cdf3!important;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}

@@ -40,35 +40,35 @@ class TimeallyExplorer extends Component {
                             </tr>
                             <tr>
                                 <td>0x3c93616a08b29b978c5a18becfe82f3460303135</td>
-                                <td>1 Year</td>
+                                <td>1 LT</td>
                                 <td>7804.97</td>
                                 <td>Reward Staking</td>
                                 <td>6/16/2020, 4:59:13 PM </td>
                             </tr>
                             <tr>
                                 <td>0x3c93616a08b29b978c5a18becfe82f3460303135</td>
-                                <td>1 Year</td>
+                                <td>1 LT</td>
                                 <td>7804.97</td>
                                 <td>Reward Staking</td>
                                 <td>6/16/2020, 4:59:13 PM </td>
                             </tr>
                             <tr>
                                 <td>0x3c93616a08b29b978c5a18becfe82f3460303135</td>
-                                <td>1 Year</td>
+                                <td>1 LT</td>
                                 <td>7804.97</td>
                                 <td>Reward Staking</td>
                                 <td>6/16/2020, 4:59:13 PM </td>
                             </tr>
                             <tr>
                                 <td>0x3c93616a08b29b978c5a18becfe82f3460303135</td>
-                                <td>1 Year</td>
+                                <td>1 LT</td>
                                 <td>7804.97</td>
                                 <td>Reward Staking</td>
                                 <td>6/16/2020, 4:59:13 PM </td>
                             </tr>
                             <tr>
                                 <td>0x3c93616a08b29b978c5a18becfe82f3460303135</td>
-                                <td>1 Year</td>
+                                <td>1 LT</td>
                                 <td>7804.97</td>
                                 <td>Reward Staking</td>
                                 <td>6/16/2020, 4:59:13 PM </td>
