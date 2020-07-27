@@ -1,4 +1,4 @@
-const { Contract } = require("ethers");
+const { Contract } = require('ethers');
 const provider = require('./Provider');
 
 const _abi = [
@@ -415,6 +415,7 @@ const _abi = [
   },
 ];
 
-const stakingManager = stakingAddress => new Contract(stakingAddress,_abi,provider);
+const stakingManager = (stakingAddress) =>
+  new Contract(stakingAddress, _abi, provider);
 
-module.exports = { stakingManager }; 
+module.exports = { stakingManager };

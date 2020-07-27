@@ -1,5 +1,5 @@
-const { ethers, Contract } = require("ethers");
-const { timeAllyAddress } = require("../config/config");
+const { ethers, Contract } = require('ethers');
+const { timeAllyAddress } = require('../config/config');
 const provider = require('./Provider');
 
 const _abi = [
@@ -320,6 +320,6 @@ const _abi = [
   },
 ];
 
-const timeAllyManager =  new Contract(timeAllyAddress, _abi, provider);
+const timeAllyManager = new Contract(timeAllyAddress, _abi, provider);
 
 module.exports = timeAllyManager;

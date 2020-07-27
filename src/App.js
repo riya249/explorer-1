@@ -1,10 +1,6 @@
 import React from 'react';
 import './App.css';
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch
-} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 //Pages
@@ -22,30 +18,26 @@ import Bunch from './Containers/Bunch/Bunch';
 import Address from './Containers/Address/Address';
 import { ethers } from 'ethers';
 
-
-
 function App() {
-  
   return (
     <div className="App">
-    <Router>
+      <Router>
         <Switch>
-           <Route exact path="/" component={Homepage} />
-           <Route exact path="/address/:address" component={Address} />
-           <Route exact path="/bunches" component={Bunches} />
-           <Route exact path="/bunch/:bunchIndex" component={Bunch} />
-           <Route exact path="/blocks" component={Blocks} />
-           <Route exact path="/block/:blockNumber" component={BlockPage} />
-           <Route exact path="/txs" component={Transactions} />
-           <Route exact path="/tx/:hash" component={Transaction} />
-           <Route exact path="/explore" component={TimeallyExplorer} />
-           <Route exact path="/dashboard" component={Dashboard} />
-           <Route exact path="/calculator" component={EraswapCalculator} />
-         </Switch>
-     </Router>
-     <Footer/>
+          <Route exact path="/" component={Homepage} />
+          <Route exact path="/address/:address" component={Address} />
+          <Route exact path="/bunches" component={Bunches} />
+          <Route exact path="/bunch/:bunchIndex" component={Bunch} />
+          <Route exact path="/blocks" component={Blocks} />
+          <Route exact path="/block/:blockNumber" component={BlockPage} />
+          <Route exact path="/txs" component={Transactions} />
+          <Route exact path="/tx/:hash" component={Transaction} />
+          <Route exact path="/explore" component={TimeallyExplorer} />
+          <Route exact path="/dashboard" component={Dashboard} />
+          <Route exact path="/calculator" component={EraswapCalculator} />
+        </Switch>
+      </Router>
+      <Footer />
     </div>
-    
   );
 }
 

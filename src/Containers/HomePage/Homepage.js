@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Col, Button, Container, Row } from 'react-bootstrap';
 import * as moment from 'moment';
-import './Homepage.css'
+import './Homepage.css';
 import Images from '../Images/Images';
 import Navbar from '../../Components/Navbar/Navbar';
 import Apis from '../../lib/apis';
@@ -22,15 +22,15 @@ class Homepage extends Component {
       esPriceBTC: 0,
       blocks: {
         data: [],
-        isLoading: true
+        isLoading: true,
       },
       transactions: {
         data: [],
-        isLoading: true
+        isLoading: true,
       },
       bunches: {
         data: [],
-        isLoading: true
+        isLoading: true,
       },
     };
 
@@ -50,8 +50,8 @@ class Homepage extends Component {
       this.setState({
         blocks: {
           data: res.data,
-          isLoading: false
-        }
+          isLoading: false,
+        },
       });
     } catch (e) {
       console.log(e);
@@ -59,25 +59,25 @@ class Homepage extends Component {
       this.setState({
         blocks: {
           data: [],
-          isLoading: false
-        }
+          isLoading: false,
+        },
       });
     }
-  }
+  };
 
-  openSnackBar = message =>{
+  openSnackBar = (message) => {
     // this.snackbarRef.current.openSnackBar(message);
-  } 
+  };
 
-  fetchTransactions = async() => {
+  fetchTransactions = async () => {
     try {
       const res = await Apis.fetchTransactions(0, 3);
-      console.log('res',res)
+      console.log('res', res);
       this.setState({
         transactions: {
-          data: res.data, 
-          isLoading: false
-        }
+          data: res.data,
+          isLoading: false,
+        },
       });
     } catch (e) {
       console.log(e);
@@ -85,21 +85,21 @@ class Homepage extends Component {
       this.setState({
         transactions: {
           data: [],
-          isLoading: false
-        }
+          isLoading: false,
+        },
       });
     }
-  }
+  };
 
-  fetchBunches = async() => {
+  fetchBunches = async () => {
     try {
       const res = await Apis.fetchBunches(0, 3);
-      console.log('bunches res',res)
+      console.log('bunches res', res);
       this.setState({
         bunches: {
-          data: res.data, 
-          isLoading: false
-        }
+          data: res.data,
+          isLoading: false,
+        },
       });
     } catch (e) {
       console.log(e);
@@ -107,27 +107,26 @@ class Homepage extends Component {
       this.setState({
         bunches: {
           data: [],
-          isLoading: false
-        }
+          isLoading: false,
+        },
       });
     }
-  }
+  };
 
-  async fetchESPrice(){
-    try{
+  async fetchESPrice() {
+    try {
       const res = await Apis.getESPrice();
-      console.log('fetchESPrice res',res)
-      if(res?.data?.probitResponse?.data?.length){
+      console.log('fetchESPrice res', res);
+      if (res?.data?.probitResponse?.data?.length) {
         this.setState({
           esPriceUSDT: res.data.probitResponse.data[0].last,
           esPriceBTC: res.data.probitResponse.data[1].last,
-        })
+        });
       }
-    }catch(e){
-      console.log(e)
+    } catch (e) {
+      console.log(e);
     }
   }
-
 
   handleChange = (e) => {
     switch (e.target.name) {
@@ -137,38 +136,47 @@ class Homepage extends Component {
       default:
         break;
     }
-  }
- 
+  };
+
   handleClick = () => {
-    if(this.search.length === 42)
-      this.props.history.push('/address/'+this.search);
-    else if(this.search.length === 66)
-      this.props.history.push('/tx/'+this.search);
-    else
-      this.props.history.push('/block/'+this.search);
-  }
+    if (this.search.length === 42)
+      this.props.history.push('/address/' + this.search);
+    else if (this.search.length === 66)
+      this.props.history.push('/tx/' + this.search);
+    else this.props.history.push('/block/' + this.search);
+  };
 
-  calculatePriceDiff(){
-    if(this.state.esPriceUSDT && this.state.esPriceBTC){
-
+  calculatePriceDiff() {
+    if (this.state.esPriceUSDT && this.state.esPriceBTC) {
     }
   }
 
   render() {
     return (
       <div>
-        <div className='booking-hero-bgd'>
+        <div className="booking-hero-bgd">
           <Navbar />
           <h2 className="es-main-head">Era Swap Blockchain Explorer</h2>
         </div>
         <div className="esexplorer-Container">
-
           <div className="home-search-container">
-
             <Container>
-              <form >
-                <input type="text" placeholder="Block, hash, transaction etc.." name="search" className="search-field" onChange={this.handleChange}/>
-                <button className="search-btn"> <img className='search-Img' src={Images.path.search} onClick={this.handleClick}/></button>
+              <form>
+                <input
+                  type="text"
+                  placeholder="Block, hash, transaction etc.."
+                  name="search"
+                  className="search-field"
+                  onChange={this.handleChange}
+                />
+                <button className="search-btn">
+                  {' '}
+                  <img
+                    className="search-Img"
+                    src={Images.path.search}
+                    onClick={this.handleClick}
+                  />
+                </button>
               </form>
             </Container>
           </div>
@@ -179,10 +187,21 @@ class Homepage extends Component {
               <Row>
                 <Col lg={4} className="border-right">
                   <div className="flex-eraswap">
-                    <img src={Images.path.escolor} className='escolor-pic1' />
+                    <img src={Images.path.escolor} className="escolor-pic1" />
                     <div>
                       <p className="era-head">ERA SWAP PRICE</p>
-                      <p className="text-black">{this.state.esPriceUSDT ? `$ ${this.state.esPriceUSDT}` : 'Loading...' } <span className="text-gray">@ {this.state.esPriceBTC ? `${this.state.esPriceBTC} BTC` : 'Loading...' }</span>  <span className="text-green"> (+0.61%)</span></p>
+                      <p className="text-black">
+                        {this.state.esPriceUSDT
+                          ? `$ ${this.state.esPriceUSDT}`
+                          : 'Loading...'}{' '}
+                        <span className="text-gray">
+                          @{' '}
+                          {this.state.esPriceBTC
+                            ? `${this.state.esPriceBTC} BTC`
+                            : 'Loading...'}
+                        </span>{' '}
+                        <span className="text-green"> (+0.61%)</span>
+                      </p>
                     </div>
                   </div>
                   <div className="mt10">
@@ -196,11 +215,17 @@ class Homepage extends Component {
                   <div className="flex-transc row">
                     <div className="col-lg-6">
                       <p className="era-head">TRANSACTIONS </p>
-                      <p className="era-value text-black">738.81 M <span className="era-span text-gray">(12.1 TPS)</span></p>
+                      <p className="era-value text-black">
+                        738.81 M{' '}
+                        <span className="era-span text-gray">(12.1 TPS)</span>
+                      </p>
                     </div>
                     <div className="col-lg-6">
                       <p className="era-head">SAFE GAS PRICE</p>
-                      <p className="era-value text-black">0 Gwel <span className="era-span text-gray">($0.0)</span></p>
+                      <p className="era-value text-black">
+                        0 Gwel{' '}
+                        <span className="era-span text-gray">($0.0)</span>
+                      </p>
                     </div>
                   </div>
                   <div className="flex-transc border-value row">
@@ -216,7 +241,9 @@ class Homepage extends Component {
                 </Col>
                 <Col lg={4}>
                   <div>
-                    <p className="era-head">ERA SWAP TRANSACTION HISTORY IN 14 DAYS</p>
+                    <p className="era-head">
+                      ERA SWAP TRANSACTION HISTORY IN 14 DAYS
+                    </p>
                   </div>
                 </Col>
               </Row>
@@ -228,98 +255,157 @@ class Homepage extends Component {
               <Col lg={4}>
                 <div className="border-era">Latest Bunch </div>
                 <table className="era-transaction">
-                  {this.state.bunches.isLoading ? 
-                  <tr>
-                    <td colSpan="4">Loading...</td>
-                  </tr>
-                :
-                this.state.bunches.data?.length ?
-
-                this.state.bunches.data.map((bunch,i) => 
-                <tr>
-                  <td className="frst-era">
-                    <AddressLink value={bunch.bunchIndex} type="bunch"/> 
-                  <div className="sub-frst">{toLocaleTimestamp(bunch.createdOn).fromNow()}</div>
-                  </td>
-                  <td>Informer <span className="frst-era"><AddressLink value={bunch?.informer.address} type="address" shrink={true} /></span> 
-                  {/* <div className="sub-frst">45 secs ago</div>  */}
-                  </td>
-                  <td><div className="era-no">{bunch.bunchDepth} </div> </td>
-                </tr>
-                )
-                :
-                <tr>
-                  <td colSpan="4">No Bunches</td>
-                </tr>
-                }
+                  {this.state.bunches.isLoading ? (
+                    <tr>
+                      <td colSpan="4">Loading...</td>
+                    </tr>
+                  ) : this.state.bunches.data?.length ? (
+                    this.state.bunches.data.map((bunch, i) => (
+                      <tr>
+                        <td className="frst-era">
+                          <AddressLink value={bunch.bunchIndex} type="bunch" />
+                          <div className="sub-frst">
+                            {toLocaleTimestamp(bunch.createdOn).fromNow()}
+                          </div>
+                        </td>
+                        <td>
+                          Informer{' '}
+                          <span className="frst-era">
+                            <AddressLink
+                              value={bunch?.informer.address}
+                              type="address"
+                              shrink={true}
+                            />
+                          </span>
+                          {/* <div className="sub-frst">45 secs ago</div>  */}
+                        </td>
+                        <td>
+                          <div className="era-no">{bunch.bunchDepth} </div>{' '}
+                        </td>
+                      </tr>
+                    ))
+                  ) : (
+                    <tr>
+                      <td colSpan="4">No Bunches</td>
+                    </tr>
+                  )}
                 </table>
                 <div className="border-era-two">
-                  <button className="era-view-btn"><Link to="/bunches" className="era-link">View all Bunch</Link></button>
+                  <button className="era-view-btn">
+                    <Link to="/bunches" className="era-link">
+                      View all Bunch
+                    </Link>
+                  </button>
                 </div>
               </Col>
 
               <Col lg={4}>
                 <div className="border-era">Latest Blocks</div>
                 <table className="era-transaction">
-                  {this.state.blocks?.isLoading ?
-                    'Loading...'
-                    :
-                    this.state.blocks?.data?.length ?
-                      this.state.blocks.data.map((block, i) => {
-                        return <tr key={i + 1}>
-                          <td className="frst-era">
-                            <AddressLink value={block.block_number} type="block" />
-                            <div className="sub-frst">
-                              {moment(moment(block.createdOn).toDate()).fromNow()}
-                            </div>
-                          </td>
-                          <td>Miner <span className="frst-era">
-                            <AddressLink value={block?.miner?.address} type="address" shrink={true}/>
-                          </span>
-                           </td>
-                          <td><div className="era-no">{block.provisional_reward ? block.provisional_reward : <i>pending...</i>}</div> </td>
-                        </tr>;
+                  {this.state.blocks?.isLoading
+                    ? 'Loading...'
+                    : this.state.blocks?.data?.length
+                    ? this.state.blocks.data.map((block, i) => {
+                        return (
+                          <tr key={i + 1}>
+                            <td className="frst-era">
+                              <AddressLink
+                                value={block.block_number}
+                                type="block"
+                              />
+                              <div className="sub-frst">
+                                {moment(
+                                  moment(block.createdOn).toDate()
+                                ).fromNow()}
+                              </div>
+                            </td>
+                            <td>
+                              Miner{' '}
+                              <span className="frst-era">
+                                <AddressLink
+                                  value={block?.miner?.address}
+                                  type="address"
+                                  shrink={true}
+                                />
+                              </span>
+                            </td>
+                            <td>
+                              <div className="era-no">
+                                {block.provisional_reward ? (
+                                  block.provisional_reward
+                                ) : (
+                                  <i>pending...</i>
+                                )}
+                              </div>{' '}
+                            </td>
+                          </tr>
+                        );
                       })
-                      :
-                      'No Blocks'
-                  }
+                    : 'No Blocks'}
                 </table>
                 <div className="border-era-two">
-                  <button className="era-view-btn"><Link to="/blocks" className="era-link">View all Blocks</Link></button>
+                  <button className="era-view-btn">
+                    <Link to="/blocks" className="era-link">
+                      View all Blocks
+                    </Link>
+                  </button>
                 </div>
               </Col>
 
               <Col lg={4}>
                 <div className="border-era">Latest Transactions</div>
                 <table className="era-transaction">
-                  {this.state.transactions?.isLoading ?
-                    'Loading...'
-                    :
-                    this.state.transactions?.data?.length ?
-                      this.state.transactions.data.map((transaction, i) => {
-                        return <tr key={i + 1}>
-                          <td className="frst-era">
-                            <AddressLink value={transaction.txn_hash} type="tx" shrink={true}/>
-                            <div className="sub-frst">
-                              {moment(moment(transaction.createdOn).toDate()).fromNow()}
-                            </div>
-                          </td>
-                          <td>
-                            <span className="">
-                             From: <AddressLink value={transaction?.fromAddress?.address} type="address" shrink={true}/><br></br>
-                             To: <AddressLink value={transaction?.toAddress?.address} type="address" shrink={true}/>
-                            </span>
-                             </td>
-                          <td><div className="era-no">{ethers.utils.formatEther(transaction.value)} ES</div> </td>
-                        </tr>;
+                  {this.state.transactions?.isLoading
+                    ? 'Loading...'
+                    : this.state.transactions?.data?.length
+                    ? this.state.transactions.data.map((transaction, i) => {
+                        return (
+                          <tr key={i + 1}>
+                            <td className="frst-era">
+                              <AddressLink
+                                value={transaction.txn_hash}
+                                type="tx"
+                                shrink={true}
+                              />
+                              <div className="sub-frst">
+                                {moment(
+                                  moment(transaction.createdOn).toDate()
+                                ).fromNow()}
+                              </div>
+                            </td>
+                            <td>
+                              <span className="">
+                                From:{' '}
+                                <AddressLink
+                                  value={transaction?.fromAddress?.address}
+                                  type="address"
+                                  shrink={true}
+                                />
+                                <br></br>
+                                To:{' '}
+                                <AddressLink
+                                  value={transaction?.toAddress?.address}
+                                  type="address"
+                                  shrink={true}
+                                />
+                              </span>
+                            </td>
+                            <td>
+                              <div className="era-no">
+                                {ethers.utils.formatEther(transaction.value)} ES
+                              </div>{' '}
+                            </td>
+                          </tr>
+                        );
                       })
-                      :
-                      'No Transactions'
-                  }
-
+                    : 'No Transactions'}
                 </table>
                 <div className="border-era-two">
-                  <button className="era-view-btn"><Link to="/txs" className="era-link">View all Transactions</Link></button>
+                  <button className="era-view-btn">
+                    <Link to="/txs" className="era-link">
+                      View all Transactions
+                    </Link>
+                  </button>
                 </div>
               </Col>
             </Row>
@@ -327,11 +413,8 @@ class Homepage extends Component {
         </div>
         <Snackbar ref={this.snackbarRef} />
       </div>
-
     );
-
   }
 }
-
 
 export default withRouter(Homepage);

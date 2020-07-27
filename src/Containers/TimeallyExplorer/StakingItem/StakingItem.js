@@ -3,16 +3,15 @@ import { ethers } from 'ethers';
 import NrtManager from '../../../ethereum/NrtManager';
 import stakingManager from '../../../ethereum/StakingManager';
 
-export class StakingItem extends Component{
-  
+export class StakingItem extends Component {
   stakingContract;
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       owner: null,
       amount: null,
       delegations: null,
-    }
+    };
   }
 
   componentDidMount = async () => {

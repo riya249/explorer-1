@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './TimeallyExplorer.css'
+import './TimeallyExplorer.css';
 import { Link } from 'react-router-dom';
 import Images from '../Images/Images';
 import { Col, Button, Container, Row } from 'react-bootstrap';
@@ -12,7 +12,7 @@ class TimeallyExplorer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      stakings: []
+      stakings: [],
     };
   }
 
@@ -27,9 +27,9 @@ class TimeallyExplorer extends Component {
       // staker: parsedLog.args.from,
       staking: parsedLog.args.staking,
     }));
-    console.log('stakings',stakings)
+    console.log('stakings', stakings);
     this.setState({
-      stakings
+      stakings,
     });
     // this.setState({
     //   // TODO: the form can be used as staker but not urgetn
@@ -40,26 +40,31 @@ class TimeallyExplorer extends Component {
     // });
   };
 
-
   render() {
     return (
       <div>
-        <div className='booking-hero-bgd booking-hero-bgd-inner'>
+        <div className="booking-hero-bgd booking-hero-bgd-inner">
           <Navbar />
           <h2 className="es-main-head es-main-head-inner">TimeAlly Explorer</h2>
-          <p className="explr-txt">Era Swap is a Block Explorer and Analytics Platform for</p>
-          <p className="explr-txt">Era Swap, a decentralized smart contracts platform</p>
+          <p className="explr-txt">
+            Era Swap is a Block Explorer and Analytics Platform for
+          </p>
+          <p className="explr-txt">
+            Era Swap, a decentralized smart contracts platform
+          </p>
         </div>
         <Container>
           {/* <p className="trans-head">TimeAlly Explorer</p> */}
 
           <Row className="mt40">
             <div className="col-md-12 pull-right">
-              <a className="time-dwnld pull-right down-data">Download This Data</a>
+              <a className="time-dwnld pull-right down-data">
+                Download This Data
+              </a>
             </div>
             {this.state.stakings.map((staking, i) => (
-            <StakingItem key={i} stakingContractAddress={staking.staking} />
-          ))}
+              <StakingItem key={i} stakingContractAddress={staking.staking} />
+            ))}
             {/* <table className="es-transaction striped bordered hover">
               <tr>
                 <th>Address</th>
@@ -108,9 +113,7 @@ class TimeallyExplorer extends Component {
         </Container>
       </div>
     );
-
   }
 }
-
 
 export default TimeallyExplorer;

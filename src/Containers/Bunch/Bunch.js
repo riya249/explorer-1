@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './bunch.css'
+import './bunch.css';
 import Images from '../Images/Images';
 import Header from '../../Components/Header/Header';
 import Navbar from '../../Components/Navbar/Navbar';
@@ -8,7 +8,9 @@ import Apis from '../../lib/apis';
 import { toLocaleTimestamp } from '../../lib/parsers';
 import { Snackbar } from '../../Components/Snackbar/Snackbar';
 import AddressLink from '../../Components/AddressLink/AddressLink';
-
+import * as moment from 'moment';
+import { ethers } from 'ethers';
+import { Link } from 'react-router-dom';
 
 class Bunch extends Component {
   snackbarRef = React.createRef();
@@ -16,13 +18,19 @@ class Bunch extends Component {
   constructor(props) {
     super(props);
 
-    const { match: { params } } = this.props;
+    const {
+      match: { params },
+    } = this.props;
 
     this.state = {
       bunchIndex: params.bunchIndex,
       bunch: {
         data: {},
-        isLoading: true
+        isLoading: true,
+      },
+      transactions: {
+        data: [],
+        isLoading: false
       }
     };
 
@@ -36,12 +44,13 @@ class Bunch extends Component {
   async fetchBunch() {
     try {
       const res = await Apis.fetchBunch(this.state.bunchIndex);
+      console.log('res',res)
       if (res.status)
         this.setState({
           bunch: {
             data: res.data,
-            isLoading: false
-          }
+            isLoading: false,
+          },
         });
       else this.openSnackBar(res.error.message);
     } catch (e) {
@@ -50,23 +59,24 @@ class Bunch extends Component {
       this.setState({
         bunch: {
           data: {},
-          isLoading: false
-        }
+          isLoading: false,
+        },
       });
     }
   }
 
-  openSnackBar(message){
-    this.snackbarRef.current.openSnackBar(message);
+  openSnackBar(message) {
+    // this.snackbarRef.current.openSnackBar(message);
   }
-
 
   render() {
     return (
       <div>
-        <div className='booking-hero-bgd booking-hero-bgd-inner'>
+        <div className="booking-hero-bgd booking-hero-bgd-inner">
           <Navbar />
-          <h2 className="es-main-head es-main-head-inner">Bunch #{this.state.bunchIndex}</h2>
+          <h2 className="es-main-head es-main-head-inner">
+            Bunch #{this.state.bunchIndex}
+          </h2>
         </div>
         <div className="wrapper-container">
           <div className="BlockPage-detail">
@@ -74,10 +84,8 @@ class Bunch extends Component {
               <Tabs defaultActiveKey="overview" id="uncontrolled-tab-example">
                 <Tab eventKey="overview" title="Overview">
                   <div>
-
                     <table className="block-overview">
-                      {Object.keys(this.state.bunch.data).length
-                        ?
+                      {Object.keys(this.state.bunch.data).length ? (
                         <tbody>
                           <tr>
                             <td>Bunch Index: </td>
@@ -89,23 +97,30 @@ class Bunch extends Component {
                           </tr>
                           <tr>
                             <td>Transactions Mega Root: </td>
-                            <td>{this.state.bunch.data.transactionsMegaRoot}</td>
+                            <td className="hex-data">
+                              {this.state.bunch.data.transactionsMegaRoot}
+                            </td>
                           </tr>
                           <tr>
                             <td>Receipts Mega Root: </td>
-                            <td>{this.state.bunch.data.receiptsMegaRoot}</td>
+                            <td className="hex-data">{this.state.bunch.data.receiptsMegaRoot}</td>
                           </tr>
                           <tr>
                             <td>Last Block Hash: </td>
-                            <td>{this.state.bunch.data.lastBlockHash}</td>
+                            <td className="hex-data">{this.state.bunch.data.lastBlockHash}</td>
                           </tr>
                           <tr>
                             <td>Informer: </td>
-                            <td><AddressLink value={this.state.bunch.data.informer} type="address"/></td>
+                            <td>
+                              <AddressLink
+                                value={this.state.bunch.data.informer.address}
+                                type="address"
+                              />
+                            </td>
                           </tr>
                           <tr>
                             <td>Informer Transaction Hash: </td>
-                            <td>{this.state.bunch.data.informerTxHash}</td>
+                            <td className="hex-data">{this.state.bunch.data.informerTxHash}</td>
                           </tr>
                           <tr>
                             <td>Blocks Count: </td>
@@ -117,16 +132,24 @@ class Bunch extends Component {
                           </tr>
                           <tr>
                             <td>Timestamp:</td>
-                            <td>{toLocaleTimestamp(this.state.bunch.data.timestamp).fromNow()} ({toLocaleTimestamp(this.state.bunch.data.timestamp).format('MMMM-DD-YYYY hh:mm:ss A')})</td>
+                            <td>
+                              {toLocaleTimestamp(
+                                this.state.bunch.data.timestamp
+                              ).fromNow()}{' '}
+                              (
+                              {toLocaleTimestamp(
+                                this.state.bunch.data.timestamp
+                              ).format('MMMM-DD-YYYY hh:mm:ss A')}
+                              )
+                            </td>
                           </tr>
                         </tbody>
-                        :
+                      ) : (
                         <tr>
                           <td colSpan="2">No Bunch</td>
                         </tr>
-                      }
+                      )}
                     </table>
-
                   </div>
                 </Tab>
                 {/* <Tab eventKey="comments" title="Comments">
@@ -160,16 +183,101 @@ class Bunch extends Component {
                   </div>
                 </Tab> */}
               </Tabs>
+              <div>
+              <table className="es-transaction">
+            <thead>
+              <tr>
+                <th>Txn Hash </th>
+                <th>Block</th>
+                <th>Age</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Value</th>
+                <th>(Txn Fee)</th>
+              </tr>
+            </thead>
+            <tbody>
+              {this.state.transactions.isLoading ? (
+                <tr>
+                  <td colSpan="7">Loading...</td>
+                </tr>
+              ) : this.state.transactions.data?.length ? (
+                this.state.transactions.data?.map((transaction, i) => {
+                  return (
+                    <tr key={i + 1}>
+                      <td className="tr-color-txt">
+                        <AddressLink
+                          value={transaction.txn_hash}
+                          type="tx"
+                          shrink={true}
+                        />
+                      </td>
+                      <td className="tr-color-txt">
+                        <AddressLink
+                          value={transaction.block.block_number}
+                          type="block"
+                        />
+                      </td>
+                      <td>
+                        {moment(
+                          moment(transaction.createdOn).toDate()
+                        ).fromNow()}
+                      </td>
+                      <td>
+                        {transaction.fromAddress.label && (
+                          <Link to={'/' + transaction.fromAddress.address}>
+                            {transaction.fromAddress.label}
+                          </Link>
+                        )}
+                        <span className="tr-color-txt">
+                          <AddressLink
+                            value={transaction.fromAddress.address}
+                            type="address"
+                            shrink={transaction.fromAddress.label.length}
+                          />
+                        </span>
+                      </td>
+                      <td>
+                        {transaction.fromAddress.label && (
+                          <Link to={'/' + transaction.fromAddress.address}>
+                            {transaction.fromAddress.label}
+                          </Link>
+                        )}
+                        <span className="tr-color-txt">
+                          <AddressLink
+                            value={transaction.toAddress.address}
+                            type="address"
+                            shrink={transaction.fromAddress.label.length}
+                          />
+                        </span>
+                      </td>
+                      <td>{ethers.utils.formatEther(transaction.value)} ES </td>
+                        <td>{ethers.utils.formatEther(ethers.BigNumber.from(transaction.gas_price).mul(transaction.gas_used))} ES</td>
+                    </tr>
+                  );
+                })
+              ) : (
+                <tr>
+                  <td colSpan="7">No Transactions</td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+          {/* <CustomPagination
+            handleClick={this.fetchTransactions}
+            currentPage={this.state.transactions.currentPage}
+            prevPage={this.state.transactions.currentPage - 1}
+            nextPage={this.state.transactions.currentPage + 1}
+            totalPages={this.state.transactions.totalPages}
+          /> */}
+              </div>
               <Snackbar ref={this.snackbarRef} />
             </Container>
           </div>
         </div>
       </div>
-
     );
-
   }
 }
-
 
 export default Bunch;

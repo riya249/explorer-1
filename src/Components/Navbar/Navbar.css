@@ -28,7 +28,7 @@
   .flex-transc .era-value {
     margin-bottom: 15px;
   }
-  
+
   .navbar-toggler {
     background-color: #fff;
   }
@@ -36,23 +36,20 @@
     background: #4353ab;
     padding: 15px;
   }
-  .navbar-toggler i{
-      position: relative;
-      top: 0;
-      font-size: 30px;
-      color: #4353ab;
+  .navbar-toggler i {
+    position: relative;
+    top: 0;
+    font-size: 30px;
+    color: #4353ab;
   }
   .navbar-expand-lg .navbar-nav .nav-link {
-       
-        margin-top: 15px;
-        border-bottom: 1px solid #e2e2e254;
-    }
- 
-
+    margin-top: 15px;
+    border-bottom: 1px solid #e2e2e254;
+  }
 }
-.navbar-nav  a:hover {
+.navbar-nav a:hover {
   color: #d8ff00;
 }
-.dropdown-menu a:hover{
+.dropdown-menu a:hover {
   color: #4353ab;
 }
