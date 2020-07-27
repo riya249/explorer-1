@@ -44,7 +44,7 @@ return (
             </li>
             
             <li className="nav-item ">
-               <Link className="nav-link" to="/Explore">
+               <Link className="nav-link" to="/explore">
                TIMEALLY EXPLORER
                <span className="sr-only">(current)</span>
                </Link>
