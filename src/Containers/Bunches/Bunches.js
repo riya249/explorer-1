@@ -65,10 +65,10 @@ class Bunch extends Component {
                       <table className="es-transaction table">
                         <thead>
                           <tr>
-                              <th>Bunch Index</th>
-                              <th>Number of Blocks</th>
-                              <th>Number of Transactions</th>
-                              <th>Timestamp</th>
+                              <th data-toggle="tooltip" data-placement="top" title="Bunch Depth is the Depth of Merkle Tree">Bunch Index</th>
+                              <th data-toggle="tooltip" data-placement="top" title="No. of Blocks is the count of Blocks in the Bunch">Number of Blocks</th>
+                              <th data-toggle="tooltip" data-placement="top" title="No. of Transactions is the count of Transactions in the Bunch">Number of Transactions</th>
+                              <th data-toggle="tooltip" data-placement="top" title="Time Stamp show that the blocks are connected in a chronological order which marks the time for each transaction on Era Swap Network">Time Stamp</th>
                           </tr>
                           </thead>
                           <tbody>

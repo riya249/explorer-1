@@ -2,6 +2,7 @@
 const path = {
     eslogo: require("../../assets/Images/eslogo.png"),
     esgreylogo: require("../../assets/Images/esgreylogo.png"),
+    escolorlogo: require("../../assets/Images/ex-explorer-color-logo.png"),
     facebook: require("../../assets/Images/facebook.png"),
     insta: require("../../assets/Images/insta.png"),
     linkedin: require("../../assets/Images/linkedin.png"),
@@ -29,6 +30,29 @@ const path = {
   booklogo: require("../../assets/Images/booklogo.png"),
   charitylogo: require("../../assets/Images/charitydapp.png"),
   kycdapplogo: require("../../assets/Images/kycdapp.png"),
+
+  usecasetime: require("../../assets/Images/usecases/timeswappers.png"),
+  usecaseswapperswall: require("../../assets/Images/usecases/swapperswall.png"),
+  usecasebetdeex: require("../../assets/Images/usecases/betdeex.png"),
+  usecasebookingdapp: require("../../assets/Images/usecases/bookingdapp.png"),
+  usecasebuzcafe: require("../../assets/Images/usecases/buzcafe.png"),
+  usecasecertidapp: require("../../assets/Images/usecases/certidapp.png"),
+  usecasecharitydapp: require("../../assets/Images/usecases/charitydapp.png"),
+  usecasecomputeex: require("../../assets/Images/usecases/computeex.png"),
+  usecasecoupondapp: require("../../assets/Images/usecases/coupondapp.png"),
+  usecasecuredapp: require("../../assets/Images/usecases/curedapp.png"),
+  usecasedateswappers: require("../../assets/Images/usecases/dateswappers.png"),
+  usecasedayswappers: require("../../assets/Images/usecases/dayswappers.png"),
+  usecaseeraswapacademy: require("../../assets/Images/usecases/eraswap-academy.png"),
+  usecaseeraswapwallet: require("../../assets/Images/usecases/eraswap-wallet.png"),
+  usecasefaithminus: require("../../assets/Images/usecases/faith-minus.png"),
+  usecasekycdapp: require("../../assets/Images/usecases/kycdapp.png"),
+  usecasepoolindapp: require("../../assets/Images/usecases/poolindapp.png"),
+  usecaserecyclingdapp: require("../../assets/Images/usecases/recyclingdapp.png"),
+  usecaserentingdapp: require("../../assets/Images/usecases/rentingdapp.png"),
+  usecasetimeally: require("../../assets/Images/usecases/timeally.png"),
+  usecasetimeallyclub: require("../../assets/Images/usecases/timeally-club.png"),
+  usecasevof: require("../../assets/Images/usecases/vof.png"),
 };
 
 export default {

@@ -22,9 +22,7 @@ class EraswapCalculator extends Component {
                  <div className='booking-hero-bgd booking-hero-bgd-inner'>
                     <Navbar />
                     <h2 className="es-main-head es-main-head-inner">Era Swap Calculator</h2>
-                    <p className="explr-txt">This mining calculator will display your expected earnings in Dollars. The calculations
-                    <br/>
-are based on the assumption that all conditions remain as they are below.</p>
+                    
                  
                 </div>
                 <Container>

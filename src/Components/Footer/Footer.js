@@ -25,8 +25,8 @@ class Footer extends Component {
                             <img className='eslogo11-Img' src={Images.path.esgreylogo} alt='logo' />
                             <div className="footer-txt-white">Powered by Era Swap</div>
                            </div>
-                           <p className="sub-footer-white mt10" >Era Swap is a Block Explorer and Analytics Platform for</p>
-                           <p className="sub-footer-white">Era Swap a decentralized smart contracts platform.</p>
+                           <p className="sub-footer-white mt10" >ES Explorer offers complete Dashboards to participants to explore live Analytics and Stats on Latest Blocks, Bunch, Nodes & Transactions of Era Swap Network</p>
+                           <p className="sub-footer-white"></p>
                         </Col>
                         <Col sm={2}>
                        

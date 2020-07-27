@@ -22,9 +22,7 @@ class TimeallyExplorer extends Component {
                  <div className='booking-hero-bgd booking-hero-bgd-inner'>
                     <Navbar />
                     <h2 className="es-main-head es-main-head-inner">TimeAlly Explorer</h2>
-                    <p className="explr-txt">Era Swap is a Block Explorer and Analytics Platform for</p>
-                    <p className="explr-txt">Era Swap, a decentralized smart contracts platform</p>
-                </div>
+                  </div>
                 <Container>
                     {/* <p className="trans-head">TimeAlly Explorer</p> */}
                     
@@ -34,11 +32,11 @@ class TimeallyExplorer extends Component {
                          </div>
                         <table className="es-transaction striped bordered hover">
                             <tr>
-                                <th>Address</th>
-                                <th>Plan</th>
-                                <th>Amount</th>
-                                <th>Staking Type</th>
-                                <th>Timestamp</th>
+                                <th data-toggle="tooltip" data-placement="top" title="">Address</th>
+                                <th data-toggle="tooltip" data-placement="top" title="">Plan</th>
+                                <th data-toggle="tooltip" data-placement="top" title="">Amount</th>
+                                <th data-toggle="tooltip" data-placement="top" title="">Staking Type</th>
+                                <th data-toggle="tooltip" data-placement="top" title="Time Stamp show that the blocks are connected in a chronological order which marks the time for each transaction on Era Swap Network">Timestamp</th>
                             </tr>
                             <tr>
                                 <td>0x3c93616a08b29b978c5a18becfe82f3460303135</td>

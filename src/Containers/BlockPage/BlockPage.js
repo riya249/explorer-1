@@ -80,84 +80,84 @@ class BlockPage extends Component {
                         ?
                         <thead>
                           <tr>
-                            <td>Block Height: </td>
+                            <td data-toggle="tooltip" data-placement="top" title="Block Height is defined as the number of blocks in Era Swap Network between this block and the genesis block in ESN">Block Height: </td>
                             <td>{this.state.blockNumber}</td>
 
                           </tr>
                           <tr>
-                            <td>Timestamp:</td>
+                            <td data-toggle="tooltip" data-placement="top" title="Time Stamp show that the blocks are connected in a chronological order which marks the time for each transaction on Era Swap Network">Timestamp:</td>
                             <td>{toLocaleTimestamp(this.state.block.data.createdOn).fromNow()} ({toLocaleTimestamp(this.state.block.data.createdOn).format('MMMM-DD-YYYY hh:mm:ss A')})</td>
                           </tr>
                           <tr>
-                            <td>Transactions:</td>
+                            <td data-toggle="tooltip" data-placement="top" title="These are the transactions that are included in this Block">Transactions:</td>
                             <td><span className="tr-color-txt">{this.state.block.data.raw_transactions_count} transactions </span> and 51 contract internal transactions in this block</td>
 
                           </tr>
                           <tr>
-                            <td>Mined By:</td>
+                            <td data-toggle="tooltip" data-placement="top" title="The Address of the Validator who sealed this Block">Mined By:</td>
                             <td><span className="tr-color-txt"> <AddressLink value={this.state.block.data.miner?.address || ''} type="address" /> </span> {this.state.block.data.miner?.label && `(${this.state.block.data.miner?.label})`} in 14 secs</td>
 
                           </tr>
                           <tr>
-                            <td>Block Reward:</td>
+                            <td data-toggle="tooltip" data-placement="top" title="">Block Reward:</td>
                             <td>2.36648154845164884845 ES (2+0.3565451645884654)</td>
 
                           </tr>
                           <tr>
-                            <td>Uncles Reward:</td>
+                            <td data-toggle="tooltip" data-placement="top" title="">Uncles Reward:</td>
                             <td>0</td>
 
                           </tr>
                           <tr>
-                            <td>Difficulty</td>
+                            <td data-toggle="tooltip" data-placement="top" title="">Difficulty</td>
                             <td>2,332,829,297,798</td>
                           </tr>
 
                           <tr>
-                            <td>Total Difficulty: </td>
+                            <td data-toggle="tooltip" data-placement="top" title="">Total Difficulty: </td>
                             <td>15,928,285,456,798,756</td>
                           </tr>
 
                           <tr>
-                            <td>Size:</td>
+                            <td data-toggle="tooltip" data-placement="top" title="Total space occupied by this Block in every Era Swap Network Node">Size:</td>
                             <td>{this.state.block.data.size} bytes</td>
                           </tr>
 
                           <tr>
-                            <td>Gas Used:</td>
+                            <td data-toggle="tooltip" data-placement="top" title="Gas used is the amount of Computation Power utilized in the Block">Gas Used:</td>
                             <td>12,018,436 (99.91%)</td>
                           </tr>
 
                           <tr>
-                            <td>Gas Limit:</td>
+                            <td data-toggle="tooltip" data-placement="top" title="Gas Limit is the maximum amount of computation that can happen in this Block">Gas Limit:</td>
                             <td>{this.state.block.data.total_gas_used}</td>
                           </tr>
 
                           <tr>
-                            <td>Extra Data:</td>
+                            <td data-toggle="tooltip" data-placement="top" title="">Extra Data:</td>
                             <td>PPYE-ethermine-eu1-7 (Hex:{this.state.block.data.extra_data})</td>
                           </tr>
 
                           <tr>
-                            <td>Parent Hash:</td>
+                            <td data-toggle="tooltip" data-placement="top" title="">Parent Hash:</td>
                             <td><span className="tr-color-txt">
                               <AddressLink value={this.state.block.data.parent_hash} type="tx" />
                             </span></td>
                           </tr>
 
                           <tr>
-                            <td>Sha3Uncles:</td>
+                            <td data-toggle="tooltip" data-placement="top" title="">Sha3Uncles:</td>
                             <td>{this.state.block.data.sha3_uncles}</td>
                           </tr>
 
                           <tr>
-                            <td>Nonce:</td>
+                            <td data-toggle="tooltip" data-placement="top" title="The 'n'th Number of transaction by the sender">Nonce:</td>
                             <td>{this.state.block.data.nonce}</td>
                           </tr>
                         </thead>
                         :
                         <tr>
-                          <td colSpan="2">No Block</td>
+                          <td colSpan="2" data-toggle="tooltip" data-placement="top" title="">No Block</td>
                         </tr>
                       }
                     </table>

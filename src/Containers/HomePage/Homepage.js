@@ -35,6 +35,7 @@ class Homepage extends Component {
   }
 
   componentDidMount() {
+
     this.fetchBlocks();
     this.fetchTransactions();
     this.fetchBunches();
@@ -167,7 +168,7 @@ class Homepage extends Component {
                 <Col lg={4} className="border-right">
                   <div className="flex-transc row">
                     <div className="col-lg-6">
-                      <p className="era-head">TRANSACTIONS </p>
+                      <p className="era-head" data-toggle="tooltip" data-placement="top" title="These are the transactions that are included in this Block">TRANSACTIONS </p>
                       <p className="era-value text-black">738.81 M <span className="era-span text-gray">(12.1 TPS)</span></p>
                     </div>
                     <div className="col-lg-6">
@@ -181,7 +182,7 @@ class Homepage extends Component {
                       <p className="era-value text-black">0 TH</p>
                     </div>
                     <div className="col-lg-6">
-                      <p className="era-head">HASH RATE</p>
+                      <p className="era-head"  data-toggle="tooltip" data-placement="top" title="Era Swap Network Proof of Stake (ESN PoS)">HASH RATE</p>
                       <p className="era-value text-black">0 GH/s</p>
                     </div>
                   </div>
@@ -195,10 +196,84 @@ class Homepage extends Component {
             </div>
           </Container>
 
+
           <Container>
-            <Row>
+            <Row className="mt40">
+                <Col lg={12}>
+                   <div className="second-section-es">
+                        <div className="col-lg-12 text-center">
+                              <h5 class="purple-text">ES METER (EM)  & ES NANOMETER (nEM)</h5>
+                        </div>
+                        <div className="table-responsive mt20">
+                          <table className="table table-bordered white-table">
+                              <tr>
+                                  <th data-toggle="tooltip" data-placement="top" title="">ES Unit</th>
+                                  <th data-toggle="tooltip" data-placement="top" title="">Symbol</th>
+                                  <th data-toggle="tooltip" data-placement="top" title="">Era Swap (ES) </th>
+                                  <th data-toggle="tooltip" data-placement="top" title="">ES Meter (EM)</th>
+                                  <th data-toggle="tooltip" data-placement="top" title="">ES Nano Meter (nEM)</th>
+                                </tr>
+
+                                <tr>
+                                   <td>1 ES </td>
+                                   <td>(ES) </td>
+                                   <td>1</td> 
+                                   <td>10<sup>9</sup></td>
+                                   <td>10<sup>18</sup></td>
+                                </tr>
+                                <tr>
+                                   <td>1 ES TonMeter  </td>
+                                   <td>(tEM)</td>
+                                   <td>10<sup>-3</sup></td> 
+                                   <td>10<sup>6</sup></td>
+                                   <td>10<sup>15</sup></td>
+                                </tr>
+                                <tr>
+                                   <td>1 ES KiloMeter</td>
+                                   <td>(kEM)</td>
+                                   <td>10<sup>-6</sup></td> 
+                                   <td>10<sup>3</sup></td>
+                                   <td>10<sup>12</sup></td>
+                                </tr>
+                                <tr>
+                                   <td>1 ES Meter </td>
+                                   <td>(EM) </td>
+                                   <td>10<sup>-9</sup></td>  
+                                   <td>1</td>
+                                   <td>10<sup>9</sup></td>
+                                </tr>
+                                <tr>
+                                   <td>1 ES MilliMeter </td>
+                                   <td>(mEM) </td>
+                                    <td>10<sup>-12</sup></td> 
+                                   <td>10<sup>-3</sup></td>
+                                   <td>10<sup>6</sup></td>
+                                </tr>
+                                <tr>
+                                   <td>1 ES MicroMeter</td>
+                                   <td>(µEM)</td>
+                                   <td>10<sup>-15</sup></td> 
+                                   <td>10<sup>-6</sup></td>
+                                   <td>10<sup>3</sup></td>
+                                </tr>
+                                 <tr>
+                                    <td>1 ES NanoMeter </td>
+                                    <td>(nEM) </td>
+                                    <td>10<sup>-18</sup></td> 
+                                    <td>10<sup>-9</sup></td>
+                                    <td>1</td>
+                                </tr>
+                          </table>
+                         </div>
+                   </div>
+                </Col>
+              </Row>
+          </Container>
+
+          <Container>
+            <Row className="mt40">
               <Col lg={4}>
-                <div className="border-era">Latest Bunch </div>
+                <div className="border-era" ><span data-toggle="tooltip" data-placement="top" title="Bunch is the collection of Blocks which is posted on Ethereum">Latest Bunch </span></div>
                 <table className="era-transaction">
                   {this.state.bunches.isLoading ? 
                   <tr>
@@ -213,7 +288,7 @@ class Homepage extends Component {
                     <AddressLink value={bunch.bunchIndex} type="bunch"/> 
                   <div className="sub-frst">{toLocaleTimestamp(bunch.createdOn).fromNow()}</div>
                   </td>
-                  <td>Informer <span className="frst-era"><AddressLink value={bunch.informer} type="address" shrink={true} /></span> 
+                  <td data-toggle="tooltip" data-placement="top" title="Informer pays the gas fee to post the Bunch Roots to Ethereum">Informer <span className="frst-era"><AddressLink value={bunch.informer} type="address" shrink={true} /></span> 
                   {/* <div className="sub-frst">45 secs ago</div>  */}
                   </td>
                   <td><div className="era-no">{bunch.bunchDepth} </div> </td>
@@ -231,7 +306,7 @@ class Homepage extends Component {
               </Col>
 
               <Col lg={4}>
-                <div className="border-era">Latest Blocks</div>
+                <div className="border-era" ><span data-toggle="tooltip" data-placement="top" title="Block is the periodic collection of Transactions happening on Era Swap Network">Latest Blocks </span></div>
                 <table className="era-transaction">
                   {this.state.blocks?.isLoading ?
                     'Loading...'
@@ -245,7 +320,7 @@ class Homepage extends Component {
                               {moment(moment(block.createdOn).toDate()).fromNow()}
                             </div>
                           </td>
-                          <td>Miner <span className="frst-era">
+                          <td data-toggle="tooltip" data-placement="top" title="The validator who authors a Block on Era Swap Network">Miner <span className="frst-era">
                             <AddressLink value={block?.miner?.address} type="address" shrink={true}/>
                           </span> <div className="sub-frst">45 secs ago</div> </td>
                           <td><div className="era-no">{block.raw_transactions_count}</div> </td>
@@ -261,7 +336,7 @@ class Homepage extends Component {
               </Col>
 
               <Col lg={4}>
-                <div className="border-era">Latest Transactions</div>
+                <div className="border-era"><span data-toggle="tooltip" data-placement="top" title="Latest Transactions are the Transactions happening in recent Blocks in chronological orders">Latest Transactions</span></div>
                 <table className="era-transaction">
                   {this.state.transactions?.isLoading ?
                     'Loading...'
@@ -275,7 +350,7 @@ class Homepage extends Component {
                               {moment(moment(transaction.createdOn).toDate()).fromNow()}
                             </div>
                           </td>
-                          <td>Miner <span className="frst-era">
+                          <td data-toggle="tooltip" data-placement="top" title="The validator who authors a Block on Era Swap Network">Miner <span className="frst-era">
                              <AddressLink value={transaction.block.miner.address} type="address" shrink={true}/>
                             </span>
                              <div className="sub-frst">45 secs ago</div> </td>
@@ -293,6 +368,264 @@ class Homepage extends Component {
               </Col>
             </Row>
           </Container>
+
+          <Container>
+            <Row>
+                <Col lg={12}>
+                    <div className="second-section-es mt40 purpalebg ">
+                      <Row>
+                        <Col lg={4} >
+                          <div className="block-bg">
+                             <div className='escolor-pic1'><img src={Images.path.escolor}  className='img-fluid'/></div>
+                            <div className="block-value">
+                              <p className="block-text">AVG. BLOCK TIME</p>
+                              <p className="block-value">25,759,721</p>
+                            </div>
+                          </div>
+                          
+                        </Col>
+                        <Col lg={4} className="">
+                          <div className="block-bg">
+                             <div className='escolor-pic1'><img src={Images.path.escolor}  className='img-fluid'/></div>
+                            <div className="block-value">
+                              <p className="block-text">BLOCK HEIGHT</p>
+                              <p className="block-value">25,759,721</p>
+                            </div>
+                          </div>
+                        </Col>
+                        <Col lg={4}>
+                          <div>
+                            <p className="era-head">EPOCH: 31 </p>
+
+                          </div>
+                        </Col>
+                      </Row>
+                      <Row className="mt30">
+                        <Col lg={4} className="">
+                          <div className="block-bg">
+                             <div className='escolor-pic1'><img src={Images.path.escolor}  className='img-fluid'/></div>
+                            <div className="block-value">
+                              <p className="block-text">AVG. BLOCK TIME</p>
+                              <p className="block-value">25,759,721</p>
+                            </div>
+                          </div>
+                          
+                        </Col>
+                        <Col lg={8} className="">
+                          <div className="block-bg">
+                             
+                          </div>
+                        </Col>
+                        
+                      </Row>
+                    </div>
+
+
+                </Col>
+              </Row>
+          </Container>
+
+
+          <Container>
+            <Row>
+                <Col lg={12}>
+                    <div className="second-section-es mt40 purpalebg ">
+                      <Row>
+                        <Col lg={4} >
+                          <div className="block-bg staking-bg">
+                             <div className='escolor-pic1'><img src={Images.path.escolor}  className='img-fluid'/></div>
+                            <div className="staking-value">
+                              <p className="staking-text">STAKING APR</p>
+                              <p className="staking-value">0%</p>
+                              <p class="small mt20"> <span className="yellow-text">0%</span> real staking APR</p>
+                            </div>
+                          </div>
+                          
+                        </Col>
+                        <Col lg={4} className="">
+                          <div className="block-bg staking-bg">
+                             <div className='escolor-pic1'><img src={Images.path.escolor}  className='img-fluid'/></div>
+                            <div className="staking-value">
+                              <p className="staking-text">STAKED ES</p>
+                              <p className="staking-value">7.1M /488.6M</p>
+                               <p class="small mt20">Delinquent stake: 0.0%</p>
+                            </div>
+                          </div>
+                        </Col>
+                        <Col lg={4}>
+                          <div className="block-bg staking-bg">
+                             <div className='escolor-pic1'><img src={Images.path.escolor}  className='img-fluid'/></div>
+                            <div className="staking-value">
+                              <p className="staking-text">PRICE</p>
+                              <p className="staking-value">ES 0.58 <span className="small green-text">0.16%</span></p>
+                              <p class="small mt20">
+                                  <span className="pdr40">24h Vol: <span className="yellow-text">5.6 ES</span></span> 
+                                  <span className="pdr40">MCap: <span className="yellow-text">5.6 ES</span></span>
+                               </p>
+                            </div>
+                          </div>
+                        </Col>
+                      </Row>
+                      
+                    </div>
+
+
+                </Col>
+              </Row>
+          </Container>
+
+            <Container>
+            <Row>
+                <Col lg={12}>
+                    <div className="second-section-es mt40 purpalebg ">
+                      <Row>
+                        <Col lg={4} >
+                          <div className="block-bg staking-bg">
+                            <div className="staking-value">
+                              <p className="staking-text">CURRENT TPS</p>
+                              <p className="staking-value blue-text">179</p>
+                            </div>
+                          </div>
+
+                          <div className="block-bg staking-bg mt20">
+                            <div className="staking-value">
+                              <p className="staking-text">TOTAL TRANSACTIONS</p>
+                              <p className="staking-value blue-text">818,043,895</p>
+                            
+                            </div>
+                          </div>
+
+                          
+                        </Col>
+                        <Col lg={8} className="">
+                          <div className="block-bg staking-bg">
+                             
+                          </div>
+                        </Col>
+                        
+                      </Row>
+                      
+                    </div>
+
+
+                </Col>
+              </Row>
+          </Container>
+
+          <Container>
+            <Row className="mt40">
+                <Col lg={12}>
+                   <div className="second-section-es purpalebg">
+                        <div className="table-responsive">
+                          <table className="table table-bordered purple-table">
+                              <tr>
+                                  <th data-toggle="tooltip" data-placement="top" title="">RANK</th>
+                                  <th data-toggle="tooltip" data-placement="top" title="">VALIDATOR</th>
+                                  <th data-toggle="tooltip" data-placement="top" title="">STAKE (ES) </th>
+                                  <th data-toggle="tooltip" data-placement="top" title="">CUMULATIVE STAKE (EM)</th>
+                                  <th data-toggle="tooltip" data-placement="top" title="">FEE</th>
+                                  <th data-toggle="tooltip" data-placement="top" title="">LAST VOTE</th>
+                                </tr>
+
+                                <tr>
+                                   <td>1 </td>
+                                   <td><i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Era Swap Node 3  </td>
+                                   <td>
+                                       <div>725,003</div>
+                                       <div>10.3%</div>
+                                   </td> 
+                                   <td>10.3 %</td>
+                                   <td>100 %</td>
+                                   <td>14,114,331 <i class="fa fa-chevron-down" aria-hidden="true"></i></td>
+                                </tr>
+                                 <tr>
+                                   <td>1 </td>
+                                   <td><i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Era Swap Node 3  </td>
+                                   <td>
+                                       <div>725,003</div>
+                                       <div>10.3%</div>
+                                   </td> 
+                                   <td>10.3 %</td>
+                                   <td>100 %</td>
+                                   <td>14,114,331 <i class="fa fa-chevron-down" aria-hidden="true"></i></td>
+                                </tr>
+                                 <tr>
+                                   <td>1 </td>
+                                   <td><i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Era Swap Node 3  </td>
+                                   <td>
+                                       <div>725,003</div>
+                                       <div>10.3%</div>
+                                   </td> 
+                                   <td>10.3 %</td>
+                                   <td>100 %</td>
+                                   <td>14,114,331 <i class="fa fa-chevron-down" aria-hidden="true"></i></td>
+                                </tr>
+                                 <tr>
+                                   <td>1 </td>
+                                   <td><i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Era Swap Node 3  </td>
+                                   <td>
+                                       <div>725,003</div>
+                                       <div>10.3%</div>
+                                   </td> 
+                                   <td>10.3 %</td>
+                                   <td>100 %</td>
+                                   <td>14,114,331 <i class="fa fa-chevron-down" aria-hidden="true"></i></td>
+                                </tr>
+                                 <tr>
+                                   <td>1 </td>
+                                   <td><i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Era Swap Node 3  </td>
+                                   <td>
+                                       <div>725,003</div>
+                                       <div>10.3%</div>
+                                   </td> 
+                                   <td>10.3 %</td>
+                                   <td>100 %</td>
+                                   <td>14,114,331 <i class="fa fa-chevron-down" aria-hidden="true"></i></td>
+                                </tr>
+                                 <tr>
+                                   <td>1 </td>
+                                   <td><i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Era Swap Node 3  </td>
+                                   <td>
+                                       <div>725,003</div>
+                                       <div>10.3%</div>
+                                   </td> 
+                                   <td>10.3 %</td>
+                                   <td>100 %</td>
+                                   <td>14,114,331 <i class="fa fa-chevron-down" aria-hidden="true"></i></td>
+                                </tr>
+                                 <tr>
+                                   <td>1 </td>
+                                   <td><i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Era Swap Node 3  </td>
+                                   <td>
+                                       <div>725,003</div>
+                                       <div>10.3%</div>
+                                   </td> 
+                                   <td>10.3 %</td>
+                                   <td>100 %</td>
+                                   <td>14,114,331 <i class="fa fa-chevron-down" aria-hidden="true"></i></td>
+                                </tr>
+                                 <tr>
+                                   <td>1 </td>
+                                   <td><i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Era Swap Node 3  </td>
+                                   <td>
+                                       <div>725,003</div>
+                                       <div>10.3%</div>
+                                   </td> 
+                                   <td>10.3 %</td>
+                                   <td>100 %</td>
+                                   <td>14,114,331 <i class="fa fa-chevron-down" aria-hidden="true"></i></td>
+                                </tr>
+                               
+                          </table>
+                         </div>
+                   </div>
+                </Col>
+              </Row>
+          </Container>
+
+
+
+
         </div>
         <Snackbar ref={this.snackbarRef} />
       </div>

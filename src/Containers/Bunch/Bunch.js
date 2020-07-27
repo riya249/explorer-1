@@ -80,43 +80,43 @@ class Bunch extends Component {
                         ?
                         <tbody>
                           <tr>
-                            <td>Bunch Index: </td>
+                            <td data-toggle="tooltip" data-placement="top" title="Bunch Index is the Index of Bunch">Bunch Index: </td>
                             <td>{this.state.bunch.data.bunchIndex}</td>
                           </tr>
                           <tr>
-                            <td>Bunch Depth: </td>
+                            <td data-toggle="tooltip" data-placement="top" title="Bunch Depth is the Depth of Merkle Tree">Bunch Depth: </td>
                             <td>{this.state.bunch.data.bunchDepth}</td>
                           </tr>
                           <tr>
-                            <td>Transactions Mega Root: </td>
+                            <td data-toggle="tooltip" data-placement="top" title="Transaction Mega Root is the Merkle Root of all the Transaction Roots of Blocks in this Bunch">Transactions Mega Root: </td>
                             <td>{this.state.bunch.data.transactionsMegaRoot}</td>
                           </tr>
                           <tr>
-                            <td>Receipts Mega Root: </td>
+                            <td data-toggle="tooltip" data-placement="top" title="Receipts Mega Root is the Merkle Root of all the Receipt Roots of Blocks in this Block">Receipts Mega Root: </td>
                             <td>{this.state.bunch.data.receiptsMegaRoot}</td>
                           </tr>
                           <tr>
-                            <td>Last Block Hash: </td>
+                            <td data-toggle="tooltip" data-placement="top" title="Last Block Hash is the hash of last Block in this Bunch">Last Block Hash: </td>
                             <td>{this.state.bunch.data.lastBlockHash}</td>
                           </tr>
                           <tr>
-                            <td>Informer: </td>
+                            <td  data-toggle="tooltip" data-placement="top" title="Informer pays the gas fee to post the Bunch Roots to Ethereum">Informer:</td>
                             <td><AddressLink value={this.state.bunch.data.informer} type="address"/></td>
                           </tr>
                           <tr>
-                            <td>Informer Transaction Hash: </td>
+                            <td data-toggle="tooltip" data-placement="top" title="Informer Transaction Hash is the Transaction Hash of Bunch Posting Transaction by Informer on Ethereum">Informer Transaction Hash: </td>
                             <td>{this.state.bunch.data.informerTxHash}</td>
                           </tr>
                           <tr>
-                            <td>Blocks Count: </td>
+                            <td data-toggle="tooltip" data-placement="top" title="Block Count is the number of Blocks in this Bunch">Blocks Count: </td>
                             <td>{this.state.bunch.data.blocksCount}</td>
                           </tr>
                           <tr>
-                            <td>Transactions Count: </td>
+                            <td data-toggle="tooltip" data-placement="top" title="Block Count is the number of Blocks in this Bunch">Transactions Count: </td>
                             <td>{this.state.bunch.data.transactionsCount}</td>
                           </tr>
                           <tr>
-                            <td>Timestamp:</td>
+                            <td data-toggle="tooltip" data-placement="top" title="Time Stamp show that the blocks are connected in a chronological order which marks the time for each transaction on Era Swap Network">Timestamp:</td>
                             <td>{toLocaleTimestamp(this.state.bunch.data.timestamp).fromNow()} ({toLocaleTimestamp(this.state.bunch.data.timestamp).format('MMMM-DD-YYYY hh:mm:ss A')})</td>
                           </tr>
                         </tbody>

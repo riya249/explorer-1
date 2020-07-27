@@ -71,8 +71,8 @@ class Transaction extends Component {
           <h2 className="es-main-head es-main-head-inner">Transactions</h2>
         </div>
         <Container>
-
-          <table className="es-transaction">
+          <div className="table-responsive">
+          <table className="es-transaction table">
             <thead>
               <tr>
                 <th>Txn Hash </th>
@@ -113,6 +113,7 @@ class Transaction extends Component {
               }
             </tbody>
           </table>
+          </div>
             <CustomPagination 
               handleClick={this.fetchTransactions} 
               currentPage={this.state.transactions.currentPage}

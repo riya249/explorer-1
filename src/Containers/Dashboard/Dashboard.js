@@ -1260,9 +1260,9 @@ class Dashboard extends Component {
             <Col lg={9}>
               <div className="sub-dashboard">
                 <Col lg={3}>
-                  <h5 className="sub-dash-head">Era Swap (ES)</h5>
-                  <h5 className="sub-dash-head">{this.state.eraswap.data.esUSDT} USDT</h5>
-                  <h5 className="sub-dash-head">{this.state.eraswap.data.esBTC} BTC</h5>
+                  <h5 className="">Era Swap (ES)</h5>
+                  <h5 className="sub-dash-head">{this.state.eraswap.data.esUSDT} </h5>
+                  <h5 className="sub-dash-head">{this.state.eraswap.data.esBTC} </h5>
                 </Col>
                 <Col lg={3}>
                   <div className="sub-supply-box mb10">
@@ -1503,7 +1503,7 @@ class Dashboard extends Component {
                   <p className="platfrm-txt"> TIMEALLY STAKERS</p>
                 </div>
                 <Row>
-                  <Col sm={5}>
+                  <Col sm={7}>
                   <PieChart width={300} height={300}>
                     <Pie data={this.state.timeallyStakers.data.chartData} dataKey="value" nameKey="name" cx="50%" cy="50%" >
                     {this.state.timeallyStakers.data.chartData.map((entry, index) => 
@@ -1513,7 +1513,7 @@ class Dashboard extends Component {
                       </Pie>
                   </PieChart>
                   </Col>
-                  <Col sm={7}>
+                  <Col sm={5}>
                     <div className="flex-sect4-box">
                       <div className="timeally-mark"></div>
                       <p className="sect4-context">Volume of 1 year stakings

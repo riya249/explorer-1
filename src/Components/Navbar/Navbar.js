@@ -56,8 +56,12 @@ return (
                <span className="sr-only">(current)</span></Link>
                <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                   <Link className="dropdown-item" to="/calculator">ES Calculator</Link>
-             
+                  <Link className="dropdown-item" to="/Nrtmanager">NRT Manager</Link>
+                   <Link className="dropdown-item" to="/Validatorstakings">Validator Stakings</Link>
+                  <Link className="dropdown-item" to="/Layerbridge">Layer2 Bridge</Link>
+                  <Link className="dropdown-item" to="/Nodestatus">Node Status</Link>
                </div>
+              
             </li>
          </ul>
       </div>
