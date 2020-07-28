@@ -140,11 +140,13 @@ class Homepage extends Component {
 
   handleClick = (e) => {
     e.preventDefault();
-    if (this.search.length === 42)
-      this.props.history.push('/address/' + this.search);
-    else if (this.search.length === 66)
-      this.props.history.push('/tx/' + this.search);
-    else this.props.history.push('/block/' + this.search);
+    if (this.search.length){
+      if (this.search.length === 42)
+        this.props.history.push('/address/' + this.search);
+      else if (this.search.length === 66)
+        this.props.history.push('/tx/' + this.search);
+      else this.props.history.push('/block/' + this.search);
+    }
   };
 
   calculatePriceDiff() {
