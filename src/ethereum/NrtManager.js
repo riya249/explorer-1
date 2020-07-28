@@ -1,5 +1,5 @@
 const { nrtAddress } = require('../config/config');
-const { Contract } = require('ethers');
+const { Contract, ethers } = require('ethers');
 const provider = require('./Provider');
 
 const _abi = [
@@ -221,4 +221,16 @@ const _abi = [
   },
 ];
 
-module.exports = new Contract(nrtAddress, _abi, provider);
+const nrtManager = () => {
+  return new Contract(
+    nrtAddress,
+    _abi,
+    new ethers.providers.JsonRpcProvider(
+      /*nodeUrl ||*/ 'https://node2.testnet.eraswap.network'
+    )
+  );
+}
+
+module.exports = {
+  nrtManager,
+};

@@ -320,6 +320,15 @@ const _abi = [
   },
 ];
 
-const timeAllyManager = new Contract(timeAllyAddress, _abi, provider);
+const timeAllyManager = 
+  new Contract(
+    timeAllyAddress,
+    _abi,
+    new ethers.providers.JsonRpcProvider(
+      /*nodeUrl || */'https://node2.testnet.eraswap.network'
+    )
+  );
 
-module.exports = timeAllyManager;
+module.exports = {
+  timeAllyManager
+};

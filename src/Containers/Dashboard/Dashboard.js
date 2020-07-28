@@ -93,10 +93,10 @@ class Dashboard extends Component {
       },
       nextNrtCounter: {
         data: {
-          days: 'Loading...',
-          hours: 'Loading...',
-          minutes: 'Loading...',
-          seconds: 'Loading...',
+          days: '-',
+          hours: '-',
+          minutes: '-',
+          seconds: '-',
         },
         isLoading: true,
       },
@@ -1438,7 +1438,7 @@ class Dashboard extends Component {
             </Col>
             <Col lg={3}>
               <h5 className="nrt-head">Next NRT Count</h5>
-              <div className="count-box">
+              <div className="count-box justify-container">
                 <ul className="flex-count-box">
                   <li className="count-txt">
                     {this.state.nextNrtCounter.data.days}
@@ -1627,7 +1627,7 @@ class Dashboard extends Component {
             </div>
           </div>
         </div>
-{/* 
+        {/* 
         <div className="dash-section-4">
           <Row>
             <Col lg={6}>

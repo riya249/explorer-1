@@ -5,7 +5,7 @@ import Images from '../Images/Images';
 import { Col, Button, Container, Row } from 'react-bootstrap';
 import Header from '../../Components/Header/Header';
 import Navbar from '../../Components/Navbar/Navbar';
-import TimeAllyManager from '../../ethereum/TimeallyManager';
+import { timeAllyManager } from '../../ethereum/TimeallyManager';
 import { StakingItem } from './StakingItem/StakingItem';
 
 class TimeallyExplorer extends Component {
@@ -17,11 +17,12 @@ class TimeallyExplorer extends Component {
   }
 
   componentDidMount = async () => {
+    console.log('timeAllyManager',timeAllyManager);
     const parsedLogs = (
-      await TimeAllyManager.queryFilter(
-        TimeAllyManager.filters.StakingTransfer(null, null, null)
+      await timeAllyManager.queryFilter(
+        timeAllyManager.filters.StakingTransfer(null, null, null)
       )
-    ).map((log) => TimeAllyManager.parseLog(log));
+    ).map((log) => timeAllyManager.interface.parseLog(log));
 
     const stakings = parsedLogs.map((parsedLog) => ({
       // staker: parsedLog.args.from,
@@ -47,18 +48,45 @@ class TimeallyExplorer extends Component {
           <Navbar />
           <h2 className="es-main-head es-main-head-inner">TimeAlly Explorer</h2>
         </div>
-        <Container>
+        <Container className="mt20 text-center">
           {/* <p className="trans-head">TimeAlly Explorer</p> */}
-
-          <Row className="mt40">
-            <div className="col-md-12 pull-right">
+          <h4>Staking Contracts</h4>
+          <p>Note: More features will be added here</p>
+          <Row className="mt40 justify-center">
+            {/* <div className="col-md-12 pull-right">
               <a className="time-dwnld pull-right down-data">
                 Download This Data
               </a>
-            </div>
-            {this.state.stakings.map((staking, i) => (
-              <StakingItem key={i} stakingContractAddress={staking.staking} />
-            ))}
+            </div> */}
+            {/* <ul className="list-group"> */}
+            <table className="table">
+              <thead>
+                <tr>
+                  <th>Staking Contract</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              {this.state.stakings.map((stakingAddress, i) => (
+                <tr>
+                  <td>
+                    <span className="hex-data">{stakingAddress.staking}</span>
+                  </td>
+                  <td>
+                    <a
+                      className="btn btn-primary"
+                      href={`https://test.timeally.io/stakings/${stakingAddress.staking}`}
+                      target="_blank"
+                    >
+                      View Staking
+                    </a>
+                  </td>
+                </tr>
+              ))}
+            </table>
+            {/* </ul> */}
+            {/* {this.state.stakings.map((staking, i) => (
+              // <StakingItem key={i} stakingContractAddress={staking.staking} />
+            ))} */}
             {/* <table className="es-transaction striped bordered hover">
               <tr>
                 <th>Address</th>
