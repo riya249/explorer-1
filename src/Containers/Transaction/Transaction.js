@@ -83,96 +83,199 @@ class Transaction extends Component {
                       {Object.keys(this.state.transaction.data).length ? (
                         <thead>
                           <tr>
-                            <td>Transaction Hash: </td>
-                            <td className="hex-data">{this.state.hash}</td>
+                            <td
+                              data-toggle="tooltip"
+                              data-placement="top"
+                              title="The Hash of the Transaction"
+                            >
+                              Transaction Hash:{' '}
+                            </td>
+                            <td>{this.state.hash}</td>
                           </tr>
                           <tr>
-                            <td>Status: </td>
-                      <td>{this.state.transaction.data.status_enum === 'success' ? <span className="badge badge-success">Success</span> : <span className="badge badge-danger">Failed</span>}</td>
-                          </tr>
-                          <tr>
-                            <td>Block: </td>
+                            <td
+                              data-toggle="tooltip"
+                              data-placement="top"
+                              title=""
+                            >
+                              Status:{' '}
+                            </td>
                             <td>
-                              <AddressLink value={this.state.transaction.data.block?.block_number} type="block"/>
+                              {this.state.transaction.data.status_enum ===
+                              'success' ? (
+                                <span className="badge badge-success">
+                                  Success
+                                </span>
+                              ) : (
+                                <span className="badge badge-danger">
+                                  Failed
+                                </span>
+                              )}
                             </td>
                           </tr>
                           <tr>
-                            <td>Transaction Index: </td>
+                            <td
+                              data-toggle="tooltip"
+                              data-placement="top"
+                              title="Block is the periodic collection of transactions happening on Era Swap Network"
+                            >
+                              Block:{' '}
+                            </td>
                             <td>
-                              {this.state.transaction.data.txn_index}
+                              {this.state.transaction.data.block?.block_number}
                             </td>
                           </tr>
                           <tr>
-                            <td>Timestamp:</td>
+                            <td
+                              data-toggle="tooltip"
+                              data-placement="top"
+                              title="Time Stamp show that the blocks are connected in a chronological order which marks the time for each transaction on Era Swap Network"
+                            >
+                              Timestamp:
+                            </td>
                             <td>
                               {toLocaleTimestamp(
-                                this.state.transaction?.block?.timestamp
-                              ).fromNow()} 
+                                this.state.transaction.data.createdOn
+                              ).fromNow()}{' '}
                               (
                               {toLocaleTimestamp(
-                                this.state.transaction?.block?.timestamp
+                                this.state.transaction.data.createdOn
                               ).format('MMMM-DD-YYYY hh:mm:ss A')}
                               )
                             </td>
                           </tr>
                           <tr>
-                            <td>From: </td>
+                            <td
+                              data-toggle="tooltip"
+                              data-placement="top"
+                              title=""
+                            >
+                              From:{' '}
+                            </td>
                             <td>
-                             <AddressLink value={this.state.transaction.data.fromAddress.address} type="address"/>
+                              <AddressLink
+                                value={
+                                  this.state.transaction.data.fromAddress
+                                    .address
+                                }
+                                type="address"
+                              />
                             </td>
                           </tr>
                           <tr>
-                            <td>To: </td>
+                            <td
+                              data-toggle="tooltip"
+                              data-placement="top"
+                              title=""
+                            >
+                              To:{' '}
+                            </td>
                             <td>
-                            <AddressLink value={this.state.transaction.data.toAddress.address} type="address"/>
+                              <AddressLink
+                                value={
+                                  this.state.transaction.data.toAddress.address
+                                }
+                                type="address"
+                              />
                             </td>
                           </tr>
                           <tr>
                             <td>Value:</td>
                             <td>
-                              {ethers.utils.formatEther(this.state.transaction.data.value)} ES
+                              {ethers.utils.formatEther(
+                                this.state.transaction.data.value
+                              )}{' '}
+                              ES
                             </td>
-                          </tr> 
+                          </tr>
                           <tr>
                             <td>Internal Transactions:</td>
                             <td>
                               <span className="tr-color-txt">
-                                {this.state.transaction.data.internalTransactionsCount || 0} 
-                              </span> contract internal transactions in this
-                              transaction 
+                                {this.state.transaction.data
+                                  .internalTransactionsCount || 0}
+                              </span>{' '}
+                              contract internal transactions in this transaction
                             </td>
                           </tr>
                           <tr>
-                            <td>Transaction Fee:</td>
+                            <td
+                              data-toggle="tooltip"
+                              data-placement="top"
+                              title="Fee for this Transaction"
+                            >
+                              Transaction Fee:
+                            </td>
                             <td>
-                              {ethers.utils.formatEther(ethers.BigNumber.from(this.state.transaction.data.gas_price).mul(this.state.transaction.data.gas_used))} ES
+                              {ethers.utils.formatEther(
+                                ethers.BigNumber.from(
+                                  this.state.transaction.data.gas_price
+                                ).mul(this.state.transaction.data.gas_used)
+                              )}{' '}
+                              ES
                             </td>
                           </tr>
                           <tr>
-                            <td>Gas Limit:</td>
+                            <td
+                              data-toggle="tooltip"
+                              data-placement="top"
+                              title="Gas Limit is the maximum amount of computation that can happen in this Block"
+                            >
+                              Gas Limit:
+                            </td>
                             <td>{this.state.transaction.data.gas_limit}</td>
                           </tr>
 
                           <tr>
-                            <td>Gas Used by Transaction: </td>
-                            <td>{this.state.transaction.data.gas_used} ({((this.state.transaction.data.gas_used/this.state.transaction.data.gas_limit)*100).toFixed(2)}%)</td>
-                          </tr>
-
-                          <tr>
-                            <td>Gas Price:</td>
-                            <td>{ethers.utils.formatEther(this.state.transaction.data.gas_price)} ES</td>
-                          </tr>
-
-                          <tr>
-                            <td>Nonce:</td>
+                            <td
+                              data-toggle="tooltip"
+                              data-placement="top"
+                              title=""
+                            >
+                              Gas Used by Transaction:{' '}
+                            </td>
                             <td>
-                              {this.state.transaction.data.nonce}
+                              {this.state.transaction.data.gas_used} (
+                              {(
+                                (this.state.transaction.data.gas_used /
+                                  this.state.transaction.data.gas_limit) *
+                                100
+                              ).toFixed(2)}
+                              %)
                             </td>
                           </tr>
 
                           <tr>
-                            <td>Input Data:</td>
-                            <td><textarea className="form-control hex-data" rows="5" disabled>{this.state.transaction.data.data}</textarea></td>
+                            <td
+                              data-toggle="tooltip"
+                              data-placement="top"
+                              title="Amount of Era Swap paid per Unit of Gas"
+                            >
+                              Gas Price:
+                            </td>
+                            <td>{this.state.transaction.data.size} bytes</td>
+                          </tr>
+
+                          <tr>
+                            <td
+                              data-toggle="tooltip"
+                              data-placement="top"
+                              title=""
+                            >
+                              Nonce:
+                            </td>
+                            <td>{this.state.transaction.data.nonce}</td>
+                          </tr>
+
+                          <tr>
+                            <td
+                              data-toggle="tooltip"
+                              data-placement="top"
+                              title=""
+                            >
+                              Input Data:
+                            </td>
+                            <td>{this.state.transaction.data.data}</td>
                           </tr>
                         </thead>
                       ) : (

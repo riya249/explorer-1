@@ -9,7 +9,6 @@ import Card from 'react-bootstrap/Card';
 import Apis from '../../lib/apis';
 const MONTHSCOUNT = 12;
 class EraswapCalculator extends Component {
-  
   constructor(props) {
     super(props);
     this.state = {
@@ -22,16 +21,16 @@ class EraswapCalculator extends Component {
       serverCostInput: '100',
     };
   }
-  
-  componentDidMount(){
+
+  componentDidMount() {
     this.fetchNrtRelease();
     this.fetchESPrice();
     this.fetchTotalESStakes();
   }
 
-  async fetchTotalESStakes(){
+  async fetchTotalESStakes() {
     const res = await Apis.getPlatformDetailsAllTime();
-    if(res?.data?.totalStaking){
+    if (res?.data?.totalStaking) {
       this.setState({
         globalStakingInput: Number(res.data.totalStaking).toFixed(2),
       });
@@ -39,7 +38,7 @@ class EraswapCalculator extends Component {
     }
   }
 
-  async fetchESPrice(){
+  async fetchESPrice() {
     const res = await Apis.getESPrice();
     if (res?.data?.success && res?.data?.probitResponse?.data) {
       this.setState({
@@ -48,51 +47,60 @@ class EraswapCalculator extends Component {
     }
   }
 
-  async fetchNrtRelease(){
+  async fetchNrtRelease() {
     const res = await Apis.nrtFractions();
-    if(res?.data){
+    if (res?.data) {
       this.setState({
-        nrtReleasedInput: ((res.data.actualNRTDistributed / 100) * 37).toFixed(2),
+        nrtReleasedInput: ((res.data.actualNRTDistributed / 100) * 37).toFixed(
+          2
+        ),
       });
     }
   }
 
   handleChange = (e) => {
-    switch(e.target.name){
+    switch (e.target.name) {
       case 'myStakings':
-        if(isFinite(e.target.value))
+        if (isFinite(e.target.value))
           this.setState({ myStakingsInput: e.target.value });
         break;
-      default: break;
+      default:
+        break;
     }
-  }
+  };
 
-  tax(income,taxin){
+  tax(income, taxin) {
     var slab = 0;
-    if(income%this.totalESDeposit === 0){
-      slab = (income / this.totalESDeposit)-1;
-    }else{
+    if (income % this.totalESDeposit === 0) {
+      slab = income / this.totalESDeposit - 1;
+    } else {
       slab = Math.floor(income / this.totalESDeposit);
     }
-    if(slab<=0){
+    if (slab <= 0) {
       return 0 + taxin;
-    }else{
-      return this.tax(slab*this.totalESDeposit,taxin+(income-(slab*this.totalESDeposit))*0.001*slab);
+    } else {
+      return this.tax(
+        slab * this.totalESDeposit,
+        taxin + (income - slab * this.totalESDeposit) * 0.001 * slab
+      );
     }
   }
 
-  reward(NES,deposit){
-    deposit -= this.tax(deposit,0);
-    return  deposit*(this.totalNRT*0.12/MONTHSCOUNT)/NES;
+  reward(NES, deposit) {
+    deposit -= this.tax(deposit, 0);
+    return (deposit * ((this.totalNRT * 0.12) / MONTHSCOUNT)) / NES;
   }
 
   render() {
     let monthlyReward =
       (this.state.myStakingsInput / this.state.globalStakingInput) *
       this.state.nrtReleasedInput;
-    monthlyReward = (monthlyReward * this.state.selfUptimeInput) / this.state.networkUptimeInput;
-    
-    let monthlyProfit = (monthlyReward * this.state.esPriceUSDT) - this.state.serverCostInput;
+    monthlyReward =
+      (monthlyReward * this.state.selfUptimeInput) /
+      this.state.networkUptimeInput;
+
+    let monthlyProfit =
+      monthlyReward * this.state.esPriceUSDT - this.state.serverCostInput;
     if (!isFinite(monthlyReward)) monthlyReward = 0;
 
     return (

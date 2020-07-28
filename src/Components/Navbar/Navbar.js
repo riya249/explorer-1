@@ -66,7 +66,7 @@ class Navbar extends Component {
               </li>
 
               <li className="nav-item ">
-                <Link className="nav-link" to="/explore">
+                <Link className="nav-link" to="/Explore">
                   TIMEALLY EXPLORER
                   <span className="sr-only">(current)</span>
                 </Link>
@@ -82,9 +82,24 @@ class Navbar extends Component {
                   MORE
                   <span className="sr-only">(current)</span>
                 </Link>
-                <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                <div
+                  className="dropdown-menu dropdown-menu-right"
+                  aria-labelledby="navbarDropdown"
+                >
                   <Link className="dropdown-item" to="/calculator">
                     ES Calculator
+                  </Link>
+                  <Link className="dropdown-item" to="/Nrtmanager">
+                    NRT Manager
+                  </Link>
+                  <Link className="dropdown-item" to="/Validatorstakings">
+                    Validator Stakings
+                  </Link>
+                  <Link className="dropdown-item" to="/Layerbridge">
+                    Layer2 Bridge
+                  </Link>
+                  <Link className="dropdown-item" to="/Nodestatus">
+                    Node Status
                   </Link>
                 </div>
               </li>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -16,9 +16,16 @@ import EraswapCalculator from './Containers/EraswapCalculator/EraswapCalculator'
 import Transaction from './Containers/Transaction/Transaction';
 import Bunch from './Containers/Bunch/Bunch';
 import Address from './Containers/Address/Address';
-import { ethers } from 'ethers';
-
+import Nrtmanager from './Containers/Nrtmanager/Nrtmanager';
+import Nodestatus from './Containers/Nodestatus/Nodestatus';
+import Layerbridge from './Containers/Layerbridge/Layerbridge';
+import Validatorstakings from './Containers/Validatorstakings/Validatorstakings';
 function App() {
+  useEffect(() => {
+    window.$('[data-toggle="tooltip"]').tooltip();
+    window.$('td').tooltip();
+    return () => {};
+  }, []);
   return (
     <div className="App">
       <Router>
@@ -34,6 +41,14 @@ function App() {
           <Route exact path="/explore" component={TimeallyExplorer} />
           <Route exact path="/dashboard" component={Dashboard} />
           <Route exact path="/calculator" component={EraswapCalculator} />
+          <Route exact path="/nrtmanager" component={Nrtmanager} />
+          <Route exact path="/Nodestatus" component={Nodestatus} />
+          <Route exact path="/Layerbridge" component={Layerbridge} />
+          <Route
+            exact
+            path="/Validatorstakings"
+            component={Validatorstakings}
+          />
         </Switch>
       </Router>
       <Footer />

@@ -30,8 +30,8 @@ class Bunch extends Component {
       },
       transactions: {
         data: [],
-        isLoading: false
-      }
+        isLoading: false,
+      },
     };
 
     this.openSnackBar = this.openSnackBar.bind(this);
@@ -44,7 +44,7 @@ class Bunch extends Component {
   async fetchBunch() {
     try {
       const res = await Apis.fetchBunch(this.state.bunchIndex);
-      console.log('res',res)
+      console.log('res', res);
       if (res.status)
         this.setState({
           bunch: {
@@ -88,50 +88,110 @@ class Bunch extends Component {
                       {Object.keys(this.state.bunch.data).length ? (
                         <tbody>
                           <tr>
-                            <td>Bunch Index: </td>
+                            <td
+                              data-toggle="tooltip"
+                              data-placement="top"
+                              title="Bunch Index is the Index of Bunch"
+                            >
+                              Bunch Index:{' '}
+                            </td>
                             <td>{this.state.bunch.data.bunchIndex}</td>
                           </tr>
                           <tr>
-                            <td>Bunch Depth: </td>
+                            <td
+                              data-toggle="tooltip"
+                              data-placement="top"
+                              title="Bunch Depth is the Depth of Merkle Tree"
+                            >
+                              Bunch Depth:{' '}
+                            </td>
                             <td>{this.state.bunch.data.bunchDepth}</td>
                           </tr>
                           <tr>
-                            <td>Transactions Mega Root: </td>
-                            <td className="hex-data">
+                            <td
+                              data-toggle="tooltip"
+                              data-placement="top"
+                              title="Transaction Mega Root is the Merkle Root of all the Transaction Roots of Blocks in this Bunch"
+                            >
+                              Transactions Mega Root:{' '}
+                            </td>
+                            <td>
                               {this.state.bunch.data.transactionsMegaRoot}
                             </td>
                           </tr>
                           <tr>
-                            <td>Receipts Mega Root: </td>
-                            <td className="hex-data">{this.state.bunch.data.receiptsMegaRoot}</td>
+                            <td
+                              data-toggle="tooltip"
+                              data-placement="top"
+                              title="Receipts Mega Root is the Merkle Root of all the Receipt Roots of Blocks in this Block"
+                            >
+                              Receipts Mega Root:{' '}
+                            </td>
+                            <td>{this.state.bunch.data.receiptsMegaRoot}</td>
                           </tr>
                           <tr>
-                            <td>Last Block Hash: </td>
-                            <td className="hex-data">{this.state.bunch.data.lastBlockHash}</td>
+                            <td
+                              data-toggle="tooltip"
+                              data-placement="top"
+                              title="Last Block Hash is the hash of last Block in this Bunch"
+                            >
+                              Last Block Hash:{' '}
+                            </td>
+                            <td>{this.state.bunch.data.lastBlockHash}</td>
                           </tr>
                           <tr>
-                            <td>Informer: </td>
+                            <td
+                              data-toggle="tooltip"
+                              data-placement="top"
+                              title="Informer pays the gas fee to post the Bunch Roots to Ethereum"
+                            >
+                              Informer:
+                            </td>
                             <td>
                               <AddressLink
-                                value={this.state.bunch.data.informer.address}
+                                value={this.state.bunch.data.informer}
                                 type="address"
                               />
                             </td>
                           </tr>
                           <tr>
-                            <td>Informer Transaction Hash: </td>
-                            <td className="hex-data">{this.state.bunch.data.informerTxHash}</td>
+                            <td
+                              data-toggle="tooltip"
+                              data-placement="top"
+                              title="Informer Transaction Hash is the Transaction Hash of Bunch Posting Transaction by Informer on Ethereum"
+                            >
+                              Informer Transaction Hash:{' '}
+                            </td>
+                            <td>{this.state.bunch.data.informerTxHash}</td>
                           </tr>
                           <tr>
-                            <td>Blocks Count: </td>
+                            <td
+                              data-toggle="tooltip"
+                              data-placement="top"
+                              title="Block Count is the number of Blocks in this Bunch"
+                            >
+                              Blocks Count:{' '}
+                            </td>
                             <td>{this.state.bunch.data.blocksCount}</td>
                           </tr>
                           <tr>
-                            <td>Transactions Count: </td>
+                            <td
+                              data-toggle="tooltip"
+                              data-placement="top"
+                              title="Block Count is the number of Blocks in this Bunch"
+                            >
+                              Transactions Count:{' '}
+                            </td>
                             <td>{this.state.bunch.data.transactionsCount}</td>
                           </tr>
                           <tr>
-                            <td>Timestamp:</td>
+                            <td
+                              data-toggle="tooltip"
+                              data-placement="top"
+                              title="Time Stamp show that the blocks are connected in a chronological order which marks the time for each transaction on Era Swap Network"
+                            >
+                              Timestamp:
+                            </td>
                             <td>
                               {toLocaleTimestamp(
                                 this.state.bunch.data.timestamp
@@ -184,86 +244,99 @@ class Bunch extends Component {
                 </Tab> */}
               </Tabs>
               <div>
-              <table className="es-transaction">
-            <thead>
-              <tr>
-                <th>Txn Hash </th>
-                <th>Block</th>
-                <th>Age</th>
-                <th>From</th>
-                <th>To</th>
-                <th>Value</th>
-                <th>(Txn Fee)</th>
-              </tr>
-            </thead>
-            <tbody>
-              {this.state.transactions.isLoading ? (
-                <tr>
-                  <td colSpan="7">Loading...</td>
-                </tr>
-              ) : this.state.transactions.data?.length ? (
-                this.state.transactions.data?.map((transaction, i) => {
-                  return (
-                    <tr key={i + 1}>
-                      <td className="tr-color-txt">
-                        <AddressLink
-                          value={transaction.txn_hash}
-                          type="tx"
-                          shrink={true}
-                        />
-                      </td>
-                      <td className="tr-color-txt">
-                        <AddressLink
-                          value={transaction.block.block_number}
-                          type="block"
-                        />
-                      </td>
-                      <td>
-                        {moment(
-                          moment(transaction.createdOn).toDate()
-                        ).fromNow()}
-                      </td>
-                      <td>
-                        {transaction.fromAddress.label && (
-                          <Link to={'/' + transaction.fromAddress.address}>
-                            {transaction.fromAddress.label}
-                          </Link>
-                        )}
-                        <span className="tr-color-txt">
-                          <AddressLink
-                            value={transaction.fromAddress.address}
-                            type="address"
-                            shrink={transaction.fromAddress.label.length}
-                          />
-                        </span>
-                      </td>
-                      <td>
-                        {transaction.fromAddress.label && (
-                          <Link to={'/' + transaction.fromAddress.address}>
-                            {transaction.fromAddress.label}
-                          </Link>
-                        )}
-                        <span className="tr-color-txt">
-                          <AddressLink
-                            value={transaction.toAddress.address}
-                            type="address"
-                            shrink={transaction.fromAddress.label.length}
-                          />
-                        </span>
-                      </td>
-                      <td>{ethers.utils.formatEther(transaction.value)} ES </td>
-                        <td>{ethers.utils.formatEther(ethers.BigNumber.from(transaction.gas_price).mul(transaction.gas_used))} ES</td>
+                <table className="es-transaction">
+                  <thead>
+                    <tr>
+                      <th>Txn Hash </th>
+                      <th>Block</th>
+                      <th>Age</th>
+                      <th>From</th>
+                      <th>To</th>
+                      <th>Value</th>
+                      <th>(Txn Fee)</th>
                     </tr>
-                  );
-                })
-              ) : (
-                <tr>
-                  <td colSpan="7">No Transactions</td>
-                </tr>
-              )}
-            </tbody>
-          </table>
-          {/* <CustomPagination
+                  </thead>
+                  <tbody>
+                    {this.state.transactions.isLoading ? (
+                      <tr>
+                        <td colSpan="7">Loading...</td>
+                      </tr>
+                    ) : this.state.transactions.data?.length ? (
+                      this.state.transactions.data?.map((transaction, i) => {
+                        return (
+                          <tr key={i + 1}>
+                            <td className="tr-color-txt">
+                              <AddressLink
+                                value={transaction.txn_hash}
+                                type="tx"
+                                shrink={true}
+                              />
+                            </td>
+                            <td className="tr-color-txt">
+                              <AddressLink
+                                value={transaction.block.block_number}
+                                type="block"
+                              />
+                            </td>
+                            <td>
+                              {moment(
+                                moment(transaction.createdOn).toDate()
+                              ).fromNow()}
+                            </td>
+                            <td>
+                              {transaction.fromAddress.label && (
+                                <Link
+                                  to={'/' + transaction.fromAddress.address}
+                                >
+                                  {transaction.fromAddress.label}
+                                </Link>
+                              )}
+                              <span className="tr-color-txt">
+                                <AddressLink
+                                  value={transaction.fromAddress.address}
+                                  type="address"
+                                  shrink={transaction.fromAddress.label.length}
+                                />
+                              </span>
+                            </td>
+                            <td>
+                              {transaction.fromAddress.label && (
+                                <Link
+                                  to={'/' + transaction.fromAddress.address}
+                                >
+                                  {transaction.fromAddress.label}
+                                </Link>
+                              )}
+                              <span className="tr-color-txt">
+                                <AddressLink
+                                  value={transaction.toAddress.address}
+                                  type="address"
+                                  shrink={transaction.fromAddress.label.length}
+                                />
+                              </span>
+                            </td>
+                            <td>
+                              {ethers.utils.formatEther(transaction.value)} ES{' '}
+                            </td>
+                            <td>
+                              {ethers.utils.formatEther(
+                                ethers.BigNumber.from(
+                                  transaction.gas_price
+                                ).mul(transaction.gas_used)
+                              )}{' '}
+                              ES
+                            </td>
+                          </tr>
+                        );
+                      })
+                    ) : (
+                      <tr>
+                        <td colSpan="7">No Transactions</td>
+                      </tr>
+                    )}
+                  </tbody>
+                </table>
+                {/* <CustomPagination
             handleClick={this.fetchTransactions}
             currentPage={this.state.transactions.currentPage}
             prevPage={this.state.transactions.currentPage - 1}

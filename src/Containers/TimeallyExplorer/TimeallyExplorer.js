@@ -46,12 +46,6 @@ class TimeallyExplorer extends Component {
         <div className="booking-hero-bgd booking-hero-bgd-inner">
           <Navbar />
           <h2 className="es-main-head es-main-head-inner">TimeAlly Explorer</h2>
-          <p className="explr-txt">
-            Era Swap is a Block Explorer and Analytics Platform for
-          </p>
-          <p className="explr-txt">
-            Era Swap, a decentralized smart contracts platform
-          </p>
         </div>
         <Container>
           {/* <p className="trans-head">TimeAlly Explorer</p> */}

@@ -69,75 +69,133 @@ class Blocks extends Component {
           <h2 className="es-main-head es-main-head-inner">Blocks</h2>
         </div>
         <Container>
-          <table className="es-transaction ">
-            <tr>
-              <th>Block</th>
-              <th>Age</th>
-              <th>Txn</th>
-              <th>Miner</th>
-              <th>Gas Used</th>
-              <th>Gas Limit</th>
-              <th>Avg.Gas Price</th>
-              <th>Reward</th>
-            </tr>
-            {this.state.blocks.isLoading ? (
+          <div className="table-responsive">
+            <table className="es-transaction table">
               <tr>
-                <td colspan="9">Loading</td>
+                <th
+                  data-toggle="tooltip"
+                  data-placement="top"
+                  title="The Block in which this Transaction was included"
+                >
+                  Block
+                </th>
+                <th
+                  data-toggle="tooltip"
+                  data-placement="top"
+                  title="Age is the Age of this Block when it was mined"
+                >
+                  Age
+                </th>
+                <th data-toggle="tooltip" data-placement="top" title="">
+                  Transaction
+                </th>
+                <th data-toggle="tooltip" data-placement="top" title="">
+                  Uncles
+                </th>
+                <th
+                  data-toggle="tooltip"
+                  data-placement="top"
+                  title="The validator who authors a Block on Era Swap Network"
+                >
+                  Sealer
+                </th>
+                <th
+                  data-toggle="tooltip"
+                  data-placement="top"
+                  title="Gas used is the amount of Computation Power utilized in the Block"
+                >
+                  Gas Used
+                </th>
+                <th
+                  data-toggle="tooltip"
+                  data-placement="top"
+                  title="Gas Limit is the maximum amount of computation that can happen in this Block"
+                >
+                  Gas Limit
+                </th>
+                <th
+                  data-toggle="tooltip"
+                  data-placement="top"
+                  title="The average gas price is typically on the order of about 20 ESMETER (or 0.00000002 ES), but can increase during times of high network traffic as there are more transactions competing to be included in the next block"
+                >
+                  Average Gas Price
+                </th>
+                <th
+                  data-toggle="tooltip"
+                  data-placement="top"
+                  title="Rewards are the rewards pending for final computation at the beginning of the next NRT month"
+                >
+                  Reward
+                </th>
               </tr>
-            ) : this.state.blocks?.data?.length ? (
-              this.state.blocks?.data?.map((block, i) => {
-                return (
-                  <tr key={i + 1}>
-                    <td className="tr-color-txt">
-                      <AddressLink value={block.block_number} type="block" />
-                    </td>
-                    <td>
-                      {toLocaleTimestamp(
-                        new Date(block.timestamp).getTime() * 1000
-                      ).fromNow()}
-                    </td>
-                    <td className="tr-color-txt">
-                      <Link
-                        to={{
-                          pathname: 'block' + '/' + block.block_number,
-                          state: { value: block.block_number },
-                        }}
-                      >
-                        {block.raw_transactions_count}
-                      </Link>
-                    </td>
-                    <td className="tr-color-txt">
-                      <AddressLink value={block.miner.address} type="address" />
-                    </td>
-                    <td className="underline">
-                      {block?.total_gas_used} (
-                              {(
-                                (block?.total_gas_used /
-                                  block?.total_gas_limit) *
-                                100
-                              ).toFixed(2)}
-                              %)
-                    </td>
-                    <td>{block.total_gas_limit}</td>
-                    <td>
-                      {ethers.utils.formatEther(block.average_gas_price)} ES
-                    </td>
-                    <td>
-                      {block.provisional_reward !== null ? (
-                        block.provisional_reward + 'ES'
-                      ) : (
-                        <i>pending...</i>
-                      )}
-                    </td>
-                  </tr>
-                );
-              })
-            ) : (
-              <tr>
-                <td colspan="9">Loading</td>
-              </tr>
-            )}
-          </table>
+              {this.state.blocks.isLoading ? (
+                <tr>
+                  <td colspan="9">Loading</td>
+                </tr>
+              ) : this.state.blocks.data.length ? (
+                this.state.blocks.data.map((block, i) => {
+                  return (
+                    <tr key={i + 1}>
+                      <td className="tr-color-txt">
+                        <AddressLink value={block.block_number} type="block" />
+                      </td>
+                      <td>{toLocaleTimestamp(block.timestamp).fromNow()}</td>
+                      <td className="tr-color-txt">
+                        <Link
+                          to={{
+                            pathname: 'block' + '/' + block.block_number,
+                            state: { value: block.block_number },
+                          }}
+                        >
+                          {block.raw_transactions_count}
+                        </Link>
+                      </td>
+                      <td>
+                        <Link
+                          to={{
+                            pathname: 'block' + '/' + block.block_number,
+                            state: { value: block.block_number },
+                          }}
+                        >
+                          {block.raw_transactions_count}
+                        </Link>
+                      </td>
+                      <td className="tr-color-txt">
+                        <AddressLink
+                          value={block.miner.address}
+                          type="address"
+                        />
+                      </td>
+                      <td className="underline">
+                        {block?.total_gas_used} (
+                        {(
+                          (block?.total_gas_used / block?.total_gas_limit) *
+                          100
+                        ).toFixed(2)}
+                        %)
+                      </td>
+                      <td>{block.total_gas_limit} </td>
+                      <td>
+                        {' '}
+                        {ethers.utils.formatEther(block.average_gas_price)} ES
+                      </td>
+                      <td>
+                        {block.provisional_reward !== null ? (
+                          block.provisional_reward + 'ES'
+                        ) : (
+                          <i>pending...</i>
+                        )}
+                      </td>
+                    </tr>
+                  );
+                })
+              ) : (
+                <tr>
+                  <td colspan="9">Loading</td>
+                </tr>
+              )}
+            </table>
+          </div>
           <CustomPagination
             handleClick={this.fetchBlocks}
             currentPage={this.state.blocks.currentPage}

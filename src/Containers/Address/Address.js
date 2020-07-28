@@ -123,15 +123,15 @@ class Address extends Component {
                 <div className="col-sm-6">
                   <table>
                     <tr>
-                      <td colSpan="2">Overview</td>
+                      <td data-toggle="tooltip" data-placement="top" title="" colSpan="2">Overview</td>
                     </tr>
                     <tr>
-                      <td>Balance</td>
-                      <td>{this.state.data.balance} ES</td>
+                      <td data-toggle="tooltip" data-placement="top" title="">Balance</td>
+                      <td data-toggle="tooltip" data-placement="top" title="">{this.state.data.balance} ES</td>
                     </tr>
                     <tr>
-                      <td>Label</td>
-                      <td>{this.state.data.label || '-'}</td>
+                      <td data-toggle="tooltip" data-placement="top" title="">Label</td>
+                      <td data-toggle="tooltip" data-placement="top" title="These are the transactions that are included in this Block">{this.state.data.label || '-'}</td>
                     </tr>
                   </table>
                 </div>
@@ -149,13 +149,13 @@ class Address extends Component {
                     <table className="es-transaction">
                       <thead>
                         <tr>
-                          <th>Txn Hash </th>
-                          <th>Block</th>
-                          <th>Age</th>
-                          <th>From</th>
-                          <th>To</th>
-                          <th>Value</th>
-                          <th>(Txn Fee)</th>
+                          <th data-toggle="tooltip" data-placement="top" title="The Hash of the Transaction">Transaction  Hash </th>
+                          <th data-toggle="tooltip" data-placement="top" title="Block is the periodic collection of transactions happening on Era Swap Network">Block</th>
+                          <th data-toggle="tooltip" data-placement="top" title="Age is the Age of this Block when it was mined">Age</th>
+                          <th data-toggle="tooltip" data-placement="top" title="">From</th>
+                          <th data-toggle="tooltip" data-placement="top" title="">To</th>
+                          <th data-toggle="tooltip" data-placement="top" title="The amount of era swap sent with this Transaction">Value</th>
+                          <th data-toggle="tooltip" data-placement="top" title="Fee for this Transaction">(Transaction  Fee)</th>
                         </tr>
                       </thead>
                       <tbody>
