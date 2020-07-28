@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './Dashboard.css'
+import './Dashboard.css';
 import { Link } from 'react-router-dom';
 import Images from '../Images/Images';
 import Navbar from '../../Components/Navbar/Navbar';
@@ -11,7 +11,7 @@ import Apis from '../../lib/apis';
 import { moreDecimals, lessDecimals } from '../../lib/parsers';
 import { PieChart, Pie, Cell } from 'recharts';
 
-const COLORS = ['#959595','#747FEB']
+const COLORS = ['#959595', '#747FEB'];
 
 class Dashboard extends Component {
   esPrice = null;
@@ -42,9 +42,9 @@ class Dashboard extends Component {
           crownfundPrice: 'Loading...',
           allTimeHigh: '1.42 USDT',
           allTimeLow: '0.005 USDT',
-          probitVolume: 'Loading...'
+          probitVolume: 'Loading...',
         },
-        isLoading: true
+        isLoading: true,
       },
       platformWiseTFC: {
         data: {
@@ -56,14 +56,14 @@ class Dashboard extends Component {
           timeallyPartners: 'Loading...',
           eraswapAcademy: 'Loading...',
         },
-        isLoading: true
+        isLoading: true,
       },
       charity: {
         data: {
           collect: 'Loading...',
-          given: 'Loading...'
+          given: 'Loading...',
         },
-        isLoading: true
+        isLoading: true,
       },
       roi: 'Loading...',
       lastMonthUtilisation: {
@@ -71,32 +71,32 @@ class Dashboard extends Component {
           timeswappers: {
             percent: 'Loading...',
             volume: 'Loading...',
-            value: 'Loading...'
+            value: 'Loading...',
           },
           dayswappers: {
             percent: 'Loading...',
             volume: 'Loading...',
-            value: 'Loading...'
+            value: 'Loading...',
           },
           buzcafe: {
             percent: 'Loading...',
             volume: 'Loading...',
-            value: 'Loading...'
+            value: 'Loading...',
           },
           curators: {
             percent: 'Loading...',
             volume: 'Loading...',
-            value: 'Loading...'
+            value: 'Loading...',
           },
         },
-        isLoading: true
+        isLoading: true,
       },
       nextNrtCounter: {
         data: {
           days: 'Loading...',
           hours: 'Loading...',
           minutes: 'Loading...',
-          seconds: 'Loading...'
+          seconds: 'Loading...',
         },
         isLoading: true,
       },
@@ -113,7 +113,7 @@ class Dashboard extends Component {
           jobsPosted: 'Loading...',
           jobsDone: 'Loading...',
         },
-        isLoading: true
+        isLoading: true,
       },
       dayswappers: {
         data: {
@@ -131,7 +131,7 @@ class Dashboard extends Component {
           redBelt: 'Loading...',
           blackBelt: 'Loading...',
         },
-        isLoading: true
+        isLoading: true,
       },
       swapperswall: {
         data: {
@@ -143,16 +143,16 @@ class Dashboard extends Component {
           activeUsers: 'Loading...',
           uploads: 'Loading...',
         },
-        isLoading: true
+        isLoading: true,
       },
       eraswapAcademy: {
         data: {
           users: 'Loading...',
           courses: 'Loading...',
           deposits: 'Loading...',
-          usersStuding: 'Loading...'
+          usersStuding: 'Loading...',
         },
-        isLoading: true
+        isLoading: true,
       },
       buzcafe: {
         data: {
@@ -162,7 +162,7 @@ class Dashboard extends Component {
           withdrawals: 'Loading...',
           internalTransactions: 'Loading...',
         },
-        isLoading: true
+        isLoading: true,
       },
       betdeex: {
         data: {
@@ -172,7 +172,7 @@ class Dashboard extends Component {
           highestPrediction: 'Loading...',
           averagePrediction: 'Loading...',
         },
-        isLoading: true
+        isLoading: true,
       },
       timeallyStakers: {
         data: {
@@ -182,24 +182,24 @@ class Dashboard extends Component {
           nrtReleasedForTimeAlly: 'Loading...',
           chartData: [],
         },
-        isLoading: true
+        isLoading: true,
       },
       computeex: {
         data: {
           totalTransactions: 0,
           totalVolume: 0,
         },
-        isLoading: true
+        isLoading: true,
       },
       kycDapp: {
         data: {
           levelOneCount: 0,
           levelTwoCount: 0,
           levelThreeCount: 0,
-          allPlatformKycs: 0
+          allPlatformKycs: 0,
         },
-        isLoading: false
-      }
+        isLoading: false,
+      },
     };
   }
 
@@ -241,7 +241,7 @@ class Dashboard extends Component {
     this.userstudying();
     this.buzcafeUserscount();
     this.buzcafeDepositscount();
-    this.buzcafeShopscount()
+    this.buzcafeShopscount();
     this.buzcafeWithdrawalscount();
     this.buzcafeTransactionscount();
     this.nrtTicker();
@@ -251,7 +251,7 @@ class Dashboard extends Component {
     let res;
     try {
       res = await Apis.etherPriceUsd();
-      console.log('etherPriceUsd - res', res)
+      console.log('etherPriceUsd - res', res);
     } catch (e) {
       console.log(e);
     } finally {
@@ -259,10 +259,10 @@ class Dashboard extends Component {
         eraswap: {
           data: {
             ...this.state.eraswap.data,
-            ethUsd: res.status == 1 ? '$' + res.result.ethusd : '-'
+            ethUsd: res.status == 1 ? '$' + res.result.ethusd : '-',
           },
           isLoading: false,
-        }
+        },
       });
     }
   }
@@ -271,7 +271,7 @@ class Dashboard extends Component {
     let res;
     try {
       res = await Apis.bitcoinCrowdFundPrice();
-      console.log('bitcoinCrowdFundPrice - res', res)
+      console.log('bitcoinCrowdFundPrice - res', res);
     } catch (e) {
       console.log(e);
     } finally {
@@ -280,11 +280,11 @@ class Dashboard extends Component {
           data: {
             ...this.state.eraswap.data,
             btcUsd: res.USD && res.USD['15m'] ? '$' + res.USD['15m'] : '-',
-            crownfundPrice: '$0.0056'
+            crownfundPrice: '$0.0056',
           },
           isLoading: false,
-        }
-      })
+        },
+      });
     }
   }
 
@@ -292,18 +292,16 @@ class Dashboard extends Component {
     let res;
     try {
       res = await Apis.ltcPriceUsd();
-      console.log('ltcPriceUsd - res', res)
+      console.log('ltcPriceUsd - res', res);
     } catch (e) {
       console.log(e);
     } finally {
       this.setState({
         recordName: {
-          data: {
-
-          },
+          data: {},
           isLoading: false,
-        }
-      })
+        },
+      });
     }
   }
 
@@ -311,11 +309,15 @@ class Dashboard extends Component {
     let res;
     try {
       res = await Apis.getESPrice();
-      console.log('getESPrice - res', res)
+      console.log('getESPrice - res', res);
     } catch (e) {
       console.log(e);
     } finally {
-      if (res?.data?.probitResponse?.data && res?.data?.probitResponse?.data.length && res?.data?.probitResponse?.data[0]?.last) {
+      if (
+        res?.data?.probitResponse?.data &&
+        res?.data?.probitResponse?.data.length &&
+        res?.data?.probitResponse?.data[0]?.last
+      ) {
         this.esPrice = Number(res?.data?.probitResponse?.data[0].last);
         this.updateMarketCap();
       }
@@ -326,18 +328,28 @@ class Dashboard extends Component {
         totalVolume += Number(res?.data?.probitResponse?.data[x].base_volume);
       }
       // $('#volume-of-probit').html(window.lessDecimals(String(window.esPrice * totalVolume)) + ' USDT');
-      console.log('this.esPrice,totalVolume', this.esPrice, totalVolume)
+      console.log('this.esPrice,totalVolume', this.esPrice, totalVolume);
       this.setState({
         eraswap: {
           data: {
             ...this.state.eraswap.data,
-            esUSDT: res?.data?.probitResponse?.data && res?.data?.probitResponse?.data[0]?.last ? res?.data?.probitResponse?.data[0]?.last + ' USDT' : '-',
-            esBTC: res?.data?.probitResponse?.data && res?.data?.probitResponse?.data[1]?.last ? moreDecimals(res?.data?.probitResponse?.data[1]?.last) + ' BTC' : '-',
-            probitVolume: lessDecimals(String(this.esPrice * totalVolume)) + ' USDT'
+            esUSDT:
+              res?.data?.probitResponse?.data &&
+              res?.data?.probitResponse?.data[0]?.last
+                ? res?.data?.probitResponse?.data[0]?.last + ' USDT'
+                : '-',
+            esBTC:
+              res?.data?.probitResponse?.data &&
+              res?.data?.probitResponse?.data[1]?.last
+                ? moreDecimals(res?.data?.probitResponse?.data[1]?.last) +
+                  ' BTC'
+                : '-',
+            probitVolume:
+              lessDecimals(String(this.esPrice * totalVolume)) + ' USDT',
           },
           isLoading: false,
-        }
-      })
+        },
+      });
     }
   }
 
@@ -345,7 +357,7 @@ class Dashboard extends Component {
     let res;
     try {
       res = await Apis.esTotalSupply();
-      console.log('esTotalSupply - res', res)
+      console.log('esTotalSupply - res', res);
     } catch (e) {
       console.log(e);
     } finally {
@@ -358,12 +370,17 @@ class Dashboard extends Component {
         eraswap: {
           data: {
             ...this.state.eraswap.data,
-            esTotalSupply: res.data?.totalSupply && lessDecimals(res.data.totalSupply) + ' ES' || '-',
-            circulatingOutsideTA: res?.data?.outsideTimeAllySupply ? lessDecimals(res.data.outsideTimeAllySupply) + ' ES' : '-'
+            esTotalSupply:
+              (res.data?.totalSupply &&
+                lessDecimals(res.data.totalSupply) + ' ES') ||
+              '-',
+            circulatingOutsideTA: res?.data?.outsideTimeAllySupply
+              ? lessDecimals(res.data.outsideTimeAllySupply) + ' ES'
+              : '-',
           },
           isLoading: false,
-        }
-      })
+        },
+      });
     }
   }
 
@@ -371,7 +388,7 @@ class Dashboard extends Component {
     let res;
     try {
       res = await Apis.holdersOfEraSwap();
-      console.log('holdersOfEraSwap - res', res)
+      console.log('holdersOfEraSwap - res', res);
     } catch (e) {
       console.log(e);
     } finally {
@@ -379,11 +396,13 @@ class Dashboard extends Component {
         eraswap: {
           data: {
             ...this.state.eraswap.data,
-            totolESUsers: res.data?.numberOfAddresses ? res.data?.numberOfAddresses + ' addresses' : '-'
+            totolESUsers: res.data?.numberOfAddresses
+              ? res.data?.numberOfAddresses + ' addresses'
+              : '-',
           },
           isLoading: false,
-        }
-      })
+        },
+      });
     }
   }
 
@@ -391,7 +410,7 @@ class Dashboard extends Component {
     let res;
     try {
       res = await Apis.luckPoolBal();
-      console.log('luckPoolBal - res', res)
+      console.log('luckPoolBal - res', res);
     } catch (e) {
       console.log(e);
     } finally {
@@ -399,11 +418,13 @@ class Dashboard extends Component {
         eraswap: {
           data: {
             ...this.state.eraswap.data,
-            luckPoolNrt: res?.data?.luckPoolBal ? lessDecimals(res.data.luckPoolBal) + ' ES' : '-'
+            luckPoolNrt: res?.data?.luckPoolBal
+              ? lessDecimals(res.data.luckPoolBal) + ' ES'
+              : '-',
           },
           isLoading: false,
-        }
-      })
+        },
+      });
     }
   }
 
@@ -411,7 +432,7 @@ class Dashboard extends Component {
     let res;
     try {
       res = await Apis.burnTokenBal();
-      console.log('burnTokenBal - res', res)
+      console.log('burnTokenBal - res', res);
     } catch (e) {
       console.log(e);
     } finally {
@@ -419,11 +440,13 @@ class Dashboard extends Component {
         eraswap: {
           data: {
             ...this.state.eraswap.data,
-            burnPool: res?.data?.burnTokenBal ? lessDecimals(res.data.burnTokenBal) + ' ES' : '-'
+            burnPool: res?.data?.burnTokenBal
+              ? lessDecimals(res.data.burnTokenBal) + ' ES'
+              : '-',
           },
           isLoading: false,
-        }
-      })
+        },
+      });
     }
   }
 
@@ -431,7 +454,7 @@ class Dashboard extends Component {
     let res;
     try {
       res = await Apis.totalTokensBurned();
-      console.log('totalTokensBurned - res', res)
+      console.log('totalTokensBurned - res', res);
     } catch (e) {
       console.log(e);
     } finally {
@@ -439,11 +462,13 @@ class Dashboard extends Component {
         eraswap: {
           data: {
             ...this.state.eraswap.data,
-            totalESBurned: res?.data?.totalTokensBurned ? lessDecimals(res.data.totalTokensBurned) + ' ES' : '-'
+            totalESBurned: res?.data?.totalTokensBurned
+              ? lessDecimals(res.data.totalTokensBurned) + ' ES'
+              : '-',
           },
           isLoading: false,
-        }
-      })
+        },
+      });
     }
   }
 
@@ -451,7 +476,7 @@ class Dashboard extends Component {
     let res;
     try {
       res = await Apis.nrtFractions();
-      console.log('nrtFractions - res', res)
+      console.log('nrtFractions - res', res);
     } catch (e) {
       console.log(e);
     } finally {
@@ -459,43 +484,55 @@ class Dashboard extends Component {
         eraswap: {
           data: {
             ...this.state.eraswap.data,
-            currentNrtES: res?.data?.actualNRTDistributed ? lessDecimals(res.data.actualNRTDistributed) + ' ES' : '-'
+            currentNrtES: res?.data?.actualNRTDistributed
+              ? lessDecimals(res.data.actualNRTDistributed) + ' ES'
+              : '-',
           },
-          isLoading: false
+          isLoading: false,
         },
         lastMonthUtilisation: {
           data: {
             ...this.state.lastMonthUtilisation.data,
             timeswappers: {
               percent: '-',
-              volume: res.data.workPoolCalculation.timetraders ? lessDecimals(res.data.workPoolCalculation.timetraders) + ' ES' : '-',
-              value: '-'
+              volume: res.data.workPoolCalculation.timetraders
+                ? lessDecimals(res.data.workPoolCalculation.timetraders) + ' ES'
+                : '-',
+              value: '-',
             },
             dayswappers: {
               percent: '-',
-              volume: res.data.workPoolCalculation.dayswappers ? lessDecimals(res.data.workPoolCalculation.dayswappers) + ' ES' : '-',
-              value: '-'
+              volume: res.data.workPoolCalculation.dayswappers
+                ? lessDecimals(res.data.workPoolCalculation.dayswappers) + ' ES'
+                : '-',
+              value: '-',
             },
             buzcafe: {
               percent: '-',
-              volume: res.data.workPoolCalculation.buzcafe ? lessDecimals(res.data.workPoolCalculation.buzcafe) + ' ES' : '-',
-              value: '-'
+              volume: res.data.workPoolCalculation.buzcafe
+                ? lessDecimals(res.data.workPoolCalculation.buzcafe) + ' ES'
+                : '-',
+              value: '-',
             },
             curators: {
               percent: '-',
-              volume: res.data.workPoolCalculation.curators ? lessDecimals(res.data.workPoolCalculation.curators) + ' ES' : '-',
-              value: '-'
-            }
+              volume: res.data.workPoolCalculation.curators
+                ? lessDecimals(res.data.workPoolCalculation.curators) + ' ES'
+                : '-',
+              value: '-',
+            },
           },
           isLoading: false,
         },
         swapperswall: {
-          data:{
-            powertokens: res?.data?.actualNRTDistribution?.powerTokenNRT ? lessDecimals(res.data.actualNRTDistribution.powerTokenNRT) : '-'
+          data: {
+            powertokens: res?.data?.actualNRTDistribution?.powerTokenNRT
+              ? lessDecimals(res.data.actualNRTDistribution.powerTokenNRT)
+              : '-',
           },
-          isLoading: false
-        }
-      })
+          isLoading: false,
+        },
+      });
     }
   }
 
@@ -503,18 +540,16 @@ class Dashboard extends Component {
     let res;
     try {
       res = await Apis.getNumberOfStakings();
-      console.log('getNumberOfStakings - res', res)
+      console.log('getNumberOfStakings - res', res);
     } catch (e) {
       console.log(e);
     } finally {
       this.setState({
         recordName: {
-          data: {
-
-          },
+          data: {},
           isLoading: false,
-        }
-      })
+        },
+      });
     }
   }
 
@@ -522,34 +557,42 @@ class Dashboard extends Component {
     let res;
     try {
       res = await Apis.getStakingPlanStatistics();
-      console.log('getStakingPlanStatistics - res', res)
+      console.log('getStakingPlanStatistics - res', res);
     } catch (e) {
       console.log(e);
     } finally {
-      const volumeOfOneYearStakings = res?.data?.plan0Amount ? lessDecimals(res.data.plan0Amount) : 0;
-      const volumeOfTwoYearStakings = res?.data?.plan1Amount ? lessDecimals(res.data.plan1Amount) : 0;
-      console.log('volumeOfOneYearStakings',volumeOfOneYearStakings)
-      console.log('volumeOfTwoYearStakings',volumeOfTwoYearStakings)
+      const volumeOfOneYearStakings = res?.data?.plan0Amount
+        ? lessDecimals(res.data.plan0Amount)
+        : 0;
+      const volumeOfTwoYearStakings = res?.data?.plan1Amount
+        ? lessDecimals(res.data.plan1Amount)
+        : 0;
+      console.log('volumeOfOneYearStakings', volumeOfOneYearStakings);
+      console.log('volumeOfTwoYearStakings', volumeOfTwoYearStakings);
       this.setState({
         timeallyStakers: {
           data: {
             ...this.state.timeallyStakers.data,
-            volumeOfOneYearStakings: volumeOfOneYearStakings ? volumeOfOneYearStakings + ' ES' : 0,
-            volumeOfTwoYearStakings: volumeOfTwoYearStakings ? volumeOfTwoYearStakings + ' ES' : 0,
+            volumeOfOneYearStakings: volumeOfOneYearStakings
+              ? volumeOfOneYearStakings + ' ES'
+              : 0,
+            volumeOfTwoYearStakings: volumeOfTwoYearStakings
+              ? volumeOfTwoYearStakings + ' ES'
+              : 0,
             chartData: [
               {
                 name: 'Volume 1',
-                value: Number(volumeOfOneYearStakings)
+                value: Number(volumeOfOneYearStakings),
               },
               {
                 name: 'Volume 2',
-                value: Number(volumeOfTwoYearStakings)
-              }
-            ]
+                value: Number(volumeOfTwoYearStakings),
+              },
+            ],
           },
           isLoading: false,
-        }
-      })
+        },
+      });
     }
   }
 
@@ -557,7 +600,7 @@ class Dashboard extends Component {
     let res;
     try {
       res = await Apis.getPlatformDetailsAllTime();
-      console.log('getPlatformDetailsAllTime - res', res)
+      console.log('getPlatformDetailsAllTime - res', res);
     } catch (e) {
       console.log(e);
     } finally {
@@ -565,18 +608,22 @@ class Dashboard extends Component {
         eraswap: {
           data: {
             ...this.state.eraswap.data,
-            totalESStaked: res?.data?.totalStaking ? lessDecimals(res.data.totalStaking) + ' ES' : '-'
+            totalESStaked: res?.data?.totalStaking
+              ? lessDecimals(res.data.totalStaking) + ' ES'
+              : '-',
           },
           isLoading: false,
         },
         timeallyStakers: {
           data: {
             ...this.state.timeallyStakers.data,
-            stakings: res.data.totalStaking ? lessDecimals(res.data.totalStaking) + ' ES' : '-'
+            stakings: res.data.totalStaking
+              ? lessDecimals(res.data.totalStaking) + ' ES'
+              : '-',
           },
-          isLoading: false
-        }
-      })
+          isLoading: false,
+        },
+      });
     }
   }
 
@@ -584,7 +631,7 @@ class Dashboard extends Component {
     let res;
     try {
       res = await Apis.getNumberOfBets();
-      console.log('getNumberOfBets - res', res)
+      console.log('getNumberOfBets - res', res);
     } catch (e) {
       console.log(e);
     } finally {
@@ -592,11 +639,13 @@ class Dashboard extends Component {
         betdeex: {
           data: {
             ...this.state.betdeex.data,
-            events: res?.data?.numberOfBets ? res.data.numberOfBets + ' events' : '-'
+            events: res?.data?.numberOfBets
+              ? res.data.numberOfBets + ' events'
+              : '-',
           },
           isLoading: false,
-        }
-      })
+        },
+      });
     }
   }
 
@@ -604,7 +653,7 @@ class Dashboard extends Component {
     let res;
     try {
       res = await Apis.getBettingDetails();
-      console.log('getBettingDetails - res', res)
+      console.log('getBettingDetails - res', res);
     } catch (e) {
       console.log(e);
     } finally {
@@ -612,14 +661,24 @@ class Dashboard extends Component {
         betdeex: {
           data: {
             ...this.state.betdeex.data,
-            predictors: res?.data?.numberOfPredictors ? res.data.numberOfPredictors + ' predictor' + (res.data.numberOfPredictors !== 1 ? 's' : '') : '-',
-            esVolumePredicted: res?.data?.totalBetAmount ? lessDecimals(res.data.totalBetAmount) + ' ES' : '-',
-            highestPrediction: res?.data?.highestBetAmount ? lessDecimals(res.data.highestBetAmount) + ' ES' : '-',
-            averagePrediction: res?.data?.averagePrediction ? lessDecimals(res.data.averagePrediction) + ' ES' : '-',
+            predictors: res?.data?.numberOfPredictors
+              ? res.data.numberOfPredictors +
+                ' predictor' +
+                (res.data.numberOfPredictors !== 1 ? 's' : '')
+              : '-',
+            esVolumePredicted: res?.data?.totalBetAmount
+              ? lessDecimals(res.data.totalBetAmount) + ' ES'
+              : '-',
+            highestPrediction: res?.data?.highestBetAmount
+              ? lessDecimals(res.data.highestBetAmount) + ' ES'
+              : '-',
+            averagePrediction: res?.data?.averagePrediction
+              ? lessDecimals(res.data.averagePrediction) + ' ES'
+              : '-',
           },
           isLoading: false,
-        }
-      })
+        },
+      });
     }
   }
 
@@ -627,7 +686,7 @@ class Dashboard extends Component {
     let res;
     try {
       res = await Apis.powerTokenDetails();
-      console.log('powerTokenDetails - res', res)
+      console.log('powerTokenDetails - res', res);
     } catch (e) {
       console.log(e);
     } finally {
@@ -635,11 +694,13 @@ class Dashboard extends Component {
         eraswap: {
           data: {
             ...this.state.eraswap.data,
-            unUsedPowertokens: res.data.error ? 'Inactive' : lessDecimals(res.data.unusedPowerToken) + ' ES'
+            unUsedPowertokens: res.data.error
+              ? 'Inactive'
+              : lessDecimals(res.data.unusedPowerToken) + ' ES',
           },
           isLoading: false,
-        }
-      })
+        },
+      });
     }
   }
 
@@ -647,7 +708,7 @@ class Dashboard extends Component {
     let res;
     try {
       res = await Apis.getTotalReward();
-      console.log('getTotalReward - res', res)
+      console.log('getTotalReward - res', res);
     } catch (e) {
       console.log(e);
     } finally {
@@ -655,12 +716,16 @@ class Dashboard extends Component {
         dayswappers: {
           data: {
             ...this.state.dayswappers.data,
-            totalLiquidRewards: res?.data?.liquidTotal ? lessDecimals(res.data.liquidTotal) + ' ES' : '-',
-            totalTimeAllyRewards: res?.data?.timeallyTotal ? lessDecimals(res.data.timeallyTotal) + ' ES' : '-'
+            totalLiquidRewards: res?.data?.liquidTotal
+              ? lessDecimals(res.data.liquidTotal) + ' ES'
+              : '-',
+            totalTimeAllyRewards: res?.data?.timeallyTotal
+              ? lessDecimals(res.data.timeallyTotal) + ' ES'
+              : '-',
           },
           isLoading: false,
-        }
-      })
+        },
+      });
     }
   }
 
@@ -669,7 +734,7 @@ class Dashboard extends Component {
     let res;
     try {
       res = await Apis.transactionSplits();
-      console.log('transactionSplits - res', res)
+      console.log('transactionSplits - res', res);
     } catch (e) {
       console.log(e);
     } finally {
@@ -677,12 +742,16 @@ class Dashboard extends Component {
         eraswap: {
           data: {
             ...this.state.eraswap.data,
-            ecosystemTransactions: res.platform_count ? res.platform_count + ' txs' : '-',
-            ecosystemVolume: res.platform_count ? res.platform_volume + ' ES' : '-'
+            ecosystemTransactions: res.platform_count
+              ? res.platform_count + ' txs'
+              : '-',
+            ecosystemVolume: res.platform_count
+              ? res.platform_volume + ' ES'
+              : '-',
           },
-          isLoading: false
-        }
-      })
+          isLoading: false,
+        },
+      });
       // let totalAmount = 0;
       //   const platformTFC = {};
       //   for(const entry in res) {
@@ -719,7 +788,7 @@ class Dashboard extends Component {
     let res;
     try {
       res = await Apis.dayswappersOverview();
-      console.log('dayswappersOverview - res', res)
+      console.log('dayswappersOverview - res', res);
     } catch (e) {
       console.log(e);
     } finally {
@@ -727,27 +796,62 @@ class Dashboard extends Component {
         eraswap: {
           data: {
             ...this.state.eraswap.data,
-            numberOfDayswappers: res?.total_no_of_user ? res.total_no_of_user + ' users' : '-'
-          }
+            numberOfDayswappers: res?.total_no_of_user
+              ? res.total_no_of_user + ' users'
+              : '-',
+          },
         },
         dayswappers: {
           data: {
             ...this.state.dayswappers.data,
-            users: res?.total_no_of_user !== undefined ? res.total_no_of_user + ' users' : '-',
-            activeUsers: res?.active_users !== undefined ? res.active_users + ' user' + (res.kyc_users > 1 ? 's' : '') : '-',
-            kycUsers: res?.kyc_users !== undefined ? res.kyc_users + ' user' + (res.kyc_users > 1 ? 's' : '') : '-',
-            whiteBelt: res?.White !== undefined ? res.White + ' user' + (res.White !== 1 ? 's' : '') : '-',
-            yellowBelt: res?.Yellow !== undefined ? res.Yellow + ' user' + (res.Yellow !== 1 ? 's' : '') : '-',
-            orangeBelt: res?.Orange !== undefined ? res.Orange + ' user' + (res.Orange !== 1 ? 's' : '') : '-',
-            greenBelt: res?.Green !== undefined ? res.Green + ' user' + (res.Green !== 1 ? 's' : '') : '-',
-            blueBelt: res?.Blue !== undefined ? res.Blue + ' user' + (res.Blue !== 1 ? 's' : '') : '-',
-            brownBelt: res?.Brown !== undefined ? res.Brown + ' user' + (res.Brown !== 1 ? 's' : '') : '-',
-            redBelt: res?.Red !== undefined ? res.Red + ' user' + (res.Red !== 1 ? 's' : '') : '-',
-            blackBelt: res?.Black !== undefined ? res.Black + ' user' + (res.Black !== 1 ? 's' : '') : '-',
+            users:
+              res?.total_no_of_user !== undefined
+                ? res.total_no_of_user + ' users'
+                : '-',
+            activeUsers:
+              res?.active_users !== undefined
+                ? res.active_users + ' user' + (res.kyc_users > 1 ? 's' : '')
+                : '-',
+            kycUsers:
+              res?.kyc_users !== undefined
+                ? res.kyc_users + ' user' + (res.kyc_users > 1 ? 's' : '')
+                : '-',
+            whiteBelt:
+              res?.White !== undefined
+                ? res.White + ' user' + (res.White !== 1 ? 's' : '')
+                : '-',
+            yellowBelt:
+              res?.Yellow !== undefined
+                ? res.Yellow + ' user' + (res.Yellow !== 1 ? 's' : '')
+                : '-',
+            orangeBelt:
+              res?.Orange !== undefined
+                ? res.Orange + ' user' + (res.Orange !== 1 ? 's' : '')
+                : '-',
+            greenBelt:
+              res?.Green !== undefined
+                ? res.Green + ' user' + (res.Green !== 1 ? 's' : '')
+                : '-',
+            blueBelt:
+              res?.Blue !== undefined
+                ? res.Blue + ' user' + (res.Blue !== 1 ? 's' : '')
+                : '-',
+            brownBelt:
+              res?.Brown !== undefined
+                ? res.Brown + ' user' + (res.Brown !== 1 ? 's' : '')
+                : '-',
+            redBelt:
+              res?.Red !== undefined
+                ? res.Red + ' user' + (res.Red !== 1 ? 's' : '')
+                : '-',
+            blackBelt:
+              res?.Black !== undefined
+                ? res.Black + ' user' + (res.Black !== 1 ? 's' : '')
+                : '-',
           },
           isLoading: false,
-        }
-      })
+        },
+      });
     }
   }
 
@@ -755,7 +859,7 @@ class Dashboard extends Component {
     let res;
     try {
       res = await Apis.totalNoOfUser();
-      console.log('totalNoOfUser - res', res)
+      console.log('totalNoOfUser - res', res);
     } catch (e) {
       console.log(e);
     } finally {
@@ -763,11 +867,13 @@ class Dashboard extends Component {
         timeswappers: {
           data: {
             ...this.state.timeswappers.data,
-            users: res?.data ? res.data + ' user' + (res.data > 1 ? 's' : '') : '-'
+            users: res?.data
+              ? res.data + ' user' + (res.data > 1 ? 's' : '')
+              : '-',
           },
           isLoading: false,
-        }
-      })
+        },
+      });
     }
   }
 
@@ -775,7 +881,7 @@ class Dashboard extends Component {
     let res;
     try {
       res = await Apis.totalNoOfFreelancerOrSeller();
-      console.log('totalNoOfFreelancerOrSeller - res', res)
+      console.log('totalNoOfFreelancerOrSeller - res', res);
     } catch (e) {
       console.log(e);
     } finally {
@@ -783,11 +889,13 @@ class Dashboard extends Component {
         timeswappers: {
           data: {
             ...this.state.timeswappers.data,
-            freelancers: res?.data ? res.data + ' user' + (res.data > 1 ? 's' : '') : '-'
+            freelancers: res?.data
+              ? res.data + ' user' + (res.data > 1 ? 's' : '')
+              : '-',
           },
           isLoading: false,
-        }
-      })
+        },
+      });
     }
   }
 
@@ -795,7 +903,7 @@ class Dashboard extends Component {
     let res;
     try {
       res = await Apis.totalViewsOnProfile();
-      console.log('totalViewsOnProfile - res', res)
+      console.log('totalViewsOnProfile - res', res);
     } catch (e) {
       console.log(e);
     } finally {
@@ -803,11 +911,13 @@ class Dashboard extends Component {
         timeswappers: {
           data: {
             ...this.state.timeswappers.data,
-            viewsOnPortfolioPages: res.data ? res.data + ' view' + (res.data > 1 ? 's' : '') : '-'
+            viewsOnPortfolioPages: res.data
+              ? res.data + ' view' + (res.data > 1 ? 's' : '')
+              : '-',
           },
           isLoading: false,
-        }
-      })
+        },
+      });
     }
   }
 
@@ -815,7 +925,7 @@ class Dashboard extends Component {
     let res;
     try {
       res = await Apis.totalNoOfVerifiedUser();
-      console.log('totalNoOfVerifiedUser - res', res)
+      console.log('totalNoOfVerifiedUser - res', res);
     } catch (e) {
       console.log(e);
     } finally {
@@ -823,11 +933,13 @@ class Dashboard extends Component {
         timeswappers: {
           data: {
             ...this.state.timeswappers.data,
-            verified: res.data ? res.data + ' user' + (res.data > 1 ? 's' : '') : '-'
+            verified: res.data
+              ? res.data + ' user' + (res.data > 1 ? 's' : '')
+              : '-',
           },
           isLoading: false,
-        }
-      })
+        },
+      });
     }
   }
 
@@ -835,7 +947,7 @@ class Dashboard extends Component {
     let res;
     try {
       res = await Apis.totalNoOfCertifiedUser();
-      console.log('totalNoOfCertifiedUser - res', res)
+      console.log('totalNoOfCertifiedUser - res', res);
     } catch (e) {
       console.log(e);
     } finally {
@@ -843,11 +955,13 @@ class Dashboard extends Component {
         timeswappers: {
           data: {
             ...this.state.timeswappers.data,
-            certified: res.data ? res.data + ' user' + (res.data > 1 ? 's' : '') : '-'
+            certified: res.data
+              ? res.data + ' user' + (res.data > 1 ? 's' : '')
+              : '-',
           },
           isLoading: false,
-        }
-      })
+        },
+      });
     }
   }
 
@@ -855,7 +969,7 @@ class Dashboard extends Component {
     let res;
     try {
       res = await Apis.totalNoOfDeposit();
-      console.log('totalNoOfDeposit - res', res)
+      console.log('totalNoOfDeposit - res', res);
     } catch (e) {
       console.log(e);
     } finally {
@@ -863,11 +977,11 @@ class Dashboard extends Component {
         timeswappers: {
           data: {
             ...this.state.timeswappers.data,
-            deposits: res?.data ? res.data + ' ES' : '-'
+            deposits: res?.data ? res.data + ' ES' : '-',
           },
           isLoading: false,
-        }
-      })
+        },
+      });
     }
   }
 
@@ -875,7 +989,7 @@ class Dashboard extends Component {
     let res;
     try {
       res = await Apis.totalNoOfWithdraw();
-      console.log('totalNoOfWithdraw - res', res)
+      console.log('totalNoOfWithdraw - res', res);
     } catch (e) {
       console.log(e);
     } finally {
@@ -883,11 +997,11 @@ class Dashboard extends Component {
         timeswappers: {
           data: {
             ...this.state.timeswappers.data,
-            withdrawals: res?.data !== undefined ? res.data + ' ES' : '-'
+            withdrawals: res?.data !== undefined ? res.data + ' ES' : '-',
           },
           isLoading: false,
-        }
-      })
+        },
+      });
     }
   }
 
@@ -895,7 +1009,7 @@ class Dashboard extends Component {
     let res;
     try {
       res = await Apis.totalJobsPosted();
-      console.log('totalJobsPosted - res', res)
+      console.log('totalJobsPosted - res', res);
     } catch (e) {
       console.log(e);
     } finally {
@@ -903,11 +1017,14 @@ class Dashboard extends Component {
         timeswappers: {
           data: {
             ...this.state.timeswappers.data,
-            jobsPosted: res?.data !== undefined ? res.data + ' job' + (res.data > 1 ? 's' : '') : '-'
+            jobsPosted:
+              res?.data !== undefined
+                ? res.data + ' job' + (res.data > 1 ? 's' : '')
+                : '-',
           },
           isLoading: false,
-        }
-      })
+        },
+      });
     }
   }
 
@@ -915,7 +1032,7 @@ class Dashboard extends Component {
     let res;
     try {
       res = await Apis.totalJobsDone();
-      console.log('totalJobsDone - res', res)
+      console.log('totalJobsDone - res', res);
     } catch (e) {
       console.log(e);
     } finally {
@@ -923,11 +1040,14 @@ class Dashboard extends Component {
         timeswappers: {
           data: {
             ...this.state.timeswappers.data,
-            jobsDone: res?.data !== undefined ? res.data + ' job' + (res.data > 1 ? 's' : '') : '-'
+            jobsDone:
+              res?.data !== undefined
+                ? res.data + ' job' + (res.data > 1 ? 's' : '')
+                : '-',
           },
           isLoading: false,
-        }
-      })
+        },
+      });
     }
   }
 
@@ -935,7 +1055,7 @@ class Dashboard extends Component {
     let res;
     try {
       res = await Apis.TfcGenerated();
-      console.log('TfcGenerated - res', res)
+      console.log('TfcGenerated - res', res);
     } catch (e) {
       console.log(e);
     } finally {
@@ -943,11 +1063,11 @@ class Dashboard extends Component {
         timeswappers: {
           data: {
             ...this.state.timeswappers.data,
-            tfc: res?.data ? res.data + ' ES' : '-'
+            tfc: res?.data ? res.data + ' ES' : '-',
           },
           isLoading: false,
-        }
-      })
+        },
+      });
     }
   }
 
@@ -955,7 +1075,7 @@ class Dashboard extends Component {
     let res;
     try {
       res = await Apis.swapperswalletTotalFeeds();
-      console.log('swapperswalletTotalFeeds - res', res)
+      console.log('swapperswalletTotalFeeds - res', res);
     } catch (e) {
       console.log(e);
     } finally {
@@ -971,8 +1091,8 @@ class Dashboard extends Component {
             uploads: res.data.mediaUploads + ' media uploads',
           },
           isLoading: false,
-        }
-      })
+        },
+      });
     }
   }
 
@@ -980,18 +1100,16 @@ class Dashboard extends Component {
     let res;
     try {
       res = await Apis.swapperswallTopTenreceivers();
-      console.log('swapperswallTopTenreceivers - res', res)
+      console.log('swapperswallTopTenreceivers - res', res);
     } catch (e) {
       console.log(e);
     } finally {
       this.setState({
         recordName: {
-          data: {
-
-          },
+          data: {},
           isLoading: false,
-        }
-      })
+        },
+      });
     }
   }
 
@@ -999,7 +1117,7 @@ class Dashboard extends Component {
     let res;
     try {
       res = await Apis.userscount();
-      console.log('userscount - res', res)
+      console.log('userscount - res', res);
     } catch (e) {
       console.log(e);
     } finally {
@@ -1007,11 +1125,11 @@ class Dashboard extends Component {
         eraswapAcademy: {
           data: {
             ...this.state.eraswapAcademy.data,
-            users: res?.data !== undefined ? res.data + ' users' : '-'
+            users: res?.data !== undefined ? res.data + ' users' : '-',
           },
           isLoading: false,
-        }
-      })
+        },
+      });
     }
   }
 
@@ -1019,7 +1137,7 @@ class Dashboard extends Component {
     let res;
     try {
       res = await Apis.courses();
-      console.log('courses - res', res)
+      console.log('courses - res', res);
     } catch (e) {
       console.log(e);
     } finally {
@@ -1027,11 +1145,11 @@ class Dashboard extends Component {
         eraswapAcademy: {
           data: {
             ...this.state.eraswapAcademy.data,
-            courses: res?.data !== undefined ? res.data + ' courses' : '-'
+            courses: res?.data !== undefined ? res.data + ' courses' : '-',
           },
           isLoading: false,
-        }
-      })
+        },
+      });
     }
   }
 
@@ -1039,7 +1157,7 @@ class Dashboard extends Component {
     let res;
     try {
       res = await Apis.deposits();
-      console.log('deposits - res', res)
+      console.log('deposits - res', res);
     } catch (e) {
       console.log(e);
     } finally {
@@ -1047,11 +1165,11 @@ class Dashboard extends Component {
         eraswapAcademy: {
           data: {
             ...this.state.eraswapAcademy.data,
-            deposits: res?.data !== undefined ? res.data + ' ES' : '-'
+            deposits: res?.data !== undefined ? res.data + ' ES' : '-',
           },
           isLoading: false,
-        }
-      })
+        },
+      });
     }
   }
 
@@ -1059,7 +1177,7 @@ class Dashboard extends Component {
     let res;
     try {
       res = await Apis.userstudying();
-      console.log('userstudying - res', res)
+      console.log('userstudying - res', res);
     } catch (e) {
       console.log(e);
     } finally {
@@ -1067,11 +1185,11 @@ class Dashboard extends Component {
         eraswapAcademy: {
           data: {
             ...this.state.eraswapAcademy.data,
-            usersStuding: res?.data !== undefined ? res.data + ' users' : '-'
+            usersStuding: res?.data !== undefined ? res.data + ' users' : '-',
           },
           isLoading: false,
-        }
-      })
+        },
+      });
     }
   }
 
@@ -1079,7 +1197,7 @@ class Dashboard extends Component {
     let res;
     try {
       res = await Apis.buzcafeUserscount();
-      console.log('buzcafeUserscount - res', res)
+      console.log('buzcafeUserscount - res', res);
     } catch (e) {
       console.log(e);
     } finally {
@@ -1087,11 +1205,11 @@ class Dashboard extends Component {
         buzcafe: {
           data: {
             ...this.state.buzcafe.data,
-            users: res?.data ? res.data + ' users' : '-'
+            users: res?.data ? res.data + ' users' : '-',
           },
           isLoading: false,
-        }
-      })
+        },
+      });
     }
   }
 
@@ -1099,7 +1217,7 @@ class Dashboard extends Component {
     let res;
     try {
       res = await Apis.buzcafeShopscount();
-      console.log('buzcafeShopscount - res', res)
+      console.log('buzcafeShopscount - res', res);
     } catch (e) {
       console.log(e);
     } finally {
@@ -1107,11 +1225,11 @@ class Dashboard extends Component {
         buzcafe: {
           data: {
             ...this.state.buzcafe.data,
-            shops: res?.data !== undefined ? res.data + ' shops' : '-'
+            shops: res?.data !== undefined ? res.data + ' shops' : '-',
           },
           isLoading: false,
-        }
-      })
+        },
+      });
     }
   }
 
@@ -1119,7 +1237,7 @@ class Dashboard extends Component {
     let res;
     try {
       res = await Apis.buzcafeDepositscount();
-      console.log('buzcafeDepositscount - res', res)
+      console.log('buzcafeDepositscount - res', res);
     } catch (e) {
       console.log(e);
     } finally {
@@ -1127,11 +1245,11 @@ class Dashboard extends Component {
         buzcafe: {
           data: {
             ...this.state.buzcafe.data,
-            deposits: res?.data ? res.data + ' deposits' : '-'
+            deposits: res?.data ? res.data + ' deposits' : '-',
           },
           isLoading: false,
-        }
-      })
+        },
+      });
     }
   }
 
@@ -1139,7 +1257,7 @@ class Dashboard extends Component {
     let res;
     try {
       res = await Apis.buzcafeWithdrawalscount();
-      console.log('buzcafeWithdrawalscount - res', res)
+      console.log('buzcafeWithdrawalscount - res', res);
     } catch (e) {
       console.log(e);
     } finally {
@@ -1147,11 +1265,12 @@ class Dashboard extends Component {
         buzcafe: {
           data: {
             ...this.state.buzcafe.data,
-            withdrawals: res?.data !== undefined ? res.data + ' withdrawals' : '-'
+            withdrawals:
+              res?.data !== undefined ? res.data + ' withdrawals' : '-',
           },
           isLoading: false,
-        }
-      })
+        },
+      });
     }
   }
 
@@ -1159,7 +1278,7 @@ class Dashboard extends Component {
     let res;
     try {
       res = await Apis.buzcafeTransactionscount();
-      console.log('buzcafeTransactionscount - res', res)
+      console.log('buzcafeTransactionscount - res', res);
     } catch (e) {
       console.log(e);
     } finally {
@@ -1167,34 +1286,34 @@ class Dashboard extends Component {
         buzcafe: {
           data: {
             ...this.state.buzcafe.data,
-            internalTransactions: res?.data ? res.data + ' transactions' : '-'
+            internalTransactions: res?.data ? res.data + ' transactions' : '-',
           },
           isLoading: false,
-        }
-      })
+        },
+      });
     }
   }
 
   updateMarketCap = () => {
-    console.log('this.esPrice', this.esPrice)
-    console.log('this.esCurrentSupply', this.esCurrentSupply)
+    console.log('this.esPrice', this.esPrice);
+    console.log('this.esCurrentSupply', this.esCurrentSupply);
     if (this.esPrice && this.esCurrentSupply) {
       let marketCap = String(this.esPrice * this.esCurrentSupply);
       if (marketCap.includes('.')) {
         marketCap = marketCap.split('.')[0];
       }
-      console.log('marketCap', marketCap)
+      console.log('marketCap', marketCap);
       this.setState({
         eraswap: {
           data: {
             ...this.state.eraswap.data,
-            marketCap
+            marketCap,
           },
-          isLoading: false
-        }
-      })
+          isLoading: false,
+        },
+      });
     }
-  }
+  };
 
   nrtTicker() {
     /// @dev countdown timer for nrt release
@@ -1210,65 +1329,88 @@ class Dashboard extends Component {
         const res = await Apis.getCurrentNRTMonth();
         if (!currentNrtMonthNumber) {
           currentNrtMonthNumber = res.data.nrtMonth;
-        } else if (res.data.nrtMonth !== currentNrtMonthNumber && !seeFutureNrt) {
+        } else if (
+          res.data.nrtMonth !== currentNrtMonthNumber &&
+          !seeFutureNrt
+        ) {
           window.location.reload();
         }
       } catch (e) {
-        console.log(e)
+        console.log(e);
       }
     }, 3500);
 
     setInterval(() => {
-      const nextNrtTimestamp = deployTimestamp + monthDuration * (currentNrtMonthNumber + 1);
+      const nextNrtTimestamp =
+        deployTimestamp + monthDuration * (currentNrtMonthNumber + 1);
       const currentTimestamp = Date.now();
 
-      const timeRemaining = nextNrtTimestamp > currentTimestamp ? nextNrtTimestamp - currentTimestamp : 0;
+      const timeRemaining =
+        nextNrtTimestamp > currentTimestamp
+          ? nextNrtTimestamp - currentTimestamp
+          : 0;
 
       //     window.isOnProduction || console.log(timeRemaining);
 
       const daysRemaining = Math.floor(timeRemaining / 1000 / 24 / 60 / 60);
-      const hoursRemaining = Math.floor((timeRemaining - daysRemaining * 1000 * 24 * 60 * 60) / 1000 / 60 / 60);
-      const minutesRemaining = Math.floor((timeRemaining - daysRemaining * 1000 * 24 * 60 * 60 - hoursRemaining * 1000 * 60 * 60) / 1000 / 60);
-      const secondsRemaining = Math.floor((timeRemaining - daysRemaining * 1000 * 24 * 60 * 60 - hoursRemaining * 1000 * 60 * 60 - minutesRemaining * 1000 * 60) / 1000)
+      const hoursRemaining = Math.floor(
+        (timeRemaining - daysRemaining * 1000 * 24 * 60 * 60) / 1000 / 60 / 60
+      );
+      const minutesRemaining = Math.floor(
+        (timeRemaining -
+          daysRemaining * 1000 * 24 * 60 * 60 -
+          hoursRemaining * 1000 * 60 * 60) /
+          1000 /
+          60
+      );
+      const secondsRemaining = Math.floor(
+        (timeRemaining -
+          daysRemaining * 1000 * 24 * 60 * 60 -
+          hoursRemaining * 1000 * 60 * 60 -
+          minutesRemaining * 1000 * 60) /
+          1000
+      );
 
       // window.isOnProduction || console.log(daysRemaining, hoursRemaining, minutesRemaining, secondsRemaining);
-      
+
       this.setState({
         nextNrtCounter: {
           data: {
             days: daysRemaining,
             hours: hoursRemaining,
             minutes: minutesRemaining,
-            seconds: secondsRemaining
+            seconds: secondsRemaining,
           },
-          isLoading: false
-        }
-      })
+          isLoading: false,
+        },
+      });
     }, 1000);
   }
-
 
   render() {
     return (
       <div className="bgd-dash-color dashboard-box">
-        <div className='booking-hero-bgd booking-hero-bgd-inner'>
+        <div className="booking-hero-bgd booking-hero-bgd-inner">
           <Navbar />
           <h2 className="es-main-head es-main-head-inner">Dashboard</h2>
         </div>
         <div className="dashboard-main-bgd">
-          <div className='row'>
+          <div className="row">
             <Col lg={9}>
               <div className="sub-dashboard">
                 <Col lg={3}>
                   <h5 className="">Era Swap (ES)</h5>
-                  <h5 className="sub-dash-head">{this.state.eraswap.data.esUSDT} </h5>
-                  
+                  <h5 className="sub-dash-head">
+                    {this.state.eraswap.data.esUSDT}{' '}
+                  </h5>
                 </Col>
                 <Col lg={3}>
                   <div className="sub-supply-box mb10">
                     <div className="es-box-ds">
                       <p className="supply-txt">MARKET CAP</p>
-                      <p className="supply-txt">{this.state.eraswap.data.marketCap} $</p>
+                      <p className="supply-txt">
+                        {this.state.eraswap.data.marketCap}
+                      </p>
                     </div>
                   </div>
                 </Col>
@@ -1276,7 +1418,9 @@ class Dashboard extends Component {
                   <div className="sub-supply-box mb10">
                     <div className="es-box-ds">
                       <p className="supply-txt">TOTAL ES Owners</p>
-                      <p className="supply-txt">{this.state.eraswap.data.totolESUsers} </p>
+                      <p className="supply-txt">
+                        {this.state.eraswap.data.totolESUsers}{' '}
+                      </p>
                     </div>
                   </div>
                 </Col>
@@ -1284,7 +1428,9 @@ class Dashboard extends Component {
                   <div className="sub-supply-box mb10">
                     <div className="es-box-ds">
                       <p className="supply-txt">TOTAL STAKED ES</p>
-                      <p className="supply-txt">{this.state.eraswap.data.totalESStaked} </p>
+                      <p className="supply-txt">
+                        {this.state.eraswap.data.totalESStaked}{' '}
+                      </p>
                     </div>
                   </div>
                 </Col>
@@ -1295,15 +1441,15 @@ class Dashboard extends Component {
               <div className="count-box">
                 <ul className="flex-count-box">
                   <li className="count-txt">
-                    {this.state.nextNrtCounter.data.days} 
+                    {this.state.nextNrtCounter.data.days}
                     <p>DAYS</p>
-                   </li>
+                  </li>
                   <li className="count-txt">
-                    {this.state.nextNrtCounter.data.hours} 
+                    {this.state.nextNrtCounter.data.hours}
                     <p>HOURS</p>
-                   </li>
+                  </li>
                   <li className="count-txt">
-                    {this.state.nextNrtCounter.data.minutes} 
+                    {this.state.nextNrtCounter.data.minutes}
                     <p>MINUTES</p>
                   </li>
                   <li className="count-txt">
@@ -1320,9 +1466,11 @@ class Dashboard extends Component {
             <Row>
               <Col sm={6} lg={2}>
                 <Card>
-                  <Card.Body  >
+                  <Card.Body>
                     <p className="sect-txt-bold ">ES CURRENT SUPPLY</p>
-                    <p className="value-dash-txt">{this.state.eraswap.data.circulatingOutsideTA}</p>
+                    <p className="value-dash-txt">
+                      {this.state.eraswap.data.circulatingOutsideTA}
+                    </p>
                   </Card.Body>
                 </Card>
               </Col>
@@ -1330,7 +1478,9 @@ class Dashboard extends Component {
                 <Card>
                   <Card.Body>
                     <p className="sect-txt-bold">TOTAL SUPPLY</p>
-                    <p className="value-dash-txt">{this.state.eraswap.data.esTotalSupply}</p>
+                    <p className="value-dash-txt">
+                      {this.state.eraswap.data.esTotalSupply}
+                    </p>
                   </Card.Body>
                 </Card>
               </Col>
@@ -1346,7 +1496,9 @@ class Dashboard extends Component {
                 <Card>
                   <Card.Body>
                     <p className="sect-txt-bold">ES FROM NRT THIS MONTH</p>
-                    <p className="value-dash-txt">{this.state.eraswap.data.currentNrtES}</p>
+                    <p className="value-dash-txt">
+                      {this.state.eraswap.data.currentNrtES}
+                    </p>
                   </Card.Body>
                 </Card>
               </Col>
@@ -1354,7 +1506,9 @@ class Dashboard extends Component {
                 <Card>
                   <Card.Body>
                     <p className="sect-txt-bold">NUMBER OF DAYSWAPPERS</p>
-                    <p className="value-dash-txt">{this.state.eraswap.data.numberOfDayswappers}</p>
+                    <p className="value-dash-txt">
+                      {this.state.eraswap.data.numberOfDayswappers}
+                    </p>
                   </Card.Body>
                 </Card>
               </Col>
@@ -1362,27 +1516,32 @@ class Dashboard extends Component {
                 <Card>
                   <Card.Body>
                     <p className="sect-txt-bold">ECOSYSTEM TRANSACTIONS</p>
-                    <p className="value-dash-txt">{this.state.eraswap.data.ecosystemTransactions}</p>
+                    <p className="value-dash-txt">
+                      {this.state.eraswap.data.ecosystemTransactions}
+                    </p>
                   </Card.Body>
                 </Card>
               </Col>
-
             </Row>
             <div className="wrapper-sub-section">
               <Row className="d-flex justify-content-lg-around">
-                <Col sm={6} lg={2} >
+                <Col sm={6} lg={2}>
                   <Card className="height-80 wd-120 ">
                     <Card.Body>
                       <p className="sect-txt-bold">ECOSYSTEM VOLUME</p>
-                      <p className="value-dash-txt">{this.state.eraswap.data.ecosystemVolume}</p>
+                      <p className="value-dash-txt">
+                        {this.state.eraswap.data.ecosystemVolume}
+                      </p>
                     </Card.Body>
                   </Card>
                 </Col>
-                <Col sm={6} lg={2} >
+                <Col sm={6} lg={2}>
                   <Card className="height-80 wd-120 ">
                     <Card.Body>
                       <p className="sect-txt-bold">UNUSED POWER TOKENS</p>
-                      <p className="value-dash-txt">{this.state.eraswap.data.unUsedPowertokens}</p>
+                      <p className="value-dash-txt">
+                        {this.state.eraswap.data.unUsedPowertokens}
+                      </p>
                     </Card.Body>
                   </Card>
                 </Col>
@@ -1390,7 +1549,9 @@ class Dashboard extends Component {
                   <Card className="height-80 wd-120 ">
                     <Card.Body>
                       <p className="sect-txt-bold">LUCK POOL IN NRT</p>
-                      <p className="value-dash-txt">{this.state.eraswap.data.luckPoolNrt}</p>
+                      <p className="value-dash-txt">
+                        {this.state.eraswap.data.luckPoolNrt}
+                      </p>
                     </Card.Body>
                   </Card>
                 </Col>
@@ -1398,7 +1559,9 @@ class Dashboard extends Component {
                   <Card className="height-80 wd-120 ">
                     <Card.Body>
                       <p className="sect-txt-bold">BURN POOL (IN NEXT NRT)</p>
-                      <p className="value-dash-txt">{this.state.eraswap.data.burnPool}</p>
+                      <p className="value-dash-txt">
+                        {this.state.eraswap.data.burnPool}
+                      </p>
                     </Card.Body>
                   </Card>
                 </Col>
@@ -1406,20 +1569,21 @@ class Dashboard extends Component {
                   <Card className="height-80 wd-120 ">
                     <Card.Body>
                       <p className="sect-txt-bold">TOTAL ES BURNED</p>
-                      <p className="value-dash-txt">{this.state.eraswap.data.totalESBurned}</p>
+                      <p className="value-dash-txt">
+                        {this.state.eraswap.data.totalESBurned}
+                      </p>
                     </Card.Body>
                   </Card>
                 </Col>
-
-
               </Row>
               <Row className="d-flex justify-content-lg-around">
-
                 <Col sm={6} lg={2} p-0>
                   <Card className="height-80 wd-120 ">
                     <Card.Body>
                       <p className="sect-txt-bold">MARKET CAP</p>
-                      <p className="value-dash-txt">{this.state.eraswap.data.marketCap}</p>
+                      <p className="value-dash-txt">
+                        {this.state.eraswap.data.marketCap}
+                      </p>
                     </Card.Body>
                   </Card>
                 </Col>
@@ -1427,7 +1591,9 @@ class Dashboard extends Component {
                   <Card className="height-80 wd-120 ">
                     <Card.Body>
                       <p className="sect-txt-bold">24HR VOL (PROBIT GLOBAL)</p>
-                      <p className="value-dash-txt">{this.state.eraswap.data.probitVolume}</p>
+                      <p className="value-dash-txt">
+                        {this.state.eraswap.data.probitVolume}
+                      </p>
                     </Card.Body>
                   </Card>
                 </Col>
@@ -1435,7 +1601,9 @@ class Dashboard extends Component {
                   <Card className="height-80 wd-120 ">
                     <Card.Body>
                       <p className="sect-txt-bold">CROWDFUND PRICE</p>
-                      <p className="value-dash-txt">{this.state.eraswap.data.crownfundPrice}</p>
+                      <p className="value-dash-txt">
+                        {this.state.eraswap.data.crownfundPrice}
+                      </p>
                     </Card.Body>
                   </Card>
                 </Col>
@@ -1455,7 +1623,6 @@ class Dashboard extends Component {
                     </Card.Body>
                   </Card>
                 </Col>
-
               </Row>
             </div>
           </div>
@@ -1464,137 +1631,191 @@ class Dashboard extends Component {
         <div className="dash-section-4">
           <Row>
             <Col lg={6}>
-                  <div className="section4-border tfc-box">
-                    <div className="flex-sect4-box">
-                     <p className="platfrm-txt">All Platform TFC Generated of this month</p>
-                    </div>
-                  </div>
+              <div className="section4-border tfc-box">
+                <div className="flex-sect4-box">
+                  <p className="platfrm-txt">
+                    All Platform TFC Generated of this month
+                  </p>
+                </div>
+              </div>
             </Col>
             <Col lg={6}>
-                <Row>
-                    <Col lg={6} >
-                        <div className="section4-border charity-box">
-                          <div className="flex-sect4-box">
-                           <p className="platfrm-txt">Charity Pool</p>
-                          </div>
-                        </div>
-                    </Col>
-                    <Col lg={6}>
-                          <div className="section4-border roi-box">
-                            <div className="flex-sect4-box">
-                             <p className="platfrm-txt">ROI</p>
-                            </div>
-                          </div>
-                    </Col>
-                    <Col lg={12}>
-                          <div className="section4-border nrt-box">
-                            <div className="flex-sect4-box">
-                             <p className="platfrm-txt">Last Month Work Pool NRT Utilisation</p>
-                            </div>
-                          </div>
-                    </Col>
-                </Row>
+              <Row>
+                <Col lg={6}>
+                  <div className="section4-border charity-box">
+                    <div className="flex-sect4-box">
+                      <p className="platfrm-txt">Charity Pool</p>
+                    </div>
+                  </div>
+                </Col>
+                <Col lg={6}>
+                  <div className="section4-border roi-box">
+                    <div className="flex-sect4-box">
+                      <p className="platfrm-txt">ROI</p>
+                    </div>
+                  </div>
+                </Col>
+                <Col lg={12}>
+                  <div className="section4-border nrt-box">
+                    <div className="flex-sect4-box">
+                      <p className="platfrm-txt">
+                        Last Month Work Pool NRT Utilisation
+                      </p>
+                    </div>
+                  </div>
+                </Col>
+              </Row>
             </Col>
           </Row>
-
         </div>
         <div className="dash-section-4">
           <Row>
             <Col lg={4}>
               <div className="section4-border">
                 <div className="flex-sect4-box">
-                  <img className='platfrm-logo' src={Images.path.timeally} alt='logo' />
+                  <img
+                    className="platfrm-logo"
+                    src={Images.path.timeally}
+                    alt="logo"
+                  />
                   <p className="platfrm-txt"> TIMEALLY STAKERS</p>
                 </div>
                 <Row>
                   <Col sm={7}>
-                  <PieChart width={300} height={300}>
-                    <Pie data={this.state.timeallyStakers.data.chartData} dataKey="value" nameKey="name" cx="50%" cy="50%" >
-                    {this.state.timeallyStakers.data.chartData.map((entry, index) => 
-                      <Cell fill={COLORS[index % COLORS.length]}>
-                      {/* <Tooltip /> */}
-                      </Cell>)}
+                    <PieChart width={300} height={300}>
+                      <Pie
+                        data={this.state.timeallyStakers.data.chartData}
+                        dataKey="value"
+                        nameKey="name"
+                        cx="50%"
+                        cy="50%"
+                      >
+                        {this.state.timeallyStakers.data.chartData.map(
+                          (entry, index) => (
+                            <Cell fill={COLORS[index % COLORS.length]}>
+                              {/* <Tooltip /> */}
+                            </Cell>
+                          )
+                        )}
                       </Pie>
-                  </PieChart>
+                    </PieChart>
                   </Col>
                   <Col sm={5}>
                     <div className="flex-sect4-box">
                       <div className="timeally-mark"></div>
-                      <p className="sect4-context">Volume of 1 year stakings
-                      {this.state.timeallyStakers.data.volumeOfOneYearStakings}
+                      <p className="sect4-context">
+                        Volume of 1 year stakings
+                        {
+                          this.state.timeallyStakers.data
+                            .volumeOfOneYearStakings
+                        }
                       </p>
                     </div>
                     <div className="flex-sect4-box">
                       <div className="timeally-mark2"></div>
-                      <p className="sect4-context">Volume of 2 year stakings
-                      {this.state.timeallyStakers.data.volumeOfTwoYearStakings}
+                      <p className="sect4-context">
+                        Volume of 2 year stakings
+                        {
+                          this.state.timeallyStakers.data
+                            .volumeOfTwoYearStakings
+                        }
                       </p>
                     </div>
                   </Col>
                 </Row>
                 <div className="timelly-flex tm-border">
                   <p className="sect4-context">Total Volume of Stakings</p>
-                  <p className="sect4-value-bold">{this.state.timeallyStakers.data.totalStakings}</p>
+                  <p className="sect4-value-bold">
+                    {this.state.timeallyStakers.data.totalStakings}
+                  </p>
                 </div>
                 <div className="timelly-border-flex">
                   <p className="sect4-context">NRT Released For TimeAlly</p>
-                  <p className="sect4-value-bold">{this.state.timeallyStakers.data.nrtReleasedForTimeAlly}</p>
+                  <p className="sect4-value-bold">
+                    {this.state.timeallyStakers.data.nrtReleasedForTimeAlly}
+                  </p>
                 </div>
               </div>
             </Col>
             <Col lg={4}>
               <div className="section4-border">
                 <div className="flex-sect4-box">
-                  <img className='platfrm-logo2' src={Images.path.timeswapper} alt='logo' />
+                  <img
+                    className="platfrm-logo2"
+                    src={Images.path.timeswapper}
+                    alt="logo"
+                  />
                   <p className="platfrm-txt">TIMESWAPPERS</p>
                 </div>
                 <div className="ts-flex tm-border">
                   <div>
                     <p className="sect4-context">Total Number of Users</p>
-                    <p className="sect4-value">{this.state.timeswappers.data.users}</p>
+                    <p className="sect4-value">
+                      {this.state.timeswappers.data.users}
+                    </p>
                   </div>
                   <div>
-                    <p className="sect4-context">Total Number of Freelancers/Services</p>
-                    <p className="sect4-value">{this.state.timeswappers.data.freelancers}</p>
+                    <p className="sect4-context">
+                      Total Number of Freelancers/Services
+                    </p>
+                    <p className="sect4-value">
+                      {this.state.timeswappers.data.freelancers}
+                    </p>
                   </div>
                 </div>
                 <div className="ts-flex tm-border">
                   <div>
                     <p className="sect4-context">TFC generated</p>
-                    <p className="sect4-value">{this.state.timeswappers.data.tfc}</p>
+                    <p className="sect4-value">
+                      {this.state.timeswappers.data.tfc}
+                    </p>
                   </div>
                   <div>
                     <p className="sect4-context">Total Verified</p>
-                    <p className="sect4-value">{this.state.timeswappers.data.verified}</p>
+                    <p className="sect4-value">
+                      {this.state.timeswappers.data.verified}
+                    </p>
                   </div>
                   <div>
                     <p className="sect4-context">Total Certified</p>
-                    <p className="sect4-value">{this.state.timeswappers.data.certified}</p>
+                    <p className="sect4-value">
+                      {this.state.timeswappers.data.certified}
+                    </p>
                   </div>
                   <div>
                     <p className="sect4-context">Total Deposit Done</p>
-                    <p className="sect4-value">{this.state.timeswappers.data.deposits}</p>
+                    <p className="sect4-value">
+                      {this.state.timeswappers.data.deposits}
+                    </p>
                   </div>
                 </div>
                 <div className="ts-flex tm-border">
                   <div>
                     <p className="sect4-context">Number of Views on </p>
                     <p className="sect4-context">Freelancer Portfolio pages</p>
-                    <p className="sect4-value">{this.state.timeswappers.data.viewsOnPortfolioPages}</p>
+                    <p className="sect4-value">
+                      {this.state.timeswappers.data.viewsOnPortfolioPages}
+                    </p>
                   </div>
                   <div>
                     <p className="sect4-context">Total Withdraw done</p>
-                    <p className="sect4-value">{this.state.timeswappers.data.withdrawals}</p>
+                    <p className="sect4-value">
+                      {this.state.timeswappers.data.withdrawals}
+                    </p>
                   </div>
                 </div>
                 <div className="timelly-border-flex">
                   <div>
                     <p className="sect4-context">Total Jobs Posted</p>
-                    <p className="sect4-value">{this.state.timeswappers.data.jobsPosted}</p>
+                    <p className="sect4-value">
+                      {this.state.timeswappers.data.jobsPosted}
+                    </p>
                   </div>
                   <div>
                     <p className="sect4-context">Total Jobs Done</p>
-                    <p className="sect4-value">{this.state.timeswappers.data.jobsDone}</p>
+                    <p className="sect4-value">
+                      {this.state.timeswappers.data.jobsDone}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -1602,113 +1823,160 @@ class Dashboard extends Component {
             <Col lg={4}>
               <div className="section4-border">
                 <div className="flex-sect4-box">
-                  <img className='platfrm-logo' src={Images.path.dayswapper} alt='logo' />
+                  <img
+                    className="platfrm-logo"
+                    src={Images.path.dayswapper}
+                    alt="logo"
+                  />
                   <p className="platfrm-txt">DAYSWAPPERS</p>
                 </div>
                 <div className="ds-flex tm-border">
                   <div>
                     <p className="sect4-context">Total DaySwappers</p>
-                    <p className="sect4-value">{this.state.dayswappers.data.users}</p>
+                    <p className="sect4-value">
+                      {this.state.dayswappers.data.users}
+                    </p>
                   </div>
                   <div>
                     <p className="sect4-context">Total Liquid Reward</p>
-                    <p className="sect4-value">{this.state.dayswappers.data.totalLiquidRewards}</p>
+                    <p className="sect4-value">
+                      {this.state.dayswappers.data.totalLiquidRewards}
+                    </p>
                   </div>
                   <div>
                     <p className="sect4-context">Total TimeAlly Rewards</p>
-                    <p className="sect4-value">{this.state.dayswappers.data.totalTimeAllyRewards}</p>
+                    <p className="sect4-value">
+                      {this.state.dayswappers.data.totalTimeAllyRewards}
+                    </p>
                   </div>
                 </div>
                 <div className="ds-flex tm-border">
                   <div>
                     <p className="sect4-context">Active Users </p>
-                    <p className="sect4-value">{this.state.dayswappers.data.activeUsers}</p>
+                    <p className="sect4-value">
+                      {this.state.dayswappers.data.activeUsers}
+                    </p>
                   </div>
                   <div>
                     <p className="sect4-context">KYC users</p>
-                    <p className="sect4-value">{this.state.dayswappers.data.kycUsers}</p>
+                    <p className="sect4-value">
+                      {this.state.dayswappers.data.kycUsers}
+                    </p>
                   </div>
                   <div>
                     <p className="sect4-context">White Belt</p>
-                    <p className="sect4-value">{this.state.dayswappers.data.whiteBelt}</p>
+                    <p className="sect4-value">
+                      {this.state.dayswappers.data.whiteBelt}
+                    </p>
                   </div>
                   <div>
                     <p className="sect4-context">Yellow Belt </p>
-                    <p className="sect4-value">{this.state.dayswappers.data.yellowBelt}</p>
+                    <p className="sect4-value">
+                      {this.state.dayswappers.data.yellowBelt}
+                    </p>
                   </div>
                 </div>
                 <div className="ds-flex tm-border">
                   <div>
                     <p className="sect4-context">Orange Belt </p>
-                    <p className="sect4-value">{this.state.dayswappers.data.orangeBelt}</p>
+                    <p className="sect4-value">
+                      {this.state.dayswappers.data.orangeBelt}
+                    </p>
                   </div>
                   <div>
                     <p className="sect4-context">Green Belt</p>
-                    <p className="sect4-value">{this.state.dayswappers.data.greenBelt}</p>
+                    <p className="sect4-value">
+                      {this.state.dayswappers.data.greenBelt}
+                    </p>
                   </div>
                   <div>
                     <p className="sect4-context">Blue Belt</p>
-                    <p className="sect4-value">{this.state.dayswappers.data.blueBelt}</p>
+                    <p className="sect4-value">
+                      {this.state.dayswappers.data.blueBelt}
+                    </p>
                   </div>
                   <div>
                     <p className="sect4-context">Brown Belt</p>
-                    <p className="sect4-value">{this.state.dayswappers.data.brownBelt}</p>
+                    <p className="sect4-value">
+                      {this.state.dayswappers.data.brownBelt}
+                    </p>
                   </div>
                 </div>
                 <div className="dayswappr-border-flex">
                   <div className="dayswapper-box">
                     <p className="sect4-context">Red Belt</p>
-                    <p className="sect4-value">{this.state.dayswappers.data.redBelt}</p>
+                    <p className="sect4-value">
+                      {this.state.dayswappers.data.redBelt}
+                    </p>
                   </div>
                   <div>
                     <p className="sect4-context">Black Belt</p>
-                    <p className="sect4-value">{this.state.dayswappers.data.blackBelt}</p>
+                    <p className="sect4-value">
+                      {this.state.dayswappers.data.blackBelt}
+                    </p>
                   </div>
                 </div>
               </div>
             </Col>
-
           </Row>
           {/* Second row platforms */}
           <Row>
             <Col lg={4}>
               <div className="section4-border">
                 <div className="flex-sect4-box">
-                  <img className='platfrm-logo4' src={Images.path.swaal} alt='logo' />
+                  <img
+                    className="platfrm-logo4"
+                    src={Images.path.swaal}
+                    alt="logo"
+                  />
                   <p className="platfrm-txt"> SWAPPERS WALL </p>
                 </div>
                 <div className="swwall-flex-border">
                   <div>
                     <p className="sect4-context">Power Tokens this month</p>
-                    <p className="sect4-value-swal">{this.state.swapperswall.data.powertokens}</p>
+                    <p className="sect4-value-swal">
+                      {this.state.swapperswall.data.powertokens}
+                    </p>
                   </div>
                   <div>
                     <p className="sect4-context">Clubs</p>
-                    <p className="sect4-value-swal">{this.state.swapperswall.data.clubs}</p>
+                    <p className="sect4-value-swal">
+                      {this.state.swapperswall.data.clubs}
+                    </p>
                   </div>
                   <div>
                     <p className="sect4-context">Circles</p>
-                    <p className="sect4-value-swal">{this.state.swapperswall.data.circles}</p>
+                    <p className="sect4-value-swal">
+                      {this.state.swapperswall.data.circles}
+                    </p>
                   </div>
                 </div>
                 <div className="swwall-flex-border">
                   <div>
                     <p className="sect4-context">Pages</p>
-                    <p className="sect4-value-swal">{this.state.swapperswall.data.pages}</p>
+                    <p className="sect4-value-swal">
+                      {this.state.swapperswall.data.pages}
+                    </p>
                   </div>
                   <div>
                     <p className="sect4-context">Swappers</p>
-                    <p className="sect4-value-swal">{this.state.swapperswall.data.swappers}</p>
+                    <p className="sect4-value-swal">
+                      {this.state.swapperswall.data.swappers}
+                    </p>
                   </div>
                   <div>
                     <p className="sect4-context">Active Users</p>
-                    <p className="sect4-value-swal">{this.state.swapperswall.data.activeUsers}</p>
+                    <p className="sect4-value-swal">
+                      {this.state.swapperswall.data.activeUsers}
+                    </p>
                   </div>
                 </div>
                 <div className="swapper-center">
                   <div>
                     <p className="sect4-context">Media Uploads</p>
-                    <p className="sect4-value">{this.state.swapperswall.data.uploads}</p>
+                    <p className="sect4-value">
+                      {this.state.swapperswall.data.uploads}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -1716,27 +1984,39 @@ class Dashboard extends Component {
             <Col lg={4}>
               <div className="section4-border">
                 <div className="flex-sect4-box">
-                  <img className='platfrm-logo' src={Images.path.blocklogy} alt='logo' />
+                  <img
+                    className="platfrm-logo"
+                    src={Images.path.blocklogy}
+                    alt="logo"
+                  />
                   <p className="platfrm-txt">ERASWAP ACADEMY </p>
                 </div>
                 <div className="swwall-flex-border">
                   <div>
                     <p className="sect4-context">User Counts</p>
-                    <p className="sect4-value-swal">{this.state.eraswapAcademy.data.users}</p>
+                    <p className="sect4-value-swal">
+                      {this.state.eraswapAcademy.data.users}
+                    </p>
                   </div>
                   <div>
                     <p className="sect4-context">Courses</p>
-                    <p className="sect4-value-swal">{this.state.eraswapAcademy.data.courses}</p>
+                    <p className="sect4-value-swal">
+                      {this.state.eraswapAcademy.data.courses}
+                    </p>
                   </div>
                 </div>
                 <div className="swwall-border-flex">
                   <div>
                     <p className="sect4-context">Total ES Deposited</p>
-                    <p className="sect4-value">{this.state.eraswapAcademy.data.deposits}</p>
+                    <p className="sect4-value">
+                      {this.state.eraswapAcademy.data.deposits}
+                    </p>
                   </div>
                   <div>
                     <p className="sect4-context">Users Studying Count</p>
-                    <p className="sect4-value">{this.state.eraswapAcademy.data.usersStuding}</p>
+                    <p className="sect4-value">
+                      {this.state.eraswapAcademy.data.usersStuding}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -1744,79 +2024,103 @@ class Dashboard extends Component {
             <Col lg={4}>
               <div className="section4-border">
                 <div className="flex-sect4-box">
-                  <img className='platfrm-logo4' src={Images.path.buzcafe} alt='logo' />
+                  <img
+                    className="platfrm-logo4"
+                    src={Images.path.buzcafe}
+                    alt="logo"
+                  />
                   <p className="platfrm-txt">BUZCAFE</p>
                 </div>
                 <div className="buz-flex-border">
                   <div>
                     <p className="sect4-context">Total Users</p>
-                    <p className="sect4-value-swal">{this.state.buzcafe.data.users}</p>
+                    <p className="sect4-value-swal">
+                      {this.state.buzcafe.data.users}
+                    </p>
                   </div>
                   <div>
                     <p className="sect4-context">Total Shops</p>
-                    <p className="sect4-value-swal">{this.state.buzcafe.data.shops}</p>
+                    <p className="sect4-value-swal">
+                      {this.state.buzcafe.data.shops}
+                    </p>
                   </div>
                   <div>
                     <p className="sect4-context">Total Deposits</p>
-                    <p className="sect4-value-swal">{this.state.buzcafe.data.deposits}</p>
+                    <p className="sect4-value-swal">
+                      {this.state.buzcafe.data.deposits}
+                    </p>
                   </div>
                 </div>
                 <div className="swwall-border-flex">
                   <div>
                     <p className="sect4-context">Total Withdrawal</p>
-                    <p className="sect4-value">{this.state.buzcafe.data.withdrawals}</p>
+                    <p className="sect4-value">
+                      {this.state.buzcafe.data.withdrawals}
+                    </p>
                   </div>
                   <div>
                     <p className="sect4-context">Total Internal Transactions</p>
-                    <p className="sect4-value">{this.state.buzcafe.data.internalTransactions}</p>
+                    <p className="sect4-value">
+                      {this.state.buzcafe.data.internalTransactions}
+                    </p>
                   </div>
                 </div>
               </div>
             </Col>
-
           </Row>
           {/* Third row platforms */}
           <Row>
-            <Col sm={6}>
-            </Col>
-            <Col sm={3}>
-            </Col>
-            <Col sm={3}>
-            </Col>
+            <Col sm={6}></Col>
+            <Col sm={3}></Col>
+            <Col sm={3}></Col>
           </Row>
           {/* Fourth row platforms */}
           <Row>
             <Col lg={4}>
               <div className="section4-border">
                 <div className="flex-sect4-box">
-                  <img className='platfrm-logo4' src={Images.path.betdeex} alt='logo' />
+                  <img
+                    className="platfrm-logo4"
+                    src={Images.path.betdeex}
+                    alt="logo"
+                  />
                   <p className="platfrm-txt">BETDEEX </p>
                 </div>
                 <div className="bet-flex-border">
                   <div>
                     <p className="sect4-context">Total Number of Events</p>
-                    <p className="sect4-value-swal">{this.state.betdeex.data.events}</p>
+                    <p className="sect4-value-swal">
+                      {this.state.betdeex.data.events}
+                    </p>
                   </div>
                   <div>
                     <p className="sect4-context">Total Number of Predictors</p>
-                    <p className="sect4-value-swal">{this.state.betdeex.data.predictors}</p>
+                    <p className="sect4-value-swal">
+                      {this.state.betdeex.data.predictors}
+                    </p>
                   </div>
                 </div>
                 <div className="swwall-border-flex">
                   <div>
                     <p className="sect4-context">Total ES volume predicted </p>
                     <p className="sect4-context">on BetDeEx</p>
-                    <p className="sect4-value">{this.state.betdeex.data.esVolumePredicted}</p>
+                    <p className="sect4-value">
+                      {this.state.betdeex.data.esVolumePredicted}
+                    </p>
                   </div>
                   <div>
                     <p className="sect4-context">Highest Prediction </p>
                     <p className="sect4-context">on BetDeEx</p>
-                    <p className="sect4-value">{this.state.betdeex.data.highestPrediction}</p>
+                    <p className="sect4-value">
+                      {this.state.betdeex.data.highestPrediction}
+                    </p>
                   </div>
                   <div>
                     <p className="sect4-context">Average Prediction </p>
                     <p className="sect4-context">on BetDeEx</p>
-                    <p className="sect4-value">{this.state.betdeex.data.averagePrediction}</p>
+                    <p className="sect4-value">
+                      {this.state.betdeex.data.averagePrediction}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -1824,19 +2128,29 @@ class Dashboard extends Component {
             <Col lg={4}>
               <div className="section4-border">
                 <div className="flex-sect4-box">
-                  <img className='platfrm-logo-5' src={Images.path.computeex} alt='logo' />
+                  <img
+                    className="platfrm-logo-5"
+                    src={Images.path.computeex}
+                    alt="logo"
+                  />
                   <p className="platfrm-txt">(YET TO GO LIVE) </p>
                 </div>
                 <div className="compute-flex-border">
                   <div>
-                    <p className="sect4-context">Total Number of Transactions</p>
-                    <p className="sect4-value-swal">{this.state.computeex.data.totalTransactions}</p>
+                    <p className="sect4-context">
+                      Total Number of Transactions
+                    </p>
+                    <p className="sect4-value-swal">
+                      {this.state.computeex.data.totalTransactions}
+                    </p>
                   </div>
                 </div>
                 <div className="swapper-center">
                   <div>
                     <p className="sect4-context">Total Volume</p>
-                    <p className="sect4-value">{this.state.computeex.data.totalVolume}</p>
+                    <p className="sect4-value">
+                      {this.state.computeex.data.totalVolume}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -1844,7 +2158,11 @@ class Dashboard extends Component {
             <Col lg={4}>
               <div className="section4-border">
                 <div className="flex-sect4-box">
-                  <img className='platfrm-logo' src={Images.path.charitylogo} alt='logo' />
+                  <img
+                    className="platfrm-logo"
+                    src={Images.path.charitylogo}
+                    alt="logo"
+                  />
                   <p className="platfrm-txt">CHARITYDAPP </p>
                   <p className="platfrm-txt">(YET TO GO LIVE) </p>
                 </div>
@@ -1877,27 +2195,39 @@ class Dashboard extends Component {
             <Col lg={4}>
               <div className="section4-border">
                 <div className="flex-sect4-box">
-                  <img className='platfrm-logo' src={Images.path.kycdapplogo} alt='logo' />
+                  <img
+                    className="platfrm-logo"
+                    src={Images.path.kycdapplogo}
+                    alt="logo"
+                  />
                   <p className="platfrm-txt">KYCDAPP </p>
                 </div>
                 <div className="swwall-flex-border">
                   <div>
                     <p className="sect4-context">Number of Level 1 KYC</p>
-                    <p className="sect4-value-swal">{this.state.kycDapp.data.levelOneCount}</p>
+                    <p className="sect4-value-swal">
+                      {this.state.kycDapp.data.levelOneCount}
+                    </p>
                   </div>
                   <div>
                     <p className="sect4-context">Number of Level 2 KYC</p>
-                    <p className="sect4-value-swal">{this.state.kycDapp.data.levelTwoCount}</p>
+                    <p className="sect4-value-swal">
+                      {this.state.kycDapp.data.levelTwoCount}
+                    </p>
                   </div>
                 </div>
                 <div className="swwall-border-flex">
                   <div>
                     <p className="sect4-context">Number of Level 3 KYC</p>
-                    <p className="sect4-value">{this.state.kycDapp.data.levelThreeCount}</p>
+                    <p className="sect4-value">
+                      {this.state.kycDapp.data.levelThreeCount}
+                    </p>
                   </div>
                   <div>
                     <p className="sect4-context">All Platform KYCs</p>
-                    <p className="sect4-value">{this.state.kycDapp.data.allPlatformKycs}</p>
+                    <p className="sect4-value">
+                      {this.state.kycDapp.data.allPlatformKycs}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -1905,7 +2235,11 @@ class Dashboard extends Component {
             <Col lg={4}>
               <div className="section4-border">
                 <div className="flex-sect4-box">
-                  <img className='platfrm-logo6' src={Images.path.Coupondapp} alt='logo' />
+                  <img
+                    className="platfrm-logo6"
+                    src={Images.path.Coupondapp}
+                    alt="logo"
+                  />
                   <p className="platfrm-txt">Coupondapp </p>
                 </div>
                 <div className="swwall-flex-border">
@@ -1933,12 +2267,18 @@ class Dashboard extends Component {
             <Col lg={4}>
               <div className="section4-border">
                 <div className="flex-sect4-box">
-                  <img className='platfrm-logo-5' src={Images.path.computeex} alt='logo' />
+                  <img
+                    className="platfrm-logo-5"
+                    src={Images.path.computeex}
+                    alt="logo"
+                  />
                   <p className="platfrm-txt">(YET TO GO LIVE) </p>
                 </div>
                 <div className="compute-flex-border">
                   <div>
-                    <p className="sect4-context">Total number of Transactions</p>
+                    <p className="sect4-context">
+                      Total number of Transactions
+                    </p>
                     <p className="sect4-value-swal">0 events</p>
                   </div>
                 </div>
@@ -1956,7 +2296,11 @@ class Dashboard extends Component {
             <Col lg={4}>
               <div className="section4-border">
                 <div className="flex-sect4-box">
-                  <img className='platfrm-logo2' src={Images.path.renting} alt='logo' />
+                  <img
+                    className="platfrm-logo2"
+                    src={Images.path.renting}
+                    alt="logo"
+                  />
                   <p className="platfrm-txt">RENTINGDAPP</p>
                 </div>
                 <div className="swwall-flex-border">
@@ -1988,7 +2332,11 @@ class Dashboard extends Component {
             <Col lg={4}>
               <div className="section4-border">
                 <div className="flex-sect4-box">
-                  <img className='platfrm-logo2' src={Images.path.booklogo} alt='logo' />
+                  <img
+                    className="platfrm-logo2"
+                    src={Images.path.booklogo}
+                    alt="logo"
+                  />
                   <p className="platfrm-txt">BOOKINGDAPP </p>
                 </div>
                 <div className="swwall-flex-border">
@@ -2020,7 +2368,11 @@ class Dashboard extends Component {
             <Col lg={4}>
               <div className="section4-border">
                 <div className="flex-sect4-box">
-                  <img className='platfrm-logo6' src={Images.path.poolingdapplogo} alt='logo' />
+                  <img
+                    className="platfrm-logo6"
+                    src={Images.path.poolingdapplogo}
+                    alt="logo"
+                  />
                   <p className="platfrm-txt">POOLINGDAPP </p>
                 </div>
                 <div className="swwall-flex-border">
@@ -2052,7 +2404,11 @@ class Dashboard extends Component {
             <Col lg={4}>
               <div className="section4-border">
                 <div className="flex-sect4-box">
-                  <img className='platfrm-logo4' src={Images.path.curedapplogo} alt='logo' />
+                  <img
+                    className="platfrm-logo4"
+                    src={Images.path.curedapplogo}
+                    alt="logo"
+                  />
                   <p className="platfrm-txt">CUREDAPP </p>
                 </div>
                 <div className="bet-flex-border">
@@ -2076,7 +2432,7 @@ class Dashboard extends Component {
                   </div>
                   <div>
                     <p className="sect4-context">Number of Cetificates</p>
-                    <p className="sect4-value">0  </p>
+                    <p className="sect4-value">0 </p>
                   </div>
                 </div>
               </div>
@@ -2084,7 +2440,11 @@ class Dashboard extends Component {
             <Col lg={4}>
               <div className="section4-border">
                 <div className="flex-sect4-box">
-                  <img className='platfrm-logo2' src={Images.path.booklogo} alt='logo' />
+                  <img
+                    className="platfrm-logo2"
+                    src={Images.path.booklogo}
+                    alt="logo"
+                  />
                   <p className="platfrm-txt">FAITH MINUS</p>
                 </div>
                 <div className="swwall-flex-border">
@@ -2122,7 +2482,11 @@ class Dashboard extends Component {
             <Col lg={4}>
               <div className="section4-border">
                 <div className="flex-sect4-box">
-                  <img className='platfrm-logo2' src={Images.path.dateswappr} alt='logo' />
+                  <img
+                    className="platfrm-logo2"
+                    src={Images.path.dateswappr}
+                    alt="logo"
+                  />
                   <p className="platfrm-txt">DATE SWAPPERS</p>
                 </div>
                 <div className="swwall-flex-border">
@@ -2156,69 +2520,78 @@ class Dashboard extends Component {
             <Col lg={4}>
               <div className="section4-border">
                 <div className="flex-sect4-box">
-                  <img className='platfrm-logo6' src={Images.path.networklogo} alt='logo' />
+                  <img
+                    className="platfrm-logo6"
+                    src={Images.path.networklogo}
+                    alt="logo"
+                  />
                   <p className="platfrm-txt">ERA SWAP NETWORK </p>
                 </div>
                 <div className="swwall-flex-border">
-                      <div>
-                        <p className="sect4-context">Number of Transaction (24 hrs)</p>
-                        <p className="sect4-value-swal">15115 txn</p>
-                      </div>
-                      <div>
-                        <p className="sect4-context">Number of Nodes</p>
-                        <p className="sect4-value-swal">165165 nodes</p>
-                      </div>
-                      <div>
-                        <p className="sect4-context">Current Block Height</p>
-                        <p className="sect4-value">15115</p>
-                      </div>
+                  <div>
+                    <p className="sect4-context">
+                      Number of Transaction (24 hrs)
+                    </p>
+                    <p className="sect4-value-swal">15115 txn</p>
+                  </div>
+                  <div>
+                    <p className="sect4-context">Number of Nodes</p>
+                    <p className="sect4-value-swal">165165 nodes</p>
+                  </div>
+                  <div>
+                    <p className="sect4-context">Current Block Height</p>
+                    <p className="sect4-value">15115</p>
+                  </div>
                 </div>
                 <div className="swwall-flex-border">
-                    <div>
-                      <p className="sect4-context">Block Number</p>
-                      <p className="sect4-value">15115 </p>
-                    </div>
-                     <div>
-                      <p className="sect4-context">Last Block Sealer</p>
-                      <p className="sect4-value">15115</p>
-                    </div>
-                     <div>
-                      <p className="sect4-context">Age</p>
-                      <p className="sect4-value">18:57 50 secs ago</p>
-                    </div>
+                  <div>
+                    <p className="sect4-context">Block Number</p>
+                    <p className="sect4-value">15115 </p>
+                  </div>
+                  <div>
+                    <p className="sect4-context">Last Block Sealer</p>
+                    <p className="sect4-value">15115</p>
+                  </div>
+                  <div>
+                    <p className="sect4-context">Age</p>
+                    <p className="sect4-value">18:57 50 secs ago</p>
+                  </div>
                 </div>
                 <div className="swwall-flex-border">
-                      <div>
-                        <p className="sect4-context">Gas Used</p>
-                        <p className="sect4-value">15.9% </p>
-                      </div>
-                       <div>
-                        <p className="sect4-context">Last Block Hash</p>
-                        <p className="sect4-value">0xegrgfd....5fd5</p>
-                      </div>
-                       
-                       <div>
-                        <p className="sect4-context">Time Stamp</p>
-                        <p className="sect4-value">27/07/2020 </p>
-                      </div>
+                  <div>
+                    <p className="sect4-context">Gas Used</p>
+                    <p className="sect4-value">15.9% </p>
                   </div>
-                  <div className="swwall-flex-border">
-                      <div>
-                        <p className="sect4-context">Total Proof of Stake (ESN)</p>
-                        <p className="sect4-value">57800000</p>
-                       </div>
-                       <div>
-                        <p className="sect4-context">Last Transaction Fee</p>
-                        <p className="sect4-value">21</p>
-                      </div>
-                       
+                  <div>
+                    <p className="sect4-context">Last Block Hash</p>
+                    <p className="sect4-value">0xegrgfd....5fd5</p>
                   </div>
+
+                  <div>
+                    <p className="sect4-context">Time Stamp</p>
+                    <p className="sect4-value">27/07/2020 </p>
+                  </div>
+                </div>
+                <div className="swwall-flex-border">
+                  <div>
+                    <p className="sect4-context">Total Proof of Stake (ESN)</p>
+                    <p className="sect4-value">57800000</p>
+                  </div>
+                  <div>
+                    <p className="sect4-context">Last Transaction Fee</p>
+                    <p className="sect4-value">21</p>
+                  </div>
+                </div>
               </div>
             </Col>
             <Col lg={4}>
               <div className="section4-border">
                 <div className="flex-sect4-box">
-                  <img className='platfrm-logo2' src={Images.path.guarantor} alt='logo' />
+                  <img
+                    className="platfrm-logo2"
+                    src={Images.path.guarantor}
+                    alt="logo"
+                  />
                   <p className="platfrm-txt">GUARANTOR</p>
                 </div>
                 <div className="swwall-flex-border">
@@ -2241,15 +2614,12 @@ class Dashboard extends Component {
                     <p className="sect4-value-swal">123 </p>
                   </div>
                 </div>
-                
               </div>
             </Col>
           </Row>
           {/* sixth row platforms */}
           <Row>
-
-            <Col sm={6}>
-            </Col>
+            <Col sm={6}></Col>
           </Row>
         </div>
       </div>

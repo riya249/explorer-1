@@ -1,100 +1,98 @@
 .wrapper-container {
-    width: 85%;
-    margin: 0 auto;
+  width: 85%;
+  margin: 0 auto;
 }
 
 .notif-txt {
-    font-size: 22px;
-    margin-top: 20px;
+  font-size: 22px;
+  margin-top: 20px;
 }
 
 .BlockPage-detail {
-    margin-top: 3%;
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 5%;
+  margin-top: 3%;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 5%;
 }
 
 .block-main {
-    display: flex;
-    
+  display: flex;
 }
 
 .block-txt-opt {
-    color: #000000 !important;
-    text-decoration: none;
-    padding: 20px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-  
+  color: #000000 !important;
+  text-decoration: none;
+  padding: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
-.two-border-container{
-    border: 1px solid #ddd;
+.two-border-container {
+  border: 1px solid #ddd;
 }
 @media (max-width: 768px) {
 }
 /* comments-css**/
-.comm-profile-Img{
+.comm-profile-Img {
   width: 80px;
   height: 80px;
 }
 
-textarea{
+textarea {
   width: 100%;
   height: 120px;
 }
 
-.submit-btn-comm{
+.submit-btn-comm {
   width: 80px;
   height: 30px;
-  background-color: #747FEB;
+  background-color: #747feb;
   border: 0;
   color: #ffffff;
   margin-top: 20px;
 }
 
-.btn-flex-right{
+.btn-flex-right {
   display: flex;
   justify-content: flex-end;
 }
 
-.comm-user-Img{
+.comm-user-Img {
   width: 50px;
   height: 50px;
   border-radius: 50px;
   margin-right: 20px;
 }
-.flex-user-comm{
+.flex-user-comm {
   display: flex;
   margin-top: 10px;
 }
-.user-para{
+.user-para {
   color: #1d212475;
 }
 
 /*overview-css*/
-.block-overview tr{
+.block-overview tr {
   border: 1px solid #ddd;
   padding: 15px;
 }
 
-td{
-padding: 30px;
-padding-top: 5px;
-padding-bottom: 5px;
+td {
+  padding: 30px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 .block-overview tr:hover {
-    background-color: #ddd;
-    cursor: pointer;
-  }
+  background-color: #ddd;
+  cursor: pointer;
+}
 
-  table{
-      width: 100%;
-  }
+table {
+  width: 100%;
+}
 
-  .tr-color-txt{
-    color: #747FEB;
-    font-size: 14px;
-  }
+.tr-color-txt {
+  color: #747feb;
+  font-size: 14px;
+}
