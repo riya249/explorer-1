@@ -1260,23 +1260,23 @@ class Dashboard extends Component {
             <Col lg={9}>
               <div className="sub-dashboard">
                 <Col lg={3}>
-                  <h5 className="sub-dash-head">Era Swap (ES)</h5>
-                  <h5 className="sub-dash-head">{this.state.eraswap.data.esUSDT} USDT</h5>
-                  <h5 className="sub-dash-head">{this.state.eraswap.data.esBTC} BTC</h5>
+                  <h5 className="">Era Swap (ES)</h5>
+                  <h5 className="sub-dash-head">{this.state.eraswap.data.esUSDT} </h5>
+                  
                 </Col>
                 <Col lg={3}>
                   <div className="sub-supply-box mb10">
                     <div className="es-box-ds">
-                      <p className="supply-txt">ES CURRENT SUPPLY</p>
-                      <p className="supply-txt">{this.state.eraswap.data.esTotalSupply} ES</p>
+                      <p className="supply-txt">MARKET CAP</p>
+                      <p className="supply-txt">{this.state.eraswap.data.marketCap} $</p>
                     </div>
                   </div>
                 </Col>
                 <Col lg={3}>
                   <div className="sub-supply-box mb10">
                     <div className="es-box-ds">
-                      <p className="supply-txt">TOTAL ES USERS</p>
-                      <p className="supply-txt">{this.state.eraswap.data.totolESUsers} Users</p>
+                      <p className="supply-txt">TOTAL ES Owners</p>
+                      <p className="supply-txt">{this.state.eraswap.data.totolESUsers} </p>
                     </div>
                   </div>
                 </Col>
@@ -1284,27 +1284,31 @@ class Dashboard extends Component {
                   <div className="sub-supply-box mb10">
                     <div className="es-box-ds">
                       <p className="supply-txt">TOTAL STAKED ES</p>
-                      <p className="supply-txt">{this.state.eraswap.data.totalESStaked} ES</p>
+                      <p className="supply-txt">{this.state.eraswap.data.totalESStaked} </p>
                     </div>
                   </div>
                 </Col>
               </div>
             </Col>
             <Col lg={3}>
-              <h5 className="nrt-head mt10">Next NRT Count</h5>
+              <h5 className="nrt-head">Next NRT Count</h5>
               <div className="count-box">
                 <ul className="flex-count-box">
                   <li className="count-txt">
-                    {this.state.nextNrtCounter.data.days} :
-               </li>
+                    {this.state.nextNrtCounter.data.days} 
+                    <p>DAYS</p>
+                   </li>
                   <li className="count-txt">
-                    {this.state.nextNrtCounter.data.hours} :
-               </li>
+                    {this.state.nextNrtCounter.data.hours} 
+                    <p>HOURS</p>
+                   </li>
                   <li className="count-txt">
-                    {this.state.nextNrtCounter.data.minutes} :
-               </li>
+                    {this.state.nextNrtCounter.data.minutes} 
+                    <p>MINUTES</p>
+                  </li>
                   <li className="count-txt">
                     {this.state.nextNrtCounter.data.seconds}
+                    <p>SECONDS</p>
                   </li>
                 </ul>
               </div>
@@ -1317,24 +1321,24 @@ class Dashboard extends Component {
               <Col sm={6} lg={2}>
                 <Card>
                   <Card.Body  >
-                    <p className="sect-txt-bold ">Bitcoin (BTC)</p>
-                    <p className="value-dash-txt">{this.state.eraswap.data.btcUsd}</p>
+                    <p className="sect-txt-bold ">ES CURRENT SUPPLY</p>
+                    <p className="value-dash-txt">{this.state.eraswap.data.circulatingOutsideTA}</p>
                   </Card.Body>
                 </Card>
               </Col>
               <Col sm={6} lg={2} p-0>
                 <Card>
                   <Card.Body>
-                    <p className="sect-txt-bold">Ethereum (ETH)</p>
-                    <p className="value-dash-txt">{this.state.eraswap.data.ethUsd}</p>
+                    <p className="sect-txt-bold">TOTAL SUPPLY</p>
+                    <p className="value-dash-txt">{this.state.eraswap.data.esTotalSupply}</p>
                   </Card.Body>
                 </Card>
               </Col>
               <Col sm={6} lg={2}>
                 <Card>
                   <Card.Body>
-                    <p className="sect-txt-bold">CIRCULATING OUTSIDE TA</p>
-                    <p className="value-dash-txt">{this.state.eraswap.data.circulatingOutsideTA}</p>
+                    <p className="sect-txt-bold">MAXIMUM SUPPLY</p>
+                    <p className="value-dash-txt">9100000000 ES</p>
                   </Card.Body>
                 </Card>
               </Col>
@@ -1439,7 +1443,7 @@ class Dashboard extends Component {
                   <Card className="height-80 wd-120 ">
                     <Card.Body>
                       <p className="sect-txt-bold">ALL TIME HIGH</p>
-                      <p className="value-dash-txt">{this.state.eraswap.data.allTimeHigh}</p>
+                      <p className="value-dash-txt">1.42 $</p>
                     </Card.Body>
                   </Card>
                 </Col>
@@ -1447,7 +1451,7 @@ class Dashboard extends Component {
                   <Card className="height-80 wd-120 ">
                     <Card.Body>
                       <p className="sect-txt-bold">ALL TIME LOW</p>
-                      <p className="value-dash-txt">{this.state.eraswap.data.allTimeLow}</p>
+                      <p className="value-dash-txt">0.005 $</p>
                     </Card.Body>
                   </Card>
                 </Col>
@@ -1503,7 +1507,7 @@ class Dashboard extends Component {
                   <p className="platfrm-txt"> TIMEALLY STAKERS</p>
                 </div>
                 <Row>
-                  <Col sm={5}>
+                  <Col sm={7}>
                   <PieChart width={300} height={300}>
                     <Pie data={this.state.timeallyStakers.data.chartData} dataKey="value" nameKey="name" cx="50%" cy="50%" >
                     {this.state.timeallyStakers.data.chartData.map((entry, index) => 
@@ -1513,7 +1517,7 @@ class Dashboard extends Component {
                       </Pie>
                   </PieChart>
                   </Col>
-                  <Col sm={7}>
+                  <Col sm={5}>
                     <div className="flex-sect4-box">
                       <div className="timeally-mark"></div>
                       <p className="sect4-context">Volume of 1 year stakings
@@ -2147,6 +2151,97 @@ class Dashboard extends Component {
                     <p className="sect4-value">0 </p>
                   </div>
                 </div>
+              </div>
+            </Col>
+            <Col lg={4}>
+              <div className="section4-border">
+                <div className="flex-sect4-box">
+                  <img className='platfrm-logo6' src={Images.path.networklogo} alt='logo' />
+                  <p className="platfrm-txt">ERA SWAP NETWORK </p>
+                </div>
+                <div className="swwall-flex-border">
+                      <div>
+                        <p className="sect4-context">Number of Transaction (24 hrs)</p>
+                        <p className="sect4-value-swal">15115 txn</p>
+                      </div>
+                      <div>
+                        <p className="sect4-context">Number of Nodes</p>
+                        <p className="sect4-value-swal">165165 nodes</p>
+                      </div>
+                      <div>
+                        <p className="sect4-context">Current Block Height</p>
+                        <p className="sect4-value">15115</p>
+                      </div>
+                </div>
+                <div className="swwall-flex-border">
+                    <div>
+                      <p className="sect4-context">Block Number</p>
+                      <p className="sect4-value">15115 </p>
+                    </div>
+                     <div>
+                      <p className="sect4-context">Last Block Sealer</p>
+                      <p className="sect4-value">15115</p>
+                    </div>
+                     <div>
+                      <p className="sect4-context">Age</p>
+                      <p className="sect4-value">18:57 50 secs ago</p>
+                    </div>
+                </div>
+                <div className="swwall-flex-border">
+                      <div>
+                        <p className="sect4-context">Gas Used</p>
+                        <p className="sect4-value">15.9% </p>
+                      </div>
+                       <div>
+                        <p className="sect4-context">Last Block Hash</p>
+                        <p className="sect4-value">0xegrgfd....5fd5</p>
+                      </div>
+                       
+                       <div>
+                        <p className="sect4-context">Time Stamp</p>
+                        <p className="sect4-value">27/07/2020 </p>
+                      </div>
+                  </div>
+                  <div className="swwall-flex-border">
+                      <div>
+                        <p className="sect4-context">Total Proof of Stake (ESN)</p>
+                        <p className="sect4-value">57800000</p>
+                       </div>
+                       <div>
+                        <p className="sect4-context">Last Transaction Fee</p>
+                        <p className="sect4-value">21</p>
+                      </div>
+                       
+                  </div>
+              </div>
+            </Col>
+            <Col lg={4}>
+              <div className="section4-border">
+                <div className="flex-sect4-box">
+                  <img className='platfrm-logo2' src={Images.path.guarantor} alt='logo' />
+                  <p className="platfrm-txt">GUARANTOR</p>
+                </div>
+                <div className="swwall-flex-border">
+                  <div>
+                    <p className="sect4-context">Guarantees given</p>
+                    <p className="sect4-value-swal">1111 </p>
+                  </div>
+                  <div>
+                    <p className="sect4-context">Withdrawn ES</p>
+                    <p className="sect4-value-swal">153 ES </p>
+                  </div>
+                </div>
+                <div className="swwall-flex-border">
+                  <div>
+                    <p className="sect4-context">Number of Guaranters</p>
+                    <p className="sect4-value-swal">647 Users</p>
+                  </div>
+                  <div>
+                    <p className="sect4-context">Number of Requestors</p>
+                    <p className="sect4-value-swal">123 </p>
+                  </div>
+                </div>
+                
               </div>
             </Col>
           </Row>

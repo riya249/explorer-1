@@ -128,3 +128,170 @@ label {
 .dashboard-box .charity-box, .dashboard-box .roi-box, .dashboard-box .nrt-box{
     min-height: 210px;
 }
+
+.portfolio-item{
+  width:100%;
+}
+.portfolio-item .item{
+  /*width:303px;*/
+  float:left;
+  margin-bottom:10px;
+}
+.portfolio-item .img-fluid {
+  max-width: 100%;
+  background: #ffffff;
+  padding: 20px 50px;
+  box-shadow: 0 0 11px 0 rgba(6, 22, 58, 0.14);
+}
+.nrt-share{
+    color: #747FEB;
+    font-weight: 500;
+    margin-bottom: 0;
+    font-size: 13px;
+}
+.nrt-hashnumber{
+    color: #020202;
+    margin-bottom: 0px;
+    font-size: 10px;
+    margin-left: 0;
+    /* font-weight: bold; */
+    width: 99%;
+    word-break: break-all;
+}
+.nrt-sucessful{
+    margin: 20px 20px;
+    color: #3bb54a;
+}
+.nrt-sucessful .fa, .nrt-unsucessful .fa{
+    font-size: 65px;
+}
+.nrt-unsucessful{
+    margin: 20px 20px;
+    color: #e22714;
+}
+.nrt-modal .modal-header{
+      padding: 5px 15px;
+      box-shadow: 1px 4px 8px #dee2e6;
+}
+.second-section-es {
+    margin-bottom: 0px !important;
+}
+.es-transaction .noborder{
+   border: none;
+}
+.explr-purple-text {
+    font-size: 9px;
+    color: #5c6bad;
+    font-weight: 700;
+}
+.explr-text-black{
+      font-size: 9px;
+    color: #000;
+    font-weight: 700;
+}
+.white-table th{
+  background: #f7fbff;
+  color: #606caf;
+}
+.purpalebg{
+  background: #747feb;
+  color: #fff;
+}
+.purple-text{
+  color: #747feb;
+}
+.purple-table th, .purple-table td{
+   color: #fff;
+}
+.purple-table th {
+    color: #fff;
+    font-size:18px;
+    font-weight: 600;
+}
+.purple-table  .fa-chevron-circle-down{
+    color: #414046;
+    font-size: 25px;
+    position: relative;
+    top: 4px;
+}
+
+.block-bg{
+  color: #bcfb47;
+  display: flex;
+  padding-bottom: 10px;
+}
+.block-bg .escolor-pic1 {
+    margin-right: 20px;
+    background: #fff;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    padding: 15px;
+}
+.block-value .block-text{
+  font-weight: 600;
+  font-size: 15px;
+      color: #fff;
+}
+.block-value .block-value{
+  font-weight: 600;
+    font-size:24px;
+}
+
+.staking-bg .staking-text{
+  font-weight: 600;
+  font-size: 15px;
+      color: #fff;
+}
+.staking-bg .staking-value{
+  font-weight: 600;
+    font-size:24px;
+    color: #ffe007;
+}
+.staking-bg .small{
+    font-size:13px;
+    color: #fff;
+}
+.staking-bg .green-text{
+    color: #00ff48;
+}
+.staking-bg .yellow-text{
+    color: #ffe007;
+}
+.staking-bg .blue-text{
+    color: #12cdf6;
+}
+.table-scroll{
+  height:250px;
+  position: relative;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  border: 1px solid #888e91 !important;
+}
+.table-scroll .era-transaction tr {
+    border-bottom: 1px solid #888e91 !important;
+    border: none;
+}
+.table thead th, .es-transaction thead th {
+    border-bottom: 1px solid #747feb!important;
+    background: #c9cdf3!important;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
