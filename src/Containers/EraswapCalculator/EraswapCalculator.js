@@ -150,7 +150,6 @@ class EraswapCalculator extends Component {
                           value={this.state.myStakingsInput}
                           type="text"
                           placeholder="Enter my stakings"
-                          style={{ width: '325px' }}
                           autoComplete="off"
                           isInvalid={isNaN(Number(this.state.myStakingsInput))}
                         />
@@ -175,7 +174,6 @@ class EraswapCalculator extends Component {
                           value={this.state.globalStakingInput}
                           type="text"
                           placeholder="Enter global stakings"
-                          style={{ width: '325px' }}
                           autoComplete="off"
                           isInvalid={isNaN(
                             Number(this.state.globalStakingInput)
@@ -196,7 +194,6 @@ class EraswapCalculator extends Component {
                           value={this.state.nrtReleasedInput}
                           type="text"
                           placeholder="Enter nrt released"
-                          style={{ width: '325px' }}
                           autoComplete="off"
                           isInvalid={isNaN(Number(this.state.nrtReleasedInput))}
                         />
@@ -212,7 +209,6 @@ class EraswapCalculator extends Component {
                           value={this.state.esPriceUSDT}
                           type="text"
                           placeholder="Enter global stakings"
-                          style={{ width: '325px' }}
                           autoComplete="off"
                           isInvalid={isNaN(Number(this.state.esPriceUSDT))}
                         />
@@ -231,7 +227,6 @@ class EraswapCalculator extends Component {
                           value={this.state.serverCostInput}
                           type="text"
                           placeholder="Enter self uptime"
-                          style={{ width: '325px' }}
                           autoComplete="off"
                           isInvalid={isNaN(Number(this.state.serverCostInput))}
                         />
@@ -247,7 +242,6 @@ class EraswapCalculator extends Component {
                           value={this.state.selfUptimeInput}
                           type="text"
                           placeholder="Enter global stakings"
-                          style={{ width: '325px' }}
                           autoComplete="off"
                           isInvalid={isNaN(Number(this.state.selfUptimeInput))}
                         />
@@ -263,7 +257,6 @@ class EraswapCalculator extends Component {
                           value={this.state.networkUptimeInput}
                           type="text"
                           placeholder="Enter self uptime"
-                          style={{ width: '325px' }}
                           autoComplete="off"
                           isInvalid={isNaN(
                             Number(this.state.networkUptimeInput)

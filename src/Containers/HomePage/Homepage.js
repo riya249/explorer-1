@@ -46,7 +46,7 @@ class Homepage extends Component {
 
   fetchBlocks = async () => {
     try {
-      const res = await Apis.fetchBlocks(0, 3);
+      const res = await Apis.fetchBlocks(0, 14);
       this.setState({
         blocks: {
           data: res.data,
@@ -71,7 +71,7 @@ class Homepage extends Component {
 
   fetchTransactions = async () => {
     try {
-      const res = await Apis.fetchTransactions(0, 3);
+      const res = await Apis.fetchTransactions(0, 14);
       console.log('res', res);
       this.setState({
         transactions: {
@@ -93,7 +93,7 @@ class Homepage extends Component {
 
   fetchBunches = async () => {
     try {
-      const res = await Apis.fetchBunches(0, 3);
+      const res = await Apis.fetchBunches(0, 14);
       console.log('bunches res', res);
       this.setState({
         bunches: {
@@ -138,7 +138,8 @@ class Homepage extends Component {
     }
   };
 
-  handleClick = () => {
+  handleClick = (e) => {
+    e.preventDefault();
     if (this.search.length === 42)
       this.props.history.push('/address/' + this.search);
     else if (this.search.length === 66)
@@ -161,7 +162,7 @@ class Homepage extends Component {
         <div className="esexplorer-Container">
           <div className="home-search-container">
             <Container>
-              <form>
+              <form onSubmit={this.handleClick}>
                 <input
                   type="text"
                   placeholder="Block, hash, transaction etc.."
@@ -169,13 +170,9 @@ class Homepage extends Component {
                   className="search-field"
                   onChange={this.handleChange}
                 />
-                <button className="search-btn">
+                <button className="search-btn" type="submit">
                   {' '}
-                  <img
-                    className="search-Img"
-                    src={Images.path.search}
-                    onClick={this.handleClick}
-                  />
+                  <img className="search-Img" src={Images.path.search} />
                 </button>
               </form>
             </Container>
@@ -200,14 +197,14 @@ class Homepage extends Component {
                             ? `${this.state.esPriceBTC} BTC`
                             : 'Loading...'}
                         </span>{' '}
-                        <span className="text-green"> (+0.61%)</span>
+                        <span className="text-green"></span>
                       </p>
                     </div>
                   </div>
                   <div className="mt10">
                     <div className="pdl70">
                       <p className="era-head">MARKET VOLUME</p>
-                      <p className="text-black">$229.86</p>
+                      <p className="text-black">-</p>
                     </div>
                   </div>
                 </Col>
@@ -468,7 +465,7 @@ class Homepage extends Component {
             </Row>
           </Container>
 
-          <Container>
+          {/* <Container>
             <Row>
               <Col lg={12}>
                 <div className="second-section-es mt40 purpalebg ">
@@ -823,7 +820,7 @@ class Homepage extends Component {
                 </div>
               </Col>
             </Row>
-          </Container>
+          </Container>*/}
 
           <Container>
             <Row className="mt40">

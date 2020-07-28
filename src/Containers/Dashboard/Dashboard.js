@@ -1407,10 +1407,6 @@ class Dashboard extends Component {
                 <Col lg={3}>
                   <div className="sub-supply-box mb10">
                     <div className="es-box-ds">
-                      <p className="supply-txt">ES CURRENT SUPPLY</p>
-                      <p className="supply-txt">
-                        {this.state.eraswap.data.esTotalSupply}
-                      </p>
                       <p className="supply-txt">MARKET CAP</p>
                       <p className="supply-txt">
                         {this.state.eraswap.data.marketCap}
