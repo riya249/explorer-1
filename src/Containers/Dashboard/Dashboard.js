@@ -1627,7 +1627,7 @@ class Dashboard extends Component {
             </div>
           </div>
         </div>
-
+{/* 
         <div className="dash-section-4">
           <Row>
             <Col lg={6}>
@@ -1667,7 +1667,7 @@ class Dashboard extends Component {
               </Row>
             </Col>
           </Row>
-        </div>
+        </div> */}
         <div className="dash-section-4">
           <Row>
             <Col lg={4}>
