@@ -694,9 +694,9 @@ class Dashboard extends Component {
         eraswap: {
           data: {
             ...this.state.eraswap.data,
-            unUsedPowertokens: res.data.error
+            unUsedPowertokens: res?.data?.error
               ? 'Inactive'
-              : lessDecimals(res.data.unusedPowerToken) + ' ES',
+              : lessDecimals(res?.data?.unusedPowerToken) + ' ES',
           },
           isLoading: false,
         },
@@ -737,7 +737,7 @@ class Dashboard extends Component {
       console.log('transactionSplits - res', res);
     } catch (e) {
       console.log(e);
-    } finally {
+    } finally { 
       this.setState({
         eraswap: {
           data: {
@@ -750,6 +750,18 @@ class Dashboard extends Component {
               : '-',
           },
           isLoading: false,
+          platformWiseTFC: {
+            data: {
+              timeswappers: res?.Timeswappers?.tfc,
+              buzcafe: res?.Buzcafe?.tfc,
+              betdeex: res?.BetdeEx?.tfc,
+              computeex: 0,
+              timeallyClub: res?.['Timeally Club']?.tfc,
+              TimeAlly: res?.['Timeally']?.tfc,
+              eraswapAcademy: 0,
+            },
+            isLoading: true,
+          },
         },
       });
       // let totalAmount = 0;
@@ -1627,7 +1639,7 @@ class Dashboard extends Component {
             </div>
           </div>
         </div>
-        {/* 
+        
         <div className="dash-section-4">
           <Row>
             <Col lg={6}>
@@ -1636,6 +1648,9 @@ class Dashboard extends Component {
                   <p className="platfrm-txt">
                     All Platform TFC Generated of this month
                   </p>
+                  <div>
+                    
+                  </div>
                 </div>
               </div>
             </Col>
@@ -1667,7 +1682,7 @@ class Dashboard extends Component {
               </Row>
             </Col>
           </Row>
-        </div> */}
+        </div>
         <div className="dash-section-4">
           <Row>
             <Col lg={4}>

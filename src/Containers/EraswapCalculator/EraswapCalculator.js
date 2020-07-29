@@ -212,7 +212,7 @@ class EraswapCalculator extends Component {
                         />
                       </div>
                       <div class="col-sm-6 col-md-4 col-lg-3 form-group">
-                        <label for="">ES price</label>
+                        <label for="">ES price (USDT)</label>
                         <Form.Control
                           onChange={(event) =>
                             this.setState({
