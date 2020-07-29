@@ -127,7 +127,7 @@ class BlockPage extends Component {
                             </td>
                             <td>
                               <span className="tr-color-txt">
-                                <Link to="/txs">
+                                <Link to={`/txs/${this.state.blockNumber}`}>
                                   <span className="tr-color-txt">
                                     {
                                       this.state.block.data

@@ -30,6 +30,7 @@ export default class AddressLink extends React.Component {
         }}
         title={this.props.value}
         className="frst-era hex-data"
+        style={this.props.style}
       >
         {this.props.shrink
           ? this.shrinkValue(this.props.value)
