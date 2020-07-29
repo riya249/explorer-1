@@ -19,6 +19,7 @@ class EraswapCalculator extends Component {
       networkUptimeInput: '90',
       esPriceUSDT: '0.0902',
       serverCostInput: '100',
+      globalStakingPercentInput: '50',
     };
   }
 
@@ -98,6 +99,8 @@ class EraswapCalculator extends Component {
     monthlyReward =
       (monthlyReward * this.state.selfUptimeInput) /
       this.state.networkUptimeInput;
+    
+    monthlyReward = (monthlyReward * this.state.globalStakingPercentInput) / 100;
 
     let monthlyProfit =
       monthlyReward * this.state.esPriceUSDT - this.state.serverCostInput;
@@ -110,13 +113,6 @@ class EraswapCalculator extends Component {
           <h2 className="es-main-head es-main-head-inner">
             Era Swap Calculator
           </h2>
-          <p className="explr-txt">
-            This mining calculator will display your expected earnings in
-            Dollars. The calculations
-            <br />
-            are based on the assumption that all conditions remain as they are
-            below.
-          </p>
         </div>
         <Container>
           {/* <p className="trans-head">TimeAlly Explorer</p> */}
@@ -184,6 +180,23 @@ class EraswapCalculator extends Component {
                         </span>
                       </div>
                       <div class="col-sm-6 col-md-4 col-lg-3 form-group">
+                        <label for="">Percentage of Global ES stakings in ESN POS</label>
+                        <Form.Control
+                          onChange={(event) =>
+                            this.setState({
+                              globalStakingPercentInput: event.target.value,
+                            })
+                          }
+                          value={this.state.globalStakingPercentInput}
+                          type="text"
+                          placeholder="Enter global stakings"
+                          autoComplete="off"
+                          isInvalid={isNaN(
+                            Number(this.state.globalStakingPercentInput)
+                          )}
+                        />
+                      </div>
+                      <div class="col-sm-6 col-md-4 col-lg-3 form-group">
                         <label for="">Nrt Release</label>
                         <Form.Control
                           onChange={(event) =>
@@ -217,7 +230,7 @@ class EraswapCalculator extends Component {
                         </span>
                       </div>
                       <div class="col-sm-6  form-group">
-                        <label for="">Server cost (USD/yearly)</label>
+                        <label for="">Server cost (USD/monthly)</label>
                         <Form.Control
                           onChange={(event) =>
                             this.setState({

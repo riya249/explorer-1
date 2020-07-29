@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Col, Button, Container, Row } from 'react-bootstrap';
+import { Col, Button, Container, Row, Tooltip } from 'react-bootstrap';
 import * as moment from 'moment';
 import './Homepage.css';
 import Images from '../Images/Images';
@@ -10,6 +10,7 @@ import AddressLink from '../../Components/AddressLink/AddressLink';
 import { Link, withRouter, Redirect } from 'react-router-dom';
 import { toLocaleTimestamp } from '../../lib/parsers';
 import { ethers } from 'ethers';
+import { LineChart, Line, CartesianGrid, XAxis, YAxis } from 'recharts';
 
 class Homepage extends Component {
   snackbarRef = React.createRef();
@@ -18,6 +19,7 @@ class Homepage extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      transactionsChartData: [],
       esPriceUSDT: 0,
       esPriceBTC: 0,
       blocks: {
@@ -42,6 +44,7 @@ class Homepage extends Component {
     this.fetchTransactions();
     this.fetchBunches();
     this.fetchESPrice();
+    this.fetchTransactionsInterval();
   }
 
   fetchBlocks = async () => {
@@ -69,10 +72,23 @@ class Homepage extends Component {
     // this.snackbarRef.current.openSnackBar(message);
   };
 
+  async fetchTransactionsInterval() {
+    try {
+      const res = await Apis.fetchTransactionsInterval();
+      console.log('fetchTransactionsInterval', res);
+      res.forEach((transaction, i) => {
+        res[i].date = moment(moment(transaction.date).toDate()).format('DD/MM/yyyy');
+      })
+      this.setState({transactionsChartData: res});
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
   fetchTransactions = async () => {
     try {
       const res = await Apis.fetchTransactions(0, 14);
-      console.log('res', res);
+      console.log('fetchTransactions res', res);
       this.setState({
         transactions: {
           data: res.data,
@@ -140,7 +156,7 @@ class Homepage extends Component {
 
   handleClick = (e) => {
     e.preventDefault();
-    if (this.search.length){
+    if (this.search.length) {
       if (this.search.length === 42)
         this.props.history.push('/address/' + this.search);
       else if (this.search.length === 66)
@@ -257,6 +273,18 @@ class Homepage extends Component {
                     <p className="era-head">
                       ERA SWAP TRANSACTION HISTORY IN 14 DAYS
                     </p>
+                    <LineChart
+                      width={300}
+                      height={120}
+                      data={this.state.transactionsChartData}
+                      margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
+                    >
+                      <Line type="monotone" dataKey="count" stroke="#8884d8" />
+                      {/* <CartesianGrid stroke="#ccc" /> */}
+                      <XAxis dataKey="date" />
+                      <YAxis />
+                      <Tooltip />
+                    </LineChart>
                   </div>
                 </Col>
               </Row>
@@ -301,7 +329,7 @@ class Homepage extends Component {
                             Informer{' '}
                             <span className="frst-era">
                               <AddressLink
-                                value={bunch.informer}
+                                value={bunch.informer.address}
                                 type="address"
                                 shrink={true}
                               />

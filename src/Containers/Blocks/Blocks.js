@@ -89,9 +89,6 @@ class Blocks extends Component {
                 <th data-toggle="tooltip" data-placement="top" title="">
                   Transaction
                 </th>
-                <th data-toggle="tooltip" data-placement="top" title="">
-                  Uncles
-                </th>
                 <th
                   data-toggle="tooltip"
                   data-placement="top"
@@ -139,21 +136,11 @@ class Blocks extends Component {
                       <td className="tr-color-txt">
                         <AddressLink value={block.block_number} type="block" />
                       </td>
-                      <td>{toLocaleTimestamp(block.timestamp).fromNow()}</td>
+                      <td>{toLocaleTimestamp(new Date(block.timestamp).getTime()*1000).fromNow()}</td>
                       <td className="tr-color-txt">
                         <Link
                           to={{
-                            pathname: 'block' + '/' + block.block_number,
-                            state: { value: block.block_number },
-                          }}
-                        >
-                          {block.raw_transactions_count}
-                        </Link>
-                      </td>
-                      <td>
-                        <Link
-                          to={{
-                            pathname: 'block' + '/' + block.block_number,
+                            pathname: 'txs' + '/' + block.block_number,
                             state: { value: block.block_number },
                           }}
                         >

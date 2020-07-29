@@ -461,9 +461,9 @@ class Dashboard extends Component {
       this.setState({
         eraswap: {
           data: {
-            ...this.state.eraswap.data,
+            ...this.state.eraswap?.data,
             totalESBurned: res?.data?.totalTokensBurned
-              ? lessDecimals(res.data.totalTokensBurned) + ' ES'
+              ? lessDecimals(res?.data?.totalTokensBurned) + ' ES'
               : '-',
           },
           isLoading: false,
@@ -483,41 +483,41 @@ class Dashboard extends Component {
       this.setState({
         eraswap: {
           data: {
-            ...this.state.eraswap.data,
+            ...this.state.eraswap?.data,
             currentNrtES: res?.data?.actualNRTDistributed
-              ? lessDecimals(res.data.actualNRTDistributed) + ' ES'
+              ? lessDecimals(res.data?.actualNRTDistributed) + ' ES'
               : '-',
           },
           isLoading: false,
         },
         lastMonthUtilisation: {
           data: {
-            ...this.state.lastMonthUtilisation.data,
+            ...this.state.lastMonthUtilisation?.data,
             timeswappers: {
               percent: '-',
-              volume: res.data.workPoolCalculation.timetraders
-                ? lessDecimals(res.data.workPoolCalculation.timetraders) + ' ES'
+              volume: res.data?.workPoolCalculation?.timetraders
+                ? lessDecimals(res.data?.workPoolCalculation?.timetraders) + ' ES'
                 : '-',
               value: '-',
             },
             dayswappers: {
               percent: '-',
-              volume: res.data.workPoolCalculation.dayswappers
-                ? lessDecimals(res.data.workPoolCalculation.dayswappers) + ' ES'
+              volume: res?.data?.workPoolCalculation?.dayswappers
+                ? lessDecimals(res?.data?.workPoolCalculation?.dayswappers) + ' ES'
                 : '-',
               value: '-',
             },
             buzcafe: {
               percent: '-',
-              volume: res.data.workPoolCalculation.buzcafe
-                ? lessDecimals(res.data.workPoolCalculation.buzcafe) + ' ES'
+              volume: res?.data?.workPoolCalculation?.buzcafe
+                ? lessDecimals(res?.data?.workPoolCalculation?.buzcafe) + ' ES'
                 : '-',
               value: '-',
             },
             curators: {
               percent: '-',
-              volume: res.data.workPoolCalculation.curators
-                ? lessDecimals(res.data.workPoolCalculation.curators) + ' ES'
+              volume: res?.data?.workPoolCalculation?.curators
+                ? lessDecimals(res?.data?.workPoolCalculation?.curators) + ' ES'
                 : '-',
               value: '-',
             },
@@ -527,7 +527,7 @@ class Dashboard extends Component {
         swapperswall: {
           data: {
             powertokens: res?.data?.actualNRTDistribution?.powerTokenNRT
-              ? lessDecimals(res.data.actualNRTDistribution.powerTokenNRT)
+              ? lessDecimals(res?.data?.actualNRTDistribution?.powerTokenNRT)
               : '-',
           },
           isLoading: false,
@@ -617,8 +617,8 @@ class Dashboard extends Component {
         timeallyStakers: {
           data: {
             ...this.state.timeallyStakers.data,
-            stakings: res.data.totalStaking
-              ? lessDecimals(res.data.totalStaking) + ' ES'
+            stakings: res?.data?.totalStaking
+              ? lessDecimals(res?.data?.totalStaking) + ' ES'
               : '-',
           },
           isLoading: false,
@@ -2532,54 +2532,54 @@ class Dashboard extends Component {
                     <p className="sect4-context">
                       Number of Transaction (24 hrs)
                     </p>
-                    <p className="sect4-value-swal">15115 txn</p>
+                    <p className="sect4-value-swal">0 txn</p>
                   </div>
                   <div>
                     <p className="sect4-context">Number of Nodes</p>
-                    <p className="sect4-value-swal">165165 nodes</p>
+                    <p className="sect4-value-swal">0 nodes</p>
                   </div>
                   <div>
                     <p className="sect4-context">Current Block Height</p>
-                    <p className="sect4-value">15115</p>
+                    <p className="sect4-value">0</p>
                   </div>
                 </div>
                 <div className="swwall-flex-border">
                   <div>
                     <p className="sect4-context">Block Number</p>
-                    <p className="sect4-value">15115 </p>
+                    <p className="sect4-value">0 </p>
                   </div>
                   <div>
                     <p className="sect4-context">Last Block Sealer</p>
-                    <p className="sect4-value">15115</p>
+                    <p className="sect4-value">0</p>
                   </div>
                   <div>
                     <p className="sect4-context">Age</p>
-                    <p className="sect4-value">18:57 50 secs ago</p>
+                    <p className="sect4-value">0 secs ago</p>
                   </div>
                 </div>
                 <div className="swwall-flex-border">
                   <div>
                     <p className="sect4-context">Gas Used</p>
-                    <p className="sect4-value">15.9% </p>
+                    <p className="sect4-value">0% </p>
                   </div>
                   <div>
                     <p className="sect4-context">Last Block Hash</p>
-                    <p className="sect4-value">0xegrgfd....5fd5</p>
+                    <p className="sect4-value">-</p>
                   </div>
 
                   <div>
                     <p className="sect4-context">Time Stamp</p>
-                    <p className="sect4-value">27/07/2020 </p>
+                    <p className="sect4-value">--/--/---- </p>
                   </div>
                 </div>
                 <div className="swwall-flex-border">
                   <div>
                     <p className="sect4-context">Total Proof of Stake (ESN)</p>
-                    <p className="sect4-value">57800000</p>
+                    <p className="sect4-value">0</p>
                   </div>
                   <div>
                     <p className="sect4-context">Last Transaction Fee</p>
-                    <p className="sect4-value">21</p>
+                    <p className="sect4-value">0</p>
                   </div>
                 </div>
               </div>
@@ -2597,21 +2597,21 @@ class Dashboard extends Component {
                 <div className="swwall-flex-border">
                   <div>
                     <p className="sect4-context">Guarantees given</p>
-                    <p className="sect4-value-swal">1111 </p>
+                    <p className="sect4-value-swal">0 </p>
                   </div>
                   <div>
                     <p className="sect4-context">Withdrawn ES</p>
-                    <p className="sect4-value-swal">153 ES </p>
+                    <p className="sect4-value-swal">0 ES </p>
                   </div>
                 </div>
                 <div className="swwall-flex-border">
                   <div>
                     <p className="sect4-context">Number of Guaranters</p>
-                    <p className="sect4-value-swal">647 Users</p>
+                    <p className="sect4-value-swal">0 Users</p>
                   </div>
                   <div>
                     <p className="sect4-context">Number of Requestors</p>
-                    <p className="sect4-value-swal">123 </p>
+                    <p className="sect4-value-swal">0 </p>
                   </div>
                 </div>
               </div>
