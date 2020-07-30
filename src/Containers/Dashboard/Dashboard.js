@@ -2084,7 +2084,7 @@ class Dashboard extends Component {
             <Col lg={4}>
               <div className="section4-border">
                 <div className="flex-sect4-box">
-                  <img className='platfrm-logo2' src={Images.path.booklogo} alt='logo' />
+                  <img className='platfrm-logo2' src={Images.path.faithminus} alt='logo' />
                   <p className="platfrm-txt">FAITH MINUS</p>
                 </div>
                 <div className="swwall-flex-border">
@@ -2162,21 +2162,21 @@ class Dashboard extends Component {
                 <div className="swwall-flex-border">
                       <div>
                         <p className="sect4-context">Number of Transaction (24 hrs)</p>
-                        <p className="sect4-value-swal">15115 txn</p>
+                        <p className="sect4-value-swal">0 txn</p>
                       </div>
                       <div>
                         <p className="sect4-context">Number of Nodes</p>
-                        <p className="sect4-value-swal">165165 nodes</p>
+                        <p className="sect4-value-swal">0 nodes</p>
                       </div>
                       <div>
                         <p className="sect4-context">Current Block Height</p>
-                        <p className="sect4-value">15115</p>
+                        <p className="sect4-value">0</p>
                       </div>
                 </div>
                 <div className="swwall-flex-border">
                     <div>
                       <p className="sect4-context">Block Number</p>
-                      <p className="sect4-value">15115 </p>
+                      <p className="sect4-value">0 </p>
                     </div>
                      <div>
                       <p className="sect4-context">Last Block Sealer</p>
@@ -2190,26 +2190,26 @@ class Dashboard extends Component {
                 <div className="swwall-flex-border">
                       <div>
                         <p className="sect4-context">Gas Used</p>
-                        <p className="sect4-value">15.9% </p>
+                        <p className="sect4-value">0</p>
                       </div>
                        <div>
                         <p className="sect4-context">Last Block Hash</p>
-                        <p className="sect4-value">0xegrgfd....5fd5</p>
+                        <p className="sect4-value">0</p>
                       </div>
                        
                        <div>
                         <p className="sect4-context">Time Stamp</p>
-                        <p className="sect4-value">27/07/2020 </p>
+                        <p className="sect4-value">0 </p>
                       </div>
                   </div>
                   <div className="swwall-flex-border">
                       <div>
                         <p className="sect4-context">Total Proof of Stake (ESN)</p>
-                        <p className="sect4-value">57800000</p>
+                        <p className="sect4-value">0</p>
                        </div>
                        <div>
                         <p className="sect4-context">Last Transaction Fee</p>
-                        <p className="sect4-value">21</p>
+                        <p className="sect4-value">0</p>
                       </div>
                        
                   </div>
@@ -2224,11 +2224,11 @@ class Dashboard extends Component {
                 <div className="swwall-flex-border">
                   <div>
                     <p className="sect4-context">Guarantees given</p>
-                    <p className="sect4-value-swal">1111 </p>
+                    <p className="sect4-value-swal">0 </p>
                   </div>
                   <div>
                     <p className="sect4-context">Withdrawn ES</p>
-                    <p className="sect4-value-swal">153 ES </p>
+                    <p className="sect4-value-swal">0 ES </p>
                   </div>
                 </div>
                 <div className="swwall-flex-border">
@@ -2238,7 +2238,7 @@ class Dashboard extends Component {
                   </div>
                   <div>
                     <p className="sect4-context">Number of Requestors</p>
-                    <p className="sect4-value-swal">123 </p>
+                    <p className="sect4-value-swal">0</p>
                   </div>
                 </div>
                 

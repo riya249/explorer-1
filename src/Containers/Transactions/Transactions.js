@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './Transaction.css'
+import './Transaction.css';
 import { Link } from 'react-router-dom';
 import Images from '../Images/Images';
 import { Col, Button, Container, Row } from 'react-bootstrap';
@@ -24,26 +24,26 @@ class Transaction extends Component {
         currentPage: 1,
         totalPages: 0,
         isLoading: true,
-      }
+      },
     };
 
     this.fetchTransactions = this.fetchTransactions.bind(this);
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.fetchTransactions();
   }
 
-  async fetchTransactions(start,length = 10){
+  async fetchTransactions(start, length = 10) {
     try {
-      const res = await Apis.fetchTransactions(start,length);
+      const res = await Apis.fetchTransactions(start, length);
       this.setState({
         transactions: {
           data: res.data,
           currentPage: Number(res.currentPage),
           totalPages: res.totalPages,
-          isLoading: false
-        }
+          isLoading: false,
+        },
       });
     } catch (e) {
       console.log(e);
@@ -52,82 +52,135 @@ class Transaction extends Component {
         blocks: {
           ...this.state.blocks,
           data: [],
-          isLoading: false
-        }
+          isLoading: false,
+        },
       });
     }
   }
 
-  openSnackBar(message){
+  openSnackBar(message) {
     this.snackbarRef.current.openSnackBar(message);
   }
 
-
   render() {
     return (
-      <div>
-        <div className='booking-hero-bgd booking-hero-bgd-inner'>
+      <div className="blocks-table">
+        <div className="booking-hero-bgd booking-hero-bgd-inner ">
           <Navbar />
           <h2 className="es-main-head es-main-head-inner">Transactions</h2>
         </div>
         <Container>
-          <div className="table-responsive">
-          <table className="es-transaction table">
-            <thead>
-              <tr>
-                <th>Txn Hash </th>
-                <th>Block</th>
-                <th>Age</th>
-                <th>From</th>
-                <th>To</th>
-                <th>Value</th>
-                <th>(Txn Fee)</th>
-              </tr>
-            </thead>
-            <tbody>
-              {this.state.transactions.isLoading ?
-                <tr><td colSpan="7">Loading...</td></tr>
-                :
-                this.state.transactions.data?.length ? 
-                this.state.transactions.data?.map((transaction,i) => {
-                  return <tr key={i+1}>
-                    <td className="tr-color-txt"><AddressLink value={transaction.txn_hash} type="tx" shrink={true}/></td>
-                    <td className="tr-color-txt"><AddressLink value={transaction.block.block_number} type="block"/></td>
-                    <td>{toLocaleTimestamp(transaction.createdOn).fromNow()}</td>
-                    <td>
-                      {transaction.fromAddress.label && <Link to={'/'+ transaction.fromAddress.address}>{transaction.fromAddress.label}</Link>}
-                      <span className="tr-color-txt">
-                        <AddressLink value={transaction.fromAddress.address} type="address" shrink={transaction.fromAddress.label.length} />
-                      </span></td>
-                    <td>
-                      {transaction.fromAddress.label && <Link to={'/'+ transaction.fromAddress.address}>{transaction.fromAddress.label}</Link>}
-                      <span className="tr-color-txt">
-                        <AddressLink value={transaction.toAddress.address} type="address" shrink={transaction.fromAddress.label.length} />
-                      </span></td>
-                    <td>{ethers.utils.formatEther(transaction.value)} ES </td>
-                    <td>0.000546</td>
-                  </tr>  
-                })
-                :
-                <tr><td colSpan="7">No Transactions</td></tr>
-              }
-            </tbody>
-          </table>
-          </div>
-            <CustomPagination 
-              handleClick={this.fetchTransactions} 
-              currentPage={this.state.transactions.currentPage}
-              prevPage={this.state.transactions.currentPage - 1}
-              nextPage={this.state.transactions.currentPage + 1}
-              totalPages={this.state.transactions.totalPages}
-            />
-          <Snackbar ref={this.snackbarRef} />
+          <Row className="mt40">
+            <Col lg={12}>
+              <div className="card">
+                <div className="table-responsive">
+                  <table className="es-transaction table">
+                    <thead>
+                      <tr>
+                        <th>Txn Hash </th>
+                        <th>Block</th>
+                        <th>Age</th>
+                        <th>From</th>
+                        <th>To</th>
+                        <th>Value</th>
+                        <th>(Txn Fee)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {this.state.transactions.isLoading ? (
+                        <tr>
+                          <td colSpan="7">Loading...</td>
+                        </tr>
+                      ) : this.state.transactions.data?.length ? (
+                        this.state.transactions.data?.map((transaction, i) => {
+                          return (
+                            <tr key={i + 1}>
+                              <td className="tr-color-txt">
+                                <AddressLink
+                                  value={transaction.txn_hash}
+                                  type="tx"
+                                  shrink={true}
+                                />
+                              </td>
+                              <td className="tr-color-txt">
+                                <AddressLink
+                                  value={transaction.block.block_number}
+                                  type="block"
+                                />
+                              </td>
+                              <td>
+                                {toLocaleTimestamp(
+                                  transaction.createdOn
+                                ).fromNow()}
+                              </td>
+                              <td>
+                                {transaction.fromAddress.label && (
+                                  <Link
+                                    to={'/' + transaction.fromAddress.address}
+                                  >
+                                    {transaction.fromAddress.label}
+                                  </Link>
+                                )}
+                                <span className="tr-color-txt">
+                                  <AddressLink
+                                    value={transaction.fromAddress.address}
+                                    type="address"
+                                    shrink={
+                                      transaction.fromAddress.label.length
+                                    }
+                                  />
+                                </span>
+                              </td>
+                              <td>
+                                {transaction.fromAddress.label && (
+                                  <Link
+                                    to={'/' + transaction.fromAddress.address}
+                                  >
+                                    {transaction.fromAddress.label}
+                                  </Link>
+                                )}
+                                <span className="tr-color-txt">
+                                  <AddressLink
+                                    value={transaction.toAddress.address}
+                                    type="address"
+                                    shrink={
+                                      transaction.fromAddress.label.length
+                                    }
+                                  />
+                                </span>
+                              </td>
+                              <td>
+                                {ethers.utils.formatEther(transaction.value)} ES{' '}
+                              </td>
+                              <td>0.000546</td>
+                            </tr>
+                          );
+                        })
+                      ) : (
+                        <tr>
+                          <td colSpan="7">No Transactions</td>
+                        </tr>
+                      )}
+                    </tbody>
+                  </table>
+                </div>
+                <Col lg={12} className="mb30">
+                  <CustomPagination
+                    handleClick={this.fetchTransactions}
+                    currentPage={this.state.transactions.currentPage}
+                    prevPage={this.state.transactions.currentPage - 1}
+                    nextPage={this.state.transactions.currentPage + 1}
+                    totalPages={this.state.transactions.totalPages}
+                  />
+                  <Snackbar ref={this.snackbarRef} />
+                </Col>
+              </div>
+            </Col>
+          </Row>
         </Container>
       </div>
     );
-
   }
 }
-
 
 export default Transaction;

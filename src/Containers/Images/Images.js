@@ -32,6 +32,7 @@ const path = {
   kycdapplogo: require("../../assets/Images/kycdapp.png"),
   networklogo: require("../../assets/Images/network.png"),
   guarantor: require("../../assets/Images/guarantor.png"),
+  faithminus: require("../../assets/Images/faithminus.png"),
 
   usecasetime: require("../../assets/Images/usecases/timeswappers.png"),
   usecaseswapperswall: require("../../assets/Images/usecases/swapperswall.png"),
