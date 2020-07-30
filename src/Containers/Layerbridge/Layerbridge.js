@@ -25,7 +25,8 @@ class Layerbridge extends Component {
           <Row className="mt40">
             <Col lg={6}>
               <div className="card">
-                <table className="es-transaction striped bordered hover">
+              <div className="table-responsive">
+                  <table className="es-transaction striped bordered hover table">
                   <tr>
                     <td className="noborder" width="150">
                       <p className="explr-text-black">ESN to ETH</p>
@@ -91,100 +92,94 @@ class Layerbridge extends Component {
                   </tr>
                 </table>
               </div>
+              </div>
             </Col>
             <Col lg={6}>
               <div className="card">
-                <table className="es-transaction striped bordered hover">
-                  <tr>
-                    <td className="noborder" width="150">
-                      <p className="explr-text-black">ESN to ETH</p>
-                    </td>
-                    <td className="noborder">
-                      <p className="explr-purple-text">
-                        Live block number of Rinkeby ETH (Layer 1): 6871773
-                        <br />
-                        Block number confirmed on ESN Reverse Plasma Contract:
-                        6869710(2061 pending)
-                      </p>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>Block Number for Ex</th>
-                    <th>Consensus</th>
-                  </tr>
-                  <tr>
-                    <td>512</td>
-                    <td>6838486 (34% confirmed)</td>
-                  </tr>
-                  <tr>
-                    <td>512</td>
-                    <td>6838486 (34% confirmed)</td>
-                  </tr>
-                  <tr>
-                    <td>512</td>
-                    <td>6838486 (34% confirmed)</td>
-                  </tr>
-                  <tr>
-                    <td>512</td>
-                    <td>6838486 (34% confirmed)</td>
-                  </tr>
-                  <tr>
-                    <td>512</td>
-                    <td>6838486 (34% confirmed)</td>
-                  </tr>
-                  <tr>
-                    <td>512</td>
-                    <td>6838486 (34% confirmed)</td>
-                  </tr>
-                  <tr>
-                    <td>512</td>
-                    <td>6838486 (34% confirmed)</td>
-                  </tr>
-                  <tr>
-                    <td>512</td>
-                    <td>6838486 (34% confirmed)</td>
-                  </tr>
-                  <tr>
-                    <td>512</td>
-                    <td>6838486 (34% confirmed)</td>
-                  </tr>
-                  <tr>
-                    <td>512</td>
-                    <td>6838486 (34% confirmed)</td>
-                  </tr>
-                  <tr>
-                    <td>512</td>
-                    <td>6838486 (34% confirmed)</td>
-                  </tr>
-                  <tr>
-                    <td>512</td>
-                    <td>6838486 (34% confirmed)</td>
-                  </tr>
-                  <tr>
-                    <td>512</td>
-                    <td>6838486 (34% confirmed)</td>
-                  </tr>
-                  <tr>
-                    <td>512</td>
-                    <td>6838486 (34% confirmed)</td>
-                  </tr>
-                  <tr>
-                    <td>512</td>
-                    <td>6838486 (34% confirmed)</td>
-                  </tr>
-                </table>
+                <div className="table-responsive">
+                  <table className="es-transaction striped bordered hover table">
+                    <tr>
+                      <td className="noborder" width="150">
+                        <p className="explr-text-black">ESN to ETH</p>
+                      </td>
+                      <td className="noborder">
+                        <p className="explr-purple-text">
+                          Live block number of Rinkeby ETH (Layer 1): 6871773
+                          <br />
+                          Block number confirmed on ESN Reverse Plasma Contract:
+                          6869710(2061 pending)
+                        </p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Block Number for Ex</th>
+                      <th>Consensus</th>
+                    </tr>
+                    <tr>
+                      <td>512</td>
+                      <td>6838486 (34% confirmed)</td>
+                    </tr>
+                    <tr>
+                      <td>512</td>
+                      <td>6838486 (34% confirmed)</td>
+                    </tr>
+                    <tr>
+                      <td>512</td>
+                      <td>6838486 (34% confirmed)</td>
+                    </tr>
+                    <tr>
+                      <td>512</td>
+                      <td>6838486 (34% confirmed)</td>
+                    </tr>
+                    <tr>
+                      <td>512</td>
+                      <td>6838486 (34% confirmed)</td>
+                    </tr>
+                    <tr>
+                      <td>512</td>
+                      <td>6838486 (34% confirmed)</td>
+                    </tr>
+                    <tr>
+                      <td>512</td>
+                      <td>6838486 (34% confirmed)</td>
+                    </tr>
+                    <tr>
+                      <td>512</td>
+                      <td>6838486 (34% confirmed)</td>
+                    </tr>
+                    <tr>
+                      <td>512</td>
+                      <td>6838486 (34% confirmed)</td>
+                    </tr>
+                    <tr>
+                      <td>512</td>
+                      <td>6838486 (34% confirmed)</td>
+                    </tr>
+                    <tr>
+                      <td>512</td>
+                      <td>6838486 (34% confirmed)</td>
+                    </tr>
+                    <tr>
+                      <td>512</td>
+                      <td>6838486 (34% confirmed)</td>
+                    </tr>
+                    <tr>
+                      <td>512</td>
+                      <td>6838486 (34% confirmed)</td>
+                    </tr>
+                    <tr>
+                      <td>512</td>
+                      <td>6838486 (34% confirmed)</td>
+                    </tr>
+                    <tr>
+                      <td>512</td>
+                      <td>6838486 (34% confirmed)</td>
+                    </tr>
+                  </table>
+                </div>
               </div>
             </Col>
-            <div className="cus-pagination row">
-              <div className="col-md-12 text-right">
-                <button type="button" className="btn mr10 mt10">
-                  Back
-                </button>
-                <button type="button" className="btn mr10 mt10">
-                  Next
-                </button>
-              </div>
-            </div>
+         
           </Row>
         </Container>
       </div>

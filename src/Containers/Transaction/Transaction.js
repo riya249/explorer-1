@@ -79,7 +79,7 @@ class Transaction extends Component {
                 <Tab eventKey="overview" title="Overview">
                   <div className="card">
                     <div className="table-responsive">
-                    <table className="block-overview">
+                    <table className="block-overview table">
                       {Object.keys(this.state.transaction.data).length ? (
                         <thead>
                           <tr>

@@ -59,7 +59,7 @@ return (
       <Navbar />
       <h2 className="es-main-head es-main-head-inner">Node status Transaction</h2>
    </div>
-   <div className="wrapper-container">
+   <div className="container ">
       <div className="BlockPage-detail">
          <Container>
             <Row>
@@ -68,24 +68,26 @@ return (
                </Col>
                <Col lg={12}>
                <div className="card">
-                  <table className="es-transaction striped bordered hover">
-                     <tr>
-                        <th>Block Height: </th>
-                        <th>ESN Node</th>
-                     </tr>
-                     <tr>
-                        <th>Latest Block Number: </th>
-                        <th>109972</th>
-                     </tr>
-                     <tr>
-                        <th>New Pending Transactions: </th>
-                        <th>0 transactions</th>
-                     </tr>
-                     <tr>
-                        <th>TimeStamp: </th>
-                        <th>6/16/2020, 4:59:13 PM</th>
-                     </tr>
-                  </table>
+                  <div className="table-responsive">
+                     <table className="es-transaction striped bordered hover">
+                        <tr>
+                           <th>Block Height: </th>
+                           <th>ESN Node</th>
+                        </tr>
+                        <tr>
+                           <th>Latest Block Number: </th>
+                           <th>109972</th>
+                        </tr>
+                        <tr>
+                           <th>New Pending Transactions: </th>
+                           <th>0 transactions</th>
+                        </tr>
+                        <tr>
+                           <th>TimeStamp: </th>
+                           <th>6/16/2020, 4:59:13 PM</th>
+                        </tr>
+                     </table>
+                  </div>
                </div>
                </Col>
             </Row>
@@ -95,68 +97,71 @@ return (
                </Col>
                <Col lg={6}>
                  <div className="card">
-                     <table className="es-transaction striped bordered hover">
-                        <tr>
-                           <th>Block Number</th>
-                           <th>Transactions</th>
-                           <th>Sealer </th>
-                        </tr>
-                        <tr>
-                           <td>ESN Node</td>
-                           <td>109972</td>
-                           <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7 </td>
-                        </tr>
-                        <tr>
-                           <td>ESN Node</td>
-                           <td>109972</td>
-                           <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7 </td>
-                        </tr>
-                        <tr>
-                           <td>ESN Node</td>
-                           <td>109972</td>
-                           <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7 </td>
-                        </tr>
-                        <tr>
-                           <td>ESN Node</td>
-                           <td>109972</td>
-                           <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7 </td>
-                        </tr>
-                        <tr>
-                           <td>ESN Node</td>
-                           <td>109972</td>
-                           <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7 </td>
-                        </tr>
-                        <tr>
-                           <td>ESN Node</td>
-                           <td>109972</td>
-                           <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7 </td>
-                        </tr>
-                        <tr>
-                           <td>ESN Node</td>
-                           <td>109972</td>
-                           <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7 </td>
-                        </tr>
-                        <tr>
-                           <td>ESN Node</td>
-                           <td>109972</td>
-                           <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7 </td>
-                        </tr>
-                        <tr>
-                           <td>ESN Node</td>
-                           <td>109972</td>
-                           <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7 </td>
-                        </tr>
-                        <tr>
-                           <td>ESN Node</td>
-                           <td>109972</td>
-                           <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7 </td>
-                        </tr>
-                     </table>
+                     <div className="table-responsive">
+                        <table className="es-transaction striped bordered hover">
+                           <tr>
+                              <th>Block Number</th>
+                              <th>Transactions</th>
+                              <th>Sealer </th>
+                           </tr>
+                           <tr>
+                              <td>ESN Node</td>
+                              <td>109972</td>
+                              <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7 </td>
+                           </tr>
+                           <tr>
+                              <td>ESN Node</td>
+                              <td>109972</td>
+                              <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7 </td>
+                           </tr>
+                           <tr>
+                              <td>ESN Node</td>
+                              <td>109972</td>
+                              <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7 </td>
+                           </tr>
+                           <tr>
+                              <td>ESN Node</td>
+                              <td>109972</td>
+                              <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7 </td>
+                           </tr>
+                           <tr>
+                              <td>ESN Node</td>
+                              <td>109972</td>
+                              <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7 </td>
+                           </tr>
+                           <tr>
+                              <td>ESN Node</td>
+                              <td>109972</td>
+                              <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7 </td>
+                           </tr>
+                           <tr>
+                              <td>ESN Node</td>
+                              <td>109972</td>
+                              <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7 </td>
+                           </tr>
+                           <tr>
+                              <td>ESN Node</td>
+                              <td>109972</td>
+                              <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7 </td>
+                           </tr>
+                           <tr>
+                              <td>ESN Node</td>
+                              <td>109972</td>
+                              <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7 </td>
+                           </tr>
+                           <tr>
+                              <td>ESN Node</td>
+                              <td>109972</td>
+                              <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7 </td>
+                           </tr>
+                        </table>
+                     </div>
                  </div>
                </Col>
                <Col lg={6}>
                <div className="card">
-               <table className="es-transaction striped bordered hover">
+                  <div className="table-responsive">
+                    <table className="es-transaction striped bordered hover">
                   <tr>
                      <th>Block Number</th>
                      <th>Transactions</th>
@@ -213,6 +218,7 @@ return (
                      <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7 </td>
                   </tr>
                </table>
+                  </div>
                </div>
                </Col>
             </Row>

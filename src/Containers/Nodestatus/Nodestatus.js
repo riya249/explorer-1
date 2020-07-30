@@ -25,7 +25,8 @@ class Nodestatus extends Component {
           <Row className="mt40">
             <Col lg={12}>
               <div className="card">
-                <table className="es-transaction striped bordered hover">
+                <div className="table-responsive">
+                <table className="es-transaction striped bordered hover table">
                   <tr>
                     <th>Node Name</th>
                     <th>Latest Block Number</th>
@@ -156,6 +157,7 @@ class Nodestatus extends Component {
                     </td>
                   </tr>
                 </table>
+              </div>
               </div>
               <div className="cus-pagination row">
                 <div className="col-md-12 text-right">

@@ -1440,7 +1440,7 @@ class Dashboard extends Component {
             </Col>
             <Col lg={3}>
               <h5 className="nrt-head">Next NRT Count</h5>
-              <div className="count-box justify-container">
+              <div className="count-box d-flex justify-content-lg-around  ">
                 <ul className="flex-count-box">
                   <li className="count-txt">
                     {this.state.nextNrtCounter.data.days}

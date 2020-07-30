@@ -68,7 +68,7 @@ class Nrtmanager extends Component {
           <Navbar />
           <h2 className="es-main-head es-main-head-inner">NRT Manager</h2>
         </div>
-        <div className="wrapper-container">
+        <div className="container">
           <div className="BlockPage-detail">
             <Container>
               <Row>
@@ -164,16 +164,17 @@ class Nrtmanager extends Component {
               </div>
 
               <Row className="mt40">
-                <Col lg={6}>
+                <Col lg={12}>
                   <div className="card">
-                    <table className="es-transaction striped bordered hover">
+                    <div className="table-responsive">
+                    <table className="es-transaction striped bordered hover table">
                       <tr>
                         <th>Platform</th>
                         <th>NRT Share</th>
                         <th>Wallet Address </th>
                       </tr>
                       <tr>
-                        <td>ESN</td>
+                        <td>TimeAlly</td>
                         <td>15%</td>
                         <td>
                           0x08D85Bd1004E3e674042EAddF81Fb3beb4853a22{' '}
@@ -181,8 +182,16 @@ class Nrtmanager extends Component {
                         </td>
                       </tr>
                       <tr>
-                        <td>Power Tokens</td>
+                        <td>ESN</td>
                         <td>12%</td>
+                        <td>
+                          0x08D85Bd1004E3e674042EAddF81Fb3beb4853a22{' '}
+                          <i class="fa fa-file-text-o" aria-hidden="true"></i>{' '}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Power Tokens</td>
+                        <td>10%</td>
                         <td>
                           0x08D85Bd1004E3e674042EAddF81Fb3beb4853a22{' '}
                           <i class="fa fa-file-text-o" aria-hidden="true"></i>
@@ -211,17 +220,6 @@ class Nrtmanager extends Component {
                           0x08D85Bd1004E3e674042EAddF81Fb3beb4853a22{' '}
                           <i class="fa fa-file-text-o" aria-hidden="true"></i>
                         </td>
-                      </tr>
-                    </table>
-                  </div>
-                </Col>
-                <Col lg={6}>
-                  <div className="card">
-                    <table className="es-transaction striped bordered hover">
-                      <tr>
-                        <th>Platform</th>
-                        <th>NRT Share</th>
-                        <th>Wallet Address </th>
                       </tr>
                       <tr>
                         <td>New Talents & Partnership</td>
@@ -272,8 +270,10 @@ class Nrtmanager extends Component {
                         </td>
                       </tr>
                     </table>
+                    </div>
                   </div>
                 </Col>
+                
               </Row>
             </Container>
           </div>

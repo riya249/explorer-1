@@ -21,19 +21,11 @@ class Bunch extends Component {
       },
     };
   }
-<<<<<<< HEAD
 
   componentDidMount() {
     this.fetchBunches();
   }
 
-=======
-
-  componentDidMount() {
-    this.fetchBunches();
-  }
-
->>>>>>> upstream/master
   fetchBunches = async (start, length = 10) => {
     try {
       const res = await Apis.fetchBunches(start, length);

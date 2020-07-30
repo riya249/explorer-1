@@ -8,11 +8,8 @@ import Apis from '../../lib/apis';
 import { toLocaleTimestamp } from '../../lib/parsers';
 import { Snackbar } from '../../Components/Snackbar/Snackbar';
 import AddressLink from '../../Components/AddressLink/AddressLink';
-<<<<<<< HEAD
-=======
 import { Link } from 'react-router-dom';
 import { ethers } from 'ethers';
->>>>>>> upstream/master
 
 class BlockPage extends Component {
   snackbarRef = React.createRef();
@@ -83,7 +80,7 @@ class BlockPage extends Component {
                 <Tab eventKey="overview" title="Overview">
 <div className="card">
                     <div className="table-responsive">
-                    <table className="block-overview">
+                    <table className="block-overview table">
                       {Object.keys(this.state.block.data).length ? (
                         <tbody>
                                                     <tr>

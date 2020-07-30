@@ -135,7 +135,7 @@ class EraswapCalculator extends Component {
                           <i class="fa fa-user user" aria-hidden="true"></i>
                         </span>
                       </div> */}
-                      <div class="col-sm-6 col-md-4 col-lg-3 form-group">
+                      <div class="col-md-6 col-lg-4 form-group">
                         <label for="">My ES Stakings</label>
                         <Form.Control
                           onChange={(event) =>
@@ -153,7 +153,7 @@ class EraswapCalculator extends Component {
                           <img className="eslogo" src={Images.path.eslogo} />
                         </span>
                       </div>
-                      <div class="col-sm-6 col-md-4 col-lg-3 form-group">
+                      <div class="col-md-6 col-lg-4 form-group">
                         <label for="">Global ES stakings</label>
                         {/* <input
                           type="text"
@@ -179,8 +179,8 @@ class EraswapCalculator extends Component {
                           <img className="eslogo" src={Images.path.eslogo} />
                         </span>
                       </div>
-                      <div class="col-sm-6 col-md-4 col-lg-3 form-group">
-                        <label for="">Percentage of Global ES stakings in ESN POS</label>
+                      <div class="col-md-6 col-lg-4 form-group">
+                        <label for="">% of Global ES stakings in ESN PoS</label>
                         <Form.Control
                           onChange={(event) =>
                             this.setState({
@@ -196,8 +196,8 @@ class EraswapCalculator extends Component {
                           )}
                         />
                       </div>
-                      <div class="col-sm-6 col-md-4 col-lg-3 form-group">
-                        <label for="">Nrt Release</label>
+                      <div class="col-md-6 col-lg-4 form-group">
+                        <label for="">NRT Release</label>
                         <Form.Control
                           onChange={(event) =>
                             this.setState({
@@ -211,7 +211,7 @@ class EraswapCalculator extends Component {
                           isInvalid={isNaN(Number(this.state.nrtReleasedInput))}
                         />
                       </div>
-                      <div class="col-sm-6 col-md-4 col-lg-3 form-group">
+                      <div class="col-md-6 col-lg-4 form-group">
                         <label for="">ES price</label>
                         <Form.Control
                           onChange={(event) =>
@@ -229,7 +229,7 @@ class EraswapCalculator extends Component {
                           <img className="eslogo" src={Images.path.eslogo} />
                         </span>
                       </div>
-                      <div class="col-sm-6  form-group">
+                      <div class="col-md-6 col-lg-4 form-group">
                         <label for="">Server cost (USD/monthly)</label>
                         <Form.Control
                           onChange={(event) =>
@@ -244,7 +244,7 @@ class EraswapCalculator extends Component {
                           isInvalid={isNaN(Number(this.state.serverCostInput))}
                         />
                       </div>
-                      <div class="col-sm-6 col-md-4 col-lg-3 form-group">
+                      <div class="col-md-6 col-lg-4 form-group">
                         <label for="">Estimated validator's uptime</label>
                         <Form.Control
                           onChange={(event) =>
@@ -259,7 +259,7 @@ class EraswapCalculator extends Component {
                           isInvalid={isNaN(Number(this.state.selfUptimeInput))}
                         />
                       </div>
-                      <div class="col-sm-6 col-md-4 col-lg-3 form-group">
+                      <div class="col-md-6 col-lg-4 form-group">
                         <label for="">Network uptime</label>
                         <Form.Control
                           onChange={(event) =>
@@ -292,67 +292,69 @@ class EraswapCalculator extends Component {
             <Col lg={12}>
               <Card className="">
                 <div className="border-era">RESULTS</div>
-                <table className="es-transaction striped bordered hover">
-                  <tr>
-                    <th>Interval</th>
-                    <th>ERA SWAP Earned</th>
-                    <th scope="col">Cost (USD)</th>
-                    <th scope="col">Profit (USD)</th>
-                  </tr>
-                  <tr>
-                    <td class="text-left text-secondary">Daily</td>
-                    <td>
-                      {monthlyReward / 30} ($
-                      {((monthlyReward / 30) * this.state.esPriceUSDT).toFixed(
-                        2
-                      )}
-                      )
-                    </td>
-                    <td>${(this.state.serverCostInput / 30).toFixed(2)}</td>
-                    <td>
-                      <span class="text-success">${monthlyProfit / 30}</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="text-left  text-secondary">Weekly</td>
-                    <td>
-                      {monthlyReward / 4} ($
-                      {((monthlyReward / 4) * this.state.esPriceUSDT).toFixed(
-                        2
-                      )}
-                      )
-                    </td>
-                    <td>${(this.state.serverCostInput / 4).toFixed(2)}</td>
-                    <td>
-                      <span class="text-success">${monthlyProfit / 4}</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="text-left  text-secondary">Monthly</td>
-                    <td>
-                      {this.state.globalStaking === null
-                        ? 'Loading...'
-                        : monthlyReward}
-                      (${(monthlyReward * this.state.esPriceUSDT).toFixed(2)})
-                    </td>
-                    <td>${this.state.serverCostInput}</td>
-                    <td>
-                      <span class="text-success">$ {monthlyProfit}</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="text-left text-secondary">Yearly</td>
-                    <td>
-                      {monthlyReward * 12} ($
-                      {(monthlyReward * 12 * this.state.esPriceUSDT).toFixed(2)}
-                      )
-                    </td>
-                    <td>${(this.state.serverCostInput * 12).toFixed(2)}</td>
-                    <td>
-                      <span class="text-success">${monthlyProfit * 12}</span>
-                    </td>
-                  </tr>
-                </table>
+                    <div className="table-responsive">
+                      <table className="es-transaction striped bordered hover">
+                      <tr>
+                        <th>Interval</th>
+                        <th>ERA SWAP Earned</th>
+                        <th scope="col">Cost (USD)</th>
+                        <th scope="col">Profit (USD)</th>
+                      </tr>
+                      <tr>
+                        <td class="text-left text-secondary">Daily</td>
+                        <td>
+                          {monthlyReward / 30} ($
+                          {((monthlyReward / 30) * this.state.esPriceUSDT).toFixed(
+                            2
+                          )}
+                          )
+                        </td>
+                        <td>${(this.state.serverCostInput / 30).toFixed(2)}</td>
+                        <td>
+                          <span class="text-success">${monthlyProfit / 30}</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="text-left  text-secondary">Weekly</td>
+                        <td>
+                          {monthlyReward / 4} ($
+                          {((monthlyReward / 4) * this.state.esPriceUSDT).toFixed(
+                            2
+                          )}
+                          )
+                        </td>
+                        <td>${(this.state.serverCostInput / 4).toFixed(2)}</td>
+                        <td>
+                          <span class="text-success">${monthlyProfit / 4}</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="text-left  text-secondary">Monthly</td>
+                        <td>
+                          {this.state.globalStaking === null
+                            ? 'Loading...'
+                            : monthlyReward}
+                          (${(monthlyReward * this.state.esPriceUSDT).toFixed(2)})
+                        </td>
+                        <td>${this.state.serverCostInput}</td>
+                        <td>
+                          <span class="text-success">$ {monthlyProfit}</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="text-left text-secondary">Yearly</td>
+                        <td>
+                          {monthlyReward * 12} ($
+                          {(monthlyReward * 12 * this.state.esPriceUSDT).toFixed(2)}
+                          )
+                        </td>
+                        <td>${(this.state.serverCostInput * 12).toFixed(2)}</td>
+                        <td>
+                          <span class="text-success">${monthlyProfit * 12}</span>
+                        </td>
+                      </tr>
+                    </table>
+                    </div>
               </Card>
             </Col>
 

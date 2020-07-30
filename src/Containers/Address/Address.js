@@ -115,13 +115,14 @@ class Address extends Component {
           <h2 className="es-main-head es-main-head-inner">Address</h2>
           <p className="explr-txt">#{this.state.address}</p>
         </div>
-        <div className="wrapper-container">
+        <div className="container">
           <div className="BlockPage-detail">
             <Container>
               <div className="row">
                 <div className="col-sm-12">
                   <div className="card">
-                    <table className="es-transaction table">
+                   <div className="table-responsive">
+                       <table className="es-transaction table">
                       <tr>
                         <td
                           data-toggle="tooltip"
@@ -153,6 +154,8 @@ class Address extends Component {
                         </td>
                       </tr>
                     </table>
+                
+                    </div>
                   </div>
                 </div>
                 <div className="col-sm-6"></div>

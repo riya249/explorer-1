@@ -305,8 +305,8 @@ class Homepage extends Component {
                     Latest Bunch{' '}
                   </span>
                 </div>
-                <div className="table-scroll">
-                  <table className="era-transaction">
+                <div className="table-scroll table-responsive">
+                  <table className="era-transaction table">
                     {this.state.bunches.isLoading ? (
                       <tr>
                         <td colSpan="4">Loading...</td>
@@ -372,8 +372,8 @@ class Homepage extends Component {
                     Latest Blocks{' '}
                   </span>
                 </div>
-                <div className="table-scroll">
-                  <table className="era-transaction">
+                <div className="table-scroll table-responsive">
+                  <table className="era-transaction table">
                     {this.state.blocks?.isLoading
                       ? 'Loading...'
                       : this.state.blocks?.data?.length
@@ -440,8 +440,8 @@ class Homepage extends Component {
                     Latest Transactions
                   </span>
                 </div>
-                <div className="table-scroll">
-                  <table className="era-transaction">
+                <div className="table-scroll table-responsive">
+                  <table className="era-transaction table">
                     {this.state.transactions?.isLoading
                       ? 'Loading...'
                       : this.state.transactions?.data?.length

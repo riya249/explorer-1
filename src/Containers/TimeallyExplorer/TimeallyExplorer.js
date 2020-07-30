@@ -53,6 +53,7 @@ class TimeallyExplorer extends Component {
           <h4>Staking Contracts</h4>
           <p>Note: More features will be added here</p>
           <Row className="mt40 justify-center">
+          <Col lg={12}>
             {/* <div className="col-md-12 pull-right">
               <a className="time-dwnld pull-right down-data">
                 Download This Data
@@ -141,6 +142,8 @@ class TimeallyExplorer extends Component {
                 <td>6/16/2020, 4:59:13 PM </td>
               </tr>
             </table> */}
+          </Col>
+
           </Row>
         </Container>
       </div>

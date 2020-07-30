@@ -71,7 +71,7 @@ class Bunch extends Component {
 
   render() {
     return (
-      <div>
+      <div className="bunch">
         <div className="booking-hero-bgd booking-hero-bgd-inner">
           <Navbar />
           <h2 className="es-main-head es-main-head-inner">
@@ -85,7 +85,7 @@ class Bunch extends Component {
                 <Tab eventKey="overview" title="Overview">
                   <div className="card">
                     <div className="table-responsive">
-                    <table className="block-overview">
+                    <table className="block-overview table">
                       {Object.keys(this.state.bunch.data).length ? (
                         <tbody>
                           <tr>
@@ -245,8 +245,9 @@ class Bunch extends Component {
                   </div>
                 </Tab> */}
               </Tabs>
-              <div>
-                <table className="es-transaction">
+              <div className="card mt40">
+                    <div className="table-responsive">
+                <      table className="es-transaction table">
                   <thead>
                     <tr>
                       <th>Txn Hash </th>
@@ -345,6 +346,7 @@ class Bunch extends Component {
             nextPage={this.state.transactions.currentPage + 1}
             totalPages={this.state.transactions.totalPages}
           /> */}
+                 </div>
               </div>
               <Snackbar ref={this.snackbarRef} />
             </Container>
