@@ -1,18 +1,18 @@
 import React from 'react';
 
-export default function CustomPagination(props)  {
+export default function CustomPagination(props) {
+  function handleOnChange(e) {
+    props.handleClick(0, e.target.value, this);
+  }
 
-    function handleOnChange(e){
-      props.handleClick(0,e.target.value,this);
-    }
+  function handleClick(pageNo, length = 10, e) {
+    let start = 0;
+    if (pageNo) start = pageNo * length;
+    props.handleClick(start, length);
+  }
 
-    function handleClick(pageNo,length = 10,e){
-      let start = 0;
-      if(pageNo) start = pageNo * length;
-      props.handleClick(start,length);
-    }
-
-    return <div className="cus-pagination row">
+  return (
+    <div className="cus-pagination row">
       <div className="col-md-6 mt20">
         <span className="mr10">Show Result</span>
         <select onChange={handleOnChange}>
@@ -23,37 +23,42 @@ export default function CustomPagination(props)  {
         </select>
       </div>
       <div className="col-md-6  text-right">
-        <button 
-          type="button" className="btn mr10 mt10"
-          onClick={handleClick.bind(this,0,undefined)} 
+        <button
+          type="button"
+          className="btn mr10 mt10"
+          onClick={handleClick.bind(this, 0, undefined)}
           disabled={props.prevPage < 0}
-          >
-            First
-          </button>
-        <button 
-          type="button" className="btn mr10 mt10"
-          onClick={handleClick.bind(this,props.prevPage,undefined)} 
+        >
+          First
+        </button>
+        <button
+          type="button"
+          className="btn mr10 mt10"
+          onClick={handleClick.bind(this, props.prevPage, undefined)}
           disabled={props.prevPage < 0}
-          >
-            Previous
-          </button>
-          <span className="mr10 mt10 page-count">
-            Page {props.currentPage +1 } of {props.totalPages +1}
-          </span>
-        <button 
-          type="button" className="btn mr10 mt10"
-          onClick={handleClick.bind(this,props.nextPage,undefined)} 
+        >
+          Previous
+        </button>
+        <span className="mr10 mt10 page-count">
+          Page {props.currentPage + 1} of {props.totalPages + 1}
+        </span>
+        <button
+          type="button"
+          className="btn mr10 mt10"
+          onClick={handleClick.bind(this, props.nextPage, undefined)}
           disabled={props.currentPage === props.totalPages}
-          >
-            Next
-          </button>
-        <button 
-          type="button" className="btn  mt10"
-          onClick={handleClick.bind(this,props.totalPages,undefined)} 
+        >
+          Next
+        </button>
+        <button
+          type="button"
+          className="btn  mt10"
+          onClick={handleClick.bind(this, props.totalPages, undefined)}
           disabled={props.currentPage === props.totalPages}
-          >
-            Last
-          </button>
-        </div>
-    </div>;
+        >
+          Last
+        </button>
+      </div>
+    </div>
+  );
 }

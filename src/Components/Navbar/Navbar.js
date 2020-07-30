@@ -75,7 +75,7 @@ class Navbar extends Component {
               </li>
 
               <li className="nav-item ">
-                <Link className="nav-link" to="/Explore">
+                <Link className="nav-link" to="/explore">
                   TIMEALLY EXPLORER
                   <span className="sr-only">(current)</span>
                 </Link>
@@ -98,7 +98,7 @@ class Navbar extends Component {
                   <Link className="dropdown-item" to="/calculator">
                     ES Calculator
                   </Link>
-                  <Link className="dropdown-item" to="/Nrtmanager">
+                  {/* <Link className="dropdown-item" to="/Nrtmanager">
                     NRT Manager
                   </Link>
                   <Link className="dropdown-item" to="/Validatorstakings">
@@ -109,25 +109,10 @@ class Navbar extends Component {
                   </Link>
                   <Link className="dropdown-item" to="/Nodestatus">
                     Node Status
-                  </Link>
+                  </Link> */}
                 </div>
               </li>
             </ul>
-
-            <div class="d-flex justify-content-center h-100">
-              <div class="searchbar">
-                <input
-                  class="search_input"
-                  type="text"
-                  name="search"
-                  placeholder="Block, hash, transaction etc.."
-                  onChange={this.handleChange}
-                />
-                <a href="#" class="search_icon" onClick={this.handleClick}>
-                  <i class="fa fa-search"></i>
-                </a>
-              </div>
-            </div>
           </div>
         </nav>
       </div>

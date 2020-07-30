@@ -1,10 +1,6 @@
 import React, { useEffect } from 'react';
 import './App.css';
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch
-} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 //Pages
@@ -27,37 +23,42 @@ import Validatorstakings from './Containers/Validatorstakings/Validatorstakings'
 import Nodestatustransaction from './Containers/Nodestatustransaction/Nodestatustransaction';
 function App() {
   useEffect(() => {
-    window.$('[data-toggle="tooltip"]').tooltip()
-    window.$("td").tooltip();
-    return () => {
-      
-    }
-  }, [])
+    window.$('[data-toggle="tooltip"]').tooltip();
+    window.$('td').tooltip();
+    return () => {};
+  }, []);
   return (
     <div className="App">
-    <Router>
+      <Router>
         <Switch>
-           <Route exact path="/" component={Homepage} />
-           <Route exact path="/address/:address" component={Address} />
-           <Route exact path="/bunches" component={Bunches} />
-           <Route exact path="/bunch/:bunchIndex" component={Bunch} />
-           <Route exact path="/blocks" component={Blocks} />
-           <Route exact path="/block/:blockNumber" component={BlockPage} />
-           <Route exact path="/txs" component={Transactions} />
-           <Route exact path="/tx/:hash" component={Transaction} />
-           <Route exact path="/explore" component={TimeallyExplorer} />
-           <Route exact path="/dashboard" component={Dashboard} />
-           <Route exact path="/calculator" component={EraswapCalculator} />
-           <Route exact path="/nrtmanager" component={Nrtmanager} />
-           <Route exact path="/Nodestatus" component={Nodestatus} />
-           <Route exact path="/Layerbridge" component={Layerbridge} />
-           <Route exact path="/Validatorstakings" component={Validatorstakings} />
-          <Route exact path="/Nodestatustransaction" component={Nodestatustransaction} />
-         </Switch>
-     </Router>
-     <Footer/>
+          <Route exact path="/" component={Homepage} />
+          <Route exact path="/address/:address" component={Address} />
+          <Route exact path="/bunches" component={Bunches} />
+          <Route exact path="/bunch/:bunchIndex" component={Bunch} />
+          <Route exact path="/blocks" component={Blocks} />
+          <Route exact path="/block/:blockNumber" component={BlockPage} />
+          <Route exact path="/txs" component={Transactions} />
+          <Route exact path="/tx/:hash" component={Transaction} />
+          <Route exact path="/explore" component={TimeallyExplorer} />
+          <Route exact path="/dashboard" component={Dashboard} />
+          <Route exact path="/calculator" component={EraswapCalculator} />
+          <Route exact path="/nrtmanager" component={Nrtmanager} />
+          <Route exact path="/Nodestatus" component={Nodestatus} />
+          <Route exact path="/Layerbridge" component={Layerbridge} />
+          <Route
+            exact
+            path="/Validatorstakings"
+            component={Validatorstakings}
+          />
+          <Route
+            exact
+            path="/Nodestatustransaction"
+            component={Nodestatustransaction}
+          />
+        </Switch>
+      </Router>
+      <Footer />
     </div>
-    
   );
 }
 

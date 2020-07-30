@@ -1,12 +1,12 @@
 import React, { PureComponent } from 'react';
-import './snackbar.css'
+import './snackbar.css';
 
 export class Snackbar extends PureComponent {
-  message = ''
+  message = '';
 
   state = {
     isActive: false,
-  }
+  };
 
   openSnackBar = (message = 'Something went wrong...') => {
     this.message = message;
@@ -15,14 +15,14 @@ export class Snackbar extends PureComponent {
         this.setState({ isActive: false });
       }, 3000);
     });
-  }
+  };
 
   render() {
     const { isActive } = this.state;
     return (
-      <div className={isActive ? 'snackbar show': 'snackbar'}>
+      <div className={isActive ? 'snackbar show' : 'snackbar'}>
         {this.message}
       </div>
-    )
+    );
   }
 }

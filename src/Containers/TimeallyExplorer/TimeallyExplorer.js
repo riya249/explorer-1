@@ -5,12 +5,41 @@ import Images from '../Images/Images';
 import { Col, Button, Container, Row } from 'react-bootstrap';
 import Header from '../../Components/Header/Header';
 import Navbar from '../../Components/Navbar/Navbar';
+import { timeAllyManager } from '../../ethereum/TimeallyManager';
+import { StakingItem } from './StakingItem/StakingItem';
 
 class TimeallyExplorer extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      stakings: [],
+    };
   }
+
+  componentDidMount = async () => {
+    console.log('timeAllyManager', timeAllyManager);
+    const parsedLogs = (
+      await timeAllyManager.queryFilter(
+        timeAllyManager.filters.StakingTransfer(null, null, null)
+      )
+    ).map((log) => timeAllyManager.interface.parseLog(log));
+
+    const stakings = parsedLogs.map((parsedLog) => ({
+      // staker: parsedLog.args.from,
+      staking: parsedLog.args.staking,
+    }));
+    console.log('stakings', stakings);
+    this.setState({
+      stakings,
+    });
+    // this.setState({
+    //   // TODO: the form can be used as staker but not urgetn
+    //   stakings: parsedLogs.map((parsedLog) => ({
+    //     // staker: parsedLog.args.from,
+    //     staking: parsedLog.args.staking,
+    //   })),
+    // });
+  };
 
   render() {
     return (
@@ -19,79 +48,99 @@ class TimeallyExplorer extends Component {
           <Navbar />
           <h2 className="es-main-head es-main-head-inner">TimeAlly Explorer</h2>
         </div>
-        <Container>
+        <Container className="mt20 text-center">
           {/* <p className="trans-head">TimeAlly Explorer</p> */}
-
-          <Row className="mt40">
-            <Col lg={12}>
-              <div className="col-md-12 pull-right mb10">
-                <a className="time-dwnld pull-right down-data">
-                  Download This Data
-                </a>
+          <h4>Staking Contracts</h4>
+          <p>Note: More features will be added here</p>
+          <Row className="mt40 justify-center">
+            {/* <div className="col-md-12 pull-right">
+              <a className="time-dwnld pull-right down-data">
+                Download This Data
+              </a>
+            </div> */}
+            {/* <ul className="list-group"> */}
+            <div className="card">
+              <div className="table-responsive">
+                <table className="es-transaction striped bordered hover table">
+                  <thead>
+                    <tr>
+                      <th data-toggle="tooltip" data-placement="top" title="">
+                        Staking Contract
+                      </th>
+                      <th data-toggle="tooltip" data-placement="top" title="">
+                        Actions
+                      </th>
+                    </tr>
+                  </thead>
+                  {this.state.stakings.map((stakingAddress, i) => (
+                    <tr>
+                      <td>
+                        <span className="hex-data">
+                          {stakingAddress.staking}
+                        </span>
+                      </td>
+                      <td>
+                        <a
+                          className="btn btn-primary"
+                          href={`https://test.timeally.io/stakings/${stakingAddress.staking}`}
+                          target="_blank"
+                        >
+                          View Staking
+                        </a>
+                      </td>
+                    </tr>
+                  ))}
+                </table>
               </div>
-              <div className="card">
-                <div className="table-responsive">
-                  <table className="es-transaction striped bordered hover table">
-                    <tr>
-                      <th data-toggle="tooltip" data-placement="top" title="">
-                        Address
-                      </th>
-                      <th data-toggle="tooltip" data-placement="top" title="">
-                        Plan
-                      </th>
-                      <th data-toggle="tooltip" data-placement="top" title="">
-                        Amount
-                      </th>
-                      <th data-toggle="tooltip" data-placement="top" title="">
-                        Staking Type
-                      </th>
-                      <th
-                        data-toggle="tooltip"
-                        data-placement="top"
-                        title="Time Stamp show that the blocks are connected in a chronological order which marks the time for each transaction on Era Swap Network"
-                      >
-                        Timestamp
-                      </th>
-                    </tr>
-                    <tr>
-                      <td>0x3c93616a08b29b978c5a18becfe82f3460303135</td>
-                      <td>1 LT</td>
-                      <td>7804.97</td>
-                      <td>Reward Staking</td>
-                      <td>6/16/2020, 4:59:13 PM </td>
-                    </tr>
-                    <tr>
-                      <td>0x3c93616a08b29b978c5a18becfe82f3460303135</td>
-                      <td>1 LT</td>
-                      <td>7804.97</td>
-                      <td>Reward Staking</td>
-                      <td>6/16/2020, 4:59:13 PM </td>
-                    </tr>
-                    <tr>
-                      <td>0x3c93616a08b29b978c5a18becfe82f3460303135</td>
-                      <td>1 LT</td>
-                      <td>7804.97</td>
-                      <td>Reward Staking</td>
-                      <td>6/16/2020, 4:59:13 PM </td>
-                    </tr>
-                    <tr>
-                      <td>0x3c93616a08b29b978c5a18becfe82f3460303135</td>
-                      <td>1 LT</td>
-                      <td>7804.97</td>
-                      <td>Reward Staking</td>
-                      <td>6/16/2020, 4:59:13 PM </td>
-                    </tr>
-                    <tr>
-                      <td>0x3c93616a08b29b978c5a18becfe82f3460303135</td>
-                      <td>1 LT</td>
-                      <td>7804.97</td>
-                      <td>Reward Staking</td>
-                      <td>6/16/2020, 4:59:13 PM </td>
-                    </tr>
-                  </table>
-                </div>
-              </div>
-            </Col>
+            </div>
+            {/* </ul> */}
+            {/* {this.state.stakings.map((staking, i) => (
+              // <StakingItem key={i} stakingContractAddress={staking.staking} />
+            ))} */}
+            {/* <table className="es-transaction striped bordered hover">
+              <tr>
+                <th>Address</th>
+                <th>Plan</th>
+                <th>Amount</th>
+                <th>Staking Type</th>
+                <th>Timestamp</th>
+              </tr>
+              <tr>
+                <td>0x3c93616a08b29b978c5a18becfe82f3460303135</td>
+                <td>1 Year</td>
+                <td>7804.97</td>
+                <td>Reward Staking</td>
+                <td>6/16/2020, 4:59:13 PM </td>
+              </tr>
+              <tr>
+                <td>0x3c93616a08b29b978c5a18becfe82f3460303135</td>
+                <td>1 Year</td>
+                <td>7804.97</td>
+                <td>Reward Staking</td>
+                <td>6/16/2020, 4:59:13 PM </td>
+              </tr>
+              <tr>
+                <td>0x3c93616a08b29b978c5a18becfe82f3460303135</td>
+                <td>1 Year</td>
+                <td>7804.97</td>
+                <td>Reward Staking</td>
+                <td>6/16/2020, 4:59:13 PM </td>
+              </tr>
+              <tr>
+                <td>0x3c93616a08b29b978c5a18becfe82f3460303135</td>
+                <td>1 Year</td>
+                <td>7804.97</td>
+                <td>Reward Staking</td>
+                <td>6/16/2020, 4:59:13 PM </td>
+              </tr>
+              <tr>
+                <td>0x3c93616a08b29b978c5a18becfe82f3460303135</td>
+                <td>1 Year</td>
+                <td>7804.97</td>
+                <td>Reward Staking</td>
+                <td>6/16/2020, 4:59:13 PM </td>
+              </tr>
+            </table> */}
           </Row>
         </Container>
       </div>

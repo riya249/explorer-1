@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-
 /***
  * props: {
  *  type: tx, address, block, bunch
@@ -9,29 +8,34 @@ import { Link } from 'react-router-dom';
  * }
  */
 export default class AddressLink extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
-      value: props.value
-    }
+      value: props.value,
+    };
   }
 
-  shrinkValue(value){
+  shrinkValue(value) {
     // return value.substr(0,5) + '...' + value.substr(value.length - 5,value.length);
-    return value.substr(0,14) + '...';
+    return value && value.length && value.substr(0, 14) + '...';
   }
 
-  render(){
+  render() {
     const url = '/' + this.props.type + '/' + this.props.value;
-    return <Link 
-              to={{
-                pathname:url,
-                state: { value: this.props.value}
-              }}
-              title={this.props.value}
-              className="frst-era"
-            >
-            {this.props.shrink ?  this.shrinkValue(this.props.value) : this.props.value}
-          </Link>
+    return (
+      <Link
+        to={{
+          pathname: url,
+          state: { value: this.props.value },
+        }}
+        title={this.props.value}
+        className="frst-era hex-data"
+        style={this.props.style}
+      >
+        {this.props.shrink
+          ? this.shrinkValue(this.props.value)
+          : this.props.value}
+      </Link>
+    );
   }
 }
