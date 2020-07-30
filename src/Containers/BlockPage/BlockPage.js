@@ -128,7 +128,7 @@ class BlockPage extends Component {
                               </td>
                               <td>
                                 <span className="tr-color-txt">
-                                  <Link to={`/txs/${this.state.blockNumber}`}>
+                                  <Link to={`/txns/${this.state.blockNumber}`}>
                                     <span className="tr-color-txt">
                                       {
                                         this.state.block.data
@@ -289,7 +289,7 @@ class BlockPage extends Component {
                                 <span className="tr-color-txt">
                                   <AddressLink
                                     value={this.state.block.data.parent_hash}
-                                    type="tx"
+                                    type="txn"
                                   />
                                 </span>
                               </td>

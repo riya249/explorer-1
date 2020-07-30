@@ -153,7 +153,7 @@ class Blocks extends Component {
                             <td className="tr-color-txt">
                               <Link
                                 to={{
-                                  pathname: 'txs' + '/' + block.block_number,
+                                  pathname: 'txns' + '/' + block.block_number,
                                   state: { value: block.block_number },
                                 }}
                               >

@@ -755,7 +755,7 @@ class Dashboard extends Component {
           data: {
             ...this.state.eraswap.data,
             ecosystemTransactions: res.platform_count
-              ? res.platform_count + ' txs'
+              ? res.platform_count + ' txns'
               : '-',
             ecosystemVolume: res.platform_count
               ? res.platform_volume + ' ES'
@@ -788,7 +788,7 @@ class Dashboard extends Component {
       //     }
       //   }
       //   this.isOnProduction || console.log('dayswappers platformTFC', platformTFC);
-      //   $("#platform-transactions-number").html(res.platform_count+' txs');
+      //   $("#platform-transactions-number").html(res.platform_count+' txns');
       //   $("#volume-of-platform").html(res.platform_volume+' ES');
 
       //   const maxValue = Math.ceil((Math.max(platformTFC['Time Swappers'] || 0,
@@ -1742,8 +1742,7 @@ class Dashboard extends Component {
                     <div className="flex-sect4-box">
                       <div className="timeally-mark"></div>
                       <p className="sect4-context">
-                        Current Supply
-                        {0}
+                        Current Supply  {0}
                       </p>
                     </div>
                     <div className="flex-sect4-box">
@@ -2165,7 +2164,7 @@ class Dashboard extends Component {
                     src={Images.path.computeex}
                     alt="logo"
                   />
-                  <p className="platfrm-txt">(YET TO GO LIVE) </p>
+                  <p className="platfrm-txt"> COMPUTEEX</p>
                 </div>
                 <div className="compute-flex-border">
                   <div>
@@ -2272,7 +2271,7 @@ class Dashboard extends Component {
                     src={Images.path.Coupondapp}
                     alt="logo"
                   />
-                  <p className="platfrm-txt">Coupondapp </p>
+                  <p className="platfrm-txt">COUPONDAPP </p>
                 </div>
                 <div className="swwall-flex-border">
                   <div>
