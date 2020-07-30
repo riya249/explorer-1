@@ -2,6 +2,15 @@ import React, { Component } from 'react';
 import './Navbar.css';
 import { Link } from 'react-router-dom';
 import Images from '../../Containers/Images/Images';
+import {
+  Container,
+  Row,
+  Col,
+  FormControl,
+  Form,
+  Button,
+} from 'react-bootstrap';
+
 class Navbar extends Component {
   constructor(props) {
     super(props);
@@ -104,6 +113,21 @@ class Navbar extends Component {
                 </div>
               </li>
             </ul>
+
+            <div class="d-flex justify-content-center h-100">
+              <div class="searchbar">
+                <input
+                  class="search_input"
+                  type="text"
+                  name="search"
+                  placeholder="Block, hash, transaction etc.."
+                  onChange={this.handleChange}
+                />
+                <a href="#" class="search_icon" onClick={this.handleClick}>
+                  <i class="fa fa-search"></i>
+                </a>
+              </div>
+            </div>
           </div>
         </nav>
       </div>

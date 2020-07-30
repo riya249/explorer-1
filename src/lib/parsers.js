@@ -40,4 +40,4 @@ export const nFormatter = (num, digits = 0) => {
     }
   }
   return (num / si[i].value).toFixed(digits).replace(rx, '$1') + si[i].symbol;
-}
+};

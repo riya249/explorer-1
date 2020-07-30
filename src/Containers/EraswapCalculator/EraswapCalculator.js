@@ -52,7 +52,7 @@ class EraswapCalculator extends Component {
     const res = await Apis.nrtFractions();
     if (res?.data) {
       this.setState({
-        nrtReleasedInput: (res.data.actualNRTDistributed).toFixed(2),
+        nrtReleasedInput: res.data.actualNRTDistributed.toFixed(2),
       });
     }
   }
@@ -86,10 +86,12 @@ class EraswapCalculator extends Component {
   }
 
   reward(NES, deposit) {
-    console.log('this.tax(deposit, 0);',this.tax(deposit, 0));
+    console.log('this.tax(deposit, 0);', this.tax(deposit, 0));
     deposit -= this.tax(deposit, 0);
     console.log('deposit', deposit);
-    return (deposit * ((this.state.nrtReleasedInput * 0.12) / MONTHSCOUNT)) / NES;
+    return (
+      (deposit * ((this.state.nrtReleasedInput * 0.12) / MONTHSCOUNT)) / NES
+    );
   }
 
   render() {
@@ -99,18 +101,19 @@ class EraswapCalculator extends Component {
     monthlyReward =
       (monthlyReward * this.state.selfUptimeInput) /
       this.state.networkUptimeInput;
-    
-    // monthlyReward = (monthlyReward * this.state.globalStakingPercentInput) / 100;
-    monthlyReward /=  12;
 
-    let monthlyRewardSevenFive = (monthlyReward * 7.5)/100;
+    // monthlyReward = (monthlyReward * this.state.globalStakingPercentInput) / 100;
+    monthlyReward /= 12;
+
+    let monthlyRewardSevenFive = (monthlyReward * 7.5) / 100;
     let powerTokenReward = (monthlyReward * 10) / 100;
-    
+
     let esnMinersReward = 0;
     esnMinersReward = this.reward(
-      (this.state.globalStakingPercentInput * this.state.globalStakingInput)/100,
+      (this.state.globalStakingPercentInput * this.state.globalStakingInput) /
+        100,
       this.state.myStakingsInput
-  );
+    );
 
     let monthlyProfit =
       monthlyReward * this.state.esPriceUSDT - this.state.serverCostInput;
@@ -146,7 +149,7 @@ class EraswapCalculator extends Component {
                           <i class="fa fa-user user" aria-hidden="true"></i>
                         </span>
                       </div> */}
-                      <div class="col-sm-6 col-md-4 col-lg-3 form-group">
+                      <div class="col-md-6 col-lg-4 form-group">
                         <label for="">My ES Stakings</label>
                         <Form.Control
                           onChange={(event) =>
@@ -164,7 +167,7 @@ class EraswapCalculator extends Component {
                           <img className="eslogo" src={Images.path.eslogo} />
                         </span>
                       </div>
-                      <div class="col-sm-6 col-md-4 col-lg-3 form-group">
+                      <div class="col-md-6 col-lg-4 form-group">
                         <label for="">Global ES stakings</label>
                         {/* <input
                           type="text"
@@ -190,10 +193,8 @@ class EraswapCalculator extends Component {
                           <img className="eslogo" src={Images.path.eslogo} />
                         </span>
                       </div>
-                      <div class="col-sm-6 col-md-4 col-lg-3 form-group">
-                        <label for="">
-                          Percentage of Global ES stakings in ESN POS
-                        </label>
+                      <div class="col-md-6 col-lg-4  form-group">
+                        <label for="">% of Global ES stakings in ESN PoS</label>
                         <Form.Control
                           onChange={(event) =>
                             this.setState({
@@ -209,8 +210,8 @@ class EraswapCalculator extends Component {
                           )}
                         />
                       </div>
-                      <div class="col-sm-6 col-md-4 col-lg-3 form-group">
-                        <label for="">Nrt Release</label>
+                      <div class="col-md-6 col-lg-4 form-group">
+                        <label for="">NRT Release</label>
                         <Form.Control
                           onChange={(event) =>
                             this.setState({
@@ -224,7 +225,7 @@ class EraswapCalculator extends Component {
                           isInvalid={isNaN(Number(this.state.nrtReleasedInput))}
                         />
                       </div>
-                      <div class="col-sm-6 col-md-4 col-lg-3 form-group">
+                      <div class="col-md-6 col-lg-4 form-group">
                         <label for="">ES price (USDT)</label>
                         <Form.Control
                           onChange={(event) =>
@@ -242,7 +243,7 @@ class EraswapCalculator extends Component {
                           <img className="eslogo" src={Images.path.eslogo} />
                         </span>
                       </div>
-                      <div class="col-sm-6  form-group">
+                      <div class="col-md-6 col-lg-4 form-group">
                         <label for="">Server cost (USD/monthly)</label>
                         <Form.Control
                           onChange={(event) =>
@@ -257,7 +258,7 @@ class EraswapCalculator extends Component {
                           isInvalid={isNaN(Number(this.state.serverCostInput))}
                         />
                       </div>
-                      <div class="col-sm-6 col-md-4 col-lg-3 form-group">
+                      <div class="col-md-6 col-lg-4 form-group">
                         <label for="">Estimated validator's uptime</label>
                         <Form.Control
                           onChange={(event) =>
@@ -272,7 +273,7 @@ class EraswapCalculator extends Component {
                           isInvalid={isNaN(Number(this.state.selfUptimeInput))}
                         />
                       </div>
-                      <div class="col-sm-6 col-md-4 col-lg-3 form-group">
+                      <div class="col-md-6 col-lg-4 form-group">
                         <label for="">Network uptime</label>
                         <Form.Control
                           onChange={(event) =>

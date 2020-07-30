@@ -81,9 +81,11 @@ class Homepage extends Component {
       const res = await Apis.fetchTransactionsInterval();
       console.log('fetchTransactionsInterval', res);
       res.forEach((transaction, i) => {
-        res[i].date = moment(moment(transaction.date).toDate()).format('DD/MM/yyyy');
-      })
-      this.setState({transactionsChartData: res});
+        res[i].date = moment(moment(transaction.date).toDate()).format(
+          'DD/MM/yyyy'
+        );
+      });
+      this.setState({ transactionsChartData: res });
     } catch (e) {
       console.log(e);
     }
@@ -133,17 +135,17 @@ class Homepage extends Component {
     }
   };
 
-  async fetchTransactionsCount(){
-    try{
+  async fetchTransactionsCount() {
+    try {
       const res = await Apis.fetchTransactionsCount();
       console.log('fetchTransactionsCount res', res);
-      if(res?.status){
+      if (res?.status) {
         this.setState({
           txnsCount: res.data.totalCount,
           txnPerMin: res.data.transactionsPerMin,
         });
       }
-    }catch(e){
+    } catch (e) {
       console.log(e);
     }
   }
@@ -196,7 +198,8 @@ class Homepage extends Component {
           <Navbar />
           <h2 className="es-main-head">Era Swap Blockchain Explorer</h2>
         </div>
-        <div className="esexplorer-Container">
+        {/* <div className="esexplorer-Container">
+
           <div className="home-search-container">
             <Container>
               <form onSubmit={this.handleClick}>
@@ -214,10 +217,10 @@ class Homepage extends Component {
               </form>
             </Container>
           </div>
-        </div>
+        </div> */}
         <div className="es-explorer-wrapper">
           <Container>
-            <div className="second-section-es">
+            <div className="second-section-es mt30 card">
               <Row>
                 <Col lg={4} className="border-right">
                   <div className="flex-eraswap">
@@ -314,67 +317,69 @@ class Homepage extends Component {
           <Container>
             <Row className="mt40">
               <Col lg={4}>
-                <div className="border-era">
-                  <span
-                    data-toggle="tooltip"
-                    data-placement="top"
-                    title="Bunch is the collection of Blocks which is posted on Ethereum"
-                  >
-                    Latest Bunch{' '}
-                  </span>
-                </div>
-                <div className="table-scroll">
-                  <table className="era-transaction">
-                    {this.state.bunches.isLoading ? (
-                      <tr>
-                        <td colSpan="4">Loading...</td>
-                      </tr>
-                    ) : this.state.bunches.data?.length ? (
-                      this.state.bunches.data.map((bunch, i) => (
+                <div className="card">
+                  <div className="border-era">
+                    <span
+                      data-toggle="tooltip"
+                      data-placement="top"
+                      title="Bunch is the collection of Blocks which is posted on Ethereum"
+                    >
+                      Latest Bunch{' '}
+                    </span>
+                  </div>
+                  <div className="table-scroll table-responsive">
+                    <table className="era-transaction table">
+                      {this.state.bunches.isLoading ? (
                         <tr>
-                          <td className="frst-era">
-                            <AddressLink
-                              value={bunch.bunchIndex}
-                              type="bunch"
-                            />
-                            <div className="sub-frst">
-                              {toLocaleTimestamp(bunch.createdOn).fromNow()}
-                            </div>
-                          </td>
-                          <td
-                            data-toggle="tooltip"
-                            data-placement="top"
-                            title="Informer pays the gas fee to post the Bunch Roots to Ethereum"
-                          >
-                            Informer{' '}
-                            <span className="frst-era">
-                              <AddressLink
-                                value={bunch.informer.address}
-                                type="address"
-                                shrink={true}
-                              />
-                            </span>
-                            {/* <div className="sub-frst">45 secs ago</div>  */}
-                          </td>
-                          <td>
-                            <div className="era-no">{bunch.bunchDepth} </div>{' '}
-                          </td>
+                          <td colSpan="4">Loading...</td>
                         </tr>
-                      ))
-                    ) : (
-                      <tr>
-                        <td colSpan="4">No Bunches</td>
-                      </tr>
-                    )}
-                  </table>
-                </div>
+                      ) : this.state.bunches.data?.length ? (
+                        this.state.bunches.data.map((bunch, i) => (
+                          <tr>
+                            <td className="frst-era">
+                              <AddressLink
+                                value={bunch.bunchIndex}
+                                type="bunch"
+                              />
+                              <div className="sub-frst">
+                                {toLocaleTimestamp(bunch.createdOn).fromNow()}
+                              </div>
+                            </td>
+                            <td
+                              data-toggle="tooltip"
+                              data-placement="top"
+                              title="Informer pays the gas fee to post the Bunch Roots to Ethereum"
+                            >
+                              Informer{' '}
+                              <span className="frst-era">
+                                <AddressLink
+                                  value={bunch.informer.address}
+                                  type="address"
+                                  shrink={true}
+                                />
+                              </span>
+                              {/* <div className="sub-frst">45 secs ago</div>  */}
+                            </td>
+                            <td>
+                              <div className="era-no">{bunch.bunchDepth} </div>{' '}
+                            </td>
+                          </tr>
+                        ))
+                      ) : (
+                        <tr>
+                          <td colSpan="4">No Bunches</td>
+                        </tr>
+                      )}
+                    </table>
+                  </div>
 
-                <div className="border-era-two">
-                  <button className="era-view-btn">
-                    <Link to="/bunches" className="era-link">
-                      View all Bunch
-                    </Link>
-                  </button>
+                  <div className="border-era-two">
+                    <button className="era-view-btn">
+                      <Link to="/bunches" className="era-link">
+                        View all Bunch
+                      </Link>
+                    </button>
+                  </div>
                 </div>
               </Col>
 
@@ -388,8 +393,8 @@ class Homepage extends Component {
                     Latest Blocks{' '}
                   </span>
                 </div>
-                <div className="table-scroll">
-                  <table className="era-transaction">
+                <div className="table-scroll table-responsive">
+                  <table className="era-transaction table">
                     {this.state.blocks?.isLoading
                       ? 'Loading...'
                       : this.state.blocks?.data?.length
@@ -446,70 +451,74 @@ class Homepage extends Component {
               </Col>
 
               <Col lg={4}>
-                <div className="border-era">
-                  <span
-                    data-toggle="tooltip"
-                    data-placement="top"
-                    title="Latest Transactions are the Transactions happening in recent Blocks in chronological orders"
-                  >
-                    Latest Transactions
-                  </span>
-                </div>
-                <div className="table-scroll">
-                  <table className="era-transaction">
-                    {this.state.transactions?.isLoading
-                      ? 'Loading...'
-                      : this.state.transactions?.data?.length
-                      ? this.state.transactions.data.map((transaction, i) => {
-                          return (
-                            <tr key={i + 1}>
-                              <td className="frst-era">
-                                <AddressLink
-                                  value={transaction.txn_hash}
-                                  type="tx"
-                                  shrink={true}
-                                />
-                                <div className="sub-frst">
-                                  {moment(
-                                    moment(transaction.createdOn).toDate()
-                                  ).fromNow()}
-                                </div>
-                              </td>
-                              <td>
-                                <span className="">
-                                  From:{' '}
+                <div className="card">
+                  <div className="border-era">
+                    <span
+                      data-toggle="tooltip"
+                      data-placement="top"
+                      title="Latest Transactions are the Transactions happening in recent Blocks in chronological orders"
+                    >
+                      Latest Transactions
+                    </span>
+                  </div>
+                  <div className="table-scroll table-responsive">
+                    <table className="era-transaction table">
+                      {this.state.transactions?.isLoading
+                        ? 'Loading...'
+                        : this.state.transactions?.data?.length
+                        ? this.state.transactions.data.map((transaction, i) => {
+                            return (
+                              <tr key={i + 1}>
+                                <td className="frst-era">
                                   <AddressLink
-                                    value={transaction?.fromAddress?.address}
-                                    type="address"
+                                    value={transaction.txn_hash}
+                                    type="tx"
                                     shrink={true}
                                   />
-                                  <br></br>
-                                  To:{' '}
-                                  <AddressLink
-                                    value={transaction?.toAddress?.address}
-                                    type="address"
-                                    shrink={true}
-                                  />
-                                </span>
-                              </td>
-                              <td>
-                                <div className="era-no">
-                                  {ethers.utils.formatEther(transaction.value)}{' '}
-                                  ES
-                                </div>{' '}
-                              </td>
-                            </tr>
-                          );
-                        })
-                      : 'No Transactions'}
-                  </table>
-                </div>
-                <div className="border-era-two">
-                  <button className="era-view-btn">
-                    <Link to="/txs" className="era-link">
-                      View all Transactions
-                    </Link>
-                  </button>
+                                  <div className="sub-frst">
+                                    {moment(
+                                      moment(transaction.createdOn).toDate()
+                                    ).fromNow()}
+                                  </div>
+                                </td>
+                                <td>
+                                  <span className="">
+                                    From:{' '}
+                                    <AddressLink
+                                      value={transaction?.fromAddress?.address}
+                                      type="address"
+                                      shrink={true}
+                                    />
+                                    <br></br>
+                                    To:{' '}
+                                    <AddressLink
+                                      value={transaction?.toAddress?.address}
+                                      type="address"
+                                      shrink={true}
+                                    />
+                                  </span>
+                                </td>
+                                <td>
+                                  <div className="era-no">
+                                    {ethers.utils.formatEther(
+                                      transaction.value
+                                    )}{' '}
+                                    ES
+                                  </div>{' '}
+                                </td>
+                              </tr>
+                            );
+                          })
+                        : 'No Transactions'}
+                    </table>
+                  </div>
+                  <div className="border-era-two">
+                    <button className="era-view-btn">
+                      <Link to="/txs" className="era-link">
+                        View all Transactions
+                      </Link>
+                    </button>
+                  </div>
                 </div>
               </Col>
             </Row>
@@ -518,7 +527,7 @@ class Homepage extends Component {
           {/* <Container>
             <Row>
               <Col lg={12}>
-                <div className="second-section-es mt40 purpalebg ">
+                <div className="second-section-es mt40 card purpalebg ">
                   <Row>
                     <Col lg={4}>
                       <div className="block-bg">
@@ -581,7 +590,7 @@ class Homepage extends Component {
           <Container>
             <Row>
               <Col lg={12}>
-                <div className="second-section-es mt40 purpalebg ">
+                <div className="second-section-es mt40 card purpalebg ">
                   <Row>
                     <Col lg={4}>
                       <div className="block-bg staking-bg">
@@ -652,7 +661,7 @@ class Homepage extends Component {
           <Container>
             <Row>
               <Col lg={12}>
-                <div className="second-section-es mt40 purpalebg ">
+                <div className="second-section-es mt40 card purpalebg ">
                   <Row>
                     <Col lg={4}>
                       <div className="block-bg staking-bg">
@@ -681,7 +690,7 @@ class Homepage extends Component {
           <Container>
             <Row className="mt40">
               <Col lg={12}>
-                <div className="second-section-es purpalebg">
+                <div className="second-section-es card purpalebg">
                   <div className="table-responsive">
                     <table className="table table-bordered purple-table">
                       <tr>
@@ -875,7 +884,7 @@ class Homepage extends Component {
           <Container>
             <Row className="mt40">
               <Col lg={12}>
-                <div className="second-section-es">
+                <div className="second-section-es card">
                   <div className="col-lg-12 text-center">
                     <h5 class="purple-text">
                       ES METER (EM) & ES NANOMETER (nEM)

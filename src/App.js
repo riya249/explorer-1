@@ -20,6 +20,7 @@ import Nrtmanager from './Containers/Nrtmanager/Nrtmanager';
 import Nodestatus from './Containers/Nodestatus/Nodestatus';
 import Layerbridge from './Containers/Layerbridge/Layerbridge';
 import Validatorstakings from './Containers/Validatorstakings/Validatorstakings';
+import Nodestatustransaction from './Containers/Nodestatustransaction/Nodestatustransaction';
 function App() {
   useEffect(() => {
     window.$('[data-toggle="tooltip"]').tooltip();
@@ -37,7 +38,6 @@ function App() {
           <Route exact path="/blocks" component={Blocks} />
           <Route exact path="/block/:blockNumber" component={BlockPage} />
           <Route exact path="/txs" component={Transactions} />
-          <Route exact path="/txs/:blockNumber" component={Transactions} />
           <Route exact path="/tx/:hash" component={Transaction} />
           <Route exact path="/explore" component={TimeallyExplorer} />
           <Route exact path="/dashboard" component={Dashboard} />
@@ -49,6 +49,11 @@ function App() {
             exact
             path="/Validatorstakings"
             component={Validatorstakings}
+          />
+          <Route
+            exact
+            path="/Nodestatustransaction"
+            component={Nodestatustransaction}
           />
         </Switch>
       </Router>

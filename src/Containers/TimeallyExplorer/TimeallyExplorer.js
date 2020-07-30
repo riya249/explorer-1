@@ -17,7 +17,7 @@ class TimeallyExplorer extends Component {
   }
 
   componentDidMount = async () => {
-    console.log('timeAllyManager',timeAllyManager);
+    console.log('timeAllyManager', timeAllyManager);
     const parsedLogs = (
       await timeAllyManager.queryFilter(
         timeAllyManager.filters.StakingTransfer(null, null, null)
@@ -43,7 +43,7 @@ class TimeallyExplorer extends Component {
 
   render() {
     return (
-      <div>
+      <div className="blocks-table">
         <div className="booking-hero-bgd booking-hero-bgd-inner">
           <Navbar />
           <h2 className="es-main-head es-main-head-inner">TimeAlly Explorer</h2>
@@ -53,41 +53,52 @@ class TimeallyExplorer extends Component {
           <h4>Staking Contracts</h4>
           <p>Note: More features will be added here</p>
           <Row className="mt40 justify-center">
-            {/* <div className="col-md-12 pull-right">
+            <Col lg={12}>
+              {/* <div className="col-md-12 pull-right">
               <a className="time-dwnld pull-right down-data">
                 Download This Data
               </a>
             </div> */}
-            {/* <ul className="list-group"> */}
-            <table className="table">
-              <thead>
-                <tr>
-                  <th>Staking Contract</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              {this.state.stakings.map((stakingAddress, i) => (
-                <tr>
-                  <td>
-                    <span className="hex-data">{stakingAddress.staking}</span>
-                  </td>
-                  <td>
-                    <a
-                      className="btn btn-primary"
-                      href={`https://test.timeally.io/stakings/${stakingAddress.staking}`}
-                      target="_blank"
-                    >
-                      View Staking
-                    </a>
-                  </td>
-                </tr>
-              ))}
-            </table>
-            {/* </ul> */}
-            {/* {this.state.stakings.map((staking, i) => (
+              {/* <ul className="list-group"> */}
+              <div className="card">
+                <div className="table-responsive">
+                  <table className="es-transaction striped bordered hover table">
+                    <thead>
+                      <tr>
+                        <th data-toggle="tooltip" data-placement="top" title="">
+                          Staking Contract
+                        </th>
+                        <th data-toggle="tooltip" data-placement="top" title="">
+                          Actions
+                        </th>
+                      </tr>
+                    </thead>
+                    {this.state.stakings.map((stakingAddress, i) => (
+                      <tr>
+                        <td>
+                          <span className="hex-data">
+                            {stakingAddress.staking}
+                          </span>
+                        </td>
+                        <td>
+                          <a
+                            className="btn btn-primary"
+                            href={`https://test.timeally.io/stakings/${stakingAddress.staking}`}
+                            target="_blank"
+                          >
+                            View Staking
+                          </a>
+                        </td>
+                      </tr>
+                    ))}
+                  </table>
+                </div>
+              </div>
+              {/* </ul> */}
+              {/* {this.state.stakings.map((staking, i) => (
               // <StakingItem key={i} stakingContractAddress={staking.staking} />
             ))} */}
-            {/* <table className="es-transaction striped bordered hover">
+              {/* <table className="es-transaction striped bordered hover">
               <tr>
                 <th>Address</th>
                 <th>Plan</th>
@@ -131,6 +142,7 @@ class TimeallyExplorer extends Component {
                 <td>6/16/2020, 4:59:13 PM </td>
               </tr>
             </table> */}
+            </Col>
           </Row>
         </Container>
       </div>

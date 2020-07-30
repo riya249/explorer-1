@@ -96,3 +96,6 @@ table {
   color: #747feb;
   font-size: 14px;
 }
+.t1 td:first-child {
+  background-color: lime;
+}
