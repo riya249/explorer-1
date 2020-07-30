@@ -11,6 +11,7 @@ import { Link, withRouter, Redirect } from 'react-router-dom';
 import { toLocaleTimestamp } from '../../lib/parsers';
 import { ethers } from 'ethers';
 import { LineChart, Line, CartesianGrid, XAxis, YAxis } from 'recharts';
+import { nFormatter } from '../../lib/parsers';
 
 class Homepage extends Component {
   snackbarRef = React.createRef();
@@ -20,6 +21,8 @@ class Homepage extends Component {
     super(props);
     this.state = {
       transactionsChartData: [],
+      txnsCount: 0,
+      txnPerMin: 0,
       esPriceUSDT: 0,
       esPriceBTC: 0,
       blocks: {
@@ -45,6 +48,7 @@ class Homepage extends Component {
     this.fetchBunches();
     this.fetchESPrice();
     this.fetchTransactionsInterval();
+    this.fetchTransactionsCount();
   }
 
   fetchBlocks = async () => {
@@ -77,9 +81,11 @@ class Homepage extends Component {
       const res = await Apis.fetchTransactionsInterval();
       console.log('fetchTransactionsInterval', res);
       res.forEach((transaction, i) => {
-        res[i].date = moment(moment(transaction.date).toDate()).format('DD/MM/yyyy');
-      })
-      this.setState({transactionsChartData: res});
+        res[i].date = moment(moment(transaction.date).toDate()).format(
+          'DD/MM/yyyy'
+        );
+      });
+      this.setState({ transactionsChartData: res });
     } catch (e) {
       console.log(e);
     }
@@ -128,6 +134,21 @@ class Homepage extends Component {
       });
     }
   };
+
+  async fetchTransactionsCount() {
+    try {
+      const res = await Apis.fetchTransactionsCount();
+      console.log('fetchTransactionsCount res', res);
+      if (res?.status) {
+        this.setState({
+          txnsCount: res.data.totalCount,
+          txnPerMin: res.data.transactionsPerMin,
+        });
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  }
 
   async fetchESPrice() {
     try {
@@ -239,15 +260,16 @@ class Homepage extends Component {
                         TRANSACTIONS{' '}
                       </p>
                       <p className="era-value text-black">
-                        738.81 M{' '}
-                        <span className="era-span text-gray">(12.1 TPS)</span>
+                        {nFormatter(this.state.txnsCount)}{' '}
+                        <span className="era-span text-gray">
+                          ({this.state.txnPerMin} TPM)
+                        </span>
                       </p>
                     </div>
                     <div className="col-lg-6">
                       <p className="era-head">SAFE GAS PRICE</p>
                       <p className="era-value text-black">
-                        0 Gwel{' '}
-                        <span className="era-span text-gray">($0.0)</span>
+                        0 EM <span className="era-span text-gray">($0.0)</span>
                       </p>
                     </div>
                   </div>
@@ -275,8 +297,8 @@ class Homepage extends Component {
                       ERA SWAP TRANSACTION HISTORY IN 14 DAYS
                     </p>
                     <LineChart
-                      width={300}
-                      height={120}
+                      width={320}
+                      height={140}
                       data={this.state.transactionsChartData}
                       margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
                     >
@@ -295,70 +317,69 @@ class Homepage extends Component {
           <Container>
             <Row className="mt40">
               <Col lg={4}>
-<div className="card">                
-                <div className="border-era">
-                  <span
-                    data-toggle="tooltip"
-                    data-placement="top"
-                    title="Bunch is the collection of Blocks which is posted on Ethereum"
-                  >
-                    Latest Bunch{' '}
-                  </span>
-                </div>
-                <div className="table-scroll table-responsive">
-                  <table className="era-transaction table">
-                    {this.state.bunches.isLoading ? (
-                      <tr>
-                        <td colSpan="4">Loading...</td>
-                      </tr>
-                    ) : this.state.bunches.data?.length ? (
-                      this.state.bunches.data.map((bunch, i) => (
+                <div className="card">
+                  <div className="border-era">
+                    <span
+                      data-toggle="tooltip"
+                      data-placement="top"
+                      title="Bunch is the collection of Blocks which is posted on Ethereum"
+                    >
+                      Latest Bunch{' '}
+                    </span>
+                  </div>
+                  <div className="table-scroll table-responsive">
+                    <table className="era-transaction table">
+                      {this.state.bunches.isLoading ? (
                         <tr>
-                          <td className="frst-era">
-                            <AddressLink
-                              value={bunch.bunchIndex}
-                              type="bunch"
-                            />
-                            <div className="sub-frst">
-                              {toLocaleTimestamp(bunch.createdOn).fromNow()}
-                            </div>
-                          </td>
-                          <td
-                            data-toggle="tooltip"
-                            data-placement="top"
-                            title="Informer pays the gas fee to post the Bunch Roots to Ethereum"
-                          >
-                            Informer{' '}
-                            <span className="frst-era">
-                              <AddressLink
-                                value={bunch.informer.address}
-                                type="address"
-                                shrink={true}
-                              />
-                            </span>
-                            {/* <div className="sub-frst">45 secs ago</div>  */}
-                          </td>
-                          <td>
-                            <div className="era-no">{bunch.bunchDepth} </div>{' '}
-                          </td>
+                          <td colSpan="4">Loading...</td>
                         </tr>
-                      ))
-                    ) : (
-                      <tr>
-                        <td colSpan="4">No Bunches</td>
-                      </tr>
-                    )}
-                  </table>
-                </div>
-                
+                      ) : this.state.bunches.data?.length ? (
+                        this.state.bunches.data.map((bunch, i) => (
+                          <tr>
+                            <td className="frst-era">
+                              <AddressLink
+                                value={bunch.bunchIndex}
+                                type="bunch"
+                              />
+                              <div className="sub-frst">
+                                {toLocaleTimestamp(bunch.createdOn).fromNow()}
+                              </div>
+                            </td>
+                            <td
+                              data-toggle="tooltip"
+                              data-placement="top"
+                              title="Informer pays the gas fee to post the Bunch Roots to Ethereum"
+                            >
+                              Informer{' '}
+                              <span className="frst-era">
+                                <AddressLink
+                                  value={bunch.informer.address}
+                                  type="address"
+                                  shrink={true}
+                                />
+                              </span>
+                              {/* <div className="sub-frst">45 secs ago</div>  */}
+                            </td>
+                            <td>
+                              <div className="era-no">{bunch.bunchDepth} </div>{' '}
+                            </td>
+                          </tr>
+                        ))
+                      ) : (
+                        <tr>
+                          <td colSpan="4">No Bunches</td>
+                        </tr>
+                      )}
+                    </table>
+                  </div>
 
-                <div className="border-era-two">
-                  <button className="era-view-btn">
-                    <Link to="/bunches" className="era-link">
-                      View all Bunch
-                    </Link>
-                  </button>
-                </div>
+                  <div className="border-era-two">
+                    <button className="era-view-btn">
+                      <Link to="/bunches" className="era-link">
+                        View all Bunch
+                      </Link>
+                    </button>
+                  </div>
                 </div>
               </Col>
 
@@ -410,7 +431,7 @@ class Homepage extends Component {
                                   {block.provisional_reward ? (
                                     block.provisional_reward
                                   ) : (
-                                    <i>pending...</i>
+                                    <i>pending for Next NRT...</i>
                                   )}
                                 </div>{' '}
                               </td>
@@ -430,73 +451,75 @@ class Homepage extends Component {
               </Col>
 
               <Col lg={4}>
-<div className="card">
-            <div className="border-era">
-                  <span
-                    data-toggle="tooltip"
-                    data-placement="top"
-                    title="Latest Transactions are the Transactions happening in recent Blocks in chronological orders"
-                  >
-                    Latest Transactions
-                  </span>
-                </div>
-                <div className="table-scroll table-responsive">
-                  <table className="era-transaction table">
-                    {this.state.transactions?.isLoading
-                      ? 'Loading...'
-                      : this.state.transactions?.data?.length
-                      ? this.state.transactions.data.map((transaction, i) => {
-                          return (
-                            <tr key={i + 1}>
-                              <td className="frst-era">
-                                <AddressLink
-                                  value={transaction.txn_hash}
-                                  type="tx"
-                                  shrink={true}
-                                />
-                                <div className="sub-frst">
-                                  {moment(
-                                    moment(transaction.createdOn).toDate()
-                                  ).fromNow()}
-                                </div>
-                              </td>
-                              <td>
-                                <span className="">
-                                  From:{' '}
+                <div className="card">
+                  <div className="border-era">
+                    <span
+                      data-toggle="tooltip"
+                      data-placement="top"
+                      title="Latest Transactions are the Transactions happening in recent Blocks in chronological orders"
+                    >
+                      Latest Transactions
+                    </span>
+                  </div>
+                  <div className="table-scroll table-responsive">
+                    <table className="era-transaction table">
+                      {this.state.transactions?.isLoading
+                        ? 'Loading...'
+                        : this.state.transactions?.data?.length
+                        ? this.state.transactions.data.map((transaction, i) => {
+                            return (
+                              <tr key={i + 1}>
+                                <td className="frst-era">
                                   <AddressLink
-                                    value={transaction?.fromAddress?.address}
-                                    type="address"
+                                    value={transaction.txn_hash}
+                                    type="tx"
                                     shrink={true}
                                   />
-                                  <br></br>
-                                  To:{' '}
-                                  <AddressLink
-                                    value={transaction?.toAddress?.address}
-                                    type="address"
-                                    shrink={true}
-                                  />
-                                </span>
-                              </td>
-                              <td>
-                                <div className="era-no">
-                                  {ethers.utils.formatEther(transaction.value)}{' '}
-                                  ES
-                                </div>{' '}
-                              </td>
-                            </tr>
-                          );
-                        })
-                      : 'No Transactions'}
-                  </table>
+                                  <div className="sub-frst">
+                                    {moment(
+                                      moment(transaction.createdOn).toDate()
+                                    ).fromNow()}
+                                  </div>
+                                </td>
+                                <td>
+                                  <span className="">
+                                    From:{' '}
+                                    <AddressLink
+                                      value={transaction?.fromAddress?.address}
+                                      type="address"
+                                      shrink={true}
+                                    />
+                                    <br></br>
+                                    To:{' '}
+                                    <AddressLink
+                                      value={transaction?.toAddress?.address}
+                                      type="address"
+                                      shrink={true}
+                                    />
+                                  </span>
+                                </td>
+                                <td>
+                                  <div className="era-no">
+                                    {ethers.utils.formatEther(
+                                      transaction.value
+                                    )}{' '}
+                                    ES
+                                  </div>{' '}
+                                </td>
+                              </tr>
+                            );
+                          })
+                        : 'No Transactions'}
+                    </table>
+                  </div>
+                  <div className="border-era-two">
+                    <button className="era-view-btn">
+                      <Link to="/txs" className="era-link">
+                        View all Transactions
+                      </Link>
+                    </button>
+                  </div>
                 </div>
-                <div className="border-era-two">
-                  <button className="era-view-btn">
-                    <Link to="/txs" className="era-link">
-                      View all Transactions
-                    </Link>
-                  </button>
-                </div>
-              </div>
               </Col>
             </Row>
           </Container>

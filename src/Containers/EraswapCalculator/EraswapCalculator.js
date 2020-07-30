@@ -52,9 +52,7 @@ class EraswapCalculator extends Component {
     const res = await Apis.nrtFractions();
     if (res?.data) {
       this.setState({
-        nrtReleasedInput: ((res.data.actualNRTDistributed / 100) * 37).toFixed(
-          2
-        ),
+        nrtReleasedInput: res.data.actualNRTDistributed.toFixed(2),
       });
     }
   }
@@ -72,24 +70,28 @@ class EraswapCalculator extends Component {
 
   tax(income, taxin) {
     var slab = 0;
-    if (income % this.totalESDeposit === 0) {
-      slab = income / this.totalESDeposit - 1;
+    if (income % 170000 === 0) {
+      slab = income / 170000 - 1;
     } else {
-      slab = Math.floor(income / this.totalESDeposit);
+      slab = Math.floor(income / 170000);
     }
     if (slab <= 0) {
       return 0 + taxin;
     } else {
       return this.tax(
-        slab * this.totalESDeposit,
-        taxin + (income - slab * this.totalESDeposit) * 0.001 * slab
+        slab * 170000,
+        taxin + (income - slab * 170000) * 0.001 * slab
       );
     }
   }
 
   reward(NES, deposit) {
+    console.log('this.tax(deposit, 0);', this.tax(deposit, 0));
     deposit -= this.tax(deposit, 0);
-    return (deposit * ((this.totalNRT * 0.12) / MONTHSCOUNT)) / NES;
+    console.log('deposit', deposit);
+    return (
+      (deposit * ((this.state.nrtReleasedInput * 0.12) / MONTHSCOUNT)) / NES
+    );
   }
 
   render() {
@@ -99,11 +101,23 @@ class EraswapCalculator extends Component {
     monthlyReward =
       (monthlyReward * this.state.selfUptimeInput) /
       this.state.networkUptimeInput;
-    
-    monthlyReward = (monthlyReward * this.state.globalStakingPercentInput) / 100;
+
+    // monthlyReward = (monthlyReward * this.state.globalStakingPercentInput) / 100;
+    monthlyReward /= 12;
+
+    let monthlyRewardSevenFive = (monthlyReward * 7.5) / 100;
+    let powerTokenReward = (monthlyReward * 10) / 100;
+
+    let esnMinersReward = 0;
+    esnMinersReward = this.reward(
+      (this.state.globalStakingPercentInput * this.state.globalStakingInput) /
+        100,
+      this.state.myStakingsInput
+    );
 
     let monthlyProfit =
       monthlyReward * this.state.esPriceUSDT - this.state.serverCostInput;
+
     if (!isFinite(monthlyReward)) monthlyReward = 0;
 
     return (
@@ -179,7 +193,7 @@ class EraswapCalculator extends Component {
                           <img className="eslogo" src={Images.path.eslogo} />
                         </span>
                       </div>
-                      <div class="col-md-6 col-lg-4 form-group">
+                      <div class="col-md-6 col-lg-4  form-group">
                         <label for="">% of Global ES stakings in ESN PoS</label>
                         <Form.Control
                           onChange={(event) =>
@@ -212,7 +226,7 @@ class EraswapCalculator extends Component {
                         />
                       </div>
                       <div class="col-md-6 col-lg-4 form-group">
-                        <label for="">ES price</label>
+                        <label for="">ES price (USDT)</label>
                         <Form.Control
                           onChange={(event) =>
                             this.setState({
@@ -289,75 +303,76 @@ class EraswapCalculator extends Component {
         </Container>
         <Container className="mt30 eraswapcal-tab">
           <Row>
-            <Col lg={12}>
+            <Col lg={6}>
               <Card className="">
-                <div className="border-era">RESULTS</div>
-                    <div className="table-responsive">
-                      <table className="es-transaction striped bordered hover">
-                      <tr>
-                        <th>Interval</th>
-                        <th>ERA SWAP Earned</th>
-                        <th scope="col">Cost (USD)</th>
-                        <th scope="col">Profit (USD)</th>
-                      </tr>
-                      <tr>
-                        <td class="text-left text-secondary">Daily</td>
-                        <td>
-                          {monthlyReward / 30} ($
-                          {((monthlyReward / 30) * this.state.esPriceUSDT).toFixed(
-                            2
-                          )}
-                          )
-                        </td>
-                        <td>${(this.state.serverCostInput / 30).toFixed(2)}</td>
-                        <td>
-                          <span class="text-success">${monthlyProfit / 30}</span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="text-left  text-secondary">Weekly</td>
-                        <td>
-                          {monthlyReward / 4} ($
-                          {((monthlyReward / 4) * this.state.esPriceUSDT).toFixed(
-                            2
-                          )}
-                          )
-                        </td>
-                        <td>${(this.state.serverCostInput / 4).toFixed(2)}</td>
-                        <td>
-                          <span class="text-success">${monthlyProfit / 4}</span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="text-left  text-secondary">Monthly</td>
-                        <td>
-                          {this.state.globalStaking === null
-                            ? 'Loading...'
-                            : monthlyReward}
-                          (${(monthlyReward * this.state.esPriceUSDT).toFixed(2)})
-                        </td>
-                        <td>${this.state.serverCostInput}</td>
-                        <td>
-                          <span class="text-success">$ {monthlyProfit}</span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="text-left text-secondary">Yearly</td>
-                        <td>
-                          {monthlyReward * 12} ($
-                          {(monthlyReward * 12 * this.state.esPriceUSDT).toFixed(2)}
-                          )
-                        </td>
-                        <td>${(this.state.serverCostInput * 12).toFixed(2)}</td>
-                        <td>
-                          <span class="text-success">${monthlyProfit * 12}</span>
-                        </td>
-                      </tr>
-                    </table>
-                    </div>
+                <div className="border-era">Monthly Result</div>
+                <table className="es-transaction striped bordered hover">
+                  <thead>
+                    <tr>
+                      <th>Monthly Rewards</th>
+                      <th>ES Earned</th>
+                    </tr>
+                    <tr>
+                      <td>TimeAlly Staked Rewards received 7.5% NRT</td>
+                      <td>{monthlyRewardSevenFive}</td>
+                    </tr>
+                    <tr>
+                      <td>TimeAlly Liquid Rewards received 7.5% NRT</td>
+                      <td>{monthlyRewardSevenFive}</td>
+                    </tr>
+                    <tr>
+                      <td>ESN Miners reward in Wrapped ES (NRT-12%)</td>
+                      <td>{esnMinersReward}</td>
+                    </tr>
+                    <tr>
+                      <td>Power Tokens Rewards received 10% NRT</td>
+                      <td>{powerTokenReward}</td>
+                    </tr>
+                    <tr>
+                      <td>Profit</td>
+                      <td>
+                        <span class="text-success">${monthlyProfit}</span>
+                      </td>
+                    </tr>
+                  </thead>
+                </table>
               </Card>
             </Col>
-
+            <Col lg={6}>
+              <Card className="">
+                <div className="border-era">Yearly Result</div>
+                <table className="es-transaction striped bordered hover">
+                  <thead>
+                    <tr>
+                      <th>Yearly Rewards</th>
+                      <th>ES Earned</th>
+                    </tr>
+                    <tr>
+                      <td>TimeAlly Staked Rewards received 7.5% NRT</td>
+                      <td>{monthlyRewardSevenFive * 12}</td>
+                    </tr>
+                    <tr>
+                      <td>TimeAlly Liquid Rewards received 7.5% NRT</td>
+                      <td>{monthlyRewardSevenFive * 12}</td>
+                    </tr>
+                    <tr>
+                      <td>ESN Miners reward in Wrapped ES (NRT-12%)</td>
+                      <td>{esnMinersReward * 12}</td>
+                    </tr>
+                    <tr>
+                      <td>Power Tokens Rewards received 10% NRT</td>
+                      <td>{powerTokenReward * 12}</td>
+                    </tr>
+                    <tr>
+                      <td>Profit</td>
+                      <td>
+                        <span class="text-success">${monthlyProfit}</span>
+                      </td>
+                    </tr>
+                  </thead>
+                </table>
+              </Card>
+            </Col>
             {/* <Col lg={6}>
               <Card className="">
                 <div className="border-era">STAKED AMOUNT GROWTH</div>

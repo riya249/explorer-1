@@ -167,113 +167,112 @@ class Nrtmanager extends Component {
                 <Col lg={12}>
                   <div className="card">
                     <div className="table-responsive">
-                    <table className="es-transaction striped bordered hover table">
-                      <tr>
-                        <th>Platform</th>
-                        <th>NRT Share</th>
-                        <th>Wallet Address </th>
-                      </tr>
-                      <tr>
-                        <td>TimeAlly</td>
-                        <td>15%</td>
-                        <td>
-                          0x08D85Bd1004E3e674042EAddF81Fb3beb4853a22{' '}
-                          <i class="fa fa-file-text-o" aria-hidden="true"></i>{' '}
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>ESN</td>
-                        <td>12%</td>
-                        <td>
-                          0x08D85Bd1004E3e674042EAddF81Fb3beb4853a22{' '}
-                          <i class="fa fa-file-text-o" aria-hidden="true"></i>{' '}
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Power Tokens</td>
-                        <td>10%</td>
-                        <td>
-                          0x08D85Bd1004E3e674042EAddF81Fb3beb4853a22{' '}
-                          <i class="fa fa-file-text-o" aria-hidden="true"></i>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Day Swappers</td>
-                        <td>10%</td>
-                        <td>
-                          0x08D85Bd1004E3e674042EAddF81Fb3beb4853a22{' '}
-                          <i class="fa fa-file-text-o" aria-hidden="true"></i>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>TimeAlly Club </td>
-                        <td>10%</td>
-                        <td>
-                          0x08D85Bd1004E3e674042EAddF81Fb3beb4853a22{' '}
-                          <i class="fa fa-file-text-o" aria-hidden="true"></i>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Airdrop & Bounty for All Platforms</td>
-                        <td>5%</td>
-                        <td>
-                          0x08D85Bd1004E3e674042EAddF81Fb3beb4853a22{' '}
-                          <i class="fa fa-file-text-o" aria-hidden="true"></i>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>New Talents & Partnership</td>
-                        <td>5%</td>
-                        <td>
-                          0x08D85Bd1004E3e674042EAddF81Fb3beb4853a22{' '}
-                          <i class="fa fa-file-text-o" aria-hidden="true"></i>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Maintenance Support for all Platforms</td>
-                        <td>5%</td>
-                        <td>
-                          0x08D85Bd1004E3e674042EAddF81Fb3beb4853a22{' '}
-                          <i class="fa fa-file-text-o" aria-hidden="true"></i>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>R & D </td>
-                        <td>5%</td>
-                        <td>
-                          0x08D85Bd1004E3e674042EAddF81Fb3beb4853a22{' '}
-                          <i class="fa fa-file-text-o" aria-hidden="true"></i>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>PET & TSGAP</td>
-                        <td>3%</td>
-                        <td>
-                          0x08D85Bd1004E3e674042EAddF81Fb3beb4853a22{' '}
-                          <i class="fa fa-file-text-o" aria-hidden="true"></i>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Contigency Funds </td>
-                        <td>10%</td>
-                        <td>
-                          0x08D85Bd1004E3e674042EAddF81Fb3beb4853a22{' '}
-                          <i class="fa fa-file-text-o" aria-hidden="true"></i>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>KMPARDS</td>
-                        <td>10%</td>
-                        <td>
-                          0x08D85Bd1004E3e674042EAddF81Fb3beb4853a22{' '}
-                          <i class="fa fa-file-text-o" aria-hidden="true"></i>
-                        </td>
-                      </tr>
-                    </table>
+                      <table className="es-transaction striped bordered hover table">
+                        <tr>
+                          <th>Platform</th>
+                          <th>NRT Share</th>
+                          <th>Wallet Address </th>
+                        </tr>
+                        <tr>
+                          <td>TimeAlly</td>
+                          <td>15%</td>
+                          <td>
+                            0x08D85Bd1004E3e674042EAddF81Fb3beb4853a22{' '}
+                            <i class="fa fa-file-text-o" aria-hidden="true"></i>{' '}
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>ESN</td>
+                          <td>12%</td>
+                          <td>
+                            0x08D85Bd1004E3e674042EAddF81Fb3beb4853a22{' '}
+                            <i class="fa fa-file-text-o" aria-hidden="true"></i>{' '}
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Power Tokens</td>
+                          <td>10%</td>
+                          <td>
+                            0x08D85Bd1004E3e674042EAddF81Fb3beb4853a22{' '}
+                            <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Day Swappers</td>
+                          <td>10%</td>
+                          <td>
+                            0x08D85Bd1004E3e674042EAddF81Fb3beb4853a22{' '}
+                            <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>TimeAlly Club </td>
+                          <td>10%</td>
+                          <td>
+                            0x08D85Bd1004E3e674042EAddF81Fb3beb4853a22{' '}
+                            <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Airdrop & Bounty for All Platforms</td>
+                          <td>5%</td>
+                          <td>
+                            0x08D85Bd1004E3e674042EAddF81Fb3beb4853a22{' '}
+                            <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>New Talents & Partnership</td>
+                          <td>5%</td>
+                          <td>
+                            0x08D85Bd1004E3e674042EAddF81Fb3beb4853a22{' '}
+                            <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Maintenance Support for all Platforms</td>
+                          <td>5%</td>
+                          <td>
+                            0x08D85Bd1004E3e674042EAddF81Fb3beb4853a22{' '}
+                            <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>R & D </td>
+                          <td>5%</td>
+                          <td>
+                            0x08D85Bd1004E3e674042EAddF81Fb3beb4853a22{' '}
+                            <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>PET & TSGAP</td>
+                          <td>3%</td>
+                          <td>
+                            0x08D85Bd1004E3e674042EAddF81Fb3beb4853a22{' '}
+                            <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Contigency Funds </td>
+                          <td>10%</td>
+                          <td>
+                            0x08D85Bd1004E3e674042EAddF81Fb3beb4853a22{' '}
+                            <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>KMPARDS</td>
+                          <td>10%</td>
+                          <td>
+                            0x08D85Bd1004E3e674042EAddF81Fb3beb4853a22{' '}
+                            <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                          </td>
+                        </tr>
+                      </table>
                     </div>
                   </div>
                 </Col>
-                
               </Row>
             </Container>
           </div>

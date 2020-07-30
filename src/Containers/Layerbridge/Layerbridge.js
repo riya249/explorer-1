@@ -25,73 +25,73 @@ class Layerbridge extends Component {
           <Row className="mt40">
             <Col lg={6}>
               <div className="card">
-              <div className="table-responsive">
+                <div className="table-responsive">
                   <table className="es-transaction striped bordered hover table">
-                  <tr>
-                    <td className="noborder" width="150">
-                      <p className="explr-text-black">ESN to ETH</p>
-                    </td>
-                    <td className="noborder">
-                      <p className="explr-purple-text">
-                        Last Block Number on Plasma Smart <br />
-                        Contract: 110783 (+39 blocks pending)
-                      </p>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>Start Block Number</th>
-                    <th>Bunch Depth</th>
-                  </tr>
-                  <tr>
-                    <td>ESN Node</td>
-                    <td>109972</td>
-                  </tr>
-                  <tr>
-                    <td>ESN Node</td>
-                    <td>109972</td>
-                  </tr>
-                  <tr>
-                    <td>ESN Node</td>
-                    <td>109972</td>
-                  </tr>
-                  <tr>
-                    <td>ESN Node</td>
-                    <td>109972</td>
-                  </tr>
-                  <tr>
-                    <td>ESN Node</td>
-                    <td>109972</td>
-                  </tr>
-                  <tr>
-                    <td>ESN Node</td>
-                    <td>109972</td>
-                  </tr>
-                  <tr>
-                    <td>ESN Node</td>
-                    <td>109972</td>
-                  </tr>
-                  <tr>
-                    <td>ESN Node</td>
-                    <td>109972</td>
-                  </tr>
-                  <tr>
-                    <td>ESN Node</td>
-                    <td>109972</td>
-                  </tr>
-                  <tr>
-                    <td>ESN Node</td>
-                    <td>109972</td>
-                  </tr>
-                  <tr>
-                    <td>ESN Node</td>
-                    <td>109972</td>
-                  </tr>
-                  <tr>
-                    <td>ESN Node</td>
-                    <td>109972</td>
-                  </tr>
-                </table>
-              </div>
+                    <tr>
+                      <td className="noborder" width="150">
+                        <p className="explr-text-black">ESN to ETH</p>
+                      </td>
+                      <td className="noborder">
+                        <p className="explr-purple-text">
+                          Last Block Number on Plasma Smart <br />
+                          Contract: 110783 (+39 blocks pending)
+                        </p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Start Block Number</th>
+                      <th>Bunch Depth</th>
+                    </tr>
+                    <tr>
+                      <td>ESN Node</td>
+                      <td>109972</td>
+                    </tr>
+                    <tr>
+                      <td>ESN Node</td>
+                      <td>109972</td>
+                    </tr>
+                    <tr>
+                      <td>ESN Node</td>
+                      <td>109972</td>
+                    </tr>
+                    <tr>
+                      <td>ESN Node</td>
+                      <td>109972</td>
+                    </tr>
+                    <tr>
+                      <td>ESN Node</td>
+                      <td>109972</td>
+                    </tr>
+                    <tr>
+                      <td>ESN Node</td>
+                      <td>109972</td>
+                    </tr>
+                    <tr>
+                      <td>ESN Node</td>
+                      <td>109972</td>
+                    </tr>
+                    <tr>
+                      <td>ESN Node</td>
+                      <td>109972</td>
+                    </tr>
+                    <tr>
+                      <td>ESN Node</td>
+                      <td>109972</td>
+                    </tr>
+                    <tr>
+                      <td>ESN Node</td>
+                      <td>109972</td>
+                    </tr>
+                    <tr>
+                      <td>ESN Node</td>
+                      <td>109972</td>
+                    </tr>
+                    <tr>
+                      <td>ESN Node</td>
+                      <td>109972</td>
+                    </tr>
+                  </table>
+                </div>
               </div>
             </Col>
             <Col lg={6}>
@@ -179,7 +179,6 @@ class Layerbridge extends Component {
                 </div>
               </div>
             </Col>
-         
           </Row>
         </Container>
       </div>

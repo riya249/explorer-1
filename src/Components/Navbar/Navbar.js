@@ -98,7 +98,7 @@ class Navbar extends Component {
                   <Link className="dropdown-item" to="/calculator">
                     ES Calculator
                   </Link>
-               <Link className="dropdown-item" to="/Nrtmanager">
+                  {/* <Link className="dropdown-item" to="/Nrtmanager">
                     NRT Manager
                   </Link>
                   <Link className="dropdown-item" to="/Validatorstakings">
@@ -109,7 +109,7 @@ class Navbar extends Component {
                   </Link>
                   <Link className="dropdown-item" to="/Nodestatus">
                     Node Status
-                  </Link>
+                  </Link> */}
                 </div>
               </li>
             </ul>

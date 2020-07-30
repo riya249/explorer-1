@@ -121,40 +121,51 @@ class Address extends Component {
               <div className="row">
                 <div className="col-sm-12">
                   <div className="card">
-                   <div className="table-responsive">
-                       <table className="es-transaction table">
-                      <tr>
-                        <td
-                          data-toggle="tooltip"
-                          data-placement="top"
-                          title=""
-                          colSpan="2"
-                        >
-                          Overview
-                        </td>
-                      </tr>
-                      <tr>
-                        <td data-toggle="tooltip" data-placement="top" title="">
-                          Balance
-                        </td>
-                        <td data-toggle="tooltip" data-placement="top" title="">
-                          {this.state.data.balance} ES
-                        </td>
-                      </tr>
-                      <tr>
-                        <td data-toggle="tooltip" data-placement="top" title="">
-                          Label
-                        </td>
-                        <td
-                          data-toggle="tooltip"
-                          data-placement="top"
-                          title="These are the transactions that are included in this Block"
-                        >
-                          {this.state.data.label || '-'}
-                        </td>
-                      </tr>
-                    </table>
-                
+                    <div className="table-responsive">
+                      <table className="es-transaction table">
+                        <tr>
+                          <td
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title=""
+                            colSpan="2"
+                          >
+                            Overview
+                          </td>
+                        </tr>
+                        <tr>
+                          <td
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title=""
+                          >
+                            Balance
+                          </td>
+                          <td
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title=""
+                          >
+                            {this.state.data.balance} ES
+                          </td>
+                        </tr>
+                        <tr>
+                          <td
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title=""
+                          >
+                            Label
+                          </td>
+                          <td
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title="These are the transactions that are included in this Block"
+                          >
+                            {this.state.data.label || '-'}
+                          </td>
+                        </tr>
+                      </table>
                     </div>
                   </div>
                 </div>

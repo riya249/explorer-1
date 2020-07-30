@@ -229,7 +229,7 @@ const nrtManager = () => {
       /*nodeUrl ||*/ 'https://node2.testnet.eraswap.network'
     )
   );
-}
+};
 
 module.exports = {
   nrtManager,
