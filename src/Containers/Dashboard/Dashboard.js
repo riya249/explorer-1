@@ -496,14 +496,16 @@ class Dashboard extends Component {
             timeswappers: {
               percent: '-',
               volume: res.data?.workPoolCalculation?.timetraders
-                ? lessDecimals(res.data?.workPoolCalculation?.timetraders) + ' ES'
+                ? lessDecimals(res.data?.workPoolCalculation?.timetraders) +
+                  ' ES'
                 : '-',
               value: '-',
             },
             dayswappers: {
               percent: '-',
               volume: res?.data?.workPoolCalculation?.dayswappers
-                ? lessDecimals(res?.data?.workPoolCalculation?.dayswappers) + ' ES'
+                ? lessDecimals(res?.data?.workPoolCalculation?.dayswappers) +
+                  ' ES'
                 : '-',
               value: '-',
             },
@@ -1438,7 +1440,7 @@ class Dashboard extends Component {
             </Col>
             <Col lg={3}>
               <h5 className="nrt-head">Next NRT Count</h5>
-              <div className="count-box justify-container">
+              <div className="count-box d-flex justify-content-lg-around  ">
                 <ul className="flex-count-box">
                   <li className="count-txt">
                     {this.state.nextNrtCounter.data.days}
@@ -1701,24 +1703,21 @@ class Dashboard extends Component {
                     </PieChart>
                   </Col>
                   <Col sm={5}>
+                    {/**
+                     * @todo values to be integrated
+                     */}
                     <div className="flex-sect4-box">
                       <div className="timeally-mark"></div>
                       <p className="sect4-context">
-                        Volume of 1 year stakings
-                        {
-                          this.state.timeallyStakers.data
-                            .volumeOfOneYearStakings
-                        }
+                        Current Supply
+                        {0}
                       </p>
                     </div>
                     <div className="flex-sect4-box">
                       <div className="timeally-mark2"></div>
                       <p className="sect4-context">
-                        Volume of 2 year stakings
-                        {
-                          this.state.timeallyStakers.data
-                            .volumeOfTwoYearStakings
-                        }
+                        ES Staked in TimeAlly 1 LT
+                        {0}
                       </p>
                     </div>
                   </Col>
@@ -2442,7 +2441,7 @@ class Dashboard extends Component {
                 <div className="flex-sect4-box">
                   <img
                     className="platfrm-logo2"
-                    src={Images.path.booklogo}
+                    src={Images.path.faithminus}
                     alt="logo"
                   />
                   <p className="platfrm-txt">FAITH MINUS</p>

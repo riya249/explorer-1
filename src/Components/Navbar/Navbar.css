@@ -43,9 +43,15 @@
     color: #4353ab;
   }
   .navbar-expand-lg .navbar-nav .nav-link {
-    margin-top: 15px;
-    border-bottom: 1px solid #e2e2e254;
+       
+        margin-top: 15px;
+        border-bottom: 1px solid #e2e2e254;
+    }
+      .hed-searchbar{
+     margin-top: 15px;
   }
+ 
+
 }
 .navbar-nav a:hover {
   color: #d8ff00;

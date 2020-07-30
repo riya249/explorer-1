@@ -177,7 +177,8 @@ class Homepage extends Component {
           <Navbar />
           <h2 className="es-main-head">Era Swap Blockchain Explorer</h2>
         </div>
-        <div className="esexplorer-Container">
+        {/* <div className="esexplorer-Container">
+
           <div className="home-search-container">
             <Container>
               <form onSubmit={this.handleClick}>
@@ -195,10 +196,10 @@ class Homepage extends Component {
               </form>
             </Container>
           </div>
-        </div>
+        </div> */}
         <div className="es-explorer-wrapper">
           <Container>
-            <div className="second-section-es">
+            <div className="second-section-es mt30 card">
               <Row>
                 <Col lg={4} className="border-right">
                   <div className="flex-eraswap">
@@ -294,6 +295,7 @@ class Homepage extends Component {
           <Container>
             <Row className="mt40">
               <Col lg={4}>
+<div className="card">                
                 <div className="border-era">
                   <span
                     data-toggle="tooltip"
@@ -303,8 +305,8 @@ class Homepage extends Component {
                     Latest Bunch{' '}
                   </span>
                 </div>
-                <div className="table-scroll">
-                  <table className="era-transaction">
+                <div className="table-scroll table-responsive">
+                  <table className="era-transaction table">
                     {this.state.bunches.isLoading ? (
                       <tr>
                         <td colSpan="4">Loading...</td>
@@ -348,6 +350,7 @@ class Homepage extends Component {
                     )}
                   </table>
                 </div>
+                
 
                 <div className="border-era-two">
                   <button className="era-view-btn">
@@ -355,6 +358,7 @@ class Homepage extends Component {
                       View all Bunch
                     </Link>
                   </button>
+                </div>
                 </div>
               </Col>
 
@@ -368,8 +372,8 @@ class Homepage extends Component {
                     Latest Blocks{' '}
                   </span>
                 </div>
-                <div className="table-scroll">
-                  <table className="era-transaction">
+                <div className="table-scroll table-responsive">
+                  <table className="era-transaction table">
                     {this.state.blocks?.isLoading
                       ? 'Loading...'
                       : this.state.blocks?.data?.length
@@ -426,7 +430,8 @@ class Homepage extends Component {
               </Col>
 
               <Col lg={4}>
-                <div className="border-era">
+<div className="card">
+            <div className="border-era">
                   <span
                     data-toggle="tooltip"
                     data-placement="top"
@@ -435,8 +440,8 @@ class Homepage extends Component {
                     Latest Transactions
                   </span>
                 </div>
-                <div className="table-scroll">
-                  <table className="era-transaction">
+                <div className="table-scroll table-responsive">
+                  <table className="era-transaction table">
                     {this.state.transactions?.isLoading
                       ? 'Loading...'
                       : this.state.transactions?.data?.length
@@ -491,6 +496,7 @@ class Homepage extends Component {
                     </Link>
                   </button>
                 </div>
+              </div>
               </Col>
             </Row>
           </Container>
@@ -498,7 +504,7 @@ class Homepage extends Component {
           {/* <Container>
             <Row>
               <Col lg={12}>
-                <div className="second-section-es mt40 purpalebg ">
+                <div className="second-section-es mt40 card purpalebg ">
                   <Row>
                     <Col lg={4}>
                       <div className="block-bg">
@@ -561,7 +567,7 @@ class Homepage extends Component {
           <Container>
             <Row>
               <Col lg={12}>
-                <div className="second-section-es mt40 purpalebg ">
+                <div className="second-section-es mt40 card purpalebg ">
                   <Row>
                     <Col lg={4}>
                       <div className="block-bg staking-bg">
@@ -632,7 +638,7 @@ class Homepage extends Component {
           <Container>
             <Row>
               <Col lg={12}>
-                <div className="second-section-es mt40 purpalebg ">
+                <div className="second-section-es mt40 card purpalebg ">
                   <Row>
                     <Col lg={4}>
                       <div className="block-bg staking-bg">
@@ -661,7 +667,7 @@ class Homepage extends Component {
           <Container>
             <Row className="mt40">
               <Col lg={12}>
-                <div className="second-section-es purpalebg">
+                <div className="second-section-es card purpalebg">
                   <div className="table-responsive">
                     <table className="table table-bordered purple-table">
                       <tr>
@@ -855,7 +861,7 @@ class Homepage extends Component {
           <Container>
             <Row className="mt40">
               <Col lg={12}>
-                <div className="second-section-es">
+                <div className="second-section-es card">
                   <div className="col-lg-12 text-center">
                     <h5 class="purple-text">
                       ES METER (EM) & ES NANOMETER (nEM)

@@ -35,7 +35,6 @@ class Blocks extends Component {
   async fetchBlocks(start, length = 10) {
     try {
       const res = await Apis.fetchBlocks(start, length);
-      console.log('res', res);
       if (res)
         this.setState({
           blocks: {
@@ -69,6 +68,9 @@ class Blocks extends Component {
           <h2 className="es-main-head es-main-head-inner">Blocks</h2>
         </div>
         <Container>
+<Row className="mt40">
+      <Col lg={12}>
+        <div className="card">
           <div className="table-responsive">
             <table className="es-transaction table">
               <tr>
@@ -86,7 +88,7 @@ class Blocks extends Component {
                 >
                   Age
                 </th>
-                <th data-toggle="tooltip" data-placement="top" title="">
+                <th data-toggle="tooltip" data-placement="top" title="These are the transactions that are included in this Block">
                   Transaction
                 </th>
                 <th
@@ -183,6 +185,7 @@ class Blocks extends Component {
               )}
             </table>
           </div>
+          <Col lg={12} className="mb30">
           <CustomPagination
             handleClick={this.fetchBlocks}
             currentPage={this.state.blocks.currentPage}
@@ -191,6 +194,10 @@ class Blocks extends Component {
             totalPages={this.state.blocks.totalPages}
           />
           <Snackbar ref={this.snackbarRef} />
+          </Col>
+              </div>
+            </Col>
+          </Row>
         </Container>
       </div>
     );

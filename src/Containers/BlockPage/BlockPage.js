@@ -78,11 +78,12 @@ class BlockPage extends Component {
             <Container>
               <Tabs defaultActiveKey="overview" id="uncontrolled-tab-example">
                 <Tab eventKey="overview" title="Overview">
-                  <div>
-                    <table className="block-overview">
+<div className="card">
+                    <div className="table-responsive">
+                    <table className="block-overview table">
                       {Object.keys(this.state.block.data).length ? (
-                        <thead>
-                          <tr>
+                        <tbody>
+                                                    <tr>
                             <td
                               data-toggle="tooltip"
                               data-placement="top"
@@ -303,8 +304,8 @@ class BlockPage extends Component {
                             </td>
                             <td>{this.state.block.data.nonce}</td>
                           </tr>
-                        </thead>
-                      ) : (
+                          </tbody>
+                    ) : (
                         <tr>
                           <td
                             colSpan="2"
@@ -317,6 +318,7 @@ class BlockPage extends Component {
                         </tr>
                       )}
                     </table>
+                  </div>
                   </div>
                 </Tab>
                 {/* <Tab eventKey="comments" title="Comments">

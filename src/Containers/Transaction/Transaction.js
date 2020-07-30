@@ -69,17 +69,17 @@ class Transaction extends Component {
       <div>
         <div className="booking-hero-bgd booking-hero-bgd-inner">
           <Navbar />
-          <h2 className="es-main-head es-main-head-inner">
-            Transaction #{this.state.hash}
-          </h2>
+          <h2 className="es-main-head es-main-head-inner">Transaction </h2>
+          <p className="explr-txt">#{this.state.hash}</p>
         </div>
         <div className="wrapper-container">
           <div className="BlockPage-detail">
             <Container>
               <Tabs defaultActiveKey="overview" id="uncontrolled-tab-example">
                 <Tab eventKey="overview" title="Overview">
-                  <div>
-                    <table className="block-overview">
+                  <div className="card">
+                    <div className="table-responsive">
+                    <table className="block-overview table">
                       {Object.keys(this.state.transaction.data).length ? (
                         <thead>
                           <tr>
@@ -285,6 +285,7 @@ class Transaction extends Component {
                       )}
                     </table>
                   </div>
+                </div>
                 </Tab>
                 {/* <Tab eventKey="comments" title="Comments">
                   <Row>

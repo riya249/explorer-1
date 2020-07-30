@@ -58,8 +58,11 @@ class Bunch extends Component {
           <h2 className="es-main-head es-main-head-inner">Bunch</h2>
         </div>
         <Container>
-          <div className="table-responsive">
-            <table className="es-transaction table">
+<Row className="mt40">
+            <Col lg={12}>
+              <div className="card">
+                <div className="table-responsive">
+                  <table className="es-transaction table">
               <thead>
                 <tr>
                   <th
@@ -120,14 +123,19 @@ class Bunch extends Component {
               </tbody>
             </table>
           </div>
-          <CustomPagination
-            handleClick={this.fetchBunches}
-            currentPage={this.state.bunches.currentPage}
-            prevPage={this.state.bunches.currentPage - 1}
-            nextPage={this.state.bunches.currentPage + 1}
-            totalPages={this.state.bunches.totalPages}
-          />
-          <Snackbar ref={this.snackbarRef} />
+          <Col lg={12} className="mb30">
+                  <CustomPagination
+                    handleClick={this.fetchBunches}
+                    currentPage={this.state.bunches.currentPage}
+                    prevPage={this.state.bunches.currentPage - 1}
+                    nextPage={this.state.bunches.currentPage + 1}
+                    totalPages={this.state.bunches.totalPages}
+                  />
+                  <Snackbar ref={this.snackbarRef} />
+                </Col>
+              </div>
+            </Col>
+          </Row>
         </Container>
       </div>
     );

@@ -109,35 +109,59 @@ class Address extends Component {
 
   render() {
     return (
-      <div>
+      <div className="blocks-table">
         <div className="booking-hero-bgd booking-hero-bgd-inner">
           <Navbar />
-          <h2 className="es-main-head es-main-head-inner">
-            Address #{this.state.address}
-          </h2>
+          <h2 className="es-main-head es-main-head-inner">Address</h2>
+          <p className="explr-txt">#{this.state.address}</p>
         </div>
-        <div className="wrapper-container">
+        <div className="container">
           <div className="BlockPage-detail">
             <Container>
               <div className="row">
-                <div className="col-sm-6">
-                  <table>
-                    <tr>
-                      <td data-toggle="tooltip" data-placement="top" title="" colSpan="2">Overview</td>
-                    </tr>
-                    <tr>
-                      <td data-toggle="tooltip" data-placement="top" title="">Balance</td>
-                      <td data-toggle="tooltip" data-placement="top" title="">{this.state.data.balance} ES</td>
-                    </tr>
-                    <tr>
-                      <td data-toggle="tooltip" data-placement="top" title="">Label</td>
-                      <td data-toggle="tooltip" data-placement="top" title="These are the transactions that are included in this Block">{this.state.data.label || '-'}</td>
-                    </tr>
-                  </table>
+                <div className="col-sm-12">
+                  <div className="card">
+                   <div className="table-responsive">
+                       <table className="es-transaction table">
+                      <tr>
+                        <td
+                          data-toggle="tooltip"
+                          data-placement="top"
+                          title=""
+                          colSpan="2"
+                        >
+                          Overview
+                        </td>
+                      </tr>
+                      <tr>
+                        <td data-toggle="tooltip" data-placement="top" title="">
+                          Balance
+                        </td>
+                        <td data-toggle="tooltip" data-placement="top" title="">
+                          {this.state.data.balance} ES
+                        </td>
+                      </tr>
+                      <tr>
+                        <td data-toggle="tooltip" data-placement="top" title="">
+                          Label
+                        </td>
+                        <td
+                          data-toggle="tooltip"
+                          data-placement="top"
+                          title="These are the transactions that are included in this Block"
+                        >
+                          {this.state.data.label || '-'}
+                        </td>
+                      </tr>
+                    </table>
+                
+                    </div>
+                  </div>
                 </div>
                 <div className="col-sm-6"></div>
               </div>
-              <div className="">
+
+              <div className="mt40">
                 <Tabs
                   defaultActiveKey="transactions"
                   id="uncontrolled-tab-example"
@@ -146,104 +170,158 @@ class Address extends Component {
                     {this.state.isLoading
                       ? 'Loading...'
                       : `Showing ${this.state.transactions.data.length} of ${this.state.transactions.total}`}
-                    <table className="es-transaction">
-                      <thead>
-                        <tr>
-                          <th data-toggle="tooltip" data-placement="top" title="The Hash of the Transaction">Transaction  Hash </th>
-                          <th data-toggle="tooltip" data-placement="top" title="Block is the periodic collection of transactions happening on Era Swap Network">Block</th>
-                          <th data-toggle="tooltip" data-placement="top" title="Age is the Age of this Block when it was mined">Age</th>
-                          <th data-toggle="tooltip" data-placement="top" title="">From</th>
-                          <th data-toggle="tooltip" data-placement="top" title="">To</th>
-                          <th data-toggle="tooltip" data-placement="top" title="The amount of era swap sent with this Transaction">Value</th>
-                          <th data-toggle="tooltip" data-placement="top" title="Fee for this Transaction">(Transaction  Fee)</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {this.state.transactions.isLoading ? (
-                          <tr>
-                            <td colSpan="7">Loading...</td>
-                          </tr>
-                        ) : this.state.transactions.data?.length ? (
-                          this.state.transactions.data?.map(
-                            (transaction, i) => {
-                              return (
-                                <tr key={i + 1}>
-                                  <td className="tr-color-txt">
-                                    <AddressLink
-                                      value={transaction.txn_hash}
-                                      type="tx"
-                                      shrink={true}
-                                    />
-                                  </td>
-                                  <td className="tr-color-txt">
-                                    <AddressLink
-                                      value={transaction.block.block_number}
-                                      type="block"
-                                    />
-                                  </td>
-                                  <td>
-                                    {toLocaleTimestamp(
-                                      transaction.createdOn
-                                    ).fromNow()}
-                                  </td>
-                                  <td>
-                                    {transaction.fromAddress.label && (
-                                      <Link
-                                        to={
-                                          '/' + transaction.fromAddress.address
-                                        }
-                                      >
-                                        {transaction.fromAddress.label}
-                                      </Link>
-                                    )}
-                                    <span className="tr-color-txt">
-                                      <AddressLink
-                                        value={transaction.fromAddress.address}
-                                        type="address"
-                                        shrink={
-                                          transaction.fromAddress.label.length
-                                        }
-                                      />
-                                    </span>
-                                  </td>
-                                  <td>
-                                    {transaction.fromAddress.label && (
-                                      <Link
-                                        to={
-                                          '/' + transaction.fromAddress.address
-                                        }
-                                      >
-                                        {transaction.fromAddress.label}
-                                      </Link>
-                                    )}
-                                    <span className="tr-color-txt">
-                                      <AddressLink
-                                        value={transaction.toAddress.address}
-                                        type="address"
-                                        shrink={
-                                          transaction.fromAddress.label.length
-                                        }
-                                      />
-                                    </span>
-                                  </td>
-                                  <td>
-                                    {ethers.utils.formatEther(
-                                      transaction.value
-                                    )}{' '}
-                                    ES{' '}
-                                  </td>
-                                  <td>0.000546</td>
-                                </tr>
-                              );
-                            }
-                          )
-                        ) : (
-                          <tr>
-                            <td colSpan="7">No Transactions</td>
-                          </tr>
-                        )}
-                      </tbody>
-                    </table>
+                    <div className="card">
+                      <div className="table-responsive">
+                        <table className="es-transaction table">
+                          <thead>
+                            <tr>
+                              <th
+                                data-toggle="tooltip"
+                                data-placement="top"
+                                title="The Hash of the Transaction"
+                              >
+                                Transaction Hash{' '}
+                              </th>
+                              <th
+                                data-toggle="tooltip"
+                                data-placement="top"
+                                title="Block is the periodic collection of transactions happening on Era Swap Network"
+                              >
+                                Block
+                              </th>
+                              <th
+                                data-toggle="tooltip"
+                                data-placement="top"
+                                title="Age is the Age of this Block when it was mined"
+                              >
+                                Age
+                              </th>
+                              <th
+                                data-toggle="tooltip"
+                                data-placement="top"
+                                title=""
+                              >
+                                From
+                              </th>
+                              <th
+                                data-toggle="tooltip"
+                                data-placement="top"
+                                title=""
+                              >
+                                To
+                              </th>
+                              <th
+                                data-toggle="tooltip"
+                                data-placement="top"
+                                title="The amount of era swap sent with this Transaction"
+                              >
+                                Value
+                              </th>
+                              <th
+                                data-toggle="tooltip"
+                                data-placement="top"
+                                title="Fee for this Transaction"
+                              >
+                                (Transaction Fee)
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {this.state.transactions.isLoading ? (
+                              <tr>
+                                <td colSpan="7">Loading...</td>
+                              </tr>
+                            ) : this.state.transactions.data?.length ? (
+                              this.state.transactions.data?.map(
+                                (transaction, i) => {
+                                  return (
+                                    <tr key={i + 1}>
+                                      <td className="tr-color-txt">
+                                        <AddressLink
+                                          value={transaction.txn_hash}
+                                          type="tx"
+                                          shrink={true}
+                                        />
+                                      </td>
+                                      <td className="tr-color-txt">
+                                        <AddressLink
+                                          value={transaction.block.block_number}
+                                          type="block"
+                                        />
+                                      </td>
+                                      <td>
+                                        {toLocaleTimestamp(
+                                          transaction.createdOn
+                                        ).fromNow()}
+                                      </td>
+                                      <td>
+                                        {transaction.fromAddress.label && (
+                                          <Link
+                                            to={
+                                              '/' +
+                                              transaction.fromAddress.address
+                                            }
+                                          >
+                                            {transaction.fromAddress.label}
+                                          </Link>
+                                        )}
+                                        <span className="tr-color-txt">
+                                          <AddressLink
+                                            value={
+                                              transaction.fromAddress.address
+                                            }
+                                            type="address"
+                                            shrink={
+                                              transaction.fromAddress.label
+                                                .length
+                                            }
+                                          />
+                                        </span>
+                                      </td>
+                                      <td>
+                                        {transaction.fromAddress.label && (
+                                          <Link
+                                            to={
+                                              '/' +
+                                              transaction.fromAddress.address
+                                            }
+                                          >
+                                            {transaction.fromAddress.label}
+                                          </Link>
+                                        )}
+                                        <span className="tr-color-txt">
+                                          <AddressLink
+                                            value={
+                                              transaction.toAddress.address
+                                            }
+                                            type="address"
+                                            shrink={
+                                              transaction.fromAddress.label
+                                                .length
+                                            }
+                                          />
+                                        </span>
+                                      </td>
+                                      <td>
+                                        {ethers.utils.formatEther(
+                                          transaction.value
+                                        )}{' '}
+                                        ES{' '}
+                                      </td>
+                                      <td>0.000546</td>
+                                    </tr>
+                                  );
+                                }
+                              )
+                            ) : (
+                              <tr>
+                                <td colSpan="7">No Transactions</td>
+                              </tr>
+                            )}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
                     <Snackbar ref={this.snackbarRef} />
                   </Tab>
                 </Tabs>

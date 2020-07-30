@@ -73,8 +73,8 @@ class Transaction extends Component {
 
   render() {
     return (
-      <div>
-        <div className="booking-hero-bgd booking-hero-bgd-inner">
+      <div className="blocks-table">
+        <div className="booking-hero-bgd booking-hero-bgd-inner ">
           <Navbar />
           <h2 className="es-main-head es-main-head-inner">Transactions</h2>
         </div>
@@ -87,8 +87,11 @@ class Transaction extends Component {
               <AddressLink value={this.blockNumber} type="block" style={{fontSize:'20px'}}/>
             </span>
           )}
-          <div className="table-responsive">
-            <table className="es-transaction table">
+        <Row className="mt40">
+            <Col lg={12}>
+              <div className="card">
+                <div className="table-responsive">
+                  <table className="es-transaction table">
               <thead>
                 <tr>
                   <th>Txn Hash </th>
@@ -177,14 +180,19 @@ class Transaction extends Component {
               </tbody>
             </table>
           </div>
-          <CustomPagination
-            handleClick={this.fetchTransactions}
-            currentPage={this.state.transactions.currentPage}
-            prevPage={this.state.transactions.currentPage - 1}
-            nextPage={this.state.transactions.currentPage + 1}
-            totalPages={this.state.transactions.totalPages}
-          />
-          <Snackbar ref={this.snackbarRef} />
+          <Col lg={12} className="mb30">
+                  <CustomPagination
+                    handleClick={this.fetchTransactions}
+                    currentPage={this.state.transactions.currentPage}
+                    prevPage={this.state.transactions.currentPage - 1}
+                    nextPage={this.state.transactions.currentPage + 1}
+                    totalPages={this.state.transactions.totalPages}
+                  />
+                  <Snackbar ref={this.snackbarRef} />
+                </Col>
+              </div>
+            </Col>
+          </Row>
         </Container>
       </div>
     );

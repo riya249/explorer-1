@@ -42,3 +42,6 @@ td th {
   color: #747feb;
   font-size: 14px;
 }
+.booking-hero-bgd .es-transaction {
+  margin-top: 0 !important;
+}
