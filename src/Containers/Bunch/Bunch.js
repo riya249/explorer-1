@@ -271,7 +271,7 @@ class Bunch extends Component {
                               <td className="tr-color-txt">
                                 <AddressLink
                                   value={transaction.txn_hash}
-                                  type="tx"
+                                  type="txn"
                                   shrink={true}
                                 />
                               </td>

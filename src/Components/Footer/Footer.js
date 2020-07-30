@@ -35,9 +35,9 @@ class Footer extends Component {
             <Col sm={6}>
               <div className="subscribe-container">
                 <div className="subscribe-detail">
-                  Subscribe to get the latest insights
+                  Social Media Links
                 </div>
-                <div className="flex-box-subs">
+                {/* <div className="flex-box-subs">
                   <form>
                     <input
                       placeholder="Your email address"
@@ -45,7 +45,7 @@ class Footer extends Component {
                       onChange={this.handleInputChange}
                     />
                   </form>
-                </div>
+                </div> */}
                 <div className="mt30">
                   <ul class="social-menu">
                     <li>

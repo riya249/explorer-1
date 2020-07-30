@@ -37,8 +37,8 @@ function App() {
           <Route exact path="/bunch/:bunchIndex" component={Bunch} />
           <Route exact path="/blocks" component={Blocks} />
           <Route exact path="/block/:blockNumber" component={BlockPage} />
-          <Route exact path="/txs" component={Transactions} />
-          <Route exact path="/tx/:hash" component={Transaction} />
+          <Route exact path="/txns" component={Transactions} />
+          <Route exact path="/txn/:hash" component={Transaction} />
           <Route exact path="/explore" component={TimeallyExplorer} />
           <Route exact path="/dashboard" component={Dashboard} />
           <Route exact path="/calculator" component={EraswapCalculator} />

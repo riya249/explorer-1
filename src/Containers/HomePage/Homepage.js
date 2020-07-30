@@ -275,7 +275,7 @@ class Homepage extends Component {
                   </div>
                   <div className="flex-transc border-value row">
                     <div className="col-lg-6">
-                      <p className="era-head">DIFFICULTY</p>
+                      <p className="era-head">AMOUNT OF STACKINGS</p>
                       <p className="era-value text-black">0 TH</p>
                     </div>
                     <div className="col-lg-6">
@@ -472,7 +472,7 @@ class Homepage extends Component {
                                 <td className="frst-era">
                                   <AddressLink
                                     value={transaction.txn_hash}
-                                    type="tx"
+                                    type="txn"
                                     shrink={true}
                                   />
                                   <div className="sub-frst">
@@ -514,7 +514,7 @@ class Homepage extends Component {
                   </div>
                   <div className="border-era-two">
                     <button className="era-view-btn">
-                      <Link to="/txs" className="era-link">
+                      <Link to="/txns" className="era-link">
                         View all Transactions
                       </Link>
                     </button>
