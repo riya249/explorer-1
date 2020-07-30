@@ -31,6 +31,8 @@ export default class Apis {
                    );
                  static fetchTransactionsInterval = () =>
                    ajax(`${baseUrl}/transaction/range/interval`);
+                 static fetchTransactionsCount = () =>
+                   ajax(`${baseUrl}/transaction/count`);
                  static fetchBunches = (start = 0, length = 10) =>
                    ajax(`${baseUrl}/bunch/?start=${start}&length=${length}`);
                  static fetchBunch = (hash) => ajax(`${baseUrl}/bunch/${hash}`);

@@ -11,6 +11,7 @@ import { Link, withRouter, Redirect } from 'react-router-dom';
 import { toLocaleTimestamp } from '../../lib/parsers';
 import { ethers } from 'ethers';
 import { LineChart, Line, CartesianGrid, XAxis, YAxis } from 'recharts';
+import { nFormatter } from '../../lib/parsers';
 
 class Homepage extends Component {
   snackbarRef = React.createRef();
@@ -20,6 +21,8 @@ class Homepage extends Component {
     super(props);
     this.state = {
       transactionsChartData: [],
+      txnsCount: 0,
+      txnPerMin: 0,
       esPriceUSDT: 0,
       esPriceBTC: 0,
       blocks: {
@@ -45,6 +48,7 @@ class Homepage extends Component {
     this.fetchBunches();
     this.fetchESPrice();
     this.fetchTransactionsInterval();
+    this.fetchTransactionsCount();
   }
 
   fetchBlocks = async () => {
@@ -128,6 +132,21 @@ class Homepage extends Component {
       });
     }
   };
+
+  async fetchTransactionsCount(){
+    try{
+      const res = await Apis.fetchTransactionsCount();
+      console.log('fetchTransactionsCount res', res);
+      if(res?.status){
+        this.setState({
+          txnsCount: res.data.totalCount,
+          txnPerMin: res.data.transactionsPerMin,
+        });
+      }
+    }catch(e){
+      console.log(e);
+    }
+  }
 
   async fetchESPrice() {
     try {
@@ -238,15 +257,16 @@ class Homepage extends Component {
                         TRANSACTIONS{' '}
                       </p>
                       <p className="era-value text-black">
-                        738.81 M{' '}
-                        <span className="era-span text-gray">(12.1 TPS)</span>
+                        {nFormatter(this.state.txnsCount)}{' '}
+                        <span className="era-span text-gray">
+                          ({this.state.txnPerMin} TPM)
+                        </span>
                       </p>
                     </div>
                     <div className="col-lg-6">
                       <p className="era-head">SAFE GAS PRICE</p>
                       <p className="era-value text-black">
-                        0 Gwel{' '}
-                        <span className="era-span text-gray">($0.0)</span>
+                        0 EM <span className="era-span text-gray">($0.0)</span>
                       </p>
                     </div>
                   </div>
@@ -274,8 +294,8 @@ class Homepage extends Component {
                       ERA SWAP TRANSACTION HISTORY IN 14 DAYS
                     </p>
                     <LineChart
-                      width={300}
-                      height={120}
+                      width={320}
+                      height={140}
                       data={this.state.transactionsChartData}
                       margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
                     >
@@ -406,7 +426,7 @@ class Homepage extends Component {
                                   {block.provisional_reward ? (
                                     block.provisional_reward
                                   ) : (
-                                    <i>pending...</i>
+                                    <i>pending for Next NRT...</i>
                                   )}
                                 </div>{' '}
                               </td>

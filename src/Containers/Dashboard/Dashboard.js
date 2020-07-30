@@ -9,7 +9,7 @@ import Responsive from '../../Responsive/Responsive.css';
 import Card from 'react-bootstrap/Card';
 import Apis from '../../lib/apis';
 import { moreDecimals, lessDecimals } from '../../lib/parsers';
-import { PieChart, Pie, Cell } from 'recharts';
+import { PieChart, Pie, Cell, BarChart, CartesianGrid, XAxis, YAxis, Legend, Bar } from 'recharts';
 
 const COLORS = ['#959595', '#747FEB'];
 
@@ -1639,8 +1639,8 @@ class Dashboard extends Component {
             </div>
           </div>
         </div>
-        
-        <div className="dash-section-4">
+
+        {/* <div className="dash-section-4">
           <Row>
             <Col lg={6}>
               <div className="section4-border tfc-box">
@@ -1649,7 +1649,15 @@ class Dashboard extends Component {
                     All Platform TFC Generated of this month
                   </p>
                   <div>
-                    
+                    <BarChart width={730} height={250} data={data}>
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis dataKey="name" />
+                      <YAxis />
+                      <Tooltip />
+                      <Legend />
+                      <Bar dataKey="pv" fill="#8884d8" />
+                      <Bar dataKey="uv" fill="#82ca9d" />
+                    </BarChart>
                   </div>
                 </div>
               </div>
@@ -1682,7 +1690,7 @@ class Dashboard extends Component {
               </Row>
             </Col>
           </Row>
-        </div>
+        </div> */}
         <div className="dash-section-4">
           <Row>
             <Col lg={4}>
