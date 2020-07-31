@@ -28,6 +28,7 @@ export default class Apis {
   static fetchBunches = (start = 0, length = 10) =>
     ajax(`${baseUrl}/bunch/?start=${start}&length=${length}`);
   static fetchBunch = (hash) => ajax(`${baseUrl}/bunch/${hash}`);
+  static fetchNrtPlatforms = () => ajax(`${baseUrl}/nrt-platform/`);
 
   /********* dashboard apis *********/
   //third party
