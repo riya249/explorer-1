@@ -5,11 +5,49 @@ import Images from '../Images/Images';
 import { Col, Button, Container, Row } from 'react-bootstrap';
 import Header from '../../Components/Header/Header';
 import Navbar from '../../Components/Navbar/Navbar';
+import Apis from '../../lib/apis';
 
 class Layerbridge extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      toESNblocks: {
+        data: [],
+        isLoading: true
+      },
+    };
+  }
+
+  componentDidMount() {
+    this.fetchToESNBlocks();
+  }
+
+  async fetchToEthBlocks() {
+    try{
+    const res = await Apis.fetchBunches()
+      console.log('toeth blocks', res);
+    } catch (e) {
+      console.log(e);
+    } finally {
+      
+    }
+  }
+
+  async fetchToESNBlocks() {
+    let res;
+    try {
+      res = await Apis.fetchLayer2ToESNBlock() 
+      console.log('res', res);
+    } catch (e) {
+      console.log(e);
+    } finally {
+      this.setState({
+        toESNblocks: {
+          data: res || [],
+          isLoading: false,
+        },
+      });
+    }
   }
 
   render() {
