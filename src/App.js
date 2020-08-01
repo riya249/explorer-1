@@ -43,16 +43,16 @@ function App() {
           <Route exact path="/dashboard" component={Dashboard} />
           <Route exact path="/calculator" component={EraswapCalculator} />
           <Route exact path="/nrtmanager" component={Nrtmanager} />
-          <Route exact path="/Nodestatus" component={Nodestatus} />
-          <Route exact path="/Layerbridge" component={Layerbridge} />
+          <Route exact path="/nodestatus" component={Nodestatus} />
+          <Route exact path="/layerbridge" component={Layerbridge} />
           <Route
             exact
-            path="/Validatorstakings"
+            path="/validatorstakings"
             component={Validatorstakings}
           />
           <Route
             exact
-            path="/Nodestatustransaction"
+            path="/nodestatustransaction"
             component={Nodestatustransaction}
           />
         </Switch>

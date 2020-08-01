@@ -225,7 +225,7 @@ const nrtManager = () => {
   return new Contract(
     nrtAddress,
     _abi,
-    new ethers.providers.JsonRpcProvider(
+    new ethers.providers.JsonRpcProvider( 
       /*nodeUrl ||*/ 'https://node2.testnet.eraswap.network'
     )
   );

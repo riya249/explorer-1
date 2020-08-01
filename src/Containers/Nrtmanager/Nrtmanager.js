@@ -20,8 +20,7 @@ class Nrtmanager extends Component {
     } = this.props;
 
     this.state = {
-      bunchIndex: params.bunchIndex,
-      bunch: {
+      platforms: {
         data: {},
         isLoading: true,
       },
@@ -31,16 +30,17 @@ class Nrtmanager extends Component {
   }
 
   componentDidMount() {
-    this.fetchBunch();
+    this.fetchNrtPlatforms();
   }
 
-  async fetchBunch() {
+  async fetchNrtPlatforms() {
     try {
-      const res = await Apis.fetchBunch(this.state.bunchIndex);
-      if (res.status)
+      const res = await Apis.fetchNrtPlatforms();
+      console.log('res', res);
+      if (res?.length)
         this.setState({
-          bunch: {
-            data: res.data,
+          platforms: {
+            data: res,
             isLoading: false,
           },
         });
@@ -49,7 +49,7 @@ class Nrtmanager extends Component {
       console.log(e);
       this.openSnackBar(e.message);
       this.setState({
-        bunch: {
+        platforms: {
           data: {},
           isLoading: false,
         },
@@ -66,7 +66,7 @@ class Nrtmanager extends Component {
       <div className="nrt-manager">
         <div className="booking-hero-bgd booking-hero-bgd-inner">
           <Navbar />
-          <h2 className="es-main-head es-main-head-inner">NRT Manager</h2>
+          <h2 className="es-main-head es-main-head-inner">NRT Manager1</h2>
         </div>
         <div className="container">
           <div className="BlockPage-detail">
@@ -173,7 +173,24 @@ class Nrtmanager extends Component {
                           <th>NRT Share</th>
                           <th>Wallet Address </th>
                         </tr>
-                        <tr>
+                        {this.state.platforms.isLoading ? (
+                          <tr>
+                            <td colSpan="3">Loading...</td>
+                          </tr>
+                        ) : this.state.platforms.data?.length ? (
+                          this.state.platforms.data.map((platform, i) => (
+                            <tr>
+                              <td>{platform.name || '-'}</td>
+                              <td>{platform.nrtShare / 10} %</td>
+                              <td>{platform.address.address}</td>
+                            </tr>
+                          ))
+                        ) : (
+                          <tr>
+                            <td colSpan="3">No Platforms</td>
+                          </tr>
+                        )}
+                        {/* <tr>
                           <td>TimeAlly</td>
                           <td>15%</td>
                           <td>
@@ -268,7 +285,7 @@ class Nrtmanager extends Component {
                             0x08D85Bd1004E3e674042EAddF81Fb3beb4853a22{' '}
                             <i class="fa fa-file-text-o" aria-hidden="true"></i>
                           </td>
-                        </tr>
+                        </tr> */}
                       </table>
                     </div>
                   </div>
