@@ -7,4 +7,6 @@ module.exports = {
   timeAllyAddress:
     process.env.REACT_APP_TIMEALLY_ADDRESS ||
     '0x016fa071711e32222B3bEf51E24af64DcE7973D7',
+   validatorsStakesAddress: process.env.REACT_APP_VALIDATORS_STAKES_ADDRESS ||
+    '0xF5D629AAb8d5417285d549dD879Cf9AeE0eC2337',
 };

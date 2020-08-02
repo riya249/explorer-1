@@ -48,6 +48,9 @@ export default class Apis {
                  static fetchLayer2ToESNBlock = () =>
                    ajax(`${baseUrl}/layer2/`);
 
+                   static fetchValidatorsByMonth = (month) =>
+                   ajax(`${baseUrl}/validator/month/${month}`);
+
                  /********* dashboard apis *********/
                  //third party
                  static etherPriceUsd = () =>
