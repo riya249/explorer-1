@@ -66,7 +66,7 @@ class Nrtmanager extends Component {
       <div className="nrt-manager">
         <div className="booking-hero-bgd booking-hero-bgd-inner">
           <Navbar />
-          <h2 className="es-main-head es-main-head-inner">NRT Manager1</h2>
+          <h2 className="es-main-head es-main-head-inner">NRT Manager</h2>
         </div>
         <div className="container">
           <div className="BlockPage-detail">
@@ -180,7 +180,7 @@ class Nrtmanager extends Component {
                         ) : this.state.platforms.data?.length ? (
                           this.state.platforms.data.map((platform, i) => (
                             <tr>
-                              <td>{platform.name || '-'}</td>
+                              <td>{platform.address.label || '-'}</td>
                               <td>{platform.nrtShare / 10} %</td>
                               <td>{platform.address.address}</td>
                             </tr>

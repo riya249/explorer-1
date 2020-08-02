@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Navbar.css';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import Images from '../../Containers/Images/Images';
 import {
   Container,
@@ -12,6 +12,8 @@ import {
 } from 'react-bootstrap';
 
 class Navbar extends Component {
+  search = '';
+
   constructor(props) {
     super(props);
     this.state = {
@@ -28,6 +30,18 @@ class Navbar extends Component {
       this.setState({ color: 'transparent' });
     }
   };
+
+  handleClick = (e) => {
+    e.preventDefault();
+    if (this.search.length) {
+      if (this.search.length === 42)
+        this.props.history.push('/address/' + this.search);
+      else if (this.search.length === 66)
+        this.props.history.push('/tx/' + this.search);
+      else this.props.history.push('/block/' + this.search);
+    }
+  };
+
   render() {
     return (
       <div className="header-bgd-color">
@@ -40,7 +54,7 @@ class Navbar extends Component {
             <img
               className="eslogo-Img"
               alt="Logo"
-              src={Images.path.esgreylogo}
+              src={Images.path.esgreylogo} 
             />
           </Link>
           <button
@@ -107,26 +121,28 @@ class Navbar extends Component {
                   <Link className="dropdown-item" to="/layerbridge">
                     Layer2 Bridge
                   </Link>
-                  <Link className="dropdown-item" to="/nodestatus">
+                  {/*<Link className="dropdown-item" to="/nodestatus">
                     Node Status
-                  </Link> 
+                  </Link> */}
                 </div>
               </li>
             </ul>
 
             <div class="d-flex justify-content-center h-100">
+            <form onSubmit={this.handleClick}>
               <div class="searchbar">
                 <input
                   class="search_input"
                   type="text"
                   name="search"
                   placeholder="Block, hash, transaction etc.."
-                  onChange={this.handleChange}
+                  onChange={e => (this.search = e.target.value)}
                 />
                 <a href="#" class="search_icon" onClick={this.handleClick}>
                   <i class="fa fa-search"></i>
                 </a>
               </div>
+              </form>
             </div>
           </div>
         </nav>
@@ -134,4 +150,4 @@ class Navbar extends Component {
     );
   }
 }
-export default Navbar;
+export default withRouter(Navbar);

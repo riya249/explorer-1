@@ -1,4 +1,4 @@
-const { baseUrl } = require('../config/config');
+const { baseUrl } = require('../config/config'); 
 
 const ajax = async (url) => {
   return await fetch(url)
@@ -45,8 +45,8 @@ export default class Apis {
                  static fetchNrtPlatforms = () =>
                    ajax(`${baseUrl}/nrt-platform/`);
 
-                 static fetchLayer2ToESNBlock = () =>
-                   ajax(`${baseUrl}/layer2/`);
+                 static fetchLayer2ToESNBlock = (limit) =>
+                   ajax(`${baseUrl}/layer2/?limit=${limit}`);
 
                    static fetchValidatorsByMonth = (month) =>
                    ajax(`${baseUrl}/validator/month/${month}`);
