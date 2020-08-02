@@ -36,6 +36,12 @@ class BlockPage extends Component {
     this.fetchBlock();
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.match.params.blockNumber !== prevProps.match.params.blockNumber) {
+      this.setState({ blockNumber:  this.props.match.params.blockNumber},this.fetchBlock);
+    }
+  }
+
   async fetchBlock() {
     try {
       const res = await Apis.fetchBlock(this.state.blockNumber);
