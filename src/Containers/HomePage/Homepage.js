@@ -11,7 +11,7 @@ import { Link, withRouter, Redirect } from 'react-router-dom';
 import { toLocaleTimestamp } from '../../lib/parsers';
 import { ethers } from 'ethers';
 import { LineChart, Line, CartesianGrid, XAxis, YAxis } from 'recharts';
-import { nFormatter } from '../../lib/parsers';
+import { nFormatter,moreDecimals, lessDecimals } from '../../lib/parsers';
 
 class Homepage extends Component {
   snackbarRef = React.createRef();
@@ -20,6 +20,7 @@ class Homepage extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      totalESStaked: 0,
       transactionsChartData: [],
       txnsCount: 0,
       txnPerMin: 0,
@@ -49,6 +50,7 @@ class Homepage extends Component {
     this.fetchESPrice();
     this.fetchTransactionsInterval();
     this.fetchTransactionsCount();
+    this.getPlatformDetailsAllTime();
   }
 
   fetchBlocks = async () => {
@@ -165,6 +167,22 @@ class Homepage extends Component {
     }
   }
 
+  async getPlatformDetailsAllTime() {
+    let res;
+    try {
+      res = await Apis.getPlatformDetailsAllTime();
+      console.log('getPlatformDetailsAllTime - res', res);
+    } catch (e) {
+      console.log(e);
+    } finally {
+      this.setState({
+        totalESStaked: res?.data?.totalStaking
+              ? lessDecimals(res.data.totalStaking) + ' ES'
+              : '-'
+      });
+    }
+  }
+
   handleChange = (e) => {
     switch (e.target.name) {
       case 'search':
@@ -275,8 +293,8 @@ class Homepage extends Component {
                   </div>
                   <div className="flex-transc border-value row">
                     <div className="col-lg-6">
-                      <p className="era-head">AMOUNT OF STACKINGS</p>
-                      <p className="era-value text-black">0 TH</p>
+                      <p className="era-head">AMOUNT OF STAKINGS</p>
+                      <p className="era-value text-black">{this.state.totalESStaked}</p>
                     </div>
                     <div className="col-lg-6">
                       <p
