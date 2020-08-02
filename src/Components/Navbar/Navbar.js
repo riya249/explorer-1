@@ -37,7 +37,7 @@ class Navbar extends Component {
       if (this.search.length === 42)
         this.props.history.push('/address/' + this.search);
       else if (this.search.length === 66)
-        this.props.history.push('/tx/' + this.search);
+        this.props.history.push('/txn/' + this.search);
       else this.props.history.push('/block/' + this.search);
     }
   };
