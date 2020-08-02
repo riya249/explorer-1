@@ -189,7 +189,7 @@ class Validatorstakings extends Component {
                           >
                             <div className="col-md-12 text-center mt30">
                               <p className="explr-purple-text">
-                                Validator Stakings for August 2020 month
+                                { /*Validator Stakings for August 2020 month */}
                               </p>
                             </div>
                             <div className="table-responsive mb30">
