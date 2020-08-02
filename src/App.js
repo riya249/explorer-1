@@ -38,6 +38,7 @@ function App() {
           <Route exact path="/blocks" component={Blocks} />
           <Route exact path="/block/:blockNumber" component={BlockPage} />
           <Route exact path="/txns" component={Transactions} />
+          <Route exact path="/txns/:blockNumber" component={Transactions} />
           <Route exact path="/txn/:hash" component={Transaction} />
           <Route exact path="/explore" component={TimeallyExplorer} />
           <Route exact path="/dashboard" component={Dashboard} />
