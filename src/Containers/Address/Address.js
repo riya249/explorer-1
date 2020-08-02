@@ -46,6 +46,18 @@ class Address extends Component {
     this.fetchBalance();
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.match.params.address !== prevProps.match.params.address) {
+      this.setState({
+        address: this.props.match.params.address
+      },() => {
+        this.fetchAddress();
+        this.fetchTransactionsByAddress();
+        this.fetchBalance();
+      });
+    }
+  }
+
   async fetchBalance() {
     const customHttpProvider = new ethers.providers.JsonRpcProvider(
       config.nodeUrl

@@ -35,6 +35,14 @@ class Transaction extends Component {
     this.fetchTransaction();
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.match.params.hash !== prevProps.match.params.hash) {
+      this.setState({
+        hash: this.props.match.params.hash
+      },this.fetchTransaction)
+    }
+  }
+
   async fetchTransaction() {
     try {
       console.log('this.state.hash', this.state.hash);
