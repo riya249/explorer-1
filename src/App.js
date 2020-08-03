@@ -21,6 +21,8 @@ import Nodestatus from './Containers/Nodestatus/Nodestatus';
 import Layerbridge from './Containers/Layerbridge/Layerbridge';
 import Validatorstakings from './Containers/Validatorstakings/Validatorstakings';
 import Nodestatustransaction from './Containers/Nodestatustransaction/Nodestatustransaction';
+import tablePdf from './assets/docs/KYC.pdf';
+
 function App() {
   useEffect(() => {
     window.$('[data-toggle="tooltip"]').tooltip();
