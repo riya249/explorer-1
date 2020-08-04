@@ -54,7 +54,7 @@ class Navbar extends Component {
             <img
               className="eslogo-Img"
               alt="Logo"
-              src={Images.path.esgreylogo} 
+              src={Images.path.esgreylogo}
             />
           </Link>
           <button
@@ -129,19 +129,19 @@ class Navbar extends Component {
             </ul>
 
             <div class="d-flex justify-content-center h-100">
-            <form onSubmit={this.handleClick}>
-              <div class="searchbar">
-                <input
-                  class="search_input"
-                  type="text"
-                  name="search"
-                  placeholder="Block, hash, transaction etc.."
-                  onChange={e => (this.search = e.target.value)}
-                />
-                <a href="#" class="search_icon" onClick={this.handleClick}>
-                  <i class="fa fa-search"></i>
-                </a>
-              </div>
+              <form onSubmit={this.handleClick}>
+                <div class="searchbar">
+                  <input
+                    class="search_input"
+                    type="text"
+                    name="search"
+                    placeholder="Block, hash, transaction etc.."
+                    onChange={(e) => (this.search = e.target.value)}
+                  />
+                  <a href="#" class="search_icon" onClick={this.handleClick}>
+                    <i class="fa fa-search"></i>
+                  </a>
+                </div>
               </form>
             </div>
           </div>

@@ -1,4 +1,3 @@
-
 const { plasmaAddress } = require('../config/config');
 const { Contract, ethers } = require('ethers');
 const { providerEth } = require('./Provider');
@@ -203,13 +202,8 @@ const _abi = [
   },
 ];
 
-
-const plasmaManager = new Contract(
-  plasmaAddress,
-  _abi,
-  providerEth
- )
+const plasmaManager = new Contract(plasmaAddress, _abi, providerEth);
 
 module.exports = {
-  plasmaManager, 
+  plasmaManager,
 };

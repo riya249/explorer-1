@@ -10,7 +10,7 @@ const path = {
   imgProfile: require('../../assets/Images/imgProfile.jpg'),
   search: require('../../assets/Images/search.png'),
   escolor: require('../../assets/Images/escolor.png'),
-  booklogo: require('../../assets/Images/booklogo.png'), 
+  booklogo: require('../../assets/Images/booklogo.png'),
   //Platforms
   swaal: require('../../assets/Images/swaal.png'),
   buzcafe: require('../../assets/Images/buzcafe.png'),
