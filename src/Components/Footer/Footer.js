@@ -34,9 +34,7 @@ class Footer extends Component {
             <Col sm={2}></Col>
             <Col sm={6}>
               <div className="subscribe-container">
-                <div className="subscribe-detail">
-                  Social Media Links
-                </div>
+                <div className="subscribe-detail">Social Media Links</div>
                 {/* <div className="flex-box-subs">
                   <form>
                     <input

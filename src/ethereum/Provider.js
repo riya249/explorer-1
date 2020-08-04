@@ -10,7 +10,6 @@ const providerEth = ethers.getDefaultProvider('rinkeby', {
 });
 
 module.exports = {
-	providerEth,
-	providerESN
-}
-
+  providerEth,
+  providerESN,
+};

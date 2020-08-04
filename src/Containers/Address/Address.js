@@ -69,7 +69,7 @@ class Address extends Component {
     const balance = await providerESN.getBalance(
       this.props.match.params.address
     );
-    
+
     this.setState({
       data: {
         ...this.state.data,
@@ -100,7 +100,7 @@ class Address extends Component {
         this.setState({
           data: {
             ...this.state.data,
-            label: res.label
+            label: res.label,
           },
           isLoading: false,
         });

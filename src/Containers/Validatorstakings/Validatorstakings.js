@@ -5,10 +5,10 @@ import Images from '../Images/Images';
 import { Col, Button, Container, Row } from 'react-bootstrap';
 import Header from '../../Components/Header/Header';
 import Navbar from '../../Components/Navbar/Navbar';
-import Apis  from '../../lib/apis';  
+import Apis from '../../lib/apis';
 import { validatorsManager } from '../../ethereum/ValidatorStakingsManager';
 import { nrtManager } from '../../ethereum/NrtManager';
-import {ethers} from 'ethers';
+import { ethers } from 'ethers';
 
 class Validatorstakings extends Component {
   month = 0;
@@ -18,103 +18,112 @@ class Validatorstakings extends Component {
     this.state = {
       validators: {
         data: [],
-        isLoading: true
+        isLoading: true,
       },
       month: null,
-      totalBlocksSealedThisMonth: 0
+      totalBlocksSealedThisMonth: 0,
     };
 
     this.decreaseMonth = this.decreaseMonth.bind(this);
     this.increaseMonth = this.increaseMonth.bind(this);
     this.defaultMonth = this.defaultMonth.bind(this);
-  } 
+  }
 
-  componentDidMount(){
+  componentDidMount() {
     this.fetchMonth();
   }
 
-  async fetchMonth(){
-   const month = await nrtManager().currentNrtMonth();
-   this.month = ethers.BigNumber.from(month).toNumber();
-   this.setState({ month: this.month },this.fetchData);
+  async fetchMonth() {
+    const month = await nrtManager().currentNrtMonth();
+    this.month = ethers.BigNumber.from(month).toNumber();
+    this.setState({ month: this.month }, this.fetchData);
   }
 
-  fetchData(){
-    console.log('this.state.month',this.state.month)
+  fetchData() {
+    console.log('this.state.month', this.state.month);
     this.fetchValidators();
     this.fetchTotalBlocksSealed();
   }
 
-  async fetchTotalBlocksSealed(){
-    try{
-      if(this.state.month !== null){
+  async fetchTotalBlocksSealed() {
+    try {
+      if (this.state.month !== null) {
         const totalBlocks = await validatorsManager.getTotalBlocksSealed(
           this.state.month
         );
         this.setState({
-          totalBlocksSealedThisMonth: totalBlocks.toNumber()
-        })
+          totalBlocksSealedThisMonth: totalBlocks.toNumber(),
+        });
       }
-    }catch(e){
+    } catch (e) {
       console.log(e);
     }
   }
 
-  async fetchValidators(){
-    try{
-      if(this.state.month !== null){
-        const res =await Apis.fetchValidatorsByMonth(this.state.month);
-        console.log('res',res)
-        if(res)
+  async fetchValidators() {
+    try {
+      if (this.state.month !== null) {
+        const res = await Apis.fetchValidatorsByMonth(this.state.month);
+        console.log('res', res);
+        if (res)
           this.setState({
             validators: {
               data: res || Array.isArray(res) || [],
-              isLoading: false
-            }
-          })
+              isLoading: false,
+            },
+          });
       }
-    }catch(e){
-      console.log('fetchValidators',e)
+    } catch (e) {
+      console.log('fetchValidators', e);
       this.setState({
-          validators: {
-            data:  [],
-            isLoading: false
-          }
-        })
+        validators: {
+          data: [],
+          isLoading: false,
+        },
+      });
     }
   }
 
-  decreaseMonth(){
-    if(this.state.month !== null)
-      this.setState({
-        month: this.month - 1,
-        validators: {
-          ...this.state.validators,
-          isLoading: true
-        }
-      },this.fetchData);
+  decreaseMonth() {
+    if (this.state.month !== null)
+      this.setState(
+        {
+          month: this.month - 1,
+          validators: {
+            ...this.state.validators,
+            isLoading: true,
+          },
+        },
+        this.fetchData
+      );
   }
 
-  increaseMonth(){
-    if(this.state.month !== null)
-      this.setState({
-        month: this.month + 1,
-        validators: {
-          ...this.state.validators,
-          isLoading: true
-        }
-      },this.fetchData);
+  increaseMonth() {
+    if (this.state.month !== null)
+      this.setState(
+        {
+          month: this.month + 1,
+          validators: {
+            ...this.state.validators,
+            isLoading: true,
+          },
+        },
+        this.fetchData
+      );
   }
 
-  defaultMonth(){
-    if(this.state.month !== null)
-      this.setState({
-        month: this.month,
-        validators: {
-          ...this.state.validators,
-          isLoading: true
-        }
-      },this.fetchData);
+  defaultMonth() {
+    if (this.state.month !== null)
+      this.setState(
+        {
+          month: this.month,
+          validators: {
+            ...this.state.validators,
+            isLoading: true,
+          },
+        },
+        this.fetchData
+      );
   }
 
   render() {
@@ -179,7 +188,7 @@ class Validatorstakings extends Component {
                               FUTURE MONTHS
                             </a>
                           </div>
-                        </nav> 
+                        </nav>
                         <div className="tab-content" id="nav-tabContent">
                           <div
                             className="tab-pane fade show active"
@@ -189,7 +198,7 @@ class Validatorstakings extends Component {
                           >
                             <div className="col-md-12 text-center mt30">
                               <p className="explr-purple-text">
-                                { /*Validator Stakings for August 2020 month */}
+                                {/*Validator Stakings for August 2020 month */}
                               </p>
                             </div>
                             <div className="table-responsive mb30">
@@ -201,25 +210,60 @@ class Validatorstakings extends Component {
                                   <th>Blocks Mined</th>
                                   <th>Delegator Stakings</th>
                                 </tr>
-                                {this.state.validators.isLoading ?
-                                  <tr><td colSpan="5">Loading...</td></tr>
-                                  : this.state.validators.data.length ?
-                                  this.state.validators.data.map((validator,i) => (
-                                    <tr>
-                                      <td>
-                                        {validator.validator.address}
-                                      </td>
-                                      <td>{ethers.utils.formatEther(validator.amount)} </td>
-                                      <td>{ethers.utils.formatEther(validator.adjusted_amount)}</td>
-                                      <td>{validator.blocks_mined} {this.state.totalBlocksSealedThisMonth ? <>({(validator.blocks_mined/this.state.totalBlocksSealedThisMonth)*100}%)</> : null}</td>
-                                      <td>
-                                      {validator.delegatedStakes.map((stakes,j) => <span>({stakes.address.address} => {ethers.utils.formatEther(stakes.amount)})</span>)}
-                                      </td>
+                                {this.state.validators.isLoading ? (
+                                  <tr>
+                                    <td colSpan="5">Loading...</td>
+                                  </tr>
+                                ) : this.state.validators.data.length ? (
+                                  this.state.validators.data.map(
+                                    (validator, i) => (
+                                      <tr>
+                                        <td>{validator.validator.address}</td>
+                                        <td>
+                                          {ethers.utils.formatEther(
+                                            validator.amount
+                                          )}{' '}
+                                        </td>
+                                        <td>
+                                          {ethers.utils.formatEther(
+                                            validator.adjusted_amount
+                                          )}
+                                        </td>
+                                        <td>
+                                          {validator.blocks_mined}{' '}
+                                          {this.state
+                                            .totalBlocksSealedThisMonth ? (
+                                            <>
+                                              (
+                                              {(validator.blocks_mined /
+                                                this.state
+                                                  .totalBlocksSealedThisMonth) *
+                                                100}
+                                              %)
+                                            </>
+                                          ) : null}
+                                        </td>
+                                        <td>
+                                          {validator.delegatedStakes.map(
+                                            (stakes, j) => (
+                                              <span>
+                                                ({stakes.address.address} =>{' '}
+                                                {ethers.utils.formatEther(
+                                                  stakes.amount
+                                                )}
+                                                )
+                                              </span>
+                                            )
+                                          )}
+                                        </td>
                                       </tr>
-                                  ))
-                                  :
-                                  <tr><td colSpan="5">No Validators</td></tr>
-                                }
+                                    )
+                                  )
+                                ) : (
+                                  <tr>
+                                    <td colSpan="5">No Validators</td>
+                                  </tr>
+                                )}
                               </table>
                             </div>
                           </div>
