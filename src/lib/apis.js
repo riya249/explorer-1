@@ -51,6 +51,9 @@ export default class Apis {
                    static fetchValidatorsByMonth = (month) =>
                    ajax(`${baseUrl}/validator/month/${month}`);
 
+                   static fetchNodes = () =>
+                   ajax(`${baseUrl}/nodestatus/`);
+
                  /********* dashboard apis *********/
                  //third party
                  static etherPriceUsd = () =>
