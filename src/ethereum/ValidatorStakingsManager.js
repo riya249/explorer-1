@@ -2,7 +2,6 @@ const { ethers, Contract } = require('ethers');
 const { validatorsStakesAddress } = require('../config/config');
 const provider = require('./Provider');
 
-
 const _abi = [
   {
     inputs: [],

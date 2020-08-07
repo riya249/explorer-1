@@ -9,9 +9,10 @@ import { toLocaleTimestamp } from '../../lib/parsers';
 import { Snackbar } from '../../Components/Snackbar/Snackbar';
 import AddressLink from '../../Components/AddressLink/AddressLink';
 import { Link } from 'react-router-dom';
-import { ethers } from 'ethers';
+import { ethers, providers } from 'ethers';
 import CustomPagination from '../../Components/CustomPagination/CustomPagination';
 import config from '../../config/config';
+import { providerESN } from '../../ethereum/Provider';
 
 class Address extends Component {
   snackbarRef = React.createRef();
@@ -28,6 +29,7 @@ class Address extends Component {
       data: {
         label: null,
         balance: null,
+        nativeBalance: null,
       },
       isLoading: true,
       transactions: {
@@ -44,18 +46,36 @@ class Address extends Component {
     this.fetchAddress();
     this.fetchTransactionsByAddress();
     this.fetchBalance();
+    this.fetchNativeBalance();
   }
 
   componentDidUpdate(prevProps) {
     if (this.props.match.params.address !== prevProps.match.params.address) {
-      this.setState({
-        address: this.props.match.params.address
-      },() => {
-        this.fetchAddress();
-        this.fetchTransactionsByAddress();
-        this.fetchBalance();
-      });
+      this.setState(
+        {
+          address: this.props.match.params.address,
+        },
+        () => {
+          this.fetchNativeBalance();
+          this.fetchAddress();
+          this.fetchTransactionsByAddress();
+          this.fetchBalance();
+        }
+      );
     }
+  }
+
+  async fetchNativeBalance() {
+    const balance = await providerESN.getBalance(
+      this.props.match.params.address
+    );
+
+    this.setState({
+      data: {
+        ...this.state.data,
+        nativeBalance: balance.toNumber(),
+      },
+    });
   }
 
   async fetchBalance() {
@@ -65,6 +85,7 @@ class Address extends Component {
     const balance = await customHttpProvider.getBalance(this.state.address);
     this.setState({
       data: {
+        ...this.state.data,
         label: this.state.label,
         balance: ethers.utils.formatEther(balance),
       },
@@ -77,7 +98,10 @@ class Address extends Component {
 
       if (Object.keys(res).length)
         this.setState({
-          data: res,
+          data: {
+            ...this.state.data,
+            label: res.label,
+          },
           isLoading: false,
         });
       else this.openSnackBar(res.error.message);
@@ -85,6 +109,7 @@ class Address extends Component {
       console.log(e);
       this.openSnackBar(e);
       this.setState({
+        ...this.state.data,
         data: {},
         isLoading: false,
       });
@@ -106,8 +131,8 @@ class Address extends Component {
       console.log(e);
       this.openSnackBar(e);
       this.setState({
-        blocks: {
-          ...this.state.blocks,
+        transactions: {
+          ...this.state.transactions,
           data: [],
           isLoading: false,
         },
@@ -143,6 +168,22 @@ class Address extends Component {
                             colSpan="2"
                           >
                             Overview
+                          </td>
+                        </tr>
+                        <tr>
+                          <td
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title=""
+                          >
+                            Native Balance
+                          </td>
+                          <td
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title=""
+                          >
+                            {this.state.data.nativeBalance ?? '-'} ES
                           </td>
                         </tr>
                         <tr>

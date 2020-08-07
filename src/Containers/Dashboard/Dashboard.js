@@ -1741,9 +1741,7 @@ class Dashboard extends Component {
                      */}
                     <div className="flex-sect4-box">
                       <div className="timeally-mark"></div>
-                      <p className="sect4-context">
-                        Current Supply  {0}
-                      </p>
+                      <p className="sect4-context">Current Supply {0}</p>
                     </div>
                     <div className="flex-sect4-box">
                       <div className="timeally-mark2"></div>

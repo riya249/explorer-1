@@ -1,6 +1,6 @@
 const { reversePlasmaAddress } = require('../config/config');
 const { Contract, ethers } = require('ethers');
-const {providerESN} = require('./Provider');
+const { providerESN } = require('./Provider');
 
 const _abi = [
   {
@@ -355,13 +355,12 @@ const _abi = [
   },
 ];
 
-
 const reversePlasmaManager = new Contract(
   reversePlasmaAddress,
   _abi,
   new ethers.providers.JsonRpcProvider('https://node2.testnet.eraswap.network')
- )
+);
 
 module.exports = {
-  reversePlasmaManager, 
+  reversePlasmaManager,
 };
