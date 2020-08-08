@@ -1,4 +1,5 @@
 import * as moment from 'moment';
+import { ethers } from 'ethers';
 
 export const toLocaleTimestamp = (date) => moment(moment(date).toDate());
 
@@ -41,3 +42,6 @@ export const nFormatter = (num, digits = 0) => {
   }
   return (num / si[i].value).toFixed(digits).replace(rx, '$1') + si[i].symbol;
 };
+
+
+export const formatEther = hexValue => Number(ethers.utils.formatEther(hexValue)).toFixed('2');

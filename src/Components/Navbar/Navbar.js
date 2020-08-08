@@ -121,9 +121,9 @@ class Navbar extends Component {
                   <Link className="dropdown-item" to="/layerbridge">
                     Layer2 Bridge
                   </Link>
-                  {/*<Link className="dropdown-item" to="/nodestatus">
+                  <Link className="dropdown-item" to="/nodestatus">
                     Node Status
-                  </Link> */}
+                  </Link>
                 </div>
               </li>
             </ul>
