@@ -58,8 +58,8 @@ class Transaction extends Component {
       console.log(e);
       this.openSnackBar(e.message);
       this.setState({
-        blocks: {
-          ...this.state.blocks,
+        transactions: {
+          ...this.state.transactions,
           data: [],
           isLoading: false,
         },

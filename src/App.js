@@ -21,6 +21,7 @@ import Nodestatus from './Containers/Nodestatus/Nodestatus';
 import Layerbridge from './Containers/Layerbridge/Layerbridge';
 import Validatorstakings from './Containers/Validatorstakings/Validatorstakings';
 import Nodestatustransaction from './Containers/Nodestatustransaction/Nodestatustransaction';
+import InternalTransactions from './Containers/InternalTransactions/InternalTransactions';
 import tablePdf from './assets/docs/KYC.pdf';
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
           <Route exact path="/block/:blockNumber" component={BlockPage} />
           <Route exact path="/txns" component={Transactions} />
           <Route exact path="/txns/:blockNumber" component={Transactions} />
+          <Route exact path="/txnsInternal/:parentHash" component={InternalTransactions} />
           <Route exact path="/txn/:hash" component={Transaction} />
           <Route exact path="/explore" component={TimeallyExplorer} />
           <Route exact path="/dashboard" component={Dashboard} />

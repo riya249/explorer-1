@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import './transaction.css';
 import Images from '../Images/Images';
 import Header from '../../Components/Header/Header';
@@ -206,10 +207,18 @@ class Transaction extends Component {
                             <tr>
                               <td>Internal Transactions:</td>
                               <td>
+                                <Link 
+                                to={{
+                                  pathname: '/txnsInternal/'+this.state.hash,
+                                  state: { parentHash: this.state.hash },
+                                }}
+                                >
                                 <span className="tr-color-txt">
                                   {this.state.transaction.data
-                                    .internalTransactionsCount || 0}
-                                </span>{' '}
+                                    .internalTxnsCount || 0}
+                                </span>
+                                </Link>
+                                {' '}
                                 contract internal transactions in this
                                 transaction
                               </td>
