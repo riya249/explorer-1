@@ -557,3 +557,7 @@ a.btn:hover, button:hover {
   padding: 0;
   margin: 0;
 }
+
+.es-transaction td, .es-transaction th {
+  vertical-align: top;
+}
