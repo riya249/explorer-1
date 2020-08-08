@@ -1,0 +1,50 @@
+.es-transaction td,
+.es-transaction th {
+  border: 1px solid #747feb;
+  padding: 12px;
+  font-size: 14px;
+}
+th {
+  color: hsl(23, 50%, 3%);
+  font-weight: 500;
+}
+td th {
+  padding: 30px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.es-transaction tr:nth-child(even) {
+  background-color: #f7fbff;
+}
+
+.es-transaction tr:hover {
+  background-color: #ddd;
+  cursor: pointer;
+}
+
+.es-transaction {
+  font-family: 'Segoe UI';
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 35px;
+}
+
+.trans-head {
+  color: #a6a9b2;
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 10px;
+  margin-top: 30px;
+}
+
+.tr-color-txt {
+  color: #747feb;
+  font-size: 14px;
+}
+.blocks-table .underline {
+  border-bottom: 4px solid #6b79cf;
+}
+.nrt-manager .es-transaction {
+  margin-top: 0;
+}

@@ -112,7 +112,22 @@ class Navbar extends Component {
                   <Link className="dropdown-item" to="/calculator">
                     ES Calculator
                   </Link>
-                  <Link className="dropdown-item" to="/nrtmanager">
+                  <Link className="dropdown-item" to="/kyc-calci">
+                  KYC Charge Incentive Calculator
+                  </Link>
+                  {/* <Link className="dropdown-item" to="/txns-calci">
+                  Transactions Charge Incentive Calculator
+                  </Link>
+                  <Link className="dropdown-item" to="/timeally-goals">
+                  TimeAlly Super Goal Calculator
+                  </Link>
+                  <Link className="dropdown-item" to="/es-calci">
+                  Personal Era Swap Teller Calculator
+                  </Link>
+                  <Link className="dropdown-item" to="/es-calci">
+                  TimeallyClub Incentive Calculator
+                  </Link> */}
+                  {/* <Link className="dropdown-item" to="/nrtmanager">
                     NRT Manager
                   </Link>
                   <Link className="dropdown-item" to="/validatorstakings">
@@ -120,7 +135,7 @@ class Navbar extends Component {
                   </Link>
                   <Link className="dropdown-item" to="/layerbridge">
                     Layer2 Bridge
-                  </Link>
+                  </Link> */}
                   {/*<Link className="dropdown-item" to="/nodestatus">
                     Node Status
                   </Link> */}
