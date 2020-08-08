@@ -58,7 +58,7 @@ class Nrtmanager extends Component {
   }
 
   openSnackBar(message) {
-    this.snackbarRef.current.openSnackBar(message);
+    // this.snackbarRef.current.openSnackBar(message);
   }
 
   render() {

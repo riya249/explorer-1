@@ -127,7 +127,7 @@ class Navbar extends Component {
                   <Link className="dropdown-item" to="/es-calci">
                   TimeallyClub Incentive Calculator
                   </Link> */}
-                  {/* <Link className="dropdown-item" to="/nrtmanager">
+                  <Link className="dropdown-item" to="/nrtmanager">
                     NRT Manager
                   </Link>
                   <Link className="dropdown-item" to="/validatorstakings">
@@ -135,10 +135,10 @@ class Navbar extends Component {
                   </Link>
                   <Link className="dropdown-item" to="/layerbridge">
                     Layer2 Bridge
-                  </Link> */}
-                  {/*<Link className="dropdown-item" to="/nodestatus">
+                  </Link>
+                 <Link className="dropdown-item" to="/nodestatus">
                     Node Status
-                  </Link> */}
+                  </Link>
                 </div>
               </li>
             </ul>

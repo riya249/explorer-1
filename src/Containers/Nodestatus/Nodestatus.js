@@ -5,11 +5,65 @@ import Images from '../Images/Images';
 import { Col, Button, Container, Row } from 'react-bootstrap';
 import Header from '../../Components/Header/Header';
 import Navbar from '../../Components/Navbar/Navbar';
+import { ethers } from 'ethers';
+import Apis from '../../lib/apis';
+import { toLocaleTimestamp,formatEther } from '../../lib/parsers';
+import AddressLink from '../../Components/AddressLink/AddressLink';
 
 class Nodestatus extends Component {
+  provider;
+  intervalIds = [];
+
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      nodes: {
+        data: [],
+        isLoading: true
+      }
+    };
+  }
+
+  componentDidMount(){
+    this.fetchNodes();
+  }
+
+  async fetchNodes(){
+    let res = [];
+    try{
+      res = await Apis.fetchNodes();
+      console.log('res',res)
+    }catch(e){
+      console.log(e);
+    } finally {
+      this.setState({
+        nodes: {
+          data: Array.isArray(res) ? res : [],
+          isLoading: false
+        }
+      });
+    }
+    
+  }
+
+  extractIp(url){
+    try{
+      url = new URL(url);
+      return /*url.protocol + '//' +*/ url.hostname;  
+    }catch(e){
+      console.error(e);
+      return '';
+    } 
+  }
+
+  extractPort(url){
+    try{
+      url = new URL(url);
+      return url.port;  
+    }catch(e){
+      console.error(e);
+      return '';
+    } 
   }
 
   render() {
@@ -28,134 +82,35 @@ class Nodestatus extends Component {
                 <div className="table-responsive">
                   <table className="es-transaction striped bordered hover table">
                     <tr>
-                      <th>Node Name</th>
-                      <th>Latest Block Number</th>
-                      <th>New Pending Transactions</th>
-                      <th>Timestamp</th>
-                      <th>Transactions</th>
+                      <th>Wallet Address</th>
+                      <th>Last Seen</th>
+                      <th>Host</th>
+                      <th>Port</th>
+                      <th>OS</th>
+                      <th>Stakes</th>
                     </tr>
-                    <tr>
-                      <td>ESN Node</td>
-                      <td>109972</td>
-                      <td>0</td>
-                      <td>6/16/2020, 4:59:13 PM</td>
-                      <td>
-                        <a href="btn">
-                          <Link to="/Nodestatustransaction">
-                            View All Transactions{' '}
-                            <i
-                              class="fa fa-long-arrow-right"
-                              aria-hidden="true"
-                            ></i>
-                          </Link>
-                        </a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>ESN Node</td>
-                      <td>109972</td>
-                      <td>0</td>
-                      <td>6/16/2020, 4:59:13 PM</td>
-                      <td>
-                        <a href="btn">
-                          <Link to="/Nodestatustransaction">
-                            View All Transactions{' '}
-                            <i
-                              class="fa fa-long-arrow-right"
-                              aria-hidden="true"
-                            ></i>
-                          </Link>
-                        </a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>ESN Node</td>
-                      <td>109972</td>
-                      <td>0</td>
-                      <td>6/16/2020, 4:59:13 PM</td>
-                      <td>
-                        <a href="btn">
-                          <Link to="/Nodestatustransaction">
-                            View All Transactions{' '}
-                            <i
-                              class="fa fa-long-arrow-right"
-                              aria-hidden="true"
-                            ></i>
-                          </Link>
-                        </a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>ESN Node</td>
-                      <td>109972</td>
-                      <td>0</td>
-                      <td>6/16/2020, 4:59:13 PM</td>
-                      <td>
-                        <a href="btn">
-                          <Link to="/Nodestatustransaction">
-                            View All Transactions{' '}
-                            <i
-                              class="fa fa-long-arrow-right"
-                              aria-hidden="true"
-                            ></i>
-                          </Link>
-                        </a>
-                      </td>
-                    </tr>
-
-                    <tr>
-                      <td>ESN Node</td>
-                      <td>109972</td>
-                      <td>0</td>
-                      <td>6/16/2020, 4:59:13 PM</td>
-                      <td>
-                        <a href="btn">
-                          <Link to="/Nodestatustransaction">
-                            View All Transactions{' '}
-                            <i
-                              class="fa fa-long-arrow-right"
-                              aria-hidden="true"
-                            ></i>
-                          </Link>
-                        </a>
-                      </td>
-                    </tr>
-
-                    <tr>
-                      <td>ESN Node</td>
-                      <td>109972</td>
-                      <td>0</td>
-                      <td>6/16/2020, 4:59:13 PM</td>
-                      <td>
-                        <a href="btn">
-                          <Link to="/Nodestatustransaction">
-                            View All Transactions{' '}
-                            <i
-                              class="fa fa-long-arrow-right"
-                              aria-hidden="true"
-                            ></i>
-                          </Link>
-                        </a>
-                      </td>
-                    </tr>
-
-                    <tr>
-                      <td>ESN Node</td>
-                      <td>109972</td>
-                      <td>0</td>
-                      <td>6/16/2020, 4:59:13 PM</td>
-                      <td>
-                        <a href="btn">
-                          <Link to="/Nodestatustransaction">
-                            View All Transactions{' '}
-                            <i
-                              class="fa fa-long-arrow-right"
-                              aria-hidden="true"
-                            ></i>
-                          </Link>
-                        </a>
-                      </td>
-                    </tr>
+                    {
+                      this.state.nodes.isLoading ? 
+                      <tr>
+                        <td colSpan="6">Loading...</td>
+                      </tr>
+                      :
+                      this.state.nodes.data?.length ?
+                      this.state.nodes.data.map(node => 
+                      <tr>
+                        <th><AddressLink value={node.address.address} type="address"/></th>
+                        <th>{toLocaleTimestamp(node.lastTimeStamp).format('hh:mm DD/MM/YYYY')}</th>
+                        <th>{this.extractIp(node.nodeIp)}</th>
+                        <th>{this.extractPort(node.nodeIp)}</th>
+                        <th>{node.os || 'Linux'}</th>
+                        <th>{formatEther(node.stakes?.amount)+' ES' || '-'}</th>
+                      </tr>
+                      )
+                      :
+                      <tr>
+                        <td colSpan="6">No Nodes</td>
+                      </tr>
+                    }
                   </table>
                 </div>
               </div>

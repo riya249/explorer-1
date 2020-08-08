@@ -24,11 +24,13 @@ class TransactionsIncentiveCalculator extends Component {
         data: {},
         isLoading: true,
       },
-      dayswapperstree:'',
+      dayswapperstreeInput:'',
       transdirect:'',
       transindirect:'',
       volume:'',
       additionalIncentive:'',
+
+      displayValue:'',
 
     };
 
@@ -36,41 +38,31 @@ class TransactionsIncentiveCalculator extends Component {
   }
 
   componentDidMount() {
-    this.fetchNrtPlatforms();
+   
   }
 
-  async fetchNrtPlatforms() {
-    try {
-      const res = await Apis.fetchNrtPlatforms();
-      console.log('res', res);
-      if (res?.length)
-        this.setState({
-          platforms: {
-            data: res,
-            isLoading: false,
-          },
-        });
-      else this.openSnackBar(res.error.message);
-    } catch (e) {
-      console.log(e);
-      this.openSnackBar(e.message);
-      this.setState({
-        platforms: {
-          data: {},
-          isLoading: false,
-        },
-      });
-    }
-  }
 
- calculateResult = () =>{
-  function txnincentive(dayswapperstree,transdirect,transindirect,volume,additionalIncentive){
-    var timeAllyClub = transdirect*volume*((additionalIncentive/100)+0.01)*0.2;
-    // var dayswapperTreeReward = (transdirect+ transindirect)volume((additionalIncentive/100)+0.01)*0.2*dayswapperstree;
-     var burning = timeAllyClub/2;
-     var charity = timeAllyClub/2;
- }
- }
+  // calculateValues = () => {
+  //   function txnincentive(dayswapperstreeInput,transdirect,transindirect,volume,additionalIncentive){
+  //     var timeAllyClub = transdirect*volume*((additionalIncentive/100)+0.01)*0.2;
+  //     var dayswapperTreeReward = (transdirect+ transindirect)*volume*((additionalIncentive/100)+0.01)*0.2*dayswapperstree;
+  //      var burning = timeAllyClub/2;
+  //      var charity = timeAllyClub/2;
+
+  //      return {
+  //       burning,
+  //       charity,
+  //       dayswapperTreeReward
+  //     }
+  //  }
+  //  const displayValues = kyc(Number(this.state.dayswapperstreeInput)/100,
+  //  Number(this.state.transdirect),Number(this.state.directkycstandaloneInputTwo),Number(this.state.directkycstandaloneInputThree),Number(this.state.directkycstandaloneInputFour),Number(this.state.directkycstandaloneInputFive));
+  // this.setState({
+  //   displayValues,
+  // })
+  // }
+ 
+
 
 
   openSnackBar(message) {
@@ -101,18 +93,22 @@ class TransactionsIncentiveCalculator extends Component {
                                                 
                                               </div>
                                               <div class="col-md-4 col-lg-4 form-group">
-                                                  <label for="">No. of Transactions by Directs </label><input placeholder="" autocomplete="off" type="text" class="form-control" value="" />
+                                                  <label for="">No. of Transactions by Directs </label>
+                                                  <input placeholder="" autocomplete="off" type="text" class="form-control" value="" />
                                                  
                                               </div>
                                               <div class="col-md-4 col-lg-4 form-group">
-                                                  <label for="">No. of Transactions by Indirects </label><input placeholder="" autocomplete="off" type="text" class="form-control" value=""/>
+                                                  <label for="">No. of Transactions by Indirects </label>
+                                                  <input placeholder="" autocomplete="off" type="text" class="form-control" value=""/>
                                                </div>
                                                <div class="col-md-4 col-lg-4 form-group">
-                                                  <label for="">Volume of Transactions</label><input placeholder="" autocomplete="off" type="text" class="form-control" value="" />
+                                                  <label for="">Volume of Transactions</label>
+                                                  <input placeholder="" autocomplete="off" type="text" class="form-control" value="" />
                                                  
                                               </div>
                                               <div class="col-md-4 col-lg-4 form-group">
-                                                  <label for="">Additional Incentive by seller</label><input placeholder="" autocomplete="off" type="text" class="form-control" value=""/>
+                                                  <label for="">Additional Incentive by seller</label>
+                                                  <input placeholder="" autocomplete="off" type="text" class="form-control" value=""/>
                                                </div>
                                              
                                           </div>
