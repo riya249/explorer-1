@@ -103,7 +103,7 @@ class Nodestatus extends Component {
                         <th>{this.extractIp(node.nodeIp)}</th>
                         <th>{this.extractPort(node.nodeIp)}</th>
                         <th>{node.os || 'Linux'}</th>
-                        <th>{formatEther(node.stakes?.amount)+' ES' || '-'}</th>
+                        <th>{node?.stakes?.amount ? formatEther(node.stakes?.amount)+' ES' : '-'}</th>
                       </tr>
                       )
                       :
