@@ -29,7 +29,7 @@ class TransactionsIncentiveCalculator extends Component {
       transindirect: '',
       volume: '',
       additionalIncentive: '',
-      displayValue: '',
+      displayValues: '',
 
     };
 
@@ -41,25 +41,25 @@ class TransactionsIncentiveCalculator extends Component {
   }
 
 
-  // calculateValues = () =>{
-  //   function txnincentive(dayswapperstree, transdirect, transindirect, volume, additionalIncentive) {
-  //     var timeAllyClub = transdirect * volume * ((additionalIncentive / 100) + 0.01) * 0.2;
-  //     var dayswapperTreeReward = (transdirect + transindirect) * volume * ((additionalIncentive / 100) + 0.01) * 0.2 * dayswapperstree;
-  //     var burning = timeAllyClub / 2;
-  //     var charity = timeAllyClub / 2;
-  //     return {
-  //       burning,
-  //       charity,
-  //       dayswapperTreeReward
-  //       }
-  //   }
-  //   const displayValues = txnincentive(Number(this.state.dayswapperstreeInput) / 100,
-  //     Number(this.state.transdirect), Number(this.state.transindirect), Number(this.state.volume), Number(this.state.additionalIncentive));
-  //   this.setState({
-  //     displayValues,
-  //   })
+  calculateValues = () =>{
+    function txnincentive(dayswapperstree, transdirect, transindirect, volume, additionalIncentive) {
+      var timeAllyClub = transdirect * volume * ((additionalIncentive / 100) + 0.01) * 0.2;
+      var dayswapperTreeReward = (transdirect + transindirect) * volume * ((additionalIncentive / 100) + 0.01) * 0.2 * dayswapperstree;
+      var burning = timeAllyClub / 2;
+      var charity = timeAllyClub / 2;
+      return {
+        burning,
+        charity,
+        dayswapperTreeReward
+        }
+    }
+    const displayValues = txnincentive(Number(this.state.dayswapperstreeInput) / 100,
+      Number(this.state.transdirect), Number(this.state.transindirect), Number(this.state.volume), Number(this.state.additionalIncentive));
+    this.setState({
+      displayValues,
+    })
    
-  // }
+  }
 
 
 
@@ -178,7 +178,7 @@ class TransactionsIncentiveCalculator extends Component {
                             className="btn btn-sm"
                             data-toggle="modal"
                             data-target="#nrtunsucessful"
-                            // onClick={this.calculateValue}
+                            onClick={this.calculateValues}
                           >Calculate</a>
                         </div>
                       </div>
@@ -205,17 +205,17 @@ class TransactionsIncentiveCalculator extends Component {
                         </tr>
                         <tr>
                           <td>DaySwappers Tree Incentive</td>
-                          {/* <td>{this.state.displayValue.dayswapperTreeReward}</td> */}
+                          <td>{this.state.displayValues.dayswapperTreeReward}</td>
                           <td>30</td>
                         </tr>
                         <tr>
                           <td>Burning</td>
-                          {/* <td>{this.state.displayValues.burning}</td> */}
+                          <td>{this.state.displayValues.burning}</td>
                           <td></td>
                         </tr>
                         <tr>
                           <td>Charity</td>
-                          {/* <td>{this.state.displayValues}</td> */}
+                          <td>{this.state.displayValues.charity}</td>
                           <td></td>
                         </tr>
 
