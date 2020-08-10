@@ -115,9 +115,10 @@ class Navbar extends Component {
                   <Link className="dropdown-item" to="/kyc-calci">
                   KYC Charge Incentive Calculator
                   </Link>
-                  {/* <Link className="dropdown-item" to="/txns-calci">
+                  <Link className="dropdown-item" to="/txns-calci">
                   Transactions Charge Incentive Calculator
                   </Link>
+                  {/* 
                   <Link className="dropdown-item" to="/timeally-goals">
                   TimeAlly Super Goal Calculator
                   </Link>
