@@ -41,7 +41,7 @@ class TransactionsIncentiveCalculator extends Component {
   }
 
 
-  calculateValues = () =>{
+  calculateValues = () => {
     function txnincentive(dayswapperstree, transdirect, transindirect, volume, additionalIncentive) {
       var timeAllyClub = transdirect * volume * ((additionalIncentive / 100) + 0.01) * 0.2;
       var dayswapperTreeReward = (transdirect + transindirect) * volume * ((additionalIncentive / 100) + 0.01) * 0.2 * dayswapperstree;
@@ -50,15 +50,16 @@ class TransactionsIncentiveCalculator extends Component {
       return {
         burning,
         charity,
-        dayswapperTreeReward
-        }
+        dayswapperTreeReward,
+        timeAllyClub
+      }
     }
     const displayValues = txnincentive(Number(this.state.dayswapperstreeInput) / 100,
       Number(this.state.transdirect), Number(this.state.transindirect), Number(this.state.volume), Number(this.state.additionalIncentive));
     this.setState({
       displayValues,
     })
-   
+
   }
 
 
@@ -200,23 +201,23 @@ class TransactionsIncentiveCalculator extends Component {
                         </tr>
                         <tr>
                           <td>TimeAlly Incentive</td>
-                          <td>20</td>
                           <td></td>
+                          <td>{this.state.displayValues.timeAllyClub}</td>
                         </tr>
                         <tr>
                           <td>DaySwappers Tree Incentive</td>
                           <td>{this.state.displayValues.dayswapperTreeReward}</td>
-                          <td>30</td>
+                          <td>{this.state.displayValues.dayswapperTreeReward}</td>
                         </tr>
                         <tr>
                           <td>Burning</td>
-                          <td>{this.state.displayValues.burning}</td>
                           <td></td>
+                          <td>{this.state.displayValues.burning}</td>
                         </tr>
                         <tr>
                           <td>Charity</td>
-                          <td>{this.state.displayValues.charity}</td>
                           <td></td>
+                          <td>{this.state.displayValues.charity}</td>
                         </tr>
 
                       </thead>

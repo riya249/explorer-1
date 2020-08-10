@@ -84,7 +84,8 @@ class KycIncentiveCalculator extends Component {
         charity,
         dayswapperTreeReward,
         stakedtodirect,
-        timeAllyclubStake
+        timeAllyclubStake,
+        timeAllyclubLiquid
       }
     }
     const displayValues = kyc(Number(this.state.dayswappertreeInput)/100,
@@ -651,15 +652,25 @@ class KycIncentiveCalculator extends Component {
                         <tr>
                           <td>Revenue Collected from Directs</td>
                           <td></td>
-                          <td>11355.5</td>
+                          <td>{this.state.displayValues.stakedtodirect}</td>
                         </tr>
                         <tr>
                           <td>Applicant Benefit</td>
-                          <td>11355.5</td>
+                          <td>{this.state.displayValues.stakedtodirect}</td>
                           <td></td>
                         </tr>
                         <tr>
-                          <td>Taygi (Physical Validator)</td>
+                          <td>Introducer Incentive</td>
+                          <td>{this.state.displayValues.timeAllyclubStake}</td>
+                          <td>{this.state.displayValues.timeAllyclubLiquid}</td>
+                        </tr>
+                        <tr>
+                          <td>DaySwapper Tree Incentive</td>
+                          <td>{this.state.displayValues.dayswapperTreeReward}</td>
+                          <td>{this.state.displayValues.dayswapperTreeReward}</td>
+                        </tr>
+                        <tr>
+                          <td>Tagya (Physical Validator)</td>
                           <td>{this.state.displayValues.tagya}</td>
                           <td>{this.state.displayValues.tagya}</td>
                         </tr>
@@ -670,7 +681,7 @@ class KycIncentiveCalculator extends Component {
                         </tr>
                         <tr>
                           <td>Burning</td>
-                          <td>{this.state.displayValues.burning}</td>
+                          <td></td>
                           <td>{this.state.displayValues.burning}</td>
                         </tr>
                         <tr>
