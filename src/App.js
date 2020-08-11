@@ -27,6 +27,8 @@ import TransactionsIncentiveCalculator from './Containers/TransactionsIncentiveC
 import TimeAllySuperGoalCalculator from './Containers/TimeAllySuperGoalCalculator/TimeAllySuperGoalCalculator';
 import PersonalEraSwapTellerCalculator from './Containers/PersonalEraSwapTellerCalculator/PersonalEraSwapTellerCalculator';
 import TimeallyClubIncentiveCalculator from './Containers/TimeallyClubIncentiveCalculator/TimeallyClubIncentiveCalculator';
+import ContractInternalTransactions from './Containers/ContractInternalTransactions/ContractInternalTransactions';
+import ContractsWithVerifiedSourceCodes from './Containers/ContractsWithVerifiedSourceCodes/ContractsWithVerifiedSourceCodes';
 
 import InternalTransactions from './Containers/InternalTransactions/InternalTransactions';
 import tablePdf from './assets/docs/KYC.pdf';
@@ -62,6 +64,8 @@ function App() {
           <Route exact path="/timeally-goals" component={TimeAllySuperGoalCalculator} />
           <Route exact path="/es-calci" component={PersonalEraSwapTellerCalculator} />
           <Route exact path="/timeally-Incentive" component={TimeallyClubIncentiveCalculator} />
+          <Route exact path="/ci-txns" component={ContractInternalTransactions} />
+          <Route exact path="/cv-txns" component={ContractsWithVerifiedSourceCodes} />
           <Route
             exact
             path="/validatorstakings"
