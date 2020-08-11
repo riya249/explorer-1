@@ -5,7 +5,7 @@ import Header from '../../Components/Header/Header';
 import Navbar from '../../Components/Navbar/Navbar';
 import { Col, Button, Container, Row, Tabs, Tab } from 'react-bootstrap';
 import Apis from '../../lib/apis';
-import { toLocaleTimestamp } from '../../lib/parsers';
+import { toLocaleTimestamp, formatEther } from '../../lib/parsers';
 import { Snackbar } from '../../Components/Snackbar/Snackbar';
 import AddressLink from '../../Components/AddressLink/AddressLink';
 import { Link } from 'react-router-dom';
@@ -45,8 +45,8 @@ class Address extends Component {
   componentDidMount() {
     this.fetchAddress();
     this.fetchTransactionsByAddress();
-    this.fetchBalance();
-    this.fetchNativeBalance();
+    // this.fetchBalance();
+    // this.fetchNativeBalance();
   }
 
   componentDidUpdate(prevProps) {
@@ -56,10 +56,10 @@ class Address extends Component {
           address: this.props.match.params.address,
         },
         () => {
-          this.fetchNativeBalance();
+          // this.fetchNativeBalance();
           this.fetchAddress();
           this.fetchTransactionsByAddress();
-          this.fetchBalance();
+          // this.fetchBalance();
         }
       );
     }
@@ -101,13 +101,14 @@ class Address extends Component {
           data: {
             ...this.state.data,
             label: res.label,
+            balance: formatEther(res.balance)
           },
           isLoading: false,
         });
-      else this.openSnackBar(res.error.message);
+      // else this.openSnackBar(res.error.message);
     } catch (e) {
       console.log(e);
-      this.openSnackBar(e);
+      // this.openSnackBar(e);
       this.setState({
         ...this.state.data,
         data: {},
@@ -141,7 +142,7 @@ class Address extends Component {
   }
 
   openSnackBar(message) {
-    this.snackbarRef.current.openSnackBar(message);
+    // this.snackbarRef.current.openSnackBar(message);
   }
 
   render() {

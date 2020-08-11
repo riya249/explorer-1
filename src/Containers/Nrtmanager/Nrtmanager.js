@@ -21,7 +21,7 @@ class Nrtmanager extends Component {
 
     this.state = {
       platforms: {
-        data: {},
+        data: [],
         isLoading: true,
       },
     };
@@ -40,7 +40,7 @@ class Nrtmanager extends Component {
       if (res?.length)
         this.setState({
           platforms: {
-            data: res,
+            data: Array.isArray(res) ? res : [],
             isLoading: false,
           },
         });
@@ -50,7 +50,7 @@ class Nrtmanager extends Component {
       this.openSnackBar(e.message);
       this.setState({
         platforms: {
-          data: {},
+          data: [],
           isLoading: false,
         },
       });
@@ -58,7 +58,7 @@ class Nrtmanager extends Component {
   }
 
   openSnackBar(message) {
-    this.snackbarRef.current.openSnackBar(message);
+    // this.snackbarRef.current.openSnackBar(message);
   }
 
   render() {
