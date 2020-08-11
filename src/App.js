@@ -21,6 +21,15 @@ import Nodestatus from './Containers/Nodestatus/Nodestatus';
 import Layerbridge from './Containers/Layerbridge/Layerbridge';
 import Validatorstakings from './Containers/Validatorstakings/Validatorstakings';
 import Nodestatustransaction from './Containers/Nodestatustransaction/Nodestatustransaction';
+/*Calculators */
+import KycIncentiveCalculator from './Containers/KycIncentiveCalculator/KycIncentiveCalculator';
+import TransactionsIncentiveCalculator from './Containers/TransactionsIncentiveCalculator/TransactionsIncentiveCalculator';
+import TimeAllySuperGoalCalculator from './Containers/TimeAllySuperGoalCalculator/TimeAllySuperGoalCalculator';
+import PersonalEraSwapTellerCalculator from './Containers/PersonalEraSwapTellerCalculator/PersonalEraSwapTellerCalculator';
+import TimeallyClubIncentiveCalculator from './Containers/TimeallyClubIncentiveCalculator/TimeallyClubIncentiveCalculator';
+import ContractInternalTransactions from './Containers/ContractInternalTransactions/ContractInternalTransactions';
+import ContractsWithVerifiedSourceCodes from './Containers/ContractsWithVerifiedSourceCodes/ContractsWithVerifiedSourceCodes';
+
 import InternalTransactions from './Containers/InternalTransactions/InternalTransactions';
 import tablePdf from './assets/docs/KYC.pdf';
 
@@ -50,6 +59,13 @@ function App() {
           <Route exact path="/nrtmanager" component={Nrtmanager} />
           <Route exact path="/nodestatus" component={Nodestatus} />
           <Route exact path="/layerbridge" component={Layerbridge} />
+          <Route exact path="/kyc-calci" component={KycIncentiveCalculator} />
+          <Route exact path="/txns-calci" component={TransactionsIncentiveCalculator} />
+          <Route exact path="/timeally-goals" component={TimeAllySuperGoalCalculator} />
+          <Route exact path="/es-calci" component={PersonalEraSwapTellerCalculator} />
+          <Route exact path="/timeally-Incentive" component={TimeallyClubIncentiveCalculator} />
+          <Route exact path="/ci-txns" component={ContractInternalTransactions} />
+          <Route exact path="/cv-txns" component={ContractsWithVerifiedSourceCodes} />
           <Route
             exact
             path="/validatorstakings"

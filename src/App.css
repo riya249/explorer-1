@@ -538,3 +538,26 @@ label {
   -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
 }
+
+.social-menu li a:hover i {
+  -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
+}
+.cal-com-page label{
+  font-size: 11px;
+}
+
+a.btn:hover, button:hover {
+  box-shadow: 0 0 10px 0 rgba(0,0,0,.4);
+}
+
+.calculator .eraswapcal-tab .card {
+  border: 1px solid #747feb;
+  min-height: auto !important;
+  padding: 0;
+  margin: 0;
+}
+
+.es-transaction td, .es-transaction th {
+  vertical-align: top;
+}

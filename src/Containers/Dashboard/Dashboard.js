@@ -1431,7 +1431,7 @@ class Dashboard extends Component {
                 <Col lg={3}>
                   <div className="sub-supply-box mb10">
                     <div className="es-box-ds">
-                      <p className="supply-txt">MARKET CAP</p>
+                      <p className="supply-txt">MARKET CAP $</p>
                       <p className="supply-txt">
                         {this.state.eraswap.data.marketCap}
                       </p>
@@ -1601,7 +1601,7 @@ class Dashboard extends Component {
                 </Col>
               </Row>
               <Row className="d-flex justify-content-lg-around">
-                <Col sm={6} lg={2} p-0>
+                {/* <Col sm={6} lg={2} p-0>
                   <Card className="height-80 wd-120 ">
                     <Card.Body>
                       <p className="sect-txt-bold">MARKET CAP</p>
@@ -1610,7 +1610,7 @@ class Dashboard extends Component {
                       </p>
                     </Card.Body>
                   </Card>
-                </Col>
+                </Col> */}
                 <Col sm={6} lg={2} p-0>
                   <Card className="height-80 wd-120 ">
                     <Card.Body>
