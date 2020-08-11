@@ -54,6 +54,17 @@ class Address extends Component {
       this.setState(
         {
           address: this.props.match.params.address,
+          data: {
+            label: null,
+            balance: null,
+            nativeBalance: null,
+          },
+          isLoading: true,
+          transactions: {
+            data: {},
+            total: 0,
+            isLoading: false,
+          },
         },
         () => {
           // this.fetchNativeBalance();
