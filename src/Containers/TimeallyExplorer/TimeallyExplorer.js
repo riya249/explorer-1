@@ -43,7 +43,7 @@ class TimeallyExplorer extends Component {
 
   render() {
     return (
-      <div className="blocks-table">
+      <div className="blocks-table compage">
         <div className="booking-hero-bgd booking-hero-bgd-inner">
           <Navbar />
           <h2 className="es-main-head es-main-head-inner">TimeAlly Explorer</h2>

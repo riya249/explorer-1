@@ -1614,7 +1614,7 @@ class Dashboard extends Component {
                 <Col sm={6} lg={2} p-0>
                   <Card className="height-80 wd-120 ">
                     <Card.Body>
-                      <p className="sect-txt-bold">24HR VOL (PROBIT GLOBAL)</p>
+                      <p className="sect-txt-bold">24 HR VOL (PROBIT GLOBAL)</p>
                       <p className="value-dash-txt">
                         {this.state.eraswap.data.probitVolume}
                       </p>
