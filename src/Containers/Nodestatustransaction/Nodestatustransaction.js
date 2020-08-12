@@ -12,20 +12,10 @@ class Nodestatustransaction extends Component {
   snackbarRef = React.createRef();
   constructor(props) {
     super(props);
-    const {
-      match: { params },
-    } = this.props;
-    this.state = {
-      bunchIndex: params.bunchIndex,
-      bunch: {
-        data: {},
-        isLoading: true,
-      },
-    };
-    this.openSnackBar = this.openSnackBar.bind(this);
+  
   }
   componentDidMount() {
-    this.fetchBunch();
+    // this.fetchBunch();
   }
   async fetchBunch() {
     try {

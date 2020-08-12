@@ -27,6 +27,7 @@ export default class Apis {
   static fetchTransactionsInterval = () =>
     ajax(`${baseUrl}/transaction/range/interval`);
   static fetchTransactionsCount = () => ajax(`${baseUrl}/transaction/count`);
+  static fetchInternalTransactionsByHash = (hash) => ajax(`${baseUrl}/internal-transaction/hash/${hash}`);
 
   static fetchBunches = (start = 0, length = 10) =>
     ajax(`${baseUrl}/bunch/?start=${start}&length=${length}`);
@@ -40,15 +41,19 @@ export default class Apis {
   static fetchValidatorsByMonth = (month) =>
     ajax(`${baseUrl}/validator/month/${month}`);
 
-  /********* dashboard apis *********/
-  //third party
-  static etherPriceUsd = () =>
-    ajax(
-      'https://api.etherscan.io/api?module=stats&action=ethprice&apikey=YourApiKeyToken'
-    );
-  static bitcoinCrowdFundPrice = () => ajax('https://blockchain.info/ticker');
-  static ltcPriceUsd = () =>
-    ajax('https://api.cryptonator.com/api/ticker/ltc-usd');
+   static fetchNodes = () =>
+   ajax(`${baseUrl}/nodestatus/`);
+
+ /********* dashboard apis *********/
+ //third party
+ static etherPriceUsd = () =>
+   ajax(
+     'https://api.etherscan.io/api?module=stats&action=ethprice&apikey=YourApiKeyToken'
+   );
+ static bitcoinCrowdFundPrice = () =>
+   ajax('https://blockchain.info/ticker');
+ static ltcPriceUsd = () =>
+   ajax('https://api.cryptonator.com/api/ticker/ltc-usd');
 
   //eraswap.technology
   static getESPrice = () =>
