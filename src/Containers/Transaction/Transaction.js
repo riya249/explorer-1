@@ -41,6 +41,10 @@ class Transaction extends Component {
       this.setState(
         {
           hash: this.props.match.params.hash,
+          transaction: {
+            data: {},
+            isLoading: true,
+          },
         },
         this.fetchTransaction
       );

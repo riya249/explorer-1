@@ -40,7 +40,7 @@ class Nodestatustransaction extends Component {
     }
   }
   openSnackBar(message) {
-    this.snackbarRef.current.openSnackBar(message);
+    // this.snackbarRef.current.openSnackBar(message);
   }
   render() {
     return (

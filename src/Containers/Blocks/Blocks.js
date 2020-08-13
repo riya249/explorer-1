@@ -178,7 +178,7 @@ class Blocks extends Component {
                             <td>{block.total_gas_limit} </td>
                             <td>
                               {' '}
-                              {ethers.utils.formatEther(
+                              {block?.average_gas_price && ethers.utils.formatEther(
                                 block.average_gas_price
                               )}{' '}
                               ES
