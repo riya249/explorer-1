@@ -64,7 +64,7 @@ class PersonalEraSwapTellerCalculator extends Component {
       var annuityPercent = 0;
       var petBonusPercent = 0;
       var grossBenifitPercent = 0;
-
+      var totalPetBounty =  0;
 
 
       //inputs are monthly staking amount, commitment amount (cAmount)
@@ -87,19 +87,24 @@ class PersonalEraSwapTellerCalculator extends Component {
           annuityBenifit += (selfStaking[i] + petBounty[i]) * 5 * annuity;
           fullTarget++;
           grossStaking += petBounty[i] + stakingAmount[i];
-          monthlyTotalStaking[i] = petBounty[i] + stakingAmount[i];
+         
 
         } else if (stakingAmount[i] >= (cAmount / 2)) {
           selfStaking[i] += stakingAmount[i];
           grossStaking += petBounty[i] + stakingAmount[i];
-          monthlyTotalStaking[i] = petBounty[i] + stakingAmount[i];
+          monthlyTotalStaking[i] = petBounty[i] + selfStaking[i];
           annuityBenifit += (selfStaking[i] + petBounty[i]) * 5 * annuity;
         } else {
           if (i < 11) {
             stakingAmount[i + 1] += stakingAmount[i];
-          }
+          } else{  
+
+            selfStaking[i]  = stakingAmount[i];    
+          }     
         }
-        totalStaking = stakingAmount[i];
+        totalStaking += selfStaking[i];
+        monthlyTotalStaking[i] = petBounty[i] + selfStaking[i];
+        totalPetBounty += petBounty[i];
       }
 
       petBonus = grossStaking * fullTarget / 12;
@@ -118,7 +123,9 @@ class PersonalEraSwapTellerCalculator extends Component {
         totalStaking,
         petBounty,
         selfStaking,
-        monthlyTotalStaking
+        monthlyTotalStaking,
+        grossStaking,
+        totalPetBounty
       }
     }
     // pet([10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 9000, 10000, 10000, 10000], 10000);
@@ -436,7 +443,7 @@ class PersonalEraSwapTellerCalculator extends Component {
                                         autoComplete="off"
                                         isInvalid={isNaN(Number(this.state.stakingAmountTwelve))}
                                       /></td>
-                                      <td>{this.state.petValues.monthlyTotalStaking[11]}</td>
+                                      <td>{this.state.petValues.petBounty[11]}</td>
                                       <td>{this.state.petValues.monthlyTotalStaking[11]}</td>
                                     </tr>
                                   </table>
@@ -469,12 +476,12 @@ class PersonalEraSwapTellerCalculator extends Component {
                                       </tr>
                                       <tr>
                                         <td>PET Bounty Gained </td>
-                                        <td>{this.state.petValues.petBonus}</td>
+                                        <td>{this.state.petValues.totalPetBounty}</td>
                                         <td>-</td>
                                       </tr>
                                       <tr>
                                         <td>Gross staking</td>
-                                        <td>{this.state.petValues.petBonus}</td>
+                                        <td>{this.state.petValues.grossStaking}</td>
                                         <td>-</td>
                                       </tr>
                                       <tr>
@@ -489,7 +496,7 @@ class PersonalEraSwapTellerCalculator extends Component {
                                       </tr>
                                       <tr>
                                         <td>Gross PET Bonus Benefits</td>
-                                        <td>240000.00</td>
+                                      <td>{this.state.petValues.petBonus}</td>
                                         <td>{this.state.petValues.petBonusPercent}%</td>
                                       </tr>
                                       <tr>

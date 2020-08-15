@@ -44,7 +44,7 @@ class TransactionsIncentiveCalculator extends Component {
   calculateValues = () => {
     function txnincentive(dayswapperstree, transdirect, transindirect, volume, additionalIncentive) {
       var timeAllyClub = transdirect * volume * ((additionalIncentive / 100) + 0.01) * 0.2;
-      var dayswapperTreeReward = (transdirect + transindirect) * volume * ((additionalIncentive / 100) + 0.01) * 0.2 * dayswapperstree;
+      var dayswapperTreeReward = (transdirect + transindirect) * volume * ((additionalIncentive / 100) + 0.01) * 0.2 * dayswapperstree / 2;
       var burning = timeAllyClub / 2;
       var charity = timeAllyClub / 2;
       return {
