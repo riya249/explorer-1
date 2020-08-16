@@ -12,6 +12,7 @@ import { toLocaleTimestamp } from '../../lib/parsers';
 import { ethers } from 'ethers';
 import { LineChart, Line, CartesianGrid, XAxis, YAxis } from 'recharts';
 import { nFormatter, moreDecimals, lessDecimals } from '../../lib/parsers';
+import { nrtManager } from '../../ethereum/NrtManager';
 
 class Homepage extends Component {
   snackbarRef = React.createRef();
@@ -38,6 +39,10 @@ class Homepage extends Component {
         data: [],
         isLoading: true,
       },
+      validators: {
+        data: [],
+        isLoading: true,
+      }
     };
 
     this.fetchTransactions = this.fetchTransactions.bind(this);
@@ -51,6 +56,32 @@ class Homepage extends Component {
     this.fetchTransactionsInterval();
     this.fetchTransactionsCount();
     this.getPlatformDetailsAllTime();
+    this.fetchValidators();
+  }
+
+  async fetchValidators() {
+    try {
+      const month = await nrtManager().currentNrtMonth();
+      if (month !== null) {
+        const res = await Apis.fetchValidatorsByMonth(month);
+        console.log('Validators res', res);
+        if (res)
+          this.setState({
+            validators: {
+              data: res || Array.isArray(res) || [],
+              isLoading: false,
+            },
+          });
+      }
+    } catch (e) {
+      console.log('fetchValidators', e);
+      this.setState({
+        validators: {
+          data: [],
+          isLoading: false,
+        },
+      });
+    }
   }
 
   fetchBlocks = async () => {
@@ -544,7 +575,7 @@ class Homepage extends Component {
             </Row>
           </Container>
 
-          {/* <Container>
+          <Container>
             <Row>
               <Col lg={12}>
                 <div className="second-section-es mt40 card purpalebg ">
@@ -899,7 +930,7 @@ class Homepage extends Component {
                 </div>
               </Col>
             </Row>
-          </Container> */}
+          </Container> 
 
           <Container>
             <Row className="mt40">

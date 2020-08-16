@@ -138,8 +138,23 @@ class Navbar extends Component {
                     Layer2 Bridge
                   </Link>
                  <Link className="dropdown-item" to="/nodestatus">
-                    Node Status
+                    Nodes
                   </Link>
+                  <Link className="dropdown-item" to="/ci-txns">
+                  Contract Internal Transactions
+                  </Link>
+                  <Link className="dropdown-item" to="/cv-txns">
+                  Contract Verified Source Code
+                  </Link>
+                  <Link className="dropdown-item" to="/top-statistics">
+                  Top Statistics
+                  </Link>
+                  <Link className="dropdown-item" to="/top-accounts">
+                  Top Accounts
+                  </Link>
+                  {/* <Link className="dropdown-item" to="/nodes" >
+                  Nodes
+                  </Link> */}
                 </div>
               </li>
             </ul>

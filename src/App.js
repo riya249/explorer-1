@@ -27,10 +27,12 @@ import TransactionsIncentiveCalculator from './Containers/TransactionsIncentiveC
 import TimeAllySuperGoalCalculator from './Containers/TimeAllySuperGoalCalculator/TimeAllySuperGoalCalculator';
 import PersonalEraSwapTellerCalculator from './Containers/PersonalEraSwapTellerCalculator/PersonalEraSwapTellerCalculator';
 import TimeallyClubIncentiveCalculator from './Containers/TimeallyClubIncentiveCalculator/TimeallyClubIncentiveCalculator';
-import ContractInternalTransactions from './Containers/ContractInternalTransactions/ContractInternalTransactions';
-import ContractsWithVerifiedSourceCodes from './Containers/ContractsWithVerifiedSourceCodes/ContractsWithVerifiedSourceCodes';
-
+import TopStatistics from './Containers/TopStatistics/TopStatistics';
 import InternalTransactions from './Containers/InternalTransactions/InternalTransactions';
+import ContractInternalTransactions from './Containers/ContractInternalTransactions/ContractInternalTransactions';
+import TopAccountsbyEsBalance from './Containers/TopAccountsbyEsBalance/TopAccountsbyEsBalance';
+import ContractsWithVerifiedSourceCodes from './Containers/ContractsWithVerifiedSourceCodes/ContractsWithVerifiedSourceCodes';
+import Nodes from './Containers/Nodes/Nodes';
 import tablePdf from './assets/docs/KYC.pdf';
 
 function App() {
@@ -66,6 +68,9 @@ function App() {
           <Route exact path="/timeally-Incentive" component={TimeallyClubIncentiveCalculator} />
           <Route exact path="/ci-txns" component={ContractInternalTransactions} />
           <Route exact path="/cv-txns" component={ContractsWithVerifiedSourceCodes} />
+          <Route exact path="/top-statistics" component={TopStatistics} />
+          <Route exact path="/top-accounts" component={TopAccountsbyEsBalance} />
+          <Route exact path="/nodes" component={Nodes} />
           <Route
             exact
             path="/validatorstakings"

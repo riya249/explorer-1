@@ -32,7 +32,7 @@ class TopStatistics extends Component {
   componentDidMount() {
     this.fetchMonth();
   }
-
+ 
   async fetchMonth() {
     const month = await nrtManager().currentNrtMonth();
     this.month = ethers.BigNumber.from(month).toNumber();
