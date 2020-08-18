@@ -14,7 +14,7 @@ class CreateEvent extends Component {
     return (
       <div>
         <Header />
-        <div className="event-bgd-img">
+        <div className="event-bgd-img compage">
           <Container>
             <Row>
               <Col sm={6}>

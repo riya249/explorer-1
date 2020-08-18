@@ -128,7 +128,7 @@ class Validatorstakings extends Component {
 
   render() {
     return (
-      <div>
+      <div className="compage">
         <div className="booking-hero-bgd booking-hero-bgd-inner">
           <Navbar />
           <h2 className="es-main-head es-main-head-inner">

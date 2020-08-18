@@ -11,6 +11,7 @@ import AddressLink from '../../Components/AddressLink/AddressLink';
 
 
 class TimeAllySuperGoalCalculator extends Component {
+
    snackbarRef = React.createRef();
    constructor(props) {
       super(props);

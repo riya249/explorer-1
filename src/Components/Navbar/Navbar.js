@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Navbar.css';
 import { Link, withRouter } from 'react-router-dom';
 import Images from '../../Containers/Images/Images';
+import { Badge,  } from 'react-bootstrap';
 import {
   Container,
   Row,
@@ -93,6 +94,12 @@ class Navbar extends Component {
                   TIMEALLY EXPLORER
                   <span className="sr-only">(current)</span>
                 </Link>
+              </li>
+              <li className="nav-item ">
+                <a  className="nav-link"  href="https://merkleswap.com" target="_blank">
+                 MERKLE SWAP <sup><Badge pill variant="danger">New</Badge>{' '}</sup>
+                  <span className="sr-only">(current)</span>
+                </a>
               </li>
               <li className="nav-item dropdown">
                 <Link
