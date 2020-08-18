@@ -9,6 +9,8 @@ import { timeAllyManager } from '../../ethereum/TimeallyManager';
 import { StakingItem } from './StakingItem/StakingItem';
 
 class TimeallyExplorer extends Component {
+  stakingsData = [];
+
   constructor(props) {
     super(props);
     this.state = {
@@ -24,13 +26,13 @@ class TimeallyExplorer extends Component {
       )
     ).map((log) => timeAllyManager.interface.parseLog(log));
 
-    const stakings = parsedLogs.map((parsedLog) => ({
+    this.stakingsData = parsedLogs.map((parsedLog) => ({
       // staker: parsedLog.args.from,
       staking: parsedLog.args.staking,
     }));
-    console.log('stakings', stakings);
+    console.log('this.stakingsData', this.stakingsData);
     this.setState({
-      stakings,
+      stakings: this.stakingsData,
     });
     // this.setState({
     //   // TODO: the form can be used as staker but not urgetn
@@ -40,6 +42,21 @@ class TimeallyExplorer extends Component {
     //   })),
     // });
   };
+
+  handleChange = e => {
+    if(e.target.value.length){
+      const stakes = [];
+      this.stakingsData.forEach(stake => {
+        if(stake.staking.toLowerCase().includes(e.target.value.toLowerCase()))
+          stakes.push(stake);
+        })
+      this.setState({ stakings: stakes })
+    } else {
+      this.setState({
+        stakings: this.stakingsData
+      })
+    }
+  }
 
   render() {
     return (
@@ -53,6 +70,9 @@ class TimeallyExplorer extends Component {
           <h4>Staking Contracts</h4>
           <p>Note: More features will be added here</p>
           <Row className="mt40 justify-center">
+            <Col lg={12}>
+            <input type="text" placeholder="Search Contract Address" class="form-control" onChange={this.handleChange} disabled={!this.stakingsData.length}/>
+            </Col>
             <Col lg={12}>
               {/* <div className="col-md-12 pull-right">
               <a className="time-dwnld pull-right down-data">

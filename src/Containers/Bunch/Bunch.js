@@ -41,6 +41,22 @@ class Bunch extends Component {
     this.fetchBunch();
   }
 
+  componentDidUpdate(prevProps) {
+    if(this.props.match.params.bunchIndex !== prevProps.match.params.bunchIndex){
+      this.setState({
+        bunchIndex: this.props.match.params.bunchIndex,
+        bunch: {
+          data: {},
+          isLoading: true,
+        },
+        transactions: {
+          data: [],
+          isLoading: false,
+        },
+      },this.fetchBunch)
+    }
+  }
+
   async fetchBunch() {
     try {
       const res = await Apis.fetchBunch(this.state.bunchIndex);

@@ -125,13 +125,13 @@ class Navbar extends Component {
                   <Link className="dropdown-item" to="/txns-calci">
                   Transactions Charge Incentive Calculator
                   </Link>
-                  {/* 
-                  <Link className="dropdown-item" to="/timeally-goals">
-                  TimeAlly Super Goal Calculator
-                  </Link>
                   <Link className="dropdown-item" to="/es-calci">
                   Personal Era Swap Teller Calculator
                   </Link>
+                  <Link className="dropdown-item" to="/timeally-goals">
+                  TimeAlly Super Goal Calculator
+                  </Link>
+                  {/* 
                   <Link className="dropdown-item" to="/es-calci">
                   TimeallyClub Incentive Calculator
                   </Link> */}
