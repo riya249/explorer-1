@@ -47,24 +47,32 @@ export default class AddressLink extends React.Component {
     const url = '/' + this.props.type + '/' + this.props.value;
     return (
       <>
-      <Link
-        to={{
-          pathname: url,
-          state: { value: this.props.value },
-        }}
-        title={this.props.value}
-        className="frst-era hex-data"
-        style={this.props.style}
-      >
-        {this.props.shrink
-          ? this.shrinkValue(this.props.value)
-          : this.props.value}
-      </Link>&nbsp;
-      <CustomTooltip message={this.state.popupMessage}>
-      <button class="btn-transparent" onClick={this.copyValue}>
-        <i class="fa fa-copy"></i>
-      </button>
-      </CustomTooltip>
+        <Link
+          to={{
+            pathname: url,
+            state: { value: this.props.value },
+          }}
+          title={this.props.value}
+          className="frst-era hex-data"
+          style={this.props.style}
+        >
+          {this.props.shrink
+            ? this.shrinkValue(this.props.value)
+            : this.props.value}
+        </Link>
+        &nbsp;
+        <CustomTooltip
+          message={this.state.popupMessage}
+          style={this.props.style}
+        >
+          <button
+            class="btn-transparent"
+            onClick={this.copyValue}
+            style={this.props.style}
+          >
+            <i class="fa fa-copy"></i>
+          </button>
+        </CustomTooltip>
       </>
     );
   }

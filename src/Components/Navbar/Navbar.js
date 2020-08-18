@@ -140,12 +140,9 @@ class Navbar extends Component {
                  <Link className="dropdown-item" to="/nodestatus">
                     Nodes
                   </Link>
-                  <Link className="dropdown-item" to="/ci-txns">
-                  Contract Internal Transactions
-                  </Link>
-                  <Link className="dropdown-item" to="/cv-txns">
+                  {/* <Link className="dropdown-item" to="/cv-txns">
                   Contract Verified Source Code
-                  </Link>
+                  </Link> */}
                   <Link className="dropdown-item" to="/top-statistics">
                   Top Statistics
                   </Link>

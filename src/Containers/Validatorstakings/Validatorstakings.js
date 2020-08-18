@@ -244,7 +244,7 @@ class Validatorstakings extends Component {
                                           ) : null}
                                         </td>
                                         <td>
-                                          {validator.delegatedStakes.map(
+                                          {validator.delegatedStakes?.map(
                                             (stakes, j) => (
                                               <span>
                                                 ({stakes.address.address} =>{' '}

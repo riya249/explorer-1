@@ -5,11 +5,57 @@ import Images from '../Images/Images';
 import { Col, Button, Container, Row } from 'react-bootstrap';
 import Header from '../../Components/Header/Header';
 import Navbar from '../../Components/Navbar/Navbar';
+import Apis from '../../lib/apis';
+import { toLocaleTimestamp } from '../../lib/parsers';
+import AddressLink from '../../Components/AddressLink/AddressLink';
 
 class ContractInternalTransactions extends Component {
+  blockNumber = '';
+
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      block: {
+        data: {},
+        isLoading: true
+      },
+      transactions: {
+        data: [],
+        isLoading: true
+      }
+    };
+
+    const {
+      match: { params },
+    } = this.props;
+    if (params?.blockNumber) this.blockNumber = params.blockNumber;
+
+  }
+
+  componentDidMount() {
+    if (this.blockNumber) {
+      this.fetchInternalTxns();
+    }
+  }
+
+  async fetchInternalTxns() {
+    let res = [];
+    try {
+      res = await Apis.fetchInternalTransactionsByBlock(this.blockNumber);
+    } catch (e) {
+      console.log(e);
+    } finally {
+      this.setState({
+        block: {
+          data: res?.block,
+          isLoading: false
+        },
+        transactions: {
+          data: res?.txns && Array.isArray(res.txns) ? res.txns : [],
+          isLoading: false,
+        },
+      });
+    }
   }
 
   render() {
@@ -17,7 +63,9 @@ class ContractInternalTransactions extends Component {
       <div className="node-status">
         <div className="booking-hero-bgd booking-hero-bgd-inner">
           <Navbar />
-          <h2 className="es-main-head es-main-head-inner">Contract Internal Transactions</h2>
+          <h2 className="es-main-head es-main-head-inner">
+            Contract Internal Transactions
+          </h2>
         </div>
         <Container>
           {/* <p className="trans-head">TimeAlly Explorer</p> */}
@@ -36,197 +84,74 @@ class ContractInternalTransactions extends Component {
                       <th>To</th>
                       <th>Value</th>
                     </tr>
-                    <tr>
-                      <td><b><span className="explr-purple-text">10612081</span></b></td>
-                      <td>33 secs ago</td>
-                      <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7</td>
-                      <td>call</td>
-                      <td>Uniswap V2: Router 2</td>
-                      <td>0x36560493644fbb</td>
-                      <td>1 ES</td>
-                    </tr>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7</td>
-                      <td>call</td>
-                      <td>0x36560493644fbb</td>
-                      <td>Uniswap V2: Router 2</td>
-                      <td>1 ES</td>
-                    </tr>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7</td>
-                      <td>call</td>
-                      <td>0x36560493644fbb</td>
-                      <td>Uniswap V2: Router 2</td>
-                      <td>1 ES</td>
-                    </tr>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7</td>
-                      <td>call</td>
-                      <td>0x36560493644fbb</td>
-                      <td>Uniswap V2: Router 2</td>
-                      <td>1 ES</td>
-                    </tr>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7</td>
-                      <td>call</td>
-                      <td>0x36560493644fbb</td>
-                      <td>Uniswap V2: Router 2</td>
-                      <td>1 ES</td>
-                    </tr>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7</td>
-                      <td>call</td>
-                      <td>0x36560493644fbb</td>
-                      <td>Uniswap V2: Router 2</td>
-                      <td>1 ES</td>
-                    </tr>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7</td>
-                      <td>call</td>
-                      <td>0x36560493644fbb</td>
-                      <td>Uniswap V2: Router 2</td>
-                      <td>1 ES</td>
-                    </tr>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7</td>
-                      <td>call</td>
-                      <td>0x36560493644fbb</td>
-                      <td>Uniswap V2: Router 2</td>
-                      <td>1 ES</td>
-                    </tr>
-
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7</td>
-                      <td>call</td>
-                      <td>0x36560493644fbb</td>
-                      <td>Uniswap V2: Router 2</td>
-                      <td>1 ES</td>
-                    </tr>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7</td>
-                      <td>call</td>
-                      <td>0x36560493644fbb</td>
-                      <td>Uniswap V2: Router 2</td>
-                      <td>1 ES</td>
-                    </tr>
-
-               
-                    <tr>
-                      <td><b><span className="explr-purple-text">10612080</span></b></td>
-                      <td>41 secs ago</td>
-                      <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7</td>
-                      <td>call</td>
-                      <td>Uniswap V2: Router 2</td>
-                      <td>0x36560493644fbb</td>
-                      <td>1 ES</td>
-                    </tr>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7</td>
-                      <td>call</td>
-                      <td>0x36560493644fbb</td>
-                      <td>Uniswap V2: Router 2</td>
-                      <td>1 ES</td>
-                    </tr>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7</td>
-                      <td>call</td>
-                      <td>0x36560493644fbb</td>
-                      <td>Uniswap V2: Router 2</td>
-                      <td>1 ES</td>
-                    </tr>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7</td>
-                      <td>call</td>
-                      <td>0x36560493644fbb</td>
-                      <td>Uniswap V2: Router 2</td>
-                      <td>1 ES</td>
-                    </tr>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7</td>
-                      <td>call</td>
-                      <td>0x36560493644fbb</td>
-                      <td>Uniswap V2: Router 2</td>
-                      <td>1 ES</td>
-                    </tr>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7</td>
-                      <td>call</td>
-                      <td>0x36560493644fbb</td>
-                      <td>Uniswap V2: Router 2</td>
-                      <td>1 ES</td>
-                    </tr>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7</td>
-                      <td>call</td>
-                      <td>0x36560493644fbb</td>
-                      <td>Uniswap V2: Router 2</td>
-                      <td>1 ES</td>
-                    </tr>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7</td>
-                      <td>call</td>
-                      <td>0x36560493644fbb</td>
-                      <td>Uniswap V2: Router 2</td>
-                      <td>1 ES</td>
-                    </tr>
-
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7</td>
-                      <td>call</td>
-                      <td>0x36560493644fbb</td>
-                      <td>Uniswap V2: Router 2</td>
-                      <td>1 ES</td>
-                    </tr>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7</td>
-                      <td>call</td>
-                      <td>0x36560493644fbb</td>
-                      <td>Uniswap V2: Router 2</td>
-                      <td>1 ES</td>
-                    </tr>
-                   
-                    
-
+                    {this.state.transactions.isLoading ? (
+                      <tr>
+                        <td colSpan="7">Loading...</td>
+                      </tr>
+                    ) : this.state.transactions.data?.length ? (
+                      this.state.transactions.data?.map((txn, i) => (
+                        <tr>
+                          <td>
+                            {i === 0 && (
+                              <b>
+                                <span className="explr-purple-text">
+                                  {this.blockNumber && (
+                                    <AddressLink
+                                      value={this.blockNumber}
+                                      type="block"
+                                    />
+                                  )}
+                                </span>
+                              </b>
+                            )}
+                          </td>
+                          <td>
+                            {(
+                              this.state.block?.data?.timestamp &&
+                              toLocaleTimestamp(
+                                this.state.block?.data?.timestamp
+                              )
+                            ).format('hh:mm A DD/MM/YYYY') || '-'}
+                          </td>
+                          <td>
+                            {txn.parentTxn?.txn_hash && (
+                              <AddressLink
+                                value={txn.parentTxn?.txn_hash}
+                                type="tx"
+                              />
+                            )}
+                          </td>
+                          <td>{txn.tx_type || '-'}</td>
+                          <td>
+                            {txn.fromAddress?.address && (
+                              <AddressLink
+                                value={txn.fromAddress?.address}
+                                type="address"
+                              />
+                            )}
+                          </td>
+                          <td>
+                            {txn.toAddress?.address && (
+                              <AddressLink
+                                value={txn.toAddress?.address}
+                                type="address"
+                              />
+                            )}
+                          </td>
+                          <td>
+                            {txn.value !== null ? txn.value + ' ES' : '-'}
+                          </td>
+                        </tr>
+                      ))
+                    ) : (
+                      <tr>
+                        <td colSpan="7">No Transactions</td>
+                      </tr>
+                    )}
                   </table>
                 </div>
               </div>
-              <div className="cus-pagination row">
+              {/* <div className="cus-pagination row">
                 <div className="col-md-12 text-right">
                   <button type="button" className="btn mr10 mt10">
                     Back
@@ -235,7 +160,7 @@ class ContractInternalTransactions extends Component {
                     Next
                   </button>
                 </div>
-              </div>
+              </div> */}
             </Col>
           </Row>
         </Container>

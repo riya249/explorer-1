@@ -68,7 +68,7 @@ class Transaction extends Component {
   }
 
   openSnackBar(message) {
-    this.snackbarRef.current.openSnackBar(message);
+    // this.snackbarRef.current.openSnackBar(message);
   }
 
   render() {

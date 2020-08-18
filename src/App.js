@@ -66,7 +66,7 @@ function App() {
           <Route exact path="/timeally-goals" component={TimeAllySuperGoalCalculator} />
           <Route exact path="/es-calci" component={PersonalEraSwapTellerCalculator} />
           <Route exact path="/timeally-Incentive" component={TimeallyClubIncentiveCalculator} />
-          <Route exact path="/ci-txns" component={ContractInternalTransactions} />
+          <Route exact path="/ci-txns/:blockNumber" component={ContractInternalTransactions} />
           <Route exact path="/cv-txns" component={ContractsWithVerifiedSourceCodes} />
           <Route exact path="/top-statistics" component={TopStatistics} />
           <Route exact path="/top-accounts" component={TopAccountsbyEsBalance} />
