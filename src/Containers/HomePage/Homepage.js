@@ -137,13 +137,16 @@ class Homepage extends Component {
         const res = await Apis.fetchValidatorsWithLastBlock(month);
         console.log('Validators res', res);
         if (res && Array.isArray(res)) {
-          const data = res.sort((a, b) => (a.amount > b.amount ? 1 : -1));
+          let data = res;
           data.forEach((validator,i) => {
             this.cummulativeStakes =
             Number(this.cummulativeStakes) +
             Number(formatEther(validator.amount));
             data[i].cummulativeStakes = this.cummulativeStakes;
+            data[i].amount = Number(formatEther(validator.amount));
           })
+          console.log({data});
+          data = data.sort((a, b) => (a.amount > b.amount ? -1 : 1));
 
           this.setState({
             validators: {
@@ -871,8 +874,8 @@ class Homepage extends Component {
                                 />{' '}
                               </td>
                               <td>
-                                <div>{formatEther(validator.amount)}</div>
-                                <div>10.3%</div>
+                                <div>{validator.amount}</div>
+                                <div>{((validator.amount/this.cummulativeStakes)*100).toFixed(2)} %</div>
                               </td>
                               <td>{validator.cummulativeStakes}</td>
                               <td>{validator.per_thousand_commission / 10}</td>
