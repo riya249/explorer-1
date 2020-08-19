@@ -64,22 +64,24 @@ class InternalTransactions extends Component {
   }
 
   openSnackBar = (message) => {
-    console.log('e',message)
+    console.log('e', message);
     // this.snackbarRef.current.openSnackBar(message);
-  }
+  };
 
   render() {
     return (
       <div className="blocks-table">
         <div className="booking-hero-bgd booking-hero-bgd-inner ">
           <Navbar />
-          <h2 className="es-main-head es-main-head-inner">Internal Transactions</h2>
+          <h2 className="es-main-head es-main-head-inner">
+            Internal Transactions
+          </h2>
         </div>
         <Container>
           {this.parentHash && (
             <span>
               <br></br>
-              Showing internal transactions of Transaction {' '}
+              Showing internal transactions of Transaction{' '}
               <AddressLink
                 value={this.parentHash}
                 type="block"
@@ -113,8 +115,18 @@ class InternalTransactions extends Component {
                           return (
                             <tr key={i + 1}>
                               <td>{transaction.tx_internal_index}</td>
-                              <td><AddressLink value={transaction.fromAddress.address} type="address"/></td>
-                              <td><AddressLink value={transaction.toAddress.address} type="address"/></td>
+                              <td>
+                                <AddressLink
+                                  value={transaction.fromAddress.address}
+                                  type="address"
+                                />
+                              </td>
+                              <td>
+                                <AddressLink
+                                  value={transaction.toAddress.address}
+                                  type="address"
+                                />
+                              </td>
                               <td>{transaction.gas_used}</td>
                               <td>{transaction.gas}</td>
                               <td>{transaction.value}</td>

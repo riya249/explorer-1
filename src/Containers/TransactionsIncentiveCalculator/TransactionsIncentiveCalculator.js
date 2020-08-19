@@ -30,40 +30,49 @@ class TransactionsIncentiveCalculator extends Component {
       volume: '',
       additionalIncentive: '',
       displayValues: '',
-
     };
 
     this.openSnackBar = this.openSnackBar.bind(this);
   }
 
-  componentDidMount() {
-
-  }
-
+  componentDidMount() {}
 
   calculateValues = () => {
-    function txnincentive(dayswapperstree, transdirect, transindirect, volume, additionalIncentive) {
-      var timeAllyClub = transdirect * volume * ((additionalIncentive / 100) + 0.01) * 0.2;
-      var dayswapperTreeReward = (transdirect + transindirect) * volume * ((additionalIncentive / 100) + 0.01) * 0.2 * dayswapperstree;
+    function txnincentive(
+      dayswapperstree,
+      transdirect,
+      transindirect,
+      volume,
+      additionalIncentive
+    ) {
+      var timeAllyClub =
+        transdirect * volume * (additionalIncentive / 100 + 0.01) * 0.2;
+      var dayswapperTreeReward =
+        (transdirect + transindirect) *
+        volume *
+        (additionalIncentive / 100 + 0.01) *
+        0.2 *
+        dayswapperstree;
       var burning = timeAllyClub / 2;
       var charity = timeAllyClub / 2;
       return {
         burning,
         charity,
         dayswapperTreeReward,
-        timeAllyClub
-      }
+        timeAllyClub,
+      };
     }
-    const displayValues = txnincentive(Number(this.state.dayswapperstreeInput) / 100,
-      Number(this.state.transdirect), Number(this.state.transindirect), Number(this.state.volume), Number(this.state.additionalIncentive));
+    const displayValues = txnincentive(
+      Number(this.state.dayswapperstreeInput) / 100,
+      Number(this.state.transdirect),
+      Number(this.state.transindirect),
+      Number(this.state.volume),
+      Number(this.state.additionalIncentive)
+    );
     this.setState({
       displayValues,
-    })
-
-  }
-
-
-
+    });
+  };
 
   openSnackBar(message) {
     // this.snackbarRef.current.openSnackBar(message);
@@ -74,12 +83,13 @@ class TransactionsIncentiveCalculator extends Component {
       <div className="nrt-manager">
         <div className="booking-hero-bgd booking-hero-bgd-inner">
           <Navbar />
-          <h2 className="es-main-head es-main-head-inner">Transactions Charge Incentive Calculator</h2>
+          <h2 className="es-main-head es-main-head-inner">
+            Transactions Charge Incentive Calculator
+          </h2>
         </div>
         <div className="container">
           <div className="BlockPage-detail">
             <Container>
-
               <Row className="mt40 eraswapcal cal-com-page eraswapcal-tab">
                 <Col lg={12}>
                   <div class="card">
@@ -88,7 +98,10 @@ class TransactionsIncentiveCalculator extends Component {
                         <div className="col-lg-12">
                           <div class="form-row">
                             <div class="col-md-12 col-lg-12 form-group">
-                              <label for="">Expected Avg % Earning from Indirect TeamMembers as per Day Swappers Tree</label>
+                              <label for="">
+                                Expected Avg % Earning from Indirect TeamMembers
+                                as per Day Swappers Tree
+                              </label>
                               <Form.Control
                                 onChange={(event) =>
                                   this.setState({
@@ -99,12 +112,15 @@ class TransactionsIncentiveCalculator extends Component {
                                 type="text"
                                 placeholder=""
                                 autoComplete="off"
-                                isInvalid={isNaN(Number(this.state.dayswapperstreeInput))}
+                                isInvalid={isNaN(
+                                  Number(this.state.dayswapperstreeInput)
+                                )}
                               />
-
                             </div>
                             <div class="col-md-4 col-lg-4 form-group">
-                              <label for="">No. of Transactions by Directs </label>
+                              <label for="">
+                                No. of Transactions by Directs{' '}
+                              </label>
                               <Form.Control
                                 onChange={(event) =>
                                   this.setState({
@@ -115,12 +131,15 @@ class TransactionsIncentiveCalculator extends Component {
                                 type="text"
                                 placeholder=""
                                 autoComplete="off"
-                                isInvalid={isNaN(Number(this.state.transdirect))}
+                                isInvalid={isNaN(
+                                  Number(this.state.transdirect)
+                                )}
                               />
-
                             </div>
                             <div class="col-md-4 col-lg-4 form-group">
-                              <label for="">No. of Transactions by Indirects </label>
+                              <label for="">
+                                No. of Transactions by Indirects{' '}
+                              </label>
                               <Form.Control
                                 onChange={(event) =>
                                   this.setState({
@@ -131,7 +150,9 @@ class TransactionsIncentiveCalculator extends Component {
                                 type="text"
                                 placeholder=""
                                 autoComplete="off"
-                                isInvalid={isNaN(Number(this.state.transindirect))}
+                                isInvalid={isNaN(
+                                  Number(this.state.transindirect)
+                                )}
                               />
                             </div>
                             <div class="col-md-4 col-lg-4 form-group">
@@ -148,10 +169,11 @@ class TransactionsIncentiveCalculator extends Component {
                                 autoComplete="off"
                                 isInvalid={isNaN(Number(this.state.volume))}
                               />
-
                             </div>
                             <div class="col-md-4 col-lg-4 form-group">
-                              <label for="">Additional Incentive by seller</label>
+                              <label for="">
+                                Additional Incentive by seller
+                              </label>
                               <Form.Control
                                 onChange={(event) =>
                                   this.setState({
@@ -162,14 +184,13 @@ class TransactionsIncentiveCalculator extends Component {
                                 type="text"
                                 placeholder=""
                                 autoComplete="off"
-                                isInvalid={isNaN(Number(this.state.additionalIncentive))}
+                                isInvalid={isNaN(
+                                  Number(this.state.additionalIncentive)
+                                )}
                               />
                             </div>
-
                           </div>
                         </div>
-
-
                       </div>
                       <div className="row">
                         <div className="col-lg-6"></div>
@@ -180,7 +201,9 @@ class TransactionsIncentiveCalculator extends Component {
                             data-toggle="modal"
                             data-target="#nrtunsucessful"
                             onClick={this.calculateValues}
-                          >Calculate</a>
+                          >
+                            Calculate
+                          </a>
                         </div>
                       </div>
                     </div>
@@ -189,7 +212,7 @@ class TransactionsIncentiveCalculator extends Component {
               </Row>
 
               <div className="mt30 eraswapcal-tab row">
-                <div className="col-lg-12" >
+                <div className="col-lg-12">
                   <div className="card">
                     <div className="border-era">RESULTS</div>
                     <table className="es-transaction striped bordered hover">
@@ -206,8 +229,12 @@ class TransactionsIncentiveCalculator extends Component {
                         </tr>
                         <tr>
                           <td>DaySwappers Tree Incentive</td>
-                          <td>{this.state.displayValues.dayswapperTreeReward}</td>
-                          <td>{this.state.displayValues.dayswapperTreeReward}</td>
+                          <td>
+                            {this.state.displayValues.dayswapperTreeReward}
+                          </td>
+                          <td>
+                            {this.state.displayValues.dayswapperTreeReward}
+                          </td>
                         </tr>
                         <tr>
                           <td>Burning</td>
@@ -219,18 +246,11 @@ class TransactionsIncentiveCalculator extends Component {
                           <td></td>
                           <td>{this.state.displayValues.charity}</td>
                         </tr>
-
                       </thead>
                     </table>
                   </div>
                 </div>
-
-
               </div>
-
-
-
-
             </Container>
           </div>
         </div>

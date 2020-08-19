@@ -7,7 +7,7 @@ import Header from '../../Components/Header/Header';
 import Navbar from '../../Components/Navbar/Navbar';
 import { ethers } from 'ethers';
 import Apis from '../../lib/apis';
-import { toLocaleTimestamp,formatEther } from '../../lib/parsers';
+import { toLocaleTimestamp, formatEther } from '../../lib/parsers';
 import AddressLink from '../../Components/AddressLink/AddressLink';
 
 class Nodestatus extends Component {
@@ -19,51 +19,50 @@ class Nodestatus extends Component {
     this.state = {
       nodes: {
         data: [],
-        isLoading: true
-      }
+        isLoading: true,
+      },
     };
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.fetchNodes();
   }
 
-  async fetchNodes(){
+  async fetchNodes() {
     let res = [];
-    try{
+    try {
       res = await Apis.fetchNodes();
-      console.log('res',res)
-    }catch(e){
+      console.log('res', res);
+    } catch (e) {
       console.log(e);
     } finally {
       this.setState({
         nodes: {
           data: Array.isArray(res) ? res : [],
-          isLoading: false
-        }
+          isLoading: false,
+        },
       });
     }
-    
   }
 
-  extractIp(url){
-    try{
+  extractIp(url) {
+    try {
       url = new URL(url);
-      return /*url.protocol + '//' +*/ url.hostname;  
-    }catch(e){
+      return /*url.protocol + '//' +*/ url.hostname;
+    } catch (e) {
       console.error(e);
       return '';
-    } 
+    }
   }
 
-  extractPort(url){
-    try{
+  extractPort(url) {
+    try {
       url = new URL(url);
-      return url.port;  
-    }catch(e){
+      return url.port;
+    } catch (e) {
       console.error(e);
       return '';
-    } 
+    }
   }
 
   render() {
@@ -89,28 +88,39 @@ class Nodestatus extends Component {
                       <th>OS</th>
                       <th>Stakes</th>
                     </tr>
-                    {
-                      this.state.nodes.isLoading ? 
+                    {this.state.nodes.isLoading ? (
                       <tr>
                         <td colSpan="6">Loading...</td>
                       </tr>
-                      :
-                      this.state.nodes.data?.length ?
-                      this.state.nodes.data.map(node => 
-                      <tr>
-                        <th><AddressLink value={node.address.address} type="address"/></th>
-                        <th>{toLocaleTimestamp(node.lastTimeStamp).format('hh:mm DD/MM/YYYY')}</th>
-                        <th>{this.extractIp(node.nodeIp)}</th>
-                        <th>{this.extractPort(node.nodeIp)}</th>
-                        <th>{node.os || 'Linux'}</th>
-                        <th>{node?.stakes?.amount ? formatEther(node.stakes?.amount)+' ES' : '-'}</th>
-                      </tr>
-                      )
-                      :
+                    ) : this.state.nodes.data?.length ? (
+                      this.state.nodes.data.map((node) => (
+                        <tr>
+                          <th>
+                            <AddressLink
+                              value={node.address.address}
+                              type="address"
+                            />
+                          </th>
+                          <th>
+                            {toLocaleTimestamp(node.lastTimeStamp).format(
+                              'hh:mm DD/MM/YYYY'
+                            )}
+                          </th>
+                          <th>{this.extractIp(node.nodeIp)}</th>
+                          <th>{this.extractPort(node.nodeIp)}</th>
+                          <th>{node.os || 'Linux'}</th>
+                          <th>
+                            {node?.stakes?.amount
+                              ? formatEther(node.stakes?.amount) + ' ES'
+                              : '-'}
+                          </th>
+                        </tr>
+                      ))
+                    ) : (
                       <tr>
                         <td colSpan="6">No Nodes</td>
                       </tr>
-                    }
+                    )}
                   </table>
                 </div>
               </div>

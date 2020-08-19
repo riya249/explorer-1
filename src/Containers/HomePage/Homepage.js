@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
-import { Col, Button, Container, Row, Tooltip, ProgressBar } from 'react-bootstrap';
+import {
+  Col,
+  Button,
+  Container,
+  Row,
+  Tooltip,
+  ProgressBar,
+} from 'react-bootstrap';
 import * as moment from 'moment';
 import './Homepage.css';
 import Images from '../Images/Images';
@@ -108,11 +115,10 @@ class Homepage extends Component {
       const totalMiliSecInMonth = 2628000000;
       const timePassed = totalMiliSecInMonth - timeRemaining;
       const timePassedPercent = (timePassed / totalMiliSecInMonth) * 100;
-      
+
       this.setState({
-        nrtCompletedPercent: timePassedPercent
-      })
-  
+        nrtCompletedPercent: timePassedPercent,
+      });
     }, 1000);
   }
 
@@ -138,14 +144,14 @@ class Homepage extends Component {
         console.log('Validators res', res);
         if (res && Array.isArray(res)) {
           let data = res;
-          data.forEach((validator,i) => {
+          data.forEach((validator, i) => {
             this.cummulativeStakes =
-            Number(this.cummulativeStakes) +
-            Number(formatEther(validator.amount));
+              Number(this.cummulativeStakes) +
+              Number(formatEther(validator.amount));
             data[i].cummulativeStakes = this.cummulativeStakes;
             data[i].amount = Number(formatEther(validator.amount));
-          })
-          console.log({data});
+          });
+          console.log({ data });
           data = data.sort((a, b) => (a.amount > b.amount ? -1 : 1));
 
           this.setState({
@@ -875,7 +881,14 @@ class Homepage extends Component {
                               </td>
                               <td>
                                 <div>{validator.amount}</div>
-                                <div>{((validator.amount/this.cummulativeStakes)*100).toFixed(2)} %</div>
+                                <div>
+                                  {(
+                                    (validator.amount /
+                                      this.cummulativeStakes) *
+                                    100
+                                  ).toFixed(2)}{' '}
+                                  %
+                                </div>
                               </td>
                               <td>{validator.cummulativeStakes}</td>
                               <td>{validator.per_thousand_commission / 10}</td>

@@ -4,7 +4,7 @@ module.exports = {
   nrtAddress:
     process.env.REACT_APP_NRT_ADDRESS ||
     '0xd434fCAb3aBd4C91DE8564191c3b2DCDcdD33E37',
-  timeAllyAddress: 
+  timeAllyAddress:
     process.env.REACT_APP_TIMEALLY_ADDRESS ||
     '0x21E8E3fB904d414047C9ED7Df5F67Bf0EeCCE7D3',
   validatorsStakesAddress:

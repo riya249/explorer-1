@@ -41,12 +41,12 @@ class BlockPage extends Component {
       this.props.match.params.blockNumber !== prevProps.match.params.blockNumber
     ) {
       this.setState(
-        { 
+        {
           blockNumber: this.props.match.params.blockNumber,
           block: {
             data: {},
-            isLoading: true
-          }
+            isLoading: true,
+          },
         },
         this.fetchBlock
       );

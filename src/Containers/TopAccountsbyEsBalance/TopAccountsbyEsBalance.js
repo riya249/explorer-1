@@ -15,8 +15,8 @@ class TopAccountsbyEsBalance extends Component {
     this.state = {
       accounts: {
         data: [],
-        isLoading: true
-      }
+        isLoading: true,
+      },
     };
   }
 
@@ -35,9 +35,9 @@ class TopAccountsbyEsBalance extends Component {
       this.setState({
         accounts: {
           data: res && Array.isArray(res) ? res : [],
-          isLoading: false
-        }
-      })
+          isLoading: false,
+        },
+      });
     }
   }
 
@@ -75,7 +75,12 @@ class TopAccountsbyEsBalance extends Component {
                       this.state.accounts.data?.map((account, i) => (
                         <tr>
                           <td>{i + 1}</td>
-                          <td><AddressLink value={account.address} type="address"/></td>
+                          <td>
+                            <AddressLink
+                              value={account.address}
+                              type="address"
+                            />
+                          </td>
                           <td>{account.label || '-'}</td>
                           <td>
                             <span className="">

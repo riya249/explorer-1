@@ -41,7 +41,11 @@ class Nodes extends Component {
                       <td>35.187.226.64</td>
                       <td>30303</td>
                       <td>X86_64-linux-gnu</td>
-                      <td><p className="">3,875,156.<span>77305048</span> ES</p></td>
+                      <td>
+                        <p className="">
+                          3,875,156.<span>77305048</span> ES
+                        </p>
+                      </td>
                     </tr>
                     <tr>
                       <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7</td>
@@ -49,7 +53,11 @@ class Nodes extends Component {
                       <td>35.187.226.64</td>
                       <td>30303</td>
                       <td>X86_64-linux-gnu</td>
-                      <td><p className="">3,875,156.<span>77305048</span> ES</p></td>
+                      <td>
+                        <p className="">
+                          3,875,156.<span>77305048</span> ES
+                        </p>
+                      </td>
                     </tr>
                     <tr>
                       <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7</td>
@@ -57,7 +65,11 @@ class Nodes extends Component {
                       <td>35.187.226.64</td>
                       <td>30303</td>
                       <td>X86_64-linux-gnu</td>
-                      <td><p className="">3,875,156.<span>77305048</span> ES</p></td>
+                      <td>
+                        <p className="">
+                          3,875,156.<span>77305048</span> ES
+                        </p>
+                      </td>
                     </tr>
                     <tr>
                       <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7</td>
@@ -65,7 +77,11 @@ class Nodes extends Component {
                       <td>35.187.226.64</td>
                       <td>30303</td>
                       <td>X86_64-linux-gnu</td>
-                      <td><p className="">3,875,156.<span>77305048</span> ES</p></td>
+                      <td>
+                        <p className="">
+                          3,875,156.<span>77305048</span> ES
+                        </p>
+                      </td>
                     </tr>
                     <tr>
                       <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7</td>
@@ -73,7 +89,11 @@ class Nodes extends Component {
                       <td>35.187.226.64</td>
                       <td>30303</td>
                       <td>X86_64-linux-gnu</td>
-                      <td><p className="">3,875,156.<span>77305048</span> ES</p></td>
+                      <td>
+                        <p className="">
+                          3,875,156.<span>77305048</span> ES
+                        </p>
+                      </td>
                     </tr>
                     <tr>
                       <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7</td>
@@ -81,7 +101,11 @@ class Nodes extends Component {
                       <td>35.187.226.64</td>
                       <td>30303</td>
                       <td>X86_64-linux-gnu</td>
-                      <td><p className="">3,875,156.<span>77305048</span> ES</p></td>
+                      <td>
+                        <p className="">
+                          3,875,156.<span>77305048</span> ES
+                        </p>
+                      </td>
                     </tr>
                     <tr>
                       <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7</td>
@@ -89,7 +113,11 @@ class Nodes extends Component {
                       <td>35.187.226.64</td>
                       <td>30303</td>
                       <td>X86_64-linux-gnu</td>
-                      <td><p className="">3,875,156.<span>77305048</span> ES</p></td>
+                      <td>
+                        <p className="">
+                          3,875,156.<span>77305048</span> ES
+                        </p>
+                      </td>
                     </tr>
                     <tr>
                       <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7</td>
@@ -97,7 +125,11 @@ class Nodes extends Component {
                       <td>35.187.226.64</td>
                       <td>30303</td>
                       <td>X86_64-linux-gnu</td>
-                      <td><p className="">3,875,156.<span>77305048</span> ES</p></td>
+                      <td>
+                        <p className="">
+                          3,875,156.<span>77305048</span> ES
+                        </p>
+                      </td>
                     </tr>
                     <tr>
                       <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7</td>
@@ -105,7 +137,11 @@ class Nodes extends Component {
                       <td>35.187.226.64</td>
                       <td>30303</td>
                       <td>X86_64-linux-gnu</td>
-                      <td><p className="">3,875,156.<span>77305048</span> ES</p></td>
+                      <td>
+                        <p className="">
+                          3,875,156.<span>77305048</span> ES
+                        </p>
+                      </td>
                     </tr>
                     <tr>
                       <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7</td>
@@ -113,7 +149,11 @@ class Nodes extends Component {
                       <td>35.187.226.64</td>
                       <td>30303</td>
                       <td>X86_64-linux-gnu</td>
-                      <td><p className="">3,875,156.<span>77305048</span> ES</p></td>
+                      <td>
+                        <p className="">
+                          3,875,156.<span>77305048</span> ES
+                        </p>
+                      </td>
                     </tr>
                     <tr>
                       <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7</td>
@@ -121,7 +161,11 @@ class Nodes extends Component {
                       <td>35.187.226.64</td>
                       <td>30303</td>
                       <td>X86_64-linux-gnu</td>
-                      <td><p className="">3,875,156.<span>77305048</span> ES</p></td>
+                      <td>
+                        <p className="">
+                          3,875,156.<span>77305048</span> ES
+                        </p>
+                      </td>
                     </tr>
                     <tr>
                       <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7</td>
@@ -129,7 +173,11 @@ class Nodes extends Component {
                       <td>35.187.226.64</td>
                       <td>30303</td>
                       <td>X86_64-linux-gnu</td>
-                      <td><p className="">3,875,156.<span>77305048</span> ES</p></td>
+                      <td>
+                        <p className="">
+                          3,875,156.<span>77305048</span> ES
+                        </p>
+                      </td>
                     </tr>
                     <tr>
                       <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7</td>
@@ -137,9 +185,12 @@ class Nodes extends Component {
                       <td>35.187.226.64</td>
                       <td>30303</td>
                       <td>X86_64-linux-gnu</td>
-                      <td><p className="">3,875,156.<span>77305048</span> ES</p></td>
+                      <td>
+                        <p className="">
+                          3,875,156.<span>77305048</span> ES
+                        </p>
+                      </td>
                     </tr>
-
                   </table>
                 </div>
               </div>

@@ -53,7 +53,11 @@ function App() {
           <Route exact path="/block/:blockNumber" component={BlockPage} />
           <Route exact path="/txns" component={Transactions} />
           <Route exact path="/txns/:blockNumber" component={Transactions} />
-          <Route exact path="/txnsInternal/:parentHash" component={InternalTransactions} />
+          <Route
+            exact
+            path="/txnsInternal/:parentHash"
+            component={InternalTransactions}
+          />
           <Route exact path="/txn/:hash" component={Transaction} />
           <Route exact path="/explore" component={TimeallyExplorer} />
           <Route exact path="/dashboard" component={Dashboard} />
@@ -62,14 +66,42 @@ function App() {
           <Route exact path="/nodestatus" component={Nodestatus} />
           <Route exact path="/layerbridge" component={Layerbridge} />
           <Route exact path="/kyc-calci" component={KycIncentiveCalculator} />
-          <Route exact path="/txns-calci" component={TransactionsIncentiveCalculator} />
-          <Route exact path="/timeally-goals" component={TimeAllySuperGoalCalculator} />
-          <Route exact path="/es-calci" component={PersonalEraSwapTellerCalculator} />
-          <Route exact path="/timeally-Incentive" component={TimeallyClubIncentiveCalculator} />
-          <Route exact path="/ci-txns/:blockNumber" component={ContractInternalTransactions} />
-          <Route exact path="/cv-txns" component={ContractsWithVerifiedSourceCodes} />
+          <Route
+            exact
+            path="/txns-calci"
+            component={TransactionsIncentiveCalculator}
+          />
+          <Route
+            exact
+            path="/timeally-goals"
+            component={TimeAllySuperGoalCalculator}
+          />
+          <Route
+            exact
+            path="/es-calci"
+            component={PersonalEraSwapTellerCalculator}
+          />
+          <Route
+            exact
+            path="/timeally-Incentive"
+            component={TimeallyClubIncentiveCalculator}
+          />
+          <Route
+            exact
+            path="/ci-txns/:blockNumber"
+            component={ContractInternalTransactions}
+          />
+          <Route
+            exact
+            path="/cv-txns"
+            component={ContractsWithVerifiedSourceCodes}
+          />
           <Route exact path="/top-statistics" component={TopStatistics} />
-          <Route exact path="/top-accounts" component={TopAccountsbyEsBalance} />
+          <Route
+            exact
+            path="/top-accounts"
+            component={TopAccountsbyEsBalance}
+          />
           <Route exact path="/nodes" component={Nodes} />
           <Route
             exact

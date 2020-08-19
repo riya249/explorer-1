@@ -17,19 +17,18 @@ class ContractInternalTransactions extends Component {
     this.state = {
       block: {
         data: {},
-        isLoading: true
+        isLoading: true,
       },
       transactions: {
         data: [],
-        isLoading: true
-      }
+        isLoading: true,
+      },
     };
 
     const {
       match: { params },
     } = this.props;
     if (params?.blockNumber) this.blockNumber = params.blockNumber;
-
   }
 
   componentDidMount() {
@@ -48,7 +47,7 @@ class ContractInternalTransactions extends Component {
       this.setState({
         block: {
           data: res?.block,
-          isLoading: false
+          isLoading: false,
         },
         transactions: {
           data: res?.txns && Array.isArray(res.txns) ? res.txns : [],

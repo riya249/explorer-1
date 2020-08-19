@@ -211,18 +211,18 @@ class Transaction extends Component {
                             <tr>
                               <td>Internal Transactions:</td>
                               <td>
-                                <Link 
-                                to={{
-                                  pathname: '/txnsInternal/'+this.state.hash,
-                                  state: { parentHash: this.state.hash },
-                                }}
+                                <Link
+                                  to={{
+                                    pathname:
+                                      '/txnsInternal/' + this.state.hash,
+                                    state: { parentHash: this.state.hash },
+                                  }}
                                 >
-                                <span className="tr-color-txt">
-                                  {this.state.transaction.data
-                                    .internalTxnsCount || 0}
-                                </span>
-                                </Link>
-                                {' '}
+                                  <span className="tr-color-txt">
+                                    {this.state.transaction.data
+                                      .internalTxnsCount || 0}
+                                  </span>
+                                </Link>{' '}
                                 contract internal transactions in this
                                 transaction
                               </td>
