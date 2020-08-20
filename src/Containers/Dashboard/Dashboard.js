@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Dashboard.css';
 import { Link } from 'react-router-dom';
+import { ethers } from 'ethers';
 import Images from '../Images/Images';
 import Navbar from '../../Components/Navbar/Navbar';
 import { Col, Button, Container, Row, Tooltip } from 'react-bootstrap';
@@ -8,12 +9,12 @@ import Header from '../../Components/Header/Header';
 import Responsive from '../../Responsive/Responsive.css';
 import Card from 'react-bootstrap/Card';
 import Apis from '../../lib/apis';
-import { moreDecimals, lessDecimals } from '../../lib/parsers';
+import { moreDecimals, lessDecimals,formatEther } from '../../lib/parsers';
 import {
   PieChart,
   Pie,
   Cell,
-  BarChart,
+  BarChart, 
   CartesianGrid,
   XAxis,
   YAxis,
@@ -21,7 +22,14 @@ import {
   Bar,
 } from 'recharts';
 
+import { timeAllyManager } from '../../ethereum/TimeallyManager';
+import { nrtManager } from '../../ethereum/NrtManager';
+import { nrtAddress } from '../../config/config';
+import { providerESN } from '../../ethereum/Provider';
+
 const COLORS = ['#959595', '#747FEB'];
+
+const nrtManagerInst = nrtManager();
 
 class Dashboard extends Component {
   esPrice = null;
@@ -214,47 +222,145 @@ class Dashboard extends Component {
   }
 
   componentDidMount() {
-    this.etherPriceUsd();
-    this.bitcoinCrowdFundPrice();
-    this.ltcPriceUsd();
-    this.getESPrice();
-    this.esTotalSupply();
-    this.holdersOfEraSwap();
-    this.luckPoolBal();
-    this.burnTokenBal();
-    this.totalTokensBurned();
-    this.nrtFractions();
-    this.getNumberOfStakings();
-    this.getStakingPlanStatistics();
-    this.getPlatformDetailsAllTime();
-    this.getNumberOfBets();
-    this.getBettingDetails();
-    this.powerTokenDetails();
-    this.getTotalReward();
-    this.transactionSplits();
-    this.dayswappersOverview();
-    this.totalNoOfUser();
-    this.totalNoOfFreelancerOrSeller();
-    this.totalViewsOnProfile();
-    this.totalNoOfVerifiedUser();
-    this.totalNoOfCertifiedUser();
-    this.totalNoOfDeposit();
-    this.totalNoOfWithdraw();
-    this.totalJobsPosted();
-    this.totalJobsDone();
-    this.TfcGenerated();
-    this.swapperswalletTotalFeeds();
-    this.swapperswallTopTenreceivers();
-    this.userscount();
-    this.courses();
-    this.deposits();
-    this.userstudying();
-    this.buzcafeUserscount();
-    this.buzcafeDepositscount();
-    this.buzcafeShopscount();
-    this.buzcafeWithdrawalscount();
-    this.buzcafeTransactionscount();
+    this.etherPriceUsd().catch(e => console.log(e)); 
+    this.bitcoinCrowdFundPrice().catch(e => console.log(e)); 
+    this.ltcPriceUsd().catch(e => console.log(e)); 
+    this.getESPrice().catch(e => console.log(e)); 
+    this.esTotalSupply().catch(e => console.log(e)); 
+    this.holdersOfEraSwap().catch(e => console.log(e)); 
+    // this.luckPoolBal().catch(e => console.log(e)); 
+    // this.burnTokenBal().catch(e => console.log(e)); 
+    // this.totalTokensBurned().catch(e => console.log(e)); 
+    this.nrtFractions().catch(e => console.log(e)); 
+    this.getNumberOfStakings().catch(e => console.log(e)); 
+    this.getStakingPlanStatistics().catch(e => console.log(e)); 
+    // this.getPlatformDetailsAllTime().catch(e => console.log(e)); 
+    this.getNumberOfBets().catch(e => console.log(e)); 
+    this.getBettingDetails().catch(e => console.log(e)); 
+    this.powerTokenDetails().catch(e => console.log(e)); 
+    // this.getTotalReward().catch(e => console.log(e)); 
+    this.transactionSplits().catch(e => console.log(e)); 
+    // this.dayswappersOverview().catch(e => console.log(e)); 
+    this.totalNoOfUser().catch(e => console.log(e)); 
+    this.totalNoOfFreelancerOrSeller().catch(e => console.log(e)); 
+    this.totalViewsOnProfile().catch(e => console.log(e)); 
+    this.totalNoOfVerifiedUser().catch(e => console.log(e)); 
+    this.totalNoOfCertifiedUser().catch(e => console.log(e)); 
+    this.totalNoOfDeposit().catch(e => console.log(e)); 
+    this.totalNoOfWithdraw().catch(e => console.log(e)); 
+    this.totalJobsPosted().catch(e => console.log(e)); 
+    this.totalJobsDone().catch(e => console.log(e)); 
+    this.TfcGenerated().catch(e => console.log(e)); 
+    this.swapperswalletTotalFeeds().catch(e => console.log(e)); 
+    this.swapperswallTopTenreceivers().catch(e => console.log(e)); 
+    this.userscount().catch(e => console.log(e)); 
+    this.courses().catch(e => console.log(e)); 
+    this.deposits().catch(e => console.log(e)); 
+    this.userstudying().catch(e => console.log(e)); 
+    this.buzcafeUserscount().catch(e => console.log(e)); 
+    this.buzcafeDepositscount().catch(e => console.log(e)); 
+    this.buzcafeShopscount().catch(e => console.log(e)); 
+    this.buzcafeWithdrawalscount().catch(e => console.log(e)); 
+    this.buzcafeTransactionscount().catch(e => console.log(e)); 
     this.nrtTicker();
+    this.fetchTotalStakedES().catch(e => console.log(e)); 
+    this.fetchTotalSupply().catch(e => console.log(e)); 
+    this.fetchESFromNRT().catch(e => console.log(e)); 
+    this.fetchTotalESBurned().catch(e => console.log(e)); 
+    this.fetchBurnPool().catch(e => console.log(e)); 
+    this.fetchLuckPool().catch(e => console.log(e)); 
+  }
+
+  async fetchLuckPool(){
+    const luckBal = await nrtManagerInst.luckPoolBalance();
+    this.setState({
+      eraswap: {
+        data: {
+          ...this.state.eraswap.data,
+          luckPoolNrt: formatEther(luckBal)
+        }
+      }
+    })
+  }
+
+  async fetchBurnPool(){
+    const burnBal = await nrtManagerInst.burnPoolBalance();
+    this.setState({
+      eraswap: {
+        data: {
+          ...this.state.eraswap.data,
+          burnPool: formatEther(burnBal)
+        }
+      }
+    })
+  }
+
+  async fetchTotalESBurned(){
+    this.setState({
+      eraswap:{
+        data: {
+          ...this.state.eraswap.data,
+          totalESBurned: formatEther(await providerESN.getBalance('0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb'))
+        },
+        isLoading: false
+      }
+    })
+  }
+
+  async fetchESFromNRT(){
+    console.log({nrtManagerInst})
+    const logs = await nrtManagerInst.queryFilter(
+      nrtManagerInst.filters.NRT(null, null, null)
+    );
+    const nrtReleases = logs
+      .map((log) => nrtManagerInst.interface.parseLog(log))
+      .map((parsedLog) => {
+        const nrtRelease = parsedLog.args[1];
+        return nrtRelease;
+      });
+
+    const nrtRelease = nrtReleases.slice(-1)[0] || ethers.constants.Zero;
+    console.log({ nrtRelease })
+    this.setState({
+      eraswap: {
+        data: {
+          ...this.state.eraswap.data,
+          currentNrtES: formatEther(nrtRelease)
+        },
+        isLoading: false
+      }
+    });
+  }
+
+  async fetchTotalSupply(){
+    const nrtBalance = await providerESN.getBalance(nrtAddress);
+    
+    this.setState({
+      eraswap:{
+        data: {
+          ...this.state.eraswap.data,
+          esTotalSupply: 9100000000 - formatEther(nrtBalance)
+        },
+        isLoading: false
+      }
+    })
+  }
+
+  async fetchTotalStakedES(){
+    
+    const currentNrtMonth = await nrtManagerInst.currentNrtMonth();
+    // const nrtReleasePromise
+    const nextMonthActiveStakes = await timeAllyManager.getTotalActiveStaking(
+      currentNrtMonth
+    );
+    this.setState({
+      eraswap:{
+        data: {
+          ...this.state.eraswap.data,
+          totalESStaked: formatEther(nextMonthActiveStakes)
+        }
+      }
+    })
   }
 
   async etherPriceUsd() {
@@ -373,17 +479,19 @@ class Dashboard extends Component {
     } finally {
       if (res?.data?.totalSupply) {
         this.esCurrentSupply = Number(lessDecimals(res.data.totalSupply));
+        console.log('start')
         this.updateMarketCap();
+        console.log('end')
       }
 
       this.setState({
         eraswap: {
           data: {
             ...this.state.eraswap.data,
-            esTotalSupply:
-              (res.data?.totalSupply &&
-                lessDecimals(res.data.totalSupply) + ' ES') ||
-              '-',
+            // esTotalSupply:
+            //   (res.data?.totalSupply &&
+            //     lessDecimals(res.data.totalSupply) + ' ES') ||
+            //   '-',
             circulatingOutsideTA: res?.data?.outsideTimeAllySupply
               ? lessDecimals(res.data.outsideTimeAllySupply) + ' ES'
               : '-',
@@ -491,15 +599,15 @@ class Dashboard extends Component {
       console.log(e);
     } finally {
       this.setState({
-        eraswap: {
-          data: {
-            ...this.state.eraswap?.data,
-            currentNrtES: res?.data?.actualNRTDistributed
-              ? lessDecimals(res.data?.actualNRTDistributed) + ' ES'
-              : '-',
-          },
-          isLoading: false,
-        },
+        // eraswap: {
+        //   data: {
+        //     ...this.state.eraswap?.data,
+        //     currentNrtES: res?.data?.actualNRTDistributed
+        //       ? lessDecimals(res.data?.actualNRTDistributed) + ' ES'
+        //       : '-',
+        //   },
+        //   isLoading: false,
+        // },
         lastMonthUtilisation: {
           data: {
             ...this.state.lastMonthUtilisation?.data,
@@ -1339,7 +1447,7 @@ class Dashboard extends Component {
     }
   };
 
-  nrtTicker() {
+  async nrtTicker() {
     /// @dev countdown timer for nrt release
     const deployTimestamp = 1564336091 * 1000;
     const monthDuration = 2629744 * 1000;
@@ -1348,25 +1456,29 @@ class Dashboard extends Component {
     let currentNrtMonthNumber = 0;
     // let nextNrtTimestamp = deployTimestamp + monthDuration * (currentNrtMonthNumber + 1);
 
-    setInterval(async () => {
-      try {
-        const res = await Apis.getCurrentNRTMonth();
-        if (!currentNrtMonthNumber) {
-          currentNrtMonthNumber = res.data.nrtMonth;
-        } else if (
-          res.data.nrtMonth !== currentNrtMonthNumber &&
-          !seeFutureNrt
-        ) {
-          window.location.reload();
-        }
-      } catch (e) {
-        console.log(e);
-      }
-    }, 3500);
+    // setInterval(async () => {
+    //   try {
+    //     const res = await Apis.getCurrentNRTMonth();
+    //     if (!currentNrtMonthNumber) {
+    //       currentNrtMonthNumber = res.data.nrtMonth;
+    //     } else if (
+    //       res.data.nrtMonth !== currentNrtMonthNumber &&
+    //       !seeFutureNrt
+    //     ) {
+    //       window.location.reload();
+    //     }
+    //   } catch (e) {
+    //     console.log(e);
+    //   }
+    // }, 3500);
+
+    const lastNrtReleaseTimestamp = (await nrtManagerInst.lastReleaseTimestamp()).toNumber();
 
     setInterval(() => {
-      const nextNrtTimestamp =
-        deployTimestamp + monthDuration * (currentNrtMonthNumber + 1);
+      // const nextNrtTimestamp =
+      //   deployTimestamp + monthDuration * (currentNrtMonthNumber + 1);
+
+        const nextNrtTimestamp  = (lastNrtReleaseTimestamp*1000) + monthDuration ;
       const currentTimestamp = Date.now();
 
       const timeRemaining =
@@ -1531,7 +1643,8 @@ class Dashboard extends Component {
                   <Card.Body>
                     <p className="sect-txt-bold">NUMBER OF DAYSWAPPERS</p>
                     <p className="value-dash-txt">
-                      {this.state.eraswap.data.numberOfDayswappers}
+                      'Coming soon'
+                      {/* this.state.eraswap.data.numberOfDayswappers*/}
                     </p>
                   </Card.Body>
                 </Card>
@@ -1541,7 +1654,8 @@ class Dashboard extends Component {
                   <Card.Body>
                     <p className="sect-txt-bold">ECOSYSTEM TRANSACTIONS</p>
                     <p className="value-dash-txt">
-                      {this.state.eraswap.data.ecosystemTransactions}
+                      'Coming soon'
+                      {/* this.state.eraswap.data.ecosystemTransactions*/}
                     </p>
                   </Card.Body>
                 </Card>
@@ -1554,7 +1668,8 @@ class Dashboard extends Component {
                     <Card.Body>
                       <p className="sect-txt-bold">ECOSYSTEM VOLUME</p>
                       <p className="value-dash-txt">
-                        {this.state.eraswap.data.ecosystemVolume}
+                        'Coming soon'
+                        {/* this.state.eraswap.data.ecosystemVolume*/}
                       </p>
                     </Card.Body>
                   </Card>
@@ -1624,7 +1739,7 @@ class Dashboard extends Component {
                 <Col sm={6} lg={2} p-0>
                   <Card className="height-80 wd-120 ">
                     <Card.Body>
-                      <p className="sect-txt-bold">CROWDFUND PRICE</p>
+                      <p className="sect-txt-bold">ICO PRICE</p>
                       <p className="value-dash-txt">
                         {this.state.eraswap.data.crownfundPrice}
                       </p>
@@ -1863,19 +1978,19 @@ class Dashboard extends Component {
                   <div>
                     <p className="sect4-context">Total DaySwappers</p>
                     <p className="sect4-value">
-                      {this.state.dayswappers.data.users}
+                      {'Coming soon' || this.state.dayswappers.data.users}
                     </p>
                   </div>
                   <div>
                     <p className="sect4-context">Total Liquid Reward</p>
                     <p className="sect4-value">
-                      {this.state.dayswappers.data.totalLiquidRewards}
+                      {'Coming soon' || this.state.dayswappers.data.totalLiquidRewards}
                     </p>
                   </div>
                   <div>
                     <p className="sect4-context">Total TimeAlly Rewards</p>
                     <p className="sect4-value">
-                      {this.state.dayswappers.data.totalTimeAllyRewards}
+                      {'Coming soon' || this.state.dayswappers.data.totalTimeAllyRewards}
                     </p>
                   </div>
                 </div>
@@ -1883,25 +1998,25 @@ class Dashboard extends Component {
                   <div>
                     <p className="sect4-context">Active Users </p>
                     <p className="sect4-value">
-                      {this.state.dayswappers.data.activeUsers}
+                      {'Coming soon' || this.state.dayswappers.data.activeUsers}
                     </p>
                   </div>
                   <div>
                     <p className="sect4-context">KYC users</p>
                     <p className="sect4-value">
-                      {this.state.dayswappers.data.kycUsers}
+                      {'Coming soon' || this.state.dayswappers.data.kycUsers}
                     </p>
                   </div>
                   <div>
                     <p className="sect4-context">White Belt</p>
                     <p className="sect4-value">
-                      {this.state.dayswappers.data.whiteBelt}
+                      {'Coming soon' || this.state.dayswappers.data.whiteBelt}
                     </p>
                   </div>
                   <div>
                     <p className="sect4-context">Yellow Belt </p>
                     <p className="sect4-value">
-                      {this.state.dayswappers.data.yellowBelt}
+                      {'Coming soon' || this.state.dayswappers.data.yellowBelt}
                     </p>
                   </div>
                 </div>
@@ -1909,25 +2024,25 @@ class Dashboard extends Component {
                   <div>
                     <p className="sect4-context">Orange Belt </p>
                     <p className="sect4-value">
-                      {this.state.dayswappers.data.orangeBelt}
+                      {'Coming soon' || this.state.dayswappers.data.orangeBelt}
                     </p>
                   </div>
                   <div>
                     <p className="sect4-context">Green Belt</p>
                     <p className="sect4-value">
-                      {this.state.dayswappers.data.greenBelt}
+                      {'Coming soon' || this.state.dayswappers.data.greenBelt}
                     </p>
                   </div>
                   <div>
                     <p className="sect4-context">Blue Belt</p>
                     <p className="sect4-value">
-                      {this.state.dayswappers.data.blueBelt}
+                      {'Coming soon' || this.state.dayswappers.data.blueBelt}
                     </p>
                   </div>
                   <div>
                     <p className="sect4-context">Brown Belt</p>
                     <p className="sect4-value">
-                      {this.state.dayswappers.data.brownBelt}
+                      {'Coming soon' || this.state.dayswappers.data.brownBelt}
                     </p>
                   </div>
                 </div>
@@ -1935,13 +2050,13 @@ class Dashboard extends Component {
                   <div className="dayswapper-box">
                     <p className="sect4-context">Red Belt</p>
                     <p className="sect4-value">
-                      {this.state.dayswappers.data.redBelt}
+                      {'Coming soon' || this.state.dayswappers.data.redBelt}
                     </p>
                   </div>
                   <div>
                     <p className="sect4-context">Black Belt</p>
                     <p className="sect4-value">
-                      {this.state.dayswappers.data.blackBelt}
+                      {'Coming soon' || this.state.dayswappers.data.blackBelt}
                     </p>
                   </div>
                 </div>
