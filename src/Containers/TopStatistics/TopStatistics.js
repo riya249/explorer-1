@@ -52,7 +52,6 @@ const renderCustomizedLabel = ({
   );
 };
 
-
 class TopStatistics extends Component {
   month = 0;
 
@@ -84,6 +83,16 @@ class TopStatistics extends Component {
         count: 0,
         isLoading: true,
       },
+      topBlockee: {
+        address: null,
+        count: 0,
+        isLoading: true,
+      },
+      topStaker: {
+        address: null,
+        amt: 0,
+        isLoading: true,
+      },
       topSendersList: {
         data: [],
         isLoading: false,
@@ -104,11 +113,21 @@ class TopStatistics extends Component {
         data: [],
         isLoading: false,
       },
+      topStakers: {
+        data: [],
+        isLoading: false,
+      },
+      topNodes: {
+        data: [],
+        isLoading: false,
+      },
     };
   }
 
   componentDidMount() {
     this.fetchStatistics();
+    this.fetchTopStakers();
+    this.fetchTopNodes();
   }
 
   async fetchStatistics() {
@@ -122,12 +141,18 @@ class TopStatistics extends Component {
         this.setState({
           topSender: {
             address: res.topSender[0].address,
-            amt: res?.topSender[0]?.totalESSent && formatEther(res.topSender[0].totalESSent) || '-',
+            amt:
+              (res?.topSender[0]?.totalESSent &&
+                formatEther(res.topSender[0].totalESSent)) ||
+              '-',
             isLoading: false,
           },
           topReceiver: {
             address: res.topReceiver[0].address,
-            amt: res?.topReceiver[0]?.totalESReceived && formatEther(res.topReceiver[0].totalESReceived) || '-',
+            amt:
+              (res?.topReceiver[0]?.totalESReceived &&
+                formatEther(res.topReceiver[0].totalESReceived)) ||
+              '-',
             isLoading: false,
           },
           topSentTxn: {
@@ -170,6 +195,51 @@ class TopStatistics extends Component {
     }
   }
 
+  async fetchTopStakers() {
+    let res;
+    try {
+      res = await Apis.fetchTopStakers(10);
+    } catch (e) {
+      console.log(e);
+    } finally {
+      this.setState({
+        topStaker: {
+          address: res && Array.isArray(res) ? res[0]?.address || '-' : '-',
+          amt:
+            res && Array.isArray(res) && res[0]?.amount
+              ? formatEther(res[0]?.amount) || '-'
+              : '-',
+          isLoading: true,
+        },
+        topStakers: {
+          data: res && Array.isArray(res) ? res : [],
+          isLoading: false,
+        },
+      });
+    }
+  }
+
+  async fetchTopNodes() {
+    let res;
+    try {
+      res = await Apis.fetchTopNodes(10);
+    } catch (e) {
+      console.log(e);
+    } finally {
+      this.setState({
+        topNodes: {
+          data: res && Array.isArray(res) ? res : [],
+          isLoading: false,
+        },
+        topBlockee: {
+          address: res && Array.isArray(res) ? res[0]?.nodeIp : '-',
+          count: res && Array.isArray(res) ? res[0]?.blocks : 0,
+          isLoading: true,
+        },
+      });
+    }
+  }
+
   render() {
     return (
       <div className="calculator">
@@ -182,7 +252,11 @@ class TopStatistics extends Component {
 
           <Row className="mt40">
             <div className="col-lg-6"></div>
-            <div className="text-right col-lg-6">
+            {
+              //@todo: apis need to be created
+            }
+            {/*
+             <div className="text-right col-lg-6">
               <select class="selectpicker">
                 <optgroup label="Year">
                   <option>1 Year</option>
@@ -195,7 +269,7 @@ class TopStatistics extends Component {
                   <option>3 Month</option>
                 </optgroup>
               </select>
-            </div>
+            </div> */}
             <Col lg={12} className="mt20">
               <div className="card tab-card ">
                 <div className="card-header tab-card-header overviewtab">
@@ -274,9 +348,9 @@ class TopStatistics extends Component {
                               <tr>
                                 <th>TRANSACTIONS</th>
                                 <th className="text-right">
-                                  <a href="" className="value-dash-txt">
+                                  {/* <a href="" className="value-dash-txt">
                                     View Top 10
-                                  </a>
+                                  </a> */}
                                 </th>
                               </tr>
                               <tr>
@@ -342,11 +416,11 @@ class TopStatistics extends Component {
                           <table className="es-transaction striped bordered hover">
                             <thead>
                               <tr>
-                                <th></th>
+                                <th>TRANSACTIONS</th>
                                 <th className="text-right">
-                                  <a href="" className="value-dash-txt">
+                                  {/* <a href="" className="value-dash-txt">
                                     View Top 10
-                                  </a>
+                                  </a> */}
                                 </th>
                               </tr>
                               <tr>
@@ -399,7 +473,7 @@ class TopStatistics extends Component {
                                   </p>
                                 </td>
                                 <td className="text-right">
-                                  <p class="sect-txt-bold ">Total ES</p>
+                                  <p class="sect-txt-bold ">Total Txn</p>
                                   <p class="value-dash-txt">
                                     {this.state.topReceivedTxn.isLoading
                                       ? 'Loading...'
@@ -420,9 +494,9 @@ class TopStatistics extends Component {
                               <tr>
                                 <th>Network</th>
                                 <th className="text-right">
-                                  <a href="" className="value-dash-txt">
+                                  {/* <a href="" className="value-dash-txt">
                                     View Top 10
-                                  </a>
+                                  </a> */}
                                 </th>
                               </tr>
                               <tr>
@@ -475,29 +549,40 @@ class TopStatistics extends Component {
                               <tr>
                                 <th>Miners</th>
                                 <th className="text-right">
-                                  <a href="" className="value-dash-txt">
+                                  {/* <a href="" className="value-dash-txt">
                                     View Top 10
-                                  </a>
+                                  </a> */}
                                 </th>
                               </tr>
                               <tr>
                                 <td>
                                   <p class="sect-txt-bold ">Top Blockee</p>
-                                  <p class="value-dash-txt">Unknown</p>
+                                  <p class="value-dash-txt">
+                                    {this.state.topBlockee?.address}
+                                  </p>
                                 </td>
                                 <td className="text-right">
                                   <p class="sect-txt-bold">Blockee Mined</p>
-                                  <p class="value-dash-txt">13,741</p>
+                                  <p class="value-dash-txt">
+                                    {this.state.topBlockee?.count}
+                                  </p>
                                 </td>
                               </tr>
                               <tr>
                                 <td>
                                   <p class="sect-txt-bold ">Top Stakers</p>
-                                  <p class="value-dash-txt">Unknown</p>
+                                  <p class="value-dash-txt">
+                                    <AddressLink
+                                      value={this.state.topStaker?.address}
+                                      type="address"
+                                    />
+                                  </p>
                                 </td>
                                 <td className="text-right">
                                   <p class="sect-txt-bold ">Total ES</p>
-                                  <p class="value-dash-txt">270,968</p>
+                                  <p class="value-dash-txt">
+                                    {this.state.topStaker?.amt} ES
+                                  </p>
                                 </td>
                               </tr>
                             </thead>
@@ -727,11 +812,11 @@ class TopStatistics extends Component {
                                   value: acc.percent,
                                 })) || []
                               }
-                              cx={200}
+                              cx={240}
                               cy={200}
                               labelLine={false}
                               label={renderCustomizedLabel}
-                              outerRadius={80}
+                              outerRadius={120}
                               fill="#8884d8"
                               dataKey="value"
                             >
@@ -817,125 +902,40 @@ class TopStatistics extends Component {
                     <div className="mt30 eraswapcal-tab row">
                       <div className="col-lg-12 mt10">
                         <div className="card">
-                          <div class="border-era"></div>
+                          <div class="border-era">Top Stakers</div>
                           <table className="es-transaction striped bordered hover">
                             <thead>
                               <tr>
                                 <th>Rank</th>
                                 <th>Address</th>
-                                <th>Total Blockee Mined</th>
-                                <th>Total Rewards</th>
-                                <th>Total Txn Fees</th>
-                                <th>Est. Hash Rate</th>
+                                <th>Staked Amount</th>
                               </tr>
-                              <tr>
-                                <td>1</td>
-                                <td>
-                                  0x36560493644fbb79f1c38D12fF096F7ec5D333b7
-                                </td>
-                                <td>153,314.7944</td>
-                                <td>4,843.27219</td>
-                                <td>153,314.7944</td>
-                                <td>48,303.310652</td>
-                              </tr>
-                              <tr>
-                                <td>1</td>
-                                <td>
-                                  0x36560493644fbb79f1c38D12fF096F7ec5D333b7
-                                </td>
-                                <td>153,314.7944</td>
-                                <td>4,843.27219</td>
-                                <td>153,314.7944</td>
-                                <td>48,303.310652</td>
-                              </tr>
-
-                              <tr>
-                                <td>1</td>
-                                <td>
-                                  0x36560493644fbb79f1c38D12fF096F7ec5D333b7
-                                </td>
-                                <td>153,314.7944</td>
-                                <td>4,843.27219</td>
-                                <td>153,314.7944</td>
-                                <td>48,303.310652</td>
-                              </tr>
-
-                              <tr>
-                                <td>1</td>
-                                <td>
-                                  0x36560493644fbb79f1c38D12fF096F7ec5D333b7
-                                </td>
-                                <td>153,314.7944</td>
-                                <td>4,843.27219</td>
-                                <td>153,314.7944</td>
-                                <td>48,303.310652</td>
-                              </tr>
-
-                              <tr>
-                                <td>1</td>
-                                <td>
-                                  0x36560493644fbb79f1c38D12fF096F7ec5D333b7
-                                </td>
-                                <td>153,314.7944</td>
-                                <td>4,843.27219</td>
-                                <td>153,314.7944</td>
-                                <td>48,303.310652</td>
-                              </tr>
-
-                              <tr>
-                                <td>1</td>
-                                <td>
-                                  0x36560493644fbb79f1c38D12fF096F7ec5D333b7
-                                </td>
-                                <td>153,314.7944</td>
-                                <td>4,843.27219</td>
-                                <td>153,314.7944</td>
-                                <td>48,303.310652</td>
-                              </tr>
-
-                              <tr>
-                                <td>1</td>
-                                <td>
-                                  0x36560493644fbb79f1c38D12fF096F7ec5D333b7
-                                </td>
-                                <td>153,314.7944</td>
-                                <td>4,843.27219</td>
-                                <td>153,314.7944</td>
-                                <td>48,303.310652</td>
-                              </tr>
-
-                              <tr>
-                                <td>1</td>
-                                <td>
-                                  0x36560493644fbb79f1c38D12fF096F7ec5D333b7
-                                </td>
-                                <td>153,314.7944</td>
-                                <td>4,843.27219</td>
-                                <td>153,314.7944</td>
-                                <td>48,303.310652</td>
-                              </tr>
-
-                              <tr>
-                                <td>1</td>
-                                <td>
-                                  0x36560493644fbb79f1c38D12fF096F7ec5D333b7
-                                </td>
-                                <td>153,314.7944</td>
-                                <td>4,843.27219</td>
-                                <td>153,314.7944</td>
-                                <td>48,303.310652</td>
-                              </tr>
-
-                              <tr>
-                                <td>1</td>
-                                <td>
-                                  0x36560493644fbb79f1c38D12fF096F7ec5D333b7
-                                </td>
-                                <td>153,314.7944</td>
-                                <td>4,843.27219</td>
-                                <td>153,314.7944</td>
-                                <td>48,303.310652</td>
-                              </tr>
+                              {this.state.topStakers.isLoading ? (
+                                <tr>
+                                  <td colSpan={3}>Loading...</td>
+                                </tr>
+                              ) : this.state.topStakers.data?.length ? (
+                                this.state.topStakers.data?.map((staker, i) => (
+                                  <tr>
+                                    <td>{i + 1}</td>
+                                    <td>
+                                      <AddressLink
+                                        value={staker.address}
+                                        type="address"
+                                      />
+                                    </td>
+                                    <td>
+                                      {staker?.amount &&
+                                        formatEther(staker?.amount)}{' '}
+                                      ES
+                                    </td>
+                                  </tr>
+                                ))
+                              ) : (
+                                <tr>
+                                  <td colSpan={3}>No Data</td>
+                                </tr>
+                              )}
                             </thead>
                           </table>
                         </div>
@@ -949,118 +949,30 @@ class TopStatistics extends Component {
                                 <th>Rank</th>
                                 <th>Address</th>
                                 <th>Total Blockee Mined</th>
-                                <th>Total Rewards</th>
                                 <th>Total Txn Fees</th>
-                                <th>Est. Hash Rate</th>
                               </tr>
-                              <tr>
-                                <td>1</td>
-                                <td>
-                                  0x36560493644fbb79f1c38D12fF096F7ec5D333b7
-                                </td>
-                                <td>153,314.7944</td>
-                                <td>4,843.27219</td>
-                                <td>153,314.7944</td>
-                                <td>48,303.310652</td>
-                              </tr>
-                              <tr>
-                                <td>1</td>
-                                <td>
-                                  0x36560493644fbb79f1c38D12fF096F7ec5D333b7
-                                </td>
-                                <td>153,314.7944</td>
-                                <td>4,843.27219</td>
-                                <td>153,314.7944</td>
-                                <td>48,303.310652</td>
-                              </tr>
-
-                              <tr>
-                                <td>1</td>
-                                <td>
-                                  0x36560493644fbb79f1c38D12fF096F7ec5D333b7
-                                </td>
-                                <td>153,314.7944</td>
-                                <td>4,843.27219</td>
-                                <td>153,314.7944</td>
-                                <td>48,303.310652</td>
-                              </tr>
-
-                              <tr>
-                                <td>1</td>
-                                <td>
-                                  0x36560493644fbb79f1c38D12fF096F7ec5D333b7
-                                </td>
-                                <td>153,314.7944</td>
-                                <td>4,843.27219</td>
-                                <td>153,314.7944</td>
-                                <td>48,303.310652</td>
-                              </tr>
-
-                              <tr>
-                                <td>1</td>
-                                <td>
-                                  0x36560493644fbb79f1c38D12fF096F7ec5D333b7
-                                </td>
-                                <td>153,314.7944</td>
-                                <td>4,843.27219</td>
-                                <td>153,314.7944</td>
-                                <td>48,303.310652</td>
-                              </tr>
-
-                              <tr>
-                                <td>1</td>
-                                <td>
-                                  0x36560493644fbb79f1c38D12fF096F7ec5D333b7
-                                </td>
-                                <td>153,314.7944</td>
-                                <td>4,843.27219</td>
-                                <td>153,314.7944</td>
-                                <td>48,303.310652</td>
-                              </tr>
-
-                              <tr>
-                                <td>1</td>
-                                <td>
-                                  0x36560493644fbb79f1c38D12fF096F7ec5D333b7
-                                </td>
-                                <td>153,314.7944</td>
-                                <td>4,843.27219</td>
-                                <td>153,314.7944</td>
-                                <td>48,303.310652</td>
-                              </tr>
-
-                              <tr>
-                                <td>1</td>
-                                <td>
-                                  0x36560493644fbb79f1c38D12fF096F7ec5D333b7
-                                </td>
-                                <td>153,314.7944</td>
-                                <td>4,843.27219</td>
-                                <td>153,314.7944</td>
-                                <td>48,303.310652</td>
-                              </tr>
-
-                              <tr>
-                                <td>1</td>
-                                <td>
-                                  0x36560493644fbb79f1c38D12fF096F7ec5D333b7
-                                </td>
-                                <td>153,314.7944</td>
-                                <td>4,843.27219</td>
-                                <td>153,314.7944</td>
-                                <td>48,303.310652</td>
-                              </tr>
-
-                              <tr>
-                                <td>1</td>
-                                <td>
-                                  0x36560493644fbb79f1c38D12fF096F7ec5D333b7
-                                </td>
-                                <td>153,314.7944</td>
-                                <td>4,843.27219</td>
-                                <td>153,314.7944</td>
-                                <td>48,303.310652</td>
-                              </tr>
+                              {this.state.topNodes.isLoading ? (
+                                <tr>
+                                  <td colSpan={4}>Loading...</td>
+                                </tr>
+                              ) : this.state.topNodes.data?.length ? (
+                                this.state.topNodes.data?.map((node, i) => (
+                                  <tr>
+                                    <td>{i + 1}</td>
+                                    <td>{node.nodeIp}</td>
+                                    <td>{node.blocks}</td>
+                                    <td>
+                                      {node.totalTxnFee &&
+                                        formatEther(node.totalTxnFee)}{' '}
+                                      ES
+                                    </td>
+                                  </tr>
+                                ))
+                              ) : (
+                                <tr>
+                                  <td colSpan={4}>No Data</td>
+                                </tr>
+                              )}
                             </thead>
                           </table>
                         </div>

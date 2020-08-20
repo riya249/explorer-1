@@ -62,7 +62,11 @@ export default class Apis {
                    ajax(`${baseUrl}/validator/lastblock/${month}`);
 
                  static fetchNodes = () => ajax(`${baseUrl}/nodestatus/`);
+                 static fetchTopNodes = ({ limit = 10 }) =>
+                   ajax(`${baseUrl}/nodestatus/top?limit=${limit}`);
 
+                 static fetchTopStakers = ({ limit = 10 }) =>
+                   ajax(`${baseUrl}/timeally-stakes/top?limit=${limit}`);
                  /********* dashboard apis *********/
                  //third party
                  static etherPriceUsd = () =>
