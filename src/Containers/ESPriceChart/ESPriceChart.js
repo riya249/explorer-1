@@ -30,7 +30,7 @@ export default class ESPriceChart extends React.Component {
             return `${toLocaleTimestamp(
               new Date(this.key).getTime() * 1000
             ).format('dddd, MMMM DD, YYYY')}<br>
-              [ ${this.series.name} : $${this.y}]`;
+              [ ${this.series.name} : $ ${this.y}]`;
           },
         },
 
@@ -116,7 +116,7 @@ export default class ESPriceChart extends React.Component {
       <div className="blocks-table">
         <div className="booking-hero-bgd booking-hero-bgd-inner">
           <Navbar />
-          <h2 className="es-main-head es-main-head-inner">Charts</h2>
+          <h2 className="es-main-head es-main-head-inner">ES Price Chart</h2>
         </div>
         <Container>
           <HighchartsReact highcharts={Highcharts} options={this.state.options} />
