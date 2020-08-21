@@ -149,9 +149,9 @@ class Navbar extends Component {
                   <Link className="dropdown-item" to="/top-accounts">
                     Top Accounts
                   </Link>
-                  {/* <Link className="dropdown-item" to="/nodes" >
-                  Nodes
-                  </Link> */}
+                  <Link className="dropdown-item" to="/charts" >
+                    Charts
+                  </Link>
                 </div>
               </li>
             </ul>

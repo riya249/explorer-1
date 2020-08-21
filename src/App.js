@@ -33,7 +33,9 @@ import ContractInternalTransactions from './Containers/ContractInternalTransacti
 import TopAccountsbyEsBalance from './Containers/TopAccountsbyEsBalance/TopAccountsbyEsBalance';
 import ContractsWithVerifiedSourceCodes from './Containers/ContractsWithVerifiedSourceCodes/ContractsWithVerifiedSourceCodes';
 import Nodes from './Containers/Nodes/Nodes';
+import ECharts from './Containers/ECharts/ECharts';
 import tablePdf from './assets/docs/KYC.pdf';
+import ESPriceChart from './Containers/ESPriceChart/ESPriceChart';
 
 function App() {
   useEffect(() => {
@@ -113,6 +115,8 @@ function App() {
             path="/nodestatustransaction"
             component={Nodestatustransaction}
           />
+          <Route exact path="/charts" component={ECharts} />
+          <Route exact path="/chart/esprice" component={ESPriceChart} />
         </Switch>
       </Router>
       <Footer />

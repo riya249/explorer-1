@@ -1759,7 +1759,7 @@ class Dashboard extends Component {
                     <p>MINUTES</p>
                   </li>
                   <li className="count-txt">
-                    {this.state.nextNrtCounter.data.seconds}
+                      {this.state.nextNrtCounter.data.seconds}
                     <p>SECONDS</p>
                   </li>
                 </ul>
