@@ -77,7 +77,7 @@ class Homepage extends Component {
     this.nrtTicker();
   }
 
-  nrtTicker() {
+  async nrtTicker() {
     /// @dev countdown timer for nrt release
     const deployTimestamp = 1564336091 * 1000;
     const monthDuration = 2629744 * 1000;
@@ -86,25 +86,15 @@ class Homepage extends Component {
     let currentNrtMonthNumber = 0;
     // let nextNrtTimestamp = deployTimestamp + monthDuration * (currentNrtMonthNumber + 1);
 
-    setInterval(async () => {
-      try {
-        const res = await Apis.getCurrentNRTMonth();
-        if (!currentNrtMonthNumber) {
-          currentNrtMonthNumber = res.data.nrtMonth;
-        } else if (
-          res.data.nrtMonth !== currentNrtMonthNumber &&
-          !seeFutureNrt
-        ) {
-          window.location.reload();
-        }
-      } catch (e) {
-        console.log(e);
-      }
-    }, 3500);
+    const lastNrtReleaseTimestamp = (
+      await nrtManager().lastReleaseTimestamp()
+    ).toNumber();
 
     setInterval(() => {
-      const nextNrtTimestamp =
-        deployTimestamp + monthDuration * (currentNrtMonthNumber + 1);
+      // const nextNrtTimestamp =
+      //   deployTimestamp + monthDuration * (currentNrtMonthNumber + 1);
+
+      const nextNrtTimestamp = lastNrtReleaseTimestamp * 1000 + monthDuration;
       const currentTimestamp = Date.now();
 
       const timeRemaining =
@@ -112,6 +102,27 @@ class Homepage extends Component {
           ? nextNrtTimestamp - currentTimestamp
           : 0;
 
+      //     window.isOnProduction || console.log(timeRemaining);
+
+      const daysRemaining = Math.floor(timeRemaining / 1000 / 24 / 60 / 60);
+      const hoursRemaining = Math.floor(
+        (timeRemaining - daysRemaining * 1000 * 24 * 60 * 60) / 1000 / 60 / 60
+      );
+      const minutesRemaining = Math.floor(
+        (timeRemaining -
+          daysRemaining * 1000 * 24 * 60 * 60 -
+          hoursRemaining * 1000 * 60 * 60) /
+          1000 /
+          60
+      );
+      const secondsRemaining = Math.floor(
+        (timeRemaining -
+          daysRemaining * 1000 * 24 * 60 * 60 -
+          hoursRemaining * 1000 * 60 * 60 -
+          minutesRemaining * 1000 * 60) /
+          1000
+      );
+      
       const totalMiliSecInMonth = 2628000000;
       const timePassed = totalMiliSecInMonth - timeRemaining;
       const timePassedPercent = (timePassed / totalMiliSecInMonth) * 100;

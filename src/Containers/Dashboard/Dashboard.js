@@ -9,12 +9,12 @@ import Header from '../../Components/Header/Header';
 import Responsive from '../../Responsive/Responsive.css';
 import Card from 'react-bootstrap/Card';
 import Apis from '../../lib/apis';
-import { moreDecimals, lessDecimals,formatEther } from '../../lib/parsers';
+import { moreDecimals, lessDecimals, formatEther } from '../../lib/parsers';
 import {
   PieChart,
   Pie,
   Cell,
-  BarChart, 
+  BarChart,
   CartesianGrid,
   XAxis,
   YAxis,
@@ -222,93 +222,261 @@ class Dashboard extends Component {
   }
 
   componentDidMount() {
-    this.etherPriceUsd().catch(e => console.log(e)); 
-    this.bitcoinCrowdFundPrice().catch(e => console.log(e)); 
-    this.ltcPriceUsd().catch(e => console.log(e)); 
-    this.getESPrice().catch(e => console.log(e)); 
-    this.esTotalSupply().catch(e => console.log(e)); 
-    this.holdersOfEraSwap().catch(e => console.log(e)); 
-    // this.luckPoolBal().catch(e => console.log(e)); 
-    // this.burnTokenBal().catch(e => console.log(e)); 
-    // this.totalTokensBurned().catch(e => console.log(e)); 
-    this.nrtFractions().catch(e => console.log(e)); 
-    this.getNumberOfStakings().catch(e => console.log(e)); 
-    this.getStakingPlanStatistics().catch(e => console.log(e)); 
-    // this.getPlatformDetailsAllTime().catch(e => console.log(e)); 
-    this.getNumberOfBets().catch(e => console.log(e)); 
-    this.getBettingDetails().catch(e => console.log(e)); 
-    this.powerTokenDetails().catch(e => console.log(e)); 
-    // this.getTotalReward().catch(e => console.log(e)); 
-    this.transactionSplits().catch(e => console.log(e)); 
-    // this.dayswappersOverview().catch(e => console.log(e)); 
-    this.totalNoOfUser().catch(e => console.log(e)); 
-    this.totalNoOfFreelancerOrSeller().catch(e => console.log(e)); 
-    this.totalViewsOnProfile().catch(e => console.log(e)); 
-    this.totalNoOfVerifiedUser().catch(e => console.log(e)); 
-    this.totalNoOfCertifiedUser().catch(e => console.log(e)); 
-    this.totalNoOfDeposit().catch(e => console.log(e)); 
-    this.totalNoOfWithdraw().catch(e => console.log(e)); 
-    this.totalJobsPosted().catch(e => console.log(e)); 
-    this.totalJobsDone().catch(e => console.log(e)); 
-    this.TfcGenerated().catch(e => console.log(e)); 
-    this.swapperswalletTotalFeeds().catch(e => console.log(e)); 
-    this.swapperswallTopTenreceivers().catch(e => console.log(e)); 
-    this.userscount().catch(e => console.log(e)); 
-    this.courses().catch(e => console.log(e)); 
-    this.deposits().catch(e => console.log(e)); 
-    this.userstudying().catch(e => console.log(e)); 
-    this.buzcafeUserscount().catch(e => console.log(e)); 
-    this.buzcafeDepositscount().catch(e => console.log(e)); 
-    this.buzcafeShopscount().catch(e => console.log(e)); 
-    this.buzcafeWithdrawalscount().catch(e => console.log(e)); 
-    this.buzcafeTransactionscount().catch(e => console.log(e)); 
-    this.nrtTicker();
-    this.fetchTotalStakedES().catch(e => console.log(e)); 
-    this.fetchTotalSupply().catch(e => console.log(e)); 
-    this.fetchESFromNRT().catch(e => console.log(e)); 
-    this.fetchTotalESBurned().catch(e => console.log(e)); 
-    this.fetchBurnPool().catch(e => console.log(e)); 
-    this.fetchLuckPool().catch(e => console.log(e)); 
+    this.loadData();
   }
 
-  async fetchLuckPool(){
+  async loadData() {
+    try {
+      await this.etherPriceUsd();
+    } catch (e) {
+      console.log(e);
+    }
+    try {
+      await this.bitcoinCrowdFundPrice();
+    } catch (e) {
+      console.log(e);
+    }
+    try {
+      await this.ltcPriceUsd();
+    } catch (e) {
+      console.log(e);
+    }
+    try {
+      await this.getESPrice();
+    } catch (e) {
+      console.log(e);
+    }
+    try {
+      await this.esTotalSupply();
+    } catch (e) {
+      console.log(e);
+    }
+    try {
+      await this.holdersOfEraSwap();
+    } catch (e) {
+      console.log(e);
+    }
+    // try { await this.luckPoolBa } catch(e) { console.log(e); }
+    // try { await this.burnTokenBa } catch(e) { console.log(e); }
+    // try { await this.totalTokensBurne } catch(e) { console.log(e); }
+    try {
+      await this.nrtFractions();
+    } catch (e) {
+      console.log(e);
+    }
+    try {
+      await this.getNumberOfStakings();
+    } catch (e) {
+      console.log(e);
+    }
+    try {
+      await this.getStakingPlanStatistics();
+    } catch (e) {
+      console.log(e);
+    }
+    // try { await this.getPlatformDetailsAllTim } catch(e) { console.log(e); }
+    try {
+      await this.getNumberOfBets();
+    } catch (e) {
+      console.log(e);
+    }
+    try {
+      await this.getBettingDetails();
+    } catch (e) {
+      console.log(e);
+    }
+    try {
+      await this.powerTokenDetails();
+    } catch (e) {
+      console.log(e);
+    }
+    // try { await this.getTotalRewar } catch(e) { console.log(e); }
+    try {
+      await this.transactionSplits();
+    } catch (e) {
+      console.log(e);
+    }
+    // try { await this.dayswappersOvervie } catch(e) { console.log(e); }
+    try {
+      await this.totalNoOfUser();
+    } catch (e) {
+      console.log(e);
+    }
+    try {
+      await this.totalNoOfFreelancerOrSeller();
+    } catch (e) {
+      console.log(e);
+    }
+    try {
+      await this.totalViewsOnProfile();
+    } catch (e) {
+      console.log(e);
+    }
+    try {
+      await this.totalNoOfVerifiedUser();
+    } catch (e) {
+      console.log(e);
+    }
+    try {
+      await this.totalNoOfCertifiedUser();
+    } catch (e) {
+      console.log(e);
+    }
+    try {
+      await this.totalNoOfDeposit();
+    } catch (e) {
+      console.log(e);
+    }
+    try {
+      await this.totalNoOfWithdraw();
+    } catch (e) {
+      console.log(e);
+    }
+    try {
+      await this.totalJobsPosted();
+    } catch (e) {
+      console.log(e);
+    }
+    try {
+      await this.totalJobsDone();
+    } catch (e) {
+      console.log(e);
+    }
+    try {
+      await this.TfcGenerated();
+    } catch (e) {
+      console.log(e);
+    }
+    try {
+      await this.swapperswalletTotalFeeds();
+    } catch (e) {
+      console.log(e);
+    }
+    try {
+      await this.swapperswallTopTenreceivers();
+    } catch (e) {
+      console.log(e);
+    }
+    try {
+      await this.userscount();
+    } catch (e) {
+      console.log(e);
+    }
+    try {
+      await this.courses();
+    } catch (e) {
+      console.log(e);
+    }
+    try {
+      await this.deposits();
+    } catch (e) {
+      console.log(e);
+    }
+    try {
+      await this.userstudying();
+    } catch (e) {
+      console.log(e);
+    }
+    try {
+      await this.buzcafeUserscount();
+    } catch (e) {
+      console.log(e);
+    }
+    try {
+      await this.buzcafeDepositscount();
+    } catch (e) {
+      console.log(e);
+    }
+    try {
+      await this.buzcafeShopscount();
+    } catch (e) {
+      console.log(e);
+    }
+    try {
+      await this.buzcafeWithdrawalscount();
+    } catch (e) {
+      console.log(e);
+    }
+    try {
+      await this.buzcafeTransactionscount();
+    } catch (e) {
+      console.log(e);
+    }
+    try {
+      await this.fetchTotalStakedES();
+    } catch (e) {
+      console.log(e);
+    }
+    try {
+      await this.fetchTotalSupply();
+    } catch (e) {
+      console.log(e);
+    }
+    try {
+      await this.fetchESFromNRT();
+    } catch (e) {
+      console.log(e);
+    }
+    try {
+      await this.fetchTotalESBurned();
+    } catch (e) {
+      console.log(e);
+    }
+    try {
+      await this.fetchBurnPool();
+    } catch (e) {
+      console.log(e);
+    }
+    try {
+      await this.fetchLuckPool();
+    } catch (e) {
+      console.log(e);
+    }
+    this.nrtTicker();
+  }
+
+  async fetchLuckPool() {
     const luckBal = await nrtManagerInst.luckPoolBalance();
     this.setState({
       eraswap: {
         data: {
           ...this.state.eraswap.data,
-          luckPoolNrt: formatEther(luckBal)
-        }
-      }
-    })
+          luckPoolNrt: formatEther(luckBal),
+        },
+      },
+    });
   }
 
-  async fetchBurnPool(){
+  async fetchBurnPool() {
     const burnBal = await nrtManagerInst.burnPoolBalance();
     this.setState({
       eraswap: {
         data: {
           ...this.state.eraswap.data,
-          burnPool: formatEther(burnBal)
-        }
-      }
-    })
+          burnPool: formatEther(burnBal),
+        },
+      },
+    });
   }
 
-  async fetchTotalESBurned(){
+  async fetchTotalESBurned() {
     this.setState({
-      eraswap:{
+      eraswap: {
         data: {
           ...this.state.eraswap.data,
-          totalESBurned: formatEther(await providerESN.getBalance('0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb'))
+          totalESBurned: formatEther(
+            await providerESN.getBalance(
+              '0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb'
+            )
+          ),
         },
-        isLoading: false
-      }
-    })
+        isLoading: false,
+      },
+    });
   }
 
-  async fetchESFromNRT(){
-    console.log({nrtManagerInst})
+  async fetchESFromNRT() {
+    console.log({ nrtManagerInst });
     const logs = await nrtManagerInst.queryFilter(
       nrtManagerInst.filters.NRT(null, null, null)
     );
@@ -320,47 +488,46 @@ class Dashboard extends Component {
       });
 
     const nrtRelease = nrtReleases.slice(-1)[0] || ethers.constants.Zero;
-    console.log({ nrtRelease })
+
     this.setState({
       eraswap: {
         data: {
           ...this.state.eraswap.data,
-          currentNrtES: formatEther(nrtRelease)
+          currentNrtES: formatEther(nrtRelease),
         },
-        isLoading: false
-      }
+        isLoading: false,
+      },
     });
   }
 
-  async fetchTotalSupply(){
+  async fetchTotalSupply() {
     const nrtBalance = await providerESN.getBalance(nrtAddress);
-    
+
     this.setState({
-      eraswap:{
+      eraswap: {
         data: {
           ...this.state.eraswap.data,
-          esTotalSupply: 9100000000 - formatEther(nrtBalance)
+          esTotalSupply: 9100000000 - formatEther(nrtBalance),
         },
-        isLoading: false
-      }
-    })
+        isLoading: false,
+      },
+    });
   }
 
-  async fetchTotalStakedES(){
-    
+  async fetchTotalStakedES() {
     const currentNrtMonth = await nrtManagerInst.currentNrtMonth();
     // const nrtReleasePromise
     const nextMonthActiveStakes = await timeAllyManager.getTotalActiveStaking(
       currentNrtMonth
     );
     this.setState({
-      eraswap:{
+      eraswap: {
         data: {
           ...this.state.eraswap.data,
-          totalESStaked: formatEther(nextMonthActiveStakes)
-        }
-      }
-    })
+          totalESStaked: formatEther(nextMonthActiveStakes),
+        },
+      },
+    });
   }
 
   async etherPriceUsd() {
@@ -450,8 +617,9 @@ class Dashboard extends Component {
           data: {
             ...this.state.eraswap.data,
             esUSDT:
-              res?.data?.probitResponse?.data &&
-              res?.data?.probitResponse?.data[0]?.last
+              this.esPrice ||
+              (res?.data?.probitResponse?.data &&
+                res?.data?.probitResponse?.data[0]?.last)
                 ? res?.data?.probitResponse?.data[0]?.last + ' USDT'
                 : '-',
             esBTC:
@@ -479,9 +647,9 @@ class Dashboard extends Component {
     } finally {
       if (res?.data?.totalSupply) {
         this.esCurrentSupply = Number(lessDecimals(res.data.totalSupply));
-        console.log('start')
+        console.log('start');
         this.updateMarketCap();
-        console.log('end')
+        console.log('end');
       }
 
       this.setState({
@@ -880,7 +1048,7 @@ class Dashboard extends Component {
               TimeAlly: res?.['Timeally']?.tfc,
               eraswapAcademy: 0,
             },
-            isLoading: true,
+            isLoading: false,
           },
         },
       });
@@ -1472,13 +1640,15 @@ class Dashboard extends Component {
     //   }
     // }, 3500);
 
-    const lastNrtReleaseTimestamp = (await nrtManagerInst.lastReleaseTimestamp()).toNumber();
+    const lastNrtReleaseTimestamp = (
+      await nrtManagerInst.lastReleaseTimestamp()
+    ).toNumber();
 
     setInterval(() => {
       // const nextNrtTimestamp =
       //   deployTimestamp + monthDuration * (currentNrtMonthNumber + 1);
 
-        const nextNrtTimestamp  = (lastNrtReleaseTimestamp*1000) + monthDuration ;
+      const nextNrtTimestamp = lastNrtReleaseTimestamp * 1000 + monthDuration;
       const currentTimestamp = Date.now();
 
       const timeRemaining =
@@ -1984,13 +2154,15 @@ class Dashboard extends Component {
                   <div>
                     <p className="sect4-context">Total Liquid Reward</p>
                     <p className="sect4-value">
-                      {'Coming soon' || this.state.dayswappers.data.totalLiquidRewards}
+                      {'Coming soon' ||
+                        this.state.dayswappers.data.totalLiquidRewards}
                     </p>
                   </div>
                   <div>
                     <p className="sect4-context">Total TimeAlly Rewards</p>
                     <p className="sect4-value">
-                      {'Coming soon' || this.state.dayswappers.data.totalTimeAllyRewards}
+                      {'Coming soon' ||
+                        this.state.dayswappers.data.totalTimeAllyRewards}
                     </p>
                   </div>
                 </div>
