@@ -70,15 +70,14 @@ class KycIncentiveCalculator extends Component {
       var cumm = [31.5, 70, 150, 500, 5150];
       for (let i = 0; i < 5; i++) {
         directcollection += directkycstandalone[i] * standAlone[i];
-        directcollection += directkyccumm[i] * standAlone[i];
+        directcollection  += directkyccumm[i]*cumm[i];
         indirectcollection += indirectkycstandalone[i] * standAlone[i];
         indirectcollection += indirectkyccumm[i] * cumm[i];
       }
       var stakedtodirect = directcollection;
       var timeAllyclubLiquid = directcollection * 0.2;
       var timeAllyclubStake = timeAllyclubLiquid;
-      var dayswapperTreeReward =
-        (directcollection + indirectcollection) * dayswappertree;
+      var dayswapperTreeReward = (directcollection + indirectcollection) * dayswappertree * 0.2;
       var tagya = directcollection * 0.2;
       var currator = directcollection * 0.2;
       var burning = directcollection * 0.1;
@@ -94,41 +93,17 @@ class KycIncentiveCalculator extends Component {
         timeAllyclubLiquid,
       };
     }
-    const displayValues = kyc(
-      Number(this.state.dayswappertreeInput) / 100,
-      [
-        Number(this.state.directkycstandaloneInputOne),
-        Number(this.state.directkycstandaloneInputTwo),
-        Number(this.state.directkycstandaloneInputThree),
-        Number(this.state.directkycstandaloneInputFour),
-        Number(this.state.directkycstandaloneInputFive),
-      ],
-      [
-        Number(this.state.directkyccummInputOne),
-        Number(this.state.directkyccummInputTwo),
-        Number(this.state.directkyccummInputThree),
-        Number(this.state.directkyccummInputFour),
-        Number(this.state.directkyccummInputFive),
-      ],
-      [
-        Number(this.state.indirectkycstandaloneInputOne),
-        Number(this.state.indirectkycstandaloneInputTwo),
-        Number(this.state.indirectkycstandaloneInputThree),
-        Number(this.state.indirectkycstandaloneInputFour),
-        Number(this.state.indirectkycstandaloneInputFive),
-      ],
-      [
-        Number(this.state.indirectkyccummInputOne),
-        Number(this.state.indirectkyccummInputTwo),
-        Number(this.state.indirectkyccummInputThree),
-        Number(this.state.indirectkyccummInputFour),
-        Number(this.state.indirectkyccummInputFive),
-      ]
-    );
-    this.setState({
-      displayValues,
-    });
-  };
+    const displayValues = kyc(Number(this.state.dayswappertreeInput)/100,
+       [Number(this.state.directkycstandaloneInputOne),Number(this.state.directkycstandaloneInputTwo),Number(this.state.directkycstandaloneInputThree),Number(this.state.directkycstandaloneInputFour),Number(this.state.directkycstandaloneInputFive)] ,
+       [Number(this.state.indirectkycstandaloneInputOne),Number(this.state.indirectkycstandaloneInputTwo),Number(this.state.indirectkycstandaloneInputThree),Number(this.state.indirectkycstandaloneInputFour),Number(this.state.indirectkycstandaloneInputFive)],
+       [Number(this.state.directkyccummInputOne),Number(this.state.directkyccummInputTwo),Number(this.state.directkyccummInputThree),Number(this.state.directkyccummInputFour),Number(this.state.directkyccummInputFive)],
+       [Number(this.state.indirectkyccummInputOne),Number(this.state.indirectkyccummInputTwo),Number(this.state.indirectkyccummInputThree),Number(this.state.indirectkyccummInputFour),Number(this.state.indirectkyccummInputFive)],
+       );
+      this.setState({
+        displayValues,
+      })
+  }
+
 
   render() {
     return (

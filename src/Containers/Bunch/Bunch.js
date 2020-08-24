@@ -92,7 +92,7 @@ class Bunch extends Component {
 
   render() {
     return (
-      <div className="bunch">
+      <div className="bunch compage">
         <div className="booking-hero-bgd booking-hero-bgd-inner">
           <Navbar />
           <h2 className="es-main-head es-main-head-inner">

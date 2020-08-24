@@ -59,7 +59,7 @@ class ContractInternalTransactions extends Component {
 
   render() {
     return (
-      <div className="node-status">
+      <div className="node-status compage">
         <div className="booking-hero-bgd booking-hero-bgd-inner">
           <Navbar />
           <h2 className="es-main-head es-main-head-inner">

@@ -38,21 +38,9 @@ class TransactionsIncentiveCalculator extends Component {
   componentDidMount() {}
 
   calculateValues = () => {
-    function txnincentive(
-      dayswapperstree,
-      transdirect,
-      transindirect,
-      volume,
-      additionalIncentive
-    ) {
-      var timeAllyClub =
-        transdirect * volume * (additionalIncentive / 100 + 0.01) * 0.2;
-      var dayswapperTreeReward =
-        (transdirect + transindirect) *
-        volume *
-        (additionalIncentive / 100 + 0.01) *
-        0.2 *
-        dayswapperstree;
+    function txnincentive(dayswapperstree, transdirect, transindirect, volume, additionalIncentive) {
+      var timeAllyClub = transdirect * volume * ((additionalIncentive / 100) + 0.01) * 0.2;
+      var dayswapperTreeReward = (transdirect + transindirect) * volume * ((additionalIncentive / 100) + 0.01) * 0.2 * dayswapperstree / 2;
       var burning = timeAllyClub / 2;
       var charity = timeAllyClub / 2;
       return {
@@ -80,7 +68,7 @@ class TransactionsIncentiveCalculator extends Component {
 
   render() {
     return (
-      <div className="nrt-manager">
+      <div className="nrt-manager compage">
         <div className="booking-hero-bgd booking-hero-bgd-inner">
           <Navbar />
           <h2 className="es-main-head es-main-head-inner">
@@ -98,10 +86,7 @@ class TransactionsIncentiveCalculator extends Component {
                         <div className="col-lg-12">
                           <div class="form-row">
                             <div class="col-md-12 col-lg-12 form-group">
-                              <label for="">
-                                Expected Avg % Earning from Indirect TeamMembers
-                                as per Day Swappers Tree
-                              </label>
+                              <label for="">Expected Avg % Earning from Indirect Team Members as per Day Swappers Tree</label>
                               <Form.Control
                                 onChange={(event) =>
                                   this.setState({
@@ -228,13 +213,9 @@ class TransactionsIncentiveCalculator extends Component {
                           <td>{this.state.displayValues.timeAllyClub}</td>
                         </tr>
                         <tr>
-                          <td>DaySwappers Tree Incentive</td>
-                          <td>
-                            {this.state.displayValues.dayswapperTreeReward}
-                          </td>
-                          <td>
-                            {this.state.displayValues.dayswapperTreeReward}
-                          </td>
+                          <td>Day Swappers Tree Incentive</td>
+                          <td>{this.state.displayValues.dayswapperTreeReward}</td>
+                          <td>{this.state.displayValues.dayswapperTreeReward}</td>
                         </tr>
                         <tr>
                           <td>Burning</td>

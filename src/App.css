@@ -538,7 +538,18 @@ label {
   -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
 }
-
+.othertlinks li a{
+  color: #fff;
+}
+.othertlinks li a:hover{
+  color: #fff;
+}
+.blocks-table{
+  min-height: 550px;
+}
+.compage{
+  min-height: 550px;
+}
 .social-menu li a:hover i {
   -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);

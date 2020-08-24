@@ -36,7 +36,7 @@ class TimeallyClubIncentiveCalculator extends Component {
 
   render() {
     return (
-      <div className="nrt-manager">
+      <div className="nrt-manager compage">
         <div className="booking-hero-bgd booking-hero-bgd-inner">
           <Navbar />
           <h2 className="es-main-head es-main-head-inner">

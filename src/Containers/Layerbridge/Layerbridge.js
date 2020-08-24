@@ -109,7 +109,7 @@ class Layerbridge extends Component {
 
   render() {
     return (
-      <div className="layer-bridge">
+      <div className="layer-bridge compage">
         <div className="booking-hero-bgd booking-hero-bgd-inner">
           <Navbar />
           <h2 className="es-main-head es-main-head-inner">Layer2 Bridge</h2>
@@ -119,9 +119,9 @@ class Layerbridge extends Component {
 
           <Row className="mt40">
             <Col lg={6}>
-              <div className="card">
+              <div className="card mb40">
                 <div className="table-responsive">
-                  <table className="es-transaction striped bordered hover table">
+                  <table className="es-transaction striped bordered hover table ">
                     <tr>
                       <td className="noborder" width="150">
                         <p className="explr-text-black">ESN to ETH</p>
@@ -172,23 +172,23 @@ class Layerbridge extends Component {
               </div>
             </Col>
             <Col lg={6}>
-              <div className="card">
+              <div className="card mb40">
                 <div className="table-responsive">
-                  <table className="es-transaction striped bordered hover table">
+                  <table className="es-transaction striped bordered hover table ">
                     <tr>
                       <td className="noborder" width="150">
                         <p className="explr-text-black">ETH to ESN</p>
                       </td>
                       <td className="noborder">
                         <p className="explr-purple-text">
-                          Live block number of Rinkeby ETH (Layer 1): 6871773
+                          Live block number of Rinkeby ETH (Layer 1) : 6871773
                           <br />
-                          Block number confirmed on ESN Reverse Plasma Contract:
-                          {this.state.latestBlockNumberOnESNContract ??
+                          Block number confirmed on ESN Reverse Plasma Contract : {this.state.latestBlockNumberOnESNContract ??
                             'Loading...'}
+                              
                           {this.state.blockNumberETH !== null &&
                           this.state.latestBlockNumberOnESNContract !== null
-                            ? `(${
+                            ? ` (${
                                 (this.state.blockNumberETH ?? 0) -
                                 (this.state.latestBlockNumberOnESNContract ?? 0)
                               } pending)`

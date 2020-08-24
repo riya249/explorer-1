@@ -122,7 +122,7 @@ class EraswapCalculator extends Component {
     if (!isFinite(monthlyReward)) monthlyReward = 0;
 
     return (
-      <div>
+      <div className="compage">
         <div className="booking-hero-bgd booking-hero-bgd-inner">
           <Navbar />
           <h2 className="es-main-head es-main-head-inner">
