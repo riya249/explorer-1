@@ -147,7 +147,7 @@ class Blocks extends Component {
                             </td>
                             <td>
                               {toLocaleTimestamp(
-                                new Date(block.timestamp).getTime() * 1000
+                                new Date(block.timestamp).getTime() * 1000 
                               ).fromNow()}
                             </td>
                             <td className="tr-color-txt">

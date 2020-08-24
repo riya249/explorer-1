@@ -126,11 +126,11 @@ class BlockPage extends Component {
                               </td>
                               <td>
                                 {toLocaleTimestamp(
-                                  this.state.block.data.createdOn
+                                  this.state.block.data.timestamp
                                 ).fromNow()}{' '}
                                 (
                                 {toLocaleTimestamp(
-                                  this.state.block.data.createdOn
+                                  this.state.block.data.timestamp
                                 ).format('MMMM-DD-YYYY hh:mm:ss A')}
                                 )
                               </td>
