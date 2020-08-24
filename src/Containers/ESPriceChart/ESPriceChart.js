@@ -39,6 +39,7 @@ export default class ESPriceChart extends React.Component {
           type: 'datetime',
           labels: {
             formatter: function () {
+              console.log({value: this.value});
               return toLocaleTimestamp(this.value).format('DD MMMM');
             },
           },
@@ -96,12 +97,20 @@ export default class ESPriceChart extends React.Component {
     } catch (e) {
       console.log(e);
     } finally {
+      console.log({res});
       this.setState({
         options: {
           ...this.state.options,
           series: [
             {
-              data: res && Array.isArray(res) ? res.map(a => [a.timestamp,a.price]) : [],
+              data: res && Array.isArray(res) ? res.map(a => {
+                console.log(
+                  'current tp',
+                  new Date(a.timestamp).getTime() * 1000,
+                  new Date(new Date(a.timestamp).getTime() * 1000)
+                );
+                return [new Date(new Date(a.timestamp).getTime() * 1000), a.price]
+              }) : [],
               lineWidth: 0.5,
               name: 'ES Price',
             }

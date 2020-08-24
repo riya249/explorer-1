@@ -68,7 +68,7 @@ export default class Apis {
                  static fetchTopStakers = ({ limit = 10 }) =>
                    ajax(`${baseUrl}/timeally-stakes/top?limit=${limit}`);
 
-                 static fetchESPrices = () => ajax(`${baseUrl}/es-price/top`);
+                 static fetchESPrices = () => ajax(`${baseUrl}/es-price/top`); 
                  
                  /********* dashboard apis *********/
                  //third party
