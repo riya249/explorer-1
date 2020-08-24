@@ -395,7 +395,7 @@ label {
   color: #12cdf6;
 }
 .table-scroll {
-  height: 250px;
+  height:397px;
   position: relative;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -545,10 +545,10 @@ label {
   color: #fff;
 }
 .blocks-table{
-  min-height: 550px;
+  min-height:890px;
 }
 .compage{
-  min-height: 550px;
+  min-height: 890px;
 }
 .social-menu li a:hover i {
   -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
@@ -573,4 +573,8 @@ button:hover {
 .es-transaction td,
 .es-transaction th {
   vertical-align: top;
+}
+.table thead th, .es-transaction thead th {
+  border-bottom: 1px solid #747feb !important;
+  background: #c9cdf3 !important;
 }
