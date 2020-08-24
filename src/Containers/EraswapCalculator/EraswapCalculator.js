@@ -126,7 +126,7 @@ class EraswapCalculator extends Component {
         <div className="booking-hero-bgd booking-hero-bgd-inner">
           <Navbar />
           <h2 className="es-main-head es-main-head-inner">
-            Era Swap Calculator
+            ES Mining  Calculator
           </h2>
         </div>
         <Container>

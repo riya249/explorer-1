@@ -132,7 +132,7 @@ class TimeAllySuperGoalCalculator extends Component {
                               <div class="card-body">
                                  <div className="row">
                                     <div className="col-lg-12">
-                                        <div className="col-md-12 col-lg-12">
+                                        <div className="">
                                              <div className="eraswapcal-tab">
                                                 <div className="card">
                                                    <div className="table-responsive">
@@ -154,6 +154,7 @@ class TimeAllySuperGoalCalculator extends Component {
                                                             <td>NA</td>
                                                          </tr>
                                                          <tr>
+                                                            <td>Annuity </td>
                                                             <td>16%</td>
                                                             <td>18%</td>
                                                             <td>20%</td>
@@ -165,7 +166,7 @@ class TimeAllySuperGoalCalculator extends Component {
                                                 </div>
                                              </div>
                                           </div>
-                                       <div class="form-row">
+                                       <div class="form-row mt20">
                                           <div class="col-md-6 col-lg-6 form-group">
                                              <label for="">Minimum Staking Commitment</label>
                                              <Form.Control
@@ -195,13 +196,13 @@ class TimeAllySuperGoalCalculator extends Component {
                                              <span> <img className="eslogo" src={Images.path.eslogo} /></span>
                                           </div>
                                          
-                                          <div className="mt30 eraswapcal-tab col-lg-12">
+                                          <div className="mt20 eraswapcal-tab col-lg-12">
                                              <div className="card">
                                                 <div className="table-responsive">
                                                    <table className="es-transaction  table">
                                                       <tr>
-                                                         <th>DEPOSITS</th>
-                                                         <th>STAKER BENEFITS</th>
+                                                         <th>MONTH</th>
+                                                         <th>MONTHLY STAKINGS</th>
                                                       </tr>
                                                       <tr>
                                                          <td>Month 1 </td>

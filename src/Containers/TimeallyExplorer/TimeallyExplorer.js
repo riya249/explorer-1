@@ -86,7 +86,7 @@ class TimeallyExplorer extends Component {
               </a>
             </div> */}
               {/* <ul className="list-group"> */}
-              <div className="card">
+              <div className="card mt20">
                 <div className="table-responsive">
                   <table className="es-transaction striped bordered hover table">
                     <thead>

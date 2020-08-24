@@ -116,7 +116,7 @@ class Navbar extends Component {
                   className="dropdown-menu dropdown-menu-right"
                   aria-labelledby="navbarDropdown"
                 >
-                  <Link className="dropdown-item" to="/calculator">
+                  <Link className="dropdown-item" to="/esminingcalculator">
                     ES Calculator
                   </Link>
                   <Link className="dropdown-item" to="/kyc-calci">
