@@ -173,6 +173,18 @@ class TimeAllySuperGoalCalculator extends Component {
                                                 onChange={(event) =>
                                                    this.setState({
                                                       cAmountInput: event.target.value,
+                                                      stakingAmountOne:event.target.value,
+                                                      stakingAmountTwo: event.target.value,
+                                                      stakingAmountThree: event.target.value,
+                                                      stakingAmountFour: event.target.value,
+                                                      stakingAmountFive: event.target.value,
+                                                      stakingAmountSix: event.target.value,
+                                                      stakingAmountSeven: event.target.value,
+                                                      stakingAmountEight: event.target.value,
+                                                      stakingAmountNine: event.target.value,
+                                                      stakingAmountTen: event.target.value,
+                                                      stakingAmountEleven: event.target.value,
+                                                      stakingAmountTwelve: event.target.value,
                                                    })
                                                 }
                                                 value={this.state.cAmountInput}

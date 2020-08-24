@@ -25,15 +25,27 @@ import {
   formatEther,
 } from '../../lib/parsers';
 import { nrtManager } from '../../ethereum/NrtManager';
+import { nrtAddress } from '../../config/config';
+import { providerESN } from '../../ethereum/Provider';
 
 class Homepage extends Component {
   snackbarRef = React.createRef();
   search = '';
   cummulativeStakes = 0;
+  esCurrentSupply;
 
   constructor(props) {
     super(props);
     this.state = {
+      marketCap: 0,
+      change1H: '-',
+      change24H: '-',
+      change7Days: '-',
+      availableSupply: 0,
+      totalSupply: 0,
+      maxSupply: 9100000000,
+      volume24: 0,
+      backedAmt: 0,
       totalESStaked: 0,
       transactionsChartData: [],
       txnsCount: 0,
@@ -65,16 +77,18 @@ class Homepage extends Component {
   }
 
   componentDidMount() {
-    this.fetchBlocks();
-    this.fetchTransactions();
-    this.fetchBunches();
-    this.fetchESPrice();
-    this.fetchTransactionsInterval();
-    this.fetchTransactionsCount();
-    this.getPlatformDetailsAllTime();
-    this.fetchValidators();
-    this.fetchAverageBlock();
-    this.nrtTicker();
+    this.fetchBlocks().catch((e) => console.log(e));
+    this.fetchTransactions().catch((e) => console.log(e));
+    this.fetchBunches().catch((e) => console.log(e));
+    this.fetchESPrice().catch((e) => console.log(e));
+    this.fetchTransactionsInterval().catch((e) => console.log(e));
+    this.fetchTransactionsCount().catch((e) => console.log(e));
+    this.getPlatformDetailsAllTime().catch((e) => console.log(e));
+    this.fetchValidators().catch((e) => console.log(e));
+    this.fetchAverageBlock().catch((e) => console.log(e));
+    this.nrtTicker().catch((e) => console.log(e));
+    this.esTotalSupply().catch((e) => console.log(e));
+    this.fetchTotalSupply().catch((e) => console.log(e));
   }
 
   async nrtTicker() {
@@ -122,7 +136,7 @@ class Homepage extends Component {
           minutesRemaining * 1000 * 60) /
           1000
       );
-      
+
       const totalMiliSecInMonth = 2628000000;
       const timePassed = totalMiliSecInMonth - timeRemaining;
       const timePassedPercent = (timePassed / totalMiliSecInMonth) * 100;
@@ -288,15 +302,49 @@ class Homepage extends Component {
       const res = await Apis.getESPrice();
       console.log('fetchESPrice res', res);
       if (res?.data?.probitResponse?.data?.length) {
-        this.setState({
-          esPriceUSDT: res.data.probitResponse.data[0].last,
-          esPriceBTC: res.data.probitResponse.data[1].last,
-        });
+        this.setState(
+          {
+            esPriceUSDT: res.data.probitResponse.data[0].last,
+            esPriceBTC: res.data.probitResponse.data[1].last,
+          },
+          this.updateMarketCap
+        );
       }
     } catch (e) {
       console.log(e);
     }
   }
+
+  async esTotalSupply() {
+    let res;
+    try {
+      res = await Apis.esTotalSupply();
+    } catch (e) {
+      console.log(e);
+    } finally {
+      if (res?.data?.totalSupply) {
+        this.esCurrentSupply = Number(lessDecimals(res.data.totalSupply));
+        this.updateMarketCap();
+      }
+      this.setState({
+        availableSupply: res?.data?.outsideTimeAllySupply
+          ? lessDecimals(res.data.outsideTimeAllySupply) + ' ES'
+          : '-',
+      });
+    }
+  }
+
+  updateMarketCap = () => {
+    if (this.state.esPriceUSDT && this.esCurrentSupply) {
+      let marketCap = String(this.state.esPriceUSDT * this.esCurrentSupply);
+      if (marketCap.includes('.')) {
+        marketCap = marketCap.split('.')[0];
+      }
+      this.setState({
+        marketCap,
+      });
+    }
+  };
 
   async getPlatformDetailsAllTime() {
     let res;
@@ -312,6 +360,14 @@ class Homepage extends Component {
           : '-',
       });
     }
+  }
+
+  async fetchTotalSupply() {
+    const nrtBalance = await providerESN.getBalance(nrtAddress);
+
+    this.setState({
+      totalSupply: 9100000000 - formatEther(nrtBalance),
+    });
   }
 
   handleChange = (e) => {
@@ -371,85 +427,179 @@ class Homepage extends Component {
           <Container>
             <div className="second-section-es mt30 card">
               <Row>
-                <Col lg={4} className="border-right">
-                  <div className="flex-eraswap">
-                    <img src={Images.path.escolor} className="escolor-pic1" />
-                    <div>
-                      <p className="era-head">ERA SWAP PRICE</p>
-                      <p className="text-black">
-                        {this.state.esPriceUSDT
-                          ? `$ ${this.state.esPriceUSDT}`
-                          : 'Loading...'}{' '}
-                        <span className="text-gray">
-                          @{' '}
-                          {this.state.esPriceBTC
-                            ? `${this.state.esPriceBTC} BTC`
-                            : 'Loading...'}
-                        </span>{' '}
-                        <span className="text-green"></span>
-                      </p>
-                    </div>
-                  </div>
-                  <div className="mt10">
+                <Col lg={8}>
+                  <Row>
+                    <Col lg={12}>
+                      <div className="flex-eraswap">
+                        <img
+                          src={Images.path.escolor}
+                          className="escolor-pic1"
+                        />
+                        <div>
+                          <p className="era-head">ERA SWAP PRICE</p>
+                          <p className="text-black">
+                            {this.state.esPriceUSDT
+                              ? `$ ${this.state.esPriceUSDT}`
+                              : 'Loading...'}{' '}
+                            <span className="text-gray">
+                              @{' '}
+                              {this.state.esPriceBTC
+                                ? `${this.state.esPriceBTC} BTC`
+                                : 'Loading...'}
+                            </span>{' '}
+                            <span className="text-green"></span>
+                          </p>
+                        </div>
+                      </div>
+                    </Col>
+                    <Col lg={6} className="border-right">
+                      <div className="flex-transc border-value row">
+                        <div className="col-lg-6">
+                          <p className="era-head">Symbol</p>
+                          <p className="era-value text-black">ES</p>
+                        </div>
+                        <div className="col-lg-6">
+                          <p className="era-head">MARKET CAP</p>
+                          <p className="era-value text-black">
+                            {this.state.marketCap} ES
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="flex-transc border-value row">
+                        <div className="col-lg-6">
+                          <p className="era-head"> MAX SUPPLY</p>
+                          <p className="era-value text-black">
+                            {this.state.maxSupply} ES
+                          </p>
+                        </div>
+
+                        <div className="col-lg-6">
+                          <p className="era-head">AMOUNT OF STAKINGS</p>
+                          <p className="era-value text-black">
+                            {this.state.totalESStaked}
+                          </p>
+                        </div>
+                      </div>
+                      <div className="flex-transc border-value row">
+                        <div className="col-lg-6">
+                          <p className="era-head">AVAILABLE SUPPLY</p>
+                          <p className="era-value text-black">
+                            {this.state.availableSupply} ES
+                          </p>
+                        </div>
+                        <div className="col-lg-6">
+                          <p
+                            className="era-head"
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title=""
+                          >
+                            TOTAL SUPPLY
+                          </p>
+                          <p className="era-value text-black">
+                            {this.state.totalSupply} ES
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* 
+                  
+                  <div className="flex-eraswap mt10">
                     <div className="pdl70">
                       <p className="era-head">MARKET VOLUME</p>
                       <p className="text-black">-</p>
                     </div>
                   </div>
-                </Col>
-                <Col lg={4} className="border-right">
-                  <div className="flex-transc row">
-                    <div className="col-lg-6">
-                      <p
-                        className="era-head"
-                        data-toggle="tooltip"
-                        data-placement="top"
-                        title="These are the transactions that are included in this Block"
-                      >
-                        TRANSACTIONS{' '}
-                      </p>
-                      <p className="era-value text-black">
-                        {nFormatter(this.state.txnsCount)}{' '}
-                        <span className="era-span text-gray">
-                          ({this.state.txnPerMin} TPM)
-                        </span>
-                      </p>
-                    </div>
-                    <div className="col-lg-6">
-                      <p className="era-head">SAFE GAS PRICE</p>
-                      <p className="era-value text-black">
-                        0 EM <span className="era-span text-gray">($0.0)</span>
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex-transc border-value row">
-                    <div className="col-lg-6">
-                      <p className="era-head">AMOUNT OF STAKINGS</p>
-                      <p className="era-value text-black">
-                        {this.state.totalESStaked}
-                      </p>
-                    </div>
-                    <div className="col-lg-6">
-                      <p
-                        className="era-head"
-                        data-toggle="tooltip"
-                        data-placement="top"
-                        title="Era Swap Network Proof of Stake (ESN PoS)"
-                      >
-                        HASH RATE
-                      </p>
-                      <p className="era-value text-black">0 GH/s</p>
-                    </div>
-                  </div>
+                 */}
+                    </Col>
+                    <Col lg={6} className="border-right">
+                      <div className="flex-transc border-value row">
+                        <div className="col-lg-6">
+                          <p
+                            className="era-head"
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title="These are the transactions that are included in this Block"
+                          >
+                            TRANSACTIONS{' '}
+                          </p>
+                          <p className="era-value text-black">
+                            {nFormatter(this.state.txnsCount)}{' '}
+                            <span className="era-span text-gray">
+                              ({this.state.txnPerMin} TPD)
+                            </span>
+                          </p>
+                        </div>
+                        <div className="col-lg-6">
+                          <p className="era-head">SAFE GAS PRICE</p>
+                          <p className="era-value text-black">
+                            0 EM{' '}
+                            <span className="era-span text-gray">($0.0)</span>
+                          </p>
+                        </div>
+                      </div>
+                      <div className="flex-transc border-value row">
+                        <div className="col-lg-6">
+                          <p
+                            className="era-head"
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title="Era Swap Network Proof of Stake (ESN PoS)"
+                          >
+                            ECOSYSTEM BACKED UP BY
+                          </p>
+                          <p className="era-value text-black">
+                            {this.state.backedAmt} ES
+                          </p>
+                        </div>
+                        <div className="col-lg-6">
+                          <p
+                            className="era-head"
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title=""
+                          >
+                            CHANGE 1H
+                          </p>
+                          <p className="era-value text-black">
+                            {this.state.change1H}
+                          </p>
+                        </div>
+                      </div>
+                      <div className="flex-transc border-value row">
+                        <div className="col-lg-6">
+                          <p
+                            className="era-head"
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title=""
+                          >
+                            CHANGE 7 DAYS
+                          </p>
+                          <p className="era-value text-black">
+                            {this.state.change7Days}
+                          </p>
+                        </div>
+                        <div className="col-lg-6">
+                          <p className="era-head">CHANGE 24H</p>
+                          <p className="era-value text-black">
+                            {this.state.change24H}
+                          </p>
+                        </div>
+                      </div>
+                    </Col>
+                  </Row>
                 </Col>
                 <Col lg={4}>
                   <div>
-                    <p className="era-head">
+                    <p className="era-head ">
                       ERA SWAP TRANSACTION HISTORY IN 14 DAYS
                     </p>
                     <LineChart
+                      className="mt20"
                       width={320}
-                      height={140}
+                      height={220}
                       data={this.state.transactionsChartData}
                       margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
                     >
@@ -715,8 +865,13 @@ class Homepage extends Component {
                     </Col>
                     <Col lg={4}>
                       <div>
-                        <p className="era-head">NRT Release in </p>
-                        <ProgressBar now={this.state.nrtCompletedPercent} />
+                        <p className="era-head text-white">NRT Release in </p>
+                        <ProgressBar
+                          now={this.state.nrtCompletedPercent}
+                          label={`${this.state.nrtCompletedPercent.toFixed(
+                            2
+                          )}%`}
+                        />
                       </div>
                     </Col>
                   </Row>
@@ -861,7 +1016,7 @@ class Homepage extends Component {
                           STAKE (ES){' '}
                         </th>
                         <th data-toggle="tooltip" data-placement="top" title="">
-                          CUMULATIVE STAKE (EM)
+                          CUMULATIVE STAKE (ES)
                         </th>
                         <th data-toggle="tooltip" data-placement="top" title="">
                           FEE

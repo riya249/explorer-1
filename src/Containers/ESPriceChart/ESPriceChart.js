@@ -40,7 +40,7 @@ export default class ESPriceChart extends React.Component {
           labels: {
             formatter: function () {
               console.log({value: this.value});
-              return toLocaleTimestamp(this.value).format('DD MMMM');
+              return toLocaleTimestamp(new Date(this.value).getTime() * 1000).format('DD MMMM');
             },
           },
         },
@@ -106,8 +106,7 @@ export default class ESPriceChart extends React.Component {
               data: res && Array.isArray(res) ? res.map(a => {
                 console.log(
                   'current tp',
-                  new Date(a.timestamp).getTime() * 1000,
-                  new Date(new Date(a.timestamp).getTime() * 1000)
+                  new Date(new Date(a.timestamp).getTime() * 1000).toString()
                 );
                 return [new Date(new Date(a.timestamp).getTime() * 1000), a.price]
               }) : [],
