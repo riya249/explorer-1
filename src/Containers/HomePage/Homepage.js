@@ -527,7 +527,7 @@ class Homepage extends Component {
                           <p className="era-value text-black">
                             {nFormatter(this.state.txnsCount)}{' '}
                             <span className="era-span text-gray">
-                              ({this.state.txnPerMin} TPM)
+                              ({this.state.txnPerMin} TPD)
                             </span>
                           </p>
                         </div>
