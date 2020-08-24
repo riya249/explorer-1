@@ -248,7 +248,7 @@ class KycIncentiveCalculator extends Component {
                 </Col>
               </Row>
 
-              <Row className="mt40 eraswapcal cal-com-page eraswapcal-tab">
+              <Row className="eraswapcal cal-com-page eraswapcal-tab">
                 <Col lg={12}>
                   <div class="card">
                     <div class="card-body">

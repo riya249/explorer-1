@@ -63,7 +63,7 @@ function App() {
           <Route exact path="/txn/:hash" component={Transaction} />
           <Route exact path="/explore" component={TimeallyExplorer} />
           <Route exact path="/dashboard" component={Dashboard} />
-          <Route exact path="/calculator" component={EraswapCalculator} />
+          <Route exact path="/esminingcalculator" component={EraswapCalculator} />
           <Route exact path="/nrtmanager" component={Nrtmanager} />
           <Route exact path="/nodestatus" component={Nodestatus} />
           <Route exact path="/layerbridge" component={Layerbridge} />
