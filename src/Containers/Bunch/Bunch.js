@@ -42,18 +42,23 @@ class Bunch extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if(this.props.match.params.bunchIndex !== prevProps.match.params.bunchIndex){
-      this.setState({
-        bunchIndex: this.props.match.params.bunchIndex,
-        bunch: {
-          data: {},
-          isLoading: true,
+    if (
+      this.props.match.params.bunchIndex !== prevProps.match.params.bunchIndex
+    ) {
+      this.setState(
+        {
+          bunchIndex: this.props.match.params.bunchIndex,
+          bunch: {
+            data: {},
+            isLoading: true,
+          },
+          transactions: {
+            data: [],
+            isLoading: false,
+          },
         },
-        transactions: {
-          data: [],
-          isLoading: false,
-        },
-      },this.fetchBunch)
+        this.fetchBunch
+      );
     }
   }
 

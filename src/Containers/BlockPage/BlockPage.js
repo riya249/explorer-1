@@ -41,12 +41,12 @@ class BlockPage extends Component {
       this.props.match.params.blockNumber !== prevProps.match.params.blockNumber
     ) {
       this.setState(
-        { 
+        {
           blockNumber: this.props.match.params.blockNumber,
           block: {
             data: {},
-            isLoading: true
-          }
+            isLoading: true,
+          },
         },
         this.fetchBlock
       );
@@ -78,7 +78,7 @@ class BlockPage extends Component {
   }
 
   openSnackBar(message) {
-    this.snackbarRef.current.openSnackBar(message);
+    // this.snackbarRef.current.openSnackBar(message);
   }
 
   render() {
@@ -151,19 +151,23 @@ class BlockPage extends Component {
                                         this.state.block.data
                                           .raw_transactions_count
                                       }{' '}
-                                      transactions
+                                      transactions&nbsp;
                                     </span>
                                   </Link>
                                   {this.state.block.data
                                     .internal_transactions_count ? (
                                     <span>
-                                      and{' '}
-                                      {
-                                        this.state.block.data
-                                          .internal_transactions_count
-                                      }{' '}
-                                      contract internal transactions in this
-                                      block
+                                      and &nbsp;
+                                      <Link
+                                        to={`/ci-txns/${this.state.blockNumber}`}
+                                      >
+                                        {
+                                          this.state.block.data
+                                            .internal_transactions_count
+                                        }{' '}
+                                        contract internal transactions in this
+                                        block
+                                      </Link>
                                     </span>
                                   ) : (
                                     ''
@@ -191,7 +195,6 @@ class BlockPage extends Component {
                                 </span>{' '}
                                 {this.state.block.data.miner?.label &&
                                   `(${this.state.block.data.miner?.label})`}{' '}
-                                in 14 secs
                               </td>
                             </tr>
                             <tr>
@@ -209,9 +212,11 @@ class BlockPage extends Component {
                             <tr>
                               <td>Transaction Fee</td>
                               <td>
-                                {ethers.utils.formatEther(
-                                  this.state.block.data.total_txn_fee
-                                )}{' '}
+                                {(this.state.block.data?.total_txn_fee &&
+                                  ethers.utils.formatEther(
+                                    this.state.block.data.total_txn_fee
+                                  )) ||
+                                  '-'}{' '}
                                 ES
                               </td>
                             </tr>
@@ -219,9 +224,10 @@ class BlockPage extends Component {
                             <tr>
                               <td>Average Gas Price: </td>
                               <td>
-                                {ethers.utils.formatEther(
-                                  this.state.block.data.average_gas_price
-                                )}{' '}
+                                {this.state.block.data?.average_gas_price &&
+                                  ethers.utils.formatEther(
+                                    this.state.block.data.average_gas_price
+                                  )}{' '}
                                 ES
                               </td>
                             </tr>

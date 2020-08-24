@@ -9,7 +9,6 @@ import { toLocaleTimestamp } from '../../lib/parsers';
 import { Snackbar } from '../../Components/Snackbar/Snackbar';
 import AddressLink from '../../Components/AddressLink/AddressLink';
 
-
 class TimeAllySuperGoalCalculator extends Component {
 
    snackbarRef = React.createRef();

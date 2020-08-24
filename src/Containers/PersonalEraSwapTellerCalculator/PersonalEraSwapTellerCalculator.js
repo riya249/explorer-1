@@ -6,7 +6,6 @@ import Navbar from '../../Components/Navbar/Navbar';
 import { Col, Button, Container, Row, Tabs, Tab, Form } from 'react-bootstrap';
 import Apis from '../../lib/apis';
 
-
 class PersonalEraSwapTellerCalculator extends Component {
   snackbarRef = React.createRef();
 
@@ -161,7 +160,9 @@ class PersonalEraSwapTellerCalculator extends Component {
       <div className="nrt-manager calculator compage">
         <div className="booking-hero-bgd booking-hero-bgd-inner">
           <Navbar />
-          <h2 className="es-main-head es-main-head-inner">Personal Era Swap Teller Calculator</h2>
+          <h2 className="es-main-head es-main-head-inner">
+            Personal Era Swap Teller Calculator
+          </h2>
         </div>
         <div className="container">
           <div className="BlockPage-detail">

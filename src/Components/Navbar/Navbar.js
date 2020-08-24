@@ -120,10 +120,10 @@ class Navbar extends Component {
                     ES Calculator
                   </Link>
                   <Link className="dropdown-item" to="/kyc-calci">
-                  KYC Charge Incentive Calculator
+                    KYC Charge Incentive Calculator
                   </Link>
                   <Link className="dropdown-item" to="/txns-calci">
-                  Transactions Charge Incentive Calculator
+                    Transactions Charge Incentive Calculator
                   </Link>
                   <Link className="dropdown-item" to="/es-calci">
                   Personal Era Swap Teller Calculator
@@ -144,9 +144,21 @@ class Navbar extends Component {
                   <Link className="dropdown-item" to="/layerbridge">
                     Layer2 Bridge
                   </Link>
-                 <Link className="dropdown-item" to="/nodestatus">
-                    Node Status
+                  <Link className="dropdown-item" to="/nodestatus">
+                    Nodes
                   </Link>
+                  {/* <Link className="dropdown-item" to="/cv-txns">
+                  Contract Verified Source Code
+                  </Link> */}
+                  <Link className="dropdown-item" to="/top-statistics">
+                    Top Statistics
+                  </Link>
+                  <Link className="dropdown-item" to="/top-accounts">
+                    Top Accounts
+                  </Link>
+                  {/* <Link className="dropdown-item" to="/charts" >
+                    Charts
+                  </Link> */}
                 </div>
               </li>
             </ul>

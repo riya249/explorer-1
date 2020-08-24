@@ -27,11 +27,15 @@ import TransactionsIncentiveCalculator from './Containers/TransactionsIncentiveC
 import TimeAllySuperGoalCalculator from './Containers/TimeAllySuperGoalCalculator/TimeAllySuperGoalCalculator';
 import PersonalEraSwapTellerCalculator from './Containers/PersonalEraSwapTellerCalculator/PersonalEraSwapTellerCalculator';
 import TimeallyClubIncentiveCalculator from './Containers/TimeallyClubIncentiveCalculator/TimeallyClubIncentiveCalculator';
-import ContractInternalTransactions from './Containers/ContractInternalTransactions/ContractInternalTransactions';
-import ContractsWithVerifiedSourceCodes from './Containers/ContractsWithVerifiedSourceCodes/ContractsWithVerifiedSourceCodes';
-
+import TopStatistics from './Containers/TopStatistics/TopStatistics';
 import InternalTransactions from './Containers/InternalTransactions/InternalTransactions';
+import ContractInternalTransactions from './Containers/ContractInternalTransactions/ContractInternalTransactions';
+import TopAccountsbyEsBalance from './Containers/TopAccountsbyEsBalance/TopAccountsbyEsBalance';
+import ContractsWithVerifiedSourceCodes from './Containers/ContractsWithVerifiedSourceCodes/ContractsWithVerifiedSourceCodes';
+import Nodes from './Containers/Nodes/Nodes';
+import ECharts from './Containers/ECharts/ECharts';
 import tablePdf from './assets/docs/KYC.pdf';
+import ESPriceChart from './Containers/ESPriceChart/ESPriceChart';
 
 function App() {
   useEffect(() => {
@@ -51,7 +55,11 @@ function App() {
           <Route exact path="/block/:blockNumber" component={BlockPage} />
           <Route exact path="/txns" component={Transactions} />
           <Route exact path="/txns/:blockNumber" component={Transactions} />
-          <Route exact path="/txnsInternal/:parentHash" component={InternalTransactions} />
+          <Route
+            exact
+            path="/txnsInternal/:parentHash"
+            component={InternalTransactions}
+          />
           <Route exact path="/txn/:hash" component={Transaction} />
           <Route exact path="/explore" component={TimeallyExplorer} />
           <Route exact path="/dashboard" component={Dashboard} />
@@ -60,12 +68,43 @@ function App() {
           <Route exact path="/nodestatus" component={Nodestatus} />
           <Route exact path="/layerbridge" component={Layerbridge} />
           <Route exact path="/kyc-calci" component={KycIncentiveCalculator} />
-          <Route exact path="/txns-calci" component={TransactionsIncentiveCalculator} />
-          <Route exact path="/timeally-goals" component={TimeAllySuperGoalCalculator} />
-          <Route exact path="/es-calci" component={PersonalEraSwapTellerCalculator} />
-          <Route exact path="/timeally-Incentive" component={TimeallyClubIncentiveCalculator} />
-          <Route exact path="/ci-txns" component={ContractInternalTransactions} />
-          <Route exact path="/cv-txns" component={ContractsWithVerifiedSourceCodes} />
+          <Route
+            exact
+            path="/txns-calci"
+            component={TransactionsIncentiveCalculator}
+          />
+          <Route
+            exact
+            path="/timeally-goals"
+            component={TimeAllySuperGoalCalculator}
+          />
+          <Route
+            exact
+            path="/es-calci"
+            component={PersonalEraSwapTellerCalculator}
+          />
+          <Route
+            exact
+            path="/timeally-Incentive"
+            component={TimeallyClubIncentiveCalculator}
+          />
+          <Route
+            exact
+            path="/ci-txns/:blockNumber"
+            component={ContractInternalTransactions}
+          />
+          <Route
+            exact
+            path="/cv-txns"
+            component={ContractsWithVerifiedSourceCodes}
+          />
+          <Route exact path="/top-statistics" component={TopStatistics} />
+          <Route
+            exact
+            path="/top-accounts"
+            component={TopAccountsbyEsBalance}
+          />
+          <Route exact path="/nodes" component={Nodes} />
           <Route
             exact
             path="/validatorstakings"
@@ -76,6 +115,8 @@ function App() {
             path="/nodestatustransaction"
             component={Nodestatustransaction}
           />
+          <Route exact path="/charts" component={ECharts} />
+          <Route exact path="/chart/esprice" component={ESPriceChart} />
         </Switch>
       </Router>
       <Footer />

@@ -17,7 +17,9 @@ class ContractsWithVerifiedSourceCodes extends Component {
       <div className="node-status compage">
         <div className="booking-hero-bgd booking-hero-bgd-inner">
           <Navbar />
-          <h2 className="es-main-head es-main-head-inner">Contracts With verified source codes only</h2>
+          <h2 className="es-main-head es-main-head-inner">
+            Contracts With verified source codes only
+          </h2>
         </div>
         <Container>
           {/* <p className="trans-head">TimeAlly Explorer</p> */}
@@ -235,8 +237,6 @@ class ContractsWithVerifiedSourceCodes extends Component {
                       <td>1</td>
                       <td>8/7/2020</td>
                     </tr>
-                    
-
                   </table>
                 </div>
               </div>

@@ -112,7 +112,7 @@ class Address extends Component {
           data: {
             ...this.state.data,
             label: res.label,
-            balance: formatEther(res.balance)
+            balance: formatEther(res.balance),
           },
           isLoading: false,
         });

@@ -50,7 +50,7 @@ class EraswapCalculator extends Component {
 
   async fetchNrtRelease() {
     const res = await Apis.nrtFractions();
-    console.log('nrt fraction',res)
+    console.log('nrt fraction', res);
     if (res?.data) {
       this.setState({
         nrtReleasedInput: Number(res.data.actualNRTDistributed).toFixed(2),

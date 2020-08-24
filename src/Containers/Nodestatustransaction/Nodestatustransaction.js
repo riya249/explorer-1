@@ -12,7 +12,6 @@ class Nodestatustransaction extends Component {
   snackbarRef = React.createRef();
   constructor(props) {
     super(props);
-  
   }
   componentDidMount() {
     // this.fetchBunch();

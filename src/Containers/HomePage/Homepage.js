@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
-import { Col, Button, Container, Row, Tooltip } from 'react-bootstrap';
+import {
+  Col,
+  Button,
+  Container,
+  Row,
+  Tooltip,
+  ProgressBar,
+} from 'react-bootstrap';
 import * as moment from 'moment';
 import './Homepage.css';
 import Images from '../Images/Images';
@@ -11,11 +18,18 @@ import { Link, withRouter, Redirect } from 'react-router-dom';
 import { toLocaleTimestamp } from '../../lib/parsers';
 import { ethers } from 'ethers';
 import { LineChart, Line, CartesianGrid, XAxis, YAxis } from 'recharts';
-import { nFormatter, moreDecimals, lessDecimals } from '../../lib/parsers';
+import {
+  nFormatter,
+  moreDecimals,
+  lessDecimals,
+  formatEther,
+} from '../../lib/parsers';
+import { nrtManager } from '../../ethereum/NrtManager';
 
 class Homepage extends Component {
   snackbarRef = React.createRef();
   search = '';
+  cummulativeStakes = 0;
 
   constructor(props) {
     super(props);
@@ -38,6 +52,13 @@ class Homepage extends Component {
         data: [],
         isLoading: true,
       },
+      validators: {
+        data: [],
+        isLoading: true,
+      },
+      averageBlock: null,
+      latestBlockNumber: null,
+      nrtCompletedPercent: 0,
     };
 
     this.fetchTransactions = this.fetchTransactions.bind(this);
@@ -51,6 +72,116 @@ class Homepage extends Component {
     this.fetchTransactionsInterval();
     this.fetchTransactionsCount();
     this.getPlatformDetailsAllTime();
+    this.fetchValidators();
+    this.fetchAverageBlock();
+    this.nrtTicker();
+  }
+
+  async nrtTicker() {
+    /// @dev countdown timer for nrt release
+    const deployTimestamp = 1564336091 * 1000;
+    const monthDuration = 2629744 * 1000;
+
+    let seeFutureNrt = false;
+    let currentNrtMonthNumber = 0;
+    // let nextNrtTimestamp = deployTimestamp + monthDuration * (currentNrtMonthNumber + 1);
+
+    const lastNrtReleaseTimestamp = (
+      await nrtManager().lastReleaseTimestamp()
+    ).toNumber();
+
+    setInterval(() => {
+      // const nextNrtTimestamp =
+      //   deployTimestamp + monthDuration * (currentNrtMonthNumber + 1);
+
+      const nextNrtTimestamp = lastNrtReleaseTimestamp * 1000 + monthDuration;
+      const currentTimestamp = Date.now();
+
+      const timeRemaining =
+        nextNrtTimestamp > currentTimestamp
+          ? nextNrtTimestamp - currentTimestamp
+          : 0;
+
+      //     window.isOnProduction || console.log(timeRemaining);
+
+      const daysRemaining = Math.floor(timeRemaining / 1000 / 24 / 60 / 60);
+      const hoursRemaining = Math.floor(
+        (timeRemaining - daysRemaining * 1000 * 24 * 60 * 60) / 1000 / 60 / 60
+      );
+      const minutesRemaining = Math.floor(
+        (timeRemaining -
+          daysRemaining * 1000 * 24 * 60 * 60 -
+          hoursRemaining * 1000 * 60 * 60) /
+          1000 /
+          60
+      );
+      const secondsRemaining = Math.floor(
+        (timeRemaining -
+          daysRemaining * 1000 * 24 * 60 * 60 -
+          hoursRemaining * 1000 * 60 * 60 -
+          minutesRemaining * 1000 * 60) /
+          1000
+      );
+      
+      const totalMiliSecInMonth = 2628000000;
+      const timePassed = totalMiliSecInMonth - timeRemaining;
+      const timePassedPercent = (timePassed / totalMiliSecInMonth) * 100;
+
+      this.setState({
+        nrtCompletedPercent: timePassedPercent,
+      });
+    }, 1000);
+  }
+
+  async fetchAverageBlock() {
+    let res = [];
+    try {
+      res = await Apis.fetchAverageBlock();
+    } catch (e) {
+      console.log(e);
+    } finally {
+      this.setState({
+        averageBlock: res?.average || 0,
+        latestBlockNumber: res?.latestBlock?.block_number,
+      });
+    }
+  }
+
+  async fetchValidators() {
+    try {
+      const month = await nrtManager().currentNrtMonth();
+      if (month !== null) {
+        const res = await Apis.fetchValidatorsWithLastBlock(month);
+        console.log('Validators res', res);
+        if (res && Array.isArray(res)) {
+          let data = res;
+          data.forEach((validator, i) => {
+            this.cummulativeStakes =
+              Number(this.cummulativeStakes) +
+              Number(formatEther(validator.amount));
+            data[i].cummulativeStakes = this.cummulativeStakes;
+            data[i].amount = Number(formatEther(validator.amount));
+          });
+          console.log({ data });
+          data = data.sort((a, b) => (a.amount > b.amount ? -1 : 1));
+
+          this.setState({
+            validators: {
+              data,
+              isLoading: false,
+            },
+          });
+        }
+      }
+    } catch (e) {
+      console.log('fetchValidators', e);
+      this.setState({
+        validators: {
+          data: [],
+          isLoading: false,
+        },
+      });
+    }
   }
 
   fetchBlocks = async () => {
@@ -520,10 +651,7 @@ class Homepage extends Component {
                                 </td>
                                 <td>
                                   <div className="era-no">
-                                    {ethers.utils.formatEther(
-                                      transaction.value
-                                    )}{' '}
-                                    ES
+                                    {formatEther(transaction.value)} ES
                                   </div>{' '}
                                 </td>
                               </tr>
@@ -544,7 +672,7 @@ class Homepage extends Component {
             </Row>
           </Container>
 
-          {/* <Container>
+          <Container>
             <Row>
               <Col lg={12}>
                 <div className="second-section-es mt40 card purpalebg ">
@@ -559,7 +687,11 @@ class Homepage extends Component {
                         </div>
                         <div className="block-value">
                           <p className="block-text">AVG. BLOCK TIME</p>
-                          <p className="block-value">25,759,721</p>
+                          <p className="block-value">
+                            {this.state.averageBlock == null
+                              ? 'Loading...'
+                              : this.state.averageBlock}
+                          </p>
                         </div>
                       </div>
                     </Col>
@@ -573,17 +705,22 @@ class Homepage extends Component {
                         </div>
                         <div className="block-value">
                           <p className="block-text">BLOCK HEIGHT</p>
-                          <p className="block-value">25,759,721</p>
+                          <p className="block-value">
+                            {this.state.latestBlockNumber == null
+                              ? 'Loading...'
+                              : this.state.latestBlockNumber}
+                          </p>
                         </div>
                       </div>
                     </Col>
                     <Col lg={4}>
                       <div>
-                        <p className="era-head">EPOCH: 31 </p>
+                        <p className="era-head">NRT Release in </p>
+                        <ProgressBar now={this.state.nrtCompletedPercent} />
                       </div>
                     </Col>
                   </Row>
-                  <Row className="mt30">
+                  {/* <Row className="mt30">
                     <Col lg={4} className="">
                       <div className="block-bg">
                         <div className="escolor-pic1">
@@ -593,21 +730,21 @@ class Homepage extends Component {
                           />
                         </div>
                         <div className="block-value">
-                          <p className="block-text">AVG. BLOCK TIME</p>
-                          <p className="block-value">25,759,721</p>
+                          <p className="block-text">CURRENT LEADER</p>
+                          <p className="">Eraswap Node</p>
                         </div>
                       </div>
                     </Col>
                     <Col lg={8} className="">
                       <div className="block-bg"></div>
                     </Col>
-                  </Row>
+                  </Row> */}
                 </div>
               </Col>
             </Row>
           </Container>
 
-          <Container>
+          {/* <Container>
             <Row>
               <Col lg={12}>
                 <div className="second-section-es mt40 card purpalebg ">
@@ -676,9 +813,9 @@ class Homepage extends Component {
                 </div>
               </Col>
             </Row>
-          </Container>
+          </Container> */}
 
-          <Container>
+          {/* <Container>
             <Row>
               <Col lg={12}>
                 <div className="second-section-es mt40 card purpalebg ">
@@ -705,7 +842,7 @@ class Homepage extends Component {
                 </div>
               </Col>
             </Row>
-          </Container>
+          </Container> */}
 
           <Container>
             <Row className="mt40">
@@ -733,173 +870,60 @@ class Homepage extends Component {
                           LAST VOTE
                         </th>
                       </tr>
-
-                      <tr>
-                        <td>1 </td>
-                        <td>
-                          <i
-                            class="fa fa-chevron-circle-down"
-                            aria-hidden="true"
-                          ></i>{' '}
-                          Era Swap Node 3{' '}
-                        </td>
-                        <td>
-                          <div>725,003</div>
-                          <div>10.3%</div>
-                        </td>
-                        <td>10.3 %</td>
-                        <td>100 %</td>
-                        <td>
-                          14,114,331{' '}
-                          <i class="fa fa-chevron-down" aria-hidden="true"></i>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>1 </td>
-                        <td>
-                          <i
-                            class="fa fa-chevron-circle-down"
-                            aria-hidden="true"
-                          ></i>{' '}
-                          Era Swap Node 3{' '}
-                        </td>
-                        <td>
-                          <div>725,003</div>
-                          <div>10.3%</div>
-                        </td>
-                        <td>10.3 %</td>
-                        <td>100 %</td>
-                        <td>
-                          14,114,331{' '}
-                          <i class="fa fa-chevron-down" aria-hidden="true"></i>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>1 </td>
-                        <td>
-                          <i
-                            class="fa fa-chevron-circle-down"
-                            aria-hidden="true"
-                          ></i>{' '}
-                          Era Swap Node 3{' '}
-                        </td>
-                        <td>
-                          <div>725,003</div>
-                          <div>10.3%</div>
-                        </td>
-                        <td>10.3 %</td>
-                        <td>100 %</td>
-                        <td>
-                          14,114,331{' '}
-                          <i class="fa fa-chevron-down" aria-hidden="true"></i>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>1 </td>
-                        <td>
-                          <i
-                            class="fa fa-chevron-circle-down"
-                            aria-hidden="true"
-                          ></i>{' '}
-                          Era Swap Node 3{' '}
-                        </td>
-                        <td>
-                          <div>725,003</div>
-                          <div>10.3%</div>
-                        </td>
-                        <td>10.3 %</td>
-                        <td>100 %</td>
-                        <td>
-                          14,114,331{' '}
-                          <i class="fa fa-chevron-down" aria-hidden="true"></i>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>1 </td>
-                        <td>
-                          <i
-                            class="fa fa-chevron-circle-down"
-                            aria-hidden="true"
-                          ></i>{' '}
-                          Era Swap Node 3{' '}
-                        </td>
-                        <td>
-                          <div>725,003</div>
-                          <div>10.3%</div>
-                        </td>
-                        <td>10.3 %</td>
-                        <td>100 %</td>
-                        <td>
-                          14,114,331{' '}
-                          <i class="fa fa-chevron-down" aria-hidden="true"></i>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>1 </td>
-                        <td>
-                          <i
-                            class="fa fa-chevron-circle-down"
-                            aria-hidden="true"
-                          ></i>{' '}
-                          Era Swap Node 3{' '}
-                        </td>
-                        <td>
-                          <div>725,003</div>
-                          <div>10.3%</div>
-                        </td>
-                        <td>10.3 %</td>
-                        <td>100 %</td>
-                        <td>
-                          14,114,331{' '}
-                          <i class="fa fa-chevron-down" aria-hidden="true"></i>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>1 </td>
-                        <td>
-                          <i
-                            class="fa fa-chevron-circle-down"
-                            aria-hidden="true"
-                          ></i>{' '}
-                          Era Swap Node 3{' '}
-                        </td>
-                        <td>
-                          <div>725,003</div>
-                          <div>10.3%</div>
-                        </td>
-                        <td>10.3 %</td>
-                        <td>100 %</td>
-                        <td>
-                          14,114,331{' '}
-                          <i class="fa fa-chevron-down" aria-hidden="true"></i>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>1 </td>
-                        <td>
-                          <i
-                            class="fa fa-chevron-circle-down"
-                            aria-hidden="true"
-                          ></i>{' '}
-                          Era Swap Node 3{' '}
-                        </td>
-                        <td>
-                          <div>725,003</div>
-                          <div>10.3%</div>
-                        </td>
-                        <td>10.3 %</td>
-                        <td>100 %</td>
-                        <td>
-                          14,114,331{' '}
-                          <i class="fa fa-chevron-down" aria-hidden="true"></i>
-                        </td>
-                      </tr>
+                      {this.state.validators.isLoading ? (
+                        <tr>
+                          <td colSpan="6">Loading...</td>
+                        </tr>
+                      ) : this.state.validators.data.length ? (
+                        this.state.validators.data.map((validator, i) => {
+                          return (
+                            <tr>
+                              <td>{i + 1} </td>
+                              <td>
+                                <i
+                                  class="fa fa-chevron-circle-down"
+                                  aria-hidden="true"
+                                ></i>{' '}
+                                <AddressLink
+                                  style={{ color: '#fff' }}
+                                  value={validator.validator.address}
+                                  type="address"
+                                />{' '}
+                              </td>
+                              <td>
+                                <div>{validator.amount}</div>
+                                <div>
+                                  {(
+                                    (validator.amount /
+                                      this.cummulativeStakes) *
+                                    100
+                                  ).toFixed(2)}{' '}
+                                  %
+                                </div>
+                              </td>
+                              <td>{validator.cummulativeStakes}</td>
+                              <td>{validator.per_thousand_commission / 10}</td>
+                              <td>
+                                {validator.lastBlock?.block_number}{' '}
+                                <i
+                                  class="fa fa-chevron-down"
+                                  aria-hidden="true"
+                                ></i>
+                              </td>
+                            </tr>
+                          );
+                        })
+                      ) : (
+                        <tr>
+                          <td colSpan="6">No Validators Listed</td>
+                        </tr>
+                      )}
                     </table>
                   </div>
                 </div>
               </Col>
             </Row>
-          </Container> */}
+          </Container>
 
           <Container>
             <Row className="mt40">

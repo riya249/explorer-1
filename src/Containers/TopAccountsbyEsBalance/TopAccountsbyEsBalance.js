@@ -5,11 +5,40 @@ import Images from '../Images/Images';
 import { Col, Button, Container, Row } from 'react-bootstrap';
 import Header from '../../Components/Header/Header';
 import Navbar from '../../Components/Navbar/Navbar';
+import Apis from '../../lib/apis';
+import { formatEther } from '../../lib/parsers';
+import AddressLink from '../../Components/AddressLink/AddressLink';
 
 class TopAccountsbyEsBalance extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      accounts: {
+        data: [],
+        isLoading: true,
+      },
+    };
+  }
+
+  componentDidMount() {
+    this.fetchTopAccounts();
+  }
+
+  async fetchTopAccounts() {
+    let res;
+    try {
+      res = await Apis.fetchTopAccounts();
+    } catch (error) {
+      console.log(error);
+    } finally {
+      console.log('res', res);
+      this.setState({
+        accounts: {
+          data: res && Array.isArray(res) ? res : [],
+          isLoading: false,
+        },
+      });
+    }
   }
 
   render() {
@@ -17,7 +46,9 @@ class TopAccountsbyEsBalance extends Component {
       <div className="node-status">
         <div className="booking-hero-bgd booking-hero-bgd-inner">
           <Navbar />
-          <h2 className="es-main-head es-main-head-inner">Top Accounts by ES Balance</h2>
+          <h2 className="es-main-head es-main-head-inner">
+            Top Accounts by ES Balance
+          </h2>
         </div>
         <Container>
           {/* <p className="trans-head">TimeAlly Explorer</p> */}
@@ -36,140 +67,44 @@ class TopAccountsbyEsBalance extends Component {
                       <th>Percentage</th>
                       <th>Txn Count</th>
                     </tr>
-                    <tr>
-                      <td>1</td>
-                      <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7</td>
-                      <td>Bitfinex 2</td>
-                      <td><span className="">3,875,156.<span className="explr-purple-text">77305048</span> ES</span></td>
-                      <td><span className="">3,875,156.<span className="explr-purple-text">77305048</span> ES</span></td>
-                      <td>3.45758416% </td>
-                      <td>8,374</td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7</td>
-                      <td>Bitfinex 2</td>
-                      <td><span className="">3,875,156.<span className="explr-purple-text">77305048</span> ES</span></td>
-                      <td><span className="">3,875,156.<span className="explr-purple-text">77305048</span> ES</span></td>
-                      <td>3.45758416% </td>
-                      <td>8,374</td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7</td>
-                      <td>Bitfinex 2</td>
-                      <td><span className="">3,875,156.<span className="explr-purple-text">77305048</span> ES</span></td>
-                      <td><span className="">3,875,156.<span className="explr-purple-text">77305048</span> ES</span></td>
-                      <td>3.45758416% </td>
-                      <td>8,374</td>
-                    </tr>
-                    <tr>
-                      <td>4</td>
-                      <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7</td>
-                      <td>Bitfinex 2</td>
-                      <td><span className="">3,875,156.<span className="explr-purple-text">77305048</span> ES</span></td>
-                      <td><span className="">3,875,156.<span className="explr-purple-text">77305048</span> ES</span></td>
-                      <td>3.45758416% </td>
-                      <td>8,374</td>
-                    </tr>
-                    <tr>
-                      <td>5</td>
-                      <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7</td>
-                      <td>Bitfinex 2</td>
-                      <td><span className="">3,875,156.<span className="explr-purple-text">77305048</span> ES</span></td>
-                      <td><span className="">3,875,156.<span className="explr-purple-text">77305048</span> ES</span></td>
-                      <td>3.45758416% </td>
-                      <td>8,374</td>
-                    </tr>
-                    <tr>
-                      <td>6</td>
-                      <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7</td>
-                      <td>Bitfinex 2</td>
-                      <td><span className="">3,875,156.<span className="explr-purple-text">77305048</span> ES</span></td>
-                      <td><span className="">3,875,156.<span className="explr-purple-text">77305048</span> ES</span></td>
-                      <td>3.45758416% </td>
-                      <td>8,374</td>
-                    </tr>
-                    <tr>
-                      <td>7</td>
-                      <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7</td>
-                      <td>Bitfinex 2</td>
-                      <td><span className="">3,875,156.<span className="explr-purple-text">77305048</span> ES</span></td>
-                      <td><span className="">3,875,156.<span className="explr-purple-text">77305048</span> ES</span></td>
-                      <td>3.45758416% </td>
-                      <td>8,374</td>
-                    </tr>
-                    <tr>
-                      <td>1</td>
-                      <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7</td>
-                      <td>Bitfinex 2</td>
-                      <td><span className="">3,875,156.<span className="explr-purple-text">77305048</span> ES</span></td>
-                      <td><span className="">3,875,156.<span className="explr-purple-text">77305048</span> ES</span></td>
-                      <td>3.45758416% </td>
-                      <td>8,374</td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7</td>
-                      <td>Bitfinex 2</td>
-                      <td><span className="">3,875,156.<span className="explr-purple-text">77305048</span> ES</span></td>
-                      <td><span className="">3,875,156.<span className="explr-purple-text">77305048</span> ES</span></td>
-                      <td>3.45758416% </td>
-                      <td>8,374</td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7</td>
-                      <td>Bitfinex 2</td>
-                      <td><span className="">3,875,156.<span className="explr-purple-text">77305048</span> ES</span></td>
-                      <td><span className="">3,875,156.<span className="explr-purple-text">77305048</span> ES</span></td>
-                      <td>3.45758416% </td>
-                      <td>8,374</td>
-                    </tr>
-                    <tr>
-                      <td>4</td>
-                      <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7</td>
-                      <td>Bitfinex 2</td>
-                      <td><span className="">3,875,156.<span className="explr-purple-text">77305048</span> ES</span></td>
-                      <td><span className="">3,875,156.<span className="explr-purple-text">77305048</span> ES</span></td>
-                      <td>3.45758416% </td>
-                      <td>8,374</td>
-                    </tr>
-                    <tr>
-                      <td>5</td>
-                      <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7</td>
-                      <td>Bitfinex 2</td>
-                      <td><span className="">3,875,156.<span className="explr-purple-text">77305048</span> ES</span></td>
-                      <td><span className="">3,875,156.<span className="explr-purple-text">77305048</span> ES</span></td>
-                      <td>3.45758416% </td>
-                      <td>8,374</td>
-                    </tr>
-                    <tr>
-                      <td>6</td>
-                      <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7</td>
-                      <td>Bitfinex 2</td>
-                      <td><span className="">3,875,156.<span className="explr-purple-text">77305048</span> ES</span></td>
-                      <td><span className="">3,875,156.<span className="explr-purple-text">77305048</span> ES</span></td>
-                      <td>3.45758416% </td>
-                      <td>8,374</td>
-                    </tr>
-                    <tr>
-                      <td>7</td>
-                      <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7</td>
-                      <td>Bitfinex 2</td>
-                      <td><span className="">3,875,156.<span className="explr-purple-text">77305048</span> ES</span></td>
-                      <td><span className="">3,875,156.<span className="explr-purple-text">77305048</span> ES</span></td>
-                      <td>3.45758416% </td>
-                      <td>8,374</td>
-                    </tr>
-                   
-                   
-                    
-
+                    {this.state.accounts.isLoading ? (
+                      <tr>
+                        <td colSpan="7">Loading...</td>
+                      </tr>
+                    ) : this.state.accounts.data?.length ? (
+                      this.state.accounts.data?.map((account, i) => (
+                        <tr>
+                          <td>{i + 1}</td>
+                          <td>
+                            <AddressLink
+                              value={account.address}
+                              type="address"
+                            />
+                          </td>
+                          <td>{account.label || '-'}</td>
+                          <td>
+                            <span className="">
+                              {formatEther(account.stakes)}
+                            </span>
+                          </td>
+                          <td>
+                            <span className="">
+                              {formatEther(account.balance)} ES
+                            </span>
+                          </td>
+                          <td>3.45758416% </td>
+                          <td>{account.transactions}</td>
+                        </tr>
+                      ))
+                    ) : (
+                      <tr>
+                        <td colSpan="7">No Data</td>
+                      </tr>
+                    )}
                   </table>
                 </div>
               </div>
-              <div className="cus-pagination row">
+              {/* <div className="cus-pagination row">
                 <div className="col-md-12 text-right">
                   <button type="button" className="btn mr10 mt10">
                     Back
@@ -178,7 +113,7 @@ class TopAccountsbyEsBalance extends Component {
                     Next
                   </button>
                 </div>
-              </div>
+              </div> */}
             </Col>
           </Row>
         </Container>

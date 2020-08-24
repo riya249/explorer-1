@@ -9,6 +9,8 @@
     "bootstrap": "^4.5.0",
     "env-cmd": "^10.1.0",
     "ethers": "^5.0.7",
+    "highcharts": "^8.2.0",
+    "highcharts-react-official": "^3.0.0",
     "moment": "^2.27.0",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",

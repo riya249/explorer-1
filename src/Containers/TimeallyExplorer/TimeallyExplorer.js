@@ -43,20 +43,20 @@ class TimeallyExplorer extends Component {
     // });
   };
 
-  handleChange = e => {
-    if(e.target.value.length){
+  handleChange = (e) => {
+    if (e.target.value.length) {
       const stakes = [];
-      this.stakingsData.forEach(stake => {
-        if(stake.staking.toLowerCase().includes(e.target.value.toLowerCase()))
+      this.stakingsData.forEach((stake) => {
+        if (stake.staking.toLowerCase().includes(e.target.value.toLowerCase()))
           stakes.push(stake);
-        })
-      this.setState({ stakings: stakes })
+      });
+      this.setState({ stakings: stakes });
     } else {
       this.setState({
-        stakings: this.stakingsData
-      })
+        stakings: this.stakingsData,
+      });
     }
-  }
+  };
 
   render() {
     return (
@@ -71,7 +71,13 @@ class TimeallyExplorer extends Component {
           <p>Note: More features will be added here</p>
           <Row className="mt40 justify-center">
             <Col lg={12}>
-            <input type="text" placeholder="Search Contract Address" class="form-control" onChange={this.handleChange} disabled={!this.stakingsData.length}/>
+              <input
+                type="text"
+                placeholder="Search Contract Address"
+                class="form-control"
+                onChange={this.handleChange}
+                disabled={!this.stakingsData.length}
+              />
             </Col>
             <Col lg={12}>
               {/* <div className="col-md-12 pull-right">
