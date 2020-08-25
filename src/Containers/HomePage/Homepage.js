@@ -390,12 +390,92 @@ class Homepage extends Component {
                       </p>
                     </div>
                   </div>
-                  <div className="mt10">
+                  <div className="flex-transc border-value row">
+                    <div className="col-lg-6">
+                      <p className="era-head">MARKET VOLUME</p>
+                      <p className="era-value text-black">
+                      -
+                      </p>
+                    </div>
+                    <div className="col-lg-6">
+                      <p
+                        className="era-head"
+                        data-toggle="tooltip"
+                        data-placement="top"
+                        title=""
+                      >
+                        CHANGE 1H
+                      </p>
+                      <p className="era-value text-black">-</p>
+                    </div>
+                  </div>
+                  <div className="flex-transc border-value row">
+                    <div className="col-lg-6">
+                      <p className="era-head">CHANGE 24H</p>
+                      <p className="era-value text-black">
+                      -
+                      </p>
+                    </div>
+                    <div className="col-lg-6">
+                      <p
+                        className="era-head"
+                        data-toggle="tooltip"
+                        data-placement="top"
+                        title=""
+                      >
+                        CHANGE 7 DAYS
+                      </p>
+                      <p className="era-value text-black">-</p>
+                    </div>
+                  </div>
+                  <div className="flex-transc border-value row">
+                    <div className="col-lg-6">
+                      <p className="era-head">AVAILABLE SUPPLY</p>
+                      <p className="era-value text-black">
+                       -
+                      </p>
+                    </div>
+                    <div className="col-lg-6">
+                      <p
+                        className="era-head"
+                        data-toggle="tooltip"
+                        data-placement="top"
+                        title=""
+                      >
+                        TOTAL SUPPLY
+                      </p>
+                      <p className="era-value text-black">-</p>
+                    </div>
+                  </div>
+                  <div className="flex-transc border-value row">
+                    <div className="col-lg-6">
+                      <p className="era-head"> MAX SUPPLY</p>
+                      <p className="era-value text-black">
+                   -
+                      </p>
+                    </div>
+                    <div className="col-lg-6">
+                      <p
+                        className="era-head"
+                        data-toggle="tooltip"
+                        data-placement="top"
+                        title="Era Swap Network Proof of Stake (ESN PoS)"
+                      >
+                       
+                      </p>
+                      <p className="era-value text-black"></p>
+                    </div>
+                  </div>
+
+{/* 
+                  
+                  <div className="flex-eraswap mt10">
                     <div className="pdl70">
                       <p className="era-head">MARKET VOLUME</p>
                       <p className="text-black">-</p>
                     </div>
                   </div>
+                 */}
                 </Col>
                 <Col lg={4} className="border-right">
                   <div className="flex-transc row">
@@ -441,15 +521,58 @@ class Homepage extends Component {
                       <p className="era-value text-black">0 GH/s</p>
                     </div>
                   </div>
+                  <div className="flex-transc border-value row">
+                    <div className="col-lg-6">
+                      <p className="era-head">SYMBOL ES</p>
+                      <p className="era-value text-black">
+                        -
+                      </p>
+                    </div>
+                    <div className="col-lg-6">
+                      <p
+                        className="era-head"
+                        data-toggle="tooltip"
+                        data-placement="top"
+                        title=""
+                      >
+                        PRICE (USD)
+                      </p>
+                      <p className="era-value text-black">
+                        -
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex-transc border-value row">
+                    <div className="col-lg-6">
+                      <p className="era-head">VOLUME (24H)</p>
+                      <p className="era-value text-black">-
+                      </p>
+                    </div>
+                    <div className="col-lg-6">
+                      <p
+                        className="era-head"
+                        data-toggle="tooltip"
+                        data-placement="top"
+                        title=""
+                      >
+                        MARKET CAP
+                      </p>
+                      <p className="era-value text-black">
+                        -
+                      </p>
+                    </div>
+                  </div>
+                  
                 </Col>
                 <Col lg={4}>
                   <div>
-                    <p className="era-head">
+                    <p className="era-head ">
                       ERA SWAP TRANSACTION HISTORY IN 14 DAYS
                     </p>
                     <LineChart
+                      className="mt20"
                       width={320}
-                      height={140}
+                      height={220}
                       data={this.state.transactionsChartData}
                       margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
                     >

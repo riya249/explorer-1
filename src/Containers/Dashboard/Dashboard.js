@@ -1918,7 +1918,6 @@ class Dashboard extends Component {
                     </Card.Body>
                   </Card>
                 </Col>
-
                 <Col sm={6} lg={2}>
                   <Card className=" ">
                     <Card.Body>
@@ -2952,6 +2951,92 @@ class Dashboard extends Component {
                     <p className="sect4-value-swal">0 </p>
                   </div>
                 </div>
+              </div>
+            </Col>
+            <Col lg={4}>
+              <div className="section4-border">
+                <div className="flex-sect4-box">
+                  <img
+                    className="platfrm-logo6"
+                    src={Images.path.vof}
+                    alt="logo"
+                  />
+                  <p className="platfrm-txt">VALUE OF FARMERS </p>
+                </div>
+                <div className="swwall-flex-border">
+                  <div>
+                    <p className="sect4-context">
+                       Number of Farmers
+                    </p>
+                    <p className="sect4-value-swal">-</p>
+                  </div>
+                  <div>
+                    <p className="sect4-context">Number of Krishitagya</p>
+                    <p className="sect4-value-swal">-</p>
+                  </div>
+                  <div>
+                    <p className="sect4-context">Number of Agri Expert</p>
+                    <p className="sect4-value">-</p>
+                  </div>
+                </div>
+                <div className="swwall-flex-border">
+                  <div>
+                    <p className="sect4-context">Number of Customers</p>
+                    <p className="sect4-value">- </p>
+                  </div>
+                  <div>
+                    <p className="sect4-context">Total Transactions</p>
+                    <p className="sect4-value">-</p>
+                  </div>
+                  <div>
+                    <p className="sect4-context">TFC Genrated</p>
+                    <p className="sect4-value">-</p>
+                  </div>
+                </div>
+                <div className="swwall-flex-border">
+                  <div>
+                    <p className="sect4-context">Number of Farming Equipments Listed</p>
+                    <p className="sect4-value">- </p>
+                  </div>
+                </div> 
+              </div>
+            </Col>
+            <Col lg={4}>
+              <div className="section4-border">
+                <div className="flex-sect4-box">
+                  <img
+                    className="platfrm-logo6"
+                    src={Images.path.certidapplogo}
+                    alt="logo"
+                  />
+                  <p className="platfrm-txt">CertiDapp </p>
+                </div>
+                <div className="swwall-flex-border">
+                  <div>
+                    <p className="sect4-context">
+                       Number of Colleges
+                    </p>
+                    <p className="sect4-value-swal">-</p>
+                  </div>
+                  <div>
+                    <p className="sect4-context">Number of Certificates</p>
+                    <p className="sect4-value-swal">-</p>
+                  </div>
+                  
+                </div>
+                <div className="swwall-flex-border">
+                  <div>
+                    <p className="sect4-context">Number of Users</p>
+                    <p className="sect4-value">- </p>
+                  </div>
+                  <div>
+                    <p className="sect4-context">TFC Generated</p>
+                    <p className="sect4-value">-</p>
+                  </div>
+                
+                </div>
+                
+            
               </div>
             </Col>
           </Row>
