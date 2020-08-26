@@ -108,7 +108,7 @@
 
 .flex-eraswap {
   display: flex;
-  border-bottom: 1px solid #a7a7a770;
+  /* border-bottom: 1px solid #a7a7a770; */
   padding-bottom: 10px;
 }
 
