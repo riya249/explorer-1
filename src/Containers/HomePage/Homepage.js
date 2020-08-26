@@ -328,8 +328,8 @@ class Homepage extends Component {
       }
       this.setState({
         availableSupply: res?.data?.outsideTimeAllySupply
-          ? lessDecimals(res.data.outsideTimeAllySupply) + ' ES'
-          : '-',
+          ? lessDecimals(res.data.outsideTimeAllySupply)
+          : 0,
       });
     }
   }
@@ -356,7 +356,7 @@ class Homepage extends Component {
     } finally {
       this.setState({
         totalESStaked: res?.data?.totalStaking
-          ? lessDecimals(res.data.totalStaking) + ' ES'
+          ? lessDecimals(res.data.totalStaking)
           : '-',
       });
     }
@@ -477,7 +477,7 @@ class Homepage extends Component {
                         <div className="col-lg-6">
                           <p className="era-head">AMOUNT OF STAKINGS</p>
                           <p className="era-value text-black">
-                            {this.state.totalESStaked}
+                            {this.state.totalESStaked} ES
                           </p>
                         </div>
                       </div>
@@ -498,7 +498,9 @@ class Homepage extends Component {
                             TOTAL SUPPLY
                           </p>
                           <p className="era-value text-black">
-                            {this.state.totalSupply} ES
+                            { Number(this.state.totalESStaked) +
+                              Number(this.state.availableSupply)}{' '}
+                            ES
                           </p>
                         </div>
                       </div>
@@ -550,7 +552,7 @@ class Homepage extends Component {
                             ECOSYSTEM BACKED UP BY
                           </p>
                           <p className="era-value text-black">
-                            {this.state.backedAmt} ES
+                            {(this.state.totalESStaked * this.state.esPriceUSDT).toFixed(2)} ES
                           </p>
                         </div>
                         <div className="col-lg-6">

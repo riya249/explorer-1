@@ -130,7 +130,7 @@ class Transaction extends Component {
                               </td>
                               <td>
                                 {moment(
-                                  moment(transaction.createdOn).toDate()
+                                  moment(transaction.block.timestamp).toDate()
                                 ).fromNow()}
                               </td>
                               <td>
