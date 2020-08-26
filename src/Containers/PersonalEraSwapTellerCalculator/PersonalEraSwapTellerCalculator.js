@@ -35,7 +35,23 @@ class PersonalEraSwapTellerCalculator extends Component {
       stakingAmountTen: '',
       stakingAmountEleven: '',
       stakingAmountTwelve: '',
-      petValues: { monthlyTotalStaking: [], petBounty: [] },
+      petValues: {
+        petBounty : [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        selfStaking : [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        monthlyTotalStaking : [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        monthAnnuityBenifit : [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        fullTarget : 0,
+        petBonus : 0,
+        annuityBenifit : 0,
+        grossBenifit : 0,
+        annuity : 0,
+        grossStaking : 0,
+        totalStaking : 0,
+        annuityPercent : 0,
+        petBonusPercent : 0,
+        grossBenifitPercent : 0,
+        totalPetBounty : 0,
+      },
     };
 
     this.openSnackBar = this.openSnackBar.bind(this);
@@ -48,6 +64,7 @@ class PersonalEraSwapTellerCalculator extends Component {
       var petBounty = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
       var selfStaking = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
       var monthlyTotalStaking = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+      var monthAnnuityBenifit = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
       var fullTarget = 0;
       var petBonus = 0;
       var annuityBenifit = 0;
@@ -94,6 +111,7 @@ class PersonalEraSwapTellerCalculator extends Component {
         }
         totalStaking += selfStaking[i];
         monthlyTotalStaking[i] = petBounty[i] + selfStaking[i];
+        monthAnnuityBenifit[i] = (selfStaking[i] + petBounty[i]) * annuity;
         totalPetBounty += petBounty[i];
       }
 
@@ -107,6 +125,7 @@ class PersonalEraSwapTellerCalculator extends Component {
         petBonus,
         grossBenifit,
         annuityBenifit,
+        monthAnnuityBenifit,
         grossBenifitPercent,
         petBonusPercent,
         annuityPercent,
@@ -257,6 +276,7 @@ class PersonalEraSwapTellerCalculator extends Component {
                                       <th>SELF STAKED ES (ES)</th>
                                       <th>PET BOUNTY </th>
                                       <th>TOTAL STAKING </th>
+                                      <th>MONTHLY ANNUITY BENIFIT FOR 5 YEARS</th>
                                     </tr>
                                     <tr>
                                       <td>Month 1 </td>
@@ -286,6 +306,9 @@ class PersonalEraSwapTellerCalculator extends Component {
                                             .monthlyTotalStaking[0]
                                         }
                                       </td>
+                                      <td>
+                                        {this.state.petValues.monthAnnuityBenifit[0]}
+                                      </td>
                                     </tr>
                                     <tr>
                                       <td>Month 2 </td>
@@ -314,6 +337,9 @@ class PersonalEraSwapTellerCalculator extends Component {
                                           this.state.petValues
                                             .monthlyTotalStaking[1]
                                         }
+                                      </td>
+                                      <td>
+                                        {this.state.petValues.monthAnnuityBenifit[1]}
                                       </td>
                                     </tr>
                                     <tr>
@@ -346,6 +372,9 @@ class PersonalEraSwapTellerCalculator extends Component {
                                             .monthlyTotalStaking[2]
                                         }
                                       </td>
+                                      <td>
+                                        {this.state.petValues.monthAnnuityBenifit[2]}
+                                      </td>
                                     </tr>
                                     <tr>
                                       <td>Month 4 </td>
@@ -374,6 +403,9 @@ class PersonalEraSwapTellerCalculator extends Component {
                                           this.state.petValues
                                             .monthlyTotalStaking[3]
                                         }
+                                      </td>
+                                      <td>
+                                        {this.state.petValues.monthAnnuityBenifit[3]}
                                       </td>
                                     </tr>
 
@@ -405,6 +437,9 @@ class PersonalEraSwapTellerCalculator extends Component {
                                             .monthlyTotalStaking[4]
                                         }
                                       </td>
+                                      <td>
+                                        {this.state.petValues.monthAnnuityBenifit[4]}
+                                      </td>
                                     </tr>
                                     <tr>
                                       <td>Month 6 </td>
@@ -433,6 +468,9 @@ class PersonalEraSwapTellerCalculator extends Component {
                                           this.state.petValues
                                             .monthlyTotalStaking[5]
                                         }
+                                      </td>
+                                      <td>
+                                        {this.state.petValues.monthAnnuityBenifit[5]}
                                       </td>
                                     </tr>
                                     <tr>
@@ -465,6 +503,9 @@ class PersonalEraSwapTellerCalculator extends Component {
                                             .monthlyTotalStaking[6]
                                         }
                                       </td>
+                                      <td>
+                                        {this.state.petValues.monthAnnuityBenifit[6]}
+                                      </td>
                                     </tr>
                                     <tr>
                                       <td>Month 8 </td>
@@ -496,6 +537,9 @@ class PersonalEraSwapTellerCalculator extends Component {
                                             .monthlyTotalStaking[7]
                                         }
                                       </td>
+                                      <td>
+                                        {this.state.petValues.monthAnnuityBenifit[7]}
+                                      </td>
                                     </tr>
                                     <tr>
                                       <td>Month 9 </td>
@@ -525,6 +569,9 @@ class PersonalEraSwapTellerCalculator extends Component {
                                             .monthlyTotalStaking[8]
                                         }
                                       </td>
+                                      <td>
+                                        {this.state.petValues.monthAnnuityBenifit[8]}
+                                      </td>
                                     </tr>
                                     <tr>
                                       <td>Month 10 </td>
@@ -553,6 +600,9 @@ class PersonalEraSwapTellerCalculator extends Component {
                                           this.state.petValues
                                             .monthlyTotalStaking[9]
                                         }
+                                      </td>
+                                      <td>
+                                        {this.state.petValues.monthAnnuityBenifit[9]}
                                       </td>
                                     </tr>
                                     <tr>
@@ -585,6 +635,9 @@ class PersonalEraSwapTellerCalculator extends Component {
                                             .monthlyTotalStaking[10]
                                         }
                                       </td>
+                                      <td>
+                                        {this.state.petValues.monthAnnuityBenifit[10]}
+                                      </td>
                                     </tr>
                                     <tr>
                                       <td>Month 12 </td>
@@ -615,6 +668,9 @@ class PersonalEraSwapTellerCalculator extends Component {
                                           this.state.petValues
                                             .monthlyTotalStaking[11]
                                         }
+                                      </td>
+                                      <td>
+                                        {this.state.petValues.monthAnnuityBenifit[11]}
                                       </td>
                                     </tr>
                                   </table>
