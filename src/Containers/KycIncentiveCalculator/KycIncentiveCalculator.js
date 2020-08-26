@@ -771,7 +771,7 @@ class KycIncentiveCalculator extends Component {
                           <td>{this.state.displayValues.stakedtodirect}</td>
                         </tr>
                         <tr>
-                          <td>Applicant Benefit</td>
+                          <td>Applicant's Benefit</td>
                           <td>{this.state.displayValues.stakedtodirect}</td>
                           <td></td>
                         </tr>
@@ -781,7 +781,7 @@ class KycIncentiveCalculator extends Component {
                           <td>{this.state.displayValues.timeAllyclubLiquid}</td>
                         </tr>
                         <tr>
-                          <td>DaySwapper Tree Incentive</td>
+                          <td>DaySwappers Tree Incentive</td>
                           <td>
                             {this.state.displayValues.dayswapperTreeReward}
                           </td>

@@ -815,7 +815,7 @@ class TopStatistics extends Component {
                               cx={240}
                               cy={200}
                               labelLine={false}
-                              label={renderCustomizedLabel}
+                              // label={renderCustomizedLabel}
                               outerRadius={120}
                               fill="#8884d8"
                               dataKey="value"

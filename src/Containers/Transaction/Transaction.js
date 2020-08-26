@@ -6,7 +6,7 @@ import Header from '../../Components/Header/Header';
 import Navbar from '../../Components/Navbar/Navbar';
 import { Col, Button, Container, Row, Tabs, Tab } from 'react-bootstrap';
 import Apis from '../../lib/apis';
-import { toLocaleTimestamp } from '../../lib/parsers';
+import { toLocaleTimestamp, formatEther } from '../../lib/parsers';
 import { Snackbar } from '../../Components/Snackbar/Snackbar';
 import AddressLink from '../../Components/AddressLink/AddressLink';
 import { ethers } from 'ethers';
@@ -282,7 +282,11 @@ class Transaction extends Component {
                               >
                                 Gas Price:
                               </td>
-                              <td>{this.state.transaction.data.size} bytes</td>
+                              <td>
+                                {formatEther(
+                                  this.state.transaction.data.gas_price
+                                )}{' '}
+                              </td>
                             </tr>
 
                             <tr>

@@ -227,12 +227,15 @@ class Homepage extends Component {
     try {
       const res = await Apis.fetchTransactionsInterval();
       console.log('fetchTransactionsInterval', res);
-      res.forEach((transaction, i) => {
-        res[i].date = moment(moment(transaction.date).toDate()).format(
+      const data = Array.from(res);
+      console.log({data});
+      data.forEach((transaction, i) => {
+        data[i].date = moment(moment(transaction.date).toDate()).format(
           'DD/MM/yyyy'
         );
       });
-      this.setState({ transactionsChartData: res });
+      console.log(1,{data});
+      this.setState({ transactionsChartData: data });
     } catch (e) {
       console.log(e);
     }
@@ -498,7 +501,7 @@ class Homepage extends Component {
                             TOTAL SUPPLY
                           </p>
                           <p className="era-value text-black">
-                            { Number(this.state.totalESStaked) +
+                            {Number(this.state.totalESStaked) +
                               Number(this.state.availableSupply)}{' '}
                             ES
                           </p>
@@ -549,10 +552,13 @@ class Homepage extends Component {
                             data-placement="top"
                             title="Era Swap Network Proof of Stake (ESN PoS)"
                           >
-                            ECOSYSTEM BACKED UP BY
+                            NETWORK BACKED UP ES WORTH
                           </p>
                           <p className="era-value text-black">
-                            {(this.state.totalESStaked * this.state.esPriceUSDT).toFixed(2)} ES
+                            ${' '}
+                            {(
+                              this.state.totalESStaked * this.state.esPriceUSDT
+                            ).toFixed(2)}
                           </p>
                         </div>
                         <div className="col-lg-6">
@@ -645,7 +651,7 @@ class Homepage extends Component {
                                 type="bunch"
                               />
                               <div className="sub-frst">
-                                {toLocaleTimestamp(bunch.createdOn).fromNow()}
+                                {toLocaleTimestamp(bunch.timestamp).fromNow()}
                               </div>
                             </td>
                             <td
@@ -710,9 +716,7 @@ class Homepage extends Component {
                                   type="block"
                                 />
                                 <div className="sub-frst">
-                                  {moment(
-                                    moment(block.createdOn).toDate()
-                                  ).fromNow()}
+                                  {toLocaleTimestamp(block.timestamp).fromNow()}
                                 </div>
                               </td>
                               <td
@@ -780,7 +784,7 @@ class Homepage extends Component {
                                   />
                                   <div className="sub-frst">
                                     {moment(
-                                      moment(transaction.createdOn).toDate()
+                                      moment(transaction.block.timestamp).toDate()
                                     ).fromNow()}
                                   </div>
                                 </td>
@@ -842,7 +846,7 @@ class Homepage extends Component {
                           <p className="block-value">
                             {this.state.averageBlock == null
                               ? 'Loading...'
-                              : this.state.averageBlock}
+                              : parseInt(this.state.averageBlock)}
                           </p>
                         </div>
                       </div>
