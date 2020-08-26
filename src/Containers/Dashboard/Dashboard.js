@@ -61,6 +61,7 @@ class Dashboard extends Component {
           allTimeHigh: '1.42 USDT',
           allTimeLow: '0.005 USDT',
           probitVolume: 'Loading...',
+          allTxnsCount: 'Loading...',
         },
         isLoading: true,
       },
@@ -432,7 +433,32 @@ class Dashboard extends Component {
     } catch (e) {
       console.log(e);
     }
+    try {
+      await this.fetchAllTxnsCount();
+    } catch (e) {
+      console.log(e);
+    }
+    
     this.nrtTicker();
+  }
+
+  async fetchAllTxnsCount() {
+    let res;
+    try {
+      res = await Apis.fetchAllTxnsCount();
+    } catch (e) {
+      console.log(e);
+    } finally {
+      this.setState({
+        eraswap: {
+          data: {
+            ...this.state.eraswap.data,
+            allTxnsCount:  res
+          },
+          isLoading: false,
+        },
+      });
+    }
   }
 
   async fetchLuckPool() {
@@ -620,7 +646,7 @@ class Dashboard extends Component {
               this.esPrice ||
               (res?.data?.probitResponse?.data &&
                 res?.data?.probitResponse?.data[0]?.last)
-                ? res?.data?.probitResponse?.data[0]?.last + ' USDT'
+                ? res?.data?.probitResponse?.data[0]?.last
                 : '-',
             esBTC:
               res?.data?.probitResponse?.data &&
@@ -629,7 +655,7 @@ class Dashboard extends Component {
                   ' BTC'
                 : '-',
             probitVolume:
-              lessDecimals(String(this.esPrice * totalVolume)) + ' USDT',
+              lessDecimals(String(this.esPrice * totalVolume)),
           },
           isLoading: false,
         },
@@ -661,7 +687,7 @@ class Dashboard extends Component {
             //     lessDecimals(res.data.totalSupply) + ' ES') ||
             //   '-',
             circulatingOutsideTA: res?.data?.outsideTimeAllySupply
-              ? lessDecimals(res.data.outsideTimeAllySupply) + ' ES'
+              ? lessDecimals(res.data.outsideTimeAllySupply)
               : '-',
           },
           isLoading: false,
@@ -683,7 +709,7 @@ class Dashboard extends Component {
           data: {
             ...this.state.eraswap.data,
             totolESUsers: res.data?.numberOfAddresses
-              ? res.data?.numberOfAddresses + ' addresses'
+              ? res.data?.numberOfAddresses
               : '-',
           },
           isLoading: false,
@@ -727,7 +753,7 @@ class Dashboard extends Component {
           data: {
             ...this.state.eraswap.data,
             burnPool: res?.data?.burnTokenBal
-              ? lessDecimals(res.data.burnTokenBal) + ' ES'
+              ? lessDecimals(res.data.burnTokenBal)
               : '-',
           },
           isLoading: false,
@@ -897,7 +923,7 @@ class Dashboard extends Component {
           data: {
             ...this.state.eraswap.data,
             totalESStaked: res?.data?.totalStaking
-              ? lessDecimals(res.data.totalStaking) + ' ES'
+              ? lessDecimals(res.data.totalStaking)
               : '-',
           },
           isLoading: false,
@@ -1707,7 +1733,7 @@ class Dashboard extends Component {
                 <Col lg={4}>
                   <h5 className="">Era Swap (ES)</h5>
                   <h5 className="sub-dash-head">
-                    {this.state.eraswap.data.esUSDT}{' '}
+                    {this.state.eraswap.data.esUSDT} USDT{' '}
                   </h5>
                 </Col>
                 <Col lg={4}>
@@ -1725,7 +1751,7 @@ class Dashboard extends Component {
                     <div className="es-box-ds">
                       <p className="supply-txt">TOTAL ES OWNERS</p>
                       <p className="supply-txt">
-                        {this.state.eraswap.data.totolESUsers}{' '}
+                        {this.state.eraswap.data.totolESUsers} addresses{' '}
                       </p>
                     </div>
                   </div>
@@ -1765,7 +1791,18 @@ class Dashboard extends Component {
                   <Card.Body>
                     <p className="sect-txt-bold ">ES CURRENT SUPPLY</p>
                     <p className="value-dash-txt">
-                      {this.state.eraswap.data.circulatingOutsideTA}
+                      {(isFinite(
+                        this.state.eraswap.data.esTotalSupply -
+                          this.state.eraswap.data.totalESStaked -
+                          this.state.eraswap.data.burnPool
+                      ) &&
+                        (
+                          this.state.eraswap.data.esTotalSupply -
+                          this.state.eraswap.data.totalESStaked -
+                          this.state.eraswap.data.burnPool
+                        ).toFixed(2)) ||
+                        'Loading...'}{' '}
+                      ES
                     </p>
                   </Card.Body>
                 </Card>
@@ -1775,7 +1812,7 @@ class Dashboard extends Component {
                   <Card.Body>
                     <p className="sect-txt-bold">TOTAL SUPPLY</p>
                     <p className="value-dash-txt">
-                      {this.state.eraswap.data.esTotalSupply}
+                      {this.state.eraswap.data.esTotalSupply} ES
                     </p>
                   </Card.Body>
                 </Card>
@@ -1814,7 +1851,7 @@ class Dashboard extends Component {
                   <Card.Body>
                     <p className="sect-txt-bold ">TOTAL STAKED ES</p>
                     <p className="value-dash-txt">
-                      {this.state.eraswap.data.totalESStaked}{' '}
+                      {this.state.eraswap.data.totalESStaked} ES
                     </p>
                   </Card.Body>
                 </Card>
@@ -1878,8 +1915,7 @@ class Dashboard extends Component {
                   <Card.Body>
                     <p className="sect-txt-bold">ECOSYSTEM TRANSACTIONS</p>
                     <p className="value-dash-txt">
-                      'Coming soon'
-                      {/* this.state.eraswap.data.ecosystemTransactions*/}
+                      {this.state.eraswap.data.allTxnsCount} transactions
                     </p>
                   </Card.Body>
                 </Card>
@@ -1902,7 +1938,7 @@ class Dashboard extends Component {
                   <Card.Body>
                     <p className="sect-txt-bold">24 HR VOL (PROBIT GLOBAL)</p>
                     <p className="value-dash-txt">
-                      {this.state.eraswap.data.probitVolume}
+                      {this.state.eraswap.data.probitVolume} USDT
                     </p>
                   </Card.Body>
                 </Card>
@@ -1910,8 +1946,12 @@ class Dashboard extends Component {
               <Col sm={6} lg={2}>
                 <Card className="">
                   <Card.Body>
-                    <p className="sect-txt-bold">ASSESTS AVAILABLE</p>
-                    <p className="value-dash-txt">'Coming soon'</p>
+                    <p className="sect-txt-bold">ASSETS AVAILABLE</p>
+                    <p className="value-dash-txt">
+                      {this.state.eraswap.data.esTotalSupply -
+                        this.state.eraswap.data.burnPool}{' '}
+                      ES
+                    </p>
                   </Card.Body>
                 </Card>
               </Col>
@@ -2962,9 +3002,7 @@ class Dashboard extends Component {
                 </div>
                 <div className="swwall-flex-border">
                   <div>
-                    <p className="sect4-context">
-                       Number of Farmers
-                    </p>
+                    <p className="sect4-context">Number of Farmers</p>
                     <p className="sect4-value-swal">-</p>
                   </div>
                   <div>
@@ -2992,10 +3030,12 @@ class Dashboard extends Component {
                 </div>
                 <div className="swwall-flex-border">
                   <div>
-                    <p className="sect4-context">Number of Farming Equipments Listed</p>
+                    <p className="sect4-context">
+                      Number of Farming Equipments Listed
+                    </p>
                     <p className="sect4-value">- </p>
                   </div>
-                </div> 
+                </div>
               </div>
             </Col>
             <Col lg={4}>
@@ -3010,16 +3050,13 @@ class Dashboard extends Component {
                 </div>
                 <div className="swwall-flex-border">
                   <div>
-                    <p className="sect4-context">
-                       Number of Colleges
-                    </p>
+                    <p className="sect4-context">Number of Colleges</p>
                     <p className="sect4-value-swal">-</p>
                   </div>
                   <div>
                     <p className="sect4-context">Number of Certificates</p>
                     <p className="sect4-value-swal">-</p>
                   </div>
-                  
                 </div>
                 <div className="swwall-flex-border">
                   <div>
@@ -3030,10 +3067,7 @@ class Dashboard extends Component {
                     <p className="sect4-context">TFC Generated</p>
                     <p className="sect4-value">-</p>
                   </div>
-                
                 </div>
-                
-            
               </div>
             </Col>
           </Row>

@@ -114,7 +114,7 @@ class Bunch extends Component {
                             </td>
                             <td>{bunch.transactionsCount}</td>
                             <td>
-                              {toLocaleTimestamp(new Date(bunch.timestamp).getTime() * 1000).format(
+                              {toLocaleTimestamp(bunch.timestamp).format(
                                 'hh:mm:ss A DD/MM/YYYY'
                               )}
                             </td>
