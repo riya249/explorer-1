@@ -57,6 +57,7 @@ class TimeAllySuperGoalCalculator extends Component {
          var missedPayments = 0;
          var annuityBenifit = 0;
          var grossBenifit = 0;
+         var monthAnnuityBenifit = [0,0,0,0,0,0,0,0,0,0,0,0];
          var annuityPercent = 0;
          var grossBenifitPercent = 0;
          var boosterBonusPercent = 0;
@@ -80,6 +81,7 @@ class TimeAllySuperGoalCalculator extends Component {
             } else {
                totalStaking += stakingAmountArray[i];
                boosterBonus += stakingAmountArray[i];
+               monthAnnuityBenifit[i] = stakingAmountArray[i] * annuity;
                annuityBenifit += stakingAmountArray[i] * 9 * annuity;
             }
 
@@ -91,7 +93,7 @@ class TimeAllySuperGoalCalculator extends Component {
          boosterBonusPercent = boosterBonus * 100 / totalStaking;
          grossBenifitPercent = grossBenifit * 100 / totalStaking;
 
-         return { totalStaking, boosterBonus, missedPayments, annuityBenifit, grossBenifit, annuityPercent ,boosterBonusPercent ,grossBenifitPercent};
+         return { totalStaking, boosterBonus, missedPayments, monthAnnuityBenifit, annuityBenifit, grossBenifit, annuityPercent ,boosterBonusPercent ,grossBenifitPercent};
       }
 
       const result = tsgap(
@@ -203,6 +205,7 @@ class TimeAllySuperGoalCalculator extends Component {
                                                       <tr>
                                                          <th>MONTH</th>
                                                          <th>MONTHLY STAKINGS</th>
+                                                         <th>MONTHLY ANNUITY BENIFIT FOR 9 YEARS</th>
                                                       </tr>
                                                       <tr>
                                                          <td>Month 1 </td>
@@ -218,6 +221,9 @@ class TimeAllySuperGoalCalculator extends Component {
                                                             autoComplete="off"
                                                             isInvalid={isNaN(Number(this.state.stakingAmountOne))}
                                                          /></td>
+                                                         <td>
+                                                            {this.state.tsgapValues.monthAnnuityBenifit[0]}
+                                                         </td>
                                                       </tr>
                                                       <tr>
                                                          <td>Month 2 </td>
@@ -233,6 +239,9 @@ class TimeAllySuperGoalCalculator extends Component {
                                                             autoComplete="off"
                                                             isInvalid={isNaN(Number(this.state.stakingAmountTwo))}
                                                          /></td>
+                                                         <td>
+                                                            {this.state.tsgapValues.monthAnnuityBenifit[1]}
+                                                         </td>
                                                       </tr>
                                                       <tr>
                                                          <td>Month 3</td>
@@ -248,6 +257,9 @@ class TimeAllySuperGoalCalculator extends Component {
                                                             autoComplete="off"
                                                             isInvalid={isNaN(Number(this.state.stakingAmountThree))}
                                                          /></td>
+                                                         <td>
+                                                            {this.state.tsgapValues.monthAnnuityBenifit[2]}
+                                                         </td>
                                                       </tr>
                                                       <tr>
                                                          <td>Month 4 </td>
@@ -263,6 +275,9 @@ class TimeAllySuperGoalCalculator extends Component {
                                                             autoComplete="off"
                                                             isInvalid={isNaN(Number(this.state.stakingAmountFour))}
                                                          /></td>
+                                                         <td>
+                                                            {this.state.tsgapValues.monthAnnuityBenifit[3]}
+                                                         </td>
                                                       </tr>
                                                       <tr>
                                                          <td>Month 5 </td>
@@ -278,6 +293,9 @@ class TimeAllySuperGoalCalculator extends Component {
                                                             autoComplete="off"
                                                             isInvalid={isNaN(Number(this.state.stakingAmountFive))}
                                                          /></td>
+                                                         <td>
+                                                            {this.state.tsgapValues.monthAnnuityBenifit[4]}
+                                                         </td>
                                                       </tr>
                                                       <tr>
                                                          <td>Month 6 </td>
@@ -293,6 +311,9 @@ class TimeAllySuperGoalCalculator extends Component {
                                                             autoComplete="off"
                                                             isInvalid={isNaN(Number(this.state.stakingAmountSix))}
                                                          /></td>
+                                                         <td>
+                                                            {this.state.tsgapValues.monthAnnuityBenifit[5]}
+                                                         </td>
                                                       </tr>
                                                       <tr>
                                                          <td>Month 7 </td>
@@ -308,6 +329,9 @@ class TimeAllySuperGoalCalculator extends Component {
                                                             autoComplete="off"
                                                             isInvalid={isNaN(Number(this.state.stakingAmountSeven))}
                                                          /></td>
+                                                         <td>
+                                                            {this.state.tsgapValues.monthAnnuityBenifit[6]}
+                                                         </td>
                                                       </tr>
                                                       <tr>
                                                          <td>Month 8 </td>
@@ -323,6 +347,9 @@ class TimeAllySuperGoalCalculator extends Component {
                                                             autoComplete="off"
                                                             isInvalid={isNaN(Number(this.state.stakingAmountEight))}
                                                          /></td>
+                                                         <td>
+                                                            {this.state.tsgapValues.monthAnnuityBenifit[7]}
+                                                         </td>
                                                       </tr>
                                                       <tr>
                                                          <td>Month 9 </td>
@@ -338,6 +365,9 @@ class TimeAllySuperGoalCalculator extends Component {
                                                             autoComplete="off"
                                                             isInvalid={isNaN(Number(this.state.stakingAmountNine))}
                                                          /></td>
+                                                         <td>
+                                                            {this.state.tsgapValues.monthAnnuityBenifit[8]}
+                                                         </td>
                                                       </tr>
                                                       <tr>
                                                          <td>Month 10 </td>
@@ -353,6 +383,9 @@ class TimeAllySuperGoalCalculator extends Component {
                                                             autoComplete="off"
                                                             isInvalid={isNaN(Number(this.state.stakingAmountTen))}
                                                          /></td>
+                                                         <td>
+                                                            {this.state.tsgapValues.monthAnnuityBenifit[9]}
+                                                         </td>
                                                       </tr>
                                                       <tr>
                                                          <td>Month 11 </td>
@@ -368,6 +401,9 @@ class TimeAllySuperGoalCalculator extends Component {
                                                             autoComplete="off"
                                                             isInvalid={isNaN(Number(this.state.stakingAmountEleven))}
                                                          /></td>
+                                                         <td>
+                                                            {this.state.tsgapValues.monthAnnuityBenifit[10]}
+                                                         </td>
                                                       </tr>
                                                       <tr>
                                                          <td>Month 12 </td>
@@ -383,6 +419,9 @@ class TimeAllySuperGoalCalculator extends Component {
                                                             autoComplete="off"
                                                             isInvalid={isNaN(Number(this.state.stakingAmountTwelve))}
                                                          /></td>
+                                                         <td>
+                                                            {this.state.tsgapValues.monthAnnuityBenifit[11]}
+                                                         </td>
                                                       </tr>
                                                    </table>
                                                 </div>
