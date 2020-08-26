@@ -35,7 +35,23 @@ class PersonalEraSwapTellerCalculator extends Component {
       stakingAmountTen: '',
       stakingAmountEleven: '',
       stakingAmountTwelve: '',
-      petValues: { monthlyTotalStaking: [], petBounty: [] },
+      petValues: {
+        petBounty : [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        selfStaking : [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        monthlyTotalStaking : [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        monthAnnuityBenifit : [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        fullTarget : 0,
+        petBonus : 0,
+        annuityBenifit : 0,
+        grossBenifit : 0,
+        annuity : 0,
+        grossStaking : 0,
+        totalStaking : 0,
+        annuityPercent : 0,
+        petBonusPercent : 0,
+        grossBenifitPercent : 0,
+        totalPetBounty : 0,
+      },
     };
 
     this.openSnackBar = this.openSnackBar.bind(this);
@@ -260,7 +276,7 @@ class PersonalEraSwapTellerCalculator extends Component {
                                       <th>SELF STAKED ES (ES)</th>
                                       <th>PET BOUNTY </th>
                                       <th>TOTAL STAKING </th>
-                                      <th>MONTHLY ANNUITY BENIFIT FOR 5 YEARS</TH>
+                                      <th>MONTHLY ANNUITY BENIFIT FOR 5 YEARS</th>
                                     </tr>
                                     <tr>
                                       <td>Month 1 </td>

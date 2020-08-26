@@ -36,7 +36,18 @@ class TimeAllySuperGoalCalculator extends Component {
          stakingAmountTen: '',
          stakingAmountEleven: '',
          stakingAmountTwelve: '',
-         tsgapValues: '',
+        tsgapValues: {
+          annuity : 0 ,
+          totalStaking : 0,
+          boosterBonus : 0,
+          missedPayments : 0,
+          annuityBenifit : 0,
+          grossBenifit : 0,
+          monthAnnuityBenifit : [0,0,0,0,0,0,0,0,0,0,0,0],
+          annuityPercent : 0,
+          grossBenifitPercent : 0,
+          boosterBonusPercent : 0,
+        },
       };
       this.openSnackBar = this.openSnackBar.bind(this);
    }
