@@ -62,6 +62,7 @@ class Dashboard extends Component {
           allTimeLow: '0.005 USDT',
           probitVolume: 'Loading...',
           allTxnsCount: 'Loading...',
+          esOwners: 'Loading',
         },
         isLoading: true,
       },
@@ -438,8 +439,33 @@ class Dashboard extends Component {
     } catch (e) {
       console.log(e);
     }
+
+    try {
+      await this.fetchESOwnersCount();
+    } catch (e) {
+      console.log(e);
+    }
     
     this.nrtTicker();
+  }
+
+  async fetchESOwnersCount() {
+    let res;
+    try {
+      res = await Apis.fetchESOwners();
+    } catch (e) {
+      console.log(e);
+    } finally {
+      this.setState({
+        eraswap: {
+          data: {
+            ...this.state.eraswap.data,
+            esOwners:  res
+          },
+          isLoading: false,
+        },
+      });
+    }
   }
 
   async fetchAllTxnsCount() {
@@ -1741,7 +1767,18 @@ class Dashboard extends Component {
                     <div className="es-box-ds">
                       <p className="supply-txt">MARKET CAP</p>
                       <p className="supply-txt">
-                        {this.state.eraswap.data.marketCap} $
+                        {isFinite(
+                          (this.state.eraswap.data.esTotalSupply -
+                            this.state.eraswap.data.burnPool) *
+                            this.state.eraswap.data.esUSDT
+                        )
+                          ? (
+                              (this.state.eraswap.data.esTotalSupply -
+                                this.state.eraswap.data.burnPool) *
+                              this.state.eraswap.data.esUSDT
+                            ).toFixed(2)
+                          : 'Loading...'}{' '}
+                        $
                       </p>
                     </div>
                   </div>
@@ -1751,7 +1788,7 @@ class Dashboard extends Component {
                     <div className="es-box-ds">
                       <p className="supply-txt">TOTAL ES OWNERS</p>
                       <p className="supply-txt">
-                        {this.state.eraswap.data.totolESUsers} addresses{' '}
+                        {this.state.eraswap.data.esOwners} addresses{' '}
                       </p>
                     </div>
                   </div>

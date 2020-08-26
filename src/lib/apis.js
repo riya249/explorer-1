@@ -10,6 +10,9 @@ export default class Apis {
   static fetchAddress = (address) => ajax(`${baseUrl}/address/${address}`);
   static fetchTopAccounts = (limit = 10) =>
     ajax(`${baseUrl}/address/top?limit=${limit}`);
+  static fetchESOwners = () =>
+    ajax(`${baseUrl}/address/es-owners`);
+
   static fetchStatistics = ({ limit = 10 }) =>
     ajax(`${baseUrl}/address/txn-statistics?limit=${limit}`);
   static fetchBlocks = (start = 0, length = 10) =>
