@@ -154,11 +154,11 @@ class Transaction extends Component {
                               </td>
                               <td>
                                 {toLocaleTimestamp(
-                                  this.state.transaction.data.createdOn
+                                  this.state.transaction.data.block?.timestamp
                                 ).fromNow()}{' '}
                                 (
                                 {toLocaleTimestamp(
-                                  this.state.transaction.data.createdOn
+                                  this.state.transaction.data.block?.timestamp
                                 ).format('MMMM-DD-YYYY hh:mm:ss A')}
                                 )
                               </td>
