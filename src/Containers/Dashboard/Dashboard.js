@@ -1936,7 +1936,7 @@ class Dashboard extends Component {
                 <Card className="">
                   <Card.Body>
                     <p className="sect-txt-bold">ICO START & END DATE</p>
-                    <p className="value-dash-txt">01/07/2018 - 31-12-2018</p>
+                    <p className="value-dash-txt">01/07/2018 - 31/12/2018</p>
                   </Card.Body>
                 </Card>
               </Col>
