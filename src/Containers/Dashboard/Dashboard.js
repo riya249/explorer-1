@@ -1715,7 +1715,7 @@ class Dashboard extends Component {
                     <div className="es-box-ds">
                       <p className="supply-txt">MARKET CAP</p>
                       <p className="supply-txt">
-                         {this.state.eraswap.data.marketCap} $
+                        {this.state.eraswap.data.marketCap} $
                       </p>
                     </div>
                   </div>
@@ -1730,7 +1730,6 @@ class Dashboard extends Component {
                     </div>
                   </div>
                 </Col>
-               
               </div>
             </Col>
             <Col lg={3}>
@@ -1750,7 +1749,7 @@ class Dashboard extends Component {
                     <p>MINUTES</p>
                   </li>
                   <li className="count-txt">
-                      {this.state.nextNrtCounter.data.seconds}
+                    {this.state.nextNrtCounter.data.seconds}
                     <p>SECONDS</p>
                   </li>
                 </ul>
@@ -1811,86 +1810,84 @@ class Dashboard extends Component {
                 </Card>
               </Col>
               <Col sm={6} lg={2}>
-                  <Card className="">
+                <Card className="">
                   <Card.Body>
                     <p className="sect-txt-bold ">TOTAL STAKED ES</p>
                     <p className="value-dash-txt">
                       {this.state.eraswap.data.totalESStaked}{' '}
                     </p>
                   </Card.Body>
-                  </Card>
-                </Col>
-              
+                </Card>
+              </Col>
             </Row>
             {/* <div className="wrapper-sub-section"> */}
-              <Row className="">
-                <Col sm={6} lg={2}>
-                  <Card className="">
-                    <Card.Body>
-                      <p className="sect-txt-bold">ECOSYSTEM VOLUME</p>
-                      <p className="value-dash-txt">
-                        'Coming soon'
-                        {/* this.state.eraswap.data.ecosystemVolume*/}
-                      </p>
-                    </Card.Body>
-                  </Card>
-                </Col>
-                 <Col sm={6} lg={2}>
-                  <Card className=" ">
-                    <Card.Body>
-                      <p className="sect-txt-bold">UNUSED POWER TOKENS</p>
-                      <p className="value-dash-txt">
-                        {this.state.eraswap.data.unUsedPowertokens}
-                      </p>
-                    </Card.Body>
-                  </Card>
-                </Col>
-                <Col sm={6} lg={2}>
-                  <Card className="">
-                    <Card.Body>
-                      <p className="sect-txt-bold">LUCK POOL IN NRT</p>
-                      <p className="value-dash-txt">
-                        {this.state.eraswap.data.luckPoolNrt}
-                      </p>
-                    </Card.Body>
-                  </Card>
-                </Col>
-                <Col sm={6} lg={2}>
-                  <Card className="">
-                    <Card.Body>
-                      <p className="sect-txt-bold">BURN POOL (IN NEXT NRT)</p>
-                      <p className="value-dash-txt">
-                        {this.state.eraswap.data.burnPool}
-                      </p>
-                    </Card.Body>
-                  </Card>
-                </Col>
-                <Col sm={6} lg={2}>
-                  <Card className="">
-                    <Card.Body>
-                      <p className="sect-txt-bold">TOTAL ES BURNED</p>
-                      <p className="value-dash-txt">
-                        {this.state.eraswap.data.totalESBurned}
-                      </p>
-                    </Card.Body>
-                  </Card>
-                </Col>
-                <Col sm={6} lg={2}>
-                  <Card>
-                    <Card.Body>
-                      <p className="sect-txt-bold">ECOSYSTEM TRANSACTIONS</p>
-                      <p className="value-dash-txt">
-                        'Coming soon'
-                        {/* this.state.eraswap.data.ecosystemTransactions*/}
-                      </p>
-                    </Card.Body>
-                  </Card>
-                </Col>
-                
-              </Row>
+            <Row className="">
+              <Col sm={6} lg={2}>
+                <Card className="">
+                  <Card.Body>
+                    <p className="sect-txt-bold">ECOSYSTEM VOLUME</p>
+                    <p className="value-dash-txt">
+                      'Coming soon'
+                      {/* this.state.eraswap.data.ecosystemVolume*/}
+                    </p>
+                  </Card.Body>
+                </Card>
+              </Col>
+              <Col sm={6} lg={2}>
+                <Card className=" ">
+                  <Card.Body>
+                    <p className="sect-txt-bold">UNUSED POWER TOKENS</p>
+                    <p className="value-dash-txt">
+                      {this.state.eraswap.data.unUsedPowertokens}
+                    </p>
+                  </Card.Body>
+                </Card>
+              </Col>
+              <Col sm={6} lg={2}>
+                <Card className="">
+                  <Card.Body>
+                    <p className="sect-txt-bold">LUCK POOL IN NRT</p>
+                    <p className="value-dash-txt">
+                      {this.state.eraswap.data.luckPoolNrt}
+                    </p>
+                  </Card.Body>
+                </Card>
+              </Col>
+              <Col sm={6} lg={2}>
+                <Card className="">
+                  <Card.Body>
+                    <p className="sect-txt-bold">BURN POOL (IN NEXT NRT)</p>
+                    <p className="value-dash-txt">
+                      {this.state.eraswap.data.burnPool}
+                    </p>
+                  </Card.Body>
+                </Card>
+              </Col>
+              <Col sm={6} lg={2}>
+                <Card className="">
+                  <Card.Body>
+                    <p className="sect-txt-bold">TOTAL ES BURNED</p>
+                    <p className="value-dash-txt">
+                      {this.state.eraswap.data.totalESBurned}
+                    </p>
+                  </Card.Body>
+                </Card>
+              </Col>
+              <Col sm={6} lg={2}>
+                <Card>
+                  <Card.Body>
+                    <p className="sect-txt-bold">ECOSYSTEM TRANSACTIONS</p>
+                    <p className="value-dash-txt">
+                      'Coming soon'
+                      {/* this.state.eraswap.data.ecosystemTransactions*/}
+                    </p>
+                  </Card.Body>
+                </Card>
+              </Col>
+            </Row>
 
-              <Row className="">
-                {/* <Col sm={6} lg={2} p-0>
+            <Row className="">
+              {/* <Col sm={6} lg={2} p-0>
                   <Card className="height-80 wd-120 ">
                     <Card.Body>
                       <p className="sect-txt-bold">MARKET CAP</p>
@@ -1900,60 +1897,60 @@ class Dashboard extends Component {
                     </Card.Body>
                   </Card>
                 </Col> */}
-                <Col sm={6} lg={2}>
-                  <Card className="">
-                    <Card.Body>
-                      <p className="sect-txt-bold">24 HR VOL (PROBIT GLOBAL)</p>
-                      <p className="value-dash-txt">
-                        {this.state.eraswap.data.probitVolume}
-                      </p>
-                    </Card.Body>
-                  </Card>
-                </Col>
-                <Col sm={6} lg={2}>
-                  <Card className="">
-                    <Card.Body>
-                      <p className="sect-txt-bold">ASSESTS AVAILABLE</p>
-                      <p className="value-dash-txt">'Coming soon'</p>
-                    </Card.Body>
-                  </Card>
-                </Col>
-                <Col sm={6} lg={2}>
-                  <Card className=" ">
-                    <Card.Body>
-                      <p className="sect-txt-bold">ALL TIME HIGH</p>
-                      <p className="value-dash-txt">1.42 $</p>
-                    </Card.Body>
-                  </Card>
-                </Col>
-                <Col sm={6} lg={2}>
-                  <Card className="">
-                    <Card.Body>
-                      <p className="sect-txt-bold">ALL TIME LOW</p>
-                      <p className="value-dash-txt">0.005 $</p>
-                    </Card.Body>
-                  </Card>
-                </Col>
-                <Col sm={6} lg={2}>
-                  <Card className="">
-                    <Card.Body>
-                      <p className="sect-txt-bold">ICO  START & END DATE</p>
-                      <p className="value-dash-txt">'Coming soon'</p>
-                    </Card.Body>
-                  </Card>
-                </Col>
-                <Col sm={6} lg={2}>
-                  <Card className="">
-                    <Card.Body>
-                      <p className="sect-txt-bold">ICO PRICE</p>
-                      <p className="value-dash-txt">
-                        {this.state.eraswap.data.crownfundPrice}
-                      </p>
-                    </Card.Body>
-                  </Card>
-                </Col>
-                
-              </Row>
+              <Col sm={6} lg={2}>
+                <Card className="">
+                  <Card.Body>
+                    <p className="sect-txt-bold">24 HR VOL (PROBIT GLOBAL)</p>
+                    <p className="value-dash-txt">
+                      {this.state.eraswap.data.probitVolume}
+                    </p>
+                  </Card.Body>
+                </Card>
+              </Col>
+              <Col sm={6} lg={2}>
+                <Card className="">
+                  <Card.Body>
+                    <p className="sect-txt-bold">ASSESTS AVAILABLE</p>
+                    <p className="value-dash-txt">'Coming soon'</p>
+                  </Card.Body>
+                </Card>
+              </Col>
+
+              <Col sm={6} lg={2}>
+                <Card className=" ">
+                  <Card.Body>
+                    <p className="sect-txt-bold">ALL TIME HIGH</p>
+                    <p className="value-dash-txt">1.42 $</p>
+                  </Card.Body>
+                </Card>
+              </Col>
+              <Col sm={6} lg={2}>
+                <Card className="">
+                  <Card.Body>
+                    <p className="sect-txt-bold">ALL TIME LOW</p>
+                    <p className="value-dash-txt">0.005 $</p>
+                  </Card.Body>
+                </Card>
+              </Col>
+              <Col sm={6} lg={2}>
+                <Card className="">
+                  <Card.Body>
+                    <p className="sect-txt-bold">ICO START & END DATE</p>
+                    <p className="value-dash-txt">01/07/2018 - 31/12/2018</p>
+                  </Card.Body>
+                </Card>
+              </Col>
+              <Col sm={6} lg={2}>
+                <Card className="">
+                  <Card.Body>
+                    <p className="sect-txt-bold">ICO PRICE</p>
+                    <p className="value-dash-txt">
+                      {this.state.eraswap.data.crownfundPrice}
+                    </p>
+                  </Card.Body>
+                </Card>
+              </Col>
+            </Row>
             {/* </div> */}
           </div>
         </div>
