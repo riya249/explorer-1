@@ -432,7 +432,7 @@ class Homepage extends Component {
               <Row>
                 <Col lg={8}>
                   <Row>
-                    <Col lg={12}>
+                    <Col md={12}>
                       <div className="flex-eraswap">
                         <img
                           src={Images.path.escolor}
@@ -455,7 +455,7 @@ class Homepage extends Component {
                         </div>
                       </div>
                     </Col>
-                    <Col lg={6} className="border-right">
+                    <Col md={6} className="border-right">
                       <div className="flex-transc border-value row">
                         <div className="col-lg-6">
                           <p className="era-head">Symbol</p>
@@ -484,7 +484,7 @@ class Homepage extends Component {
                           </p>
                         </div>
                       </div>
-                      <div className="flex-transc border-value row">
+                      <div className="flex-transc border-value-no row">
                         <div className="col-lg-6">
                           <p className="era-head">AVAILABLE SUPPLY</p>
                           <p className="era-value text-black">
@@ -518,9 +518,9 @@ class Homepage extends Component {
                   </div>
                  */}
                     </Col>
-                    <Col lg={6} className="border-right">
+                    <Col md={6} className="border-right">
                       <div className="flex-transc border-value row">
-                        <div className="col-lg-6">
+                        <div className="col-md-6">
                           <p
                             className="era-head"
                             data-toggle="tooltip"
@@ -536,7 +536,7 @@ class Homepage extends Component {
                             </span>
                           </p>
                         </div>
-                        <div className="col-lg-6">
+                        <div className="col-md-6">
                           <p className="era-head">SAFE GAS PRICE</p>
                           <p className="era-value text-black">
                             0 EM{' '}
@@ -545,7 +545,7 @@ class Homepage extends Component {
                         </div>
                       </div>
                       <div className="flex-transc border-value row">
-                        <div className="col-lg-6">
+                        <div className="col-md-6">
                           <p
                             className="era-head"
                             data-toggle="tooltip"
@@ -561,7 +561,7 @@ class Homepage extends Component {
                             ).toFixed(2)}
                           </p>
                         </div>
-                        <div className="col-lg-6">
+                        <div className="col-md-6">
                           <p
                             className="era-head"
                             data-toggle="tooltip"
@@ -575,8 +575,8 @@ class Homepage extends Component {
                           </p>
                         </div>
                       </div>
-                      <div className="flex-transc border-value row">
-                        <div className="col-lg-6">
+                      <div className="flex-transc border-value-no row">
+                        <div className="col-md-6">
                           <p
                             className="era-head"
                             data-toggle="tooltip"
@@ -589,7 +589,7 @@ class Homepage extends Component {
                             {this.state.change7Days}
                           </p>
                         </div>
-                        <div className="col-lg-6">
+                        <div className="col-md-6">
                           <p className="era-head">CHANGE 24H</p>
                           <p className="era-value text-black">
                             {this.state.change24H}

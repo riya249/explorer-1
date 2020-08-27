@@ -327,7 +327,7 @@ class TopStatistics extends Component {
                         aria-controls="Four"
                         aria-selected="false"
                       >
-                        Miners
+                        Sealers
                       </a>
                     </li>
                   </ul>
@@ -343,6 +343,7 @@ class TopStatistics extends Component {
                     <div className="mt30 eraswapcal-tab row">
                       <div className="col-lg-6 mt10">
                         <div className="card">
+                        <div className="table-responsive">
                           <table className="es-transaction striped bordered hover">
                             <thead>
                               <tr>
@@ -409,10 +410,12 @@ class TopStatistics extends Component {
                               </tr>
                             </thead>
                           </table>
+                          </div>
                         </div>
                       </div>
                       <div className="col-lg-6 mt10">
                         <div className="card">
+                        <div className="table-responsive">
                           <table className="es-transaction striped bordered hover">
                             <thead>
                               <tr>
@@ -485,10 +488,12 @@ class TopStatistics extends Component {
                               </tr>
                             </thead>
                           </table>
+                          </div>
                         </div>
                       </div>
                       <div className="col-lg-6 mt20">
                         <div className="card">
+                        <div className="table-responsive">
                           <table className="es-transaction striped bordered hover">
                             <thead>
                               <tr>
@@ -540,14 +545,16 @@ class TopStatistics extends Component {
                               </tr>
                             </thead>
                           </table>
+                          </div>
                         </div>
                       </div>
                       <div className="col-lg-6 mt20">
                         <div className="card">
+                        <div className="table-responsive">
                           <table className="es-transaction striped bordered hover">
                             <thead>
                               <tr>
-                                <th>Miners</th>
+                                <th>Sealers</th>
                                 <th className="text-right">
                                   {/* <a href="" className="value-dash-txt">
                                     View Top 10
@@ -587,6 +594,7 @@ class TopStatistics extends Component {
                               </tr>
                             </thead>
                           </table>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -601,6 +609,7 @@ class TopStatistics extends Component {
                       <div className="col-lg-6 mt10">
                         <div className="card">
                           <div class="border-era">Top ES Sender</div>
+                          <div className="table-responsive">
                           <table className="es-transaction striped bordered hover">
                             <thead>
                               <tr>
@@ -646,11 +655,13 @@ class TopStatistics extends Component {
                               )}
                             </thead>
                           </table>
+                          </div>
                         </div>
                       </div>
                       <div className="col-lg-6 mt10">
                         <div className="card">
                           <div class="border-era">Top ES Receiver</div>
+                          <div className="table-responsive">
                           <table className="es-transaction striped bordered hover">
                             <thead>
                               <tr>
@@ -698,11 +709,13 @@ class TopStatistics extends Component {
                               )}
                             </thead>
                           </table>
+                          </div>
                         </div>
                       </div>
                       <div className="col-lg-6 mt10">
                         <div className="card">
                           <div class="border-era">Top Sent Txn Count</div>
+                          <div className="table-responsive">
                           <table className="es-transaction striped bordered hover">
                             <thead>
                               <tr>
@@ -744,11 +757,13 @@ class TopStatistics extends Component {
                               )}
                             </thead>
                           </table>
+                          </div>
                         </div>
                       </div>
                       <div className="col-lg-6 mt10">
                         <div className="card">
                           <div class="border-era">Top Received Txn Count</div>
+                          <div className="table-responsive">
                           <table className="es-transaction striped bordered hover">
                             <thead>
                               <tr>
@@ -790,6 +805,7 @@ class TopStatistics extends Component {
                               )}
                             </thead>
                           </table>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -835,6 +851,7 @@ class TopStatistics extends Component {
                       <div className="col-lg-6 mt10">
                         <div className="card">
                           <div class="border-era">Top ES Receiver</div>
+                          <div className="table-responsive">
                           <table className="es-transaction striped bordered hover">
                             <thead>
                               <tr>
@@ -889,6 +906,7 @@ class TopStatistics extends Component {
                               )}
                             </thead>
                           </table>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -903,6 +921,7 @@ class TopStatistics extends Component {
                       <div className="col-lg-12 mt10">
                         <div className="card">
                           <div class="border-era">Top Stakers</div>
+                          <div className="table-responsive">
                           <table className="es-transaction striped bordered hover">
                             <thead>
                               <tr>
@@ -938,11 +957,13 @@ class TopStatistics extends Component {
                               )}
                             </thead>
                           </table>
+                          </div>
                         </div>
                       </div>
                       <div className="col-lg-12 mt10">
                         <div className="card">
                           <div class="border-era">Top Blockee</div>
+                          <div className="table-responsive">
                           <table className="es-transaction striped bordered hover">
                             <thead>
                               <tr>
@@ -975,6 +996,7 @@ class TopStatistics extends Component {
                               )}
                             </thead>
                           </table>
+                          </div>
                         </div>
                       </div>
                     </div>

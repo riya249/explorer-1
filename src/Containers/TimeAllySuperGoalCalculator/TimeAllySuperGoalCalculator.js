@@ -136,7 +136,7 @@ class TimeAllySuperGoalCalculator extends Component {
                <Navbar />
                <h2 className="es-main-head es-main-head-inner">TimeAlly Super Goal Calculator</h2>
             </div>
-            <div className="container">
+            <div className="">
                <div className="BlockPage-detail">
                   <Container>
                      <Row className="mt40 eraswapcal cal-com-page eraswapcal-tab">
@@ -450,6 +450,7 @@ class TimeAllySuperGoalCalculator extends Component {
                                              <div className="mt30" >
                                                 <div className="card">
                                                    <div className="border-era">RESULTS</div>
+                                                   <div className="table-responsive">
                                                    <table className="es-transaction striped bordered hover">
                                                       <thead>
                                                          <tr>
@@ -489,6 +490,7 @@ class TimeAllySuperGoalCalculator extends Component {
                                                          </tr>
                                                       </thead>
                                                    </table>
+                                                   </div>
                                                 </div>
                                              </div>
                                           </div>

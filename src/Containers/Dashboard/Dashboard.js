@@ -2574,8 +2574,8 @@ class Dashboard extends Component {
                     src={Images.path.charitylogo}
                     alt="logo"
                   />
-                  <p className="platfrm-txt">CHARITYDAPP </p>
-                  <p className="platfrm-txt">(YET TO GO LIVE) </p>
+                  <p className="platfrm-txt">CHARITYDAPP  (YET TO GO LIVE)</p>
+                 
                 </div>
                 <div className="swwall-flex-border">
                   <div>
@@ -3035,7 +3035,7 @@ class Dashboard extends Component {
                     src={Images.path.vof}
                     alt="logo"
                   />
-                  <p className="platfrm-txt">VALUE OF FARMERS </p>
+                  <p className="platfrm-txt">VALUE OF FARMERS  (YET TO GO LIVE)</p>
                 </div>
                 <div className="swwall-flex-border">
                   <div>
@@ -3083,7 +3083,7 @@ class Dashboard extends Component {
                     src={Images.path.certidapplogo}
                     alt="logo"
                   />
-                  <p className="platfrm-txt">CertiDapp </p>
+                  <p className="platfrm-txt">CertiDapp  (YET TO GO LIVE)</p>
                 </div>
                 <div className="swwall-flex-border">
                   <div>
@@ -3105,6 +3105,19 @@ class Dashboard extends Component {
                     <p className="sect4-value">-</p>
                   </div>
                 </div>
+              </div>
+            </Col>
+            <Col lg={4}>
+              <div className="section4-border">
+                <div className="flex-sect4-box">
+                  <img
+                    className="platfrm-logo6"
+                    src={Images.path.usecaserecyclingdapp}
+                    alt="logo"
+                  />
+                  <p className="platfrm-txt">RECYCLINGDAPP   (YET TO GO LIVE) </p>
+                </div>
+                
               </div>
             </Col>
           </Row>
