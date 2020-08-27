@@ -151,7 +151,7 @@ class TimeAllySuperGoalCalculator extends Component {
                                                    <div className="table-responsive">
                                                       <table className="es-transaction  table">
                                                          <tr>
-                                                            <td>TSGAP SIP Staked Monthly Minimum Limit (12 months)</td>
+                                                            <td>TSGAP SAP Staked Monthly Minimum Limit (12 months)</td>
                                                             <td>100 ES</td>
                                                             <td>500</td>
                                                             <td>1000</td>
@@ -159,7 +159,7 @@ class TimeAllySuperGoalCalculator extends Component {
                                                             <td>100000</td>
                                                          </tr>
                                                          <tr>
-                                                            <td>TSGAP SIP Staked Monthly Minimum Limit (12 months)</td>
+                                                            <td>TSGAP SAP Staked Monthly Minimum Limit (12 months)</td>
                                                             <td>499 ES</td>
                                                             <td>999 ES</td>
                                                             <td>9999 ES</td>
@@ -215,12 +215,12 @@ class TimeAllySuperGoalCalculator extends Component {
                                                    <table className="es-transaction  table">
                                                       <tr>
                                                          <th>MONTH</th>
-                                                         <th>MONTHLY STAKINGS</th>
-                                                         <th>MONTHLY ANNUITY BENIFIT FOR 9 YEARS</th>
+                                                         <th className="text-center">MONTHLY STAKINGS</th>
+                                                         <th className="text-center">MONTHLY ANNUITY BENIFIT FOR 9 YEARS</th>
                                                       </tr>
                                                       <tr>
                                                          <td>Month 1 </td>
-                                                         <td><Form.Control
+                                                         <td className="text-center"><Form.Control
                                                             onChange={(event) =>
                                                                this.setState({
                                                                   stakingAmountOne: event.target.value,
@@ -232,13 +232,13 @@ class TimeAllySuperGoalCalculator extends Component {
                                                             autoComplete="off"
                                                             isInvalid={isNaN(Number(this.state.stakingAmountOne))}
                                                          /></td>
-                                                         <td>
+                                                         <td className="text-center">
                                                             {this.state.tsgapValues.monthAnnuityBenifit[0]}
                                                          </td>
                                                       </tr>
                                                       <tr>
                                                          <td>Month 2 </td>
-                                                         <td><Form.Control
+                                                         <td className="text-center"><Form.Control
                                                             onChange={(event) =>
                                                                this.setState({
                                                                   stakingAmountTwo: event.target.value,
@@ -250,13 +250,13 @@ class TimeAllySuperGoalCalculator extends Component {
                                                             autoComplete="off"
                                                             isInvalid={isNaN(Number(this.state.stakingAmountTwo))}
                                                          /></td>
-                                                         <td>
+                                                         <td className="text-center">
                                                             {this.state.tsgapValues.monthAnnuityBenifit[1]}
                                                          </td>
                                                       </tr>
                                                       <tr>
                                                          <td>Month 3</td>
-                                                         <td><Form.Control
+                                                         <td className="text-center"><Form.Control
                                                             onChange={(event) =>
                                                                this.setState({
                                                                   stakingAmountThree: event.target.value,
@@ -268,13 +268,13 @@ class TimeAllySuperGoalCalculator extends Component {
                                                             autoComplete="off"
                                                             isInvalid={isNaN(Number(this.state.stakingAmountThree))}
                                                          /></td>
-                                                         <td>
+                                                         <td className="text-center">
                                                             {this.state.tsgapValues.monthAnnuityBenifit[2]}
                                                          </td>
                                                       </tr>
                                                       <tr>
                                                          <td>Month 4 </td>
-                                                         <td><Form.Control
+                                                         <td className="text-center"><Form.Control
                                                             onChange={(event) =>
                                                                this.setState({
                                                                   stakingAmountFour: event.target.value,
@@ -286,13 +286,13 @@ class TimeAllySuperGoalCalculator extends Component {
                                                             autoComplete="off"
                                                             isInvalid={isNaN(Number(this.state.stakingAmountFour))}
                                                          /></td>
-                                                         <td>
+                                                         <td className="text-center">
                                                             {this.state.tsgapValues.monthAnnuityBenifit[3]}
                                                          </td>
                                                       </tr>
                                                       <tr>
                                                          <td>Month 5 </td>
-                                                         <td><Form.Control
+                                                         <td className="text-center"><Form.Control
                                                             onChange={(event) =>
                                                                this.setState({
                                                                   stakingAmountFive: event.target.value,
@@ -304,13 +304,13 @@ class TimeAllySuperGoalCalculator extends Component {
                                                             autoComplete="off"
                                                             isInvalid={isNaN(Number(this.state.stakingAmountFive))}
                                                          /></td>
-                                                         <td>
+                                                         <td className="text-center">
                                                             {this.state.tsgapValues.monthAnnuityBenifit[4]}
                                                          </td>
                                                       </tr>
                                                       <tr>
                                                          <td>Month 6 </td>
-                                                         <td><Form.Control
+                                                         <td className="text-center"><Form.Control
                                                             onChange={(event) =>
                                                                this.setState({
                                                                   stakingAmountSix: event.target.value,
@@ -322,13 +322,13 @@ class TimeAllySuperGoalCalculator extends Component {
                                                             autoComplete="off"
                                                             isInvalid={isNaN(Number(this.state.stakingAmountSix))}
                                                          /></td>
-                                                         <td>
+                                                         <td className="text-center">
                                                             {this.state.tsgapValues.monthAnnuityBenifit[5]}
                                                          </td>
                                                       </tr>
                                                       <tr>
                                                          <td>Month 7 </td>
-                                                         <td><Form.Control
+                                                         <td className="text-center"><Form.Control
                                                             onChange={(event) =>
                                                                this.setState({
                                                                   stakingAmountSeven: event.target.value,
@@ -340,13 +340,13 @@ class TimeAllySuperGoalCalculator extends Component {
                                                             autoComplete="off"
                                                             isInvalid={isNaN(Number(this.state.stakingAmountSeven))}
                                                          /></td>
-                                                         <td>
+                                                         <td className="text-center">
                                                             {this.state.tsgapValues.monthAnnuityBenifit[6]}
                                                          </td>
                                                       </tr>
                                                       <tr>
                                                          <td>Month 8 </td>
-                                                         <td><Form.Control
+                                                         <td className="text-center"><Form.Control
                                                             onChange={(event) =>
                                                                this.setState({
                                                                   stakingAmountEight: event.target.value,
@@ -358,13 +358,13 @@ class TimeAllySuperGoalCalculator extends Component {
                                                             autoComplete="off"
                                                             isInvalid={isNaN(Number(this.state.stakingAmountEight))}
                                                          /></td>
-                                                         <td>
+                                                         <td className="text-center">
                                                             {this.state.tsgapValues.monthAnnuityBenifit[7]}
                                                          </td>
                                                       </tr>
                                                       <tr>
                                                          <td>Month 9 </td>
-                                                         <td><Form.Control
+                                                         <td className="text-center"><Form.Control
                                                             onChange={(event) =>
                                                                this.setState({
                                                                   stakingAmountNine: event.target.value,
@@ -376,13 +376,13 @@ class TimeAllySuperGoalCalculator extends Component {
                                                             autoComplete="off"
                                                             isInvalid={isNaN(Number(this.state.stakingAmountNine))}
                                                          /></td>
-                                                         <td>
+                                                         <td className="text-center">
                                                             {this.state.tsgapValues.monthAnnuityBenifit[8]}
                                                          </td>
                                                       </tr>
                                                       <tr>
                                                          <td>Month 10 </td>
-                                                         <td><Form.Control
+                                                         <td className="text-center"><Form.Control
                                                             onChange={(event) =>
                                                                this.setState({
                                                                   stakingAmountTen: event.target.value,
@@ -394,13 +394,13 @@ class TimeAllySuperGoalCalculator extends Component {
                                                             autoComplete="off"
                                                             isInvalid={isNaN(Number(this.state.stakingAmountTen))}
                                                          /></td>
-                                                         <td>
+                                                         <td className="text-center">
                                                             {this.state.tsgapValues.monthAnnuityBenifit[9]}
                                                          </td>
                                                       </tr>
                                                       <tr>
                                                          <td>Month 11 </td>
-                                                         <td><Form.Control
+                                                         <td className="text-center"><Form.Control
                                                             onChange={(event) =>
                                                                this.setState({
                                                                   stakingAmountEleven: event.target.value,
@@ -412,13 +412,13 @@ class TimeAllySuperGoalCalculator extends Component {
                                                             autoComplete="off"
                                                             isInvalid={isNaN(Number(this.state.stakingAmountEleven))}
                                                          /></td>
-                                                         <td>
+                                                         <td className="text-center">
                                                             {this.state.tsgapValues.monthAnnuityBenifit[10]}
                                                          </td>
                                                       </tr>
                                                       <tr>
                                                          <td>Month 12 </td>
-                                                         <td><Form.Control
+                                                         <td className="text-center"><Form.Control
                                                             onChange={(event) =>
                                                                this.setState({
                                                                   stakingAmountTwelve: event.target.value,
@@ -430,7 +430,7 @@ class TimeAllySuperGoalCalculator extends Component {
                                                             autoComplete="off"
                                                             isInvalid={isNaN(Number(this.state.stakingAmountTwelve))}
                                                          /></td>
-                                                         <td>
+                                                         <td className="text-center">
                                                             {this.state.tsgapValues.monthAnnuityBenifit[11]}
                                                          </td>
                                                       </tr>

@@ -157,7 +157,7 @@ class TransactionsIncentiveCalculator extends Component {
                             </div>
                             <div class="col-md-4 col-lg-4 form-group">
                               <label for="">
-                                Additional Incentive by seller
+                                Promotional Incentive by seller
                               </label>
                               <Form.Control
                                 onChange={(event) =>

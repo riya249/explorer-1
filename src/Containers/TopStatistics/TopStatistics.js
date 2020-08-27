@@ -569,7 +569,7 @@ class TopStatistics extends Component {
                                   </p>
                                 </td>
                                 <td className="text-right">
-                                  <p class="sect-txt-bold">Blockee Mined</p>
+                                  <p class="sect-txt-bold">Blokcee Mined</p>
                                   <p class="value-dash-txt">
                                     {this.state.topBlockee?.count}
                                   </p>
@@ -969,7 +969,7 @@ class TopStatistics extends Component {
                               <tr>
                                 <th>Rank</th>
                                 <th>Address</th>
-                                <th>Total Blockee Mined</th>
+                                <th>Total Blokcee Mined</th>
                                 <th>Total Txn Fees</th>
                               </tr>
                               {this.state.topNodes.isLoading ? (
