@@ -36,21 +36,21 @@ class PersonalEraSwapTellerCalculator extends Component {
       stakingAmountEleven: '',
       stakingAmountTwelve: '',
       petValues: {
-        petBounty : [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        selfStaking : [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        monthlyTotalStaking : [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        monthAnnuityBenifit : [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        fullTarget : 0,
-        petBonus : 0,
-        annuityBenifit : 0,
-        grossBenifit : 0,
-        annuity : 0,
-        grossStaking : 0,
-        totalStaking : 0,
-        annuityPercent : 0,
-        petBonusPercent : 0,
-        grossBenifitPercent : 0,
-        totalPetBounty : 0,
+        petBounty: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        selfStaking: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        monthlyTotalStaking: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        monthAnnuityBenifit: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        fullTarget: 0,
+        petBonus: 0,
+        annuityBenifit: 0,
+        grossBenifit: 0,
+        annuity: 0,
+        grossStaking: 0,
+        totalStaking: 0,
+        annuityPercent: 0,
+        petBonusPercent: 0,
+        grossBenifitPercent: 0,
+        totalPetBounty: 0,
       },
     };
 
@@ -276,7 +276,9 @@ class PersonalEraSwapTellerCalculator extends Component {
                                       <th>SELF STAKED ES (ES)</th>
                                       <th>PET BOUNTY </th>
                                       <th>TOTAL STAKING </th>
-                                      <th>MONTHLY ANNUITY BENIFIT FOR 5 YEARS</th>
+                                      <th>
+                                        MONTHLY ANNUITY BENIFIT FOR 5 YEARS
+                                      </th>
                                     </tr>
                                     <tr>
                                       <td>Month 1 </td>
@@ -307,7 +309,10 @@ class PersonalEraSwapTellerCalculator extends Component {
                                         }
                                       </td>
                                       <td>
-                                        {this.state.petValues.monthAnnuityBenifit[0]}
+                                        {
+                                          this.state.petValues
+                                            .monthAnnuityBenifit[0]
+                                        }
                                       </td>
                                     </tr>
                                     <tr>
@@ -339,7 +344,10 @@ class PersonalEraSwapTellerCalculator extends Component {
                                         }
                                       </td>
                                       <td>
-                                        {this.state.petValues.monthAnnuityBenifit[1]}
+                                        {
+                                          this.state.petValues
+                                            .monthAnnuityBenifit[1]
+                                        }
                                       </td>
                                     </tr>
                                     <tr>
@@ -373,7 +381,10 @@ class PersonalEraSwapTellerCalculator extends Component {
                                         }
                                       </td>
                                       <td>
-                                        {this.state.petValues.monthAnnuityBenifit[2]}
+                                        {
+                                          this.state.petValues
+                                            .monthAnnuityBenifit[2]
+                                        }
                                       </td>
                                     </tr>
                                     <tr>
@@ -405,7 +416,10 @@ class PersonalEraSwapTellerCalculator extends Component {
                                         }
                                       </td>
                                       <td>
-                                        {this.state.petValues.monthAnnuityBenifit[3]}
+                                        {
+                                          this.state.petValues
+                                            .monthAnnuityBenifit[3]
+                                        }
                                       </td>
                                     </tr>
 
@@ -438,7 +452,10 @@ class PersonalEraSwapTellerCalculator extends Component {
                                         }
                                       </td>
                                       <td>
-                                        {this.state.petValues.monthAnnuityBenifit[4]}
+                                        {
+                                          this.state.petValues
+                                            .monthAnnuityBenifit[4]
+                                        }
                                       </td>
                                     </tr>
                                     <tr>
@@ -470,7 +487,10 @@ class PersonalEraSwapTellerCalculator extends Component {
                                         }
                                       </td>
                                       <td>
-                                        {this.state.petValues.monthAnnuityBenifit[5]}
+                                        {
+                                          this.state.petValues
+                                            .monthAnnuityBenifit[5]
+                                        }
                                       </td>
                                     </tr>
                                     <tr>
@@ -504,7 +524,10 @@ class PersonalEraSwapTellerCalculator extends Component {
                                         }
                                       </td>
                                       <td>
-                                        {this.state.petValues.monthAnnuityBenifit[6]}
+                                        {
+                                          this.state.petValues
+                                            .monthAnnuityBenifit[6]
+                                        }
                                       </td>
                                     </tr>
                                     <tr>
@@ -538,7 +561,10 @@ class PersonalEraSwapTellerCalculator extends Component {
                                         }
                                       </td>
                                       <td>
-                                        {this.state.petValues.monthAnnuityBenifit[7]}
+                                        {
+                                          this.state.petValues
+                                            .monthAnnuityBenifit[7]
+                                        }
                                       </td>
                                     </tr>
                                     <tr>
@@ -570,7 +596,10 @@ class PersonalEraSwapTellerCalculator extends Component {
                                         }
                                       </td>
                                       <td>
-                                        {this.state.petValues.monthAnnuityBenifit[8]}
+                                        {
+                                          this.state.petValues
+                                            .monthAnnuityBenifit[8]
+                                        }
                                       </td>
                                     </tr>
                                     <tr>
@@ -602,7 +631,10 @@ class PersonalEraSwapTellerCalculator extends Component {
                                         }
                                       </td>
                                       <td>
-                                        {this.state.petValues.monthAnnuityBenifit[9]}
+                                        {
+                                          this.state.petValues
+                                            .monthAnnuityBenifit[9]
+                                        }
                                       </td>
                                     </tr>
                                     <tr>
@@ -636,7 +668,10 @@ class PersonalEraSwapTellerCalculator extends Component {
                                         }
                                       </td>
                                       <td>
-                                        {this.state.petValues.monthAnnuityBenifit[10]}
+                                        {
+                                          this.state.petValues
+                                            .monthAnnuityBenifit[10]
+                                        }
                                       </td>
                                     </tr>
                                     <tr>
@@ -670,7 +705,10 @@ class PersonalEraSwapTellerCalculator extends Component {
                                         }
                                       </td>
                                       <td>
-                                        {this.state.petValues.monthAnnuityBenifit[11]}
+                                        {
+                                          this.state.petValues
+                                            .monthAnnuityBenifit[11]
+                                        }
                                       </td>
                                     </tr>
                                   </table>

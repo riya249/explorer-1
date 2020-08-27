@@ -34,7 +34,6 @@ import TopAccountsbyEsBalance from './Containers/TopAccountsbyEsBalance/TopAccou
 import ContractsWithVerifiedSourceCodes from './Containers/ContractsWithVerifiedSourceCodes/ContractsWithVerifiedSourceCodes';
 import Nodes from './Containers/Nodes/Nodes';
 import ECharts from './Containers/ECharts/ECharts';
-import tablePdf from './assets/docs/KYC.pdf';
 import ESPriceChart from './Containers/ESPriceChart/ESPriceChart';
 
 function App() {
@@ -63,7 +62,11 @@ function App() {
           <Route exact path="/txn/:hash" component={Transaction} />
           <Route exact path="/explore" component={TimeallyExplorer} />
           <Route exact path="/dashboard" component={Dashboard} />
-          <Route exact path="/esminingcalculator" component={EraswapCalculator} />
+          <Route
+            exact
+            path="/esminingcalculator"
+            component={EraswapCalculator}
+          />
           <Route exact path="/nrtmanager" component={Nrtmanager} />
           <Route exact path="/nodestatus" component={Nodestatus} />
           <Route exact path="/layerbridge" component={Layerbridge} />

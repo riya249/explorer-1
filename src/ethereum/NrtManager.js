@@ -351,7 +351,6 @@ const _abi = [
   },
 ];
 
-
 const nrtManager = () => {
   return new Contract(
     nrtAddress,

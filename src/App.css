@@ -395,7 +395,7 @@ label {
   color: #12cdf6;
 }
 .table-scroll {
-  height:397px;
+  height: 397px;
   position: relative;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -538,16 +538,16 @@ label {
   -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
 }
-.othertlinks li a{
+.othertlinks li a {
   color: #fff;
 }
-.othertlinks li a:hover{
+.othertlinks li a:hover {
   color: #fff;
 }
-.blocks-table{
-  min-height:890px;
+.blocks-table {
+  min-height: 890px;
 }
-.compage{
+.compage {
   min-height: 890px;
 }
 .social-menu li a:hover i {
@@ -574,7 +574,8 @@ button:hover {
 .es-transaction th {
   vertical-align: top;
 }
-.table thead th, .es-transaction thead th {
+.table thead th,
+.es-transaction thead th {
   border-bottom: 1px solid #747feb !important;
   background: #c9cdf3 !important;
 }

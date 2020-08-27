@@ -27,7 +27,6 @@ const path = {
   poolingdapplogo: require('../../assets/Images/poolingdapplogo.png'),
   curedapplogo: require('../../assets/Images/curedapplogo.png'),
   certidapplogo: require('../../assets/Images/certidapplogo.png'),
-  booklogo: require('../../assets/Images/booklogo.png'),
   charitylogo: require('../../assets/Images/charitydapp.png'),
   kycdapplogo: require('../../assets/Images/kycdapp.png'),
   networklogo: require('../../assets/Images/network.png'),
