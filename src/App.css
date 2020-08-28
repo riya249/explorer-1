@@ -444,6 +444,22 @@ label {
   .es-main-head {
     font-size: 20px;
   }
+  .section4-border {
+    min-height: auto !important;
+  }
+  .nrt-head {
+      margin-top: 20px;
+      margin-bottom: 20px;
+  }
+  .navbar-collapse {
+    height: 408px;
+    overflow-y: scroll;
+}
+ .dropdown-item {
+  width: 100% !important;
+  min-width: 100% !important;
+}
+
 }
 @media (max-width: 1200px) {
   .searchbar:hover > .search_input {
@@ -452,7 +468,23 @@ label {
   .search_input:focus {
     width: 80%;
   }
+  .recharts-wrapper svg{
+    width: 250px !important;
+  }
+
 }
+@media (max-width:480px) {
+  .overviewtab .nav-tabs .nav-item {
+    margin-bottom: -1px;
+    width: 100% !important;
+    border-bottom: 1px solid #b9b9b9!important;
+  }
+  .recharts-wrapper svg{
+    width: 220px !important;
+  }
+
+}
+
 .searchbar {
   margin-bottom: auto;
   margin-top: auto;
@@ -577,4 +609,11 @@ button:hover {
 .table thead th, .es-transaction thead th {
   border-bottom: 1px solid #747feb !important;
   background: #c9cdf3 !important;
+}
+.es-transaction tr:hover {
+  background-color:transparent !important;
+  cursor:inherit !important;
+}
+.mt45{
+  margin-top:45px;
 }

@@ -114,7 +114,7 @@ class KycIncentiveCalculator extends Component {
             KYC Charge Incentive Calculator
           </h2>
         </div>
-        <div className="container">
+        <div className="">
           <div className="BlockPage-detail">
             <Container>
               <Row>
@@ -150,7 +150,7 @@ class KycIncentiveCalculator extends Component {
                               Cummulative KYC Charges for the levels (ES){' '}
                             </th>
                             <th>Applicant Benefit (Staked ES) </th>
-                            <th> Introducer Incentive (50% Stake & 50% ES)</th>
+                            <th> Introducer's Incentive(50% Stake & 50% ES)</th>
                             <th>
                               Incentive to User’s Day Swappers Tree (50% Stake &
                               50% ES){' '}
@@ -214,7 +214,7 @@ class KycIncentiveCalculator extends Component {
                             <td>264.60</td>
                           </tr>
                           <tr>
-                            <td>Level 4 KYC - FOS Tagya Validation</td>
+                            <td>Level 4 KYC - FOS Tagya Verification</td>
                             <td>315</td>
                             <td>450</td>
                             <td>315</td>
@@ -344,7 +344,7 @@ class KycIncentiveCalculator extends Component {
                             </div>
                             <div class="col-md-6 col-lg-6 form-group">
                               <label for="">
-                                Level 4 KYC - FOS Tagya Validation (Directs)
+                                Level 4 KYC - FOS Tagya Verification (Directs)
                               </label>
                               <Form.Control
                                 onChange={(event) =>
@@ -458,7 +458,7 @@ class KycIncentiveCalculator extends Component {
                             </div>
                             <div class="col-md-6 col-lg-6 form-group">
                               <label for="">
-                                Level 4 KYC - FOS Tagya Validation (Directs)
+                                Level 4 KYC - FOS Tagya Verification (Directs)
                               </label>
                               <Form.Control
                                 onChange={(event) =>
@@ -574,7 +574,7 @@ class KycIncentiveCalculator extends Component {
                             </div>
                             <div class="col-md-6 col-lg-6 form-group">
                               <label for="">
-                                Level 4 KYC - FOS Tagya Validation (Indirects)
+                                Level 4 KYC - FOS Tagya Verification (Indirects)
                               </label>
                               <Form.Control
                                 onChange={(event) =>
@@ -624,10 +624,8 @@ class KycIncentiveCalculator extends Component {
                           </div>
                         </div>
                         <div className="col-lg-6">
-                          <div class="form-row">
-                            <div class="col-md-12 col-lg-12 form-group">
-                              <label for=""></label>
-                            </div>
+                          <div class="form-row mt20">
+                           
                             <div class="col-md-12 col-lg-12">
                               <p className="text-weight">
                                 <b>Cummulative KYC Input (Indirects)</b>
@@ -693,7 +691,7 @@ class KycIncentiveCalculator extends Component {
                             </div>
                             <div class="col-md-6 col-lg-6 form-group">
                               <label for="">
-                                Level 4 KYC - FOS Tagya Validation (Indirects)
+                                Level 4 KYC - FOS Tagya Verification (Indirects)
                               </label>
                               <Form.Control
                                 onChange={(event) =>
@@ -758,11 +756,12 @@ class KycIncentiveCalculator extends Component {
                 <div className="col-lg-6">
                   <div className="card">
                     <div className="border-era">RESULTS</div>
+                    <div className="table-responsive">
                     <table className="es-transaction striped bordered hover">
                       <thead>
                         <tr>
                           <th>TRANSACTIONS</th>
-                          <th>STAKE REWARDS ES</th>
+                          <th>STAKING REWARDS ES</th>
                           <th>LIQUID REWARDS ES</th>
                         </tr>
                         <tr>
@@ -776,7 +775,7 @@ class KycIncentiveCalculator extends Component {
                           <td></td>
                         </tr>
                         <tr>
-                          <td>Introducer Incentive</td>
+                          <td>Introducer's Incentive</td>
                           <td>{this.state.displayValues.timeAllyclubStake}</td>
                           <td>{this.state.displayValues.timeAllyclubLiquid}</td>
                         </tr>
@@ -790,12 +789,12 @@ class KycIncentiveCalculator extends Component {
                           </td>
                         </tr>
                         <tr>
-                          <td>Tagya (Physical Validator)</td>
+                          <td>Tagya (Physical Verifier)</td>
                           <td>{this.state.displayValues.tagya}</td>
                           <td>{this.state.displayValues.tagya}</td>
                         </tr>
                         <tr>
-                          <td>Currator (Online Validator)</td>
+                          <td>Curator (Online Validator)</td>
                           <td>{this.state.displayValues.currator}</td>
                           <td>{this.state.displayValues.currator}</td>
                         </tr>
@@ -811,6 +810,7 @@ class KycIncentiveCalculator extends Component {
                         </tr>
                       </thead>
                     </table>
+                    </div>
                   </div>
                 </div>
               </div>
