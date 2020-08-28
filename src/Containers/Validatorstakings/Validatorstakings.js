@@ -207,7 +207,7 @@ class Validatorstakings extends Component {
                                   <th>Validator</th>
                                   <th>Amount</th>
                                   <th>Adjusted Amount</th>
-                                  <th>Blocks Mined</th>
+                                  <th>Blocks Sealed</th>
                                   <th>Delegator Stakings</th>
                                 </tr>
                                 {this.state.validators.isLoading ? (

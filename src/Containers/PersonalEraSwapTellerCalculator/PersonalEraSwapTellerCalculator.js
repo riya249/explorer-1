@@ -180,7 +180,7 @@ class PersonalEraSwapTellerCalculator extends Component {
             Personal Era Swap Teller Calculator
           </h2>
         </div>
-        <div className="container">
+        <div className="">
           <div className="BlockPage-detail">
             <Container>
               <Row className="mt40 eraswapcal cal-com-page eraswapcal-tab">
@@ -730,6 +730,7 @@ class PersonalEraSwapTellerCalculator extends Component {
                               <div className="mt30">
                                 <div className="card">
                                   <div className="border-era">RESULTS</div>
+                                  <div className="table-responsive">
                                   <table className="es-transaction striped bordered hover">
                                     <thead>
                                       <tr>
@@ -801,6 +802,7 @@ class PersonalEraSwapTellerCalculator extends Component {
                                       </tr>
                                     </thead>
                                   </table>
+                                  </div>
                                 </div>
                               </div>
                             </div>

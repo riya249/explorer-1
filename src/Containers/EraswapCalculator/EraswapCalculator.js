@@ -332,7 +332,7 @@ class EraswapCalculator extends Component {
                       <td>{monthlyRewardSevenFive}</td>
                     </tr>
                     <tr>
-                      <td>ESN Miners reward in Wrapped ES (NRT-12%)</td>
+                      <td>ESN Miners Rewards in Wrapped ES (NRT-12%)</td>
                       <td>{esnMinersReward}</td>
                     </tr>
                     <tr>
@@ -367,7 +367,7 @@ class EraswapCalculator extends Component {
                       <td>{monthlyRewardSevenFive * 12}</td>
                     </tr>
                     <tr>
-                      <td>ESN Miners reward in Wrapped ES (NRT-12%)</td>
+                      <td>ESN Miners Rewards in Wrapped ES (NRT-12%)</td>
                       <td>{esnMinersReward * 12}</td>
                     </tr>
                     <tr>

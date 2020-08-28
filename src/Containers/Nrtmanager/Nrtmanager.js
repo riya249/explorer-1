@@ -68,7 +68,7 @@ class Nrtmanager extends Component {
           <Navbar />
           <h2 className="es-main-head es-main-head-inner">NRT Manager</h2>
         </div>
-        <div className="container">
+        <div className="">
           <div className="BlockPage-detail">
             <Container>
               <Row>
@@ -167,7 +167,7 @@ class Nrtmanager extends Component {
                 <Col lg={12}>
                   <div className="card">
                     <div className="table-responsive">
-                      <table className="es-transaction striped bordered hover table">
+                      <table className="es-transaction table table-bordered white-table">
                         <tr>
                           <th>Platform</th>
                           <th>NRT Share</th>
@@ -182,7 +182,12 @@ class Nrtmanager extends Component {
                             <tr>
                               <td>{platform.address.label || '-'}</td>
                               <td>{platform.nrtShare / 10} %</td>
-                              <td>{platform.address.address}</td>
+                              <td><AddressLink
+                                    value={platform.address.address}
+                                    type="address"
+                                    
+                                  />
+                              </td>
                             </tr>
                           ))
                         ) : (

@@ -88,7 +88,7 @@ class TransactionsIncentiveCalculator extends Component {
             Transactions Charge Incentive Calculator
           </h2>
         </div>
-        <div className="container">
+        <div className="">
           <div className="BlockPage-detail">
             <Container>
               <Row className="mt40 eraswapcal cal-com-page eraswapcal-tab">
@@ -173,7 +173,7 @@ class TransactionsIncentiveCalculator extends Component {
                             </div>
                             <div class="col-md-4 col-lg-4 form-group">
                               <label for="">
-                                Additional Incentive by seller
+                                Promotional Incentive by seller
                               </label>
                               <Form.Control
                                 onChange={(event) =>
@@ -216,6 +216,7 @@ class TransactionsIncentiveCalculator extends Component {
                 <div className="col-lg-12">
                   <div className="card">
                     <div className="border-era">RESULTS</div>
+                    <div className="table-responsive">
                     <table className="es-transaction striped bordered hover">
                       <thead>
                         <tr>
@@ -249,6 +250,7 @@ class TransactionsIncentiveCalculator extends Component {
                         </tr>
                       </thead>
                     </table>
+                    </div>
                   </div>
                 </div>
               </div>
