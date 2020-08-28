@@ -1912,7 +1912,7 @@ class Dashboard extends Component {
                   <Card.Body>
                     <p className="sect-txt-bold">UNUSED POWER TOKENS</p>
                     <p className="value-dash-txt">
-                      {this.state.eraswap.data.unUsedPowertokens}
+                      {this.state.eraswap.data.unUsedPowertokens} <small className="text-dark">(Monthly)</small>
                     </p>
                   </Card.Body>
                 </Card>
@@ -2148,14 +2148,16 @@ class Dashboard extends Component {
             </Col>
             <Col lg={4}>
               <div className="section4-border">
-                <div className="flex-sect4-box">
-                  <img
-                    className="platfrm-logo2"
-                    src={Images.path.timeswapper}
-                    alt="logo"
-                  />
-                  <p className="platfrm-txt">TIMESWAPPERS</p>
-                </div>
+                 <a href="https://www.timeswappers.com/" target="_blank">
+                  <div className="flex-sect4-box">
+                    <img
+                      className="platfrm-logo2"
+                      src={Images.path.timeswapper}
+                      alt="logo"
+                    />
+                    <p className="platfrm-txt">TIMESWAPPERS</p>
+                 </div>
+                </a>
                 <div className="ts-flex tm-border">
                   <div>
                     <p className="sect4-context">Total Number of Users</p>
@@ -2231,14 +2233,16 @@ class Dashboard extends Component {
             </Col>
             <Col lg={4}>
               <div className="section4-border">
-                <div className="flex-sect4-box">
-                  <img
-                    className="platfrm-logo"
-                    src={Images.path.dayswapper}
-                    alt="logo"
-                  />
-                  <p className="platfrm-txt">DAYSWAPPERS</p>
-                </div>
+                <a href="https://dayswappers.com/" target="_blank">
+                  <div className="flex-sect4-box">
+                    <img
+                      className="platfrm-logo"
+                      src={Images.path.dayswapper}
+                      alt="logo"
+                    />
+                    <p className="platfrm-txt">DAYSWAPPERS</p>
+                  </div>
+                </a>
                 <div className="ds-flex tm-border">
                   <div>
                     <p className="sect4-context">Total DaySwappers</p>
@@ -2334,6 +2338,7 @@ class Dashboard extends Component {
           <Row>
             <Col lg={4}>
               <div className="section4-border">
+              <a href="https://swapperswall.com/" target="_blank">
                 <div className="flex-sect4-box">
                   <img
                     className="platfrm-logo4"
@@ -2342,6 +2347,7 @@ class Dashboard extends Component {
                   />
                   <p className="platfrm-txt"> SWAPPERS WALL </p>
                 </div>
+                </a>
                 <div className="swwall-flex-border">
                   <div>
                     <p className="sect4-context">Power Tokens this month</p>
@@ -2394,6 +2400,7 @@ class Dashboard extends Component {
             </Col>
             <Col lg={4}>
               <div className="section4-border">
+              <a href="https://eraswap.academy/" target="_blank">
                 <div className="flex-sect4-box">
                   <img
                     className="platfrm-logo"
@@ -2402,6 +2409,7 @@ class Dashboard extends Component {
                   />
                   <p className="platfrm-txt">ERASWAP ACADEMY </p>
                 </div>
+               </a> 
                 <div className="swwall-flex-border">
                   <div>
                     <p className="sect4-context">User Counts</p>
@@ -2434,6 +2442,7 @@ class Dashboard extends Component {
             </Col>
             <Col lg={4}>
               <div className="section4-border">
+              <a href="https://buzcafe.com/" target="_blank">
                 <div className="flex-sect4-box">
                   <img
                     className="platfrm-logo4"
@@ -2442,6 +2451,7 @@ class Dashboard extends Component {
                   />
                   <p className="platfrm-txt">BUZCAFE</p>
                 </div>
+                </a>
                 <div className="buz-flex-border">
                   <div>
                     <p className="sect4-context">Total Users</p>
@@ -2489,6 +2499,7 @@ class Dashboard extends Component {
           <Row>
             <Col lg={4}>
               <div className="section4-border">
+              <a href="https://www.betdeex.com/" target="_blank">
                 <div className="flex-sect4-box">
                   <img
                     className="platfrm-logo4"
@@ -2497,6 +2508,7 @@ class Dashboard extends Component {
                   />
                   <p className="platfrm-txt">BETDEEX </p>
                 </div>
+                </a>
                 <div className="bet-flex-border">
                   <div>
                     <p className="sect4-context">Total Number of Events</p>
@@ -2538,14 +2550,16 @@ class Dashboard extends Component {
             </Col>
             <Col lg={4}>
               <div className="section4-border">
+              <a href="https://www.computeex.net/" target="_blank">
                 <div className="flex-sect4-box">
                   <img
                     className="platfrm-logo-5"
                     src={Images.path.computeex}
                     alt="logo"
                   />
-                  <p className="platfrm-txt"> COMPUTEEX</p>
+                  <p className="platfrm-txt">  Multi Exchange</p>
                 </div>
+                </a>
                 <div className="compute-flex-border">
                   <div>
                     <p className="sect4-context">
@@ -2568,6 +2582,7 @@ class Dashboard extends Component {
             </Col>
             <Col lg={4}>
               <div className="section4-border">
+              <a href="https://charitydapp.com/" target="_blank">
                 <div className="flex-sect4-box">
                   <img
                     className="platfrm-logo"
@@ -2575,8 +2590,8 @@ class Dashboard extends Component {
                     alt="logo"
                   />
                   <p className="platfrm-txt">CHARITYDAPP  (YET TO GO LIVE)</p>
-                 
                 </div>
+                </a>
                 <div className="swwall-flex-border">
                   <div>
                     <p className="sect4-context">Number of Users</p>
@@ -2605,6 +2620,7 @@ class Dashboard extends Component {
             </Col>
             <Col lg={4}>
               <div className="section4-border">
+              <a href="https://kycdapp.com/" target="_blank">
                 <div className="flex-sect4-box">
                   <img
                     className="platfrm-logo"
@@ -2613,6 +2629,7 @@ class Dashboard extends Component {
                   />
                   <p className="platfrm-txt">KYCDAPP </p>
                 </div>
+                </a>
                 <div className="swwall-flex-border">
                   <div>
                     <p className="sect4-context">Number of Level 1 KYC</p>
@@ -2645,14 +2662,16 @@ class Dashboard extends Component {
             </Col>
             <Col lg={4}>
               <div className="section4-border">
-                <div className="flex-sect4-box">
-                  <img
-                    className="platfrm-logo6"
-                    src={Images.path.Coupondapp}
-                    alt="logo"
-                  />
-                  <p className="platfrm-txt">COUPONDAPP </p>
-                </div>
+                 <a href="https://coupondapp.com/" target="_blank">
+                  <div className="flex-sect4-box">
+                    <img
+                      className="platfrm-logo6"
+                      src={Images.path.Coupondapp}
+                      alt="logo"
+                    />
+                    <p className="platfrm-txt">COUPONDAPP </p>
+                  </div>
+                </a>
                 <div className="swwall-flex-border">
                   <div>
                     <p className="sect4-context">Claimed ES</p>
@@ -2677,26 +2696,34 @@ class Dashboard extends Component {
             </Col>
             <Col lg={4}>
               <div className="section4-border">
-                <div className="flex-sect4-box">
+                <a href="https://www.computeex.net/"  target="_blank">
+                <div className="flex-sect4-box" >
                   <img
                     className="platfrm-logo-5"
                     src={Images.path.computeex}
                     alt="logo"
                   />
-                  <p className="platfrm-txt">(YET TO GO LIVE) </p>
+                  <p className="platfrm-txt"> Buy ES With  Cards (YET TO GO LIVE) </p>
                 </div>
-                <div className="compute-flex-border">
+               </a>
+                <div className="swwall-flex-border">
                   <div>
-                    <p className="sect4-context">
-                      Total number of Transactions
-                    </p>
+                    <p className="sect4-context">  Total number of Transactions</p>
                     <p className="sect4-value-swal">0 events</p>
                   </div>
-                </div>
-                <div className="swapper-center">
                   <div>
-                    <p className="sect4-context">Total Volume</p>
-                    <p className="sect4-value">0 ES</p>
+                    <p className="sect4-context">Total Volume </p>
+                    <p className="sect4-value-swal">0 ES</p>
+                  </div>
+                </div>
+                <div className="swwall-border-flex">
+                  <div>
+                    <p className="sect4-context">Buy ERA Swap Now </p>
+                    <p className="sect4-value">0</p>
+                  </div>
+                  <div>
+                    <p className="sect4-context">Buy ES With Credit Cards Any Fiat</p>
+                    <p className="sect4-value">0</p>
                   </div>
                 </div>
               </div>
@@ -2706,6 +2733,7 @@ class Dashboard extends Component {
           <Row>
             <Col lg={4}>
               <div className="section4-border">
+                <a href="https://www.rentingdapp.com/"  target="_blank">
                 <div className="flex-sect4-box">
                   <img
                     className="platfrm-logo2"
@@ -2714,6 +2742,7 @@ class Dashboard extends Component {
                   />
                   <p className="platfrm-txt">RENTINGDAPP</p>
                 </div>
+                </a>
                 <div className="swwall-flex-border">
                   <div>
                     <p className="sect4-context">Number of Users</p>
@@ -2742,6 +2771,7 @@ class Dashboard extends Component {
             </Col>
             <Col lg={4}>
               <div className="section4-border">
+              <a href="https://bookingdapp.com/"  target="_blank">
                 <div className="flex-sect4-box">
                   <img
                     className="platfrm-logo2"
@@ -2750,6 +2780,7 @@ class Dashboard extends Component {
                   />
                   <p className="platfrm-txt">BOOKINGDAPP </p>
                 </div>
+                </a>
                 <div className="swwall-flex-border">
                   <div>
                     <p className="sect4-context">Number of Events</p>
@@ -2778,6 +2809,7 @@ class Dashboard extends Component {
             </Col>
             <Col lg={4}>
               <div className="section4-border">
+              <a href="http://poolindapp.com/"  target="_blank">
                 <div className="flex-sect4-box">
                   <img
                     className="platfrm-logo6"
@@ -2786,6 +2818,7 @@ class Dashboard extends Component {
                   />
                   <p className="platfrm-txt">POOLINGDAPP </p>
                 </div>
+                </a>
                 <div className="swwall-flex-border">
                   <div>
                     <p className="sect4-context">Transactions</p>
@@ -2814,6 +2847,7 @@ class Dashboard extends Component {
             </Col>
             <Col lg={4}>
               <div className="section4-border">
+              <a href="https://www.curedapp.com/"  target="_blank">
                 <div className="flex-sect4-box">
                   <img
                     className="platfrm-logo4"
@@ -2822,6 +2856,7 @@ class Dashboard extends Component {
                   />
                   <p className="platfrm-txt">CUREDAPP </p>
                 </div>
+                </a>
                 <div className="bet-flex-border">
                   <div>
                     <p className="sect4-context">Equipments</p>
@@ -2850,6 +2885,7 @@ class Dashboard extends Component {
             </Col>
             <Col lg={4}>
               <div className="section4-border">
+              <a href="https://faithminus.com/"  target="_blank">
                 <div className="flex-sect4-box">
                   <img
                     className="platfrm-logo2"
@@ -2858,6 +2894,7 @@ class Dashboard extends Component {
                   />
                   <p className="platfrm-txt">FAITH MINUS</p>
                 </div>
+                </a>
                 <div className="swwall-flex-border">
                   <div>
                     <p className="sect4-context">Cases Solved</p>
@@ -2892,6 +2929,7 @@ class Dashboard extends Component {
             </Col>
             <Col lg={4}>
               <div className="section4-border">
+              <a href="https://dateswappers.com"  target="_blank">
                 <div className="flex-sect4-box">
                   <img
                     className="platfrm-logo2"
@@ -2900,6 +2938,7 @@ class Dashboard extends Component {
                   />
                   <p className="platfrm-txt">DATE SWAPPERS</p>
                 </div>
+                </a>
                 <div className="swwall-flex-border">
                   <div>
                     <p className="sect4-context">Number of Meet Ups</p>
@@ -2930,14 +2969,16 @@ class Dashboard extends Component {
             </Col>
             <Col lg={4}>
               <div className="section4-border">
-                <div className="flex-sect4-box">
-                  <img
-                    className="platfrm-logo6"
-                    src={Images.path.networklogo}
-                    alt="logo"
-                  />
-                  <p className="platfrm-txt">ERA SWAP NETWORK </p>
-                </div>
+                <a href="https://eraswap.network/"  target="_blank">
+                  <div className="flex-sect4-box">
+                    <img
+                      className="platfrm-logo6"
+                      src={Images.path.networklogo}
+                      alt="logo"
+                    />
+                    <p className="platfrm-txt">ERA SWAP NETWORK </p>
+                  </div>
+                </a>
                 <div className="swwall-flex-border">
                   <div>
                     <p className="sect4-context">
@@ -2997,6 +3038,7 @@ class Dashboard extends Component {
             </Col>
             <Col lg={4}>
               <div className="section4-border">
+              <a href=""  target="_blank">
                 <div className="flex-sect4-box">
                   <img
                     className="platfrm-logo2"
@@ -3005,6 +3047,7 @@ class Dashboard extends Component {
                   />
                   <p className="platfrm-txt">GUARANTOR</p>
                 </div>
+                </a>
                 <div className="swwall-flex-border">
                   <div>
                     <p className="sect4-context">Guarantees given</p>
@@ -3029,6 +3072,7 @@ class Dashboard extends Component {
             </Col>
             <Col lg={4}>
               <div className="section4-border">
+              <a href="https://valueoffarmers.org"  target="_blank">
                 <div className="flex-sect4-box">
                   <img
                     className="platfrm-logo6"
@@ -3037,6 +3081,7 @@ class Dashboard extends Component {
                   />
                   <p className="platfrm-txt">VALUE OF FARMERS  (YET TO GO LIVE)</p>
                 </div>
+                </a>
                 <div className="swwall-flex-border">
                   <div>
                     <p className="sect4-context">Number of Farmers</p>
@@ -3077,6 +3122,7 @@ class Dashboard extends Component {
             </Col>
             <Col lg={4}>
               <div className="section4-border">
+              <a href="https://certidapp.com/"  target="_blank">
                 <div className="flex-sect4-box">
                   <img
                     className="platfrm-logo6"
@@ -3085,6 +3131,7 @@ class Dashboard extends Component {
                   />
                   <p className="platfrm-txt">CertiDapp  (YET TO GO LIVE)</p>
                 </div>
+                </a>
                 <div className="swwall-flex-border">
                   <div>
                     <p className="sect4-context">Number of Colleges</p>
@@ -3109,6 +3156,7 @@ class Dashboard extends Component {
             </Col>
             <Col lg={4}>
               <div className="section4-border">
+              <a href="https://recyclingdapp.com/"  target="_blank">
                 <div className="flex-sect4-box">
                   <img
                     className="platfrm-logo6"
@@ -3117,6 +3165,7 @@ class Dashboard extends Component {
                   />
                   <p className="platfrm-txt">RECYCLINGDAPP   (YET TO GO LIVE) </p>
                 </div>
+                </a>
                 
               </div>
             </Col>

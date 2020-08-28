@@ -217,6 +217,8 @@ class TimeAllySuperGoalCalculator extends Component {
                                                          <th>MONTH</th>
                                                          <th className="text-center">MONTHLY STAKINGS</th>
                                                          <th className="text-center">MONTHLY ANNUITY BENIFIT FOR 9 YEARS</th>
+                                                         <th className="text-center">BONUS</th>
+                                                         <th className="text-center">LUMP SUM AMOUNT</th>
                                                       </tr>
                                                       <tr>
                                                          <td>Month 1 </td>
@@ -235,6 +237,8 @@ class TimeAllySuperGoalCalculator extends Component {
                                                          <td className="text-center">
                                                             {this.state.tsgapValues.monthAnnuityBenifit[0]}
                                                          </td>
+                                                         <td className="text-center"> - </td>
+                                                         <td className="text-center"> - </td>
                                                       </tr>
                                                       <tr>
                                                          <td>Month 2 </td>
@@ -252,7 +256,9 @@ class TimeAllySuperGoalCalculator extends Component {
                                                          /></td>
                                                          <td className="text-center">
                                                             {this.state.tsgapValues.monthAnnuityBenifit[1]}
-                                                         </td>
+                                                            </td>
+                                                         <td className="text-center"> - </td>
+                                                         <td className="text-center"> - </td>
                                                       </tr>
                                                       <tr>
                                                          <td>Month 3</td>
@@ -271,6 +277,8 @@ class TimeAllySuperGoalCalculator extends Component {
                                                          <td className="text-center">
                                                             {this.state.tsgapValues.monthAnnuityBenifit[2]}
                                                          </td>
+                                                         <td className="text-center"> - </td>
+                                                         <td className="text-center"> - </td>
                                                       </tr>
                                                       <tr>
                                                          <td>Month 4 </td>
@@ -289,6 +297,8 @@ class TimeAllySuperGoalCalculator extends Component {
                                                          <td className="text-center">
                                                             {this.state.tsgapValues.monthAnnuityBenifit[3]}
                                                          </td>
+                                                         <td className="text-center"> - </td>
+                                                         <td className="text-center"> - </td>
                                                       </tr>
                                                       <tr>
                                                          <td>Month 5 </td>
@@ -307,6 +317,8 @@ class TimeAllySuperGoalCalculator extends Component {
                                                          <td className="text-center">
                                                             {this.state.tsgapValues.monthAnnuityBenifit[4]}
                                                          </td>
+                                                         <td className="text-center"> - </td>
+                                                         <td className="text-center"> - </td>
                                                       </tr>
                                                       <tr>
                                                          <td>Month 6 </td>
@@ -325,6 +337,8 @@ class TimeAllySuperGoalCalculator extends Component {
                                                          <td className="text-center">
                                                             {this.state.tsgapValues.monthAnnuityBenifit[5]}
                                                          </td>
+                                                         <td className="text-center"> - </td>
+                                                         <td className="text-center"> - </td>
                                                       </tr>
                                                       <tr>
                                                          <td>Month 7 </td>
@@ -343,6 +357,8 @@ class TimeAllySuperGoalCalculator extends Component {
                                                          <td className="text-center">
                                                             {this.state.tsgapValues.monthAnnuityBenifit[6]}
                                                          </td>
+                                                         <td className="text-center"> - </td>
+                                                         <td className="text-center"> - </td>
                                                       </tr>
                                                       <tr>
                                                          <td>Month 8 </td>
@@ -361,6 +377,8 @@ class TimeAllySuperGoalCalculator extends Component {
                                                          <td className="text-center">
                                                             {this.state.tsgapValues.monthAnnuityBenifit[7]}
                                                          </td>
+                                                         <td className="text-center"> - </td>
+                                                         <td className="text-center"> - </td>
                                                       </tr>
                                                       <tr>
                                                          <td>Month 9 </td>
@@ -379,6 +397,8 @@ class TimeAllySuperGoalCalculator extends Component {
                                                          <td className="text-center">
                                                             {this.state.tsgapValues.monthAnnuityBenifit[8]}
                                                          </td>
+                                                         <td className="text-center"> - </td>
+                                                         <td className="text-center"> - </td>
                                                       </tr>
                                                       <tr>
                                                          <td>Month 10 </td>
@@ -397,6 +417,8 @@ class TimeAllySuperGoalCalculator extends Component {
                                                          <td className="text-center">
                                                             {this.state.tsgapValues.monthAnnuityBenifit[9]}
                                                          </td>
+                                                         <td className="text-center"> - </td>
+                                                         <td className="text-center"> - </td>
                                                       </tr>
                                                       <tr>
                                                          <td>Month 11 </td>
@@ -415,6 +437,8 @@ class TimeAllySuperGoalCalculator extends Component {
                                                          <td className="text-center">
                                                             {this.state.tsgapValues.monthAnnuityBenifit[10]}
                                                          </td>
+                                                         <td className="text-center"> - </td>
+                                                         <td className="text-center"> - </td>
                                                       </tr>
                                                       <tr>
                                                          <td>Month 12 </td>
@@ -433,6 +457,8 @@ class TimeAllySuperGoalCalculator extends Component {
                                                          <td className="text-center">
                                                             {this.state.tsgapValues.monthAnnuityBenifit[11]}
                                                          </td>
+                                                         <td className="text-center"> - </td>
+                                                         <td className="text-center"> - </td>
                                                       </tr>
                                                    </table>
                                                 </div>
@@ -461,12 +487,12 @@ class TimeAllySuperGoalCalculator extends Component {
                                                          <tr>
                                                             <td>Total Intial Staking</td>
                                                          <td>{this.state.tsgapValues.totalStaking}</td>
-                                                            <td>-</td>
+                                                            <td className="text-center"> - </td>
                                                          </tr>
                                                          <tr>
                                                             {/* <td>Gross Staked Amount Including Re-staking </td>
                                                             <td>10.00</td>
-                                                            <td>-</td> */}
+                                                            <td className="text-center"> - </td> */}
                                                          </tr>
                                                          <tr>
                                                             <th>After 9 years (ES)</th>

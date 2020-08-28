@@ -484,7 +484,7 @@ class Homepage extends Component {
                           </p>
                         </div>
                       </div>
-                      <div className="flex-transc border-value-no row">
+                      <div className="flex-transc border-value row">
                         <div className="col-lg-6">
                           <p className="era-head">AVAILABLE SUPPLY</p>
                           <p className="era-value text-black">
@@ -505,6 +505,17 @@ class Homepage extends Component {
                               Number(this.state.availableSupply)}{' '}
                             ES
                           </p>
+                        </div>
+                      </div>
+                      <div className="flex-transc border-value-no row">
+                        <div className="col-lg-6">
+                          <p className="era-head">24 HOURS VOLUME</p>
+                          <p className="era-value text-black">
+                             -
+                          </p>
+                        </div>
+                        <div className="col-lg-6">
+                          
                         </div>
                       </div>
 
@@ -607,7 +618,7 @@ class Homepage extends Component {
                     <LineChart
                       className="mt20"
                       width={320}
-                      height={220}
+                      height={260}
                       data={this.state.transactionsChartData}
                       margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
                     >
@@ -846,7 +857,7 @@ class Homepage extends Component {
                           <p className="block-value">
                             {this.state.averageBlock == null
                               ? 'Loading...'
-                              : parseInt(this.state.averageBlock)}
+                              : parseInt(this.state.averageBlock)} <small className="text-white">(Sec.)</small>
                           </p>
                         </div>
                       </div>
