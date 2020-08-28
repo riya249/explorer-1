@@ -212,10 +212,11 @@ class BlockPage extends Component {
                             <tr>
                               <td>Transaction Fee</td>
                               <td>
-                                {(this.state.block.data?.total_txn_fee ?
-                                  ethers.utils.formatEther(
-                                    this.state.block.data.total_txn_fee
-                                  ) : 0.0)}{' '}
+                                {this.state.block.data?.total_txn_fee
+                                  ? ethers.utils.formatEther(
+                                      this.state.block.data.total_txn_fee
+                                    )
+                                  : 0.0}{' '}
                                 ES
                               </td>
                             </tr>
@@ -223,10 +224,11 @@ class BlockPage extends Component {
                             <tr>
                               <td>Average Gas Price: </td>
                               <td>
-                                {this.state.block.data?.average_gas_price ?
-                                  ethers.utils.formatEther(
-                                    this.state.block.data.average_gas_price
-                                  ) : 0.0}{' '}
+                                {this.state.block.data?.average_gas_price
+                                  ? ethers.utils.formatEther(
+                                      this.state.block.data.average_gas_price
+                                    )
+                                  : 0.0}{' '}
                                 ES
                               </td>
                             </tr>

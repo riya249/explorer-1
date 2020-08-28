@@ -228,13 +228,13 @@ class Homepage extends Component {
       const res = await Apis.fetchTransactionsInterval();
       console.log('fetchTransactionsInterval', res);
       const data = Array.from(res);
-      console.log({data});
+      console.log({ data });
       data.forEach((transaction, i) => {
         data[i].date = moment(moment(transaction.date).toDate()).format(
           'DD/MM/yyyy'
         );
       });
-      console.log(1,{data});
+      console.log(1, { data });
       this.setState({ transactionsChartData: data });
     } catch (e) {
       console.log(e);
@@ -784,7 +784,9 @@ class Homepage extends Component {
                                   />
                                   <div className="sub-frst">
                                     {moment(
-                                      moment(transaction.block.timestamp).toDate()
+                                      moment(
+                                        transaction.block.timestamp
+                                      ).toDate()
                                     ).fromNow()}
                                   </div>
                                 </td>

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './Navbar.css';
 import { Link, withRouter } from 'react-router-dom';
 import Images from '../../Containers/Images/Images';
-import { Badge,  } from 'react-bootstrap';
+import { Badge } from 'react-bootstrap';
 import {
   Container,
   Row,
@@ -96,8 +96,17 @@ class Navbar extends Component {
                 </Link>
               </li>
               <li className="nav-item ">
-                <a  className="nav-link"  href="https://merkleswap.com" target="_blank">
-                 MERKLE SWAP <sup><Badge pill variant="danger">New</Badge>{' '}</sup>
+                <a
+                  className="nav-link"
+                  href="https://merkleswap.com"
+                  target="_blank"
+                >
+                  MERKLE SWAP{' '}
+                  <sup>
+                    <Badge pill variant="danger">
+                      New
+                    </Badge>{' '}
+                  </sup>
                   <span className="sr-only">(current)</span>
                 </a>
               </li>
@@ -126,10 +135,10 @@ class Navbar extends Component {
                     Transactions Charge Incentive Calculator
                   </Link>
                   <Link className="dropdown-item" to="/es-calci">
-                  Personal Era Swap Teller Calculator
+                    Personal Era Swap Teller Calculator
                   </Link>
                   <Link className="dropdown-item" to="/timeally-goals">
-                  TimeAlly Super Goal Calculator
+                    TimeAlly Super Goal Calculator
                   </Link>
                   {/* 
                   <Link className="dropdown-item" to="/es-calci">

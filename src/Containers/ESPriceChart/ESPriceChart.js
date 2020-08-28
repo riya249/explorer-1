@@ -39,8 +39,10 @@ export default class ESPriceChart extends React.Component {
           type: 'datetime',
           labels: {
             formatter: function () {
-              console.log({value: this.value});
-              return toLocaleTimestamp(new Date(this.value).getTime() * 1000).format('DD MMMM');
+              console.log({ value: this.value });
+              return toLocaleTimestamp(
+                new Date(this.value).getTime() * 1000
+              ).format('DD MMMM');
             },
           },
         },
@@ -86,10 +88,10 @@ export default class ESPriceChart extends React.Component {
       },
     };
   }
-  componentDidMount() { 
+  componentDidMount() {
     this.fetchPriceData();
   }
-  
+
   async fetchPriceData() {
     let res;
     try {
@@ -97,25 +99,36 @@ export default class ESPriceChart extends React.Component {
     } catch (e) {
       console.log(e);
     } finally {
-      console.log({res});
-      this.setState({
-        options: {
-          ...this.state.options,
-          series: [
-            {
-              data: res && Array.isArray(res) ? res.map(a => {
-                console.log(
-                  'current tp',
-                  new Date(new Date(a.timestamp).getTime() * 1000).toString()
-                );
-                return [new Date(new Date(a.timestamp).getTime() * 1000), a.price]
-              }) : [],
-              lineWidth: 0.5,
-              name: 'ES Price',
-            }
-          ]
-        }
-      },() => console.log({options: this.state.options}))
+      console.log({ res });
+      this.setState(
+        {
+          options: {
+            ...this.state.options,
+            series: [
+              {
+                data:
+                  res && Array.isArray(res)
+                    ? res.map((a) => {
+                        console.log(
+                          'current tp',
+                          new Date(
+                            new Date(a.timestamp).getTime() * 1000
+                          ).toString()
+                        );
+                        return [
+                          new Date(new Date(a.timestamp).getTime() * 1000),
+                          a.price,
+                        ];
+                      })
+                    : [],
+                lineWidth: 0.5,
+                name: 'ES Price',
+              },
+            ],
+          },
+        },
+        () => console.log({ options: this.state.options })
+      );
     }
   }
 
@@ -127,9 +140,12 @@ export default class ESPriceChart extends React.Component {
           <h2 className="es-main-head es-main-head-inner">ES Price Chart</h2>
         </div>
         <Container>
-          <HighchartsReact highcharts={Highcharts} options={this.state.options} />
+          <HighchartsReact
+            highcharts={Highcharts}
+            options={this.state.options}
+          />
         </Container>
       </div>
-    );;
+    );
   }
 }

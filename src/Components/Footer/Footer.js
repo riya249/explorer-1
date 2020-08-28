@@ -22,7 +22,6 @@ class Footer extends Component {
                   src={Images.path.esgreylogo}
                   alt="logo"
                 />
-               
               </div>
               <p className="sub-footer-white mt10">
                 ES Explorer offers complete Dashboards to participants to
@@ -33,16 +32,51 @@ class Footer extends Component {
               <p className="sub-footer-white"></p>
             </Col>
             <Col sm={4}>
-                <div className="subscribe-detail">Others Links</div>
-                  <ul className="text-white othertlinks mt10">
-                    <li><i class="fa fa-angle-double-right"></i>   <a href="http://eraswaptoken.io/pdf/eraswap_whitepaper.pdf" target="_blank"><i class="zmdi zmdi-apple"></i><span>ES White Paper</span></a></li> 
-                    <li><i class="fa fa-angle-double-right"></i>   <a href="http://eraswaptoken.io/pdf/era-swap-howey-test-letter-august7-2018.pdf" target="_blank"><i class="zmdi zmdi-apple"></i><span>Howey Test</span></a></li> 
-                    <li><i class="fa fa-angle-double-right"></i>   <a href="http://eraswaptoken.io/pdf/es-statuary-warning.pdf" target="_blank"><i class="zmdi zmdi-apple"></i><span>Statuary Warning</span></a></li> 
-                    <li><i class="fa fa-angle-double-right"></i>  <a href="https://eraswaptoken.io/pdf/eraswap-terms-conditions.pdf" target="_blank"><i class="zmdi zmdi-apple"></i><span>Era Swap Terms &amp; Condition</span></a></li> 
-                    {/* <li><i class="fa fa-angle-double-right"></i>  <a href="/pdf/eraswap-wallet-terms-conditions.pdf" target="_blank"><i class="zmdi zmdi-apple"></i><span>Terms &amp; Condition</span></a></li> 
+              <div className="subscribe-detail">Others Links</div>
+              <ul className="text-white othertlinks mt10">
+                <li>
+                  <i class="fa fa-angle-double-right"></i>{' '}
+                  <a
+                    href="http://eraswaptoken.io/pdf/eraswap_whitepaper.pdf"
+                    target="_blank"
+                  >
+                    <i class="zmdi zmdi-apple"></i>
+                    <span>ES White Paper</span>
+                  </a>
+                </li>
+                <li>
+                  <i class="fa fa-angle-double-right"></i>{' '}
+                  <a
+                    href="http://eraswaptoken.io/pdf/era-swap-howey-test-letter-august7-2018.pdf"
+                    target="_blank"
+                  >
+                    <i class="zmdi zmdi-apple"></i>
+                    <span>Howey Test</span>
+                  </a>
+                </li>
+                <li>
+                  <i class="fa fa-angle-double-right"></i>{' '}
+                  <a
+                    href="http://eraswaptoken.io/pdf/es-statuary-warning.pdf"
+                    target="_blank"
+                  >
+                    <i class="zmdi zmdi-apple"></i>
+                    <span>Statuary Warning</span>
+                  </a>
+                </li>
+                <li>
+                  <i class="fa fa-angle-double-right"></i>{' '}
+                  <a
+                    href="https://eraswaptoken.io/pdf/eraswap-terms-conditions.pdf"
+                    target="_blank"
+                  >
+                    <i class="zmdi zmdi-apple"></i>
+                    <span>Era Swap Terms &amp; Condition</span>
+                  </a>
+                </li>
+                {/* <li><i class="fa fa-angle-double-right"></i>  <a href="/pdf/eraswap-wallet-terms-conditions.pdf" target="_blank"><i class="zmdi zmdi-apple"></i><span>Terms &amp; Condition</span></a></li> 
                     <li><i class="fa fa-angle-double-right"></i>  <a href="/pdf/Eraswap_Wallet_Privacy_Policy.pdf" target="_blank"><i class="zmdi zmdi-apple"></i><span>Privacy Policy</span></a></li>*/}
-                </ul> 
-
+              </ul>
             </Col>
             <Col sm={4}>
               <div className="subscribe-container">

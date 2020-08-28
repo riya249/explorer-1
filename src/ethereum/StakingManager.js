@@ -1,5 +1,4 @@
 const { Contract, ethers } = require('ethers');
-const provider = require('./Provider');
 
 const _abi = [
   {
