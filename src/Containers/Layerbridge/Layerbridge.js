@@ -183,9 +183,10 @@ class Layerbridge extends Component {
                         <p className="explr-purple-text">
                           Live block number of Rinkeby ETH (Layer 1) : 6871773
                           <br />
-                          Block number confirmed on ESN Reverse Plasma Contract : {this.state.latestBlockNumberOnESNContract ??
+                          Block number confirmed on ESN Reverse Plasma Contract
+                          :{' '}
+                          {this.state.latestBlockNumberOnESNContract ??
                             'Loading...'}
-                              
                           {this.state.blockNumberETH !== null &&
                           this.state.latestBlockNumberOnESNContract !== null
                             ? ` (${

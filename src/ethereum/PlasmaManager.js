@@ -1,5 +1,5 @@
 const { plasmaAddress } = require('../config/config');
-const { Contract, ethers } = require('ethers');
+const { Contract } = require('ethers');
 const { providerEth } = require('./Provider');
 
 const _abi = [

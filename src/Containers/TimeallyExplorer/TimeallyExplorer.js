@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
 import './TimeallyExplorer.css';
-import { Link } from 'react-router-dom';
-import Images from '../Images/Images';
-import { Col, Button, Container, Row } from 'react-bootstrap';
-import Header from '../../Components/Header/Header';
+import { Col, Container, Row } from 'react-bootstrap';
 import Navbar from '../../Components/Navbar/Navbar';
 import { timeAllyManager } from '../../ethereum/TimeallyManager';
-import { StakingItem } from './StakingItem/StakingItem';
 
 class TimeallyExplorer extends Component {
   stakingsData = [];
@@ -19,7 +15,6 @@ class TimeallyExplorer extends Component {
   }
 
   componentDidMount = async () => {
-    console.log('timeAllyManager', timeAllyManager);
     const parsedLogs = (
       await timeAllyManager.queryFilter(
         timeAllyManager.filters.StakingTransfer(null, null, null)
@@ -111,6 +106,7 @@ class TimeallyExplorer extends Component {
                             className="btn btn-primary"
                             href={`https://test.timeally.io/stakings/${stakingAddress.staking}`}
                             target="_blank"
+                            rel="noopener noreferrer"
                           >
                             View Staking
                           </a>

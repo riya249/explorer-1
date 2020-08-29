@@ -1,26 +1,13 @@
 import React, { Component } from 'react';
 import './Dashboard.css';
-import { Link } from 'react-router-dom';
 import { ethers } from 'ethers';
 import Images from '../Images/Images';
 import Navbar from '../../Components/Navbar/Navbar';
-import { Col, Button, Container, Row, Tooltip } from 'react-bootstrap';
-import Header from '../../Components/Header/Header';
-import Responsive from '../../Responsive/Responsive.css';
+import { Col, Row } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 import Apis from '../../lib/apis';
 import { moreDecimals, lessDecimals, formatEther } from '../../lib/parsers';
-import {
-  PieChart,
-  Pie,
-  Cell,
-  BarChart,
-  CartesianGrid,
-  XAxis,
-  YAxis,
-  Legend,
-  Bar,
-} from 'recharts';
+import { PieChart, Pie, Cell } from 'recharts';
 
 import { timeAllyManager } from '../../ethereum/TimeallyManager';
 import { nrtManager } from '../../ethereum/NrtManager';
@@ -445,7 +432,7 @@ class Dashboard extends Component {
     } catch (e) {
       console.log(e);
     }
-    
+
     this.nrtTicker();
   }
 
@@ -460,7 +447,7 @@ class Dashboard extends Component {
         eraswap: {
           data: {
             ...this.state.eraswap.data,
-            esOwners:  res
+            esOwners: res,
           },
           isLoading: false,
         },
@@ -479,7 +466,7 @@ class Dashboard extends Component {
         eraswap: {
           data: {
             ...this.state.eraswap.data,
-            allTxnsCount:  res
+            allTxnsCount: res,
           },
           isLoading: false,
         },
@@ -594,7 +581,7 @@ class Dashboard extends Component {
         eraswap: {
           data: {
             ...this.state.eraswap.data,
-            ethUsd: res.status == 1 ? '$' + res.result.ethusd : '-',
+            ethUsd: res.status === 1 ? '$' + res.result.ethusd : '-',
           },
           isLoading: false,
         },
@@ -680,8 +667,7 @@ class Dashboard extends Component {
                 ? moreDecimals(res?.data?.probitResponse?.data[1]?.last) +
                   ' BTC'
                 : '-',
-            probitVolume:
-              lessDecimals(String(this.esPrice * totalVolume)),
+            probitVolume: lessDecimals(String(this.esPrice * totalVolume)),
           },
           isLoading: false,
         },
@@ -1668,38 +1654,13 @@ class Dashboard extends Component {
   };
 
   async nrtTicker() {
-    /// @dev countdown timer for nrt release
-    const deployTimestamp = 1564336091 * 1000;
     const monthDuration = 2629744 * 1000;
-
-    let seeFutureNrt = false;
-    let currentNrtMonthNumber = 0;
-    // let nextNrtTimestamp = deployTimestamp + monthDuration * (currentNrtMonthNumber + 1);
-
-    // setInterval(async () => {
-    //   try {
-    //     const res = await Apis.getCurrentNRTMonth();
-    //     if (!currentNrtMonthNumber) {
-    //       currentNrtMonthNumber = res.data.nrtMonth;
-    //     } else if (
-    //       res.data.nrtMonth !== currentNrtMonthNumber &&
-    //       !seeFutureNrt
-    //     ) {
-    //       window.location.reload();
-    //     }
-    //   } catch (e) {
-    //     console.log(e);
-    //   }
-    // }, 3500);
 
     const lastNrtReleaseTimestamp = (
       await nrtManagerInst.lastReleaseTimestamp()
     ).toNumber();
 
     setInterval(() => {
-      // const nextNrtTimestamp =
-      //   deployTimestamp + monthDuration * (currentNrtMonthNumber + 1);
-
       const nextNrtTimestamp = lastNrtReleaseTimestamp * 1000 + monthDuration;
       const currentTimestamp = Date.now();
 
@@ -2182,15 +2143,15 @@ class Dashboard extends Component {
                     </p>
                   </div>
                   <div>
-                    <p className="sect4-context">Total Verified</p>
+                    <p className="sect4-context">Level 2 KYC</p>
                     <p className="sect4-value">
-                      {this.state.timeswappers.data.verified}
+                      0{/* {this.state.timeswappers.data.verified} */}
                     </p>
                   </div>
                   <div>
-                    <p className="sect4-context">Total Certified</p>
+                    <p className="sect4-context">Level 3 KYC</p>
                     <p className="sect4-value">
-                      {this.state.timeswappers.data.certified}
+                      0{/* {this.state.timeswappers.data.certified} */}
                     </p>
                   </div>
                   <div>

@@ -10,120 +10,144 @@ import { Snackbar } from '../../Components/Snackbar/Snackbar';
 import AddressLink from '../../Components/AddressLink/AddressLink';
 
 class TimeAllySuperGoalCalculator extends Component {
+  snackbarRef = React.createRef();
+  constructor(props) {
+    super(props);
+    const {
+      match: { params },
+    } = this.props;
+    this.state = {
+      platforms: {
+        data: {},
+        isLoading: true,
+      },
+      cAmountInput: '',
+      annuity: '',
+      stakingAmountOne: '',
+      stakingAmountTwo: '',
+      stakingAmountThree: '',
+      stakingAmountFour: '',
+      stakingAmountFive: '',
+      stakingAmountSix: '',
+      stakingAmountSeven: '',
+      stakingAmountEight: '',
+      stakingAmountNine: '',
+      stakingAmountTen: '',
+      stakingAmountEleven: '',
+      stakingAmountTwelve: '',
+      tsgapValues: {
+        annuity: 0,
+        totalStaking: 0,
+        boosterBonus: 0,
+        missedPayments: 0,
+        annuityBenifit: 0,
+        grossBenifit: 0,
+        monthAnnuityBenifit: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        annuityPercent: 0,
+        grossBenifitPercent: 0,
+        boosterBonusPercent: 0,
+      },
+    };
+    this.openSnackBar = this.openSnackBar.bind(this);
+  }
+  componentDidMount() {}
 
-   snackbarRef = React.createRef();
-   constructor(props) {
-      super(props);
-      const {
-         match: { params },
-      } = this.props;
-      this.state = {
-         platforms: {
-            data: {},
-            isLoading: true,
-         },
-         cAmountInput: '',
-         annuity: '',
-         stakingAmountOne:'',
-         stakingAmountTwo: '',
-         stakingAmountThree: '',
-         stakingAmountFour: '',
-         stakingAmountFive: '',
-         stakingAmountSix: '',
-         stakingAmountSeven: '',
-         stakingAmountEight: '',
-         stakingAmountNine: '',
-         stakingAmountTen: '',
-         stakingAmountEleven: '',
-         stakingAmountTwelve: '',
-        tsgapValues: {
-          annuity : 0 ,
-          totalStaking : 0,
-          boosterBonus : 0,
-          missedPayments : 0,
-          annuityBenifit : 0,
-          grossBenifit : 0,
-          monthAnnuityBenifit : [0,0,0,0,0,0,0,0,0,0,0,0],
-          annuityPercent : 0,
-          grossBenifitPercent : 0,
-          boosterBonusPercent : 0,
-        },
-      };
-      this.openSnackBar = this.openSnackBar.bind(this);
-   }
-   componentDidMount() {
-   }
- 
-   checkAnnuity = () =>{
-     
-   }
+  checkAnnuity = () => {};
 
-   TsgCalculateValue = () => {
-      function tsgap(cAmount, stakingAmountArray) {
-         //inputs are monthly staking amount, commitment amount (cAmount) , annuity returns %
-                 
-         var annuity = 0 ;
-         var totalStaking = 0;
-         var boosterBonus = 0;
-         var missedPayments = 0;
-         var annuityBenifit = 0;
-         var grossBenifit = 0;
-         var monthAnnuityBenifit = [0,0,0,0,0,0,0,0,0,0,0,0];
-         var annuityPercent = 0;
-         var grossBenifitPercent = 0;
-         var boosterBonusPercent = 0;
+  TsgCalculateValue = () => {
+    function tsgap(cAmount, stakingAmountArray) {
+      //inputs are monthly staking amount, commitment amount (cAmount) , annuity returns %
 
-         if (cAmount >= 100000) {
-            annuity = 0.24
-         } else if (cAmount >= 10000) {
-            annuity = 0.22
-         } else if (cAmount >= 1000) {
-            annuity = 0.20
-         } else if (cAmount >= 500) {
-            annuity = 0.18
-         } else if (cAmount >= 100) {
-            annuity = 0.16
-         }
+      var annuity = 0;
+      var totalStaking = 0;
+      var boosterBonus = 0;
+      var missedPayments = 0;
+      var annuityBenifit = 0;
+      var grossBenifit = 0;
+      var monthAnnuityBenifit = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+      var annuityPercent = 0;
+      var grossBenifitPercent = 0;
+      var boosterBonusPercent = 0;
 
-
-         for (var i = 0; i < 12; i++) {
-            if (stakingAmountArray[i] < cAmount) {
-               missedPayments++;
-            } else {
-               totalStaking += stakingAmountArray[i];
-               boosterBonus += stakingAmountArray[i];
-               monthAnnuityBenifit[i] = stakingAmountArray[i] * annuity;
-               annuityBenifit += stakingAmountArray[i] * 9 * annuity;
-            }
-
-         }
-
-         boosterBonus -= (boosterBonus * missedPayments * 2) / 100;
-         grossBenifit = annuityBenifit + boosterBonus;
-         annuityPercent = annuityBenifit * 100 / totalStaking;
-         boosterBonusPercent = boosterBonus * 100 / totalStaking;
-         grossBenifitPercent = grossBenifit * 100 / totalStaking;
-
-         return { totalStaking, boosterBonus, missedPayments, monthAnnuityBenifit, annuityBenifit, grossBenifit, annuityPercent ,boosterBonusPercent ,grossBenifitPercent};
+      if (cAmount >= 100000) {
+        annuity = 0.24;
+      } else if (cAmount >= 10000) {
+        annuity = 0.22;
+      } else if (cAmount >= 1000) {
+        annuity = 0.2;
+      } else if (cAmount >= 500) {
+        annuity = 0.18;
+      } else if (cAmount >= 100) {
+        annuity = 0.16;
       }
 
-      const result = tsgap(
-         [10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 9000, 10000, 10000, 10000],
-         10000,
-         22 / 100
-      );
-      const tsgapValues = tsgap(Number(this.state.cAmountInput),
-         [Number(this.state.stakingAmountOne), Number(this.state.stakingAmountTwo), Number(this.state.stakingAmountThree),
-         Number(this.state.stakingAmountFour), Number(this.state.stakingAmountFive), Number(this.state.stakingAmountSix)
-            , Number(this.state.stakingAmountSeven), Number(this.state.stakingAmountEight), Number(this.state.stakingAmountNine)
-            , Number(this.state.stakingAmountTen), Number(this.state.stakingAmountEleven), Number(this.state.stakingAmountTwelve)],
-      );
+      for (var i = 0; i < 12; i++) {
+        if (stakingAmountArray[i] < cAmount) {
+          missedPayments++;
+        } else {
+          totalStaking += stakingAmountArray[i];
+          boosterBonus += stakingAmountArray[i];
+          monthAnnuityBenifit[i] = stakingAmountArray[i] * annuity;
+          annuityBenifit += stakingAmountArray[i] * 9 * annuity;
+        }
+      }
 
-      this.setState({
-         tsgapValues,
-      })
-   }
+      boosterBonus -= (boosterBonus * missedPayments * 2) / 100;
+      grossBenifit = annuityBenifit + boosterBonus;
+      annuityPercent = (annuityBenifit * 100) / totalStaking;
+      boosterBonusPercent = (boosterBonus * 100) / totalStaking;
+      grossBenifitPercent = (grossBenifit * 100) / totalStaking;
 
+      return {
+        totalStaking,
+        boosterBonus,
+        missedPayments,
+        monthAnnuityBenifit,
+        annuityBenifit,
+        grossBenifit,
+        annuityPercent,
+        boosterBonusPercent,
+        grossBenifitPercent,
+      };
+    }
+
+    const result = tsgap(
+      [
+        10000,
+        10000,
+        10000,
+        10000,
+        10000,
+        10000,
+        10000,
+        10000,
+        9000,
+        10000,
+        10000,
+        10000,
+      ],
+      10000,
+      22 / 100
+    );
+    const tsgapValues = tsgap(Number(this.state.cAmountInput), [
+      Number(this.state.stakingAmountOne),
+      Number(this.state.stakingAmountTwo),
+      Number(this.state.stakingAmountThree),
+      Number(this.state.stakingAmountFour),
+      Number(this.state.stakingAmountFive),
+      Number(this.state.stakingAmountSix),
+      Number(this.state.stakingAmountSeven),
+      Number(this.state.stakingAmountEight),
+      Number(this.state.stakingAmountNine),
+      Number(this.state.stakingAmountTen),
+      Number(this.state.stakingAmountEleven),
+      Number(this.state.stakingAmountTwelve),
+    ]);
+
+    this.setState({
+      tsgapValues,
+    });
+  };
 
 
    openSnackBar(message) {
@@ -144,6 +168,7 @@ class TimeAllySuperGoalCalculator extends Component {
                            <div class="card">
                               <div class="card-body">
                                  <div className="row">
+                                    
                                     <div className="col-lg-12">
                                         <div className="">
                                              <div className="eraswapcal-tab">
@@ -520,18 +545,21 @@ class TimeAllySuperGoalCalculator extends Component {
                                                 </div>
                                              </div>
                                           </div>
+                                          
                                        </div>
                                     </div>
+                                    
                                  </div>
                               </div>
-                           </div>
-                        </Col>
-                     </Row>
-                  </Container>
-               </div>
-            </div>
-         </div>
-      );
-   }
+                            </div>
+                         
+                </Col>
+              </Row>
+            </Container>
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
 export default TimeAllySuperGoalCalculator;

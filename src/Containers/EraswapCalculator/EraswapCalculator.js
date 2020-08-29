@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import './EraswapCalculator.css';
-import { Link } from 'react-router-dom';
 import Images from '../Images/Images';
-import { Col, Button, Container, Row, Form } from 'react-bootstrap';
-import Header from '../../Components/Header/Header';
+import { Col, Container, Row, Form } from 'react-bootstrap';
 import Navbar from '../../Components/Navbar/Navbar';
 import Card from 'react-bootstrap/Card';
 import Apis from '../../lib/apis';
@@ -126,7 +124,7 @@ class EraswapCalculator extends Component {
         <div className="booking-hero-bgd booking-hero-bgd-inner">
           <Navbar />
           <h2 className="es-main-head es-main-head-inner">
-            ES Mining  Calculator
+            ES Mining Calculator
           </h2>
         </div>
         <Container>
@@ -165,7 +163,11 @@ class EraswapCalculator extends Component {
                           isInvalid={isNaN(Number(this.state.myStakingsInput))}
                         />
                         <span>
-                          <img className="eslogo" src={Images.path.eslogo} />
+                          <img
+                            className="eslogo"
+                            src={Images.path.eslogo}
+                            alt=""
+                          />
                         </span>
                       </div>
                       <div class="col-md-6 col-lg-4 form-group">
@@ -191,7 +193,11 @@ class EraswapCalculator extends Component {
                           )}
                         />
                         <span>
-                          <img className="eslogo" src={Images.path.eslogo} />
+                          <img
+                            className="eslogo"
+                            src={Images.path.eslogo}
+                            alt=""
+                          />
                         </span>
                       </div>
                       <div class="col-md-6 col-lg-4  form-group">
@@ -241,7 +247,11 @@ class EraswapCalculator extends Component {
                           isInvalid={isNaN(Number(this.state.esPriceUSDT))}
                         />
                         <span>
-                          <img className="eslogo" src={Images.path.eslogo} />
+                          <img
+                            className="eslogo"
+                            src={Images.path.eslogo}
+                            alt=""
+                          />
                         </span>
                       </div>
                       <div class="col-md-6 col-lg-4 form-group">

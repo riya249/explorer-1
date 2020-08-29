@@ -129,7 +129,9 @@ class Transaction extends Component {
                                 />
                               </td>
                               <td>
-                                {toLocaleTimestamp(transaction.block.timestamp).fromNow()}
+                                {toLocaleTimestamp(
+                                  transaction.block.timestamp
+                                ).fromNow()}
                               </td>
                               <td>
                                 {transaction.fromAddress.label && (
