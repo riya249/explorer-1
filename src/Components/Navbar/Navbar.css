@@ -53,6 +53,13 @@
 .navbar-nav a:hover {
   color: #d8ff00;
 }
+.dropdown-menu {
+  padding: 0 !important;
+}
+.dropdown-item {
+    padding: 5px 1.5rem !important;
+    font-weight: 600!important;
+}
 .dropdown-menu a:hover {
   color: #4353ab;
 }

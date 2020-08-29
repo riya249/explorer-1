@@ -2675,21 +2675,31 @@ class Dashboard extends Component {
                 <div className="swwall-flex-border">
                   <div>
                     <p className="sect4-context">Claimed ES</p>
-                    <p className="sect4-value-swal">0 ES</p>
+                    <p className="sect4-value-swal">Coming soon</p>
                   </div>
                   <div>
                     <p className="sect4-context">Withdrawn ES</p>
-                    <p className="sect4-value-swal">0 ES</p>
+                    <p className="sect4-value-swal">Coming soon</p>
+                  </div>
+                </div>
+                <div className="swwall-flex-border">
+                  <div>
+                    <p className="sect4-context">Number Of Coupon</p>
+                    <p className="sect4-value-swal">Coming soon</p>
+                  </div>
+                  <div>
+                    <p className="sect4-context">Amount OF ES</p>
+                    <p className="sect4-value-swal">Coming soon</p>
                   </div>
                 </div>
                 <div className="swwall-border-flex">
                   <div>
                     <p className="sect4-context">Number of Users</p>
-                    <p className="sect4-value">0 Users</p>
+                    <p className="sect4-value">Coming soon</p>
                   </div>
                   <div>
                     <p className="sect4-context">TFC Generated</p>
-                    <p className="sect4-value">0 </p>
+                    <p className="sect4-value">Coming soon</p>
                   </div>
                 </div>
               </div>
