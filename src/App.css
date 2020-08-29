@@ -618,3 +618,7 @@ button:hover {
 .mt45{
   margin-top:45px;
 }
+.es-transaction th {
+  border-bottom: 1px solid #747feb !important;
+  background: #c9cdf3 !important;
+}
