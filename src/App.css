@@ -459,7 +459,9 @@ label {
   width: 100% !important;
   min-width: 100% !important;
 }
-
+.kyc-indirect {
+  margin-top: 25px !important;
+}
 }
 @media (max-width: 1200px) {
   .searchbar:hover > .search_input {
@@ -621,4 +623,7 @@ button:hover {
 .es-transaction th {
   border-bottom: 1px solid #747feb !important;
   background: #c9cdf3 !important;
+}
+.kyc-indirect{
+  margin-top: 85px;
 }

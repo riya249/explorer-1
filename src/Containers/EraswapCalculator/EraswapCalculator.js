@@ -89,7 +89,7 @@ class EraswapCalculator extends Component {
     deposit -= this.tax(deposit, 0);
     console.log('deposit', deposit);
     return (
-      (deposit * ((this.state.nrtReleasedInput * 0.12) / MONTHSCOUNT)) / NES
+      (deposit * ((this.state.nrtReleasedInput * 0.12) )) / NES
     );
   }
 
@@ -102,7 +102,7 @@ class EraswapCalculator extends Component {
       this.state.networkUptimeInput;
 
     // monthlyReward = (monthlyReward * this.state.globalStakingPercentInput) / 100;
-    monthlyReward /= 12;
+    // monthlyReward /= 12;
 
     let monthlyRewardSevenFive = (monthlyReward * 7.5) / 100;
     let powerTokenReward = (monthlyReward * 10) / 100;
@@ -218,7 +218,7 @@ class EraswapCalculator extends Component {
                         />
                       </div>
                       <div class="col-md-6 col-lg-4 form-group">
-                        <label for="">NRT Release</label>
+                        <label for="">NRT Release (Monthly)</label>
                         <Form.Control
                           onChange={(event) =>
                             this.setState({
