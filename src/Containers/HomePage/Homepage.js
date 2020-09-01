@@ -1034,9 +1034,9 @@ class Homepage extends Component {
                         <th data-toggle="tooltip" data-placement="top" title="">
                           STAKE (ES){' '}
                         </th>
-                        <th data-toggle="tooltip" data-placement="top" title="">
+                        {/* <th data-toggle="tooltip" data-placement="top" title="">
                           CUMULATIVE STAKE (ES)
-                        </th>
+                        </th> */}
                         <th data-toggle="tooltip" data-placement="top" title="">
                           FEE
                         </th>

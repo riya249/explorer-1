@@ -170,10 +170,8 @@ class KycIncentiveCalculator extends Component {
                         <table className="es-transaction striped bordered hover table">
                           <tr>
                             <th>KYC Benefits</th>
-                            <th>KYCCharge(ES)</th>
-                            <th>
-                              Cummulative KYC Charges for the levels (ES){' '}
-                            </th>
+                            <th>KYC Charge(ES)</th>
+                            
                             <th>Applicant Benefit (Staked ES) </th>
                             <th> Introducer's Incentive(50% Stake & 50% ES)</th>
                             <th>
@@ -189,7 +187,7 @@ class KycIncentiveCalculator extends Component {
                           <tr>
                             <td>% BreakUp </td>
                             <td>100%</td>
-                            <td>100%</td>
+                            
                             <td>100.00%</td>
                             <td>40.00%</td>
                             <td>40.00%</td>
@@ -202,7 +200,7 @@ class KycIncentiveCalculator extends Component {
                           <tr>
                             <td>Level 1 KYC - Identity </td>
                             <td>31.50 </td>
-                            <td> 31.50</td>
+                            
                             <td> 31.50</td>
                             <td>12.60 </td>
                             <td>12.60 </td>
@@ -215,7 +213,7 @@ class KycIncentiveCalculator extends Component {
                           <tr>
                             <td>Level 2 KYC - Skill / Business </td>
                             <td>63</td>
-                            <td>70.00</td>
+                           
                             <td>63</td>
                             <td>25.20</td>
                             <td>25.20</td>
@@ -228,7 +226,7 @@ class KycIncentiveCalculator extends Component {
                           <tr>
                             <td>Level 3 KYC - Experience / Recommendation</td>
                             <td>94.5 </td>
-                            <td>150</td>
+                           
                             <td>94.5 </td>
                             <td>37.80</td>
                             <td>37.80</td>
@@ -241,7 +239,7 @@ class KycIncentiveCalculator extends Component {
                           <tr>
                             <td>Level 4 KYC - FOS Tagya Verification</td>
                             <td>315</td>
-                            <td>450</td>
+                            
                             <td>315</td>
                             <td>126.00</td>
                             <td>126.00</td>
@@ -254,7 +252,7 @@ class KycIncentiveCalculator extends Component {
                           <tr>
                             <td>Level 5 KYC - Online Curator Validation</td>
                             <td>5000</td>
-                            <td>5150</td>
+                            
                             <td>5000</td>
                             <td>2000.00</td>
                             <td>2000.00</td>
@@ -302,7 +300,7 @@ class KycIncentiveCalculator extends Component {
                             </div>
                             <div class="col-md-12 col-lg-12">
                               <p className="text-weight">
-                                <b>Stand Alone KYC Input (Directs)</b>
+                                <b>KYC Input (Directs)</b>
                               </p>
                             </div>
                             <div class="col-md-6 col-lg-6 form-group">
@@ -414,8 +412,134 @@ class KycIncentiveCalculator extends Component {
                             </div>
                           </div>
                         </div>
-                        <div className="col-lg-6">
-                          <div class="form-row">
+
+                        <div className="col-lg-6 kyc-indirect">
+                                <div class="form-row">
+                                    <div class="col-md-12 col-lg-12">
+                                      <p className="text-weight">
+                                        <b> KYC Input (Indirects)</b>
+                                      </p>
+                                    </div>
+                                    <div class="col-md-6 col-lg-6 form-group">
+                                      <label for="">
+                                        Level 1 KYC - Identity (Indirects)
+                                      </label>
+                                      <Form.Control
+                                        onChange={(event) =>
+                                          this.setState({
+                                            indirectkycstandaloneInputOne:
+                                              event.target.value,
+                                          })
+                                        }
+                                        value={this.state.indirectkycstandaloneInputOne}
+                                        type="text"
+                                        placeholder=""
+                                        autoComplete="off"
+                                        isInvalid={isNaN(
+                                          Number(
+                                            this.state.indirectkycstandaloneInputOne
+                                          )
+                                        )}
+                                      />
+                                    </div>
+                                    <div class="col-md-6 col-lg-6 form-group">
+                                      <label for="">
+                                        Level 2 KYC - Skill / Business (Indirects)
+                                      </label>
+                                      <Form.Control
+                                        onChange={(event) =>
+                                          this.setState({
+                                            indirectkycstandaloneInputTwo:
+                                              event.target.value,
+                                          })
+                                        }
+                                        value={this.state.indirectkycstandaloneInputTwo}
+                                        type="text"
+                                        placeholder=""
+                                        autoComplete="off"
+                                        isInvalid={isNaN(
+                                          Number(
+                                            this.state.indirectkycstandaloneInputTwo
+                                          )
+                                        )}
+                                      />
+                                    </div>
+                                    <div class="col-md-6 col-lg-6 form-group">
+                                      <label for="">
+                                        Level 3 KYC - Experience (Indirects)
+                                      </label>
+                                      <Form.Control
+                                        onChange={(event) =>
+                                          this.setState({
+                                            indirectkycstandaloneInputThree:
+                                              event.target.value,
+                                          })
+                                        }
+                                        value={
+                                          this.state.indirectkycstandaloneInputThree
+                                        }
+                                        type="text"
+                                        placeholder=""
+                                        autoComplete="off"
+                                        isInvalid={isNaN(
+                                          Number(
+                                            this.state.indirectkycstandaloneInputThree
+                                          )
+                                        )}
+                                      />
+                                    </div>
+                                    <div class="col-md-6 col-lg-6 form-group">
+                                      <label for="">
+                                        Level 4 KYC - FOS Tagya Verification (Indirects)
+                                      </label>
+                                      <Form.Control
+                                        onChange={(event) =>
+                                          this.setState({
+                                            indirectkycstandaloneInputFour:
+                                              event.target.value,
+                                          })
+                                        }
+                                        value={
+                                          this.state.indirectkycstandaloneInputFour
+                                        }
+                                        type="text"
+                                        placeholder=""
+                                        autoComplete="off"
+                                        isInvalid={isNaN(
+                                          Number(
+                                            this.state.indirectkycstandaloneInputFour
+                                          )
+                                        )}
+                                      />
+                                    </div>
+                                    <div class="col-md-6 col-lg-6 form-group">
+                                      <label for="">
+                                        Level 5 KYC - Online Curator Validation
+                                        (Indirects)
+                                      </label>
+                                      <Form.Control
+                                        onChange={(event) =>
+                                          this.setState({
+                                            indirectkycstandaloneInputFive:
+                                              event.target.value,
+                                          })
+                                        }
+                                        value={
+                                          this.state.indirectkycstandaloneInputFive
+                                        }
+                                        type="text"
+                                        placeholder=""
+                                        autoComplete="off"
+                                        isInvalid={isNaN(
+                                          Number(
+                                            this.state.indirectkycstandaloneInputFive
+                                          )
+                                        )}
+                                      />
+                                    </div>
+                          </div>
+
+                          {/* <div class="form-row">
                             <div class="col-md-12 col-lg-12 form-group mt40">
                               <label for=""></label>
                             </div>
@@ -521,135 +645,13 @@ class KycIncentiveCalculator extends Component {
                               />
                             </div>
                           </div>
+                        */}
+                       
                         </div>
                         <div className="col-lg-6 mt20">
-                          <div class="form-row">
-                            <div class="col-md-12 col-lg-12">
-                              <p className="text-weight">
-                                <b>Stand Alone KYC Input (Indirects)</b>
-                              </p>
-                            </div>
-                            <div class="col-md-6 col-lg-6 form-group">
-                              <label for="">
-                                Level 1 KYC - Identity (Indirects)
-                              </label>
-                              <Form.Control
-                                onChange={(event) =>
-                                  this.setState({
-                                    indirectkycstandaloneInputOne:
-                                      event.target.value,
-                                  })
-                                }
-                                value={this.state.indirectkycstandaloneInputOne}
-                                type="text"
-                                placeholder=""
-                                autoComplete="off"
-                                isInvalid={isNaN(
-                                  Number(
-                                    this.state.indirectkycstandaloneInputOne
-                                  )
-                                )}
-                              />
-                            </div>
-                            <div class="col-md-6 col-lg-6 form-group">
-                              <label for="">
-                                Level 2 KYC - Skill / Business (Indirects)
-                              </label>
-                              <Form.Control
-                                onChange={(event) =>
-                                  this.setState({
-                                    indirectkycstandaloneInputTwo:
-                                      event.target.value,
-                                  })
-                                }
-                                value={this.state.indirectkycstandaloneInputTwo}
-                                type="text"
-                                placeholder=""
-                                autoComplete="off"
-                                isInvalid={isNaN(
-                                  Number(
-                                    this.state.indirectkycstandaloneInputTwo
-                                  )
-                                )}
-                              />
-                            </div>
-                            <div class="col-md-6 col-lg-6 form-group">
-                              <label for="">
-                                Level 3 KYC - Experience (Indirects)
-                              </label>
-                              <Form.Control
-                                onChange={(event) =>
-                                  this.setState({
-                                    indirectkycstandaloneInputThree:
-                                      event.target.value,
-                                  })
-                                }
-                                value={
-                                  this.state.indirectkycstandaloneInputThree
-                                }
-                                type="text"
-                                placeholder=""
-                                autoComplete="off"
-                                isInvalid={isNaN(
-                                  Number(
-                                    this.state.indirectkycstandaloneInputThree
-                                  )
-                                )}
-                              />
-                            </div>
-                            <div class="col-md-6 col-lg-6 form-group">
-                              <label for="">
-                                Level 4 KYC - FOS Tagya Verification (Indirects)
-                              </label>
-                              <Form.Control
-                                onChange={(event) =>
-                                  this.setState({
-                                    indirectkycstandaloneInputFour:
-                                      event.target.value,
-                                  })
-                                }
-                                value={
-                                  this.state.indirectkycstandaloneInputFour
-                                }
-                                type="text"
-                                placeholder=""
-                                autoComplete="off"
-                                isInvalid={isNaN(
-                                  Number(
-                                    this.state.indirectkycstandaloneInputFour
-                                  )
-                                )}
-                              />
-                            </div>
-                            <div class="col-md-6 col-lg-6 form-group">
-                              <label for="">
-                                Level 5 KYC - Online Curator Validation
-                                (Indirects)
-                              </label>
-                              <Form.Control
-                                onChange={(event) =>
-                                  this.setState({
-                                    indirectkycstandaloneInputFive:
-                                      event.target.value,
-                                  })
-                                }
-                                value={
-                                  this.state.indirectkycstandaloneInputFive
-                                }
-                                type="text"
-                                placeholder=""
-                                autoComplete="off"
-                                isInvalid={isNaN(
-                                  Number(
-                                    this.state.indirectkycstandaloneInputFive
-                                  )
-                                )}
-                              />
-                            </div>
-                          </div>
-                        </div>
+                       </div>
                         <div className="col-lg-6">
-                          <div class="form-row mt20">
+                          {/* <div class="form-row mt20">
                            
                             <div class="col-md-12 col-lg-12">
                               <p className="text-weight">
@@ -756,6 +758,7 @@ class KycIncentiveCalculator extends Component {
                               />
                             </div>
                           </div>
+                         */}
                         </div>
                       </div>
                       <div className="row">
