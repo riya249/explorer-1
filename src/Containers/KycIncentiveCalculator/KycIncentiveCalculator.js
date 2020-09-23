@@ -75,12 +75,12 @@ class KycIncentiveCalculator extends Component {
         indirectcollection += indirectkyccumm[i] * cumm[i];
       }
       var stakedtodirect = directcollection;
-      var timeAllyclubLiquid = directcollection * 0.2;
+      var timeAllyclubLiquid = directcollection * 0.1;
       var timeAllyclubStake = timeAllyclubLiquid;
       var dayswapperTreeReward =
-        (directcollection + indirectcollection) * dayswappertree * 0.2;
-      var tagya = directcollection * 0.2;
-      var currator = directcollection * 0.2;
+        (directcollection + indirectcollection) * dayswappertree * 0.1;
+      var tagya = directcollection * 0.1;
+      var currator = directcollection * 0.1;
       var burning = directcollection * 0.1;
       var charity = directcollection * 0.1;
       return {
@@ -189,10 +189,10 @@ class KycIncentiveCalculator extends Component {
                             <td>100%</td>
                             
                             <td>100.00%</td>
-                            <td>40.00%</td>
-                            <td>40.00%</td>
-                            <td>40.00%</td>
-                            <td>40.00%</td>
+                            <td>20.00%</td>
+                            <td>20.00%</td>
+                            <td>20.00%</td>
+                            <td>20.00%</td>
                             <td>10.00%</td>
                             <td>10.00%</td>
                             <td>280.00%</td>
@@ -202,10 +202,10 @@ class KycIncentiveCalculator extends Component {
                             <td>31.50 </td>
                             
                             <td> 31.50</td>
-                            <td>12.60 </td>
-                            <td>12.60 </td>
-                            <td>12.60 </td>
-                            <td>12.60 </td>
+                            <td>6.30</td>
+                            <td>6.30</td>
+                            <td>6.30</td>
+                            <td>6.30</td>
                             <td> 3.15 </td>
                             <td>3.15 </td>
                             <td>88.20 </td>
@@ -215,10 +215,10 @@ class KycIncentiveCalculator extends Component {
                             <td>63</td>
                            
                             <td>63</td>
-                            <td>25.20</td>
-                            <td>25.20</td>
-                            <td>25.20</td>
-                            <td>25.20</td>
+                            <td>12.60</td>
+                            <td>12.60</td>
+                            <td>12.60</td>
+                            <td>12.60</td>
                             <td>6.3</td>
                             <td>6.3</td>
                             <td>176.40</td>
@@ -228,10 +228,10 @@ class KycIncentiveCalculator extends Component {
                             <td>94.5 </td>
                            
                             <td>94.5 </td>
-                            <td>37.80</td>
-                            <td>37.80</td>
-                            <td>37.80</td>
-                            <td>37.80</td>
+                            <td>18.90</td>
+                            <td>18.90</td>
+                            <td>18.90</td>
+                            <td>18.90</td>
                             <td>9.45</td>
                             <td>9.45</td>
                             <td>264.60</td>
@@ -241,10 +241,10 @@ class KycIncentiveCalculator extends Component {
                             <td>315</td>
                             
                             <td>315</td>
-                            <td>126.00</td>
-                            <td>126.00</td>
-                            <td>126.00</td>
-                            <td>126.00</td>
+                            <td>63</td>
+                            <td>63</td>
+                            <td>63</td>
+                            <td>63</td>
                             <td>31.5</td>
                             <td>31.5</td>
                             <td>882.00</td>
@@ -254,10 +254,10 @@ class KycIncentiveCalculator extends Component {
                             <td>5000</td>
                             
                             <td>5000</td>
-                            <td>2000.00</td>
-                            <td>2000.00</td>
-                            <td>2000.00</td>
-                            <td>2000.00</td>
+                            <td>1000.00</td>
+                            <td>1000.00</td>
+                            <td>1000.00</td>
+                            <td>1000.00</td>
                             <td>500</td>
                             <td>500</td>
                             <td>14000.00</td>
