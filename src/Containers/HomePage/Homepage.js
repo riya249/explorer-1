@@ -474,7 +474,7 @@ class Homepage extends Component {
                         <div className="col-lg-6">
                           <p className="era-head">MARKET CAP</p>
                           <p className="era-value text-black">
-                            {this.state.marketCap} USDT
+                            $ {this.state.marketCap}
                           </p>
                         </div>
                       </div>
@@ -488,7 +488,12 @@ class Homepage extends Component {
                         </div>
 
                         <div className="col-lg-6">
-                          <p className="era-head">AMOUNT OF STAKINGS</p>
+                          <p 
+                            className="era-head"
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title="Era Swap Network Proof of Stake (ESN PoS)"
+                          >AMOUNT OF STAKINGS</p>
                           <p className="era-value text-black">
                             {this.state.totalESStaked} ES
                           </p>
@@ -519,13 +524,18 @@ class Homepage extends Component {
                       </div>
                       <div className="flex-transc border-value-no row">
                         <div className="col-lg-6">
-                          <p className="era-head">24 HOURS VOLUME</p>
+                          <p className="era-head">24 HOURS VOLUME in ES</p>
                           <p className="era-value text-black">
-                             {this.state.volume24}
+                             {this.state.volume24} ES
                           </p>
                         </div>
                         <div className="col-lg-6">
-                          
+                          <p className="era-head">24 HOURS VOLUME in USDT</p>
+                          <p className="era-value text-black">
+                             {isFinite(this.state.volume24 * this.state.esPriceUSDT) ?
+                               (this.state.volume24 * this.state.esPriceUSDT)
+                               : '-'} $
+                          </p>
                         </div>
                       </div>
 
@@ -565,21 +575,19 @@ class Homepage extends Component {
                           </p>
                         </div>
                       </div>
-                      <div className="flex-transc border-value row">
-                        <div className="col-md-6">
+                        <div className="flex-transc border-value row">
+                      <div className="col-md-6">
                           <p
                             className="era-head"
                             data-toggle="tooltip"
                             data-placement="top"
-                            title="Era Swap Network Proof of Stake (ESN PoS)"
+                            title=""
                           >
-                            NETWORK BACKED UP ES WORTH
+                            Price in USDT
                           </p>
                           <p className="era-value text-black">
-                            ${' '}
-                            {(
-                              this.state.totalESStaked * this.state.esPriceUSDT
-                            ).toFixed(2)}
+                            {this.state.esPriceUSDT} $
+                            {' '}{this.state.probitTimestampUSDT && <>@ {moment(moment(this.state.probitTimestampUSDT).toDate()).format('hh:mm A')}</>}
                           </p>
                         </div>
                         <div className="col-md-6">
@@ -596,18 +604,33 @@ class Homepage extends Component {
                             {' '}{this.state.probitTimestampBTC && <>@ {moment(moment(this.state.probitTimestampBTC).toDate()).format('hh:mm A')}</>}
                           </p>
                         </div>
+                        
                       </div>
                       <div className="flex-transc border-value-no row">
-                        <div className="col-md-6">
+                       <div className="col-md-6">
                           <p className="era-head">CHANGE 24H</p>
                           <p className="era-value text-black">
                             {this.state.change24H}
                           </p>
                         </div>
                         <div className="col-md-6">
-                          
+                          {/*<p
+                              className="era-head"
+                              data-toggle="tooltip"
+                              data-placement="top"
+                              title="Era Swap Network Proof of Stake (ESN PoS)"
+                            >
+                              NETWORK BACKED UP ES WORTH
+                            </p>
+                            <p className="era-value text-black">
+                              $ 
+                              {(
+                                this.state.totalESStaked * this.state.esPriceUSDT
+                              ).toFixed(2)}
+                            </p>*/}
                         </div>
                       </div>
+                    
                     </Col>
                   </Row>
                 </Col>
