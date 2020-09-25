@@ -309,12 +309,15 @@ class Homepage extends Component {
           {
             esPriceUSDT: res.data.probitResponse.data[0].last,
             esPriceBTC: res.data.probitResponse.data[1].last,
+            volume24: Number(res.data.probitResponse.data[0].base_volume) + Number(res.data.probitResponse.data[1].base_volume),
+            change24H: res.data.probitResponse.data[0].change
           },
           this.updateMarketCap
         );
       }
     } catch (e) {
       console.log(e);
+      console.log(e.response);
     }
   }
 
@@ -464,7 +467,7 @@ class Homepage extends Component {
                         <div className="col-lg-6">
                           <p className="era-head">MARKET CAP</p>
                           <p className="era-value text-black">
-                            {this.state.marketCap} ES
+                            {this.state.marketCap} USDT
                           </p>
                         </div>
                       </div>
@@ -511,7 +514,7 @@ class Homepage extends Component {
                         <div className="col-lg-6">
                           <p className="era-head">24 HOURS VOLUME</p>
                           <p className="era-value text-black">
-                             -
+                             {this.state.volume24}
                           </p>
                         </div>
                         <div className="col-lg-6">
@@ -579,32 +582,22 @@ class Homepage extends Component {
                             data-placement="top"
                             title=""
                           >
-                            CHANGE 1H
+                            Price in BTC
                           </p>
                           <p className="era-value text-black">
-                            {this.state.change1H}
+                            {this.state.esPriceBTC} BTC
                           </p>
                         </div>
                       </div>
                       <div className="flex-transc border-value-no row">
                         <div className="col-md-6">
-                          <p
-                            className="era-head"
-                            data-toggle="tooltip"
-                            data-placement="top"
-                            title=""
-                          >
-                            CHANGE 7 DAYS
-                          </p>
-                          <p className="era-value text-black">
-                            {this.state.change7Days}
-                          </p>
-                        </div>
-                        <div className="col-md-6">
                           <p className="era-head">CHANGE 24H</p>
                           <p className="era-value text-black">
                             {this.state.change24H}
                           </p>
+                        </div>
+                        <div className="col-md-6">
+                          
                         </div>
                       </div>
                     </Col>
