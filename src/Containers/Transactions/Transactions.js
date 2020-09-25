@@ -160,24 +160,27 @@ class Transaction extends Component {
                                   </Link>
                                 )}
                                 <span className="tr-color-txt">
-                                  <AddressLink
-                                    value={transaction.toAddress.address}
-                                    type="address"
-                                    shrink={
-                                      transaction.fromAddress.label.length
-                                    }
-                                  />
+                                  {transaction?.toAddress?.address 
+                                    && <AddressLink
+                                      value={transaction.toAddress.address}
+                                      type="address"
+                                      shrink={
+                                        transaction.fromAddress.label.length
+                                      }
+                                    />}
                                 </span>
                               </td>
                               <td>
-                                {ethers.utils.formatEther(transaction.value)} ES{' '}
+                                {transaction.value && ethers.utils.formatEther(transaction.value)} ES{' '}
                               </td>
                               <td>
-                                {ethers.utils.formatEther(
+                                {transaction.gas_price 
+                                  && transaction.gas_used
+                                  && ethers.utils.formatEther(
                                   ethers.BigNumber.from(
                                     transaction.gas_price
                                   ).mul(transaction.gas_used)
-                                )}{' '}
+                                ) || 'N/A'}{' '}
                                 ES
                               </td>
                             </tr>
