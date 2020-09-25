@@ -28,7 +28,7 @@ class Footer extends Component {
                 explore live Analytics and Stats on Latest Blocks, Bunch, Nodes
                 & Transactions of Era Swap Network
               </p>
-              <div className="footer-txt-white">Copyright 2020 Era Swap</div>
+              
               <p className="sub-footer-white"></p>
             </Col>
             <Col sm={4}>
@@ -162,7 +162,12 @@ class Footer extends Component {
                 </div>
               </div>
             </Col>
+            <Col sm={12}>
+                <hr/>
+          <div className="footer-txt-white">©  Copyright 2020. Era Swap</div>
+          </Col>
           </Row>
+
         </Container>
       </div>
     );
