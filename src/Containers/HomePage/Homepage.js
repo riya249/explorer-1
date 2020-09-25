@@ -41,6 +41,8 @@ class Homepage extends Component {
       change1H: '-',
       change24H: '-',
       change7Days: '-',
+      probitTimestampUSDT: '',
+      probitTimestampBTC: '',
       availableSupply: 0,
       totalSupply: 0,
       maxSupply: 9100000000,
@@ -155,7 +157,7 @@ class Homepage extends Component {
       console.log(e);
     } finally {
       this.setState({
-        averageBlock: res?.average || 0,
+        averageBlock: res?.average ? (res?.average/1000).toFixed(2) : 0,
         latestBlockNumber: res?.latestBlock?.block_number,
       });
     }
@@ -310,7 +312,9 @@ class Homepage extends Component {
             esPriceUSDT: res.probitResponse.data[0].last,
             esPriceBTC: res.probitResponse.data[1].last,
             volume24: Number(res.probitResponse.data[0].base_volume) + Number(res.probitResponse.data[1].base_volume),
-            change24H: res.probitResponse.data[0].change
+            change24H: res.probitResponse.data[0].change,
+            probitTimestampUSDT: res.probitResponse.data[0].time,
+            probitTimestampBTC: res.probitResponse.data[1].time
           },
           this.updateMarketCap
         );
@@ -446,13 +450,16 @@ class Homepage extends Component {
                           <p className="text-black">
                             {this.state.esPriceUSDT
                               ? `$ ${this.state.esPriceUSDT}`
-                              : 'Loading...'}{' '}
-                            <span className="text-gray">
+                              : 'Loading...'}{' '} 
+                             <span className="text-gray">
+                             {this.state.probitTimestampUSDT && <>@ {moment(moment(this.state.probitTimestampUSDT).toDate()).format('hh:mm A')}</>}{' '}
+                             </span>
+                            {/*<span className="text-gray">
                               @{' '}
                               {this.state.esPriceBTC
                                 ? `${this.state.esPriceBTC} BTC`
                                 : 'Loading...'}
-                            </span>{' '}
+                            </span>*/}{' '} 
                             <span className="text-green"></span>
                           </p>
                         </div>
@@ -586,6 +593,7 @@ class Homepage extends Component {
                           </p>
                           <p className="era-value text-black">
                             {this.state.esPriceBTC} BTC
+                            {' '}{this.state.probitTimestampBTC && <>@ {moment(moment(this.state.probitTimestampBTC).toDate()).format('hh:mm A')}</>}
                           </p>
                         </div>
                       </div>
@@ -637,7 +645,7 @@ class Homepage extends Component {
                       data-placement="top"
                       title="Bunch is the collection of Blocks which is posted on Ethereum"
                     >
-                      Latest Bunch{' '}
+                      Latest Plasma Bunch{' '}
                     </span>
                   </div>
                   <div className="table-scroll table-responsive">
