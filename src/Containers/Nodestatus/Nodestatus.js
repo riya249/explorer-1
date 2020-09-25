@@ -96,10 +96,11 @@ class Nodestatus extends Component {
                       this.state.nodes.data.map((node) => (
                         <tr>
                           <th>
-                            <AddressLink
-                              value={node.address.address}
-                              type="address"
-                            />
+                            {node?.address?.address 
+                              && <AddressLink
+                                  value={node.address.address}
+                                  type="address"
+                                /> || '-'}
                           </th>
                           <th>
                             {toLocaleTimestamp(node.lastTimeStamp).format(

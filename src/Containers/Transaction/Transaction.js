@@ -236,11 +236,14 @@ class Transaction extends Component {
                                 Transaction Fee:
                               </td>
                               <td>
-                                {ethers.utils.formatEther(
+                                {this.state.transaction.data.gas_price 
+                                  &&
+                                  this.state.transaction.data.gas_used
+                                  &&  ethers.utils.formatEther(
                                   ethers.BigNumber.from(
                                     this.state.transaction.data.gas_price
                                   ).mul(this.state.transaction.data.gas_used)
-                                )}{' '}
+                                ) || '-'}{' '}
                                 ES
                               </td>
                             </tr>

@@ -92,7 +92,7 @@ class TopAccountsbyEsBalance extends Component {
                               {formatEther(account.balance || '0x0')} ES
                             </span>
                           </td>
-                          <td>3.45758416% </td>
+                          <td>N/A </td>
                           <td>{account.transactions}</td>
                         </tr>
                       ))
