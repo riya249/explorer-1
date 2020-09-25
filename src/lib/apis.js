@@ -73,7 +73,7 @@ export default class Apis {
 
   //eraswap.technology
   static getESPrice = () =>
-    ajax('https://api.probit.com/api/exchange/v1/ticker?market_ids=ES-USDT%2CES-BTC');
+    ajax(`${baseUrl}/third-party/es-price`);
   static esTotalSupply = () =>
     ajax('https://eraswap.technology/eraswap/esTotalSupply');
   static holdersOfEraSwap = () =>

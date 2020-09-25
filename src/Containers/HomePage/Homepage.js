@@ -304,13 +304,13 @@ class Homepage extends Component {
     try {
       const res = await Apis.getESPrice();
       console.log('fetchESPrice res', res);
-      if (res?.data?.probitResponse?.data?.length) {
+      if (res?.status && res?.probitResponse?.data?.length) {
         this.setState(
           {
-            esPriceUSDT: res.data.probitResponse.data[0].last,
-            esPriceBTC: res.data.probitResponse.data[1].last,
-            volume24: Number(res.data.probitResponse.data[0].base_volume) + Number(res.data.probitResponse.data[1].base_volume),
-            change24H: res.data.probitResponse.data[0].change
+            esPriceUSDT: res.probitResponse.data[0].last,
+            esPriceBTC: res.probitResponse.data[1].last,
+            volume24: Number(res.probitResponse.data[0].base_volume) + Number(res.probitResponse.data[1].base_volume),
+            change24H: res.probitResponse.data[0].change
           },
           this.updateMarketCap
         );
