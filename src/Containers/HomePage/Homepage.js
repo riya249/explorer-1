@@ -608,9 +608,9 @@ class Homepage extends Component {
                       </div>
                       <div className="flex-transc border-value-no row">
                        <div className="col-md-6">
-                          <p className="era-head">CHANGE 24H</p>
+                          <p className="era-head">CHANGE 24H in USDT</p>
                           <p className="era-value text-black">
-                            {this.state.change24H}
+                            $ {this.state.change24H}
                           </p>
                         </div>
                         <div className="col-md-6">
