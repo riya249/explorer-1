@@ -636,18 +636,18 @@ class Dashboard extends Component {
       console.log(e);
     } finally {
       if (
-        res?.data?.probitResponse?.data &&
-        res?.data?.probitResponse?.data.length &&
-        res?.data?.probitResponse?.data[0]?.last
+        res?.data &&
+        res?.data.length &&
+        res?.data[0]?.last
       ) {
-        this.esPrice = Number(res?.data?.probitResponse?.data[0].last);
+        this.esPrice = Number(res?.data[0].last);
         this.updateMarketCap();
       }
 
       let totalVolume = 0;
 
-      for (var x in res?.data?.probitResponse?.data) {
-        totalVolume += Number(res?.data?.probitResponse?.data[x].base_volume);
+      for (var x in res?.data) {
+        totalVolume += Number(res?.data[x].base_volume);
       }
       // $('#volume-of-probit').html(window.lessDecimals(String(window.esPrice * totalVolume)) + ' USDT');
       console.log('this.esPrice,totalVolume', this.esPrice, totalVolume);
@@ -657,14 +657,14 @@ class Dashboard extends Component {
             ...this.state.eraswap.data,
             esUSDT:
               this.esPrice ||
-              (res?.data?.probitResponse?.data &&
-                res?.data?.probitResponse?.data[0]?.last)
-                ? res?.data?.probitResponse?.data[0]?.last
+              (res?.data &&
+                res?.data[0]?.last)
+                ? res?.data[0]?.last
                 : '-',
             esBTC:
-              res?.data?.probitResponse?.data &&
-              res?.data?.probitResponse?.data[1]?.last
-                ? moreDecimals(res?.data?.probitResponse?.data[1]?.last) +
+              res?.data &&
+              res?.data[1]?.last
+                ? moreDecimals(res?.data[1]?.last) +
                   ' BTC'
                 : '-',
             probitVolume: lessDecimals(String(this.esPrice * totalVolume)),

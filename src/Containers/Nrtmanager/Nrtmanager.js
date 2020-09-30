@@ -8,6 +8,7 @@ import Apis from '../../lib/apis';
 import { toLocaleTimestamp } from '../../lib/parsers';
 import { Snackbar } from '../../Components/Snackbar/Snackbar';
 import AddressLink from '../../Components/AddressLink/AddressLink';
+import {ethers } from 'ethers';
 
 class Nrtmanager extends Component {
   snackbarRef = React.createRef();
@@ -180,13 +181,14 @@ class Nrtmanager extends Component {
                         ) : this.state.platforms.data?.length ? (
                           this.state.platforms.data.map((platform, i) => (
                             <tr>
-                              <td>{platform.address.label || '-'}</td>
+                              <td>{platform.name && ethers.utils.parseBytes32String(platform.name) || '-'}</td>
                               <td>{platform.nrtShare / 10} %</td>
-                              <td><AddressLink
-                                    value={platform.address.address}
-                                    type="address"
-                                    
-                                  />
+                              <td>{platform.address 
+                                  && <AddressLink
+                                      value={platform.address.address}
+                                      type="address"
+                                      
+                                    />}
                               </td>
                             </tr>
                           ))

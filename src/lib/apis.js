@@ -73,7 +73,7 @@ export default class Apis {
 
   //eraswap.technology
   static getESPrice = () =>
-    ajax('https://eraswap.technology/probit/getESPrice');
+    ajax(`${baseUrl}/third-party/es-price`);
   static esTotalSupply = () =>
     ajax('https://eraswap.technology/eraswap/esTotalSupply');
   static holdersOfEraSwap = () =>

@@ -35,7 +35,7 @@ class Validatorstakings extends Component {
 
   async fetchMonth() {
     const month = await nrtManager().currentNrtMonth();
-    this.month = ethers.BigNumber.from(month).toNumber();
+    this.month = Number(month);
     this.setState({ month: this.month }, this.fetchData);
   }
 
@@ -56,7 +56,7 @@ class Validatorstakings extends Component {
         });
       }
     } catch (e) {
-      console.log(e);
+      console.log('fetchTotalBlocksSealed',e);
     }
   }
 
@@ -244,7 +244,7 @@ class Validatorstakings extends Component {
                                           ) : null}
                                         </td>
                                         <td>
-                                          {validator.delegatedStakes?.map(
+                                          {validator.delegatorstakings?.map(
                                             (stakes, j) => (
                                               <span>
                                                 ({stakes.address.address} =>{' '}

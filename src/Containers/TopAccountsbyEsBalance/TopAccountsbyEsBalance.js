@@ -61,7 +61,7 @@ class TopAccountsbyEsBalance extends Component {
                     <tr>
                       <th>Rank</th>
                       <th>Address</th>
-                      <th>Name Tag</th>
+                      {/*<th>Name Tag</th>*/}
                       <th>Stake </th>
                       <th>Balance</th>
                       <th>Percentage</th>
@@ -81,7 +81,7 @@ class TopAccountsbyEsBalance extends Component {
                               type="address"
                             />
                           </td>
-                          <td>{account.label || '-'}</td>
+                          {/*<td>{account.label || '-'}</td>*/}
                           <td>
                             <span className="">
                               {formatEther(account.stakes)}
@@ -92,7 +92,7 @@ class TopAccountsbyEsBalance extends Component {
                               {formatEther(account.balance || '0x0')} ES
                             </span>
                           </td>
-                          <td>3.45758416% </td>
+                          <td>N/A </td>
                           <td>{account.transactions}</td>
                         </tr>
                       ))

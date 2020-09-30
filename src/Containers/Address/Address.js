@@ -29,7 +29,6 @@ class Address extends Component {
       data: {
         label: null,
         balance: null,
-        nativeBalance: null,
       },
       isLoading: true,
       transactions: {
@@ -57,7 +56,6 @@ class Address extends Component {
           data: {
             label: null,
             balance: null,
-            nativeBalance: null,
           },
           isLoading: true,
           transactions: {
@@ -76,53 +74,40 @@ class Address extends Component {
     }
   }
 
-  async fetchNativeBalance() {
-    const balance = await providerESN.getBalance(
-      this.props.match.params.address
-    );
+  // async fetchNativeBalance() {
+  //   const balance = await providerESN.getBalance(
+  //     this.props.match.params.address
+  //   );
 
-    this.setState({
-      data: {
-        ...this.state.data,
-        nativeBalance: balance.toNumber(),
-      },
-    });
-  }
+  //   this.setState({
+  //     data: {
+  //       ...this.state.data,
+  //       nativeBalance: balance.toNumber(),
+  //     },
+  //   });
+  // }
 
-  async fetchBalance() {
-    const customHttpProvider = new ethers.providers.JsonRpcProvider(
-      config.nodeUrl
-    );
-    const balance = await customHttpProvider.getBalance(this.state.address);
-    this.setState({
-      data: {
-        ...this.state.data,
-        label: this.state.label,
-        balance: ethers.utils.formatEther(balance),
-      },
-    });
-  }
+  // async fetchBalance() {
+  //   this.setState({
+  //     data: {
+  //       ...this.state.data,
+  //       balance: 
+  //     },
+  //   });
+  // }
 
   async fetchAddress() {
+    let res = {};
     try {
-      const res = await Apis.fetchAddress(this.state.address);
-
-      if (Object.keys(res).length)
-        this.setState({
-          data: {
-            ...this.state.data,
-            label: res.label,
-            balance: formatEther(res.balance),
-          },
-          isLoading: false,
-        });
-      // else this.openSnackBar(res.error.message);
+      res = await Apis.fetchAddress(this.state.address);
     } catch (e) {
       console.log(e);
-      // this.openSnackBar(e);
+    } finally {
       this.setState({
-        ...this.state.data,
-        data: {},
+        data: {
+          balance: ethers.utils.formatEther(await providerESN.getBalance(this.state.address)),
+          label: res?.label || '-',
+        },
         isLoading: false,
       });
     }
@@ -134,8 +119,8 @@ class Address extends Component {
 
       this.setState({
         transactions: {
-          data: res.data,
-          total: res.total,
+          data: res?.data || [],
+          total: res?.total || 0,
           isLoading: false,
         },
       });
@@ -180,22 +165,6 @@ class Address extends Component {
                             colSpan="2"
                           >
                             Overview
-                          </td>
-                        </tr>
-                        <tr>
-                          <td
-                            data-toggle="tooltip"
-                            data-placement="top"
-                            title=""
-                          >
-                            Native Balance
-                          </td>
-                          <td
-                            data-toggle="tooltip"
-                            data-placement="top"
-                            title=""
-                          >
-                            {this.state.data.nativeBalance ?? '-'} ES
                           </td>
                         </tr>
                         <tr>
