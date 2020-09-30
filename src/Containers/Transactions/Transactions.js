@@ -100,6 +100,7 @@ class Transaction extends Component {
                         <th>Txn Hash </th>
                         <th>Block</th>
                         <th>Age</th>
+                        <th>Type of Transaction</th>
                         <th>From</th>
                         <th>To</th>
                         <th>Value</th>
@@ -109,7 +110,7 @@ class Transaction extends Component {
                     <tbody>
                       {this.state.transactions.isLoading ? (
                         <tr>
-                          <td colSpan="7">Loading...</td>
+                          <td colSpan="8">No Transactions Reflecting Here</td>
                         </tr>
                       ) : this.state.transactions.data?.length ? (
                         this.state.transactions.data?.map((transaction, i) => {
@@ -132,6 +133,9 @@ class Transaction extends Component {
                                 {toLocaleTimestamp(
                                   transaction.block.timestamp
                                 ).fromNow()}
+                              </td>
+                              <td>
+                                -
                               </td>
                               <td>
                                 {transaction.fromAddress.label && (
