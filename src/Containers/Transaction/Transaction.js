@@ -228,6 +228,12 @@ class Transaction extends Component {
                               </td>
                             </tr>
                             <tr>
+                              <td>Type of Transactions:</td>
+                              <td>
+                               -
+                              </td>
+                            </tr>
+                            <tr>
                               <td
                                 data-toggle="tooltip"
                                 data-placement="top"
