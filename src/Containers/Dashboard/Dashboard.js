@@ -2087,8 +2087,7 @@ class Dashboard extends Component {
                     <div className="flex-sect4-box">
                       <div className="timeally-mark2"></div>
                       <p className="sect4-context">
-                        ES Staked in TimeAlly 1 LT
-                        {0}
+                        ES Staked in TimeAlly 1 LT  {0}
                       </p>
                     </div>
                   </Col>

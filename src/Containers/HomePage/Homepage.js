@@ -474,7 +474,7 @@ class Homepage extends Component {
                         <div className="col-lg-6">
                           <p className="era-head">MARKET CAP</p>
                           <p className="era-value text-black">
-                            $ {this.state.marketCap}
+                            USDT {this.state.marketCap}
                           </p>
                         </div>
                       </div>
@@ -534,7 +534,7 @@ class Homepage extends Component {
                           <p className="era-value text-black">
                              {isFinite(this.state.volume24 * this.state.esPriceUSDT) ?
                                (this.state.volume24 * this.state.esPriceUSDT)
-                               : '-'} $
+                               : '-'} USDT
                           </p>
                         </div>
                       </div>
@@ -583,11 +583,12 @@ class Homepage extends Component {
                             data-placement="top"
                             title=""
                           >
-                            Price in USDT
+                           Last Price in USDT
                           </p>
                           <p className="era-value text-black">
-                            {this.state.esPriceUSDT} $
-                            {' '}{this.state.probitTimestampUSDT && <>@ {moment(moment(this.state.probitTimestampUSDT).toDate()).format('hh:mm A')}</>}
+                            {this.state.esPriceUSDT} USDT
+                            {' '}{this.state.probitTimestampUSDT && <></>}
+                            {/* {' '}{this.state.probitTimestampUSDT && <>@ {moment(moment(this.state.probitTimestampUSDT).toDate()).format('hh:mm A')}</>} */}
                           </p>
                         </div>
                         <div className="col-md-6">
@@ -597,11 +598,12 @@ class Homepage extends Component {
                             data-placement="top"
                             title=""
                           >
-                            Price in BTC
+                           Last Price in BTC
                           </p>
                           <p className="era-value text-black">
                             {this.state.esPriceBTC} BTC
-                            {' '}{this.state.probitTimestampBTC && <>@ {moment(moment(this.state.probitTimestampBTC).toDate()).format('hh:mm A')}</>}
+                            {' '}{this.state.probitTimestampBTC && <></>}
+                            {/* {' '}{this.state.probitTimestampBTC && <>@ {moment(moment(this.state.probitTimestampBTC).toDate()).format('hh:mm A')}</>} */}
                           </p>
                         </div>
                         
