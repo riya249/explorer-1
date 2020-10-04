@@ -25,6 +25,7 @@ import {
   formatEther,
 } from '../../lib/parsers';
 import { nrtManager } from '../../ethereum/NrtManager';
+import { timeAllyManager } from '../../ethereum/TimeallyManager';
 import { nrtAddress } from '../../config/config';
 import { providerESN } from '../../ethereum/Provider';
 
@@ -73,6 +74,7 @@ class Homepage extends Component {
       averageBlock: null,
       latestBlockNumber: null,
       nrtCompletedPercent: 0,
+      burnPool: 0
     };
 
     this.fetchTransactions = this.fetchTransactions.bind(this);
@@ -85,12 +87,21 @@ class Homepage extends Component {
     this.fetchESPrice().catch((e) => console.log(e));
     this.fetchTransactionsInterval().catch((e) => console.log(e));
     this.fetchTransactionsCount().catch((e) => console.log(e));
-    this.getPlatformDetailsAllTime().catch((e) => console.log(e));
+    this.fetchTotalStakedES().catch((e) => console.log(e));
     this.fetchValidators().catch((e) => console.log(e));
     this.fetchAverageBlock().catch((e) => console.log(e));
     this.nrtTicker().catch((e) => console.log(e));
     this.esTotalSupply().catch((e) => console.log(e));
     this.fetchTotalSupply().catch((e) => console.log(e));
+    this.fetchBurnPool().catch((e) => console.log(e));
+    
+  }
+
+  async fetchBurnPool() {
+    const burnBal = await nrtManager.burnPoolBalance();
+    this.setState({
+      burnPool: formatEther(burnBal),
+    });
   }
 
   async nrtTicker() {
@@ -103,7 +114,7 @@ class Homepage extends Component {
     // let nextNrtTimestamp = deployTimestamp + monthDuration * (currentNrtMonthNumber + 1);
 
     const lastNrtReleaseTimestamp = (
-      await nrtManager().lastReleaseTimestamp()
+      await nrtManager.lastReleaseTimestamp()
     ).toNumber();
 
     setInterval(() => {
@@ -165,7 +176,7 @@ class Homepage extends Component {
 
   async fetchValidators() {
     try {
-      const month = await nrtManager().currentNrtMonth();
+      const month = await nrtManager.currentNrtMonth();
       if (month !== null) {
         const res = await Apis.fetchValidatorsWithLastBlock(month);
         console.log('Validators res', res);
@@ -356,20 +367,31 @@ class Homepage extends Component {
     }
   };
 
-  async getPlatformDetailsAllTime() {
-    let res;
-    try {
-      res = await Apis.getPlatformDetailsAllTime();
-      console.log('getPlatformDetailsAllTime - res', res);
-    } catch (e) {
-      console.log(e);
-    } finally {
-      this.setState({
-        totalESStaked: res?.data?.totalStaking
-          ? lessDecimals(res.data.totalStaking)
-          : '-',
-      });
-    }
+  // async getPlatformDetailsAllTime() {
+  //   let res;
+  //   try {
+  //     res = await Apis.getPlatformDetailsAllTime();
+  //     console.log('getPlatformDetailsAllTime - res', res);
+  //   } catch (e) {
+  //     console.log(e);
+  //   } finally {
+  //     this.setState({
+  //       totalESStaked: res?.data?.totalStaking
+  //         ? lessDecimals(res.data.totalStaking)
+  //         : '-',
+  //     });
+  //   }
+  // }
+
+  async fetchTotalStakedES() {
+    const currentNrtMonth = await nrtManager.currentNrtMonth();
+    // const nrtReleasePromise
+    const nextMonthActiveStakes = await timeAllyManager.getTotalActiveStaking(
+      currentNrtMonth
+    );
+    this.setState({
+      totalESStaked: formatEther(nextMonthActiveStakes)
+    });
   }
 
   async fetchTotalSupply() {
@@ -503,7 +525,7 @@ class Homepage extends Component {
                         <div className="col-lg-6">
                           <p className="era-head">AVAILABLE SUPPLY</p>
                           <p className="era-value text-black">
-                            {this.state.availableSupply} ES
+                            {this.state.totalSupply - this.state.burnPool} ES
                           </p>
                         </div>
                         <div className="col-lg-6">

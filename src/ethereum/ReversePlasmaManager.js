@@ -1,6 +1,8 @@
 const { reversePlasmaAddress } = require('../config/config');
 const { Contract, ethers } = require('ethers');
 const { providerESN } = require('./Provider');
+const { ReversePlasmaFactory } = require('eraswap-sdk/dist/typechain/ESN');
+const { es } = require('eraswap-sdk/dist');
 
 const _abi = [
   {
@@ -355,12 +357,15 @@ const _abi = [
   },
 ];
 
-const reversePlasmaManager = new Contract(
-  reversePlasmaAddress,
-  _abi,
-  new ethers.providers.JsonRpcProvider('https://node2.testnet.eraswap.network')
-);
+// const reversePlasmaManager = new Contract(
+//   reversePlasmaAddress,
+//   _abi,
+//   new ethers.providers.JsonRpcProvider('https://node2.testnet.eraswap.network')
+// );
 
 module.exports = {
-  reversePlasmaManager,
+  reversePlasmaManager: ReversePlasmaFactory.connect(
+    es.addresses[process.env.NODE_ENV].ESN.reversePlasma,
+    providerESN
+  ),
 };

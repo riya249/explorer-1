@@ -16,7 +16,7 @@ import { providerESN } from '../../ethereum/Provider';
 
 const COLORS = ['#959595', '#747FEB'];
 
-const nrtManagerInst = nrtManager();
+// const nrtManager = nrtManager();
 
 class Dashboard extends Component {
   esPrice = null;
@@ -475,7 +475,7 @@ class Dashboard extends Component {
   }
 
   async fetchLuckPool() {
-    const luckBal = await nrtManagerInst.luckPoolBalance();
+    const luckBal = await nrtManager.luckPoolBalance();
     this.setState({
       eraswap: {
         data: {
@@ -487,7 +487,7 @@ class Dashboard extends Component {
   }
 
   async fetchBurnPool() {
-    const burnBal = await nrtManagerInst.burnPoolBalance();
+    const burnBal = await nrtManager.burnPoolBalance();
     this.setState({
       eraswap: {
         data: {
@@ -515,12 +515,12 @@ class Dashboard extends Component {
   }
 
   async fetchESFromNRT() {
-    console.log({ nrtManagerInst });
-    const logs = await nrtManagerInst.queryFilter(
-      nrtManagerInst.filters.NRT(null, null, null)
+    console.log({ nrtManager });
+    const logs = await nrtManager.queryFilter(
+      nrtManager.filters.NRT(null, null, null)
     );
     const nrtReleases = logs
-      .map((log) => nrtManagerInst.interface.parseLog(log))
+      .map((log) => nrtManager.interface.parseLog(log))
       .map((parsedLog) => {
         const nrtRelease = parsedLog.args[1];
         return nrtRelease;
@@ -554,7 +554,7 @@ class Dashboard extends Component {
   }
 
   async fetchTotalStakedES() {
-    const currentNrtMonth = await nrtManagerInst.currentNrtMonth();
+    const currentNrtMonth = await nrtManager.currentNrtMonth();
     // const nrtReleasePromise
     const nextMonthActiveStakes = await timeAllyManager.getTotalActiveStaking(
       currentNrtMonth
@@ -566,7 +566,7 @@ class Dashboard extends Component {
           totalESStaked: formatEther(nextMonthActiveStakes),
         },
       },
-    });
+    },() => console.log('totalESStaked',this.state.eraswap.data.totalESStaked));
   }
 
   async etherPriceUsd() {
@@ -635,19 +635,13 @@ class Dashboard extends Component {
     } catch (e) {
       console.log(e);
     } finally {
-      if (
-        res?.data &&
-        res?.data.length &&
-        res?.data[0]?.last
-      ) {
-        this.esPrice = Number(res?.data[0].last);
+        this.esPrice = Number(res.probitResponse.data[0].last);
         this.updateMarketCap();
-      }
 
       let totalVolume = 0;
 
       for (var x in res?.data) {
-        totalVolume += Number(res?.data[x].base_volume);
+        totalVolume += Number(res?.probitResponse?.data[x].base_volume);
       }
       // $('#volume-of-probit').html(window.lessDecimals(String(window.esPrice * totalVolume)) + ' USDT');
       console.log('this.esPrice,totalVolume', this.esPrice, totalVolume);
@@ -655,18 +649,8 @@ class Dashboard extends Component {
         eraswap: {
           data: {
             ...this.state.eraswap.data,
-            esUSDT:
-              this.esPrice ||
-              (res?.data &&
-                res?.data[0]?.last)
-                ? res?.data[0]?.last
-                : '-',
-            esBTC:
-              res?.data &&
-              res?.data[1]?.last
-                ? moreDecimals(res?.data[1]?.last) +
-                  ' BTC'
-                : '-',
+            esUSDT: res.probitResponse.data[0].last || '-',
+            esBTC: res.probitResponse.data[1].last || '-',
             probitVolume: lessDecimals(String(this.esPrice * totalVolume)),
           },
           isLoading: false,
@@ -700,11 +684,11 @@ class Dashboard extends Component {
             //   '-',
             circulatingOutsideTA: res?.data?.outsideTimeAllySupply
               ? lessDecimals(res.data.outsideTimeAllySupply)
-              : '-',
+              : 0,
           },
           isLoading: false,
         },
-      });
+      },() => console.log('circulatingOutsideTA',this.state.eraswap.data.circulatingOutsideTA));
     }
   }
 
@@ -752,27 +736,27 @@ class Dashboard extends Component {
     }
   }
 
-  async burnTokenBal() {
-    let res;
-    try {
-      res = await Apis.burnTokenBal();
-      console.log('burnTokenBal - res', res);
-    } catch (e) {
-      console.log(e);
-    } finally {
-      this.setState({
-        eraswap: {
-          data: {
-            ...this.state.eraswap.data,
-            burnPool: res?.data?.burnTokenBal
-              ? lessDecimals(res.data.burnTokenBal)
-              : '-',
-          },
-          isLoading: false,
-        },
-      });
-    }
-  }
+  // async burnTokenBal() {
+  //   let res;
+  //   try {
+  //     res = await Apis.burnTokenBal();
+  //     console.log('burnTokenBal - res', res);
+  //   } catch (e) {
+  //     console.log(e);
+  //   } finally {
+  //     this.setState({
+  //       eraswap: {
+  //         data: {
+  //           ...this.state.eraswap.data,
+  //           burnPool: res?.data?.burnTokenBal
+  //             ? lessDecimals(res.data.burnTokenBal)
+  //             : '-',
+  //         },
+  //         isLoading: false,
+  //       },
+  //     });
+  //   }
+  // }
 
   async totalTokensBurned() {
     let res;
@@ -922,36 +906,36 @@ class Dashboard extends Component {
     }
   }
 
-  async getPlatformDetailsAllTime() {
-    let res;
-    try {
-      res = await Apis.getPlatformDetailsAllTime();
-      console.log('getPlatformDetailsAllTime - res', res);
-    } catch (e) {
-      console.log(e);
-    } finally {
-      this.setState({
-        eraswap: {
-          data: {
-            ...this.state.eraswap.data,
-            totalESStaked: res?.data?.totalStaking
-              ? lessDecimals(res.data.totalStaking)
-              : '-',
-          },
-          isLoading: false,
-        },
-        timeallyStakers: {
-          data: {
-            ...this.state.timeallyStakers.data,
-            stakings: res?.data?.totalStaking
-              ? lessDecimals(res?.data?.totalStaking) + ' ES'
-              : '-',
-          },
-          isLoading: false,
-        },
-      });
-    }
-  }
+  // async getPlatformDetailsAllTime() {
+  //   let res;
+  //   try {
+  //     res = await Apis.getPlatformDetailsAllTime();
+  //     console.log('getPlatformDetailsAllTime - res', res);
+  //   } catch (e) {
+  //     console.log(e);
+  //   } finally {
+  //     this.setState({
+  //       eraswap: {
+  //         data: {
+  //           ...this.state.eraswap.data,
+  //           totalESStaked: res?.data?.totalStaking
+  //             ? lessDecimals(res.data.totalStaking)
+  //             : '-',
+  //         },
+  //         isLoading: false,
+  //       },
+  //       timeallyStakers: {
+  //         data: {
+  //           ...this.state.timeallyStakers.data,
+  //           stakings: res?.data?.totalStaking
+  //             ? lessDecimals(res?.data?.totalStaking) + ' ES'
+  //             : '-',
+  //         },
+  //         isLoading: false,
+  //       },
+  //     });
+  //   }
+  // }
 
   async getNumberOfBets() {
     let res;
@@ -1657,7 +1641,7 @@ class Dashboard extends Component {
     const monthDuration = 2629744 * 1000;
 
     const lastNrtReleaseTimestamp = (
-      await nrtManagerInst.lastReleaseTimestamp()
+      await nrtManager.lastReleaseTimestamp()
     ).toNumber();
 
     setInterval(() => {
@@ -1810,7 +1794,7 @@ class Dashboard extends Component {
                   <Card.Body>
                     <p className="sect-txt-bold">TOTAL SUPPLY</p>
                     <p className="value-dash-txt">
-                      {this.state.eraswap.data.esTotalSupply} ES
+                      {isFinite(Number(this.state.eraswap.data.totalESStaked) + Number(this.state.eraswap.data.circulatingOutsideTA)) ? (Number(this.state.eraswap.data.totalESStaked) + Number(this.state.eraswap.data.circulatingOutsideTA)) : 'Loading...'} ES
                     </p>
                   </Card.Body>
                 </Card>
@@ -1946,8 +1930,7 @@ class Dashboard extends Component {
                   <Card.Body>
                     <p className="sect-txt-bold">ASSETS AVAILABLE</p>
                     <p className="value-dash-txt">
-                      {this.state.eraswap.data.esTotalSupply -
-                        this.state.eraswap.data.burnPool}{' '}
+                      {isFinite(this.state.eraswap.data.esTotalSupply - this.state.eraswap.data.burnPool)? (this.state.eraswap.data.esTotalSupply - this.state.eraswap.data.burnPool) : 'Loading...'}{' '}
                       ES
                     </p>
                   </Card.Body>
