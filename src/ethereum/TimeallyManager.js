@@ -1,6 +1,8 @@
+const { es } = require('eraswap-sdk/dist');
+const { TimeAllyManagerFactory } = require('eraswap-sdk/dist/typechain/ESN');
 const { ethers, Contract } = require('ethers');
 const { timeAllyAddress } = require('../config/config');
-const provider = require('./Provider');
+const { providerESN } = require('./Provider');
 
 const _abi = [
   {
@@ -320,14 +322,17 @@ const _abi = [
   },
 ];
 
-const timeAllyManager = new Contract(
-  timeAllyAddress,
-  _abi,
-  new ethers.providers.JsonRpcProvider(
-    /*nodeUrl || */ 'https://node2.testnet.eraswap.network'
-  )
-);
+// const timeAllyManager = new Contract(
+//   timeAllyAddress,
+//   _abi,
+//   new ethers.providers.JsonRpcProvider(
+//     /*nodeUrl || */ 'https://node2.testnet.eraswap.network'
+//   )
+// );
 
 module.exports = {
-  timeAllyManager,
+  timeAllyManager: TimeAllyManagerFactory.connect(
+    es.addresses[process.env.NODE_ENV].ESN.timeallyManager,
+    providerESN
+  ),
 };

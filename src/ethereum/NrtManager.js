@@ -1,6 +1,8 @@
 const { nrtAddress } = require('../config/config');
 const { Contract, ethers } = require('ethers');
-const provider = require('./Provider');
+const { providerESN } = require('./Provider');
+const { NrtManagerFactory } = require('eraswap-sdk/dist/typechain/ESN');
+const { es } = require('eraswap-sdk/dist');
 
 const _abi = [
   {
@@ -351,16 +353,19 @@ const _abi = [
   },
 ];
 
-const nrtManager = () => {
-  return new Contract(
-    nrtAddress,
-    _abi,
-    new ethers.providers.JsonRpcProvider(
-      /*nodeUrl ||*/ 'https://node2.testnet.eraswap.network'
-    )
-  );
-};
+// const nrtManager = () => {
+//   return new Contract(
+//     nrtAddress,
+//     _abi,
+//     new ethers.providers.JsonRpcProvider(
+//       /*nodeUrl ||*/ 'https://node2.testnet.eraswap.network'
+//     )
+//   );
+// };
 
 module.exports = {
-  nrtManager,
+  nrtManager: NrtManagerFactory.connect(
+    providerESN.resolveAddress(es.addresses[process.env.NODE_ENV].ESN.nrtManager),
+    providerESN
+  )
 };

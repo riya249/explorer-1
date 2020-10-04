@@ -1,6 +1,9 @@
 const { plasmaAddress } = require('../config/config');
 const { Contract } = require('ethers');
 const { providerEth } = require('./Provider');
+const { ReversePlasmaFactory } = require('eraswap-sdk/dist/typechain/ESN');
+const { es } = require('eraswap-sdk/dist');
+const { PlasmaManagerFactory } = require('eraswap-sdk/dist/typechain/ETH');
 
 const _abi = [
   {
@@ -202,8 +205,9 @@ const _abi = [
   },
 ];
 
-const plasmaManager = new Contract(plasmaAddress, _abi, providerEth);
+// const plasmaManager = new Contract(
+//   es.addresses[process.env.NODE_ENV].ETH.plasmaManager, _abi, providerEth);
 
 module.exports = {
-  plasmaManager,
+  plasmaManager: PlasmaManagerFactory.connect(es.addresses[process.env.NODE_ENV].ETH.plasmaManager,providerEth),
 };

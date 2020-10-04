@@ -1,6 +1,8 @@
+const { es } = require('eraswap-sdk/dist');
+const { ValidatorManagerFactory } = require('eraswap-sdk/dist/typechain/ESN');
 const { ethers, Contract } = require('ethers');
 const { validatorsStakesAddress } = require('../config/config');
-const provider = require('./Provider');
+const {providerESN } = require('./Provider');
 
 const _abi = [
   {
@@ -734,14 +736,17 @@ const _abi = [
   },
 ];
 
-const validatorsManager = new Contract(
-  validatorsStakesAddress,
-  _abi,
-  new ethers.providers.JsonRpcProvider(
-    /*nodeUrl || */ 'https://node2.testnet.eraswap.network'
-  )
-);
+// const validatorsManager = new Contract(
+//   validatorsStakesAddress,
+//   _abi,
+//   new ethers.providers.JsonRpcProvider(
+//     /*nodeUrl || */ 'https://node2.testnet.eraswap.network'
+//   )
+// );
 
 module.exports = {
-  validatorsManager,
+  validatorsManager: ValidatorManagerFactory.connect(
+    es.addresses[process.env.NODE_ENV].ESN.validatorManager,
+    providerESN
+  ),
 };

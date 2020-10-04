@@ -1,4 +1,5 @@
 const { Contract, ethers } = require('ethers');
+const { providerESN } = require('./Provider');
 
 const _abi = [
   {
@@ -418,9 +419,7 @@ const stakingManager = (stakingAddress) =>
   new Contract(
     stakingAddress,
     _abi,
-    new ethers.providers.JsonRpcProvider(
-      /*nodeUrl ||*/ 'https://node2.testnet.eraswap.network'
-    )
+    providerESN
   );
 
 module.exports = { stakingManager };
