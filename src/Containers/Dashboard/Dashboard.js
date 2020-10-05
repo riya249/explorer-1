@@ -268,7 +268,10 @@ class Dashboard extends Component {
       const dayswappersInst = DayswappersWithMigrationFactory.connect(es.addresses[process.env.NODE_ENV].ESN.dayswappers,providerESN);
       const totalDayswappers = (await dayswappersInst.queryFilter(dayswappersInst.filters.SeatTransfer(null,null,null))).length
       const activeUsers = (await dayswappersInst.queryFilter(dayswappersInst.filters.Active(null,this.currentNrtMonth))).length
-      const kycResolvedUsers = (await dayswappersInst.queryFilter(dayswappersInst.filters.KycResolve(null))).length
+
+      const kycdappInst = KycDappFactory.connect(es.addresses[process.env.NODE_ENV].ESN.kycdapp,providerESN);
+
+      const kycResolvedUsers = (await kycdappInst.queryFilter(kycdappInst.filters.KycApplied(null,null,null,null))).length
 
       this.setState({
         dayswappers: {
