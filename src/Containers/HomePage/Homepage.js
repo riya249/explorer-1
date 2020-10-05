@@ -533,7 +533,7 @@ class Homepage extends Component {
                           <p className="era-head"
                           data-toggle="tooltip"
                           data-placement="top"
-                          title="Total ES  Supply - Total ES  Burnt">
+                          title="Total Supply - Officially Burnt">
                             AVAILABLE SUPPLY</p>
                           <p className="era-value text-black">
                             {availableSupply > -1 ? availableSupply : 'Loading...'} ES
@@ -544,7 +544,7 @@ class Homepage extends Component {
                             className="era-head"
                             data-toggle="tooltip"
                             data-placement="top"
-                            title="Total numbers of EraSwap that are circulating in the market including staking's & un-burned"
+                            title="Total numbers of ES  every realized or produced in market including stakings & burnt"
                           >
                             TOTAL SUPPLY / CIRCULATING SUPPLY
                           </p>

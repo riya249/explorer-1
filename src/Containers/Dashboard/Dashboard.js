@@ -1678,7 +1678,7 @@ class Dashboard extends Component {
                     <p className="sect-txt-bold"
                     data-toggle="tooltip"
                     data-placement="top"
-                    title="Total numbers of EraSwap that are circulating in the market including staking's & un-burned"
+                    title="Total numbers of ES  every realized or produced in market including stakings & burnt "
                     >TOTAL SUPPLY</p>
                     <p className="value-dash-txt">
                       {isFinite(Number(this.state.totalESStaked) + Number(this.state.circulatingOutsideTA)) ? (Number(this.state.totalESStaked) + Number(this.state.circulatingOutsideTA)) : 'Loading...'} ES
