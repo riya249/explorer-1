@@ -202,7 +202,7 @@ class Dashboard extends Component {
           levelOneCount: 0,
           levelTwoCount: 0,
           levelThreeCount: 0,
-          allPlatformKycs: 0,
+          // allPlatformKycs: 0,
         },
         isLoading: false,
       },
@@ -260,8 +260,11 @@ class Dashboard extends Component {
 
     this.fetchESOwnersCount().catch(e => console.log('fetchESOwnersCount error',e));
     this.fetchDayswappersData().catch(e => console.log('fetchDayswappersData error',e));
+    this.getKycData().catch(e => console.log('getKycData error',e));
     this.nrtTicker();
   }
+
+  
 
   async fetchDayswappersData(){
     try{
@@ -299,12 +302,55 @@ class Dashboard extends Component {
   }
 
 
-  async getTotalKycApproved(){
+  async getKycData(){
+    // try{
+    //   const kycInst = await KycDappFactory.connect(es.addresses[process.env.REACT_APP_NODE_ENV].kycdapp,providerESN);
+    //   // kycInst.filters.
+    // }catch(e){
+    //   console.log(e);
+    // }
+
     try{
-      const kycInst = await KycDappFactory.connect(es.addresses[process.env.REACT_APP_NODE_ENV].kycdapp,providerESN);
-      // kycInst.filters.
+      const res = await Apis.fetchKycDappStatistics();
+      console.log('fetchKycDappStatistics res',res);
+      if(res?.status){
+        this.setState({
+          kycDapp: {
+            data: {
+              levelOneCount: res.data.levelOneCount,
+              levelTwoCount: res.data.levelTwoCount,
+              levelThreeCount: res.data.levelThreeCount,
+              // allPlatformKycs: 0,
+            },
+            isLoading: false,
+          },
+        })
+      } else {
+        this.setState({
+          kycDapp: {
+            data: {
+              levelOneCount: '-',
+              levelTwoCount: '-',
+              levelThreeCount: '-',
+              // allPlatformKycs: 0,
+            },
+            isLoading: false,
+          },
+        })
+      }
     }catch(e){
-      console.log(e);
+      console.log('getKycData error: ',e);
+      this.setState({
+        kycDapp: {
+          data: {
+            levelOneCount: '-',
+            levelTwoCount: '-',
+            levelThreeCount: '-',
+            // allPlatformKycs: 0,
+          },
+          isLoading: false,
+        },
+      })
     }
   }
 
@@ -2346,12 +2392,12 @@ class Dashboard extends Component {
                       {this.state.kycDapp.data.levelThreeCount}
                     </p>
                   </div>
-                  <div>
+                  {/* <div>
                     <p className="sect4-context">All Platform KYCs</p>
                     <p className="sect4-value">
                       {this.state.kycDapp.data.allPlatformKycs}
                     </p>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </Col>
