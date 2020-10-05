@@ -15,7 +15,7 @@ import { nrtAddress } from '../../config/config';
 import { providerESN } from '../../ethereum/Provider';
 
 const COLORS = ['#959595', '#747FEB'];
-
+const MAX_SUPPLY = 9100000000;
 // const nrtManager = nrtManager();
 
 class Dashboard extends Component {
@@ -546,7 +546,7 @@ class Dashboard extends Component {
       eraswap: {
         data: {
           ...this.state.eraswap.data,
-          esTotalSupply: 9100000000 - formatEther(nrtBalance),
+          esTotalSupply: MAX_SUPPLY - formatEther(nrtBalance),
         },
         isLoading: false,
       },
@@ -640,7 +640,7 @@ class Dashboard extends Component {
 
       let totalVolume = 0;
 
-      for (var x in res?.data) {
+      for (var x in res?.probitResponse?.data) {
         totalVolume += Number(res?.probitResponse?.data[x].base_volume);
       }
       // $('#volume-of-probit').html(window.lessDecimals(String(window.esPrice * totalVolume)) + ' USDT');
@@ -1803,7 +1803,7 @@ class Dashboard extends Component {
                 <Card>
                   <Card.Body>
                     <p className="sect-txt-bold">MAXIMUM SUPPLY</p>
-                    <p className="value-dash-txt">9100000000 ES</p>
+                    <p className="value-dash-txt">{MAX_SUPPLY} ES</p>
                   </Card.Body>
                 </Card>
               </Col>
