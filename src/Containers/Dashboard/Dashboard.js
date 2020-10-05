@@ -23,7 +23,7 @@ const MAX_SUPPLY = 9100000000;
 class Dashboard extends Component {
   esPrice = null;
   esCurrentSupply = null;
-  currentNrtMonth = '0';
+  currentNrtMonth = '-1';
 
   constructor(props) {
     super(props);
@@ -1542,7 +1542,7 @@ class Dashboard extends Component {
 
   render() {
     const currentSupply = this.state.esTotalSupply - this.state.totalESStaked - this.state.burnPool;
-    const availableSupply = this.state.totalSupply - this.state.burnPool;
+    const availableSupply = this.state.esTotalSupply - this.state.burnPool;
     return (
       <div className="bgd-dash-color dashboard-box">
         <div className="booking-hero-bgd booking-hero-bgd-inner">
@@ -1595,7 +1595,7 @@ class Dashboard extends Component {
                     <div className="es-box-ds">
                       <p className="supply-txt">Current NRT Month</p>
                       <p className="supply-txt">
-                      -
+                      {this.currentNrtMonth < 0 ? 'Loading...' : this.currentNrtMonth}
                       </p>
                     </div>
                   </div>
@@ -1650,7 +1650,7 @@ class Dashboard extends Component {
                     title="Total numbers of ES  every realized or produced in market including stakings & burnt "
                     >TOTAL SUPPLY</p>
                     <p className="value-dash-txt">
-                      {isFinite(Number(this.state.totalESStaked) + Number(this.state.circulatingOutsideTA)) ? (Number(this.state.totalESStaked) + Number(this.state.circulatingOutsideTA)) : 'Loading...'} ES
+                      {isFinite(this.state.esTotalSupply) ? (this.state.esTotalSupply) : 'Loading...'} ES
                     </p>
                   </Card.Body>
                 </Card>
