@@ -29,6 +29,8 @@ import { timeAllyManager } from '../../ethereum/TimeallyManager';
 import { nrtAddress } from '../../config/config';
 import { providerESN } from '../../ethereum/Provider';
 
+const MAX_SUPPLY = 9100000000;
+
 class Homepage extends Component {
   snackbarRef = React.createRef();
   search = '';
@@ -46,7 +48,7 @@ class Homepage extends Component {
       probitTimestampBTC: '',
       availableSupply: 0,
       totalSupply: 0,
-      maxSupply: 9100000000,
+      maxSupply: MAX_SUPPLY,
       volume24: 0,
       backedAmt: 0,
       totalESStaked: 0,
@@ -91,7 +93,7 @@ class Homepage extends Component {
     this.fetchValidators().catch((e) => console.log(e));
     this.fetchAverageBlock().catch((e) => console.log(e));
     this.nrtTicker().catch((e) => console.log(e));
-    this.esTotalSupply().catch((e) => console.log(e));
+    this.esCurrentSupply().catch((e) => console.log(e));
     this.fetchTotalSupply().catch((e) => console.log(e));
     this.fetchBurnPool().catch((e) => console.log(e));
     
@@ -336,17 +338,17 @@ class Homepage extends Component {
     }
   }
 
-  async esTotalSupply() {
+  async esCurrentSupply() {
     let res;
     try {
       res = await Apis.esTotalSupply();
     } catch (e) {
       console.log(e);
     } finally {
-      if (res?.data?.totalSupply) {
-        this.esCurrentSupply = Number(lessDecimals(res.data.totalSupply));
-        this.updateMarketCap();
-      }
+      // if (res?.data?.totalSupply) {
+        // this.esCurrentSupply = Number(lessDecimals(res.data.totalSupply));
+        // this.updateMarketCap();
+      // }
       this.setState({
         availableSupply: res?.data?.outsideTimeAllySupply
           ? lessDecimals(res.data.outsideTimeAllySupply)
@@ -398,7 +400,7 @@ class Homepage extends Component {
     const nrtBalance = await providerESN.getBalance(nrtAddress);
 
     this.setState({
-      totalSupply: 9100000000 - formatEther(nrtBalance),
+      totalSupply: MAX_SUPPLY - formatEther(nrtBalance),
     });
   }
 
@@ -429,6 +431,7 @@ class Homepage extends Component {
   }
 
   render() {
+    const availableSupply = this.state.totalSupply - this.state.totalESStaked - this.state.burnPool;
     return (
       <div>
         <div className="booking-hero-bgd">
@@ -496,7 +499,7 @@ class Homepage extends Component {
                         <div className="col-lg-6">
                           <p className="era-head">MARKET CAP</p>
                           <p className="era-value text-black">
-                            USDT {this.state.marketCap}
+                            USDT {(this.state.totalSupply - this.state.burnPool) * this.state.esPriceUSDT}
                           </p>
                         </div>
                       </div>
@@ -533,7 +536,7 @@ class Homepage extends Component {
                           title="Total ES  Supply - Total ES  Burnt">
                             AVAILABLE SUPPLY</p>
                           <p className="era-value text-black">
-                            {this.state.totalSupply - this.state.burnPool} ES
+                            {availableSupply > -1 ? availableSupply : 'Loading...'} ES
                           </p>
                         </div>
                         <div className="col-lg-6">
