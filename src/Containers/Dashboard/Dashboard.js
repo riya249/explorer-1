@@ -382,6 +382,16 @@ class Dashboard extends Component {
     }
   }
 
+  async getTotalSupply(){
+    const nrtBalance = await providerESN.getBalance(es.addresses[process.env.NODE_ENV].ESN.nrtManager);
+    const luckPoolBal = await nrtManager.luckPoolBalance();
+    const burnPoolBal = await nrtManager.burnPoolBalance();
+    const burnAddressBal = await providerESN.getBalance('0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb');
+    const maxSupplyHex = ethers.utils.parseEther(MAX_SUPPLY.toString());
+    const totalSupplyHex = maxSupplyHex.sub(nrtBalance.sub(burnAddressBal).sub(luckPoolBal).sub(burnPoolBal));
+    return Number(ethers.utils.formatEther(totalSupplyHex));
+  }
+
   async fetchESOwnersCount() {
     let res;
     try {
@@ -459,11 +469,14 @@ class Dashboard extends Component {
   }
 
   async fetchTotalSupply() {
-    const nrtBalance = await providerESN.getBalance(nrtAddress);
+    // const nrtBalance = await providerESN.getBalance(nrtAddress);
 
+    // this.setState({
+    //   esTotalSupply: MAX_SUPPLY - formatEther(nrtBalance),
+    // });
     this.setState({
-      esTotalSupply: MAX_SUPPLY - formatEther(nrtBalance),
-    });
+      esTotalSupply: await this.getTotalSupply()
+    })
   }
 
   async fetchTotalStakedES() {
@@ -1529,6 +1542,7 @@ class Dashboard extends Component {
 
   render() {
     const currentSupply = this.state.esTotalSupply - this.state.totalESStaked - this.state.burnPool;
+    const availableSupply = this.state.totalSupply - this.state.burnPool;
     return (
       <div className="bgd-dash-color dashboard-box">
         <div className="booking-hero-bgd booking-hero-bgd-inner">
@@ -1758,7 +1772,7 @@ class Dashboard extends Component {
                   <Card.Body>
                     <p className="sect-txt-bold">ASSETS AVAILABLE</p>
                     <p className="value-dash-txt">
-                      {isFinite(this.state.esTotalSupply - this.state.burnPool) ? (this.state.esTotalSupply - this.state.burnPool) : 'Loading...'}{' '}
+                      {isFinite(availableSupply) ? (availableSupply) : 'Loading...'}{' '}
                       ES
                     </p>
                   </Card.Body>
