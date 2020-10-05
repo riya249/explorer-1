@@ -506,7 +506,11 @@ class Homepage extends Component {
 
                       <div className="flex-transc border-value row">
                         <div className="col-lg-6">
-                          <p className="era-head"> MAX SUPPLY</p>
+                          <p className="era-head"
+                          data-toggle="tooltip"
+                          data-placement="top"
+                          title=" The maximum number of Era Swap that will be ever created released i.e. 9,10,00,00,000 "
+                          > MAX SUPPLY</p>
                           <p className="era-value text-black">
                             {this.state.maxSupply} ES
                           </p>
@@ -526,7 +530,11 @@ class Homepage extends Component {
                       </div>
                       <div className="flex-transc border-value row">
                         <div className="col-lg-6">
-                          <p className="era-head">AVAILABLE SUPPLY</p>
+                          <p className="era-head"
+                          data-toggle="tooltip"
+                          data-placement="top"
+                          title="Total ES  Supply - Total ES  Burnt">
+                            AVAILABLE SUPPLY</p>
                           <p className="era-value text-black">
                             {availableSupply > -1 ? availableSupply : 'Loading...'} ES
                           </p>
@@ -536,9 +544,9 @@ class Homepage extends Component {
                             className="era-head"
                             data-toggle="tooltip"
                             data-placement="top"
-                            title=""
+                            title="Total numbers of EraSwap that are circulating in the market including staking's & un-burned"
                           >
-                            TOTAL SUPPLY
+                            TOTAL SUPPLY / CIRCULATING SUPPLY
                           </p>
                           <p className="era-value text-black">
                             {Number(this.state.totalESStaked) +
@@ -641,6 +649,15 @@ class Homepage extends Component {
                           </p>
                         </div>
                         <div className="col-md-6">
+                        <p className="era-head"
+                        data-toggle="tooltip"
+                        data-placement="top"
+                        title=" Number of ES permanently  removed from ES circulation and send to address . 10% ES collected from KYC Dapp, 10% ES of Fuel collected from Ecosystem Platforms, ES stakings destroyed When a borrower choose to default repayment of  Loan and interest and unused rewards ">
+                          TOTAL ES BURNED</p>
+                          <p className="era-value text-black">
+                            -
+                          </p>
+                           
                           {/*<p
                               className="era-head"
                               data-toggle="tooltip"
@@ -1269,6 +1286,29 @@ class Homepage extends Component {
                 </div>
               </Col>
             </Row>
+          </Container>
+          <Container>
+            <Row className="mt40">
+              <Col lg={12}>
+                <div className="second-section-es card">
+                  <div className="col-lg-12 text-center">
+                    <h5 class="purple-text">
+                     Videos
+                    </h5>
+                  </div>
+                   <Row className="mt40">
+                     
+                           <Col sm={6}>      
+                             <iframe width="100%" height="315" src="https://www.youtube.com/embed/9_C1HPYMn9c" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen/>
+                           </Col>
+                           <Col sm={6}>
+                               <iframe width="100%" height="315" src="https://www.youtube.com/embed/sBCyf0hVVPs?start=3" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen/>
+                          </Col>
+                  </Row>
+                </div>
+              </Col>
+            </Row>
+
           </Container>
         </div>
         <Snackbar ref={this.snackbarRef} />
