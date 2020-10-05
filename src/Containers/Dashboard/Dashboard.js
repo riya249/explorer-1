@@ -1584,13 +1584,13 @@ class Dashboard extends Component {
           <div className="row">
             <Col lg={9}>
               <div className="sub-dashboard">
-                <Col lg={4}>
+                <Col lg={3}>
                   <h5 className="">Era Swap (ES)</h5>
                   <h5 className="sub-dash-head">
                     {this.state.esUSDT} USDT{' '}
                   </h5>
                 </Col>
-                <Col lg={4}>
+                <Col lg={3}>
                   <div className="sub-supply-box mb10">
                     <div className="es-box-ds">
                       <p className="supply-txt">MARKET CAP</p>
@@ -1611,12 +1611,22 @@ class Dashboard extends Component {
                     </div>
                   </div>
                 </Col>
-                <Col lg={4}>
+                <Col lg={3}>
                   <div className="sub-supply-box mb10">
                     <div className="es-box-ds">
                       <p className="supply-txt">TOTAL ES OWNERS</p>
                       <p className="supply-txt">
                         {this.state.esOwners} addresses{' '}
+                      </p>
+                    </div>
+                  </div>
+                </Col>
+                <Col lg={3}>
+                  <div className="sub-supply-box mb10">
+                    <div className="es-box-ds">
+                      <p className="supply-txt">Current NRT Month</p>
+                      <p className="supply-txt">
+                      -
                       </p>
                     </div>
                   </div>
