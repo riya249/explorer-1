@@ -1792,7 +1792,11 @@ class Dashboard extends Component {
               <Col sm={6} lg={2} p-0>
                 <Card>
                   <Card.Body>
-                    <p className="sect-txt-bold">TOTAL SUPPLY</p>
+                    <p className="sect-txt-bold"
+                    data-toggle="tooltip"
+                    data-placement="top"
+                    title="Total numbers of EraSwap that are circulating in the market including staking's & un-burned"
+                    >TOTAL SUPPLY</p>
                     <p className="value-dash-txt">
                       {isFinite(Number(this.state.eraswap.data.totalESStaked) + Number(this.state.eraswap.data.circulatingOutsideTA)) ? (Number(this.state.eraswap.data.totalESStaked) + Number(this.state.eraswap.data.circulatingOutsideTA)) : 'Loading...'} ES
                     </p>
@@ -1802,7 +1806,11 @@ class Dashboard extends Component {
               <Col sm={6} lg={2}>
                 <Card>
                   <Card.Body>
-                    <p className="sect-txt-bold">MAXIMUM SUPPLY</p>
+                    <p className="sect-txt-bold"
+                    data-toggle="tooltip"
+                    data-placement="top"
+                    title="The maximum number of Era Swap that will be ever created released i.e. 9,10,00,00,000">
+                    MAXIMUM SUPPLY</p>
                     <p className="value-dash-txt">9100000000 ES</p>
                   </Card.Body>
                 </Card>
@@ -1885,7 +1893,11 @@ class Dashboard extends Component {
               <Col sm={6} lg={2}>
                 <Card className="">
                   <Card.Body>
-                    <p className="sect-txt-bold">TOTAL ES BURNED</p>
+                    <p className="sect-txt-bold"
+                     data-toggle="tooltip"
+                     data-placement="top"
+                     title=" Number of ES permanently  removed from ES circulation and send to address . 10% ES collected from KYC Dapp, 10% ES of Fuel collected from Ecosystem Platforms, ES stakings destroyed When a borrower choose to default repayment of  Loan and interest and unused rewards ">
+                       TOTAL ES BURNED</p>
                     <p className="value-dash-txt">
                       {this.state.eraswap.data.totalESBurned}
                     </p>
