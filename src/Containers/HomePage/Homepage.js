@@ -499,7 +499,7 @@ class Homepage extends Component {
                         <div className="col-lg-6">
                           <p className="era-head">MARKET CAP</p>
                           <p className="era-value text-black">
-                            USDT {(this.state.totalSupply - this.state.burnPool) - this.state.esPriceUSDT}
+                            USDT {(this.state.totalSupply - this.state.burnPool) * this.state.esPriceUSDT}
                           </p>
                         </div>
                       </div>

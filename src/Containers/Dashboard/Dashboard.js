@@ -25,34 +25,30 @@ class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      eraswap: {
-        data: {
-          esUSDT: 'Loading...',
-          esBTC: 'Loading...',
-          esTotalSupply: 'Loading...',
-          totolESUsers: 'Loading...',
-          totalESStaked: 'Loading...',
-          btcUsd: 'Loading...',
-          ethUsd: 'Loading...',
-          circulatingOutsideTA: 'Loading...',
-          currentNrtES: 'Loading...',
-          numberOfDayswappers: 'Loading...',
-          ecosystemTransactions: 'Loading...',
-          ecosystemVolume: 'Loading...',
-          unUsedPowertokens: 'Loading...',
-          luckPoolNrt: 'Loading...',
-          burnPool: 'Loading...',
-          totalESBurned: 'Loading...',
-          marketCap: 'Loading...',
-          crownfundPrice: 'Loading...',
-          allTimeHigh: '1.42 USDT',
-          allTimeLow: '0.005 USDT',
-          probitVolume: 'Loading...',
-          allTxnsCount: 'Loading...',
-          esOwners: 'Loading',
-        },
-        isLoading: true,
-      },
+      esUSDT: 'Loading...',
+      esBTC: 'Loading...',
+      esTotalSupply: 'Loading...',
+      totolESUsers: 'Loading...',
+      totalESStaked: 'Loading...',
+      btcUsd: 'Loading...',
+      ethUsd: 'Loading...',
+      circulatingOutsideTA: 'Loading...',
+      currentNrtES: 'Loading...',
+      numberOfDayswappers: 'Loading...',
+      ecosystemTransactions: 'Loading...',
+      ecosystemVolume: 'Loading...',
+      unUsedPowertokens: 'Loading...',
+      luckPoolNrt: 'Loading...',
+      burnPool: 'Loading...',
+      totalESBurned: 'Loading...',
+      marketCap: 'Loading...',
+      crownfundPrice: 'Loading...',
+      allTimeHigh: '1.42 USDT',
+      allTimeLow: '0.005 USDT',
+      probitVolume: 'Loading...',
+      allTxnsCount: 'Loading...',
+      esOwners: 'Loading',
+
       platformWiseTFC: {
         data: {
           timeswappers: 'Loading...',
@@ -216,219 +212,213 @@ class Dashboard extends Component {
 
   async loadData() {
     try {
-      await this.etherPriceUsd();
+      this.etherPriceUsd().catch(e => console.log('etherPriceUsd error',e));
     } catch (e) {
       console.log(e);
     }
     try {
-      await this.bitcoinCrowdFundPrice();
+      this.bitcoinCrowdFundPrice().catch(e => console.log('bitcoinCrowdFundPrice error',e));
     } catch (e) {
       console.log(e);
     }
     try {
-      await this.ltcPriceUsd();
+      this.ltcPriceUsd().catch(e => console.log('ltcPriceUsd error',e));
     } catch (e) {
       console.log(e);
     }
     try {
-      await this.getESPrice();
+      this.getESPrice().catch(e => console.log('getESPrice error',e));
     } catch (e) {
       console.log(e);
     }
     try {
-      await this.esTotalSupply();
+      this.esTotalSupply().catch(e => console.log('esTotalSupply error',e));
     } catch (e) {
       console.log(e);
     }
     try {
-      await this.holdersOfEraSwap();
-    } catch (e) {
-      console.log(e);
-    }
-    // try { await this.luckPoolBa } catch(e) { console.log(e); }
-    // try { await this.burnTokenBa } catch(e) { console.log(e); }
-    // try { await this.totalTokensBurne } catch(e) { console.log(e); }
-    try {
-      await this.nrtFractions();
+      this.holdersOfEraSwap().catch(e => console.log('holdersOfEraSwap error',e));
     } catch (e) {
       console.log(e);
     }
     try {
-      await this.getNumberOfStakings();
+      this.nrtFractions().catch(e => console.log('nrtFractions error',e));
     } catch (e) {
       console.log(e);
     }
     try {
-      await this.getStakingPlanStatistics();
-    } catch (e) {
-      console.log(e);
-    }
-    // try { await this.getPlatformDetailsAllTim } catch(e) { console.log(e); }
-    try {
-      await this.getNumberOfBets();
+      this.getNumberOfStakings().catch(e => console.log('getNumberOfStakings error',e));
     } catch (e) {
       console.log(e);
     }
     try {
-      await this.getBettingDetails();
+      this.getStakingPlanStatistics().catch(e => console.log('getStakingPlanStatistics error',e));
     } catch (e) {
       console.log(e);
     }
     try {
-      await this.powerTokenDetails();
-    } catch (e) {
-      console.log(e);
-    }
-    // try { await this.getTotalRewar } catch(e) { console.log(e); }
-    try {
-      await this.transactionSplits();
-    } catch (e) {
-      console.log(e);
-    }
-    // try { await this.dayswappersOvervie } catch(e) { console.log(e); }
-    try {
-      await this.totalNoOfUser();
+      this.getNumberOfBets().catch(e => console.log('getNumberOfBets error',e));
     } catch (e) {
       console.log(e);
     }
     try {
-      await this.totalNoOfFreelancerOrSeller();
+      this.getBettingDetails().catch(e => console.log('getBettingDetails error',e));
     } catch (e) {
       console.log(e);
     }
     try {
-      await this.totalViewsOnProfile();
+      this.powerTokenDetails().catch(e => console.log('powerTokenDetails error',e));
     } catch (e) {
       console.log(e);
     }
     try {
-      await this.totalNoOfVerifiedUser();
+      this.transactionSplits().catch(e => console.log('transactionSplits error',e));
     } catch (e) {
       console.log(e);
     }
     try {
-      await this.totalNoOfCertifiedUser();
+      this.totalNoOfUser().catch(e => console.log('totalNoOfUser error',e));
     } catch (e) {
       console.log(e);
     }
     try {
-      await this.totalNoOfDeposit();
+      this.totalNoOfFreelancerOrSeller().catch(e => console.log('totalNoOfFreelancerOrSeller error',e));
     } catch (e) {
       console.log(e);
     }
     try {
-      await this.totalNoOfWithdraw();
+      this.totalViewsOnProfile().catch(e => console.log('totalViewsOnProfile error',e));
     } catch (e) {
       console.log(e);
     }
     try {
-      await this.totalJobsPosted();
+      this.totalNoOfVerifiedUser().catch(e => console.log('totalNoOfVerifiedUser error',e));
     } catch (e) {
       console.log(e);
     }
     try {
-      await this.totalJobsDone();
+      this.totalNoOfCertifiedUser().catch(e => console.log('totalNoOfCertifiedUser error',e));
     } catch (e) {
       console.log(e);
     }
     try {
-      await this.TfcGenerated();
+      this.totalNoOfDeposit().catch(e => console.log('totalNoOfDeposit error',e));
     } catch (e) {
       console.log(e);
     }
     try {
-      await this.swapperswalletTotalFeeds();
+      this.totalNoOfWithdraw().catch(e => console.log('totalNoOfWithdraw error',e));
     } catch (e) {
       console.log(e);
     }
     try {
-      await this.swapperswallTopTenreceivers();
+      this.totalJobsPosted().catch(e => console.log('totalJobsPosted error',e));
     } catch (e) {
       console.log(e);
     }
     try {
-      await this.userscount();
+      this.totalJobsDone().catch(e => console.log('totalJobsDone error',e));
     } catch (e) {
       console.log(e);
     }
     try {
-      await this.courses();
+      this.TfcGenerated().catch(e => console.log('TfcGenerated error',e));
     } catch (e) {
       console.log(e);
     }
     try {
-      await this.deposits();
+      this.swapperswalletTotalFeeds().catch(e => console.log('swapperswalletTotalFeeds error',e));
     } catch (e) {
       console.log(e);
     }
     try {
-      await this.userstudying();
+      this.swapperswallTopTenreceivers().catch(e => console.log('swapperswallTopTenreceivers error',e));
     } catch (e) {
       console.log(e);
     }
     try {
-      await this.buzcafeUserscount();
+      this.userscount().catch(e => console.log('userscount error',e));
     } catch (e) {
       console.log(e);
     }
     try {
-      await this.buzcafeDepositscount();
+      this.courses().catch(e => console.log('courses error',e));
     } catch (e) {
       console.log(e);
     }
     try {
-      await this.buzcafeShopscount();
+      this.deposits().catch(e => console.log('deposits error',e));
     } catch (e) {
       console.log(e);
     }
     try {
-      await this.buzcafeWithdrawalscount();
+      this.userstudying().catch(e => console.log('userstudying error',e));
     } catch (e) {
       console.log(e);
     }
     try {
-      await this.buzcafeTransactionscount();
+      this.buzcafeUserscount().catch(e => console.log('buzcafeUserscount error',e));
     } catch (e) {
       console.log(e);
     }
     try {
-      await this.fetchTotalStakedES();
+      this.buzcafeDepositscount().catch(e => console.log('buzcafeDepositscount error',e));
     } catch (e) {
       console.log(e);
     }
     try {
-      await this.fetchTotalSupply();
+      this.buzcafeShopscount().catch(e => console.log('buzcafeShopscount error',e));
     } catch (e) {
       console.log(e);
     }
     try {
-      await this.fetchESFromNRT();
+      this.buzcafeWithdrawalscount().catch(e => console.log('buzcafeWithdrawalscount error',e));
     } catch (e) {
       console.log(e);
     }
     try {
-      await this.fetchTotalESBurned();
+      this.buzcafeTransactionscount().catch(e => console.log('buzcafeTransactionscount error',e));
     } catch (e) {
       console.log(e);
     }
     try {
-      await this.fetchBurnPool();
+      this.fetchTotalStakedES().catch(e => console.log('fetchTotalStakedES error',e));
     } catch (e) {
       console.log(e);
     }
     try {
-      await this.fetchLuckPool();
+      this.fetchTotalSupply().catch(e => console.log('fetchTotalSupply error',e));
     } catch (e) {
       console.log(e);
     }
     try {
-      await this.fetchAllTxnsCount();
+      this.fetchESFromNRT().catch(e => console.log('fetchESFromNRT error',e));
+    } catch (e) {
+      console.log(e);
+    }
+    try {
+      this.fetchTotalESBurned().catch(e => console.log('fetchTotalESBurned error',e));
+    } catch (e) {
+      console.log(e);
+    }
+    try {
+      this.fetchBurnPool().catch(e => console.log('fetchBurnPool error',e));
+    } catch (e) {
+      console.log(e);
+    }
+    try {
+      this.fetchLuckPool().catch(e => console.log('fetchLuckPool error',e));
+    } catch (e) {
+      console.log(e);
+    }
+    try {
+      this.fetchAllTxnsCount().catch(e => console.log('fetchAllTxnsCount error',e));
     } catch (e) {
       console.log(e);
     }
 
     try {
-      await this.fetchESOwnersCount();
+      this.fetchESOwnersCount().catch(e => console.log('fetchESOwnersCount error',e));
     } catch (e) {
       console.log(e);
     }
@@ -444,13 +434,9 @@ class Dashboard extends Component {
       console.log(e);
     } finally {
       this.setState({
-        eraswap: {
-          data: {
-            ...this.state.eraswap.data,
-            esOwners: res,
-          },
-          isLoading: false,
-        },
+
+        esOwners: res,
+
       });
     }
   }
@@ -463,13 +449,9 @@ class Dashboard extends Component {
       console.log(e);
     } finally {
       this.setState({
-        eraswap: {
-          data: {
-            ...this.state.eraswap.data,
-            allTxnsCount: res,
-          },
-          isLoading: false,
-        },
+
+        allTxnsCount: res,
+
       });
     }
   }
@@ -477,40 +459,27 @@ class Dashboard extends Component {
   async fetchLuckPool() {
     const luckBal = await nrtManager.luckPoolBalance();
     this.setState({
-      eraswap: {
-        data: {
-          ...this.state.eraswap.data,
-          luckPoolNrt: formatEther(luckBal),
-        },
-      },
+
+      luckPoolNrt: formatEther(luckBal),
     });
   }
 
   async fetchBurnPool() {
     const burnBal = await nrtManager.burnPoolBalance();
     this.setState({
-      eraswap: {
-        data: {
-          ...this.state.eraswap.data,
-          burnPool: formatEther(burnBal),
-        },
-      },
+
+      burnPool: formatEther(burnBal),
     });
   }
 
   async fetchTotalESBurned() {
     this.setState({
-      eraswap: {
-        data: {
-          ...this.state.eraswap.data,
-          totalESBurned: formatEther(
-            await providerESN.getBalance(
-              '0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb'
-            )
-          ),
-        },
-        isLoading: false,
-      },
+
+      totalESBurned: formatEther(
+        await providerESN.getBalance(
+          '0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb'
+        )
+      ),
     });
   }
 
@@ -529,13 +498,7 @@ class Dashboard extends Component {
     const nrtRelease = nrtReleases.slice(-1)[0] || ethers.constants.Zero;
 
     this.setState({
-      eraswap: {
-        data: {
-          ...this.state.eraswap.data,
-          currentNrtES: formatEther(nrtRelease),
-        },
-        isLoading: false,
-      },
+      currentNrtES: formatEther(nrtRelease),
     });
   }
 
@@ -543,13 +506,7 @@ class Dashboard extends Component {
     const nrtBalance = await providerESN.getBalance(nrtAddress);
 
     this.setState({
-      eraswap: {
-        data: {
-          ...this.state.eraswap.data,
-          esTotalSupply: MAX_SUPPLY - formatEther(nrtBalance),
-        },
-        isLoading: false,
-      },
+      esTotalSupply: MAX_SUPPLY - formatEther(nrtBalance),
     });
   }
 
@@ -560,13 +517,8 @@ class Dashboard extends Component {
       currentNrtMonth
     );
     this.setState({
-      eraswap: {
-        data: {
-          ...this.state.eraswap.data,
-          totalESStaked: formatEther(nextMonthActiveStakes),
-        },
-      },
-    },() => console.log('totalESStaked',this.state.eraswap.data.totalESStaked));
+      totalESStaked: formatEther(nextMonthActiveStakes),
+    }, () => console.log('totalESStaked', this.state.totalESStaked));
   }
 
   async etherPriceUsd() {
@@ -578,13 +530,7 @@ class Dashboard extends Component {
       console.log(e);
     } finally {
       this.setState({
-        eraswap: {
-          data: {
-            ...this.state.eraswap.data,
-            ethUsd: res.status === 1 ? '$' + res.result.ethusd : '-',
-          },
-          isLoading: false,
-        },
+        ethUsd: res.status === 1 ? '$' + res.result.ethusd : '-',
       });
     }
   }
@@ -598,14 +544,8 @@ class Dashboard extends Component {
       console.log(e);
     } finally {
       this.setState({
-        eraswap: {
-          data: {
-            ...this.state.eraswap.data,
-            btcUsd: res.USD && res.USD['15m'] ? '$' + res.USD['15m'] : '-',
-            crownfundPrice: '$0.0056',
-          },
-          isLoading: false,
-        },
+        btcUsd: res.USD && res.USD['15m'] ? '$' + res.USD['15m'] : '-',
+        crownfundPrice: '$0.0056',
       });
     }
   }
@@ -635,8 +575,8 @@ class Dashboard extends Component {
     } catch (e) {
       console.log(e);
     } finally {
-        this.esPrice = Number(res.probitResponse.data[0].last);
-        this.updateMarketCap();
+      this.esPrice = Number(res.probitResponse.data[0].last);
+      this.updateMarketCap();
 
       let totalVolume = 0;
 
@@ -646,15 +586,9 @@ class Dashboard extends Component {
       // $('#volume-of-probit').html(window.lessDecimals(String(window.esPrice * totalVolume)) + ' USDT');
       console.log('this.esPrice,totalVolume', this.esPrice, totalVolume);
       this.setState({
-        eraswap: {
-          data: {
-            ...this.state.eraswap.data,
-            esUSDT: res.probitResponse.data[0].last || '-',
-            esBTC: res.probitResponse.data[1].last || '-',
-            probitVolume: lessDecimals(String(this.esPrice * totalVolume)),
-          },
-          isLoading: false,
-        },
+        esUSDT: res.probitResponse.data[0].last || '-',
+        esBTC: res.probitResponse.data[1].last || '-',
+        probitVolume: lessDecimals(String(this.esPrice * totalVolume)),
       });
     }
   }
@@ -669,26 +603,20 @@ class Dashboard extends Component {
     } finally {
       if (res?.data?.totalSupply) {
         this.esCurrentSupply = Number(lessDecimals(res.data.totalSupply));
-        console.log('start');
         this.updateMarketCap();
-        console.log('end');
       }
 
       this.setState({
-        eraswap: {
-          data: {
-            ...this.state.eraswap.data,
-            // esTotalSupply:
-            //   (res.data?.totalSupply &&
-            //     lessDecimals(res.data.totalSupply) + ' ES') ||
-            //   '-',
-            circulatingOutsideTA: res?.data?.outsideTimeAllySupply
-              ? lessDecimals(res.data.outsideTimeAllySupply)
-              : 0,
-          },
-          isLoading: false,
-        },
-      },() => console.log('circulatingOutsideTA',this.state.eraswap.data.circulatingOutsideTA));
+
+        // esTotalSupply:
+        //   (res.data?.totalSupply &&
+        //     lessDecimals(res.data.totalSupply) + ' ES') ||
+        //   '-',
+        circulatingOutsideTA: res?.data?.outsideTimeAllySupply
+          ? lessDecimals(res.data.outsideTimeAllySupply)
+          : 0,
+
+      }, () => console.log('circulatingOutsideTA', this.state.circulatingOutsideTA));
     }
   }
 
@@ -701,15 +629,9 @@ class Dashboard extends Component {
       console.log(e);
     } finally {
       this.setState({
-        eraswap: {
-          data: {
-            ...this.state.eraswap.data,
-            totolESUsers: res.data?.numberOfAddresses
-              ? res.data?.numberOfAddresses
-              : '-',
-          },
-          isLoading: false,
-        },
+        totolESUsers: res.data?.numberOfAddresses
+          ? res.data?.numberOfAddresses
+          : '-',
       });
     }
   }
@@ -723,15 +645,9 @@ class Dashboard extends Component {
       console.log(e);
     } finally {
       this.setState({
-        eraswap: {
-          data: {
-            ...this.state.eraswap.data,
-            luckPoolNrt: res?.data?.luckPoolBal
-              ? lessDecimals(res.data.luckPoolBal) + ' ES'
-              : '-',
-          },
-          isLoading: false,
-        },
+        luckPoolNrt: res?.data?.luckPoolBal
+          ? lessDecimals(res.data.luckPoolBal) + ' ES'
+          : '-',
       });
     }
   }
@@ -745,9 +661,7 @@ class Dashboard extends Component {
   //     console.log(e);
   //   } finally {
   //     this.setState({
-  //       eraswap: {
-  //         data: {
-  //           ...this.state.eraswap.data,
+  //       
   //           burnPool: res?.data?.burnTokenBal
   //             ? lessDecimals(res.data.burnTokenBal)
   //             : '-',
@@ -767,15 +681,9 @@ class Dashboard extends Component {
       console.log(e);
     } finally {
       this.setState({
-        eraswap: {
-          data: {
-            ...this.state.eraswap?.data,
-            totalESBurned: res?.data?.totalTokensBurned
-              ? lessDecimals(res?.data?.totalTokensBurned) + ' ES'
-              : '-',
-          },
-          isLoading: false,
-        },
+        totalESBurned: res?.data?.totalTokensBurned
+          ? lessDecimals(res?.data?.totalTokensBurned) + ' ES'
+          : '-',
       });
     }
   }
@@ -789,9 +697,7 @@ class Dashboard extends Component {
       console.log(e);
     } finally {
       this.setState({
-        // eraswap: {
-        //   data: {
-        //     ...this.state.eraswap?.data,
+        // s.state.eraswap?.data,
         //     currentNrtES: res?.data?.actualNRTDistributed
         //       ? lessDecimals(res.data?.actualNRTDistributed) + ' ES'
         //       : '-',
@@ -805,7 +711,7 @@ class Dashboard extends Component {
               percent: '-',
               volume: res.data?.workPoolCalculation?.timetraders
                 ? lessDecimals(res.data?.workPoolCalculation?.timetraders) +
-                  ' ES'
+                ' ES'
                 : '-',
               value: '-',
             },
@@ -813,7 +719,7 @@ class Dashboard extends Component {
               percent: '-',
               volume: res?.data?.workPoolCalculation?.dayswappers
                 ? lessDecimals(res?.data?.workPoolCalculation?.dayswappers) +
-                  ' ES'
+                ' ES'
                 : '-',
               value: '-',
             },
@@ -915,9 +821,7 @@ class Dashboard extends Component {
   //     console.log(e);
   //   } finally {
   //     this.setState({
-  //       eraswap: {
-  //         data: {
-  //           ...this.state.eraswap.data,
+  //       
   //           totalESStaked: res?.data?.totalStaking
   //             ? lessDecimals(res.data.totalStaking)
   //             : '-',
@@ -973,8 +877,8 @@ class Dashboard extends Component {
             ...this.state.betdeex.data,
             predictors: res?.data?.numberOfPredictors
               ? res.data.numberOfPredictors +
-                ' predictor' +
-                (res.data.numberOfPredictors !== 1 ? 's' : '')
+              ' predictor' +
+              (res.data.numberOfPredictors !== 1 ? 's' : '')
               : '-',
             esVolumePredicted: res?.data?.totalBetAmount
               ? lessDecimals(res.data.totalBetAmount) + ' ES'
@@ -1001,15 +905,9 @@ class Dashboard extends Component {
       console.log(e);
     } finally {
       this.setState({
-        eraswap: {
-          data: {
-            ...this.state.eraswap.data,
-            unUsedPowertokens: res?.data?.error
-              ? 'Inactive'
-              : lessDecimals(res?.data?.unusedPowerToken) + ' ES',
-          },
-          isLoading: false,
-        },
+        unUsedPowertokens: res?.data?.error
+          ? 'Inactive'
+          : lessDecimals(res?.data?.unusedPowerToken) + ' ES',
       });
     }
   }
@@ -1049,29 +947,23 @@ class Dashboard extends Component {
       console.log(e);
     } finally {
       this.setState({
-        eraswap: {
+        ecosystemTransactions: res.platform_count
+          ? res.platform_count + ' txns'
+          : '-',
+        ecosystemVolume: res.platform_count
+          ? res.platform_volume + ' ES'
+          : '-',
+        platformWiseTFC: {
           data: {
-            ...this.state.eraswap.data,
-            ecosystemTransactions: res.platform_count
-              ? res.platform_count + ' txns'
-              : '-',
-            ecosystemVolume: res.platform_count
-              ? res.platform_volume + ' ES'
-              : '-',
+            timeswappers: res?.Timeswappers?.tfc,
+            buzcafe: res?.Buzcafe?.tfc,
+            betdeex: res?.BetdeEx?.tfc,
+            computeex: 0,
+            timeallyClub: res?.['Timeally Club']?.tfc,
+            TimeAlly: res?.['Timeally']?.tfc,
+            eraswapAcademy: 0,
           },
           isLoading: false,
-          platformWiseTFC: {
-            data: {
-              timeswappers: res?.Timeswappers?.tfc,
-              buzcafe: res?.Buzcafe?.tfc,
-              betdeex: res?.BetdeEx?.tfc,
-              computeex: 0,
-              timeallyClub: res?.['Timeally Club']?.tfc,
-              TimeAlly: res?.['Timeally']?.tfc,
-              eraswapAcademy: 0,
-            },
-            isLoading: false,
-          },
         },
       });
       // let totalAmount = 0;
@@ -1115,14 +1007,10 @@ class Dashboard extends Component {
       console.log(e);
     } finally {
       this.setState({
-        eraswap: {
-          data: {
-            ...this.state.eraswap.data,
-            numberOfDayswappers: res?.total_no_of_user
-              ? res.total_no_of_user + ' users'
-              : '-',
-          },
-        },
+
+        numberOfDayswappers: res?.total_no_of_user
+          ? res.total_no_of_user + ' users'
+          : '-',
         dayswappers: {
           data: {
             ...this.state.dayswappers.data,
@@ -1626,13 +1514,7 @@ class Dashboard extends Component {
       }
       console.log('marketCap', marketCap);
       this.setState({
-        eraswap: {
-          data: {
-            ...this.state.eraswap.data,
-            marketCap,
-          },
-          isLoading: false,
-        },
+        marketCap,
       });
     }
   };
@@ -1663,15 +1545,15 @@ class Dashboard extends Component {
         (timeRemaining -
           daysRemaining * 1000 * 24 * 60 * 60 -
           hoursRemaining * 1000 * 60 * 60) /
-          1000 /
-          60
+        1000 /
+        60
       );
       const secondsRemaining = Math.floor(
         (timeRemaining -
           daysRemaining * 1000 * 24 * 60 * 60 -
           hoursRemaining * 1000 * 60 * 60 -
           minutesRemaining * 1000 * 60) /
-          1000
+        1000
       );
 
       // window.isOnProduction || console.log(daysRemaining, hoursRemaining, minutesRemaining, secondsRemaining);
@@ -1691,6 +1573,7 @@ class Dashboard extends Component {
   }
 
   render() {
+    const currentSupply = this.state.esTotalSupply - this.state.totalESStaked - this.state.burnPool;
     return (
       <div className="bgd-dash-color dashboard-box">
         <div className="booking-hero-bgd booking-hero-bgd-inner">
@@ -1704,7 +1587,7 @@ class Dashboard extends Component {
                 <Col lg={4}>
                   <h5 className="">Era Swap (ES)</h5>
                   <h5 className="sub-dash-head">
-                    {this.state.eraswap.data.esUSDT} USDT{' '}
+                    {this.state.esUSDT} USDT{' '}
                   </h5>
                 </Col>
                 <Col lg={4}>
@@ -1713,15 +1596,15 @@ class Dashboard extends Component {
                       <p className="supply-txt">MARKET CAP</p>
                       <p className="supply-txt">
                         {isFinite(
-                          (this.state.eraswap.data.esTotalSupply -
-                            this.state.eraswap.data.burnPool) *
-                            this.state.eraswap.data.esUSDT
+                          (this.state.esTotalSupply -
+                            this.state.burnPool) *
+                          this.state.esUSDT
                         )
                           ? (
-                              (this.state.eraswap.data.esTotalSupply -
-                                this.state.eraswap.data.burnPool) *
-                              this.state.eraswap.data.esUSDT
-                            ).toFixed(2)
+                            (this.state.esTotalSupply -
+                              this.state.burnPool) *
+                            this.state.esUSDT
+                          ).toFixed(2)
                           : 'Loading...'}{' '}
                         $
                       </p>
@@ -1733,7 +1616,7 @@ class Dashboard extends Component {
                     <div className="es-box-ds">
                       <p className="supply-txt">TOTAL ES OWNERS</p>
                       <p className="supply-txt">
-                        {this.state.eraswap.data.esOwners} addresses{' '}
+                        {this.state.esOwners} addresses{' '}
                       </p>
                     </div>
                   </div>
@@ -1773,17 +1656,7 @@ class Dashboard extends Component {
                   <Card.Body>
                     <p className="sect-txt-bold ">ES CURRENT SUPPLY</p>
                     <p className="value-dash-txt">
-                      {(isFinite(
-                        this.state.eraswap.data.esTotalSupply -
-                          this.state.eraswap.data.totalESStaked -
-                          this.state.eraswap.data.burnPool
-                      ) &&
-                        (
-                          this.state.eraswap.data.esTotalSupply -
-                          this.state.eraswap.data.totalESStaked -
-                          this.state.eraswap.data.burnPool
-                        ).toFixed(2)) ||
-                        'Loading...'}{' '}
+                      {(isFinite(currentSupply) && (currentSupply).toFixed(2)) || 'Loading...'}{' '}
                       ES
                     </p>
                   </Card.Body>
@@ -1794,7 +1667,7 @@ class Dashboard extends Component {
                   <Card.Body>
                     <p className="sect-txt-bold">TOTAL SUPPLY</p>
                     <p className="value-dash-txt">
-                      {isFinite(Number(this.state.eraswap.data.totalESStaked) + Number(this.state.eraswap.data.circulatingOutsideTA)) ? (Number(this.state.eraswap.data.totalESStaked) + Number(this.state.eraswap.data.circulatingOutsideTA)) : 'Loading...'} ES
+                      {isFinite(Number(this.state.totalESStaked) + Number(this.state.circulatingOutsideTA)) ? (Number(this.state.totalESStaked) + Number(this.state.circulatingOutsideTA)) : 'Loading...'} ES
                     </p>
                   </Card.Body>
                 </Card>
@@ -1812,7 +1685,7 @@ class Dashboard extends Component {
                   <Card.Body>
                     <p className="sect-txt-bold">ES FROM NRT THIS MONTH</p>
                     <p className="value-dash-txt">
-                      {this.state.eraswap.data.currentNrtES}
+                      {this.state.currentNrtES}
                     </p>
                   </Card.Body>
                 </Card>
@@ -1823,7 +1696,7 @@ class Dashboard extends Component {
                     <p className="sect-txt-bold">NUMBER OF DAYSWAPPERS</p>
                     <p className="value-dash-txt">
                       'Coming soon'
-                      {/* this.state.eraswap.data.numberOfDayswappers*/}
+                      {/* this.state.numberOfDayswappers*/}
                     </p>
                   </Card.Body>
                 </Card>
@@ -1833,7 +1706,7 @@ class Dashboard extends Component {
                   <Card.Body>
                     <p className="sect-txt-bold ">TOTAL STAKED ES</p>
                     <p className="value-dash-txt">
-                      {this.state.eraswap.data.totalESStaked} ES
+                      {this.state.totalESStaked} ES
                     </p>
                   </Card.Body>
                 </Card>
@@ -1847,7 +1720,7 @@ class Dashboard extends Component {
                     <p className="sect-txt-bold">ECOSYSTEM VOLUME</p>
                     <p className="value-dash-txt">
                       'Coming soon'
-                      {/* this.state.eraswap.data.ecosystemVolume*/}
+                      {/* this.state.ecosystemVolume*/}
                     </p>
                   </Card.Body>
                 </Card>
@@ -1857,7 +1730,7 @@ class Dashboard extends Component {
                   <Card.Body>
                     <p className="sect-txt-bold">UNUSED POWER TOKENS</p>
                     <p className="value-dash-txt">
-                      {this.state.eraswap.data.unUsedPowertokens} <small className="text-dark">(Monthly)</small>
+                      {this.state.unUsedPowertokens} <small className="text-dark">(Monthly)</small>
                     </p>
                   </Card.Body>
                 </Card>
@@ -1867,7 +1740,7 @@ class Dashboard extends Component {
                   <Card.Body>
                     <p className="sect-txt-bold">LUCK POOL IN NRT</p>
                     <p className="value-dash-txt">
-                      {this.state.eraswap.data.luckPoolNrt}
+                      {this.state.luckPoolNrt}
                     </p>
                   </Card.Body>
                 </Card>
@@ -1877,7 +1750,7 @@ class Dashboard extends Component {
                   <Card.Body>
                     <p className="sect-txt-bold">BURN POOL (IN NEXT NRT)</p>
                     <p className="value-dash-txt">
-                      {this.state.eraswap.data.burnPool}
+                      {this.state.burnPool}
                     </p>
                   </Card.Body>
                 </Card>
@@ -1887,7 +1760,7 @@ class Dashboard extends Component {
                   <Card.Body>
                     <p className="sect-txt-bold">TOTAL ES BURNED</p>
                     <p className="value-dash-txt">
-                      {this.state.eraswap.data.totalESBurned}
+                      {this.state.totalESBurned}
                     </p>
                   </Card.Body>
                 </Card>
@@ -1897,7 +1770,7 @@ class Dashboard extends Component {
                   <Card.Body>
                     <p className="sect-txt-bold">ECOSYSTEM TRANSACTIONS</p>
                     <p className="value-dash-txt">
-                      {this.state.eraswap.data.allTxnsCount} transactions
+                      {this.state.allTxnsCount} transactions
                     </p>
                   </Card.Body>
                 </Card>
@@ -1910,7 +1783,7 @@ class Dashboard extends Component {
                     <Card.Body>
                       <p className="sect-txt-bold">MARKET CAP</p>
                       <p className="value-dash-txt">
-                        {this.state.eraswap.data.marketCap}
+                        {this.state.marketCap}
                       </p>
                     </Card.Body>
                   </Card>
@@ -1920,7 +1793,7 @@ class Dashboard extends Component {
                   <Card.Body>
                     <p className="sect-txt-bold">24 HR VOL (PROBIT GLOBAL)</p>
                     <p className="value-dash-txt">
-                      {this.state.eraswap.data.probitVolume} USDT
+                      {this.state.probitVolume} USDT
                     </p>
                   </Card.Body>
                 </Card>
@@ -1930,7 +1803,7 @@ class Dashboard extends Component {
                   <Card.Body>
                     <p className="sect-txt-bold">ASSETS AVAILABLE</p>
                     <p className="value-dash-txt">
-                      {isFinite(this.state.eraswap.data.esTotalSupply - this.state.eraswap.data.burnPool)? (this.state.eraswap.data.esTotalSupply - this.state.eraswap.data.burnPool) : 'Loading...'}{' '}
+                      {isFinite(this.state.esTotalSupply - this.state.burnPool) ? (this.state.esTotalSupply - this.state.burnPool) : 'Loading...'}{' '}
                       ES
                     </p>
                   </Card.Body>
@@ -1966,7 +1839,7 @@ class Dashboard extends Component {
                   <Card.Body>
                     <p className="sect-txt-bold">ICO PRICE</p>
                     <p className="value-dash-txt">
-                      {this.state.eraswap.data.crownfundPrice}
+                      {this.state.crownfundPrice}
                     </p>
                   </Card.Body>
                 </Card>
@@ -2065,12 +1938,12 @@ class Dashboard extends Component {
                      */}
                     <div className="flex-sect4-box">
                       <div className="timeally-mark"></div>
-                      <p className="sect4-context">Current Supply {0}</p>
+                      <p className="sect4-context">Current Supply {currentSupply}</p>
                     </div>
                     <div className="flex-sect4-box">
                       <div className="timeally-mark2"></div>
                       <p className="sect4-context">
-                        ES Staked in TimeAlly 1 LT  {0}
+                        ES Staked in TimeAlly 1 LT  {this.state.totalESStaked}
                       </p>
                     </div>
                   </Col>
@@ -2091,7 +1964,7 @@ class Dashboard extends Component {
             </Col>
             <Col lg={4}>
               <div className="section4-border">
-                 <a href="https://www.timeswappers.com/" target="_blank">
+                <a href="https://www.timeswappers.com/" target="_blank">
                   <div className="flex-sect4-box">
                     <img
                       className="platfrm-logo2"
@@ -2099,7 +1972,7 @@ class Dashboard extends Component {
                       alt="logo"
                     />
                     <p className="platfrm-txt">TIMESWAPPERS</p>
-                 </div>
+                  </div>
                 </a>
                 <div className="ts-flex tm-border">
                   <div>
@@ -2281,15 +2154,15 @@ class Dashboard extends Component {
           <Row>
             <Col lg={4}>
               <div className="section4-border">
-              <a href="https://swapperswall.com/" target="_blank">
-                <div className="flex-sect4-box">
-                  <img
-                    className="platfrm-logo4"
-                    src={Images.path.swaal}
-                    alt="logo"
-                  />
-                  <p className="platfrm-txt"> SWAPPERS WALL </p>
-                </div>
+                <a href="https://swapperswall.com/" target="_blank">
+                  <div className="flex-sect4-box">
+                    <img
+                      className="platfrm-logo4"
+                      src={Images.path.swaal}
+                      alt="logo"
+                    />
+                    <p className="platfrm-txt"> SWAPPERS WALL </p>
+                  </div>
                 </a>
                 <div className="swwall-flex-border">
                   <div>
@@ -2343,16 +2216,16 @@ class Dashboard extends Component {
             </Col>
             <Col lg={4}>
               <div className="section4-border">
-              <a href="https://eraswap.academy/" target="_blank">
-                <div className="flex-sect4-box">
-                  <img
-                    className="platfrm-logo"
-                    src={Images.path.blocklogy}
-                    alt="logo"
-                  />
-                  <p className="platfrm-txt">ERASWAP ACADEMY </p>
-                </div>
-               </a> 
+                <a href="https://eraswap.academy/" target="_blank">
+                  <div className="flex-sect4-box">
+                    <img
+                      className="platfrm-logo"
+                      src={Images.path.blocklogy}
+                      alt="logo"
+                    />
+                    <p className="platfrm-txt">ERASWAP ACADEMY </p>
+                  </div>
+                </a>
                 <div className="swwall-flex-border">
                   <div>
                     <p className="sect4-context">User Counts</p>
@@ -2385,15 +2258,15 @@ class Dashboard extends Component {
             </Col>
             <Col lg={4}>
               <div className="section4-border">
-              <a href="https://buzcafe.com/" target="_blank">
-                <div className="flex-sect4-box">
-                  <img
-                    className="platfrm-logo4"
-                    src={Images.path.buzcafe}
-                    alt="logo"
-                  />
-                  <p className="platfrm-txt">BUZCAFE</p>
-                </div>
+                <a href="https://buzcafe.com/" target="_blank">
+                  <div className="flex-sect4-box">
+                    <img
+                      className="platfrm-logo4"
+                      src={Images.path.buzcafe}
+                      alt="logo"
+                    />
+                    <p className="platfrm-txt">BUZCAFE</p>
+                  </div>
                 </a>
                 <div className="buz-flex-border">
                   <div>
@@ -2442,15 +2315,15 @@ class Dashboard extends Component {
           <Row>
             <Col lg={4}>
               <div className="section4-border">
-              <a href="https://www.betdeex.com/" target="_blank">
-                <div className="flex-sect4-box">
-                  <img
-                    className="platfrm-logo4"
-                    src={Images.path.betdeex}
-                    alt="logo"
-                  />
-                  <p className="platfrm-txt">BETDEEX </p>
-                </div>
+                <a href="https://www.betdeex.com/" target="_blank">
+                  <div className="flex-sect4-box">
+                    <img
+                      className="platfrm-logo4"
+                      src={Images.path.betdeex}
+                      alt="logo"
+                    />
+                    <p className="platfrm-txt">BETDEEX </p>
+                  </div>
                 </a>
                 <div className="bet-flex-border">
                   <div>
@@ -2493,15 +2366,15 @@ class Dashboard extends Component {
             </Col>
             <Col lg={4}>
               <div className="section4-border">
-              <a href="https://www.computeex.net/" target="_blank">
-                <div className="flex-sect4-box">
-                  <img
-                    className="platfrm-logo-5"
-                    src={Images.path.computeex}
-                    alt="logo"
-                  />
-                  <p className="platfrm-txt">  Multi Exchange</p>
-                </div>
+                <a href="https://www.computeex.net/" target="_blank">
+                  <div className="flex-sect4-box">
+                    <img
+                      className="platfrm-logo-5"
+                      src={Images.path.computeex}
+                      alt="logo"
+                    />
+                    <p className="platfrm-txt">  Multi Exchange</p>
+                  </div>
                 </a>
                 <div className="compute-flex-border">
                   <div>
@@ -2525,15 +2398,15 @@ class Dashboard extends Component {
             </Col>
             <Col lg={4}>
               <div className="section4-border">
-              <a href="https://charitydapp.com/" target="_blank">
-                <div className="flex-sect4-box">
-                  <img
-                    className="platfrm-logo"
-                    src={Images.path.charitylogo}
-                    alt="logo"
-                  />
-                  <p className="platfrm-txt">CHARITYDAPP  (YET TO GO LIVE)</p>
-                </div>
+                <a href="https://charitydapp.com/" target="_blank">
+                  <div className="flex-sect4-box">
+                    <img
+                      className="platfrm-logo"
+                      src={Images.path.charitylogo}
+                      alt="logo"
+                    />
+                    <p className="platfrm-txt">CHARITYDAPP  (YET TO GO LIVE)</p>
+                  </div>
                 </a>
                 <div className="swwall-flex-border">
                   <div>
@@ -2563,15 +2436,15 @@ class Dashboard extends Component {
             </Col>
             <Col lg={4}>
               <div className="section4-border">
-              <a href="https://kycdapp.com/" target="_blank">
-                <div className="flex-sect4-box">
-                  <img
-                    className="platfrm-logo"
-                    src={Images.path.kycdapplogo}
-                    alt="logo"
-                  />
-                  <p className="platfrm-txt">KYCDAPP </p>
-                </div>
+                <a href="https://kycdapp.com/" target="_blank">
+                  <div className="flex-sect4-box">
+                    <img
+                      className="platfrm-logo"
+                      src={Images.path.kycdapplogo}
+                      alt="logo"
+                    />
+                    <p className="platfrm-txt">KYCDAPP </p>
+                  </div>
                 </a>
                 <div className="swwall-flex-border">
                   <div>
@@ -2605,7 +2478,7 @@ class Dashboard extends Component {
             </Col>
             <Col lg={4}>
               <div className="section4-border">
-                 <a href="https://coupondapp.com/" target="_blank">
+                <a href="https://coupondapp.com/" target="_blank">
                   <div className="flex-sect4-box">
                     <img
                       className="platfrm-logo6"
@@ -2649,16 +2522,16 @@ class Dashboard extends Component {
             </Col>
             <Col lg={4}>
               <div className="section4-border">
-                <a href="https://www.computeex.net/"  target="_blank">
-                <div className="flex-sect4-box" >
-                  <img
-                    className="platfrm-logo-5"
-                    src={Images.path.computeex}
-                    alt="logo"
-                  />
-                  <p className="platfrm-txt"> Buy ES With  Cards (YET TO GO LIVE) </p>
-                </div>
-               </a>
+                <a href="https://www.computeex.net/" target="_blank">
+                  <div className="flex-sect4-box" >
+                    <img
+                      className="platfrm-logo-5"
+                      src={Images.path.computeex}
+                      alt="logo"
+                    />
+                    <p className="platfrm-txt"> Buy ES With  Cards (YET TO GO LIVE) </p>
+                  </div>
+                </a>
                 <div className="swwall-flex-border">
                   <div>
                     <p className="sect4-context">  Total number of Transactions</p>
@@ -2686,15 +2559,15 @@ class Dashboard extends Component {
           <Row>
             <Col lg={4}>
               <div className="section4-border">
-                <a href="https://www.rentingdapp.com/"  target="_blank">
-                <div className="flex-sect4-box">
-                  <img
-                    className="platfrm-logo2"
-                    src={Images.path.renting}
-                    alt="logo"
-                  />
-                  <p className="platfrm-txt">RENTINGDAPP</p>
-                </div>
+                <a href="https://www.rentingdapp.com/" target="_blank">
+                  <div className="flex-sect4-box">
+                    <img
+                      className="platfrm-logo2"
+                      src={Images.path.renting}
+                      alt="logo"
+                    />
+                    <p className="platfrm-txt">RENTINGDAPP</p>
+                  </div>
                 </a>
                 <div className="swwall-flex-border">
                   <div>
@@ -2724,15 +2597,15 @@ class Dashboard extends Component {
             </Col>
             <Col lg={4}>
               <div className="section4-border">
-              <a href="https://bookingdapp.com/"  target="_blank">
-                <div className="flex-sect4-box">
-                  <img
-                    className="platfrm-logo2"
-                    src={Images.path.booklogo}
-                    alt="logo"
-                  />
-                  <p className="platfrm-txt">BOOKINGDAPP </p>
-                </div>
+                <a href="https://bookingdapp.com/" target="_blank">
+                  <div className="flex-sect4-box">
+                    <img
+                      className="platfrm-logo2"
+                      src={Images.path.booklogo}
+                      alt="logo"
+                    />
+                    <p className="platfrm-txt">BOOKINGDAPP </p>
+                  </div>
                 </a>
                 <div className="swwall-flex-border">
                   <div>
@@ -2762,15 +2635,15 @@ class Dashboard extends Component {
             </Col>
             <Col lg={4}>
               <div className="section4-border">
-              <a href="http://poolindapp.com/"  target="_blank">
-                <div className="flex-sect4-box">
-                  <img
-                    className="platfrm-logo6"
-                    src={Images.path.poolingdapplogo}
-                    alt="logo"
-                  />
-                  <p className="platfrm-txt">POOLINGDAPP </p>
-                </div>
+                <a href="http://poolindapp.com/" target="_blank">
+                  <div className="flex-sect4-box">
+                    <img
+                      className="platfrm-logo6"
+                      src={Images.path.poolingdapplogo}
+                      alt="logo"
+                    />
+                    <p className="platfrm-txt">POOLINGDAPP </p>
+                  </div>
                 </a>
                 <div className="swwall-flex-border">
                   <div>
@@ -2800,15 +2673,15 @@ class Dashboard extends Component {
             </Col>
             <Col lg={4}>
               <div className="section4-border">
-              <a href="https://www.curedapp.com/"  target="_blank">
-                <div className="flex-sect4-box">
-                  <img
-                    className="platfrm-logo4"
-                    src={Images.path.curedapplogo}
-                    alt="logo"
-                  />
-                  <p className="platfrm-txt">CUREDAPP </p>
-                </div>
+                <a href="https://www.curedapp.com/" target="_blank">
+                  <div className="flex-sect4-box">
+                    <img
+                      className="platfrm-logo4"
+                      src={Images.path.curedapplogo}
+                      alt="logo"
+                    />
+                    <p className="platfrm-txt">CUREDAPP </p>
+                  </div>
                 </a>
                 <div className="bet-flex-border">
                   <div>
@@ -2838,15 +2711,15 @@ class Dashboard extends Component {
             </Col>
             <Col lg={4}>
               <div className="section4-border">
-              <a href="https://faithminus.com/"  target="_blank">
-                <div className="flex-sect4-box">
-                  <img
-                    className="platfrm-logo2"
-                    src={Images.path.faithminus}
-                    alt="logo"
-                  />
-                  <p className="platfrm-txt">FAITH MINUS</p>
-                </div>
+                <a href="https://faithminus.com/" target="_blank">
+                  <div className="flex-sect4-box">
+                    <img
+                      className="platfrm-logo2"
+                      src={Images.path.faithminus}
+                      alt="logo"
+                    />
+                    <p className="platfrm-txt">FAITH MINUS</p>
+                  </div>
                 </a>
                 <div className="swwall-flex-border">
                   <div>
@@ -2882,15 +2755,15 @@ class Dashboard extends Component {
             </Col>
             <Col lg={4}>
               <div className="section4-border">
-              <a href="https://dateswappers.com"  target="_blank">
-                <div className="flex-sect4-box">
-                  <img
-                    className="platfrm-logo2"
-                    src={Images.path.dateswappr}
-                    alt="logo"
-                  />
-                  <p className="platfrm-txt">DATE SWAPPERS</p>
-                </div>
+                <a href="https://dateswappers.com" target="_blank">
+                  <div className="flex-sect4-box">
+                    <img
+                      className="platfrm-logo2"
+                      src={Images.path.dateswappr}
+                      alt="logo"
+                    />
+                    <p className="platfrm-txt">DATE SWAPPERS</p>
+                  </div>
                 </a>
                 <div className="swwall-flex-border">
                   <div>
@@ -2922,7 +2795,7 @@ class Dashboard extends Component {
             </Col>
             <Col lg={4}>
               <div className="section4-border">
-                <a href="https://eraswap.network/"  target="_blank">
+                <a href="https://eraswap.network/" target="_blank">
                   <div className="flex-sect4-box">
                     <img
                       className="platfrm-logo6"
@@ -2991,15 +2864,15 @@ class Dashboard extends Component {
             </Col>
             <Col lg={4}>
               <div className="section4-border">
-              <a href=""  target="_blank">
-                <div className="flex-sect4-box">
-                  <img
-                    className="platfrm-logo2"
-                    src={Images.path.guarantor}
-                    alt="logo"
-                  />
-                  <p className="platfrm-txt">GUARANTOR</p>
-                </div>
+                <a href="" target="_blank">
+                  <div className="flex-sect4-box">
+                    <img
+                      className="platfrm-logo2"
+                      src={Images.path.guarantor}
+                      alt="logo"
+                    />
+                    <p className="platfrm-txt">GUARANTOR</p>
+                  </div>
                 </a>
                 <div className="swwall-flex-border">
                   <div>
@@ -3025,15 +2898,15 @@ class Dashboard extends Component {
             </Col>
             <Col lg={4}>
               <div className="section4-border">
-              <a href="https://valueoffarmers.org"  target="_blank">
-                <div className="flex-sect4-box">
-                  <img
-                    className="platfrm-logo6"
-                    src={Images.path.vof}
-                    alt="logo"
-                  />
-                  <p className="platfrm-txt">VALUE OF FARMERS  (YET TO GO LIVE)</p>
-                </div>
+                <a href="https://valueoffarmers.org" target="_blank">
+                  <div className="flex-sect4-box">
+                    <img
+                      className="platfrm-logo6"
+                      src={Images.path.vof}
+                      alt="logo"
+                    />
+                    <p className="platfrm-txt">VALUE OF FARMERS  (YET TO GO LIVE)</p>
+                  </div>
                 </a>
                 <div className="swwall-flex-border">
                   <div>
@@ -3075,15 +2948,15 @@ class Dashboard extends Component {
             </Col>
             <Col lg={4}>
               <div className="section4-border">
-              <a href="https://certidapp.com/"  target="_blank">
-                <div className="flex-sect4-box">
-                  <img
-                    className="platfrm-logo6"
-                    src={Images.path.certidapplogo}
-                    alt="logo"
-                  />
-                  <p className="platfrm-txt">CertiDapp  (YET TO GO LIVE)</p>
-                </div>
+                <a href="https://certidapp.com/" target="_blank">
+                  <div className="flex-sect4-box">
+                    <img
+                      className="platfrm-logo6"
+                      src={Images.path.certidapplogo}
+                      alt="logo"
+                    />
+                    <p className="platfrm-txt">CertiDapp  (YET TO GO LIVE)</p>
+                  </div>
                 </a>
                 <div className="swwall-flex-border">
                   <div>
@@ -3109,17 +2982,17 @@ class Dashboard extends Component {
             </Col>
             <Col lg={4}>
               <div className="section4-border">
-              <a href="https://recyclingdapp.com/"  target="_blank">
-                <div className="flex-sect4-box">
-                  <img
-                    className="platfrm-logo6"
-                    src={Images.path.usecaserecyclingdapp}
-                    alt="logo"
-                  />
-                  <p className="platfrm-txt">RECYCLINGDAPP   (YET TO GO LIVE) </p>
-                </div>
+                <a href="https://recyclingdapp.com/" target="_blank">
+                  <div className="flex-sect4-box">
+                    <img
+                      className="platfrm-logo6"
+                      src={Images.path.usecaserecyclingdapp}
+                      alt="logo"
+                    />
+                    <p className="platfrm-txt">RECYCLINGDAPP   (YET TO GO LIVE) </p>
+                  </div>
                 </a>
-                
+
               </div>
             </Col>
           </Row>
