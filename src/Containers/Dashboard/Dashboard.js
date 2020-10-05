@@ -271,29 +271,57 @@ class Dashboard extends Component {
       const dayswappersInst = DayswappersWithMigrationFactory.connect(es.addresses[process.env.NODE_ENV].ESN.dayswappers,providerESN);
       const totalDayswappers = (await dayswappersInst.queryFilter(dayswappersInst.filters.SeatTransfer(null,null,null))).length
       const activeUsers = (await dayswappersInst.queryFilter(dayswappersInst.filters.Active(null,this.currentNrtMonth))).length
+      const whiteBelt = (await dayswappersInst.queryFilter(dayswappersInst.filters.Promotion(null,0))).length;
+      const yellowBelt = (await dayswappersInst.queryFilter(dayswappersInst.filters.Promotion(null,1))).length;
+      const orangeBelt = (await dayswappersInst.queryFilter(dayswappersInst.filters.Promotion(null,2))).length;
+      const greenBelt = (await dayswappersInst.queryFilter(dayswappersInst.filters.Promotion(null,3))).length;
+      const blueBelt = (await dayswappersInst.queryFilter(dayswappersInst.filters.Promotion(null,4))).length;
+      const brownBelt = (await dayswappersInst.queryFilter(dayswappersInst.filters.Promotion(null,5))).length;
+      const redBelt = (await dayswappersInst.queryFilter(dayswappersInst.filters.Promotion(null,6))).length;
+      const blackBelt = (await dayswappersInst.queryFilter(dayswappersInst.filters.Promotion(null,7))).length;
 
       const kycdappInst = KycDappFactory.connect(es.addresses[process.env.NODE_ENV].ESN.kycdapp,providerESN);
 
       const kycResolvedUsers = (await kycdappInst.queryFilter(kycdappInst.filters.KycApplied(null,null,null,null))).length
 
+      const totalRewards = 0,liquidRatio = 0,prepaidRatio = 0,stakesRatio = 0;
+      (await dayswappersInst.queryFilter(dayswappersInst.filters.Reward(null,null,this.currentNrtMonth,null,null,null,null)))
+        .map(log => dayswappersInst.interface.parseLog(log))
+        .map(log => ({
+          reward: log.args['reward'],
+          rewardRatio: log.args['rewardRatio'],
+        }))
+        .map(log => {
+          totalRewards += Number(ethers.utils.formatEther(log.reward));
+          liquidRatio += Number(ethers.utils.formatEther(log.rewardRatio[0]));
+          prepaidRatio += Number(ethers.utils.formatEther(log.rewardRatio[1]));
+          stakesRatio += Number(ethers.utils.formatEther(log.rewardRatio[2]));
+        });
+        let totalLiquidRewards = 0;
+        let totalTimeAllyRewards = 0;
+        if((liquidRatio + prepaidRatio + stakesRatio) !== 0){
+          totalLiquidRewards = (totalRewards/(liquidRatio+prepaidRatio+stakesRatio))*liquidRatio;
+          totalTimeAllyRewards = (totalRewards/(liquidRatio+prepaidRatio+stakesRatio))*stakesRatio;
+        }
+        
       this.setState({
         dayswappers: {
           data: {
             users: totalDayswappers,
-            totalLiquidRewards: 'Coming Soon',
-            totalTimeAllyRewards: 'Coming Soon',
+            totalLiquidRewards,
+            totalTimeAllyRewards,
             activeUsers: activeUsers,
             kycUsers: kycResolvedUsers,
-            whiteBelt: 'Coming Soon',
-            yellowBelt: 'Coming Soon',
-            orangeBelt: 'Coming Soon',
-            greenBelt: 'Coming Soon',
-            blueBelt: 'Coming Soon',
-            brownBelt: 'Coming Soon',
-            redBelt: 'Coming Soon',
-            blackBelt: 'Coming Soon',
+            whiteBelt,
+            yellowBelt,
+            orangeBelt,
+            greenBelt,
+            blueBelt,
+            brownBelt,
+            redBelt,
+            blackBelt,
           },
-          isLoading: true,
+          isLoading: false,
         },
       })
     }catch(e){
