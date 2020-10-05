@@ -1553,13 +1553,13 @@ class Dashboard extends Component {
           <div className="row">
             <Col lg={9}>
               <div className="sub-dashboard">
-                <Col lg={4}>
+                <Col lg={3}>
                   <h5 className="">Era Swap (ES)</h5>
                   <h5 className="sub-dash-head">
                     {this.state.esUSDT} USDT{' '}
                   </h5>
                 </Col>
-                <Col lg={4}>
+                <Col lg={3}>
                   <div className="sub-supply-box mb10">
                     <div className="es-box-ds">
                       <p className="supply-txt">MARKET CAP</p>
@@ -1580,12 +1580,22 @@ class Dashboard extends Component {
                     </div>
                   </div>
                 </Col>
-                <Col lg={4}>
+                <Col lg={3}>
                   <div className="sub-supply-box mb10">
                     <div className="es-box-ds">
                       <p className="supply-txt">TOTAL ES OWNERS</p>
                       <p className="supply-txt">
                         {this.state.esOwners} addresses{' '}
+                      </p>
+                    </div>
+                  </div>
+                </Col>
+                <Col lg={3}>
+                  <div className="sub-supply-box mb10">
+                    <div className="es-box-ds">
+                      <p className="supply-txt">Current NRT Month</p>
+                      <p className="supply-txt">
+                      -
                       </p>
                     </div>
                   </div>
@@ -1634,7 +1644,11 @@ class Dashboard extends Component {
               <Col sm={6} lg={2} p-0>
                 <Card>
                   <Card.Body>
-                    <p className="sect-txt-bold">TOTAL SUPPLY</p>
+                    <p className="sect-txt-bold"
+                    data-toggle="tooltip"
+                    data-placement="top"
+                    title="Total numbers of ES  every realized or produced in market including stakings & burnt "
+                    >TOTAL SUPPLY</p>
                     <p className="value-dash-txt">
                       {isFinite(Number(this.state.totalESStaked) + Number(this.state.circulatingOutsideTA)) ? (Number(this.state.totalESStaked) + Number(this.state.circulatingOutsideTA)) : 'Loading...'} ES
                     </p>
@@ -1644,8 +1658,12 @@ class Dashboard extends Component {
               <Col sm={6} lg={2}>
                 <Card>
                   <Card.Body>
-                    <p className="sect-txt-bold">MAXIMUM SUPPLY</p>
-                    <p className="value-dash-txt">{MAX_SUPPLY} ES</p>
+                    <p className="sect-txt-bold"
+                    data-toggle="tooltip"
+                    data-placement="top"
+                    title="The maximum number of Era Swap that will be ever created released i.e. 9,10,00,00,000">
+                    MAXIMUM SUPPLY</p>
+                    <p className="value-dash-txt">9100000000 ES</p>
                   </Card.Body>
                 </Card>
               </Col>
@@ -1727,7 +1745,11 @@ class Dashboard extends Component {
               <Col sm={6} lg={2}>
                 <Card className="">
                   <Card.Body>
-                    <p className="sect-txt-bold">TOTAL ES BURNED</p>
+                    <p className="sect-txt-bold"
+                     data-toggle="tooltip"
+                     data-placement="top"
+                     title=" Number of ES permanently  removed from ES circulation and send to address . 10% ES collected from KYC Dapp, 10% ES of Fuel collected from Ecosystem Platforms, ES stakings destroyed When a borrower choose to default repayment of  Loan and interest and unused rewards ">
+                       TOTAL ES BURNED</p>
                     <p className="value-dash-txt">
                       {this.state.totalESBurned}
                     </p>

@@ -47,6 +47,16 @@ class Footer extends Component {
                 <li>
                   <i class="fa fa-angle-double-right"></i>{' '}
                   <a
+                    href="https://eraswaptoken.io/pdf/Era_Swap_Decentralized_Autonomous_Organization.pdf"
+                    target="_blank"
+                  >
+                    <i class="zmdi zmdi-apple"></i>
+                    <span>Era Swap DAO</span>
+                  </a>
+                </li>
+                <li>
+                  <i class="fa fa-angle-double-right"></i>{' '}
+                  <a
                     href="http://eraswaptoken.io/pdf/era-swap-howey-test-letter-august7-2018.pdf"
                     target="_blank"
                   >
