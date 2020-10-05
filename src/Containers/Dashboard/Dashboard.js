@@ -13,14 +13,17 @@ import { timeAllyManager } from '../../ethereum/TimeallyManager';
 import { nrtManager } from '../../ethereum/NrtManager';
 import { nrtAddress } from '../../config/config';
 import { providerESN } from '../../ethereum/Provider';
+import { DayswappersWithMigrationFactory, KycDappFactory } from 'eraswap-sdk/dist/typechain/ESN';
+import { es } from 'eraswap-sdk/dist';
 
 const COLORS = ['#959595', '#747FEB'];
 const MAX_SUPPLY = 9100000000;
-// const nrtManager = nrtManager();
+// const nrtManager = nrtManager;
 
 class Dashboard extends Component {
   esPrice = null;
   esCurrentSupply = null;
+  currentNrtMonth = '0';
 
   constructor(props) {
     super(props);
@@ -208,222 +211,98 @@ class Dashboard extends Component {
 
   componentDidMount() {
     this.loadData();
+    
   }
 
   async loadData() {
-    try {
-      this.etherPriceUsd().catch(e => console.log('etherPriceUsd error',e));
-    } catch (e) {
-      console.log(e);
-    }
-    try {
-      this.bitcoinCrowdFundPrice().catch(e => console.log('bitcoinCrowdFundPrice error',e));
-    } catch (e) {
-      console.log(e);
-    }
-    try {
-      this.ltcPriceUsd().catch(e => console.log('ltcPriceUsd error',e));
-    } catch (e) {
-      console.log(e);
-    }
-    try {
-      this.getESPrice().catch(e => console.log('getESPrice error',e));
-    } catch (e) {
-      console.log(e);
-    }
-    try {
-      this.esTotalSupply().catch(e => console.log('esTotalSupply error',e));
-    } catch (e) {
-      console.log(e);
-    }
-    try {
-      this.holdersOfEraSwap().catch(e => console.log('holdersOfEraSwap error',e));
-    } catch (e) {
-      console.log(e);
-    }
-    try {
-      this.nrtFractions().catch(e => console.log('nrtFractions error',e));
-    } catch (e) {
-      console.log(e);
-    }
-    try {
-      this.getNumberOfStakings().catch(e => console.log('getNumberOfStakings error',e));
-    } catch (e) {
-      console.log(e);
-    }
-    try {
-      this.getStakingPlanStatistics().catch(e => console.log('getStakingPlanStatistics error',e));
-    } catch (e) {
-      console.log(e);
-    }
-    try {
-      this.getNumberOfBets().catch(e => console.log('getNumberOfBets error',e));
-    } catch (e) {
-      console.log(e);
-    }
-    try {
-      this.getBettingDetails().catch(e => console.log('getBettingDetails error',e));
-    } catch (e) {
-      console.log(e);
-    }
-    try {
-      this.powerTokenDetails().catch(e => console.log('powerTokenDetails error',e));
-    } catch (e) {
-      console.log(e);
-    }
-    try {
-      this.transactionSplits().catch(e => console.log('transactionSplits error',e));
-    } catch (e) {
-      console.log(e);
-    }
-    try {
-      this.totalNoOfUser().catch(e => console.log('totalNoOfUser error',e));
-    } catch (e) {
-      console.log(e);
-    }
-    try {
-      this.totalNoOfFreelancerOrSeller().catch(e => console.log('totalNoOfFreelancerOrSeller error',e));
-    } catch (e) {
-      console.log(e);
-    }
-    try {
-      this.totalViewsOnProfile().catch(e => console.log('totalViewsOnProfile error',e));
-    } catch (e) {
-      console.log(e);
-    }
-    try {
-      this.totalNoOfVerifiedUser().catch(e => console.log('totalNoOfVerifiedUser error',e));
-    } catch (e) {
-      console.log(e);
-    }
-    try {
-      this.totalNoOfCertifiedUser().catch(e => console.log('totalNoOfCertifiedUser error',e));
-    } catch (e) {
-      console.log(e);
-    }
-    try {
-      this.totalNoOfDeposit().catch(e => console.log('totalNoOfDeposit error',e));
-    } catch (e) {
-      console.log(e);
-    }
-    try {
-      this.totalNoOfWithdraw().catch(e => console.log('totalNoOfWithdraw error',e));
-    } catch (e) {
-      console.log(e);
-    }
-    try {
-      this.totalJobsPosted().catch(e => console.log('totalJobsPosted error',e));
-    } catch (e) {
-      console.log(e);
-    }
-    try {
-      this.totalJobsDone().catch(e => console.log('totalJobsDone error',e));
-    } catch (e) {
-      console.log(e);
-    }
-    try {
-      this.TfcGenerated().catch(e => console.log('TfcGenerated error',e));
-    } catch (e) {
-      console.log(e);
-    }
-    try {
-      this.swapperswalletTotalFeeds().catch(e => console.log('swapperswalletTotalFeeds error',e));
-    } catch (e) {
-      console.log(e);
-    }
-    try {
-      this.swapperswallTopTenreceivers().catch(e => console.log('swapperswallTopTenreceivers error',e));
-    } catch (e) {
-      console.log(e);
-    }
-    try {
-      this.userscount().catch(e => console.log('userscount error',e));
-    } catch (e) {
-      console.log(e);
-    }
-    try {
-      this.courses().catch(e => console.log('courses error',e));
-    } catch (e) {
-      console.log(e);
-    }
-    try {
-      this.deposits().catch(e => console.log('deposits error',e));
-    } catch (e) {
-      console.log(e);
-    }
-    try {
-      this.userstudying().catch(e => console.log('userstudying error',e));
-    } catch (e) {
-      console.log(e);
-    }
-    try {
-      this.buzcafeUserscount().catch(e => console.log('buzcafeUserscount error',e));
-    } catch (e) {
-      console.log(e);
-    }
-    try {
-      this.buzcafeDepositscount().catch(e => console.log('buzcafeDepositscount error',e));
-    } catch (e) {
-      console.log(e);
-    }
-    try {
-      this.buzcafeShopscount().catch(e => console.log('buzcafeShopscount error',e));
-    } catch (e) {
-      console.log(e);
-    }
-    try {
-      this.buzcafeWithdrawalscount().catch(e => console.log('buzcafeWithdrawalscount error',e));
-    } catch (e) {
-      console.log(e);
-    }
-    try {
-      this.buzcafeTransactionscount().catch(e => console.log('buzcafeTransactionscount error',e));
-    } catch (e) {
-      console.log(e);
-    }
-    try {
-      this.fetchTotalStakedES().catch(e => console.log('fetchTotalStakedES error',e));
-    } catch (e) {
-      console.log(e);
-    }
-    try {
-      this.fetchTotalSupply().catch(e => console.log('fetchTotalSupply error',e));
-    } catch (e) {
-      console.log(e);
-    }
-    try {
-      this.fetchESFromNRT().catch(e => console.log('fetchESFromNRT error',e));
-    } catch (e) {
-      console.log(e);
-    }
-    try {
-      this.fetchTotalESBurned().catch(e => console.log('fetchTotalESBurned error',e));
-    } catch (e) {
-      console.log(e);
-    }
-    try {
-      this.fetchBurnPool().catch(e => console.log('fetchBurnPool error',e));
-    } catch (e) {
-      console.log(e);
-    }
-    try {
-      this.fetchLuckPool().catch(e => console.log('fetchLuckPool error',e));
-    } catch (e) {
-      console.log(e);
-    }
-    try {
-      this.fetchAllTxnsCount().catch(e => console.log('fetchAllTxnsCount error',e));
-    } catch (e) {
-      console.log(e);
-    }
+    try{ this.currentNrtMonth = await nrtManager.currentNrtMonth(); }catch(e){ console.log(e); }
+    this.etherPriceUsd().catch(e => console.log('etherPriceUsd error',e));
+    this.bitcoinCrowdFundPrice().catch(e => console.log('bitcoinCrowdFundPrice error',e));
+    this.ltcPriceUsd().catch(e => console.log('ltcPriceUsd error',e));
+    this.getESPrice().catch(e => console.log('getESPrice error',e));
+    this.esTotalSupply().catch(e => console.log('esTotalSupply error',e));
+    this.holdersOfEraSwap().catch(e => console.log('holdersOfEraSwap error',e));
+    this.nrtFractions().catch(e => console.log('nrtFractions error',e));
+    this.getNumberOfStakings().catch(e => console.log('getNumberOfStakings error',e));
+    this.getStakingPlanStatistics().catch(e => console.log('getStakingPlanStatistics error',e));
+    this.getNumberOfBets().catch(e => console.log('getNumberOfBets error',e));
+    this.getBettingDetails().catch(e => console.log('getBettingDetails error',e));
+    this.powerTokenDetails().catch(e => console.log('powerTokenDetails error',e));
+    this.transactionSplits().catch(e => console.log('transactionSplits error',e));
+    this.totalNoOfUser().catch(e => console.log('totalNoOfUser error',e));
+    this.totalNoOfFreelancerOrSeller().catch(e => console.log('totalNoOfFreelancerOrSeller error',e));
+    this.totalViewsOnProfile().catch(e => console.log('totalViewsOnProfile error',e));
+    this.totalNoOfVerifiedUser().catch(e => console.log('totalNoOfVerifiedUser error',e));
+    this.totalNoOfCertifiedUser().catch(e => console.log('totalNoOfCertifiedUser error',e));
+    this.totalNoOfDeposit().catch(e => console.log('totalNoOfDeposit error',e));
+    this.totalNoOfWithdraw().catch(e => console.log('totalNoOfWithdraw error',e));
+    this.totalJobsPosted().catch(e => console.log('totalJobsPosted error',e));
+    this.totalJobsDone().catch(e => console.log('totalJobsDone error',e));
+    this.TfcGenerated().catch(e => console.log('TfcGenerated error',e));
+    this.swapperswalletTotalFeeds().catch(e => console.log('swapperswalletTotalFeeds error',e));
+    this.swapperswallTopTenreceivers().catch(e => console.log('swapperswallTopTenreceivers error',e));
+    this.userscount().catch(e => console.log('userscount error',e));
+    this.courses().catch(e => console.log('courses error',e));
+    this.deposits().catch(e => console.log('deposits error',e));
+    this.userstudying().catch(e => console.log('userstudying error',e));
+    this.buzcafeUserscount().catch(e => console.log('buzcafeUserscount error',e));
+    this.buzcafeDepositscount().catch(e => console.log('buzcafeDepositscount error',e));
+    this.buzcafeShopscount().catch(e => console.log('buzcafeShopscount error',e));
+    this.buzcafeWithdrawalscount().catch(e => console.log('buzcafeWithdrawalscount error',e));
+    this.buzcafeTransactionscount().catch(e => console.log('buzcafeTransactionscount error',e));
+    this.fetchTotalStakedES().catch(e => console.log('fetchTotalStakedES error',e));
+    this.fetchTotalSupply().catch(e => console.log('fetchTotalSupply error',e));
+    this.fetchESFromNRT().catch(e => console.log('fetchESFromNRT error',e));
+    this.fetchTotalESBurned().catch(e => console.log('fetchTotalESBurned error',e));
+    this.fetchBurnPool().catch(e => console.log('fetchBurnPool error',e));
+    this.fetchLuckPool().catch(e => console.log('fetchLuckPool error',e));
+    this.fetchAllTxnsCount().catch(e => console.log('fetchAllTxnsCount error',e));
 
-    try {
-      this.fetchESOwnersCount().catch(e => console.log('fetchESOwnersCount error',e));
-    } catch (e) {
-      console.log(e);
-    }
-
+    this.fetchESOwnersCount().catch(e => console.log('fetchESOwnersCount error',e));
+    this.fetchDayswappersData().catch(e => console.log('fetchDayswappersData error',e));
     this.nrtTicker();
+  }
+
+  async fetchDayswappersData(){
+    try{
+      const dayswappersInst = DayswappersWithMigrationFactory.connect(es.addresses[process.env.NODE_ENV].ESN.dayswappers,providerESN);
+      const totalDayswappers = (await dayswappersInst.queryFilter(dayswappersInst.filters.SeatTransfer(null,null,null))).length
+      const activeUsers = (await dayswappersInst.queryFilter(dayswappersInst.filters.Active(null,this.currentNrtMonth))).length
+      const kycResolvedUsers = (await dayswappersInst.queryFilter(dayswappersInst.filters.KycResolve(null))).length
+
+      this.setState({
+        dayswappers: {
+          data: {
+            users: totalDayswappers,
+            totalLiquidRewards: 'Coming Soon',
+            totalTimeAllyRewards: 'Coming Soon',
+            activeUsers: activeUsers,
+            kycUsers: kycResolvedUsers,
+            whiteBelt: 'Coming Soon',
+            yellowBelt: 'Coming Soon',
+            orangeBelt: 'Coming Soon',
+            greenBelt: 'Coming Soon',
+            blueBelt: 'Coming Soon',
+            brownBelt: 'Coming Soon',
+            redBelt: 'Coming Soon',
+            blackBelt: 'Coming Soon',
+          },
+          isLoading: true,
+        },
+      })
+    }catch(e){
+      console.log(e);
+    }
+  }
+
+
+  async getTotalKycApproved(){
+    try{
+      const kycInst = await KycDappFactory.connect(es.addresses[process.env.REACT_APP_NODE_ENV].kycdapp,providerESN);
+      // kycInst.filters.
+    }catch(e){
+      console.log(e);
+    }
   }
 
   async fetchESOwnersCount() {
@@ -511,10 +390,9 @@ class Dashboard extends Component {
   }
 
   async fetchTotalStakedES() {
-    const currentNrtMonth = await nrtManager.currentNrtMonth();
     // const nrtReleasePromise
     const nextMonthActiveStakes = await timeAllyManager.getTotalActiveStaking(
-      currentNrtMonth
+      this.currentNrtMonth
     );
     this.setState({
       totalESStaked: formatEther(nextMonthActiveStakes),
@@ -715,14 +593,14 @@ class Dashboard extends Component {
                 : '-',
               value: '-',
             },
-            dayswappers: {
-              percent: '-',
-              volume: res?.data?.workPoolCalculation?.dayswappers
-                ? lessDecimals(res?.data?.workPoolCalculation?.dayswappers) +
-                ' ES'
-                : '-',
-              value: '-',
-            },
+            // dayswappers: {
+            //   percent: '-',
+            //   volume: res?.data?.workPoolCalculation?.dayswappers
+            //     ? lessDecimals(res?.data?.workPoolCalculation?.dayswappers) +
+            //     ' ES'
+            //     : '-',
+            //   value: '-',
+            // },
             buzcafe: {
               percent: '-',
               volume: res?.data?.workPoolCalculation?.buzcafe
@@ -921,18 +799,18 @@ class Dashboard extends Component {
       console.log(e);
     } finally {
       this.setState({
-        dayswappers: {
-          data: {
-            ...this.state.dayswappers.data,
-            totalLiquidRewards: res?.data?.liquidTotal
-              ? lessDecimals(res.data.liquidTotal) + ' ES'
-              : '-',
-            totalTimeAllyRewards: res?.data?.timeallyTotal
-              ? lessDecimals(res.data.timeallyTotal) + ' ES'
-              : '-',
-          },
-          isLoading: false,
-        },
+        // dayswappers: {
+        //   data: {
+        //     ...this.state.dayswappers.data,
+        //     totalLiquidRewards: res?.data?.liquidTotal
+        //       ? lessDecimals(res.data.liquidTotal) + ' ES'
+        //       : '-',
+        //     totalTimeAllyRewards: res?.data?.timeallyTotal
+        //       ? lessDecimals(res.data.timeallyTotal) + ' ES'
+        //       : '-',
+        //   },
+        //   isLoading: false,
+        // },
       });
     }
   }
@@ -998,72 +876,72 @@ class Dashboard extends Component {
     }
   }
 
-  async dayswappersOverview() {
-    let res;
-    try {
-      res = await Apis.dayswappersOverview();
-      console.log('dayswappersOverview - res', res);
-    } catch (e) {
-      console.log(e);
-    } finally {
-      this.setState({
+  // async dayswappersOverview() {
+  //   let res;
+  //   try {
+  //     res = await Apis.dayswappersOverview();
+  //     console.log('dayswappersOverview - res', res);
+  //   } catch (e) {
+  //     console.log(e);
+  //   } finally {
+  //     this.setState({
 
-        numberOfDayswappers: res?.total_no_of_user
-          ? res.total_no_of_user + ' users'
-          : '-',
-        dayswappers: {
-          data: {
-            ...this.state.dayswappers.data,
-            users:
-              res?.total_no_of_user !== undefined
-                ? res.total_no_of_user + ' users'
-                : '-',
-            activeUsers:
-              res?.active_users !== undefined
-                ? res.active_users + ' user' + (res.kyc_users > 1 ? 's' : '')
-                : '-',
-            kycUsers:
-              res?.kyc_users !== undefined
-                ? res.kyc_users + ' user' + (res.kyc_users > 1 ? 's' : '')
-                : '-',
-            whiteBelt:
-              res?.White !== undefined
-                ? res.White + ' user' + (res.White !== 1 ? 's' : '')
-                : '-',
-            yellowBelt:
-              res?.Yellow !== undefined
-                ? res.Yellow + ' user' + (res.Yellow !== 1 ? 's' : '')
-                : '-',
-            orangeBelt:
-              res?.Orange !== undefined
-                ? res.Orange + ' user' + (res.Orange !== 1 ? 's' : '')
-                : '-',
-            greenBelt:
-              res?.Green !== undefined
-                ? res.Green + ' user' + (res.Green !== 1 ? 's' : '')
-                : '-',
-            blueBelt:
-              res?.Blue !== undefined
-                ? res.Blue + ' user' + (res.Blue !== 1 ? 's' : '')
-                : '-',
-            brownBelt:
-              res?.Brown !== undefined
-                ? res.Brown + ' user' + (res.Brown !== 1 ? 's' : '')
-                : '-',
-            redBelt:
-              res?.Red !== undefined
-                ? res.Red + ' user' + (res.Red !== 1 ? 's' : '')
-                : '-',
-            blackBelt:
-              res?.Black !== undefined
-                ? res.Black + ' user' + (res.Black !== 1 ? 's' : '')
-                : '-',
-          },
-          isLoading: false,
-        },
-      });
-    }
-  }
+  //       numberOfDayswappers: res?.total_no_of_user
+  //         ? res.total_no_of_user + ' users'
+  //         : '-',
+  //       dayswappers: {
+  //         data: {
+  //           ...this.state.dayswappers.data,
+  //           users:
+  //             res?.total_no_of_user !== undefined
+  //               ? res.total_no_of_user + ' users'
+  //               : '-',
+  //           activeUsers:
+  //             res?.active_users !== undefined
+  //               ? res.active_users + ' user' + (res.kyc_users > 1 ? 's' : '')
+  //               : '-',
+  //           kycUsers:
+  //             res?.kyc_users !== undefined
+  //               ? res.kyc_users + ' user' + (res.kyc_users > 1 ? 's' : '')
+  //               : '-',
+  //           whiteBelt:
+  //             res?.White !== undefined
+  //               ? res.White + ' user' + (res.White !== 1 ? 's' : '')
+  //               : '-',
+  //           yellowBelt:
+  //             res?.Yellow !== undefined
+  //               ? res.Yellow + ' user' + (res.Yellow !== 1 ? 's' : '')
+  //               : '-',
+  //           orangeBelt:
+  //             res?.Orange !== undefined
+  //               ? res.Orange + ' user' + (res.Orange !== 1 ? 's' : '')
+  //               : '-',
+  //           greenBelt:
+  //             res?.Green !== undefined
+  //               ? res.Green + ' user' + (res.Green !== 1 ? 's' : '')
+  //               : '-',
+  //           blueBelt:
+  //             res?.Blue !== undefined
+  //               ? res.Blue + ' user' + (res.Blue !== 1 ? 's' : '')
+  //               : '-',
+  //           brownBelt:
+  //             res?.Brown !== undefined
+  //               ? res.Brown + ' user' + (res.Brown !== 1 ? 's' : '')
+  //               : '-',
+  //           redBelt:
+  //             res?.Red !== undefined
+  //               ? res.Red + ' user' + (res.Red !== 1 ? 's' : '')
+  //               : '-',
+  //           blackBelt:
+  //             res?.Black !== undefined
+  //               ? res.Black + ' user' + (res.Black !== 1 ? 's' : '')
+  //               : '-',
+  //         },
+  //         isLoading: false,
+  //       },
+  //     });
+  //   }
+  // }
 
   async totalNoOfUser() {
     let res;
@@ -1695,7 +1573,7 @@ class Dashboard extends Component {
                   <Card.Body>
                     <p className="sect-txt-bold">NUMBER OF DAYSWAPPERS</p>
                     <p className="value-dash-txt">
-                      'Coming soon'
+                      {this.state.dayswappers.data.users}
                       {/* this.state.numberOfDayswappers*/}
                     </p>
                   </Card.Body>
@@ -2063,21 +1941,19 @@ class Dashboard extends Component {
                   <div>
                     <p className="sect4-context">Total DaySwappers</p>
                     <p className="sect4-value">
-                      {'Coming soon' || this.state.dayswappers.data.users}
+                      {this.state.dayswappers.data.users}
                     </p>
                   </div>
                   <div>
                     <p className="sect4-context">Total Liquid Reward</p>
                     <p className="sect4-value">
-                      {'Coming soon' ||
-                        this.state.dayswappers.data.totalLiquidRewards}
+                      {this.state.dayswappers.data.totalLiquidRewards}
                     </p>
                   </div>
                   <div>
                     <p className="sect4-context">Total TimeAlly Rewards</p>
                     <p className="sect4-value">
-                      {'Coming soon' ||
-                        this.state.dayswappers.data.totalTimeAllyRewards}
+                      {this.state.dayswappers.data.totalTimeAllyRewards}
                     </p>
                   </div>
                 </div>
@@ -2085,25 +1961,25 @@ class Dashboard extends Component {
                   <div>
                     <p className="sect4-context">Active Users </p>
                     <p className="sect4-value">
-                      {'Coming soon' || this.state.dayswappers.data.activeUsers}
+                      {this.state.dayswappers.data.activeUsers}
                     </p>
                   </div>
                   <div>
                     <p className="sect4-context">KYC users</p>
                     <p className="sect4-value">
-                      {'Coming soon' || this.state.dayswappers.data.kycUsers}
+                      {this.state.dayswappers.data.kycUsers}
                     </p>
                   </div>
                   <div>
                     <p className="sect4-context">White Belt</p>
                     <p className="sect4-value">
-                      {'Coming soon' || this.state.dayswappers.data.whiteBelt}
+                      {this.state.dayswappers.data.whiteBelt}
                     </p>
                   </div>
                   <div>
                     <p className="sect4-context">Yellow Belt </p>
                     <p className="sect4-value">
-                      {'Coming soon' || this.state.dayswappers.data.yellowBelt}
+                      {this.state.dayswappers.data.yellowBelt}
                     </p>
                   </div>
                 </div>
@@ -2111,25 +1987,25 @@ class Dashboard extends Component {
                   <div>
                     <p className="sect4-context">Orange Belt </p>
                     <p className="sect4-value">
-                      {'Coming soon' || this.state.dayswappers.data.orangeBelt}
+                      {this.state.dayswappers.data.orangeBelt}
                     </p>
                   </div>
                   <div>
                     <p className="sect4-context">Green Belt</p>
                     <p className="sect4-value">
-                      {'Coming soon' || this.state.dayswappers.data.greenBelt}
+                      {this.state.dayswappers.data.greenBelt}
                     </p>
                   </div>
                   <div>
                     <p className="sect4-context">Blue Belt</p>
                     <p className="sect4-value">
-                      {'Coming soon' || this.state.dayswappers.data.blueBelt}
+                      {this.state.dayswappers.data.blueBelt}
                     </p>
                   </div>
                   <div>
                     <p className="sect4-context">Brown Belt</p>
                     <p className="sect4-value">
-                      {'Coming soon' || this.state.dayswappers.data.brownBelt}
+                      {this.state.dayswappers.data.brownBelt}
                     </p>
                   </div>
                 </div>
@@ -2137,13 +2013,13 @@ class Dashboard extends Component {
                   <div className="dayswapper-box">
                     <p className="sect4-context">Red Belt</p>
                     <p className="sect4-value">
-                      {'Coming soon' || this.state.dayswappers.data.redBelt}
+                      {this.state.dayswappers.data.redBelt}
                     </p>
                   </div>
                   <div>
                     <p className="sect4-context">Black Belt</p>
                     <p className="sect4-value">
-                      {'Coming soon' || this.state.dayswappers.data.blackBelt}
+                      {this.state.dayswappers.data.blackBelt}
                     </p>
                   </div>
                 </div>
