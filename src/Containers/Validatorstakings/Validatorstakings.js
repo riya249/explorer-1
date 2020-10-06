@@ -34,7 +34,7 @@ class Validatorstakings extends Component {
   }
 
   async fetchMonth() {
-    const month = await nrtManager().currentNrtMonth();
+    const month = await nrtManager.currentNrtMonth();
     this.month = Number(month);
     this.setState({ month: this.month }, this.fetchData);
   }
@@ -247,7 +247,7 @@ class Validatorstakings extends Component {
                                           {validator.delegatorstakings?.map(
                                             (stakes, j) => (
                                               <span>
-                                                ({stakes.address.address} =>{' '}
+                                                ({stakes.address.address} =&gt;{' '}
                                                 {ethers.utils.formatEther(
                                                   stakes.amount
                                                 )}

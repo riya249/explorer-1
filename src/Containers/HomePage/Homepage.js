@@ -28,6 +28,7 @@ import { nrtManager } from '../../ethereum/NrtManager';
 import { timeAllyManager } from '../../ethereum/TimeallyManager';
 import { nrtAddress } from '../../config/config';
 import { providerESN } from '../../ethereum/Provider';
+import { es } from 'eraswap-sdk/dist';
 
 const MAX_SUPPLY = 9100000000;
 
@@ -397,10 +398,13 @@ class Homepage extends Component {
   }
 
   async fetchTotalSupply() {
-    const nrtBalance = await providerESN.getBalance(nrtAddress);
+    // const nrtBalance = await providerESN.getBalance(nrtAddress);
 
+    // this.setState({
+    //   totalSupply: MAX_SUPPLY - formatEther(nrtBalance),
+    // });
     this.setState({
-      totalSupply: MAX_SUPPLY - formatEther(nrtBalance),
+      totalSupply: await this.getTotalSupply()
     });
   }
 
@@ -430,8 +434,18 @@ class Homepage extends Component {
     }
   }
 
+  async getTotalSupply(){
+    const nrtBalance = await providerESN.getBalance(es.addresses[process.env.NODE_ENV].ESN.nrtManager);
+    const luckPoolBal = await nrtManager.luckPoolBalance();
+    const burnPoolBal = await nrtManager.burnPoolBalance();
+    const burnAddressBal = await providerESN.getBalance('0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb');
+    const maxSupplyHex = ethers.utils.parseEther(MAX_SUPPLY.toString());
+    const totalSupplyHex = maxSupplyHex.sub(nrtBalance.sub(burnAddressBal).sub(luckPoolBal).sub(burnPoolBal));
+    return Number(ethers.utils.formatEther(totalSupplyHex));
+  }
+
   render() {
-    const availableSupply = this.state.totalSupply - this.state.totalESStaked - this.state.burnPool;
+    const availableSupply = this.state.totalSupply - this.state.burnPool;
     return (
       <div>
         <div className="booking-hero-bgd">
@@ -549,8 +563,9 @@ class Homepage extends Component {
                             TOTAL SUPPLY / CIRCULATING SUPPLY
                           </p>
                           <p className="era-value text-black">
-                            {Number(this.state.totalESStaked) +
-                              Number(this.state.availableSupply)}{' '}
+                            {/* {Number(this.state.totalESStaked) +
+                              Number(this.state.availableSupply)}{' '} */}
+                              {this.state.totalSupply}
                             ES
                           </p>
                         </div>

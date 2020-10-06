@@ -61,6 +61,8 @@ export default class Apis {
 
   static fetchESPrices = () => ajax(`${baseUrl}/es-price/top`);
 
+  static fetchKycDappStatistics = () => ajax(`http://localhost:8010/api/kyc-level-one/statistics`);
+
   /********* dashboard apis *********/
   //third party
   static etherPriceUsd = () =>
