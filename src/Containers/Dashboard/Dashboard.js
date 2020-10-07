@@ -1603,7 +1603,7 @@ class Dashboard extends Component {
               </div>
             </Col>
             <Col lg={3}>
-              <h5 className="nrt-head">Next NRT Count</h5>
+              <h5 className="nrt-head">Time Remaining for Next NRT Released</h5>
               <div className="count-box d-flex justify-content-lg-around  ">
                 <ul className="flex-count-box">
                   <li className="count-txt">
@@ -1630,7 +1630,20 @@ class Dashboard extends Component {
         <div className="container-fluid bgd-dash-color">
           <div className="dash-section-2">
             <Row>
-             
+              <Col sm={6} lg={2} p-0>
+                <Card>
+                  <Card.Body>
+                    <p className="sect-txt-bold"
+                    data-toggle="tooltip"
+                    data-placement="top"
+                    title="Total Supply - Officially Burnt"
+                    >ES AVAILABLE SUPPLY</p>
+                    <p className="value-dash-txt">
+                     {availableSupply > -1 ? availableSupply : 'Loading...'} ES
+                    </p>
+                  </Card.Body>
+                </Card>
+              </Col>
               <Col sm={6} lg={2} p-0>
                 <Card>
                   <Card.Body>
@@ -2025,6 +2038,12 @@ class Dashboard extends Component {
                       {this.state.timeswappers.data.jobsDone}
                     </p>
                   </div>
+                  <div>
+                    <p className="sect4-context">Volume of ES</p>
+                    <p className="sect4-value">
+                     -
+                    </p>
+                  </div>
                 </div>
               </div>
             </Col>
@@ -2318,7 +2337,8 @@ class Dashboard extends Component {
                     </p>
                   </div>
                 </div>
-                <div className="swwall-border-flex">
+
+                <div className="bet-flex-border">
                   <div>
                     <p className="sect4-context">Total ES volume predicted </p>
                     <p className="sect4-context">on BetDeEx</p>
@@ -2341,6 +2361,16 @@ class Dashboard extends Component {
                     </p>
                   </div>
                 </div>
+
+                <div className="swwall-border-flex">
+                  <div>
+                    <p className="sect4-context">Volume of ES</p>
+                    <p className="sect4-value">
+                     -
+                    </p>
+                  </div>
+                </div>
+
               </div>
             </Col>
             <Col lg={4}>
@@ -2496,6 +2526,10 @@ class Dashboard extends Component {
                     <p className="sect4-context">TFC Generated</p>
                     <p className="sect4-value">Coming soon</p>
                   </div>
+                  <div>
+                    <p className="sect4-context">Volume of ES</p>
+                    <p className="sect4-value">Coming soon</p>
+                  </div>
                 </div>
               </div>
             </Col>
@@ -2520,6 +2554,10 @@ class Dashboard extends Component {
                     <p className="sect4-context">Total Volume </p>
                     <p className="sect4-value-swal">0 ES</p>
                   </div>
+                   <div>
+                    <p className="sect4-context">Volume of ES</p>
+                    <p className="sect4-value">0</p>
+                  </div>
                 </div>
                 <div className="swwall-border-flex">
                   <div>
@@ -2530,6 +2568,7 @@ class Dashboard extends Component {
                     <p className="sect4-context">Buy ES With Credit Cards Any Fiat</p>
                     <p className="sect4-value">0</p>
                   </div>
+                  
                 </div>
               </div>
             </Col>
@@ -2556,6 +2595,10 @@ class Dashboard extends Component {
                   <div>
                     <p className="sect4-context">Number of Lenders </p>
                     <p className="sect4-value-swal">0</p>
+                  </div>
+                   <div>
+                    <p className="sect4-context">Volume of ES</p>
+                    <p className="sect4-value">0</p>
                   </div>
                 </div>
                 <div className="swwall-border-flex">
@@ -2955,6 +2998,12 @@ class Dashboard extends Component {
                   <div>
                     <p className="sect4-context">TFC Generated</p>
                     <p className="sect4-value">-</p>
+                  </div>
+                </div>
+                 <div className="swwall-flex-border">
+                  <div>
+                    <p className="sect4-context">Volume of ES</p>
+                    <p className="sect4-value">- </p>
                   </div>
                 </div>
               </div>

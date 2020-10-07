@@ -668,7 +668,7 @@ class Homepage extends Component {
                         data-toggle="tooltip"
                         data-placement="top"
                         title=" Number of ES permanently  removed from ES circulation and send to address . 10% ES collected from KYC Dapp, 10% ES of Fuel collected from Ecosystem Platforms, ES stakings destroyed When a borrower choose to default repayment of  Loan and interest and unused rewards ">
-                          TOTAL ES BURNED</p>
+                          TOTAL ES Burnt</p>
                           <p className="era-value text-black">
                             -
                           </p>
