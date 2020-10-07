@@ -149,10 +149,12 @@ class Transaction extends Component {
                                 Block:{' '}
                               </td>
                               <td>
-                                {
-                                  this.state.transaction.data.block
-                                    ?.block_number
-                                }
+                                <AddressLink
+                                  value={
+                                    this.state.transaction.data.block.block_number
+                                  }
+                                  type="block"
+                                />
                               </td>
                             </tr>
                             <tr>
