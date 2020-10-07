@@ -1630,17 +1630,7 @@ class Dashboard extends Component {
         <div className="container-fluid bgd-dash-color">
           <div className="dash-section-2">
             <Row>
-              <Col sm={6} lg={2}>
-                <Card>
-                  <Card.Body>
-                    <p className="sect-txt-bold ">ES CURRENT SUPPLY</p>
-                    <p className="value-dash-txt">
-                      {(isFinite(currentSupply) && (currentSupply).toFixed(2)) || 'Loading...'}{' '}
-                      ES
-                    </p>
-                  </Card.Body>
-                </Card>
-              </Col>
+             
               <Col sm={6} lg={2} p-0>
                 <Card>
                   <Card.Body>
