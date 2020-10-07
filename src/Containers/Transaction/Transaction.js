@@ -96,7 +96,11 @@ class Transaction extends Component {
                   <div className="card">
                     <div className="table-responsive">
                       <table className="block-overview table">
-                        {Object.keys(this.state.transaction.data).length ? (
+                        {
+                          this.state.transaction.isLoading ?
+                          'Loading...'
+                          :
+                          Object.keys(this.state.transaction.data).length ? (
                           <thead>
                             <tr>
                               <td
@@ -117,7 +121,14 @@ class Transaction extends Component {
                                 Status:{' '}
                               </td>
                               <td>
-                                {this.state.transaction.data.status_enum ===
+                                {
+                                  this.state.transaction.data.status_enum ===
+                                  'pending' ? (
+                                    <span className="badge badge-warning">
+                                      Pending
+                                    </span>
+                                  ) :
+                                this.state.transaction.data.status_enum ===
                                 'success' ? (
                                   <span className="badge badge-success">
                                     Success
@@ -190,13 +201,20 @@ class Transaction extends Component {
                                 To:{' '}
                               </td>
                               <td>
-                                <AddressLink
+                                {
+                                  this.state.transaction?.data?.toAddress?.address
+                                  ?
+                                  <AddressLink
                                   value={
                                     this.state.transaction.data.toAddress
                                       .address
                                   }
                                   type="address"
                                 />
+                                :
+                                '-'
+                                }
+                                
                               </td>
                             </tr>
                             <tr>
