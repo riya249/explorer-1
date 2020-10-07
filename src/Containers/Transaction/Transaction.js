@@ -293,13 +293,25 @@ class Transaction extends Component {
                                 Gas Used by Transaction:{' '}
                               </td>
                               <td>
-                                {this.state.transaction.data.gas_used} (
-                                {(
-                                  (this.state.transaction.data.gas_used /
-                                    this.state.transaction.data.gas_limit) *
-                                  100
-                                ).toFixed(2)}
-                                %)
+                              {this.state.transaction.data.gas_used !== null
+                              ?
+                                this.state.transaction.data.gas_used === 0
+                                ?
+                                  <>0 (0%)</>
+                                :
+                                  <>
+                                  {this.state.transaction.data.gas_used} (
+                                    {(
+                                      (this.state.transaction.data.gas_used /
+                                        this.state.transaction.data.gas_limit) *
+                                      100
+                                    ).toFixed(2)}
+                                    %)
+                                  </>
+                                :
+                                <i>pending...</i>
+                              }
+                                
                               </td>
                             </tr>
 
