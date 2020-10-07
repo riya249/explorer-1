@@ -84,7 +84,7 @@ class TopAccountsbyEsBalance extends Component {
                           {/*<td>{account.label || '-'}</td>*/}
                           <td>
                             <span className="">
-                              {formatEther(account.stakes)}
+                              {account.stakes ? formatEther(account.stakes) : 0}
                             </span>
                           </td>
                           <td>
