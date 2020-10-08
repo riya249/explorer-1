@@ -64,7 +64,7 @@ class TopAccountsbyEsBalance extends Component {
                       {/*<th>Name Tag</th>*/}
                       <th>Stake </th>
                       <th>Balance</th>
-                      <th>Percentage</th>
+                      {/* <th>Percentage</th> */}
                       <th>Txn Count</th>
                     </tr>
                     {this.state.accounts.isLoading ? (
@@ -92,7 +92,7 @@ class TopAccountsbyEsBalance extends Component {
                               {formatEther(account.balance || '0x0')} ES
                             </span>
                           </td>
-                          <td>N/A </td>
+                          {/* <td>N/A </td> */}
                           <td>{account.txnsCount}</td>
                         </tr>
                       ))
