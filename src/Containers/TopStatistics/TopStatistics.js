@@ -563,7 +563,7 @@ class TopStatistics extends Component {
                               </tr>
                               <tr>
                                 <td>
-                                  <p class="sect-txt-bold ">Top Blockee</p>
+                                  <p class="sect-txt-bold ">Top Blokcee</p>
                                   <p class="value-dash-txt">
                                     {this.state.topBlockee?.address}
                                   </p>
@@ -962,7 +962,7 @@ class TopStatistics extends Component {
                       </div>
                       <div className="col-lg-12 mt10">
                         <div className="card">
-                          <div class="border-era">Top Blockee</div>
+                          <div class="border-era">Top Blokcee</div>
                           <div className="table-responsive">
                           <table className="es-transaction striped bordered hover">
                             <thead>
