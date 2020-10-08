@@ -77,27 +77,71 @@ class Homepage extends Component {
       averageBlock: null,
       latestBlockNumber: null,
       nrtCompletedPercent: 0,
-      burnPool: 0
+      burnPool: 0,
+      totalESBurnt: 0,
+      currentNrtMonth: -1,
+      totalESOwners: -1
     };
 
     this.fetchTransactions = this.fetchTransactions.bind(this);
   }
 
   componentDidMount() {
-    this.fetchBlocks().catch((e) => console.log(e));
-    this.fetchTransactions().catch((e) => console.log(e));
-    this.fetchBunches().catch((e) => console.log(e));
-    this.fetchESPrice().catch((e) => console.log(e));
-    this.fetchTransactionsInterval().catch((e) => console.log(e));
-    this.fetchTransactionsCount().catch((e) => console.log(e));
-    this.fetchTotalStakedES().catch((e) => console.log(e));
-    this.fetchValidators().catch((e) => console.log(e));
-    this.fetchAverageBlock().catch((e) => console.log(e));
-    this.nrtTicker().catch((e) => console.log(e));
-    this.esCurrentSupply().catch((e) => console.log(e));
-    this.fetchTotalSupply().catch((e) => console.log(e));
-    this.fetchBurnPool().catch((e) => console.log(e));
+   this.loadData();
+  }
+
+  async loadData(){
+    try{
+      await this.fetchNRTMonth();
+      this.fetchBlocks().catch((e) => console.log(e));
+      this.fetchTransactions().catch((e) => console.log(e));
+      this.fetchBunches().catch((e) => console.log(e));
+      this.fetchESPrice().catch((e) => console.log(e));
+      this.fetchTransactionsInterval().catch((e) => console.log(e));
+      this.fetchTransactionsCount().catch((e) => console.log(e));
+      this.fetchTotalStakedES().catch((e) => console.log(e));
+      this.fetchValidators().catch((e) => console.log(e));
+      this.fetchAverageBlock().catch((e) => console.log(e));
+      this.nrtTicker().catch((e) => console.log(e));
+      this.esCurrentSupply().catch((e) => console.log(e));
+      this.fetchTotalSupply().catch((e) => console.log(e));
+      this.fetchBurnPool().catch((e) => console.log(e));
+      this.fetchTotalESBurnt().catch((e) => console.log(e));
+      this.fetchESOwnersCount().catch((e) => console.log(e));
+      
+    }catch(e){
+      console.log(e)
+    }
+  }
+
+  async fetchESOwnersCount() {
+    let res;
+    try {
+      res = await Apis.fetchESOwners();
+    } catch (e) {
+      console.log(e);
+    } finally {
+      this.setState({
+        totalESOwners: res || '-',
+      });
+    }
+  }
+
+  fetchNRTMonth(){
+    return new Promise(async (res,rej) => {
+      const month = await nrtManager.currentNrtMonth();
+      this.setState({
+        currentNrtMonth: month
+      },res);
+    })
     
+  }
+
+  async fetchTotalESBurnt(){
+    const burnAddressBal = await providerESN.getBalance('0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb');
+    this.setState({
+      totalESBurnt: formatEther(burnAddressBal)
+    });
   }
 
   async fetchBurnPool() {
@@ -179,7 +223,7 @@ class Homepage extends Component {
 
   async fetchValidators() {
     try {
-      const month = await nrtManager.currentNrtMonth();
+      const month = this.state.currentNrtMonth;
       if (month !== null) {
         const res = await Apis.fetchValidatorsWithLastBlock(month);
         console.log('Validators res', res);
@@ -387,10 +431,9 @@ class Homepage extends Component {
   // }
 
   async fetchTotalStakedES() {
-    const currentNrtMonth = await nrtManager.currentNrtMonth();
     // const nrtReleasePromise
     const nextMonthActiveStakes = await timeAllyManager.getTotalActiveStaking(
-      currentNrtMonth
+      this.state.currentNrtMonth
     );
     this.setState({
       totalESStaked: formatEther(nextMonthActiveStakes)
@@ -446,6 +489,7 @@ class Homepage extends Component {
 
   render() {
     const availableSupply = this.state.totalSupply - this.state.burnPool;
+    const marketCap = (this.state.totalSupply - this.state.burnPool) * this.state.esPriceUSDT;
     return (
       <div>
         <div className="booking-hero-bgd">
@@ -513,7 +557,7 @@ class Homepage extends Component {
                         <div className="col-lg-6">
                           <p className="era-head">MARKET CAP</p>
                           <p className="era-value text-black">
-                            USDT {(this.state.totalSupply - this.state.burnPool) * this.state.esPriceUSDT}
+                            USDT {marketCap < 0 ? 'Loading...' : (marketCap).toFixed(2)}
                           </p>
                         </div>
                       </div>
@@ -560,12 +604,12 @@ class Homepage extends Component {
                             data-placement="top"
                             title="Total numbers of ES  every realized or produced in market including stakings & burnt"
                           >
-                            TOTAL SUPPLY / CIRCULATING SUPPLY
+                            TOTAL SUPPLY 
                           </p>
                           <p className="era-value text-black">
                             {/* {Number(this.state.totalESStaked) +
                               Number(this.state.availableSupply)}{' '} */}
-                              {this.state.totalSupply}
+                              {this.state.totalSupply}{' '}
                             ES
                           </p>
                         </div>
@@ -574,14 +618,14 @@ class Homepage extends Component {
                         <div className="col-lg-6">
                           <p className="era-head">24 HOURS VOLUME in ES</p>
                           <p className="era-value text-black">
-                             {this.state.volume24} ES
+                             {(this.state.volume24).toFixed(2)} ES
                           </p>
                         </div>
                         <div className="col-lg-6">
                           <p className="era-head">24 HOURS VOLUME in USDT</p>
                           <p className="era-value text-black">
                              {isFinite(this.state.volume24 * this.state.esPriceUSDT) ?
-                               (this.state.volume24 * this.state.esPriceUSDT)
+                               (this.state.volume24 * this.state.esPriceUSDT).toFixed(2)
                                : '-'} USDT
                           </p>
                         </div>
@@ -670,7 +714,7 @@ class Homepage extends Component {
                         title=" Number of ES permanently  removed from ES circulation and send to address . 10% ES collected from KYC Dapp, 10% ES of Fuel collected from Ecosystem Platforms, ES stakings destroyed When a borrower choose to default repayment of  Loan and interest and unused rewards ">
                           TOTAL ES BURNT</p>
                           <p className="era-value text-black">
-                            -
+                            {this.state.totalESBurnt}
                           </p>
                            
                           {/*<p
@@ -687,6 +731,25 @@ class Homepage extends Component {
                                 this.state.totalESStaked * this.state.esPriceUSDT
                               ).toFixed(2)}
                             </p>*/}
+                        </div>
+                      </div>
+                      <div className="flex-transc border-value-no row">
+                       <div className="col-md-6">
+                          <p className="era-head">Current NRT Month</p>
+                          <p className="era-value text-black">
+                            {this.state.currentNrtMonth < 0 ? 'Loading...' : this.state.currentNrtMonth} Month
+                          </p>
+                        </div>
+                        <div className="col-md-6">
+                        <p className="era-head"
+                        data-toggle="tooltip"
+                        data-placement="top"
+                        title=" Number of Users Own Eraswap">
+                          Total ES Owners</p>
+                          <p className="era-value text-black">
+                            {this.state.totalESOwners < 0 ? 'Loading...' : this.state.totalESOwners}
+                          </p>
+                       
                         </div>
                       </div>
                     

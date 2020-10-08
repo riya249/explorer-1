@@ -51,6 +51,7 @@ class Dashboard extends Component {
       probitVolume: 'Loading...',
       allTxnsCount: 'Loading...',
       esOwners: 'Loading',
+      kycApprovedCount: 'Loading...',
 
       platformWiseTFC: {
         data: {
@@ -228,7 +229,6 @@ class Dashboard extends Component {
     this.getNumberOfBets().catch(e => console.log('getNumberOfBets error',e));
     this.getBettingDetails().catch(e => console.log('getBettingDetails error',e));
     this.powerTokenDetails().catch(e => console.log('powerTokenDetails error',e));
-    this.transactionSplits().catch(e => console.log('transactionSplits error',e));
     this.totalNoOfUser().catch(e => console.log('totalNoOfUser error',e));
     this.totalNoOfFreelancerOrSeller().catch(e => console.log('totalNoOfFreelancerOrSeller error',e));
     this.totalViewsOnProfile().catch(e => console.log('totalViewsOnProfile error',e));
@@ -269,8 +269,9 @@ class Dashboard extends Component {
   async fetchDayswappersData(){
     try{
       const dayswappersInst = DayswappersWithMigrationFactory.connect(es.addresses[process.env.NODE_ENV].ESN.dayswappers,providerESN);
-      const totalDayswappers = (await dayswappersInst.queryFilter(dayswappersInst.filters.SeatTransfer(null,null,null))).length
-      const activeUsers = (await dayswappersInst.queryFilter(dayswappersInst.filters.Active(null,this.currentNrtMonth))).length
+      const totalDayswappers = (await dayswappersInst.queryFilter(dayswappersInst.filters.SeatTransfer(null,null,null))).length;
+      const activeUsers = (await dayswappersInst.queryFilter(dayswappersInst.filters.Active(null,this.currentNrtMonth))).length;
+      const ecosystemVolume = (await dayswappersInst.queryFilter(dayswappersInst.filters.Volume(null,null,null,null))).length;
       const whiteBelt = (await dayswappersInst.queryFilter(dayswappersInst.filters.Promotion(null,0))).length;
       const yellowBelt = (await dayswappersInst.queryFilter(dayswappersInst.filters.Promotion(null,1))).length;
       const orangeBelt = (await dayswappersInst.queryFilter(dayswappersInst.filters.Promotion(null,2))).length;
@@ -303,7 +304,7 @@ class Dashboard extends Component {
           totalLiquidRewards = (totalRewards/(liquidRatio+prepaidRatio+stakesRatio))*liquidRatio;
           totalTimeAllyRewards = (totalRewards/(liquidRatio+prepaidRatio+stakesRatio))*stakesRatio;
         }
-        
+        console.log({ecosystemVolume});
       this.setState({
         dayswappers: {
           data: {
@@ -323,6 +324,7 @@ class Dashboard extends Component {
           },
           isLoading: false,
         },
+        ecosystemVolume
       })
     }catch(e){
       console.log(e);
@@ -331,12 +333,21 @@ class Dashboard extends Component {
 
 
   async getKycData(){
-    // try{
-    //   const kycInst = await KycDappFactory.connect(es.addresses[process.env.REACT_APP_NODE_ENV].kycdapp,providerESN);
-    //   // kycInst.filters.
-    // }catch(e){
-    //   console.log(e);
-    // }
+    try{
+      const kycInst = await KycDappFactory.connect(es.addresses[process.env.NODE_ENV].ESN.kycdapp,providerESN);
+      const approvedKycsCount = (await kycInst.queryFilter(kycInst.filters.KycStatusUpdated(null,null,null,null,null)))
+      .map(log => kycInst.interface.parseLog(log))
+      .filter(log => log.args['newKycStatus'] === 1).length
+      
+      this.setState({
+        kycApprovedCount: approvedKycsCount
+      });
+    }catch(e){
+      console.log('getKycData error',e);
+      this.setState({
+        kycApprovedCount: 0
+      });
+    }
 
     try{
       const res = await Apis.fetchKycDappStatistics();
@@ -904,134 +915,6 @@ class Dashboard extends Component {
       });
     }
   }
-
-  //pending
-  async transactionSplits() {
-    let res;
-    try {
-      res = await Apis.transactionSplits();
-      console.log('transactionSplits - res', res);
-    } catch (e) {
-      console.log(e);
-    } finally {
-      this.setState({
-        ecosystemTransactions: res.platform_count
-          ? res.platform_count + ' txns'
-          : '-',
-        ecosystemVolume: res.platform_count
-          ? res.platform_volume + ' ES'
-          : '-',
-        platformWiseTFC: {
-          data: {
-            timeswappers: res?.Timeswappers?.tfc,
-            buzcafe: res?.Buzcafe?.tfc,
-            betdeex: res?.BetdeEx?.tfc,
-            computeex: 0,
-            timeallyClub: res?.['Timeally Club']?.tfc,
-            TimeAlly: res?.['Timeally']?.tfc,
-            eraswapAcademy: 0,
-          },
-          isLoading: false,
-        },
-      });
-      // let totalAmount = 0;
-      //   const platformTFC = {};
-      //   for(const entry in res) {
-      //     this.isOnProduction || console.log('entry', entry);
-      //     totalAmount += res[entry].amount;
-      //     if(platformTFC[entry] !== undefined) {
-      //       platformTFC[entry] += res[entry].tfc;
-      //     } else {
-      //       platformTFC[entry] = res[entry].tfc;
-      //     }
-      //   }
-      //   this.isOnProduction || console.log('dayswappers platformTFC', platformTFC);
-      //   $("#platform-transactions-number").html(res.platform_count+' txns');
-      //   $("#volume-of-platform").html(res.platform_volume+' ES');
-
-      //   const maxValue = Math.ceil((Math.max(platformTFC['Time Swappers'] || 0,
-      //             platformTFC['Buzcafe'] || 0,
-      //             platformTFC['Day Swappers'] || 0,
-      //             platformTFC['BetdeEx'] || 0,
-      //             platformTFC['ComputeEx'] || 0,
-      //             platformTFC['TimeAlly'] || 0))/1000)*1000;
-      // this.setState({
-      //   recordName:{
-      //     data: {
-
-      //     },
-      //     isLoading: false,
-      //   }
-      // })
-    }
-  }
-
-  // async dayswappersOverview() {
-  //   let res;
-  //   try {
-  //     res = await Apis.dayswappersOverview();
-  //     console.log('dayswappersOverview - res', res);
-  //   } catch (e) {
-  //     console.log(e);
-  //   } finally {
-  //     this.setState({
-
-  //       numberOfDayswappers: res?.total_no_of_user
-  //         ? res.total_no_of_user + ' users'
-  //         : '-',
-  //       dayswappers: {
-  //         data: {
-  //           ...this.state.dayswappers.data,
-  //           users:
-  //             res?.total_no_of_user !== undefined
-  //               ? res.total_no_of_user + ' users'
-  //               : '-',
-  //           activeUsers:
-  //             res?.active_users !== undefined
-  //               ? res.active_users + ' user' + (res.kyc_users > 1 ? 's' : '')
-  //               : '-',
-  //           kycUsers:
-  //             res?.kyc_users !== undefined
-  //               ? res.kyc_users + ' user' + (res.kyc_users > 1 ? 's' : '')
-  //               : '-',
-  //           whiteBelt:
-  //             res?.White !== undefined
-  //               ? res.White + ' user' + (res.White !== 1 ? 's' : '')
-  //               : '-',
-  //           yellowBelt:
-  //             res?.Yellow !== undefined
-  //               ? res.Yellow + ' user' + (res.Yellow !== 1 ? 's' : '')
-  //               : '-',
-  //           orangeBelt:
-  //             res?.Orange !== undefined
-  //               ? res.Orange + ' user' + (res.Orange !== 1 ? 's' : '')
-  //               : '-',
-  //           greenBelt:
-  //             res?.Green !== undefined
-  //               ? res.Green + ' user' + (res.Green !== 1 ? 's' : '')
-  //               : '-',
-  //           blueBelt:
-  //             res?.Blue !== undefined
-  //               ? res.Blue + ' user' + (res.Blue !== 1 ? 's' : '')
-  //               : '-',
-  //           brownBelt:
-  //             res?.Brown !== undefined
-  //               ? res.Brown + ' user' + (res.Brown !== 1 ? 's' : '')
-  //               : '-',
-  //           redBelt:
-  //             res?.Red !== undefined
-  //               ? res.Red + ' user' + (res.Red !== 1 ? 's' : '')
-  //               : '-',
-  //           blackBelt:
-  //             res?.Black !== undefined
-  //               ? res.Black + ' user' + (res.Black !== 1 ? 's' : '')
-  //               : '-',
-  //         },
-  //         isLoading: false,
-  //       },
-  //     });
-  //   }
-  // }
 
   async totalNoOfUser() {
     let res;
@@ -1630,7 +1513,8 @@ class Dashboard extends Component {
         <div className="container-fluid bgd-dash-color">
           <div className="dash-section-2">
             <Row>
-              <Col sm={6} lg={2} p-0>
+
+              {/* <Col sm={6} lg={2}>
                 <Card>
                   <Card.Body>
                     <p className="sect-txt-bold"
@@ -1640,6 +1524,17 @@ class Dashboard extends Component {
                     >ES AVAILABLE SUPPLY</p>
                     <p className="value-dash-txt">
                      {availableSupply > -1 ? availableSupply : 'Loading...'} ES
+                    </p>
+                  </Card.Body>
+                </Card>
+              </Col> */}
+              <Col sm={6} lg={2}>
+                <Card className="">
+                  <Card.Body>
+                    <p className="sect-txt-bold">AVAILABLE SUPPLY</p>
+                    <p className="value-dash-txt">
+                      {isFinite(availableSupply) ? (availableSupply) : 'Loading...'}{' '}
+                      ES
                     </p>
                   </Card.Body>
                 </Card>
@@ -1709,8 +1604,8 @@ class Dashboard extends Component {
                   <Card.Body>
                     <p className="sect-txt-bold">ECOSYSTEM VOLUME</p>
                     <p className="value-dash-txt">
-                      'Coming soon'
-                      {/* this.state.ecosystemVolume*/}
+                      {/* 'Coming soon' */}
+                      {this.state.ecosystemVolume}
                     </p>
                   </Card.Body>
                 </Card>
@@ -1795,9 +1690,9 @@ class Dashboard extends Component {
               <Col sm={6} lg={2}>
                 <Card className="">
                   <Card.Body>
-                    <p className="sect-txt-bold">ASSETS AVAILABLE</p>
+                    <p className="sect-txt-bold">KYC APPROVED COUNT</p>
                     <p className="value-dash-txt">
-                      {isFinite(availableSupply) ? (availableSupply) : 'Loading...'}{' '}
+                      {this.state.kycApprovedCount}
                       ES
                     </p>
                   </Card.Body>
@@ -1910,7 +1805,13 @@ class Dashboard extends Component {
                   <Col sm={7}>
                     <PieChart width={300} height={300}>
                       <Pie
-                        data={this.state.timeallyStakers.data.chartData}
+                        data={[{
+                          name: 'Available Supply',
+                          value: availableSupply
+                        },{
+                          name: 'ES Staked in TimeAlly 1 LT',
+                          value: Number(this.state.totalESStaked)
+                        },]}
                         dataKey="value"
                         nameKey="name"
                         cx="50%"
@@ -1932,7 +1833,7 @@ class Dashboard extends Component {
                      */}
                     <div className="flex-sect4-box">
                       <div className="timeally-mark"></div>
-                      <p className="sect4-context">Current Supply {currentSupply}</p>
+                      <p className="sect4-context">Available Supply {availableSupply}</p>
                     </div>
                     <div className="flex-sect4-box">
                       <div className="timeally-mark2"></div>
@@ -1991,18 +1892,18 @@ class Dashboard extends Component {
                       {this.state.timeswappers.data.tfc}
                     </p>
                   </div>
-                  <div>
+                  {/* <div>
                     <p className="sect4-context">Level 2 KYC</p>
                     <p className="sect4-value">
-                      0{/* {this.state.timeswappers.data.verified} */}
+                      0
                     </p>
-                  </div>
-                  <div>
+                  </div> */}
+                  {/* <div>
                     <p className="sect4-context">Level 3 KYC</p>
                     <p className="sect4-value">
-                      0{/* {this.state.timeswappers.data.certified} */}
+                      0
                     </p>
-                  </div>
+                  </div> */}
                   <div>
                     <p className="sect4-context">Total Deposit Done</p>
                     <p className="sect4-value">
@@ -2815,7 +2716,7 @@ class Dashboard extends Component {
                 </div>
               </div>
             </Col>
-            <Col lg={4}>
+            {/* <Col lg={4}>
               <div className="section4-border">
                 <a href="https://eraswap.network/" target="_blank">
                   <div className="flex-sect4-box">
@@ -2883,7 +2784,7 @@ class Dashboard extends Component {
                   </div>
                 </div>
               </div>
-            </Col>
+            </Col> */}
             <Col lg={4}>
               <div className="section4-border">
                 <a href="" target="_blank">

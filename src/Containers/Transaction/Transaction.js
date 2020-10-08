@@ -96,7 +96,11 @@ class Transaction extends Component {
                   <div className="card">
                     <div className="table-responsive">
                       <table className="block-overview table">
-                        {Object.keys(this.state.transaction.data).length ? (
+                        {
+                          this.state.transaction.isLoading ?
+                          'Loading...'
+                          :
+                          Object.keys(this.state.transaction.data).length ? (
                           <thead>
                             <tr>
                               <td
@@ -117,7 +121,14 @@ class Transaction extends Component {
                                 Status:{' '}
                               </td>
                               <td>
-                                {this.state.transaction.data.status_enum ===
+                                {
+                                  this.state.transaction.data.status_enum ===
+                                  'pending' ? (
+                                    <span className="badge badge-warning">
+                                      Pending
+                                    </span>
+                                  ) :
+                                this.state.transaction.data.status_enum ===
                                 'success' ? (
                                   <span className="badge badge-success">
                                     Success
@@ -138,10 +149,12 @@ class Transaction extends Component {
                                 Block:{' '}
                               </td>
                               <td>
-                                {
-                                  this.state.transaction.data.block
-                                    ?.block_number
-                                }
+                                <AddressLink
+                                  value={
+                                    this.state.transaction.data.block.block_number
+                                  }
+                                  type="block"
+                                />
                               </td>
                             </tr>
                             <tr>
@@ -190,13 +203,20 @@ class Transaction extends Component {
                                 To:{' '}
                               </td>
                               <td>
-                                <AddressLink
+                                {
+                                  this.state.transaction?.data?.toAddress?.address
+                                  ?
+                                  <AddressLink
                                   value={
                                     this.state.transaction.data.toAddress
                                       .address
                                   }
                                   type="address"
                                 />
+                                :
+                                '-'
+                                }
+                                
                               </td>
                             </tr>
                             <tr>
@@ -273,13 +293,25 @@ class Transaction extends Component {
                                 Gas Used by Transaction:{' '}
                               </td>
                               <td>
-                                {this.state.transaction.data.gas_used} (
-                                {(
-                                  (this.state.transaction.data.gas_used /
-                                    this.state.transaction.data.gas_limit) *
-                                  100
-                                ).toFixed(2)}
-                                %)
+                              {this.state.transaction.data.gas_used !== null
+                              ?
+                                this.state.transaction.data.gas_used === 0
+                                ?
+                                  <>0 (0%)</>
+                                :
+                                  <>
+                                  {this.state.transaction.data.gas_used} (
+                                    {(
+                                      (this.state.transaction.data.gas_used /
+                                        this.state.transaction.data.gas_limit) *
+                                      100
+                                    ).toFixed(2)}
+                                    %)
+                                  </>
+                                :
+                                <i>pending...</i>
+                              }
+                                
                               </td>
                             </tr>
 
