@@ -165,6 +165,23 @@ class Navbar extends Component {
                   <Link className="dropdown-item" to="/top-accounts">
                     Top Accounts
                   </Link>
+
+
+                  <Link className="dropdown-item" to="/">
+                    View Pending Transations
+                  </Link>
+                  <Link className="dropdown-item" to="/">
+                    View Cancelled Transactions
+                  </Link>
+                  <Link className="dropdown-item" to="/">
+                    TimeSwappers Transactions
+                  </Link>
+                  <Link className="dropdown-item" to="/">
+                    WES Transactions
+                  </Link>
+                  <Link className="dropdown-item" to="/">
+                    Top Up Transactions
+                  </Link>
                   {/* <Link className="dropdown-item" to="/charts" >
                     Charts
                   </Link> */}
