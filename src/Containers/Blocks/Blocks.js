@@ -165,13 +165,24 @@ class Blocks extends Component {
                               />
                             </td>
                             <td className="underline">
-                              {block?.total_gas_used} (
-                              {(
-                                (block?.total_gas_used /
-                                  block?.total_gas_limit) *
-                                100
-                              ).toFixed(2)}
-                              %)
+                              {
+                                (block?.total_gas_used !== undefined 
+                                  && 
+                                block?.total_gas_limit)
+                                ?
+                                <>
+                                {block?.total_gas_used} (
+                                {(
+                                  (block?.total_gas_used /
+                                    block?.total_gas_limit) *
+                                  100
+                                ).toFixed(2)}
+                                %)
+                                </>
+                                :
+                                '-'
+                              }
+                              
                             </td>
                             <td>{block.total_gas_limit} </td>
                             <td>

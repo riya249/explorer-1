@@ -285,7 +285,7 @@ class Dashboard extends Component {
 
       const kycResolvedUsers = (await kycdappInst.queryFilter(kycdappInst.filters.KycApplied(null,null,null,null))).length
 
-      const totalRewards = 0,liquidRatio = 0,prepaidRatio = 0,stakesRatio = 0;
+      let totalRewards = 0,liquidRatio = 0,prepaidRatio = 0,stakesRatio = 0;
       (await dayswappersInst.queryFilter(dayswappersInst.filters.Reward(null,null,this.currentNrtMonth,null,null,null,null)))
         .map(log => dayswappersInst.interface.parseLog(log))
         .map(log => ({

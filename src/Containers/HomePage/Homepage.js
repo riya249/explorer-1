@@ -118,6 +118,7 @@ class Homepage extends Component {
     let res;
     try {
       res = await Apis.fetchESOwners();
+      console.log('fetchESOwnersCount',res);
     } catch (e) {
       console.log(e);
     } finally {

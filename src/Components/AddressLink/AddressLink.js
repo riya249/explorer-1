@@ -1,8 +1,11 @@
-import React from 'react';
+import React from 'react'; 
 import { Link } from 'react-router-dom';
 import './addresslink.css';
 import CustomTooltip from '../CustomTooltip/CustomTooltip';
-
+import { LocalStorageManager } from '../../lib/LocalStorageManager';
+import { providerESN } from '../../ethereum/Provider';
+import { ethers } from 'ethers';
+const ONE_DAY = 1000*60*60*24;
 /***
  * props: {
  *  type: tx, address, block, bunch
@@ -15,8 +18,13 @@ export default class AddressLink extends React.Component {
     this.state = {
       value: props.value,
       popupMessage: props.value,
+      addressComponent: props.value
     };
     this.copyValue = this.copyValue.bind(this);
+  }
+
+  componentDidMount(){
+    // this.renderValue();
   }
 
   shrinkValue(value) {
@@ -45,6 +53,37 @@ export default class AddressLink extends React.Component {
     );
   }
 
+  async getUsername(){
+    try{
+      //fetch from localStorage if not exists then fetch from provider
+      const storedUsername = LocalStorageManager.getWithExpiry(this.props.value);
+      if(storedUsername) return storedUsername.value;
+
+      const usernameByte32 = await providerESN.resolveUsername(this.props.value);
+      const username = ethers.utils.parseBytes32String(usernameByte32);
+      LocalStorageManager.setWithExpiry(this.props.value,username,ONE_DAY);
+      return username;
+    }catch(e){
+      console.log(e)
+      return null
+    }
+  }
+
+  async renderValue(){
+    const value = this.props.shrink
+        ? this.shrinkValue(this.props.value)
+        : this.props.value;
+
+    let username = null;
+    if(this.props.type === 'address')
+      username = await this.getUsername(username);
+    
+    const addressComponent = username ? <>{username} ({value})</> : value;
+    console.log({username,value});
+    console.log({addressComponent})
+    this.setState({ addressComponent });
+  }
+
   render() {
     const url = '/' + this.props.type + '/' + this.props.value;
     return (
@@ -58,9 +97,10 @@ export default class AddressLink extends React.Component {
           className="frst-era hex-data"
           style={this.props.style}
         >
+          {/* {this.state.addressComponent} */}
           {this.props.shrink
-            ? this.shrinkValue(this.props.value)
-            : this.props.value}
+        ? this.shrinkValue(this.props.value)
+        : this.props.value}
         </Link>
         &nbsp;
         <CustomTooltip
