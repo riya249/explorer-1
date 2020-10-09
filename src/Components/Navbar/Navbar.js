@@ -189,7 +189,7 @@ class Navbar extends Component {
               </li>
             </ul>
 
-            <div class="d-flex justify-content-center h-100">
+            <div class="d-flex justify-content-center">
               <form onSubmit={this.handleClick}>
                 <div class="searchbar">
                   <input

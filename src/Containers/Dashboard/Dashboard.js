@@ -2370,13 +2370,34 @@ class Dashboard extends Component {
                     </p>
                   </div>
                 </div>
-                <div className="swwall-border-flex">
+                <div className="swwall-flex-border">
                   <div>
                     <p className="sect4-context">Number of Level 3 KYC</p>
                     <p className="sect4-value">
                       {this.state.kycDapp.data.levelThreeCount}
                     </p>
                   </div>
+                  <div>
+                    <p className="sect4-context">Number of Level 4 KYC</p>
+                    <p className="sect4-value">
+                      -
+                    </p>
+                  </div>
+                  {/* <div>
+                    <p className="sect4-context">All Platform KYCs</p>
+                    <p className="sect4-value">
+                      {this.state.kycDapp.data.allPlatformKycs}
+                    </p>
+                  </div> */}
+                </div>
+                <div className="swwall-border-flex">
+                  <div>
+                    <p className="sect4-context">Number of Level 5 KYC</p>
+                    <p className="sect4-value">
+                     -
+                    </p>
+                  </div>
+                  
                   {/* <div>
                     <p className="sect4-context">All Platform KYCs</p>
                     <p className="sect4-value">
@@ -2901,9 +2922,23 @@ class Dashboard extends Component {
                     <p className="sect4-value">-</p>
                   </div>
                 </div>
-                 <div className="swwall-flex-border">
+                <div className="swwall-flex-border">
+                  <div>
+                    <p className="sect4-context">Total no. of Surveys</p>
+                    <p className="sect4-value">- </p>
+                  </div>
+                  <div>
+                    <p className="sect4-context">Total no. of participants in Surveys</p>
+                    <p className="sect4-value">-</p>
+                  </div>
+                </div>
+                 <div className="swwall-border-flex">
                   <div>
                     <p className="sect4-context">Volume of ES</p>
+                    <p className="sect4-value">- </p>
+                  </div>
+                  <div>
+                    <p className="sect4-context">Total Transactions</p>
                     <p className="sect4-value">- </p>
                   </div>
                 </div>
