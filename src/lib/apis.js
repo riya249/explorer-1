@@ -8,8 +8,8 @@ const ajax = async (url) => {
 
 export default class Apis {
   static fetchAddress = (address) => ajax(`${baseUrl}/address/${address}`);
-  static fetchTopAccounts = (limit = 10) =>
-    ajax(`${baseUrl}/address/top?limit=${limit}`);
+  static fetchTopAccounts = ({length = 10,page = 1}) =>
+    ajax(`${baseUrl}/address/top-new?length=${length}&page=${page}`);
   static fetchESOwners = () => ajax(`${baseUrl}/address/es-owners`);
 
   static fetchStatistics = ({ limit = 10 }) =>

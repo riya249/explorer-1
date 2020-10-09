@@ -8,6 +8,9 @@ import Navbar from '../../Components/Navbar/Navbar';
 import Apis from '../../lib/apis';
 import { formatEther } from '../../lib/parsers';
 import AddressLink from '../../Components/AddressLink/AddressLink';
+import { CustomDatatable } from '../../Components/CustomDatatable/CustomDatatable';
+
+const COUNT_PER_PAGE = 10;
 
 class TopAccountsbyEsBalance extends Component {
   constructor(props) {
@@ -55,16 +58,14 @@ class TopAccountsbyEsBalance extends Component {
 
           <Row className="mt40 eraswapcal-tab">
             <Col lg={12}>
-              <div className="card">
+              {/* <div className="card">
                 <div className="table-responsive">
                   <table className="es-transaction striped  hover ">
                     <tr>
                       <th>Rank</th>
                       <th>Address</th>
-                      {/*<th>Name Tag</th>*/}
                       <th>Stake </th>
                       <th>Balance</th>
-                      {/* <th>Percentage</th> */}
                       <th>Txn Count</th>
                     </tr>
                     {this.state.accounts.isLoading ? (
@@ -81,7 +82,6 @@ class TopAccountsbyEsBalance extends Component {
                               type="address"
                             />
                           </td>
-                          {/*<td>{account.label || '-'}</td>*/}
                           <td>
                             <span className="">
                               {account.stakes ? formatEther(account.stakes) : 0}
@@ -92,7 +92,6 @@ class TopAccountsbyEsBalance extends Component {
                               {formatEther(account.balance || '0x0')} ES
                             </span>
                           </td>
-                          {/* <td>N/A </td> */}
                           <td>{account.txnsCount}</td>
                         </tr>
                       ))
@@ -103,17 +102,36 @@ class TopAccountsbyEsBalance extends Component {
                     )}
                   </table>
                 </div>
-              </div>
-              {/* <div className="cus-pagination row">
-                <div className="col-md-12 text-right">
-                  <button type="button" className="btn mr10 mt10">
-                    Back
-                  </button>
-                  <button type="button" className="btn mr10 mt10">
-                    Next
-                  </button>
-                </div>
               </div> */}
+              <CustomDatatable
+                title="Top Accounts by ES Balance"
+                apiCallback={Apis.fetchTopAccounts}
+                countPerPage = {COUNT_PER_PAGE}
+                columns={
+                  [
+                    {
+                      name: 'Rank',
+                      selector: 'index'
+                    },
+                    {
+                      name: 'Address',
+                      cell: row => <AddressLink value={row.address} type="address" shrink={true} />
+                    },
+                    {
+                      name: 'Stake',
+                      cell: row => row.stakes ? formatEther(row.stakes) : 0
+                    },
+                    {
+                      name: 'Balance',
+                      cell: row => formatEther(row.balance || '0x0')
+                    },
+                    {
+                      name: 'Txn Count',
+                      selector: 'txnsCount'
+                    }
+                  ]
+                }
+               />
             </Col>
           </Row>
         </Container>
