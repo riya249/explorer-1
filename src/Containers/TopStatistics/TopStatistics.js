@@ -12,6 +12,9 @@ import { ethers } from 'ethers';
 import { formatEther } from '../../lib/parsers';
 import AddressLink from '../../Components/AddressLink/AddressLink';
 import { PieChart, Pie, Cell } from 'recharts';
+import { CustomDatatable } from '../../Components/CustomDatatable/CustomDatatable';
+
+const COUNT_PER_PAGE = 10;
 
 const COLORS = [
   '#0088FE',
@@ -24,6 +27,7 @@ const COLORS = [
   '#6233FE',
   '#B8D60F',
   '#FF5E8C',
+  '#ABCCE1'
 ];
 const RADIAN = Math.PI / 180;
 const renderCustomizedLabel = ({
@@ -133,7 +137,7 @@ class TopStatistics extends Component {
   async fetchStatistics() {
     let res;
     try {
-      res = await Apis.fetchStatistics({ limit: 10 });
+      res = await Apis.fetchStatistics({ limit: 1 });
       console.log(res);
     } catch (e) {
     } finally {
@@ -204,15 +208,15 @@ class TopStatistics extends Component {
     } finally {
       this.setState({
         topStaker: {
-          address: res && Array.isArray(res) ? res[0]?.address || '-' : '-',
+          address: res?.data ? res.data[0]?.address || '-' : '-',
           amt:
-            res && Array.isArray(res) && res[0]?.amount
-              ? formatEther(res[0]?.amount) || '-'
+            res?.data && res.data[0]?.amount
+              ? formatEther(res.data[0]?.amount) || '-'
               : '-',
           isLoading: true,
         },
         topStakers: {
-          data: res && Array.isArray(res) ? res : [],
+          data: res?.data ? res.data : [],
           isLoading: false,
         },
       });
@@ -228,12 +232,12 @@ class TopStatistics extends Component {
     } finally {
       this.setState({
         topNodes: {
-          data: res && Array.isArray(res) ? res : [],
+          data: res?.data ? res.data : [],
           isLoading: false,
         },
         topBlockee: {
-          address: res && Array.isArray(res) ? res[0]?.nodeIp : '-',
-          count: res && Array.isArray(res) ? res[0]?.blocks : 0,
+          address: res?.data ? res.data[0]?.nodeIp : '-',
+          count: res?.data ? res.data[0]?.blocks : 0,
           isLoading: true,
         },
       });
@@ -248,28 +252,8 @@ class TopStatistics extends Component {
           <h2 className="es-main-head es-main-head-inner">Top Statistics</h2>
         </div>
         <Container>
-          {/* <p className="trans-head">TimeAlly Explorer</p> */}
-
           <Row className="mt40">
             <div className="col-lg-6"></div>
-            {
-              //@todo: apis need to be created
-            }
-            {/*
-             <div className="text-right col-lg-6">
-              <select class="selectpicker">
-                <optgroup label="Year">
-                  <option>1 Year</option>
-                  <option>2 Year</option>
-                  <option>24 Year</option>
-                </optgroup>
-                <optgroup label="Month">
-                  <option>1 Month</option>
-                  <option>2 Month</option>
-                  <option>3 Month</option>
-                </optgroup>
-              </select>
-            </div> */}
             <Col lg={12} className="mt20">
               <div className="card tab-card ">
                 <div className="card-header tab-card-header overviewtab">
@@ -608,8 +592,8 @@ class TopStatistics extends Component {
                     <div className="mt30 eraswapcal-tab row">
                       <div className="col-lg-6 mt10">
                         <div className="card">
-                          <div class="border-era">Top ES Sender</div>
-                          <div className="table-responsive">
+                          {/* <div class="border-era">Top ES Sender</div> */}
+                          {/* <div className="table-responsive">
                           <table className="es-transaction striped bordered hover">
                             <thead>
                               <tr>
@@ -655,13 +639,38 @@ class TopStatistics extends Component {
                               )}
                             </thead>
                           </table>
-                          </div>
+                          </div> */}
+                          <CustomDatatable
+                            title="Top ES Sender"
+                            apiCallback={Apis.fetchTopSenders}
+                            countPerPage = {COUNT_PER_PAGE}
+                            columns={
+                              [
+                                {
+                                  name: 'Rank',
+                                  selector: 'index'
+                                },
+                                {
+                                  name: 'Address',
+                                  cell: row => <AddressLink value={row.address} type="address" shrink={true} />
+                                },
+                                {
+                                  name: 'Amount',
+                                  cell: row => row.totalESSent ? formatEther(row.totalESSent) : 0
+                                },
+                                {
+                                  name: 'Percentage',
+                                  cell: row => `${row.percent || 0} %`
+                                }
+                              ]
+                            }
+                          />
                         </div>
                       </div>
                       <div className="col-lg-6 mt10">
                         <div className="card">
-                          <div class="border-era">Top ES Receiver</div>
-                          <div className="table-responsive">
+                          {/* <div class="border-era">Top ES Receiver</div> */}
+                          {/* <div className="table-responsive">
                           <table className="es-transaction striped bordered hover">
                             <thead>
                               <tr>
@@ -709,13 +718,38 @@ class TopStatistics extends Component {
                               )}
                             </thead>
                           </table>
-                          </div>
+                          </div> */}
+                          <CustomDatatable
+                            title="Top ES Receiver"
+                            apiCallback={Apis.fetchTopReceivers}
+                            countPerPage = {COUNT_PER_PAGE}
+                            columns={
+                              [
+                                {
+                                  name: 'Rank',
+                                  selector: 'index'
+                                },
+                                {
+                                  name: 'Address',
+                                  cell: row => <AddressLink value={row.address} type="address" shrink={true} />
+                                },
+                                {
+                                  name: 'Amount',
+                                  cell: row => row.totalESReceived ? formatEther(row.totalESReceived) : 0
+                                },
+                                {
+                                  name: 'Percentage',
+                                  cell: row => `${row.percent || 0} %`
+                                }
+                              ]
+                            }
+                          />
                         </div>
                       </div>
                       <div className="col-lg-6 mt10">
                         <div className="card">
-                          <div class="border-era">Top Sent Txn Count</div>
-                          <div className="table-responsive">
+                          {/* <div class="border-era">Top Sent Txn Count</div> */}
+                          {/* <div className="table-responsive">
                           <table className="es-transaction striped bordered hover">
                             <thead>
                               <tr>
@@ -757,13 +791,38 @@ class TopStatistics extends Component {
                               )}
                             </thead>
                           </table>
-                          </div>
+                          </div> */}
+                          <CustomDatatable
+                            title="Top Sent Txn Count"
+                            apiCallback={Apis.fetchTopTxnSent}
+                            countPerPage = {COUNT_PER_PAGE}
+                            columns={
+                              [
+                                {
+                                  name: 'Rank',
+                                  selector: 'index'
+                                },
+                                {
+                                  name: 'Address',
+                                  cell: row => <AddressLink value={row.address} type="address" shrink={true} />
+                                },
+                                {
+                                  name: 'Total Txn',
+                                  selector: 'txnSentCount'
+                                },
+                                {
+                                  name: 'Percentage',
+                                  cell: row => `${row.percent || 0} %`
+                                }
+                              ]
+                            }
+                          />
                         </div>
                       </div>
                       <div className="col-lg-6 mt10">
                         <div className="card">
-                          <div class="border-era">Top Received Txn Count</div>
-                          <div className="table-responsive">
+                          {/* <div class="border-era">Top Received Txn Count</div> */}
+                          {/* <div className="table-responsive">
                           <table className="es-transaction striped bordered hover">
                             <thead>
                               <tr>
@@ -805,7 +864,32 @@ class TopStatistics extends Component {
                               )}
                             </thead>
                           </table>
-                          </div>
+                          </div> */}
+                          <CustomDatatable
+                            title="Top Received Txn Count"
+                            apiCallback={Apis.fetchTopTxnReceived}
+                            countPerPage = {COUNT_PER_PAGE}
+                            columns={
+                              [
+                                {
+                                  name: 'Rank',
+                                  selector: 'index'
+                                },
+                                {
+                                  name: 'Address',
+                                  cell: row => <AddressLink value={row.address} type="address" shrink={true} />
+                                },
+                                {
+                                  name: 'Total Txn',
+                                  selector: 'txnReceivedCount'
+                                },
+                                {
+                                  name: 'Percentage',
+                                  cell: row => `${row.percent || 0} %`
+                                }
+                              ]
+                            }
+                          />
                         </div>
                       </div>
                     </div>
@@ -850,7 +934,7 @@ class TopStatistics extends Component {
                       </div>
                       <div className="col-lg-6 mt10">
                         <div className="card">
-                          <div class="border-era">Top ES Receiver</div>
+                          {/* <div class="border-era">Top ES Receiver</div>
                           <div className="table-responsive">
                           <table className="es-transaction striped bordered hover">
                             <thead>
@@ -906,7 +990,32 @@ class TopStatistics extends Component {
                               )}
                             </thead>
                           </table>
-                          </div>
+                          </div> */}
+                          <CustomDatatable
+                            title="Top ES Receiver"
+                            apiCallback={Apis.fetchTopReceivers}
+                            countPerPage = {COUNT_PER_PAGE}
+                            columns={
+                              [
+                                {
+                                  name: 'Rank',
+                                  cell: row => <><span style={{ backgroundColor: COLORS[row.index] }}>&nbsp;&nbsp;</span>&nbsp;{row.index}</>
+                                },
+                                {
+                                  name: 'Address',
+                                  cell: row => <AddressLink value={row.address} type="address" shrink={true} />
+                                },
+                                {
+                                  name: 'Amount',
+                                  cell: row => row.totalESReceived ? formatEther(row.totalESReceived) : 0
+                                },
+                                {
+                                  name: 'Percentage',
+                                  cell: row => `${row.percent || 0} %`
+                                }
+                              ]
+                            }
+                          />
                         </div>
                       </div>
                     </div>
@@ -920,7 +1029,7 @@ class TopStatistics extends Component {
                     <div className="mt30 eraswapcal-tab row">
                       <div className="col-lg-12 mt10">
                         <div className="card">
-                          <div class="border-era">Top Stakers</div>
+                          {/* <div class="border-era">Top Stakers</div>
                           <div className="table-responsive">
                           <table className="es-transaction striped bordered hover">
                             <thead>
@@ -957,12 +1066,33 @@ class TopStatistics extends Component {
                               )}
                             </thead>
                           </table>
-                          </div>
+                          </div> */}
+                          <CustomDatatable
+                            title="Top Stakers"
+                            apiCallback={Apis.fetchTopStakers}
+                            countPerPage = {COUNT_PER_PAGE}
+                            columns={
+                              [
+                                {
+                                  name: 'Rank',
+                                  selector: 'index'
+                                },
+                                {
+                                  name: 'Address',
+                                  cell: row => <AddressLink value={row.address} type="address" shrink={false} />
+                                },
+                                {
+                                  name: 'Staked Amount',
+                                  cell: row => (row.amount ? formatEther(row.amount) : 0) + ' ES'
+                                }
+                              ]
+                            }
+                          />
                         </div>
                       </div>
                       <div className="col-lg-12 mt10">
                         <div className="card">
-                          <div class="border-era">Top Blokcee</div>
+                          {/* <div class="border-era">Top Blokcee</div>
                           <div className="table-responsive">
                           <table className="es-transaction striped bordered hover">
                             <thead>
@@ -996,7 +1126,32 @@ class TopStatistics extends Component {
                               )}
                             </thead>
                           </table>
-                          </div>
+                          </div> */}
+                          <CustomDatatable
+                            title="Top Stakers"
+                            apiCallback={Apis.fetchTopNodes}
+                            countPerPage = {COUNT_PER_PAGE}
+                            columns={
+                              [
+                                {
+                                  name: 'Rank',
+                                  selector: 'index'
+                                },
+                                {
+                                  name: 'Node Ip',
+                                  selector: 'nodeIp'
+                                },
+                                {
+                                  name: 'Total Blokcee Mined',
+                                  selector: 'blocks'
+                                },
+                                {
+                                  name: 'Total Txn Fees',
+                                  cell: row => row.totalTxnFee && formatEther(row.totalTxnFee) || '-'
+                                }
+                              ]
+                            }
+                          />
                         </div>
                       </div>
                     </div>

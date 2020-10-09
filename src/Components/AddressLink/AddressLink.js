@@ -24,7 +24,7 @@ export default class AddressLink extends React.Component {
   }
 
   componentDidMount(){
-    this.renderValue();
+    // this.renderValue();
   }
 
   shrinkValue(value) {

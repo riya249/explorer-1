@@ -8,7 +8,7 @@ import * as moment from 'moment';
 import CustomPagination from '../../Components/CustomPagination/CustomPagination';
 import { Snackbar } from '../../Components/Snackbar/Snackbar';
 import { ethers } from 'ethers';
-import { toLocaleTimestamp } from '../../lib/parsers';
+import { formatEther, toLocaleTimestamp } from '../../lib/parsers';
 
 class InternalTransactions extends Component {
   snackbarRef = React.createRef();
@@ -124,9 +124,9 @@ class InternalTransactions extends Component {
                                   type="address"
                                 />
                               </td>
-                              <td>{transaction.gas_used}</td>
-                              <td>{transaction.gas}</td>
-                              <td>{transaction.value}</td>
+                              <td>{transaction.gas_used && formatEther(transaction.gas_used)}</td>
+                              <td>{transaction.gas && formatEther(transaction.gas)}</td>
+                              <td>{transaction.value && formatEther(transaction.value)}</td>
                               <td>{transaction.tx_type}</td>
                             </tr>
                           );

@@ -12,8 +12,18 @@ export default class Apis {
     ajax(`${baseUrl}/address/top-new?length=${length}&page=${page}`);
   static fetchESOwners = () => ajax(`${baseUrl}/address/es-owners`);
 
-  static fetchStatistics = ({ limit = 10 }) =>
+  static fetchStatistics = ({ limit = 1 }) =>
     ajax(`${baseUrl}/address/txn-statistics?limit=${limit}`);
+  static fetchTopSenders = ({ length = 10, page = 1 }) =>
+    ajax(`${baseUrl}/address/top-sender?length=${length}&page=${page}`);
+  static fetchTopReceivers = ({ length = 10, page = 1 }) =>
+    ajax(`${baseUrl}/address/top-receiver?length=${length}&page=${page}`);
+  static fetchTopTxnSent = ({ length = 10, page = 1 }) =>
+    ajax(`${baseUrl}/address/top-txn-sent?length=${length}&page=${page}`);
+  static fetchTopTxnReceived = ({ length = 10, page = 1 }) =>
+    ajax(`${baseUrl}/address/top-txn-received?length=${length}&page=${page}`);
+  static fetchTopAccTxnCount = ({ length = 10, page = 1 }) =>
+    ajax(`${baseUrl}/address/top-acc-txn-count?length=${length}&page=${page}`);
   static fetchBlocks = (start = 0, length = 10) =>
     ajax(`${baseUrl}/block/?start=${start}&length=${length}`);
   static fetchBlock = (blockNumber) => ajax(`${baseUrl}/block/${blockNumber}`);
@@ -53,11 +63,11 @@ export default class Apis {
     ajax(`${baseUrl}/validator/lastblock/${month}`);
 
   static fetchNodes = () => ajax(`${baseUrl}/nodestatus/`);
-  static fetchTopNodes = ({ limit = 10 }) =>
-    ajax(`${baseUrl}/nodestatus/top?limit=${limit}`);
+  static fetchTopNodes = ({ length = 10,page = 1 }) =>
+    ajax(`${baseUrl}/nodestatus/top?length=${length}&page=${page}`);
 
-  static fetchTopStakers = ({ limit = 10 }) =>
-    ajax(`${baseUrl}/timeally-stakes/top?limit=${limit}`);
+  static fetchTopStakers = ({ length = 10, page = 1 }) =>
+    ajax(`${baseUrl}/timeally-stakes/top?length=${length}&page=${page}`);
 
   static fetchESPrices = () => ajax(`${baseUrl}/es-price/top`);
 

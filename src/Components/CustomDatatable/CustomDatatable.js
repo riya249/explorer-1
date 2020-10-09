@@ -8,14 +8,13 @@ export const CustomDatatable = ({title,apiCallback,countPerPage,columns}) =>{
   const [data, setData] = useState({});
   const [page, setPage] = useState(1);
 
-  const getUserList = () => {
+  const fetchData = () => {
     // fetch(`${url}?page=${page}&length=${countPerPage}`)
     // .then(res => res.json())
-    console.log({countPerPage});
     apiCallback({ length: countPerPage, page })
     .then(res => ({
       ...res,
-      data: res.data.map((row,index) => ({index:page*(index+1),...row}))
+      data: res.data.map((row,index) => ({index:((page-1)*10)+(index+1),...row}))
     }))
     .then(res => {
       console.log('getUserList',res);
@@ -27,7 +26,7 @@ export const CustomDatatable = ({title,apiCallback,countPerPage,columns}) =>{
   }
    
   useEffect(() => {
-    getUserList();
+    fetchData();
   }, [page]);
   
   return <DataTable

@@ -58,51 +58,6 @@ class TopAccountsbyEsBalance extends Component {
 
           <Row className="mt40 eraswapcal-tab">
             <Col lg={12}>
-              {/* <div className="card">
-                <div className="table-responsive">
-                  <table className="es-transaction striped  hover ">
-                    <tr>
-                      <th>Rank</th>
-                      <th>Address</th>
-                      <th>Stake </th>
-                      <th>Balance</th>
-                      <th>Txn Count</th>
-                    </tr>
-                    {this.state.accounts.isLoading ? (
-                      <tr>
-                        <td colSpan="7">Loading...</td>
-                      </tr>
-                    ) : this.state.accounts.data?.length ? (
-                      this.state.accounts.data?.map((account, i) => (
-                        <tr>
-                          <td>{i + 1}</td>
-                          <td>
-                            <AddressLink
-                              value={account.address}
-                              type="address"
-                            />
-                          </td>
-                          <td>
-                            <span className="">
-                              {account.stakes ? formatEther(account.stakes) : 0}
-                            </span>
-                          </td>
-                          <td>
-                            <span className="">
-                              {formatEther(account.balance || '0x0')} ES
-                            </span>
-                          </td>
-                          <td>{account.txnsCount}</td>
-                        </tr>
-                      ))
-                    ) : (
-                      <tr>
-                        <td colSpan="7">No Data</td>
-                      </tr>
-                    )}
-                  </table>
-                </div>
-              </div> */}
               <CustomDatatable
                 title="Top Accounts by ES Balance"
                 apiCallback={Apis.fetchTopAccounts}
