@@ -15,6 +15,7 @@ import { nrtAddress } from '../../config/config';
 import { providerESN } from '../../ethereum/Provider';
 import { DayswappersWithMigrationFactory, KycDappFactory } from 'eraswap-sdk/dist/typechain/ESN';
 import { es } from 'eraswap-sdk/dist';
+import { surveyInstance } from '../../ethereum/Provider';
 
 const COLORS = ['#959595', '#747FEB'];
 const MAX_SUPPLY = 9100000000;
@@ -52,7 +53,14 @@ class Dashboard extends Component {
       allTxnsCount: 'Loading...',
       esOwners: 'Loading',
       kycApprovedCount: 'Loading...',
-
+      kycDappBal: 'Loading...',
+      ESNPOSCPRewards: 'Loading...',
+      crowdFundAddress: 'Loading...',
+      crowdFundBal: 'Loading...',
+      totalParticipants: 'Loading...',
+      totalSurveys: 'Loading...',
+      volumeOfES: 'Loading...',
+      totalTransactions: 'Loading...',
       platformWiseTFC: {
         data: {
           timeswappers: 'Loading...',
@@ -262,10 +270,50 @@ class Dashboard extends Component {
     this.fetchESOwnersCount().catch(e => console.log('fetchESOwnersCount error',e));
     this.fetchDayswappersData().catch(e => console.log('fetchDayswappersData error',e));
     this.getKycData().catch(e => console.log('getKycData error',e));
+    this.fetchRewardsFromNRT().catch(e => console.log('fetchRewardsFromNRT error',e));
+    this.fetchSurveyDappDetails().catch(e => console.log('fetchSurveyDappDetails error',e));
+    
     this.nrtTicker();
   }
 
-  
+  async fetchSurveyDappDetails(){
+    try{
+      let totalParticipants,totalSurveys;
+      const participantFilter = surveyInstance.filters.SentSurvey(null, null);
+      const participantLogs = await surveyInstance.queryFilter(participantFilter);
+      const participantParseLogs = participantLogs.map((log) => surveyInstance.interface.parseLog(log));
+      totalParticipants = participantParseLogs.length;
+
+      const surverFilter = surveyInstance.filters.NewSurvey(null, null);
+      const logs = await surveyInstance.queryFilter(surverFilter);
+      const parseLogs = logs.map((log) => surveyInstance.interface.parseLog(log));
+      totalSurveys = parseLogs.length;
+
+      const volumeOfES = (11*totalSurveys)+totalParticipants;
+      const totalTransactions = totalSurveys+totalParticipants;
+      this.setState({ 
+        totalParticipants,
+        totalSurveys,
+        volumeOfES,
+        totalTransactions
+      })
+    }catch(e){
+      console.log(e);
+    }
+  }
+
+  async fetchRewardsFromNRT(){
+    try{
+      const platforms = await nrtManager.getPlatformDetails();
+      const annualAmt = await nrtManager.annualNRT();
+      let validatorAmt,crowdFundBal,crowdFundAddress;
+      // const nrtRewards = platforms[0][ethers.utils.formatBytes32String(es.addresses[process.env.REACT_APP_NODE_ENV].ESN.timeallyManager)];
+      validatorAmt = platforms[0][ethers.utils.formatBytes32String(es.addresses[process.env.REACT_APP_NODE_ENV].ESN.validatorManager)];
+      this.setState({ ESNPOSCPRewards: validatorAmt ? ethers.utils.formatEther(annualAmt.div(validatorAmt)) : '0.0' });
+    }catch(e){
+      console.log(e);
+    }
+  }
 
   async fetchDayswappersData(){
     try{
@@ -341,8 +389,11 @@ class Dashboard extends Component {
       .map(log => kycInst.interface.parseLog(log))
       .filter(log => log.args['newKycStatus'] === 1).length
       
+      const kycDappBal = await providerESN.getBalance(es.addresses[process.env.NODE_ENV].ESN.kycdapp);
+
       this.setState({
-        kycApprovedCount: approvedKycsCount
+        kycApprovedCount: approvedKycsCount,
+        kycDappBal: ethers.utils.formatEther(kycDappBal)
       });
     }catch(e){
       console.log('getKycData error',e);
@@ -1754,7 +1805,7 @@ class Dashboard extends Component {
                   <Card.Body>
                     <p className="sect-txt-bold">Timeally total NRT Rewards Distributed</p>
                     <p className="value-dash-txt">
-                    -
+                    {this.state.dayswappers.data.totalTimeAllyRewards}
                     </p>
                   </Card.Body>
                 </Card>
@@ -1764,7 +1815,7 @@ class Dashboard extends Component {
                   <Card.Body>
                     <p className="sect-txt-bold">ESNPOSCP Rewards Distributed </p>
                     <p className="value-dash-txt">
-                     -
+                     {this.state.ESNPOSCPRewards}
                     </p>
                   </Card.Body>
                 </Card>
@@ -1774,7 +1825,7 @@ class Dashboard extends Component {
                 <Card className=" ">
                   <Card.Body>
                     <p className="sect-txt-bold">KYC Pending Bucket </p>
-                    <p className="value-dash-txt">-</p>
+              <p className="value-dash-txt">{this.state.kycDappBal}</p>
                   </Card.Body>
                 </Card>
               </Col>
@@ -1834,7 +1885,7 @@ class Dashboard extends Component {
                 <Card className="">
                   <Card.Body>
                     <p className="sect-txt-bold">DaySwappers Total Rewards</p>
-                    <p className="value-dash-txt">-</p>
+                    <p className="value-dash-txt">{this.state.dayswappers.data.totalRewards}</p>
                   </Card.Body>
                 </Card>
               </Col>
@@ -3037,21 +3088,21 @@ class Dashboard extends Component {
                 <div className="swwall-flex-border">
                   <div>
                     <p className="sect4-context">Total no. of Surveys</p>
-                    <p className="sect4-value">- </p>
+                    <p className="sect4-value">{this.state.totalSurveys} </p>
                   </div>
                   <div>
                     <p className="sect4-context">Total no. of participants in Surveys</p>
-                    <p className="sect4-value">-</p>
+                    <p className="sect4-value">{this.state.totalParticipants}</p>
                   </div>
                 </div>
                  <div className="swwall-border-flex">
                   <div>
                     <p className="sect4-context">Volume of ES</p>
-                    <p className="sect4-value">- </p>
+                    <p className="sect4-value">{this.state.volumeOfES} </p>
                   </div>
                   <div>
                     <p className="sect4-context">Total Transactions</p>
-                    <p className="sect4-value">- </p>
+                    <p className="sect4-value">{this.state.totalTransactions} </p>
                   </div>
                 </div>
               </div>
