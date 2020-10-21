@@ -1736,9 +1736,119 @@ class Dashboard extends Component {
                 </Card>
               </Col>
             </Row>
+
+            
+        <Row className="">
+              {/* <Col sm={6} lg={2} p-0>
+                  <Card className="height-80 wd-120 ">
+                    <Card.Body>
+                      <p className="sect-txt-bold">MARKET CAP</p>
+                      <p className="value-dash-txt">
+                        {this.state.marketCap}
+                      </p>
+                    </Card.Body>
+                  </Card>
+                </Col> */}
+              <Col sm={6} lg={3}>
+                <Card className="">
+                  <Card.Body>
+                    <p className="sect-txt-bold">Timeally total NRT Rewards Distributed</p>
+                    <p className="value-dash-txt">
+                    -
+                    </p>
+                  </Card.Body>
+                </Card>
+              </Col>
+              <Col sm={6} lg={3}>
+                <Card className="">
+                  <Card.Body>
+                    <p className="sect-txt-bold">ESNPOSCP Rewards Distributed </p>
+                    <p className="value-dash-txt">
+                     -
+                    </p>
+                  </Card.Body>
+                </Card>
+              </Col>
+
+              <Col sm={6} lg={3}>
+                <Card className=" ">
+                  <Card.Body>
+                    <p className="sect-txt-bold">KYC Pending Bucket </p>
+                    <p className="value-dash-txt">-</p>
+                  </Card.Body>
+                </Card>
+              </Col>
+              <Col sm={6} lg={3}>
+                <Card className="">
+                  <Card.Body>
+                    <p className="sect-txt-bold">Reserves for Crowd Fund phase 2 & 3 . </p>
+                    <p className="value-dash-txt">-</p>
+                  </Card.Body>
+                </Card>
+              </Col>
+            
+            </Row>
+
+
+        <Row className="">
+              {/* <Col sm={6} lg={2} p-0>
+                  <Card className="height-80 wd-120 ">
+                    <Card.Body>
+                      <p className="sect-txt-bold">MARKET CAP</p>
+                      <p className="value-dash-txt">
+                        {this.state.marketCap}
+                      </p>
+                    </Card.Body>
+                  </Card>
+                </Col> */}
+              <Col sm={6} lg={3}>
+                <Card className="">
+                  <Card.Body>
+                    <p className="sect-txt-bold">Total Power Tokens Distributed </p>
+                    <p className="value-dash-txt">
+                     -
+                    </p>
+                  </Card.Body>
+                </Card>
+              </Col>
+              <Col sm={6} lg={3}>
+                <Card className="">
+                  <Card.Body>
+                    <p className="sect-txt-bold">Airdrop Total Distributed </p>
+                    <p className="value-dash-txt">
+                      -
+                    </p>
+                  </Card.Body>
+                </Card>
+              </Col>
+
+              <Col sm={6} lg={3}>
+                <Card className=" ">
+                  <Card.Body>
+                    <p className="sect-txt-bold">TimeAlly Club Total Distributed </p>
+                    <p className="value-dash-txt">-</p>
+                  </Card.Body>
+                </Card>
+              </Col>
+              <Col sm={6} lg={3}>
+                <Card className="">
+                  <Card.Body>
+                    <p className="sect-txt-bold">DaySwappers Total Rewards</p>
+                    <p className="value-dash-txt">-</p>
+                  </Card.Body>
+                </Card>
+              </Col>
+            
+            </Row>
+      
             {/* </div> */}
           </div>
         </div>
+
+
+
+
+
 
         {/* <div className="dash-section-4">
           <Row>
@@ -2372,13 +2482,34 @@ class Dashboard extends Component {
                     </p>
                   </div>
                 </div>
-                <div className="swwall-border-flex">
+                <div className="swwall-flex-border">
                   <div>
                     <p className="sect4-context">Number of Level 3 KYC</p>
                     <p className="sect4-value">
                       {this.state.kycDapp.data.levelThreeCount}
                     </p>
                   </div>
+                  <div>
+                    <p className="sect4-context">Number of Level 4 KYC</p>
+                    <p className="sect4-value">
+                      -
+                    </p>
+                  </div>
+                  {/* <div>
+                    <p className="sect4-context">All Platform KYCs</p>
+                    <p className="sect4-value">
+                      {this.state.kycDapp.data.allPlatformKycs}
+                    </p>
+                  </div> */}
+                </div>
+                <div className="swwall-border-flex">
+                  <div>
+                    <p className="sect4-context">Number of Level 5 KYC</p>
+                    <p className="sect4-value">
+                     -
+                    </p>
+                  </div>
+                  
                   {/* <div>
                     <p className="sect4-context">All Platform KYCs</p>
                     <p className="sect4-value">
@@ -2903,9 +3034,23 @@ class Dashboard extends Component {
                     <p className="sect4-value">-</p>
                   </div>
                 </div>
-                 <div className="swwall-flex-border">
+                <div className="swwall-flex-border">
+                  <div>
+                    <p className="sect4-context">Total no. of Surveys</p>
+                    <p className="sect4-value">- </p>
+                  </div>
+                  <div>
+                    <p className="sect4-context">Total no. of participants in Surveys</p>
+                    <p className="sect4-value">-</p>
+                  </div>
+                </div>
+                 <div className="swwall-border-flex">
                   <div>
                     <p className="sect4-context">Volume of ES</p>
+                    <p className="sect4-value">- </p>
+                  </div>
+                  <div>
+                    <p className="sect4-context">Total Transactions</p>
                     <p className="sect4-value">- </p>
                   </div>
                 </div>
