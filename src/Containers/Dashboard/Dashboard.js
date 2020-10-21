@@ -137,6 +137,7 @@ class Dashboard extends Component {
           brownBelt: 'Loading...',
           redBelt: 'Loading...',
           blackBelt: 'Loading...',
+          totalRewards: 'Loading...'
         },
         isLoading: true,
       },
@@ -321,6 +322,7 @@ class Dashboard extends Component {
             brownBelt,
             redBelt,
             blackBelt,
+            totalRewards
           },
           isLoading: false,
         },
