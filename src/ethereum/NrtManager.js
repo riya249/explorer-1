@@ -680,4 +680,4 @@ module.exports = {
   // nrtManager
 };
 
-window.nrtManager = nrtManager;
+// window.nrtManager = nrtManager;
