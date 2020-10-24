@@ -19,6 +19,15 @@ import { surveyInstance } from '../../ethereum/Provider';
 
 const COLORS = ['#959595', '#747FEB'];
 const MAX_SUPPLY = 9100000000;
+
+const ESNPOC_ADDRESS = '0xF6484fbC6F96DDc2B43B59a2e0252fC7f735d4c9';
+const POWERTOKEN_ADDRESS = '0xbc24BfAC401860ce536aeF9dE10EF0104b09f657';
+const AIRDROP_ADDRESS = '0x382525b6D3F8e42f0BB4C8D4a705763D00F9fF73';
+const TIMEALLY_CLUB_ADDRESS = '0x0859201dF3Bf7777f556279D7a66730141046C15';
+const DAYSWAPPERS_ADDRESS = '0x1382AD4e3Ca34DCdaC3D6CEeD282913A49394234';
+const TIMEALLY_ADDRESS = '0xF3EFEeA0E535FB8640D1E64877DBE128b5baEdD3';
+
+const kycdappInst = KycDappFactory.connect(es.addresses[process.env.NODE_ENV].ESN.kycdapp,providerESN);
 // const nrtManager = nrtManager;
 
 class Dashboard extends Component {
@@ -55,6 +64,11 @@ class Dashboard extends Component {
       kycApprovedCount: 'Loading...',
       kycDappBal: 'Loading...',
       ESNPOSCPRewards: 'Loading...',
+      powertokenRewards:'Loading...',
+      airdropRewards:'Loading...',
+      timeallyClubRewards:'Loading...',
+      dayswappersRewards:'Loading...',
+      timeallyRewards: 'Loading...',
       crowdFundAddress: 'Loading...',
       crowdFundBal: 'Loading...',
       totalParticipants: 'Loading...',
@@ -304,12 +318,45 @@ class Dashboard extends Component {
 
   async fetchRewardsFromNRT(){
     try{
-      const platforms = await nrtManager.getPlatformDetails();
-      const annualAmt = await nrtManager.annualNRT();
-      let validatorAmt,crowdFundBal,crowdFundAddress;
-      // const nrtRewards = platforms[0][ethers.utils.formatBytes32String(es.addresses[process.env.REACT_APP_NODE_ENV].ESN.timeallyManager)];
-      validatorAmt = platforms[0][ethers.utils.formatBytes32String(es.addresses[process.env.REACT_APP_NODE_ENV].ESN.validatorManager)];
-      this.setState({ ESNPOSCPRewards: validatorAmt ? ethers.utils.formatEther(annualAmt.div(validatorAmt)) : '0.0' });
+      // const platforms = await nrtManager.getPlatformDetails();
+      // const annualAmt = await nrtManager.annualNRT();
+      // let validatorAmt,crowdFundBal,crowdFundAddress;
+      // // const nrtRewards = platforms[0][ethers.utils.formatBytes32String(es.addresses[process.env.REACT_APP_NODE_ENV].ESN.timeallyManager)];
+      // validatorAmt = platforms[0][ethers.utils.formatBytes32String(es.addresses[process.env.REACT_APP_NODE_ENV].ESN.validatorManager)];
+      // this.setState({ ESNPOSCPRewards: validatorAmt ? ethers.utils.formatEther(annualAmt.div(validatorAmt)) : '0.0' });
+      const timeallyUsername = await kycdappInst.resolveUsername(TIMEALLY_ADDRESS);
+      const esnpocUsername = await kycdappInst.resolveUsername(ESNPOC_ADDRESS);
+      const powertokenUsername = await kycdappInst.resolveUsername(POWERTOKEN_ADDRESS)
+      const airdropUsername = await kycdappInst.resolveUsername(AIRDROP_ADDRESS)
+      const timeallyClubUsername = await kycdappInst.resolveUsername(TIMEALLY_CLUB_ADDRESS)
+      const dayswappersUsername = await kycdappInst.resolveUsername(DAYSWAPPERS_ADDRESS)
+      const rewards = {
+        [timeallyUsername]: 0,
+        [esnpocUsername]: 0,
+        [powertokenUsername]: 0,
+        [airdropUsername]: 0,
+        [timeallyClubUsername]: 0,
+        [dayswappersUsername]: 0,
+      }
+      
+      (await nrtManager.queryFilter(nrtManager.filters.NRTSend(this.currentNrtMonth,null,null,null)))
+        .map(log => nrtManager.interface.parseLog(log))
+        .map(log => ({
+          nrtMonth: log.args['nrtMonth'],
+          platformIdentifier: log.args['platformIdentifier'],
+          platform: log.args['platform'],
+          value: log.args['value']
+        }))
+        .map(reward => rewards[reward.platformIdentifier] = ethers.utils.formatEther(reward.value));
+
+        this.setState({
+          ESNPOSCPRewards: rewards[esnpocUsername],
+          powertokenRewards: rewards[powertokenUsername],
+          airdropRewards: rewards[airdropUsername],
+          timeallyClubRewards: rewards[timeallyClubUsername],
+          dayswappersRewards: rewards[dayswappersUsername],
+          timeallyRewards: rewards[timeallyUsername]
+        })
     }catch(e){
       console.log(e);
     }
@@ -330,7 +377,7 @@ class Dashboard extends Component {
       const redBelt = (await dayswappersInst.queryFilter(dayswappersInst.filters.Promotion(null,6))).length;
       const blackBelt = (await dayswappersInst.queryFilter(dayswappersInst.filters.Promotion(null,7))).length;
 
-      const kycdappInst = KycDappFactory.connect(es.addresses[process.env.NODE_ENV].ESN.kycdapp,providerESN);
+      
 
       const kycResolvedUsers = (await kycdappInst.queryFilter(kycdappInst.filters.KycApplied(null,null,null,null))).length
 
@@ -1805,7 +1852,7 @@ class Dashboard extends Component {
                   <Card.Body>
                     <p className="sect-txt-bold">Timeally total NRT Rewards Distributed</p>
                     <p className="value-dash-txt">
-                    {this.state.dayswappers.data.totalTimeAllyRewards}
+                    {this.state.timeallyRewards}
                     </p>
                   </Card.Body>
                 </Card>
@@ -1857,7 +1904,7 @@ class Dashboard extends Component {
                   <Card.Body>
                     <p className="sect-txt-bold">Total Power Tokens Distributed </p>
                     <p className="value-dash-txt">
-                     -
+                     {this.state.powertokenRewards}
                     </p>
                   </Card.Body>
                 </Card>
@@ -1867,7 +1914,7 @@ class Dashboard extends Component {
                   <Card.Body>
                     <p className="sect-txt-bold">Airdrop Total Distributed </p>
                     <p className="value-dash-txt">
-                      -
+                      {this.state.airdropRewards}
                     </p>
                   </Card.Body>
                 </Card>
@@ -1877,7 +1924,7 @@ class Dashboard extends Component {
                 <Card className=" ">
                   <Card.Body>
                     <p className="sect-txt-bold">TimeAlly Club Total Distributed </p>
-                    <p className="value-dash-txt">-</p>
+                    <p className="value-dash-txt">{this.state.timeallyClubRewards}</p>
                   </Card.Body>
                 </Card>
               </Col>
@@ -1885,7 +1932,7 @@ class Dashboard extends Component {
                 <Card className="">
                   <Card.Body>
                     <p className="sect-txt-bold">DaySwappers Total Rewards</p>
-                    <p className="value-dash-txt">{this.state.dayswappers.data.totalRewards}</p>
+                    <p className="value-dash-txt">{this.state.dayswappersRewards}</p>
                   </Card.Body>
                 </Card>
               </Col>
