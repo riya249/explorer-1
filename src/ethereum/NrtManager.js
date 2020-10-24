@@ -666,18 +666,18 @@ const _abi = [
 //     )
 //   );
 // };
-const nrtManager = new Contract(
-  providerESN.resolveAddress(es.addresses[process.env.NODE_ENV].ESN.nrtManager),
-  _abi,
-  providerESN
-);
+// const nrtManager = new Contract(
+//   providerESN.resolveAddress(es.addresses[process.env.NODE_ENV].ESN.nrtManager),
+//   _abi,
+//   providerESN
+// );
 
 module.exports = {
-  // nrtManager: NrtManagerFactory.connect(
-  //   providerESN.resolveAddress(es.addresses[process.env.NODE_ENV].ESN.nrtManager),
-  //   providerESN
-  // )
-  nrtManager
+  nrtManager: NrtManagerFactory.connect(
+    providerESN.resolveAddress(es.addresses[process.env.NODE_ENV].ESN.nrtManager),
+    providerESN
+  )
+  // nrtManager
 };
 
 window.nrtManager = nrtManager;
