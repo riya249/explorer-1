@@ -15,9 +15,9 @@ const _abi = [
     inputs: [
       {
         indexed: true,
-        internalType: 'uint256',
+        internalType: 'uint32',
         name: 'nrtMonth',
-        type: 'uint256',
+        type: 'uint32',
       },
       {
         indexed: false,
@@ -34,9 +34,9 @@ const _abi = [
     inputs: [
       {
         indexed: true,
-        internalType: 'uint256',
+        internalType: 'uint32',
         name: 'nrtMonth',
-        type: 'uint256',
+        type: 'uint32',
       },
       {
         indexed: false,
@@ -59,9 +59,9 @@ const _abi = [
     inputs: [
       {
         indexed: true,
-        internalType: 'uint256',
+        internalType: 'uint32',
         name: 'nrtMonth',
-        type: 'uint256',
+        type: 'uint32',
       },
       {
         indexed: false,
@@ -84,9 +84,9 @@ const _abi = [
     inputs: [
       {
         indexed: true,
-        internalType: 'uint256',
+        internalType: 'uint32',
         name: 'nrtMonth',
-        type: 'uint256',
+        type: 'uint32',
       },
       {
         indexed: false,
@@ -102,6 +102,56 @@ const _abi = [
       },
     ],
     name: 'NRT',
+    type: 'event',
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: 'uint32',
+        name: 'nrtMonth',
+        type: 'uint32',
+      },
+      {
+        indexed: true,
+        internalType: 'bytes32',
+        name: 'platformIdentifier',
+        type: 'bytes32',
+      },
+      {
+        indexed: false,
+        internalType: 'address',
+        name: 'platform',
+        type: 'address',
+      },
+      {
+        indexed: false,
+        internalType: 'uint256',
+        name: 'value',
+        type: 'uint256',
+      },
+    ],
+    name: 'NRTSend',
+    type: 'event',
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: 'address',
+        name: 'previousOwner',
+        type: 'address',
+      },
+      {
+        indexed: true,
+        internalType: 'address',
+        name: 'newOwner',
+        type: 'address',
+      },
+    ],
+    name: 'OwnershipTransferred',
     type: 'event',
   },
   {
@@ -122,9 +172,9 @@ const _abi = [
     name: 'SECONDS_IN_MONTH',
     outputs: [
       {
-        internalType: 'uint256',
+        internalType: 'uint48',
         name: '',
-        type: 'uint256',
+        type: 'uint48',
       },
     ],
     stateMutability: 'view',
@@ -142,19 +192,6 @@ const _abi = [
     name: 'addToLuckPool',
     outputs: [],
     stateMutability: 'payable',
-    type: 'function',
-  },
-  {
-    inputs: [],
-    name: 'adminMode',
-    outputs: [
-      {
-        internalType: 'bool',
-        name: '',
-        type: 'bool',
-      },
-    ],
-    stateMutability: 'view',
     type: 'function',
   },
   {
@@ -188,9 +225,22 @@ const _abi = [
     name: 'currentNrtMonth',
     outputs: [
       {
-        internalType: 'uint256',
+        internalType: 'uint32',
         name: '',
-        type: 'uint256',
+        type: 'uint32',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'dayswappers',
+    outputs: [
+      {
+        internalType: 'contract IDayswappers',
+        name: '',
+        type: 'address',
       },
     ],
     stateMutability: 'view',
@@ -252,9 +302,9 @@ const _abi = [
     name: 'getPlatform',
     outputs: [
       {
-        internalType: 'address',
+        internalType: 'bytes32',
         name: '',
-        type: 'address',
+        type: 'bytes32',
       },
     ],
     stateMutability: 'view',
@@ -265,9 +315,9 @@ const _abi = [
     name: 'getPlatformDetails',
     outputs: [
       {
-        internalType: 'address[]',
+        internalType: 'bytes32[]',
         name: '',
-        type: 'address[]',
+        type: 'bytes32[]',
       },
       {
         internalType: 'uint256[]',
@@ -283,9 +333,35 @@ const _abi = [
     name: 'getPlatforms',
     outputs: [
       {
-        internalType: 'address[]',
+        internalType: 'bytes32[]',
         name: '',
-        type: 'address[]',
+        type: 'bytes32[]',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'isAdminMode',
+    outputs: [
+      {
+        internalType: 'bool',
+        name: '',
+        type: 'bool',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'kycDapp',
+    outputs: [
+      {
+        internalType: 'contract IKycDapp',
+        name: '',
+        type: 'address',
       },
     ],
     stateMutability: 'view',
@@ -319,7 +395,162 @@ const _abi = [
   },
   {
     inputs: [],
+    name: 'nrtManager',
+    outputs: [
+      {
+        internalType: 'contract INRTManager',
+        name: '',
+        type: 'address',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'owner',
+    outputs: [
+      {
+        internalType: 'address',
+        name: '',
+        type: 'address',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'prepaidEs',
+    outputs: [
+      {
+        internalType: 'contract IPrepaidEs',
+        name: '',
+        type: 'address',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'randomnessManager',
+    outputs: [
+      {
+        internalType: 'contract RandomnessManager',
+        name: '',
+        type: 'address',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
     name: 'releaseMonthlyNRT',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'renounceAdminMode',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'renounceOwnership',
+    outputs: [],
+    stateMutability: 'pure',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'bytes32',
+        name: '_username',
+        type: 'bytes32',
+      },
+    ],
+    name: 'resolveAddress',
+    outputs: [
+      {
+        internalType: 'address',
+        name: '',
+        type: 'address',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'bytes32',
+        name: '_username',
+        type: 'bytes32',
+      },
+    ],
+    name: 'resolveAddressStrict',
+    outputs: [
+      {
+        internalType: 'address',
+        name: '',
+        type: 'address',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: '_wallet',
+        type: 'address',
+      },
+    ],
+    name: 'resolveUsername',
+    outputs: [
+      {
+        internalType: 'bytes32',
+        name: '',
+        type: 'bytes32',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: '_wallet',
+        type: 'address',
+      },
+    ],
+    name: 'resolveUsernameStrict',
+    outputs: [
+      {
+        internalType: 'bytes32',
+        name: '',
+        type: 'bytes32',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: '_kycDapp',
+        type: 'address',
+      },
+    ],
+    name: 'setKycDapp',
     outputs: [],
     stateMutability: 'nonpayable',
     type: 'function',
@@ -327,14 +558,9 @@ const _abi = [
   {
     inputs: [
       {
-        internalType: 'bool',
-        name: '_adminMode',
-        type: 'bool',
-      },
-      {
-        internalType: 'address[]',
-        name: '_platforms',
-        type: 'address[]',
+        internalType: 'bytes32[]',
+        name: '_platformIdentifiers',
+        type: 'bytes32[]',
       },
       {
         internalType: 'uint256[]',
@@ -342,9 +568,87 @@ const _abi = [
         type: 'uint256[]',
       },
     ],
-    name: 'setInitialValues',
+    name: 'setPlatforms',
     outputs: [],
     stateMutability: 'payable',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'timeallyClub',
+    outputs: [
+      {
+        internalType: 'contract ITimeAllyClub',
+        name: '',
+        type: 'address',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'timeallyManager',
+    outputs: [
+      {
+        internalType: 'contract ITimeAllyManager',
+        name: '',
+        type: 'address',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'timeallyPromotionalBucket',
+    outputs: [
+      {
+        internalType: 'contract ITimeAllyPromotionalBucket',
+        name: '',
+        type: 'address',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'totalSupply',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'newOwner',
+        type: 'address',
+      },
+    ],
+    name: 'transferOwnership',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'validatorManager',
+    outputs: [
+      {
+        internalType: 'contract IValidatorManager',
+        name: '',
+        type: 'address',
+      },
+    ],
+    stateMutability: 'view',
     type: 'function',
   },
   {
@@ -362,10 +666,18 @@ const _abi = [
 //     )
 //   );
 // };
+// const nrtManager = new Contract(
+//   providerESN.resolveAddress(es.addresses[process.env.NODE_ENV].ESN.nrtManager),
+//   _abi,
+//   providerESN
+// );
 
 module.exports = {
   nrtManager: NrtManagerFactory.connect(
     providerESN.resolveAddress(es.addresses[process.env.NODE_ENV].ESN.nrtManager),
     providerESN
   )
+  // nrtManager
 };
+
+// window.nrtManager = nrtManager;

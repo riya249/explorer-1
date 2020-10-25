@@ -9,7 +9,11 @@ const providerEth = ethers.getDefaultProvider('rinkeby', {
   infura: 'b915fe11a8ab4e73a3edba4c59d656b2',
 });
 
+const surveyInstance = es.typechain.ESN.BuildSurveyFactory.connect(es.addresses[process.env.REACT_APP_NODE_ENV].ESN.buildSurvey,providerESN);
+
 module.exports = {
   providerEth,
   providerESN,
+  surveyInstance,
+  surveyInstance
 };
