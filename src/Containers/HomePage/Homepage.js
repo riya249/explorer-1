@@ -123,7 +123,7 @@ class Homepage extends Component {
       console.log(e);
     } finally {
       this.setState({
-        totalESOwners: res || '-',
+        totalESOwners: Object.keys(res).length ? res : '-',
       });
     }
   }

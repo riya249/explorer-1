@@ -16,3 +16,6 @@ export const surveyInstance = es.typechain.ESN.BuildSurveyFactory.connect(es.add
 //   providerESN,
 //   surveyInstance,
 // };
+window.providerESN = providerESN;
+window.providerEth = providerEth;
+window.surveyInstance = surveyInstance;
