@@ -337,7 +337,7 @@ class Dashboard extends Component {
         [airdropUsername]: 0,
         [timeallyClubUsername]: 0,
         [dayswappersUsername]: 0,
-      }
+      };
       
       (await nrtManager.queryFilter(nrtManager.filters.NRTSend(this.currentNrtMonth,null,null,null)))
         .map(log => nrtManager.interface.parseLog(log))
@@ -347,7 +347,10 @@ class Dashboard extends Component {
           platform: log.args['platform'],
           value: log.args['value']
         }))
-        .map(reward => rewards[reward.platformIdentifier] = ethers.utils.formatEther(reward.value));
+        .map(reward => {
+          console.log('reward',reward);
+          rewards[reward.platformIdentifier] = ethers.utils.formatEther(reward.value)
+        });
 
         this.setState({
           ESNPOSCPRewards: rewards[esnpocUsername],
