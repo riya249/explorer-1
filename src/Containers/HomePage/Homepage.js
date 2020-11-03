@@ -31,6 +31,7 @@ import { providerESN } from '../../ethereum/Provider';
 import { es } from 'eraswap-sdk/dist';
 
 const MAX_SUPPLY = 9100000000;
+const BURN_POOL_ADDRESS = '0xF8dd9146465A112be3bEf3f7dDcAB9b0b42CbaB5';
 
 class Homepage extends Component {
   snackbarRef = React.createRef();
@@ -146,7 +147,8 @@ class Homepage extends Component {
   }
 
   async fetchBurnPool() {
-    const burnBal = await nrtManager.burnPoolBalance();
+    // const burnBal = await nrtManager.burnPoolBalance();
+    const burnBal = await providerESN.getBalance(BURN_POOL_ADDRESS)
     this.setState({
       burnPool: formatEther(burnBal),
     });

@@ -26,6 +26,8 @@ const AIRDROP_ADDRESS = '0x382525b6D3F8e42f0BB4C8D4a705763D00F9fF73';
 const TIMEALLY_CLUB_ADDRESS = '0x0859201dF3Bf7777f556279D7a66730141046C15';
 const DAYSWAPPERS_ADDRESS = '0x1382AD4e3Ca34DCdaC3D6CEeD282913A49394234';
 const TIMEALLY_ADDRESS = '0xF3EFEeA0E535FB8640D1E64877DBE128b5baEdD3';
+const BURN_POOL_ADDRESS = '0xF8dd9146465A112be3bEf3f7dDcAB9b0b42CbaB5';
+const UNUSED_POWERTOKENS_ADDRESS = '0x7Ed40C491c79a717d5C64d34471eAeedC870c2a4';
 
 const kycdappInst = KycDappFactory.connect(es.addresses[process.env.NODE_ENV].ESN.kycdapp,providerESN);
 // const nrtManager = nrtManager;
@@ -545,7 +547,8 @@ class Dashboard extends Component {
   }
 
   async fetchBurnPool() {
-    const burnBal = await nrtManager.burnPoolBalance();
+    // const burnBal = await nrtManager.burnPoolBalance();
+    const burnBal = await providerESN.getBalance(BURN_POOL_ADDRESS)
     this.setState({
 
       burnPool: formatEther(burnBal),
@@ -979,18 +982,26 @@ class Dashboard extends Component {
   }
 
   async powerTokenDetails() {
-    let res;
-    try {
-      res = await Apis.powerTokenDetails();
-      console.log('powerTokenDetails - res', res);
-    } catch (e) {
-      console.log(e);
-    } finally {
+    // let res;
+    // try {
+    //   res = await Apis.powerTokenDetails();
+    //   console.log('powerTokenDetails - res', res);
+    // } catch (e) {
+    //   console.log(e);
+    // } finally {
+    //   this.setState({
+    //     unUsedPowertokens: res?.data?.error
+    //       ? 'Inactive'
+    //       : lessDecimals(res?.data?.unusedPowerToken) + ' ES',
+    //   });
+    // }
+    try{
+      const amt = await providerESN.getBalance(UNUSED_POWERTOKENS_ADDRESS);
       this.setState({
-        unUsedPowertokens: res?.data?.error
-          ? 'Inactive'
-          : lessDecimals(res?.data?.unusedPowerToken) + ' ES',
+        unUsedPowertokens: Number(ethers.utils.formatEther(amt)).toFixed(2)
       });
+    }catch(e){
+      console.log('powerTokenDetails error',e);
     }
   }
 
