@@ -484,7 +484,7 @@ class Homepage extends Component {
   async getTotalSupply(){
     const nrtBalance = await providerESN.getBalance(es.addresses[process.env.NODE_ENV].ESN.nrtManager);
     const luckPoolBal = await nrtManager.luckPoolBalance();
-    const burnPoolBal = await nrtManager.burnPoolBalance();
+    const burnPoolBal = await providerESN.getBalance(BURN_POOL_ADDRESS);
     const burnAddressBal = await providerESN.getBalance('0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb');
     const maxSupplyHex = ethers.utils.parseEther(MAX_SUPPLY.toString());
     const totalSupplyHex = maxSupplyHex.sub(nrtBalance.sub(burnAddressBal).sub(luckPoolBal).sub(burnPoolBal));
