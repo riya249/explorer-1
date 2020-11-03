@@ -123,7 +123,7 @@ class Homepage extends Component {
       console.log(e);
     } finally {
       this.setState({
-        totalESOwners: Object.keys(res).length ? res : '-',
+        totalESOwners: isFinite(res) ? res : '-',
       });
     }
   }
@@ -328,12 +328,13 @@ class Homepage extends Component {
     try {
       const res = await Apis.fetchBunches(0, 14);
       console.log('bunches res', res);
-      this.setState({
-        bunches: {
-          data: res.data,
-          isLoading: false,
-        },
-      });
+      if('data' in res)
+        this.setState({
+          bunches: {
+            data: res.data,
+            isLoading: false,
+          },
+        });
     } catch (e) {
       console.log(e);
       // this.openSnackBar(e.message);
