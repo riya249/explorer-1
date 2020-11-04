@@ -77,6 +77,7 @@ class Dashboard extends Component {
       totalSurveys: 'Loading...',
       volumeOfES: 'Loading...',
       totalTransactions: 'Loading...',
+      availableSupply: 'Loading...',
       platformWiseTFC: {
         data: {
           timeswappers: 'Loading...',
@@ -282,14 +283,25 @@ class Dashboard extends Component {
     this.fetchBurnPool().catch(e => console.log('fetchBurnPool error',e));
     this.fetchLuckPool().catch(e => console.log('fetchLuckPool error',e));
     this.fetchAllTxnsCount().catch(e => console.log('fetchAllTxnsCount error',e));
-
     this.fetchESOwnersCount().catch(e => console.log('fetchESOwnersCount error',e));
     this.fetchDayswappersData().catch(e => console.log('fetchDayswappersData error',e));
     this.getKycData().catch(e => console.log('getKycData error',e));
     this.fetchRewardsFromNRT().catch(e => console.log('fetchRewardsFromNRT error',e));
     this.fetchSurveyDappDetails().catch(e => console.log('fetchSurveyDappDetails error',e));
+    this.fetchAvailableSupply().catch(e => console.log('fetchAvailableSupply error',e));
     
     this.nrtTicker();
+  }
+
+  async fetchAvailableSupply(){
+    try{
+      const availableSupply = await nrtManager.availableSupply();
+      this.setState({
+        availableSupply: Number(ethers.utils.formatEther(availableSupply)).toFixed(2)
+      })
+    }catch(e){
+      console.log(e);
+    }
   }
 
   async fetchSurveyDappDetails(){
@@ -547,8 +559,8 @@ class Dashboard extends Component {
   }
 
   async fetchBurnPool() {
-    // const burnBal = await nrtManager.burnPoolBalance();
-    const burnBal = await providerESN.getBalance(BURN_POOL_ADDRESS)
+    const burnBal = await nrtManager.burnPoolBalance();
+    // const burnBal = await providerESN.getBalance(BURN_POOL_ADDRESS)
     this.setState({
 
       burnPool: formatEther(burnBal),
@@ -586,13 +598,9 @@ class Dashboard extends Component {
   }
 
   async fetchTotalSupply() {
-    // const nrtBalance = await providerESN.getBalance(nrtAddress);
-
-    // this.setState({
-    //   esTotalSupply: MAX_SUPPLY - formatEther(nrtBalance),
-    // });
+    const totalSupply = await nrtManager.totalSupply();
     this.setState({
-      esTotalSupply: await this.getTotalSupply()
+      esTotalSupply: Number(ethers.utils.formatEther(totalSupply)).toFixed(2)
     })
   }
 
@@ -1539,7 +1547,6 @@ class Dashboard extends Component {
 
   render() {
     const currentSupply = this.state.esTotalSupply - this.state.totalESStaked - this.state.burnPool;
-    const availableSupply = this.state.esTotalSupply - this.state.burnPool;
     return (
       <div className="bgd-dash-color dashboard-box">
         <div className="booking-hero-bgd booking-hero-bgd-inner">
@@ -1637,7 +1644,7 @@ class Dashboard extends Component {
                     title="Total Supply - Officially Burnt"
                     >ES AVAILABLE SUPPLY</p>
                     <p className="value-dash-txt">
-                     {availableSupply > -1 ? availableSupply : 'Loading...'} ES
+                     {this.state.availableSupply > -1 ? this.state.availableSupply : 'Loading...'} ES
                     </p>
                   </Card.Body>
                 </Card>
@@ -1647,7 +1654,7 @@ class Dashboard extends Component {
                   <Card.Body>
                     <p className="sect-txt-bold">AVAILABLE SUPPLY</p>
                     <p className="value-dash-txt">
-                      {isFinite(availableSupply) ? (availableSupply) : 'Loading...'}{' '}
+                      {isFinite(this.state.availableSupply) ? (this.state.availableSupply) : 'Loading...'}{' '}
                       ES
                     </p>
                   </Card.Body>
@@ -2031,7 +2038,7 @@ class Dashboard extends Component {
                       <Pie
                         data={[{
                           name: 'Available Supply',
-                          value: availableSupply
+                          value: this.state.availableSupply
                         },{
                           name: 'ES Staked in TimeAlly 1 LT',
                           value: Number(this.state.totalESStaked)
@@ -2057,7 +2064,7 @@ class Dashboard extends Component {
                      */}
                     <div className="flex-sect4-box">
                       <div className="timeally-mark"></div>
-                      <p className="sect4-context">Available Supply {availableSupply}</p>
+                      <p className="sect4-context">Available Supply {this.state.availableSupply}</p>
                     </div>
                     <div className="flex-sect4-box">
                       <div className="timeally-mark2"></div>
