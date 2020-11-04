@@ -48,7 +48,7 @@ class Homepage extends Component {
       change7Days: '-',
       probitTimestampUSDT: '',
       probitTimestampBTC: '',
-      availableSupply: 0,
+      availableSupply: 'Loading...',
       totalSupply: 0,
       maxSupply: MAX_SUPPLY,
       volume24: 0,
@@ -104,12 +104,12 @@ class Homepage extends Component {
       this.fetchValidators().catch((e) => console.log(e));
       this.fetchAverageBlock().catch((e) => console.log(e));
       this.nrtTicker().catch((e) => console.log(e));
-      this.esCurrentSupply().catch((e) => console.log(e));
+      // this.esCurrentSupply().catch((e) => console.log(e));
       this.fetchTotalSupply().catch((e) => console.log(e));
       this.fetchBurnPool().catch((e) => console.log(e));
       this.fetchTotalESBurnt().catch((e) => console.log(e));
       this.fetchESOwnersCount().catch((e) => console.log(e));
-      
+      this.fetchAvailableSupply().catch((e) => console.log(e));
     }catch(e){
       console.log(e)
     }
@@ -147,8 +147,8 @@ class Homepage extends Component {
   }
 
   async fetchBurnPool() {
-    // const burnBal = await nrtManager.burnPoolBalance();
-    const burnBal = await providerESN.getBalance(BURN_POOL_ADDRESS)
+    const burnBal = await nrtManager.burnPoolBalance();
+    // const burnBal = await providerESN.getBalance(BURN_POOL_ADDRESS)
     this.setState({
       burnPool: formatEther(burnBal),
     });
@@ -387,22 +387,14 @@ class Homepage extends Component {
     }
   }
 
-  async esCurrentSupply() {
-    let res;
-    try {
-      res = await Apis.esTotalSupply();
-    } catch (e) {
-      console.log(e);
-    } finally {
-      // if (res?.data?.totalSupply) {
-        // this.esCurrentSupply = Number(lessDecimals(res.data.totalSupply));
-        // this.updateMarketCap();
-      // }
-      this.setState({
-        availableSupply: res?.data?.outsideTimeAllySupply
-          ? lessDecimals(res.data.outsideTimeAllySupply)
-          : 0,
+  async fetchAvailableSupply() {
+    try{
+      const availableSupply = await nrtManager.availableSupply();
+      this.setState({ 
+        availableSupply: Number(ethers.utils.formatEther(availableSupply)).toFixed(2)
       });
+    }catch(e){
+      console.log(e);
     }
   }
 
@@ -445,13 +437,9 @@ class Homepage extends Component {
   }
 
   async fetchTotalSupply() {
-    // const nrtBalance = await providerESN.getBalance(nrtAddress);
-
-    // this.setState({
-    //   totalSupply: MAX_SUPPLY - formatEther(nrtBalance),
-    // });
+    const totalSupply = await nrtManager.totalSupply();
     this.setState({
-      totalSupply: await this.getTotalSupply()
+      totalSupply: Number(ethers.utils.formatEther(totalSupply)).toFixed(2)
     });
   }
 
@@ -492,7 +480,7 @@ class Homepage extends Component {
   }
 
   render() {
-    const availableSupply = this.state.totalSupply - this.state.burnPool;
+    
     const marketCap = (this.state.totalSupply - this.state.burnPool) * this.state.esPriceUSDT;
     return (
       <div>
@@ -598,7 +586,7 @@ class Homepage extends Component {
                           title="Total Supply - Officially Burnt">
                             AVAILABLE SUPPLY</p>
                           <p className="era-value text-black">
-                            {availableSupply > -1 ? availableSupply : 'Loading...'} ES
+                            {this.state.availableSupply} ES
                           </p>
                         </div>
                         <div className="col-lg-6">
