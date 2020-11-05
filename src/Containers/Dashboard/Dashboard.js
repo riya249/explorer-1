@@ -29,7 +29,7 @@ const TIMEALLY_ADDRESS = '0xF3EFEeA0E535FB8640D1E64877DBE128b5baEdD3';
 const BURN_POOL_ADDRESS = '0xF8dd9146465A112be3bEf3f7dDcAB9b0b42CbaB5';
 const UNUSED_POWERTOKENS_ADDRESS = '0x7Ed40C491c79a717d5C64d34471eAeedC870c2a4';
 
-const kycdappInst = KycDappFactory.connect(es.addresses[process.env.NODE_ENV].ESN.kycdapp,providerESN);
+const kycdappInst = KycDappFactory.connect(es.addresses[process.env.REACT_APP_NODE_ENV].ESN.kycdapp,providerESN);
 // const nrtManager = nrtManager;
 
 class Dashboard extends Component {
@@ -381,7 +381,7 @@ class Dashboard extends Component {
 
   async fetchDayswappersData(){
     try{
-      const dayswappersInst = DayswappersWithMigrationFactory.connect(es.addresses[process.env.NODE_ENV].ESN.dayswappers,providerESN);
+      const dayswappersInst = DayswappersWithMigrationFactory.connect(es.addresses[process.env.REACT_APP_NODE_ENV].ESN.dayswappers,providerESN);
       const totalDayswappers = (await dayswappersInst.queryFilter(dayswappersInst.filters.SeatTransfer(null,null,null))).length;
       const activeUsers = (await dayswappersInst.queryFilter(dayswappersInst.filters.Active(null,this.currentNrtMonth))).length;
       const ecosystemVolume = (await dayswappersInst.queryFilter(dayswappersInst.filters.Volume(null,null,null,null))).length;
@@ -448,12 +448,12 @@ class Dashboard extends Component {
 
   async getKycData(){
     try{
-      const kycInst = await KycDappFactory.connect(es.addresses[process.env.NODE_ENV].ESN.kycdapp,providerESN);
+      const kycInst = await KycDappFactory.connect(es.addresses[process.env.REACT_APP_NODE_ENV].ESN.kycdapp,providerESN);
       const approvedKycsCount = (await kycInst.queryFilter(kycInst.filters.KycStatusUpdated(null,null,null,null,null)))
       .map(log => kycInst.interface.parseLog(log))
       .filter(log => log.args['newKycStatus'] === 1).length
       
-      const kycDappBal = await providerESN.getBalance(es.addresses[process.env.NODE_ENV].ESN.kycdapp);
+      const kycDappBal = await providerESN.getBalance(es.addresses[process.env.REACT_APP_NODE_ENV].ESN.kycdapp);
 
       this.setState({
         kycApprovedCount: approvedKycsCount,
@@ -511,7 +511,7 @@ class Dashboard extends Component {
   }
 
   async getTotalSupply(){
-    const nrtBalance = await providerESN.getBalance(es.addresses[process.env.NODE_ENV].ESN.nrtManager);
+    const nrtBalance = await providerESN.getBalance(es.addresses[process.env.REACT_APP_NODE_ENV].ESN.nrtManager);
     const luckPoolBal = await nrtManager.luckPoolBalance();
     const burnPoolBal = await nrtManager.burnPoolBalance();
     const burnAddressBal = await providerESN.getBalance('0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb');
