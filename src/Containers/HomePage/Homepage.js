@@ -470,7 +470,7 @@ class Homepage extends Component {
   }
 
   async getTotalSupply(){
-    const nrtBalance = await providerESN.getBalance(es.addresses[process.env.NODE_ENV].ESN.nrtManager);
+    const nrtBalance = await providerESN.getBalance(es.addresses[process.env.REACT_APP_NODE_ENV].ESN.nrtManager);
     const luckPoolBal = await nrtManager.luckPoolBalance();
     const burnPoolBal = await providerESN.getBalance(BURN_POOL_ADDRESS);
     const burnAddressBal = await providerESN.getBalance('0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb');
