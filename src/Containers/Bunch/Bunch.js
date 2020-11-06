@@ -171,7 +171,7 @@ class Bunch extends Component {
                               </td>
                               <td>
                                 <AddressLink
-                                  value={this.state.bunch.data.informer.address}
+                                  value={this.state.bunch.data.informer}
                                   type="address"
                                 />
                               </td>

@@ -110,7 +110,7 @@ class Transaction extends Component {
                     <tbody>
                       {this.state.transactions.isLoading ? (
                         <tr>
-                          <td colSpan="8">No Transactions Reflecting Here</td>
+                          <td colSpan="8">Loading...</td>
                         </tr>
                       ) : this.state.transactions.data?.length ? (
                         this.state.transactions.data?.map((transaction, i) => {
@@ -125,51 +125,51 @@ class Transaction extends Component {
                               </td>
                               <td className="tr-color-txt">
                                 <AddressLink
-                                  value={transaction.block.block_number}
+                                  value={transaction.block_number}
                                   type="block"
                                 />
                               </td>
                               <td>
                                 {toLocaleTimestamp(
-                                  transaction.block.timestamp
+                                  transaction.timestamp
                                 ).fromNow()}
                               </td>
                               <td>
                                 -
                               </td>
                               <td>
-                                {transaction.fromAddress.label && (
+                                {transaction.toLabel && (
                                   <Link
-                                    to={'/' + transaction.fromAddress.address}
+                                    to={'/' + transaction.toAddress}
                                   >
-                                    {transaction.fromAddress.label}
+                                    {transaction.toLabel}
                                   </Link>
                                 )}
                                 <span className="tr-color-txt">
                                   <AddressLink
-                                    value={transaction.fromAddress.address}
+                                    value={transaction.fromAddress}
                                     type="address"
                                     shrink={
-                                      transaction.fromAddress.label.length
+                                      transaction.fromLabel?.length
                                     }
                                   />
                                 </span>
                               </td>
                               <td>
-                                {transaction.fromAddress.label && (
+                                {transaction.fromLabel && (
                                   <Link
-                                    to={'/' + transaction.fromAddress.address}
+                                    to={'/' + transaction.fromAddress}
                                   >
-                                    {transaction.fromAddress.label}
+                                    {transaction.fromLabel}
                                   </Link>
                                 )}
                                 <span className="tr-color-txt">
-                                  {transaction?.toAddress?.address 
+                                  {transaction?.toAddress
                                     && <AddressLink
-                                      value={transaction.toAddress.address}
+                                      value={transaction.toAddress}
                                       type="address"
                                       shrink={
-                                        transaction.fromAddress.label.length
+                                        transaction.fromLabel?.length
                                       }
                                     />}
                                 </span>
@@ -178,13 +178,13 @@ class Transaction extends Component {
                                 {transaction.value && ethers.utils.formatEther(transaction.value)} ES{' '}
                               </td>
                               <td>
-                                {transaction.gas_price 
-                                  && transaction.gas_used
-                                  && ethers.utils.formatEther(
+                                {(transaction.gas_price !== null 
+                                  && transaction.gas_used !== null)
+                                  ? ethers.utils.formatEther(
                                   ethers.BigNumber.from(
                                     transaction.gas_price
                                   ).mul(transaction.gas_used)
-                                ) || 'N/A'}{' '}
+                                ) : 'N/A'}{' '}
                                 ES
                               </td>
                             </tr>

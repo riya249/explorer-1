@@ -811,7 +811,7 @@ class Homepage extends Component {
                               Informer{' '}
                               <span className="frst-era">
                                 <AddressLink
-                                  value={bunch.informer.address}
+                                  value={bunch.informer}
                                   type="address"
                                   shrink={true}
                                 />
@@ -934,7 +934,7 @@ class Homepage extends Component {
                                   <div className="sub-frst">
                                     {moment(
                                       moment(
-                                        transaction.block.timestamp
+                                        transaction.timestamp
                                       ).toDate()
                                     ).fromNow()}
                                   </div>
@@ -943,14 +943,14 @@ class Homepage extends Component {
                                   <span className="">
                                     From:{' '}
                                     <AddressLink
-                                      value={transaction?.fromAddress?.address}
+                                      value={transaction?.fromAddress}
                                       type="address"
                                       shrink={true}
                                     />
                                     <br></br>
                                     To:{' '}
                                     <AddressLink
-                                      value={transaction?.toAddress?.address}
+                                      value={transaction?.toAddress}
                                       type="address"
                                       shrink={true}
                                     />
