@@ -25,6 +25,7 @@ class Transaction extends Component {
       hash: params.hash,
       transaction: {
         data: {},
+        transfers: [],
         isLoading: true,
       },
     };
@@ -43,6 +44,7 @@ class Transaction extends Component {
           hash: this.props.match.params.hash,
           transaction: {
             data: {},
+            transfers: [],
             isLoading: true,
           },
         },
@@ -60,6 +62,7 @@ class Transaction extends Component {
         this.setState({
           transaction: {
             data: res.data,
+            transfers: res.transfers,
             isLoading: false,
           },
         });
@@ -151,7 +154,7 @@ class Transaction extends Component {
                               <td>
                                 <AddressLink
                                   value={
-                                    this.state.transaction.data.block.block_number
+                                    this.state.transaction.data.block_number
                                   }
                                   type="block"
                                 />
@@ -167,11 +170,11 @@ class Transaction extends Component {
                               </td>
                               <td>
                                 {toLocaleTimestamp(
-                                  this.state.transaction.data.block?.timestamp
+                                  this.state.transaction.data.timestamp
                                 ).fromNow()}{' '}
                                 (
                                 {toLocaleTimestamp(
-                                  this.state.transaction.data.block?.timestamp
+                                  this.state.transaction.data.timestamp
                                 ).format('MMMM-DD-YYYY hh:mm:ss A')}
                                 )
                               </td>
@@ -188,7 +191,6 @@ class Transaction extends Component {
                                 <AddressLink
                                   value={
                                     this.state.transaction.data.fromAddress
-                                      .address
                                   }
                                   type="address"
                                 />
@@ -204,12 +206,11 @@ class Transaction extends Component {
                               </td>
                               <td>
                                 {
-                                  this.state.transaction?.data?.toAddress?.address
+                                  this.state.transaction?.data?.toAddress
                                   ?
                                   <AddressLink
                                   value={
                                     this.state.transaction.data.toAddress
-                                      .address
                                   }
                                   type="address"
                                 />
@@ -253,6 +254,28 @@ class Transaction extends Component {
                                -
                               </td>
                             </tr>
+                            {
+                              this.state.transaction.transfers?.length ?
+                              <tr>
+                              <td>Transfers:</td>
+                              <td>
+                               {this.state.transaction.transfers?.length ?
+                                <ul className="list-group">
+                                 {this.state.transaction
+                                  .transfers
+                                 .map(transfer => <li className="list-group-item">
+                                   <AddressLink value={transfer.from} type='address'/>{' '}-{' '}
+                                   <AddressLink value={transfer.to} type='address'/>{' '}
+                                   {Number(ethers.utils.formatEther(transfer.value)).toFixed(2)}
+                                   </li>)}
+                                 </ul>
+                               : '-'}
+                              </td>
+                            </tr>
+                              :
+                              null
+                            }
+                            
                             <tr>
                               <td
                                 data-toggle="tooltip"
