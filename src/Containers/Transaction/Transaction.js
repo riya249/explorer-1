@@ -257,16 +257,16 @@ class Transaction extends Component {
                             {
                               this.state.transaction.transfers?.length ?
                               <tr>
-                              <td>Transfers:</td>
+                              <td>Prepaid Transfers:</td>
                               <td>
                                {this.state.transaction.transfers?.length ?
                                 <ul className="list-group">
                                  {this.state.transaction
                                   .transfers
                                  .map(transfer => <li className="list-group-item">
-                                   <AddressLink value={transfer.from} type='address'/>{' '}-{' '}
-                                   <AddressLink value={transfer.to} type='address'/>{' '}
-                                   {Number(ethers.utils.formatEther(transfer.value)).toFixed(2)}
+                                   <strong>From </strong><AddressLink value={transfer.from} type='address'/>{' '}-{' '}
+                                   <strong>To </strong><AddressLink value={transfer.to} type='address'/>{' '}
+                                   <strong>For </strong>{Number(ethers.utils.formatEther(transfer.value)).toFixed(2)} WES
                                    </li>)}
                                  </ul>
                                : '-'}
