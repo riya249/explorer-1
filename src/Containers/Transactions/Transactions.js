@@ -138,13 +138,14 @@ class Transaction extends Component {
                                 -
                               </td>
                               <td>
-                                {transaction.toLabel && (
+                              {transaction.fromLabel && (
                                   <Link
-                                    to={'/' + transaction.toAddress}
+                                    to={'/' + transaction.fromAddress}
                                   >
-                                    {transaction.toLabel}
+                                    {transaction.fromLabel}
                                   </Link>
                                 )}
+                                
                                 <span className="tr-color-txt">
                                   <AddressLink
                                     value={transaction.fromAddress}
@@ -156,11 +157,11 @@ class Transaction extends Component {
                                 </span>
                               </td>
                               <td>
-                                {transaction.fromLabel && (
+                              {transaction.toLabel && (
                                   <Link
-                                    to={'/' + transaction.fromAddress}
+                                    to={'/' + transaction.toAddress}
                                   >
-                                    {transaction.fromLabel}
+                                    {transaction.toLabel}
                                   </Link>
                                 )}
                                 <span className="tr-color-txt">
