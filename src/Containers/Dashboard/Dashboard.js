@@ -313,7 +313,6 @@ class Dashboard extends Component {
       const PREV_AIRDROP = 53524096;
       const airDropUsername = ethers.utils.formatBytes32String('AirDrop&Bounty_0.0');
       const airdropData = await Apis.fetchAddress(await kycdappInst.resolveAddress(airDropUsername))
-      console.log({airdropData});
       if(airdropData?.totalESSent){
         this.setState({
           airdropRewards: +PREV_AIRDROP + formatEther(airdropData.totalESSent)
@@ -388,7 +387,7 @@ class Dashboard extends Component {
         , dayswappersRewards=0
         , timeallyRewards=0;
 
-        (await nrtManager.queryFilter(nrtManager.filters.NRTSend(this.currentNrtMonth,null,null,null)))
+        (await nrtManager.queryFilter(nrtManager.filters.NRTSend(null,null,null,null)))
           .map(log => nrtManager.interface.parseLog(log))
           .map(log => {
             switch(log.args['platformIdentifier']){
@@ -405,7 +404,7 @@ class Dashboard extends Component {
             }
           });
 
-        (await nrtManager.queryFilter(nrtManager.filters.BurnPoolAccrue(this.currentNrtMonth,null,null)))
+        (await nrtManager.queryFilter(nrtManager.filters.BurnPoolAccrue(null,null,null)))
           .map(log => nrtManager.interface.parseLog(log))
           .map(log => {
             switch(log.args['sender']){

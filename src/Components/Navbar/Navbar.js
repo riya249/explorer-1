@@ -176,7 +176,7 @@ class Navbar extends Component {
                   <Link className="dropdown-item" to="/">
                     TimeSwappers Transactions
                   </Link>
-                  <Link className="dropdown-item" to="/">
+                  <Link className="dropdown-item" to="/txns/wes">
                     WES Transactions
                   </Link>
                   <Link className="dropdown-item" to="/">

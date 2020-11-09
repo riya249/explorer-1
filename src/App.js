@@ -36,6 +36,7 @@ import Nodes from './Containers/Nodes/Nodes';
 import ECharts from './Containers/ECharts/ECharts';
 import ESPriceChart from './Containers/ESPriceChart/ESPriceChart';
 import ViewPendingTransaction from './Containers/ViewPendingTransactions/ViewPendingTransactions';
+import WESTransactions from './Containers/WESTransactions/WESTransactions';
 
 function App() {
   useEffect(() => {
@@ -54,6 +55,7 @@ function App() {
           <Route exact path="/blocks" component={Blocks} />
           <Route exact path="/block/:blockNumber" component={BlockPage} />
           <Route exact path="/txns/pending" component={ViewPendingTransaction} />
+          <Route exact path="/txns/wes" component={WESTransactions} />
           <Route exact path="/txns" component={Transactions} />
           <Route exact path="/txns/:blockNumber" component={Transactions} />
           <Route
