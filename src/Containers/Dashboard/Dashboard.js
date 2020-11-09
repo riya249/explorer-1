@@ -246,52 +246,53 @@ class Dashboard extends Component {
 
   async loadData() {
     try{ this.currentNrtMonth = await nrtManager.currentNrtMonth(); }catch(e){ console.log(e); }
-    // await this.fetchAvailableSupply().catch(e => console.log('fetchAvailableSupply error',e));
-    // this.etherPriceUsd().catch(e => console.log('etherPriceUsd error',e));
-    // this.bitcoinCrowdFundPrice().catch(e => console.log('bitcoinCrowdFundPrice error',e));
-    // this.ltcPriceUsd().catch(e => console.log('ltcPriceUsd error',e));
-    // this.getESPrice().catch(e => console.log('getESPrice error',e));
-    // this.esTotalSupply().catch(e => console.log('esTotalSupply error',e));
-    // this.holdersOfEraSwap().catch(e => console.log('holdersOfEraSwap error',e));
-    // this.nrtFractions().catch(e => console.log('nrtFractions error',e));
-    // this.getNumberOfStakings().catch(e => console.log('getNumberOfStakings error',e));
-    // this.getStakingPlanStatistics().catch(e => console.log('getStakingPlanStatistics error',e));
-    // this.getNumberOfBets().catch(e => console.log('getNumberOfBets error',e));
-    // this.getBettingDetails().catch(e => console.log('getBettingDetails error',e));
-    // this.powerTokenDetails().catch(e => console.log('powerTokenDetails error',e));
-    // this.totalNoOfUser().catch(e => console.log('totalNoOfUser error',e));
-    // this.totalNoOfFreelancerOrSeller().catch(e => console.log('totalNoOfFreelancerOrSeller error',e));
-    // this.totalViewsOnProfile().catch(e => console.log('totalViewsOnProfile error',e));
-    // this.totalNoOfVerifiedUser().catch(e => console.log('totalNoOfVerifiedUser error',e));
-    // this.totalNoOfCertifiedUser().catch(e => console.log('totalNoOfCertifiedUser error',e));
-    // this.totalNoOfDeposit().catch(e => console.log('totalNoOfDeposit error',e));
-    // this.totalNoOfWithdraw().catch(e => console.log('totalNoOfWithdraw error',e));
-    // this.totalJobsPosted().catch(e => console.log('totalJobsPosted error',e));
-    // this.totalJobsDone().catch(e => console.log('totalJobsDone error',e));
-    // this.TfcGenerated().catch(e => console.log('TfcGenerated error',e));
-    // this.swapperswalletTotalFeeds().catch(e => console.log('swapperswalletTotalFeeds error',e));
-    // this.swapperswallTopTenreceivers().catch(e => console.log('swapperswallTopTenreceivers error',e));
-    // this.userscount().catch(e => console.log('userscount error',e));
-    // this.courses().catch(e => console.log('courses error',e));
-    // this.deposits().catch(e => console.log('deposits error',e));
-    // this.userstudying().catch(e => console.log('userstudying error',e));
-    // this.buzcafeUserscount().catch(e => console.log('buzcafeUserscount error',e));
-    // this.buzcafeDepositscount().catch(e => console.log('buzcafeDepositscount error',e));
-    // this.buzcafeShopscount().catch(e => console.log('buzcafeShopscount error',e));
-    // this.buzcafeWithdrawalscount().catch(e => console.log('buzcafeWithdrawalscount error',e));
-    // this.buzcafeTransactionscount().catch(e => console.log('buzcafeTransactionscount error',e));
-    // this.fetchTotalStakedES().catch(e => console.log('fetchTotalStakedES error',e));
-    // this.fetchTotalSupply().catch(e => console.log('fetchTotalSupply error',e));
-    // this.fetchESFromNRT().catch(e => console.log('fetchESFromNRT error',e));
-    // this.fetchTotalESBurned().catch(e => console.log('fetchTotalESBurned error',e));
-    // this.fetchBurnPool().catch(e => console.log('fetchBurnPool error',e));
-    // this.fetchLuckPool().catch(e => console.log('fetchLuckPool error',e));
-    // this.fetchAllTxnsCount().catch(e => console.log('fetchAllTxnsCount error',e));
-    // this.fetchESOwnersCount().catch(e => console.log('fetchESOwnersCount error',e));
-    // this.fetchDayswappersData().catch(e => console.log('fetchDayswappersData error',e));
-    // this.getKycData().catch(e => console.log('getKycData error',e));
-    // this.fetchSurveyDappDetails().catch(e => console.log('fetchSurveyDappDetails error',e));
+    await this.fetchAvailableSupply().catch(e => console.log('fetchAvailableSupply error',e));
+    this.etherPriceUsd().catch(e => console.log('etherPriceUsd error',e));
+    this.bitcoinCrowdFundPrice().catch(e => console.log('bitcoinCrowdFundPrice error',e));
+    this.ltcPriceUsd().catch(e => console.log('ltcPriceUsd error',e));
+    this.getESPrice().catch(e => console.log('getESPrice error',e));
+    this.esTotalSupply().catch(e => console.log('esTotalSupply error',e));
+    this.holdersOfEraSwap().catch(e => console.log('holdersOfEraSwap error',e));
+    this.nrtFractions().catch(e => console.log('nrtFractions error',e));
+    this.getNumberOfStakings().catch(e => console.log('getNumberOfStakings error',e));
+    this.getStakingPlanStatistics().catch(e => console.log('getStakingPlanStatistics error',e));
+    this.getNumberOfBets().catch(e => console.log('getNumberOfBets error',e));
+    this.getBettingDetails().catch(e => console.log('getBettingDetails error',e));
+    this.powerTokenDetails().catch(e => console.log('powerTokenDetails error',e));
+    this.totalNoOfUser().catch(e => console.log('totalNoOfUser error',e));
+    this.totalNoOfFreelancerOrSeller().catch(e => console.log('totalNoOfFreelancerOrSeller error',e));
+    this.totalViewsOnProfile().catch(e => console.log('totalViewsOnProfile error',e));
+    this.totalNoOfVerifiedUser().catch(e => console.log('totalNoOfVerifiedUser error',e));
+    this.totalNoOfCertifiedUser().catch(e => console.log('totalNoOfCertifiedUser error',e));
+    this.totalNoOfDeposit().catch(e => console.log('totalNoOfDeposit error',e));
+    this.totalNoOfWithdraw().catch(e => console.log('totalNoOfWithdraw error',e));
+    this.totalJobsPosted().catch(e => console.log('totalJobsPosted error',e));
+    this.totalJobsDone().catch(e => console.log('totalJobsDone error',e));
+    this.TfcGenerated().catch(e => console.log('TfcGenerated error',e));
+    this.swapperswalletTotalFeeds().catch(e => console.log('swapperswalletTotalFeeds error',e));
+    this.swapperswallTopTenreceivers().catch(e => console.log('swapperswallTopTenreceivers error',e));
+    this.userscount().catch(e => console.log('userscount error',e));
+    this.courses().catch(e => console.log('courses error',e));
+    this.deposits().catch(e => console.log('deposits error',e));
+    this.userstudying().catch(e => console.log('userstudying error',e));
+    this.buzcafeUserscount().catch(e => console.log('buzcafeUserscount error',e));
+    this.buzcafeDepositscount().catch(e => console.log('buzcafeDepositscount error',e));
+    this.buzcafeShopscount().catch(e => console.log('buzcafeShopscount error',e));
+    this.buzcafeWithdrawalscount().catch(e => console.log('buzcafeWithdrawalscount error',e));
+    this.buzcafeTransactionscount().catch(e => console.log('buzcafeTransactionscount error',e));
+    this.fetchTotalStakedES().catch(e => console.log('fetchTotalStakedES error',e));
+    this.fetchTotalSupply().catch(e => console.log('fetchTotalSupply error',e));
+    this.fetchESFromNRT().catch(e => console.log('fetchESFromNRT error',e));
+    this.fetchTotalESBurned().catch(e => console.log('fetchTotalESBurned error',e));
+    this.fetchBurnPool().catch(e => console.log('fetchBurnPool error',e));
+    this.fetchLuckPool().catch(e => console.log('fetchLuckPool error',e));
+    this.fetchAllTxnsCount().catch(e => console.log('fetchAllTxnsCount error',e));
+    this.fetchESOwnersCount().catch(e => console.log('fetchESOwnersCount error',e));
+    this.fetchDayswappersData().catch(e => console.log('fetchDayswappersData error',e));
+    this.getKycData().catch(e => console.log('getKycData error',e));
+    this.fetchSurveyDappDetails().catch(e => console.log('fetchSurveyDappDetails error',e));
     this.fetchRewardsFromNRT().catch(e => console.log('fetchRewardsFromNRT error',e));
+    this.fetchAirDropRewards().catch(e => console.log('fetchAirDropRewards error',e));
     
     this.nrtTicker();
   }
@@ -304,6 +305,25 @@ class Dashboard extends Component {
       })
     }catch(e){
       console.log(e);
+    }
+  }
+
+  async fetchAirDropRewards(){
+    try{
+      const airDropUsername = ethers.utils.formatBytes32String('AirDrop&Bounty_0.0');
+      const airdropData = await Apis.fetchAddress(await kycdappInst.resolveAddress(airDropUsername))
+      console.log({airdropData});
+      if(airdropData?.totalESSent){
+        this.setState({
+          airdropRewards: formatEther(airdropData.totalESSent)
+        });
+      } else {
+        this.setState({
+          airdropRewards: 0.0
+        });
+      }
+    }catch(e){
+      console.log('fetchAirDropRewards error',e);
     }
   }
 
@@ -407,7 +427,6 @@ class Dashboard extends Component {
           crowdFundBal: formatEther(crowdFundBal),
           ESNPOSCPRewards: ESNPOSCPRewards.toFixed(2),
           powertokenRewards: powertokenRewards.toFixed(2),
-          airdropRewards: airdropRewards.toFixed(2),
           timeallyClubRewards: timeallyClubRewards.toFixed(2),
           dayswappersRewards: dayswappersRewards.toFixed(2),
           timeallyRewards: timeallyRewards.toFixed(2)
