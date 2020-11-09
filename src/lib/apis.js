@@ -12,8 +12,9 @@ export default class Apis {
     ajax(`${baseUrl}/address/top-new?length=${length}&page=${page}`);
   static fetchESOwners = () => ajax(`${baseUrl}/address/es-owners`);
 
-  static fetchStatistics = ({ limit = 1 }) =>
-    ajax(`${baseUrl}/address/txn-statistics?limit=${limit}`);
+  static fetchFailedTxns = (  start = 0,length = 10) =>
+    ajax(`${baseUrl}/transaction/failed?length=${length}&start=${start}`);
+  static fetchStatistics = ({ limit = 1 }) =>ajax(`${baseUrl}/address/txn-statistics?limit=${limit}`);
   static fetchTopSenders = ({ length = 10, page = 1 }) =>
     ajax(`${baseUrl}/address/top-sender?length=${length}&page=${page}`);
   static fetchTopReceivers = ({ length = 10, page = 1 }) =>
