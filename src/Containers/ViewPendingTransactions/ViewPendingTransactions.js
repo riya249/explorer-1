@@ -13,10 +13,12 @@ import { Snackbar } from '../../Components/Snackbar/Snackbar';
 import { ethers } from 'ethers';
 import { formatEther, toLocaleTimestamp } from '../../lib/parsers';
 import { providerESN } from '../../ethereum/Provider';
+import { routine } from 'eraswap-sdk/dist/utils';
 
 class ViewPendingTransaction extends Component {
   snackbarRef = React.createRef();
 
+  intervalIds = [];
   constructor(props) {
     super(props);
     this.state = {
@@ -26,7 +28,11 @@ class ViewPendingTransaction extends Component {
   }
 
   componentDidMount() {
-    setInterval(this.fetchPendingTransactions,1000);
+    this.intervalIds.push(routine(this.fetchPendingTransactions,1000));
+  }
+
+  componentWillUnmount(){
+    this.intervalIds.map(id => clearInterval(id));
   }
 
   fetchPendingTransactions = async () => {

@@ -29,11 +29,13 @@ import { timeAllyManager } from '../../ethereum/TimeallyManager';
 import { nrtAddress } from '../../config/config';
 import { providerESN } from '../../ethereum/Provider';
 import { es } from 'eraswap-sdk/dist';
+import { routine } from 'eraswap-sdk/dist/utils';
 
 const MAX_SUPPLY = 9100000000;
 const BURN_POOL_ADDRESS = '0xF8dd9146465A112be3bEf3f7dDcAB9b0b42CbaB5';
 
 class Homepage extends Component {
+  intervalIds = [];
   snackbarRef = React.createRef();
   search = '';
   cummulativeStakes = 0;
@@ -94,15 +96,19 @@ class Homepage extends Component {
   async loadData(){
     try{
       await this.fetchNRTMonth();
-      this.fetchBlocks().catch((e) => console.log(e));
-      this.fetchTransactions().catch((e) => console.log(e));
-      this.fetchBunches().catch((e) => console.log(e));
+      this.intervalIds.push(routine(() => this.fetchBlocks(),1500));
+      this.intervalIds.push(routine(() => this.fetchTransactions(),1500));
+      this.intervalIds.push(routine(() => this.fetchBunches(),1500));
+      this.intervalIds.push(routine(() => this.fetchAverageBlock(),1500));
+      
+      // this.fetchTransactions().catch((e) => console.log(e));
+      // this.fetchBunches().catch((e) => console.log(e));
       this.fetchESPrice().catch((e) => console.log(e));
       this.fetchTransactionsInterval().catch((e) => console.log(e));
       this.fetchTransactionsCount().catch((e) => console.log(e));
       this.fetchTotalStakedES().catch((e) => console.log(e));
       this.fetchValidators().catch((e) => console.log(e));
-      this.fetchAverageBlock().catch((e) => console.log(e));
+      // this.fetchAverageBlock().catch((e) => console.log(e));
       this.nrtTicker().catch((e) => console.log(e));
       // this.esCurrentSupply().catch((e) => console.log(e));
       this.fetchTotalSupply().catch((e) => console.log(e));
@@ -113,6 +119,10 @@ class Homepage extends Component {
     }catch(e){
       console.log(e)
     }
+  }
+
+  componentWillUnmount(){
+    this.intervalIds.map(id => clearInterval(id));
   }
 
   async fetchESOwnersCount() {
@@ -264,12 +274,13 @@ class Homepage extends Component {
   fetchBlocks = async () => {
     try {
       const res = await Apis.fetchBlocks(0, 14);
-      this.setState({
-        blocks: {
-          data: res.data,
-          isLoading: false,
-        },
-      });
+      if(res?.data)
+        this.setState({
+          blocks: {
+            data: res.data,
+            isLoading: false,
+          },
+        });
     } catch (e) {
       console.log(e);
       // this.openSnackBar(e.message);
@@ -308,6 +319,7 @@ class Homepage extends Component {
     try {
       const res = await Apis.fetchTransactions(0, 14);
       console.log('fetchTransactions res', res);
+      if(res?.data)
       this.setState({
         transactions: {
           data: res.data,
@@ -858,7 +870,7 @@ class Homepage extends Component {
                       : this.state.blocks?.data?.length
                       ? this.state.blocks.data.map((block, i) => {
                           return (
-                            <tr key={i + 1}>
+                            <tr key={i + 1} className="fade show">
                               <td className="frst-era">
                                 <AddressLink
                                   value={block.block_number}
