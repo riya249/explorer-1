@@ -19,7 +19,10 @@ import { surveyInstance } from '../../ethereum/Provider';
 
 const COLORS = ['#959595', '#747FEB'];
 const MAX_SUPPLY = 9100000000;
+const ZERO_MONTH_SUPPLY = 910000000;
 
+const KYCDAPP_ADDRESS = '0x07b84F93143b516A47403B528142b0c1Aae1A16F';
+const CROWN_FUND_ADDRESS = '0xD00C9C5EdCfCF6F00401168E602Cd3b6faeF8c0E';
 const ESNPOC_ADDRESS = '0xF6484fbC6F96DDc2B43B59a2e0252fC7f735d4c9';
 const POWERTOKEN_ADDRESS = '0xbc24BfAC401860ce536aeF9dE10EF0104b09f657';
 const AIRDROP_ADDRESS = '0x382525b6D3F8e42f0BB4C8D4a705763D00F9fF73';
@@ -243,52 +246,52 @@ class Dashboard extends Component {
 
   async loadData() {
     try{ this.currentNrtMonth = await nrtManager.currentNrtMonth(); }catch(e){ console.log(e); }
-    this.etherPriceUsd().catch(e => console.log('etherPriceUsd error',e));
-    this.bitcoinCrowdFundPrice().catch(e => console.log('bitcoinCrowdFundPrice error',e));
-    this.ltcPriceUsd().catch(e => console.log('ltcPriceUsd error',e));
-    this.getESPrice().catch(e => console.log('getESPrice error',e));
-    this.esTotalSupply().catch(e => console.log('esTotalSupply error',e));
-    this.holdersOfEraSwap().catch(e => console.log('holdersOfEraSwap error',e));
-    this.nrtFractions().catch(e => console.log('nrtFractions error',e));
-    this.getNumberOfStakings().catch(e => console.log('getNumberOfStakings error',e));
-    this.getStakingPlanStatistics().catch(e => console.log('getStakingPlanStatistics error',e));
-    this.getNumberOfBets().catch(e => console.log('getNumberOfBets error',e));
-    this.getBettingDetails().catch(e => console.log('getBettingDetails error',e));
-    this.powerTokenDetails().catch(e => console.log('powerTokenDetails error',e));
-    this.totalNoOfUser().catch(e => console.log('totalNoOfUser error',e));
-    this.totalNoOfFreelancerOrSeller().catch(e => console.log('totalNoOfFreelancerOrSeller error',e));
-    this.totalViewsOnProfile().catch(e => console.log('totalViewsOnProfile error',e));
-    this.totalNoOfVerifiedUser().catch(e => console.log('totalNoOfVerifiedUser error',e));
-    this.totalNoOfCertifiedUser().catch(e => console.log('totalNoOfCertifiedUser error',e));
-    this.totalNoOfDeposit().catch(e => console.log('totalNoOfDeposit error',e));
-    this.totalNoOfWithdraw().catch(e => console.log('totalNoOfWithdraw error',e));
-    this.totalJobsPosted().catch(e => console.log('totalJobsPosted error',e));
-    this.totalJobsDone().catch(e => console.log('totalJobsDone error',e));
-    this.TfcGenerated().catch(e => console.log('TfcGenerated error',e));
-    this.swapperswalletTotalFeeds().catch(e => console.log('swapperswalletTotalFeeds error',e));
-    this.swapperswallTopTenreceivers().catch(e => console.log('swapperswallTopTenreceivers error',e));
-    this.userscount().catch(e => console.log('userscount error',e));
-    this.courses().catch(e => console.log('courses error',e));
-    this.deposits().catch(e => console.log('deposits error',e));
-    this.userstudying().catch(e => console.log('userstudying error',e));
-    this.buzcafeUserscount().catch(e => console.log('buzcafeUserscount error',e));
-    this.buzcafeDepositscount().catch(e => console.log('buzcafeDepositscount error',e));
-    this.buzcafeShopscount().catch(e => console.log('buzcafeShopscount error',e));
-    this.buzcafeWithdrawalscount().catch(e => console.log('buzcafeWithdrawalscount error',e));
-    this.buzcafeTransactionscount().catch(e => console.log('buzcafeTransactionscount error',e));
-    this.fetchTotalStakedES().catch(e => console.log('fetchTotalStakedES error',e));
-    this.fetchTotalSupply().catch(e => console.log('fetchTotalSupply error',e));
-    this.fetchESFromNRT().catch(e => console.log('fetchESFromNRT error',e));
-    this.fetchTotalESBurned().catch(e => console.log('fetchTotalESBurned error',e));
-    this.fetchBurnPool().catch(e => console.log('fetchBurnPool error',e));
-    this.fetchLuckPool().catch(e => console.log('fetchLuckPool error',e));
-    this.fetchAllTxnsCount().catch(e => console.log('fetchAllTxnsCount error',e));
-    this.fetchESOwnersCount().catch(e => console.log('fetchESOwnersCount error',e));
-    this.fetchDayswappersData().catch(e => console.log('fetchDayswappersData error',e));
-    this.getKycData().catch(e => console.log('getKycData error',e));
+    // await this.fetchAvailableSupply().catch(e => console.log('fetchAvailableSupply error',e));
+    // this.etherPriceUsd().catch(e => console.log('etherPriceUsd error',e));
+    // this.bitcoinCrowdFundPrice().catch(e => console.log('bitcoinCrowdFundPrice error',e));
+    // this.ltcPriceUsd().catch(e => console.log('ltcPriceUsd error',e));
+    // this.getESPrice().catch(e => console.log('getESPrice error',e));
+    // this.esTotalSupply().catch(e => console.log('esTotalSupply error',e));
+    // this.holdersOfEraSwap().catch(e => console.log('holdersOfEraSwap error',e));
+    // this.nrtFractions().catch(e => console.log('nrtFractions error',e));
+    // this.getNumberOfStakings().catch(e => console.log('getNumberOfStakings error',e));
+    // this.getStakingPlanStatistics().catch(e => console.log('getStakingPlanStatistics error',e));
+    // this.getNumberOfBets().catch(e => console.log('getNumberOfBets error',e));
+    // this.getBettingDetails().catch(e => console.log('getBettingDetails error',e));
+    // this.powerTokenDetails().catch(e => console.log('powerTokenDetails error',e));
+    // this.totalNoOfUser().catch(e => console.log('totalNoOfUser error',e));
+    // this.totalNoOfFreelancerOrSeller().catch(e => console.log('totalNoOfFreelancerOrSeller error',e));
+    // this.totalViewsOnProfile().catch(e => console.log('totalViewsOnProfile error',e));
+    // this.totalNoOfVerifiedUser().catch(e => console.log('totalNoOfVerifiedUser error',e));
+    // this.totalNoOfCertifiedUser().catch(e => console.log('totalNoOfCertifiedUser error',e));
+    // this.totalNoOfDeposit().catch(e => console.log('totalNoOfDeposit error',e));
+    // this.totalNoOfWithdraw().catch(e => console.log('totalNoOfWithdraw error',e));
+    // this.totalJobsPosted().catch(e => console.log('totalJobsPosted error',e));
+    // this.totalJobsDone().catch(e => console.log('totalJobsDone error',e));
+    // this.TfcGenerated().catch(e => console.log('TfcGenerated error',e));
+    // this.swapperswalletTotalFeeds().catch(e => console.log('swapperswalletTotalFeeds error',e));
+    // this.swapperswallTopTenreceivers().catch(e => console.log('swapperswallTopTenreceivers error',e));
+    // this.userscount().catch(e => console.log('userscount error',e));
+    // this.courses().catch(e => console.log('courses error',e));
+    // this.deposits().catch(e => console.log('deposits error',e));
+    // this.userstudying().catch(e => console.log('userstudying error',e));
+    // this.buzcafeUserscount().catch(e => console.log('buzcafeUserscount error',e));
+    // this.buzcafeDepositscount().catch(e => console.log('buzcafeDepositscount error',e));
+    // this.buzcafeShopscount().catch(e => console.log('buzcafeShopscount error',e));
+    // this.buzcafeWithdrawalscount().catch(e => console.log('buzcafeWithdrawalscount error',e));
+    // this.buzcafeTransactionscount().catch(e => console.log('buzcafeTransactionscount error',e));
+    // this.fetchTotalStakedES().catch(e => console.log('fetchTotalStakedES error',e));
+    // this.fetchTotalSupply().catch(e => console.log('fetchTotalSupply error',e));
+    // this.fetchESFromNRT().catch(e => console.log('fetchESFromNRT error',e));
+    // this.fetchTotalESBurned().catch(e => console.log('fetchTotalESBurned error',e));
+    // this.fetchBurnPool().catch(e => console.log('fetchBurnPool error',e));
+    // this.fetchLuckPool().catch(e => console.log('fetchLuckPool error',e));
+    // this.fetchAllTxnsCount().catch(e => console.log('fetchAllTxnsCount error',e));
+    // this.fetchESOwnersCount().catch(e => console.log('fetchESOwnersCount error',e));
+    // this.fetchDayswappersData().catch(e => console.log('fetchDayswappersData error',e));
+    // this.getKycData().catch(e => console.log('getKycData error',e));
+    // this.fetchSurveyDappDetails().catch(e => console.log('fetchSurveyDappDetails error',e));
     this.fetchRewardsFromNRT().catch(e => console.log('fetchRewardsFromNRT error',e));
-    this.fetchSurveyDappDetails().catch(e => console.log('fetchSurveyDappDetails error',e));
-    this.fetchAvailableSupply().catch(e => console.log('fetchAvailableSupply error',e));
     
     this.nrtTicker();
   }
@@ -332,47 +335,82 @@ class Dashboard extends Component {
 
   async fetchRewardsFromNRT(){
     try{
-      // const platforms = await nrtManager.getPlatformDetails();
-      // const annualAmt = await nrtManager.annualNRT();
-      // let validatorAmt,crowdFundBal,crowdFundAddress;
-      // // const nrtRewards = platforms[0][ethers.utils.formatBytes32String(es.addresses[process.env.REACT_APP_NODE_ENV].ESN.timeallyManager)];
-      // validatorAmt = platforms[0][ethers.utils.formatBytes32String(es.addresses[process.env.REACT_APP_NODE_ENV].ESN.validatorManager)];
-      // this.setState({ ESNPOSCPRewards: validatorAmt ? ethers.utils.formatEther(annualAmt.div(validatorAmt)) : '0.0' });
-      const timeallyUsername = await kycdappInst.resolveUsername(TIMEALLY_ADDRESS);
-      const esnpocUsername = await kycdappInst.resolveUsername(ESNPOC_ADDRESS);
-      const powertokenUsername = await kycdappInst.resolveUsername(POWERTOKEN_ADDRESS)
-      const airdropUsername = await kycdappInst.resolveUsername(AIRDROP_ADDRESS)
-      const timeallyClubUsername = await kycdappInst.resolveUsername(TIMEALLY_CLUB_ADDRESS)
-      const dayswappersUsername = await kycdappInst.resolveUsername(DAYSWAPPERS_ADDRESS)
-      const rewards = {
-        [timeallyUsername]: 0,
-        [esnpocUsername]: 0,
-        [powertokenUsername]: 0,
-        [airdropUsername]: 0,
-        [timeallyClubUsername]: 0,
-        [dayswappersUsername]: 0,
-      };
+      const POWERTOKEN_USERNAME = ethers.utils.formatBytes32String('PowerToken_0.0');
       
-      (await nrtManager.queryFilter(nrtManager.filters.NRTSend(this.currentNrtMonth,null,null,null)))
-        .map(log => nrtManager.interface.parseLog(log))
-        .map(log => ({
-          nrtMonth: log.args['nrtMonth'],
-          platformIdentifier: log.args['platformIdentifier'],
-          platform: log.args['platform'],
-          value: log.args['value']
-        }))
-        .map(reward => {
-          console.log('reward',reward);
-          rewards[reward.platformIdentifier] = ethers.utils.formatEther(reward.value)
-        });
+      const platforms = {
+        timeallyManager: {
+          address: es.addresses[process.env.REACT_APP_NODE_ENV].ESN.timeallyManager,
+          username: await kycdappInst.resolveUsername(es.addresses[process.env.REACT_APP_NODE_ENV].ESN.timeallyManager),
+        },
+        validatorManager: {
+          address: es.addresses[process.env.REACT_APP_NODE_ENV].ESN.validatorManager,
+          username: await kycdappInst.resolveUsername(es.addresses[process.env.REACT_APP_NODE_ENV].ESN.validatorManager),
+        },
+        powertoken: {
+          address: await kycdappInst.resolveAddress(POWERTOKEN_USERNAME),
+          username: POWERTOKEN_USERNAME
+        },
+        dayswappers: {
+          address: es.addresses[process.env.REACT_APP_NODE_ENV].ESN.dayswappers,
+          username: await kycdappInst.resolveUsername(es.addresses[process.env.REACT_APP_NODE_ENV].ESN.dayswappers),
+        },
+        timeallyclub: {
+          address: es.addresses[process.env.REACT_APP_NODE_ENV].ESN.timeallyclub,
+          username: await kycdappInst.resolveUsername(es.addresses[process.env.REACT_APP_NODE_ENV].ESN.timeallyclub),
+        },
+      };
+
+        let ESNPOSCPRewards=0
+        , powertokenRewards=0
+        , airdropRewards=0
+        , timeallyClubRewards=0
+        , dayswappersRewards=0
+        , timeallyRewards=0;
+
+        (await nrtManager.queryFilter(nrtManager.filters.NRTSend(this.currentNrtMonth,null,null,null)))
+          .map(log => nrtManager.interface.parseLog(log))
+          .map(log => {
+            switch(log.args['platformIdentifier']){
+              case platforms.timeallyManager.username: timeallyRewards += Number(ethers.utils.formatEther(log.args['value']));
+                break;
+              case platforms.validatorManager.username: ESNPOSCPRewards += Number(ethers.utils.formatEther(log.args['value']));
+                break;
+              case platforms.powertoken.username: powertokenRewards += Number(ethers.utils.formatEther(log.args['value']));
+                break;
+              case platforms.dayswappers.username: dayswappersRewards += Number(ethers.utils.formatEther(log.args['value']));
+                break;
+              case platforms.timeallyclub.username: timeallyClubRewards += Number(ethers.utils.formatEther(log.args['value']));
+                break;
+            }
+          });
+
+        (await nrtManager.queryFilter(nrtManager.filters.BurnPoolAccrue(this.currentNrtMonth,null,null)))
+          .map(log => nrtManager.interface.parseLog(log))
+          .map(log => {
+            switch(log.args['sender']){
+              case platforms.timeallyManager.address: timeallyRewards -= Number(ethers.utils.formatEther(log.args['value']));
+                break;
+              case platforms.validatorManager.address: ESNPOSCPRewards -= Number(ethers.utils.formatEther(log.args['value']));
+                break;
+              case platforms.powertoken.address: powertokenRewards -= Number(ethers.utils.formatEther(log.args['value']));
+                break;
+              case platforms.dayswappers.address: dayswappersRewards -= Number(ethers.utils.formatEther(log.args['value']));
+                break;
+              case platforms.timeallyclub.address: timeallyClubRewards -= Number(ethers.utils.formatEther(log.args['value']));
+                break;
+            }
+          });
+
+        const crowdFundBal = await providerESN.getBalance(CROWN_FUND_ADDRESS);
 
         this.setState({
-          ESNPOSCPRewards: rewards[esnpocUsername],
-          powertokenRewards: rewards[powertokenUsername],
-          airdropRewards: rewards[airdropUsername],
-          timeallyClubRewards: rewards[timeallyClubUsername],
-          dayswappersRewards: rewards[dayswappersUsername],
-          timeallyRewards: rewards[timeallyUsername]
+          crowdFundBal: formatEther(crowdFundBal),
+          ESNPOSCPRewards: ESNPOSCPRewards.toFixed(2),
+          powertokenRewards: powertokenRewards.toFixed(2),
+          airdropRewards: airdropRewards.toFixed(2),
+          timeallyClubRewards: timeallyClubRewards.toFixed(2),
+          dayswappersRewards: dayswappersRewards.toFixed(2),
+          timeallyRewards: timeallyRewards.toFixed(2)
         })
     }catch(e){
       console.log(e);
@@ -453,7 +491,7 @@ class Dashboard extends Component {
       .map(log => kycInst.interface.parseLog(log))
       .filter(log => log.args['newKycStatus'] === 1).length
       
-      const kycDappBal = await providerESN.getBalance(es.addresses[process.env.REACT_APP_NODE_ENV].ESN.kycdapp);
+      const kycDappBal = await providerESN.getBalance(KYCDAPP_ADDRESS);
 
       this.setState({
         kycApprovedCount: approvedKycsCount,
@@ -1901,7 +1939,7 @@ class Dashboard extends Component {
                 <Card className="">
                   <Card.Body>
                     <p className="sect-txt-bold">Reserves for Crowd Fund phase 2 & 3 . </p>
-                    <p className="value-dash-txt">-</p>
+              <p className="value-dash-txt">{this.state.crowdFundBal}</p>
                   </Card.Body>
                 </Card>
               </Col>
