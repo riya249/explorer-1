@@ -310,16 +310,17 @@ class Dashboard extends Component {
 
   async fetchAirDropRewards(){
     try{
+      const PREV_AIRDROP = 53524096;
       const airDropUsername = ethers.utils.formatBytes32String('AirDrop&Bounty_0.0');
       const airdropData = await Apis.fetchAddress(await kycdappInst.resolveAddress(airDropUsername))
       console.log({airdropData});
       if(airdropData?.totalESSent){
         this.setState({
-          airdropRewards: formatEther(airdropData.totalESSent)
+          airdropRewards: +PREV_AIRDROP + formatEther(airdropData.totalESSent)
         });
       } else {
         this.setState({
-          airdropRewards: 0.0
+          airdropRewards: PREV_AIRDROP
         });
       }
     }catch(e){
@@ -358,10 +359,10 @@ class Dashboard extends Component {
       const POWERTOKEN_USERNAME = ethers.utils.formatBytes32String('PowerToken_0.0');
       
       const platforms = {
-        timeallyManager: {
-          address: es.addresses[process.env.REACT_APP_NODE_ENV].ESN.timeallyManager,
-          username: await kycdappInst.resolveUsername(es.addresses[process.env.REACT_APP_NODE_ENV].ESN.timeallyManager),
-        },
+        // timeallyManager: {
+        //   address: es.addresses[process.env.REACT_APP_NODE_ENV].ESN.timeallyManager,
+        //   username: await kycdappInst.resolveUsername(es.addresses[process.env.REACT_APP_NODE_ENV].ESN.timeallyManager),
+        // },
         validatorManager: {
           address: es.addresses[process.env.REACT_APP_NODE_ENV].ESN.validatorManager,
           username: await kycdappInst.resolveUsername(es.addresses[process.env.REACT_APP_NODE_ENV].ESN.validatorManager),
@@ -391,8 +392,8 @@ class Dashboard extends Component {
           .map(log => nrtManager.interface.parseLog(log))
           .map(log => {
             switch(log.args['platformIdentifier']){
-              case platforms.timeallyManager.username: timeallyRewards += Number(ethers.utils.formatEther(log.args['value']));
-                break;
+              // case platforms.timeallyManager.username: timeallyRewards += Number(ethers.utils.formatEther(log.args['value']));
+              //   break;
               case platforms.validatorManager.username: ESNPOSCPRewards += Number(ethers.utils.formatEther(log.args['value']));
                 break;
               case platforms.powertoken.username: powertokenRewards += Number(ethers.utils.formatEther(log.args['value']));
@@ -408,8 +409,8 @@ class Dashboard extends Component {
           .map(log => nrtManager.interface.parseLog(log))
           .map(log => {
             switch(log.args['sender']){
-              case platforms.timeallyManager.address: timeallyRewards -= Number(ethers.utils.formatEther(log.args['value']));
-                break;
+              // case platforms.timeallyManager.address: timeallyRewards -= Number(ethers.utils.formatEther(log.args['value']));
+              //   break;
               case platforms.validatorManager.address: ESNPOSCPRewards -= Number(ethers.utils.formatEther(log.args['value']));
                 break;
               case platforms.powertoken.address: powertokenRewards -= Number(ethers.utils.formatEther(log.args['value']));
@@ -421,15 +422,20 @@ class Dashboard extends Component {
             }
           });
 
-        const crowdFundBal = await providerESN.getBalance(CROWN_FUND_ADDRESS);
+        const crowdFundBal                    = await providerESN.getBalance(CROWN_FUND_ADDRESS);
+        const totalTimeallyRewards            = MAX_SUPPLY - this.state.availableSupply;
+        const POWERTOKEN_TILL_12_MONTH        = 81966338;
+        const PREV_TIMEALLY_CLUB_REWARDS      = 45500000;
+        const PREV_DAYSWAPPERS_TOTAL_REWARDS  = 97688885;
 
         this.setState({
-          crowdFundBal: formatEther(crowdFundBal),
-          ESNPOSCPRewards: ESNPOSCPRewards.toFixed(2),
-          powertokenRewards: powertokenRewards.toFixed(2),
-          timeallyClubRewards: timeallyClubRewards.toFixed(2),
-          dayswappersRewards: dayswappersRewards.toFixed(2),
-          timeallyRewards: timeallyRewards.toFixed(2)
+          crowdFundBal        : formatEther(crowdFundBal),
+          ESNPOSCPRewards     : ESNPOSCPRewards.toFixed(2),
+          powertokenRewards   : (+POWERTOKEN_TILL_12_MONTH + powertokenRewards).toFixed(2),
+          timeallyClubRewards : (+PREV_TIMEALLY_CLUB_REWARDS + timeallyClubRewards).toFixed(2),
+          dayswappersRewards  : (+PREV_DAYSWAPPERS_TOTAL_REWARDS + dayswappersRewards).toFixed(2),
+          // timeallyRewards  : timeallyRewards.toFixed(2)
+          timeallyRewards     : totalTimeallyRewards
         })
     }catch(e){
       console.log(e);
@@ -474,7 +480,6 @@ class Dashboard extends Component {
           totalLiquidRewards = (totalRewards/(liquidRatio+prepaidRatio+stakesRatio))*liquidRatio;
           totalTimeAllyRewards = (totalRewards/(liquidRatio+prepaidRatio+stakesRatio))*stakesRatio;
         }
-        console.log({ecosystemVolume});
       this.setState({
         dayswappers: {
           data: {

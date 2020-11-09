@@ -81,7 +81,11 @@ class ViewPendingTransaction extends Component {
                       </tr>)
                       :
                       <tr>
-                        <td colSpan={4}>No Pending Transactions</td>
+                        <td colSpan={4} className="text-center">
+                          <br></br>
+                          <i class="fa fa-spinner fa-spin"></i>
+                          <p>Waiting for Transactions</p>
+                          </td>
                         </tr>}
                     </tbody>
                   </table>
