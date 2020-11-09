@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './Transaction.css';
+import './cancelledTransactions.css';
 import { Link } from 'react-router-dom';
 import Images from '../Images/Images';
 import { Col, Button, Container, Row } from 'react-bootstrap';
@@ -13,7 +13,7 @@ import { Snackbar } from '../../Components/Snackbar/Snackbar';
 import { ethers } from 'ethers';
 import { toLocaleTimestamp } from '../../lib/parsers';
 
-class Transaction extends Component {
+class CancelledTransactions extends Component {
   snackbarRef = React.createRef();
 
   blockNumber;
@@ -29,27 +29,21 @@ class Transaction extends Component {
       },
     };
 
-    const {
-      match: { params },
-    } = this.props;
-    if (params?.blockNumber) this.blockNumber = params.blockNumber;
-
-    console.log('this.blockNumber', this.blockNumber);
-    this.fetchTransactions = this.fetchTransactions.bind(this);
+    this.fetchFailedTxns = this.fetchFailedTxns.bind(this);
   }
 
   componentDidMount() {
-    this.fetchTransactions();
+    this.fetchFailedTxns();
   }
 
-  async fetchTransactions(start, length = 10) {
+  async fetchFailedTxns(start, length = 10) {
     try {
-      const res = await Apis.fetchTransactions(start, length, this.blockNumber);
+      const res = await Apis.fetchFailedTxns(start, length);
       console.log('res', res);
       this.setState({
         transactions: {
           data: res.data,
-          currentPage: Number(res.currentPage),
+          currentPage: res.currentPage,
           totalPages: res.totalPages,
           isLoading: false,
         },
@@ -76,20 +70,9 @@ class Transaction extends Component {
       <div className="blocks-table compage">
         <div className="booking-hero-bgd booking-hero-bgd-inner ">
           <Navbar />
-          <h2 className="es-main-head es-main-head-inner">Transactions</h2>
+          <h2 className="es-main-head es-main-head-inner">Cancelled Transactions</h2>
         </div>
         <Container>
-          {this.blockNumber && (
-            <span>
-              <br></br>
-              Showing transactions of Block #{' '}
-              <AddressLink
-                value={this.blockNumber}
-                type="block"
-                style={{ fontSize: '20px' }}
-              />
-            </span>
-          )}
           <Row className="mt40">
             <Col lg={12}>
               <div className="card">
@@ -98,11 +81,7 @@ class Transaction extends Component {
                     <thead>
                       <tr>
                         <th>Txn Hash </th>
-                        <th>Block</th>
                         <th>Age</th>
-                        <th>Type of Transaction</th>
-                        <th>From</th>
-                        <th>To</th>
                         <th>Value</th>
                         <th>(Txn Fee)</th>
                       </tr>
@@ -123,57 +102,10 @@ class Transaction extends Component {
                                   shrink={true}
                                 />
                               </td>
-                              <td className="tr-color-txt">
-                                <AddressLink
-                                  value={transaction.block_number}
-                                  type="block"
-                                />
-                              </td>
                               <td>
                                 {toLocaleTimestamp(
                                   transaction.timestamp
                                 ).fromNow()}
-                              </td>
-                              <td>
-                                -
-                              </td>
-                              <td>
-                              {transaction.fromLabel && (
-                                  <Link
-                                    to={'/' + transaction.fromAddress}
-                                  >
-                                    {transaction.fromLabel}
-                                  </Link>
-                                )}
-                                
-                                <span className="tr-color-txt">
-                                  <AddressLink
-                                    value={transaction.fromAddress}
-                                    type="address"
-                                    shrink={
-                                      transaction.fromLabel?.length
-                                    }
-                                  />
-                                </span>
-                              </td>
-                              <td>
-                              {transaction.toLabel && (
-                                  <Link
-                                    to={'/' + transaction.toAddress}
-                                  >
-                                    {transaction.toLabel}
-                                  </Link>
-                                )}
-                                <span className="tr-color-txt">
-                                  {transaction?.toAddress
-                                    && <AddressLink
-                                      value={transaction.toAddress}
-                                      type="address"
-                                      shrink={
-                                        transaction.fromLabel?.length
-                                      }
-                                    />}
-                                </span>
                               </td>
                               <td>
                                 {transaction.value && ethers.utils.formatEther(transaction.value)} ES{' '}
@@ -201,7 +133,7 @@ class Transaction extends Component {
                 </div>
                 <Col lg={12} className="mb30">
                   <CustomPagination
-                    handleClick={this.fetchTransactions}
+                    handleClick={this.fetchFailedTxns}
                     currentPage={this.state.transactions.currentPage}
                     prevPage={this.state.transactions.currentPage - 1}
                     nextPage={this.state.transactions.currentPage + 1}
@@ -218,4 +150,4 @@ class Transaction extends Component {
   }
 }
 
-export default Transaction;
+export default CancelledTransactions;

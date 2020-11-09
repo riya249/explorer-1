@@ -35,6 +35,9 @@ import ContractsWithVerifiedSourceCodes from './Containers/ContractsWithVerified
 import Nodes from './Containers/Nodes/Nodes';
 import ECharts from './Containers/ECharts/ECharts';
 import ESPriceChart from './Containers/ESPriceChart/ESPriceChart';
+import ViewPendingTransaction from './Containers/ViewPendingTransactions/ViewPendingTransactions';
+import WESTransactions from './Containers/WESTransactions/WESTransactions';
+import CancelledTransactions from './Containers/CancelledTransactions/CancelledTransactions';
 
 function App() {
   useEffect(() => {
@@ -52,6 +55,9 @@ function App() {
           <Route exact path="/bunch/:bunchIndex" component={Bunch} />
           <Route exact path="/blocks" component={Blocks} />
           <Route exact path="/block/:blockNumber" component={BlockPage} />
+          <Route exact path="/txns/pending" component={ViewPendingTransaction} />
+          <Route exact path="/txns/wes" component={WESTransactions} />
+          <Route exact path="/txns/failed" component={CancelledTransactions} />
           <Route exact path="/txns" component={Transactions} />
           <Route exact path="/txns/:blockNumber" component={Transactions} />
           <Route

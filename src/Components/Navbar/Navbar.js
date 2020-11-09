@@ -167,16 +167,16 @@ class Navbar extends Component {
                   </Link>
 
 
-                  <Link className="dropdown-item" to="/">
+                  <Link className="dropdown-item" to="/txns/pending">
                     View Pending Transations
                   </Link>
-                  <Link className="dropdown-item" to="/">
+                  <Link className="dropdown-item" to="/txns/failed">
                     View Cancelled Transactions
                   </Link>
-                  <Link className="dropdown-item" to="/">
+                  {/* <Link className="dropdown-item" to="/">
                     TimeSwappers Transactions
-                  </Link>
-                  <Link className="dropdown-item" to="/">
+                  </Link> */}
+                  <Link className="dropdown-item" to="/txns/wes">
                     WES Transactions
                   </Link>
                   <Link className="dropdown-item" to="/">

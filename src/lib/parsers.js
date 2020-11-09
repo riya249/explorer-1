@@ -45,3 +45,18 @@ export const nFormatter = (num, digits = 0) => {
 
 export const formatEther = (hexValue) =>
   Number(ethers.utils.formatEther(hexValue)).toFixed('2');
+
+export function routine(fn, msec) {
+  let working = true;
+  fn().then(() => (working = false)).catch(() => (working = false));
+
+  const intervalId = setInterval(async () => {
+    if (!working) {
+      working = true;
+      await fn().catch(() => (working = false));;
+      working = false;
+    }
+  }, msec);
+
+  return intervalId;
+}

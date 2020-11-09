@@ -11,6 +11,7 @@ export const providerEth = ethers.getDefaultProvider('rinkeby', {
 
 export const surveyInstance = es.typechain.ESN.BuildSurveyFactory.connect(es.addresses[process.env.REACT_APP_NODE_ENV].ESN.buildSurvey,providerESN);
 
+export const prepaidInstance = es.typechain.ESN.PrepaidEsFactory.connect(es.addresses[process.env.REACT_APP_NODE_ENV].ESN.prepaidEs,providerESN);
 // module.exports = {
 //   providerEth,
 //   providerESN,

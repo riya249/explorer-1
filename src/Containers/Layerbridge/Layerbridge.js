@@ -11,6 +11,8 @@ import { plasmaManager } from '../../ethereum/PlasmaManager';
 import { providerEth, providerESN } from '../../ethereum/Provider';
 
 class Layerbridge extends Component {
+  intervalIds = [];
+
   constructor(props) {
     super(props);
     this.state = {
@@ -29,15 +31,17 @@ class Layerbridge extends Component {
     };
   }
 
-  componentDidMount() {
-    setInterval(() => {
-      this.updateBlockNumber();
-      this.updateLatestBlockNumberOnESNContract();
-      this.updateNextStartBlockNumber();
-      this.updateLatestESNBlockNumber();
-      this.fetchToESNBlocks();
-      this.fetchToEthBlocks();
-    }, 1000);
+  componentDidMount() {     
+    this.intervalIds.push(setInterval(() => this.updateBlockNumber(),1000));
+    this.intervalIds.push(setInterval(() => this.updateLatestBlockNumberOnESNContract(),1000));
+    this.intervalIds.push(setInterval(() => this.updateNextStartBlockNumber(),1000));
+    this.intervalIds.push(setInterval(() => this.updateLatestESNBlockNumber(),1000));
+    this.intervalIds.push(setInterval(() => this.fetchToESNBlocks(),1000));
+    this.intervalIds.push(setInterval(() => this.fetchToEthBlocks(),1000));
+  }
+
+  componentWillUnmount(){
+    this.intervalIds.map(id => clearInterval(id));
   }
 
   updateNextStartBlockNumber = async () => {
