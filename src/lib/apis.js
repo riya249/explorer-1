@@ -14,6 +14,8 @@ export default class Apis {
 
   static fetchFailedTxns = (  start = 0,length = 10) =>
     ajax(`${baseUrl}/transaction/failed?length=${length}&start=${start}`);
+  static fetchTopupTxns = ({length = 10,page = 1}) =>
+    ajax(`${baseUrl}/timeally-topup?length=${length}&page=${page}`);
   static fetchStatistics = ({ limit = 1 }) =>ajax(`${baseUrl}/address/txn-statistics?limit=${limit}`);
   static fetchTopSenders = ({ length = 10, page = 1 }) =>
     ajax(`${baseUrl}/address/top-sender?length=${length}&page=${page}`);
