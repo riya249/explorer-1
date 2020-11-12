@@ -666,17 +666,13 @@ const _abi = [
 //     )
 //   );
 // };
-// const nrtManager = new Contract(
-//   providerESN.resolveAddress(es.addresses[process.env.NODE_ENV].ESN.nrtManager),
-//   _abi,
-//   providerESN
-// );
+const nrtManager = NrtManagerFactory.connect(
+  providerESN.resolveAddress(es.addresses[process.env.REACT_APP_NODE_ENV].ESN.nrtManager),
+  providerESN
+)
 
 module.exports = {
-  nrtManager: NrtManagerFactory.connect(
-    providerESN.resolveAddress(es.addresses[process.env.NODE_ENV].ESN.nrtManager),
-    providerESN
-  )
+  nrtManager,
   // nrtManager
 };
 

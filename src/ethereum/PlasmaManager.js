@@ -206,8 +206,8 @@ const _abi = [
 ];
 
 // const plasmaManager = new Contract(
-//   es.addresses[process.env.NODE_ENV].ETH.plasmaManager, _abi, providerEth);
+//   es.addresses[process.env.REACT_APP_NODE_ENV].ETH.plasmaManager, _abi, providerEth);
 
 module.exports = {
-  plasmaManager: PlasmaManagerFactory.connect(es.addresses[process.env.NODE_ENV].ETH.plasmaManager,providerEth),
+  plasmaManager: PlasmaManagerFactory.connect(es.addresses[process.env.REACT_APP_NODE_ENV].ETH.plasmaManager,providerEth),
 };

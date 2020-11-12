@@ -2,10 +2,10 @@ const { ethers } = require('ethers');
 const { nodeUrl } = require('../config/config');
 const { es } = require('eraswap-sdk');
 
-export const providerESN = new es.CustomProvider('testnet');
+export const providerESN = new es.CustomProvider(process.env.REACT_APP_NODE_ENV === 'development' ? 'testnet' : 'mainnet');
 // const providerESN = new ethers.providers.JsonRpcProvider('https://node2.testnet.eraswap.network');
 
-export const providerEth = ethers.getDefaultProvider('rinkeby', {
+export const providerEth = ethers.getDefaultProvider(process.env.REACT_APP_NODE_ENV === 'development' ? 'rinkeby' : 'homestead', {
   infura: 'b915fe11a8ab4e73a3edba4c59d656b2',
 });
 
