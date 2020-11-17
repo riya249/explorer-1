@@ -187,7 +187,7 @@ class Blocks extends Component {
                               {block.provisional_reward !== null ? (
                                 block.provisional_reward + 'ES'
                               ) : (
-                                <i>pending for next NRT...</i>
+                                <i>Time Remaining for  Next NRT released...</i>
                               )}
                             </td>
                           </tr>

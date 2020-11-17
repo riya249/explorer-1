@@ -286,11 +286,11 @@ class TopStatistics extends Component {
                                                               </tr>
                                                               <tr>
                                                                 <td>
-                                                                  <p class="sect-txt-bold ">Top Blockee</p>
+                                                                  <p class="sect-txt-bold ">Top </p>
                                                                   <p class="value-dash-txt">Unknown</p>
                                                                 </td>
                                                                 <td className="text-right">
-                                                                  <p class="sect-txt-bold">Blockee Mined</p>
+                                                                  <p class="sect-txt-bold">Blokcee Mined</p>
                                                                   <p class="value-dash-txt">13,741</p>
                                                                 </td>
                                                               </tr>
@@ -714,7 +714,7 @@ class TopStatistics extends Component {
                                                           <tr>
                                                               <th>Rank</th>
                                                               <th>Address</th>
-                                                              <th>Total Blockee Mined</th>
+                                                              <th>Total Blokcee Mined</th>
                                                               <th>Total Rewards</th>
                                                               <th>Total Txn Fees</th>
                                                               <th>Est. Hash Rate</th>
@@ -814,13 +814,13 @@ class TopStatistics extends Component {
                                                   </div>
                                                   <div className="col-lg-12 mt10" >
                                                     <div  className="card">
-                                                    <div class="border-era">Top Blockee</div>
+                                                    <div class="border-era">Top Blokcee</div>
                                                       <table className="es-transaction striped bordered hover">
                                                         <thead>
                                                           <tr>
                                                               <th>Rank</th>
                                                               <th>Address</th>
-                                                              <th>Total Blockee Mined</th>
+                                                              <th>Total Blokcee Mined</th>
                                                               <th>Total Rewards</th>
                                                               <th>Total Txn Fees</th>
                                                               <th>Est. Hash Rate</th>
@@ -830,7 +830,7 @@ class TopStatistics extends Component {
                                                               <td>0x36560493644fbb79f1c38D12fF096F7ec5D333b7</td>
                                                               <td>153,314.7944</td>
                                                               <td>4,843.27219</td>
-                                                              <td>153,314.7944></td>
+                                                              <td>153,314.7944</td>
                                                               <td>48,303.310652</td>
                                                            </tr>
                                                            <tr>

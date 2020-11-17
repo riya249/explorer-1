@@ -1491,7 +1491,7 @@ class Dashboard extends Component {
               <Col sm={6} lg={2}>
                 <Card>
                   <Card.Body>
-                    <p className="sect-txt-bold ">ES CURRENT SUPPLY</p>
+                    <p className="sect-txt-bold ">ES AVAILABLE SUPPLY</p>
                     <p className="value-dash-txt">
                       {this.state.eraswap.data.circulatingOutsideTA}
                     </p>
