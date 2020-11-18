@@ -590,7 +590,7 @@ class Dashboard extends Component {
     } finally {
       this.setState({
 
-        esOwners: res?.data || '-',
+        esOwners: res || '-',
 
       });
     }
