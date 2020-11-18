@@ -590,7 +590,7 @@ class Dashboard extends Component {
     } finally {
       this.setState({
 
-        esOwners: res,
+        esOwners: res || '-',
 
       });
     }
@@ -600,12 +600,13 @@ class Dashboard extends Component {
     let res;
     try {
       res = await Apis.fetchAllTxnsCount();
+      console.log('fetchAllTxnsCount res',res);
     } catch (e) {
-      console.log(e);
+      console.log('fetchAllTxnsCount',e);
     } finally {
       this.setState({
 
-        allTxnsCount: res,
+        allTxnsCount: res?.data ? res.data : '-',
 
       });
     }
@@ -2099,7 +2100,7 @@ class Dashboard extends Component {
                       <Pie
                         data={[{
                           name: 'Available Supply',
-                          value: this.state.availableSupply
+                          value: Number(this.state.availableSupply)
                         },{
                           name: 'ES Staked in TimeAlly 1 LT',
                           value: Number(this.state.totalESStaked)
@@ -2109,7 +2110,9 @@ class Dashboard extends Component {
                         cx="50%"
                         cy="50%"
                       >
-                        {this.state.timeallyStakers.data.chartData.map(
+                        {
+                        // this.state.timeallyStakers.data.chartData.map(
+                        [this.state.availableSupply,this.state.totalESStaked].map(
                           (entry, index) => (
                             <Cell fill={COLORS[index % COLORS.length]}>
                               {/* <Tooltip /> */}

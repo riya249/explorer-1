@@ -30,6 +30,7 @@ import { nrtAddress } from '../../config/config';
 import { providerESN } from '../../ethereum/Provider';
 import { es } from 'eraswap-sdk/dist';
 import { routine } from 'eraswap-sdk/dist/utils';
+import { NodesTable } from '../Nodestatus/NodesTable/NodesTable';
 
 const MAX_SUPPLY = 9100000000;
 const BURN_POOL_ADDRESS = '0xF8dd9146465A112be3bEf3f7dDcAB9b0b42CbaB5';
@@ -1167,11 +1168,19 @@ class Homepage extends Component {
               </Col>
             </Row>
           </Container> */}
-
+          <Container>
+            <Row className="mt40">
+              <Col lg={12}>
+                <h4>Nodes</h4>
+          <NodesTable />
+          </Col>
+          </Row>
+          </Container>
           <Container>
             <Row className="mt40">
               <Col lg={12}>
                 <div className="second-section-es card purpalebg">
+                <h4>Validator Stakings</h4>
                   <div className="table-responsive">
                     <table className="table table-bordered purple-table">
                       <tr>
