@@ -1341,12 +1341,12 @@ class Homepage extends Component {
             </Row>
           </Container> */}
           <Container>
-            <Row className="mt40">
+            {/* <Row className="mt40">
               <Col lg={12}>
             
           <NodesTable />
           </Col>
-          </Row>
+          </Row> */}
           </Container>
           <Container>
             <Row className="mt40">
